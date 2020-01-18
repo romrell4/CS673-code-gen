@@ -6,7 +6,8 @@ def scrape(url):
 
     soup = BeautifulSoup(html, "html.parser")
     # print(soup.prettify())
-    parse_children(soup.body, 0)
+    all_tags = parse_children(soup.body, 0)
+    [print(tag) for tag in all_tags]
 
 def get_html(url):
     """
@@ -21,16 +22,33 @@ def get_html(url):
         with open(url) as f:
             return f.read()
 
-def parse_children(element, depth):
+def parse_children(tag, depth):
     """
     Here's one simple way to parse the dom recursively, in a depth first fashion.
-    :param element: Any bs4 element
+    :param tag: Any bs4 tag
     :param depth: The current depth in our DFS
     """
-    for child in element.children:
+    tags = []
+    for child in tag.children:
         if child.name is not None:
+            tags.append(Tag(child))
             print("{}{}".format("  " * depth, child.name))
-            parse_children(child, depth + 1)
+            tags += parse_children(child, depth + 1)
+    return tags
+
+class Tag:
+    def __init__(self, bs4_tag):
+        self.id = bs4_tag.get("id")
+        self.classes = bs4_tag.get("class")
+        self.name = bs4_tag.name
+        self.bs4_tag = bs4_tag
+
+    def __str__(self):
+        return "Tag(name: {}, id: {}, classes: {})".format(self.name, self.id, self.classes)
+
+    def __repr__(self):
+        return str(self)
+
 
 if __name__ == '__main__':
     # scrape("https://www.crummy.com/software/BeautifulSoup/bs4/doc/")
