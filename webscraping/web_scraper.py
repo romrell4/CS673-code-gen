@@ -1,13 +1,28 @@
 from bs4 import BeautifulSoup
+import dryscrape
 import requests
+import sys
+import time
+if 'linux' in sys.platform:
+    # start xvfb in case no X is running. Make sure xvfb 
+    # is installed, otherwise this won't work!
+    dryscrape.start_xvfb()
 
 def scrape(url):
     html = get_html(url)
-
+    get_photo(url)
     soup = BeautifulSoup(html, "html.parser")
     # print(soup.prettify())
     all_tags = parse_children(soup.body, 0)
     [print(tag) for tag in all_tags]
+
+def get_photo(url):
+    if url.startswith("http"):
+        session = dryscrape.Session()
+        session.visit(url)
+        time.sleep(1)
+        session.render(f"{url}.png")
+        return 
 
 def get_html(url):
     """
@@ -17,7 +32,10 @@ def get_html(url):
     :return: html text
     """
     if url.startswith("http"):
-        return requests.get(url).text
+        session = dryscrape.Session()
+        session.visit(url)
+        return session.body()
+        # return requests.get(url).text
     else:
         with open(url) as f:
             return f.read()
@@ -52,4 +70,5 @@ class Tag:
 
 if __name__ == '__main__':
     # scrape("https://www.crummy.com/software/BeautifulSoup/bs4/doc/")
-    scrape("webscraping/test.html")
+    # scrape("https://recipes.twhiting.org")
+    scrape("test.html")
