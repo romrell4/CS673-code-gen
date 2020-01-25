@@ -12,7 +12,8 @@ def scrape(url):
     soup = BeautifulSoup(html, "html.parser")
     # print(soup.prettify())
     all_tags = parse_children(soup.body, 0)
-    [print(tag) for tag in all_tags]
+    #[print(tag) for tag in all_tags]
+    return soup
 
 def get_photo(url):
     if url.startswith("http") and running_linux():
@@ -52,7 +53,7 @@ def parse_children(tag, depth):
     for child in tag.children:
         if child.name is not None:
             tags.append(Tag(child))
-            print("{}{}".format("  " * depth, child.name))
+            #print("{}{}".format("  " * depth, child.name))
             tags += parse_children(child, depth + 1)
     return tags
 
@@ -79,5 +80,4 @@ if __name__ == '__main__':
         dryscrape.start_xvfb()
 
     # scrape("https://www.crummy.com/software/BeautifulSoup/bs4/doc/")
-    # scrape("https://recipes.twhiting.org")
     scrape("test.html")
