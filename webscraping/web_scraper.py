@@ -1,12 +1,10 @@
 from bs4 import BeautifulSoup
-import dryscrape
 import requests
 import sys
 import time
-if 'linux' in sys.platform:
-    # start xvfb in case no X is running. Make sure xvfb 
-    # is installed, otherwise this won't work!
-    dryscrape.start_xvfb()
+
+def running_linux():
+    return 'linux' in sys.platform
 
 def scrape(url):
     html = get_html(url)
@@ -17,12 +15,13 @@ def scrape(url):
     [print(tag) for tag in all_tags]
 
 def get_photo(url):
-    if url.startswith("http"):
+    if url.startswith("http") and running_linux():
+        import dryscrape
         session = dryscrape.Session()
         session.visit(url)
         time.sleep(1)
         session.render(f"{url}.png")
-        return 
+        return
 
 def get_html(url):
     """
@@ -32,12 +31,15 @@ def get_html(url):
     :return: html text
     """
     if url.startswith("http"):
-        session = dryscrape.Session()
-        session.visit(url)
-        return session.body()
-        # return requests.get(url).text
+        if running_linux():
+            import dryscrape
+            session = dryscrape.Session()
+            session.visit(url)
+            return session.body()
+        else:
+            return requests.get(url).text
     else:
-        with open(url) as f:
+        with open("test_html/" + url) as f:
             return f.read()
 
 def parse_children(tag, depth):
@@ -69,6 +71,13 @@ class Tag:
 
 
 if __name__ == '__main__':
+    if running_linux():
+        import dryscrape
+
+        # start xvfb in case no X is running. Make sure xvfb
+        # is installed, otherwise this won't work!
+        dryscrape.start_xvfb()
+
     # scrape("https://www.crummy.com/software/BeautifulSoup/bs4/doc/")
     # scrape("https://recipes.twhiting.org")
     scrape("test.html")
