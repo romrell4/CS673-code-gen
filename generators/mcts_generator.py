@@ -6,16 +6,17 @@ from webscraping.web_scraper import *
 
 class CSS():
     def __init__(self, rules):
-        pass
+        self.rules = rules
 
 class WebSite():
     def __init__(self, url=None, html=None):
         if html is not None:
             self.html = html
+            self.css = CSS(rules=[])
         else:
-            self.html = scrape(url)
-        self.css = CSS(rules="")
-
+            self.html, css = scrape(url)
+            self.css = CSS(rules=css)
+    
     def __str__(self):
         return str((self.html, self.css))
 
