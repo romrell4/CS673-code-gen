@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import sys
 import time
+import tinycss2
 
 def running_linux():
     return 'linux' in sys.platform
@@ -13,7 +14,14 @@ def scrape(url):
     # print(soup.prettify())
     all_tags = parse_children(soup.body, 0)
     #[print(tag) for tag in all_tags]
-    return soup
+    all_css_rules = []
+    for styles in soup.select('style'):
+        # print(styles)
+        css = tinycss2.parse_stylesheet(styles.contents[0], skip_comments=True,skip_whitespace=True)
+        # print(css)
+        for rule in css:
+            all_css_rules.append(rule)
+    return soup, all_css_rules
 
 def get_photo(url):
     if url.startswith("http") and running_linux():
@@ -80,4 +88,5 @@ if __name__ == '__main__':
         dryscrape.start_xvfb()
 
     # scrape("https://www.crummy.com/software/BeautifulSoup/bs4/doc/")
-    scrape("test.html")
+    # scrape("test.html")
+    scrape("https://byu.edu")
