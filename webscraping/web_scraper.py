@@ -11,9 +11,6 @@ def scrape(url):
     html = get_html(url)
     get_photo(url)
     soup = BeautifulSoup(html, "html.parser")
-    # print(soup.prettify())
-    all_tags = parse_children(soup.body, 0)
-    #[print(tag) for tag in all_tags]
     all_css_rules = []
     for styles in soup.select('style'):
         # print(styles)
@@ -51,24 +48,26 @@ def get_html(url):
         with open("test_html/" + url) as f:
             return f.read()
 
-def parse_children(tag, depth):
+def parse_children(tag, depth = 0, print_structure = False):
     """
     Here's one simple way to parse the dom recursively, in a depth first fashion.
     :param tag: Any bs4 tag
     :param depth: The current depth in our DFS
+    :param print_structure: whether or not to print the tree as we go
     """
     tags = []
     for child in tag.children:
         if child.name is not None:
             tags.append(Tag(child))
-            #print("{}{}".format("  " * depth, child.name))
-            tags += parse_children(child, depth + 1)
+            if print_structure:
+                print("{}{}".format("  " * depth, child.name))
+            tags += parse_children(child, depth + 1, print_structure)
     return tags
 
 class Tag:
     def __init__(self, bs4_tag):
         self.id = bs4_tag.get("id")
-        self.classes = bs4_tag.get("class")
+        self.classes = bs4_tag.get("class", [])
         self.name = bs4_tag.name
         self.bs4_tag = bs4_tag
 
@@ -77,6 +76,12 @@ class Tag:
 
     def __repr__(self):
         return str(self)
+
+    def __hash__(self):
+        return hash(self.__repr__())
+
+    def __eq__(self, other):
+        return isinstance(other, Tag) and self.id == other.id and self.classes == other.classes and self.name == other.name
 
 
 if __name__ == '__main__':
@@ -88,5 +93,10 @@ if __name__ == '__main__':
         dryscrape.start_xvfb()
 
     # scrape("https://www.crummy.com/software/BeautifulSoup/bs4/doc/")
-    # scrape("test.html")
-    scrape("https://byu.edu")
+    # scrape("https://recipes.twhiting.org")
+    # soup, _ = scrape("test.html")
+    soup, _ = scrape("https://byu.edu")
+
+    # print(soup.prettify())
+    all_tags = parse_children(soup.body, print_structure = True)
+    # [print(tag) for tag in all_tags]
