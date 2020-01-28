@@ -62,7 +62,6 @@ def parse_children(tag, depth = 0, print_structure = False):
             if print_structure:
                 print("{}{}".format("  " * depth, child.name))
             tags += parse_children(child, depth + 1, print_structure)
-            #print("{}{}".format("  " * depth, child.name))
     return tags
 
 class Tag:
