@@ -3,6 +3,11 @@ import requests
 import sys
 import time
 import tinycss2
+import os
+# Need to install the webdriver https://sites.google.com/a/chromium.org/chromedriver/home
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.options import Options
 
 def running_linux():
     return 'linux' in sys.platform
@@ -22,11 +27,21 @@ def scrape(url):
 
 def get_photo(url):
     if url.startswith("http") and running_linux():
-        import dryscrape
-        session = dryscrape.Session()
-        session.visit(url)
-        time.sleep(1)
-        session.render(f"{url}.png")
+        chrome_options = Options()
+        chrome_options.binary_location = '/usr/bin/google-chrome-stable'
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        with webdriver.Chrome(executable_path=os.path.abspath("/opt/google/chromedriver"), options=chrome_options) as driver:
+            wait = WebDriverWait(driver, 1)
+            driver.set_window_size(1080,800)
+            driver.get(url)
+            # import dryscrape
+            # session = dryscrape.Session()
+            # session.visit(url)
+            # time.sleep(1)
+            # session.render(f"{url}.png")
+            driver.save_screenshot("screenshot.png")
         return
 
 def get_html(url):
@@ -38,11 +53,17 @@ def get_html(url):
     """
     if url.startswith("http"):
         if running_linux():
-            import dryscrape
-            session = dryscrape.Session()
-            session.visit(url)
-            return session.body()
-        else:
+            chrome_options = Options()
+            chrome_options.binary_location = '/usr/bin/google-chrome-stable'
+            chrome_options.add_argument('--headless')
+            chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            with webdriver.Chrome(executable_path=os.path.abspath("/opt/google/chromedriver"), options=chrome_options) as driver:
+                wait = WebDriverWait(driver, 1)
+                driver.set_window_size(1080,800)
+                driver.get(url)
+                return driver.page_source
+        else:              
             return requests.get(url).text
     else:
         with open("test_html/" + url) as f:
