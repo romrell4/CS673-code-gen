@@ -33,14 +33,9 @@ def get_photo(url):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         with webdriver.Chrome(executable_path=os.path.abspath("/opt/google/chromedriver"), options=chrome_options) as driver:
-            wait = WebDriverWait(driver, 1)
             driver.set_window_size(1080,800)
             driver.get(url)
-            # import dryscrape
-            # session = dryscrape.Session()
-            # session.visit(url)
-            # time.sleep(1)
-            # session.render(f"{url}.png")
+            wait = WebDriverWait(driver, 1)
             driver.save_screenshot("screenshot.png")
         return
 
@@ -59,9 +54,9 @@ def get_html(url):
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--disable-dev-shm-usage')
             with webdriver.Chrome(executable_path=os.path.abspath("/opt/google/chromedriver"), options=chrome_options) as driver:
-                wait = WebDriverWait(driver, 1)
                 driver.set_window_size(1080,800)
                 driver.get(url)
+                wait = WebDriverWait(driver, 1)
                 return driver.page_source
         else:              
             return requests.get(url).text
