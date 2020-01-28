@@ -1,0 +1,867 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<!-- =SharePoint Experts, Inc. - Reboot Master Page for SharePoint 2010 Publishing sites. Copyright 2010-2012 SharePoint Experts, Inc. and Heather Solomon. Distributed to the public for reference and educational purposes. Code may be used as long as this copyright message stays intact.
+-sharepointexperience.com
+
+MASTER PAGE GUIDE
+This master page is heavily commented. The comments provide labels and explanations for various SharePoint components.  There is also information indicating the purpose and need for selectors (IDs and CSS classes) that are used for various elements. It is not necessary to keep the comments in your final master page file. The comments follow a common structure and naming schema:
+
+  =Component		::	The comment is in reference to the following code block.
+  ^ =Component	::	The comment is in reference to the preceding tag. These comments are used as much as possible so when a code block is moved the comment(s) are included and moved as well.
+
+The comments are tagged with a category so you can quickly jump through the file by searching for the category name preceded by an equals symbol.  The categories are:
+=Container			=Navigation	=Publishing	=Site Data
+=Content Placeholder	=Page Data	=Ribbon		=Structure
+=Custom				=Page Tools	=SharePoint 	=Styles
+=Legacy
+-->
+
+<html xmlns:o="urn:schemas-microsoft-com:office:office" __expr-val-dir="ltr" lang="en-us" dir="ltr">
+
+<head><meta http-equiv="X-UA-Compatible" content="IE=8" /><meta name="GENERATOR" content="Microsoft SharePoint" /><meta name="progid" content="SharePoint.WebPartPage.Document" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="Expires" content="0" /><meta name="google-site-verification" content="zHngoLtZkd1H_r8AmRpJIMnXcozqxiuXaXEYvygJkPQ" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<!-- Meta description for the page goes here -->
+	<meta name='description' content='' />	
+	
+	<!-- =SharePoint - Site Title -->
+		<title>
+	
+Kankakee Community College
+
+</title>
+	<!-- =Custom =Styles - Browser reset - optional -->
+		<link rel="stylesheet" type="text/css" href="/Style%20Library/en-us/KCC2010/reset-general-spfixes.css" />
+	<!-- =SharePoint =Styles - CSS -->
+		<!-- SharePoint CSS files and file set for the Alternate CSS for the site (if any) -->
+		<link rel="stylesheet" type="text/css" href="/Style%20Library/en-US/Themable/Core%20Styles/controls.css"/>
+<link rel="stylesheet" type="text/css" href="/_layouts/1033/styles/Themable/search.css?rev=T%2Bhraxktc1A8EnaG5gGMHQ%3D%3D"/>
+<link rel="stylesheet" type="text/css" href="/_layouts/1033/styles/Themable/corev4.css?rev=3TRomkG1g2gMGz4rekMIQg%3D%3D"/>
+<link rel="stylesheet" type="text/css" href="/Style%20Library/en-us/KCC2010/style2.css"/>
+
+
+	<!-- =SharePoint - Supporting file -->
+		
+	
+	<!-- =SharePoint - ECMAScript variable 
+	  -Remove this script if you don't want the Ribbon to dock at the top of the page.
+	  -It is also emitted by SPWebPartManager below.
+	  -Removing this will cause the script to not be present during usual on-load events for the Ribbon and therefore can improve rendering performance. 
+	-->
+		<script type="text/javascript">
+			var _fV4UI = true;
+		</script>
+
+	<!-- =SharePoint - Supporting files -->
+		<script type="text/javascript">
+// <![CDATA[
+document.write('<script src="/_layouts/1033/init.js?rev=lEi61hsCxcBAfvfQNZA%2FsQ%3D%3D"></' + 'script>');
+document.write('<script type="text/javascript" src="/ScriptResource.axd?d=hBvLlchQ7dtiiUbYylJb6-R95EpSPsULJ7tlS8dOzZPKaQfPEU4xdVoIQyQYfx_ZEoPRwzbD4cODd5ehDQD7uC5JZ-je_zpDRHr_ZB3bvxm8FPwaXoN0w0uYDKtUkQeRSvJwj8Z5Nni1SN5fDycRn-7nWdA1&amp;t=3f4a792d"></' + 'script>');
+document.write('<script type="text/javascript" src="/_layouts/blank.js?rev=QGOYAJlouiWgFRlhHVlMKA%3D%3D"></' + 'script>');
+// ]]>
+</script>
+<link type="text/xml" rel="alternate" href="/_vti_bin/spsdisco.aspx" /><link rel="shortcut icon" href="/Style%20Library/Images/KCC2010/favicon.ico" type="image/vnd.microsoft.icon" /><link rel="icon" type="image/gif" href="/Style%20Library/Images/KCC2010/animated_favicon1.gif" /><link rel="apple-touch-icon" href="/Style%20Library/Images/KCC2010/apple-touch-icon.png" /><link rel="icon" type="image/ico" href="/Style%20Library/Images/KCC2010/favicon.ico" />
+
+	
+	<!-- =Custom =Styles - CSS 	
+		CSS file linking options  - LINK or CssRegistration
+		-Use the LINK tag to link a CSS file; it will be loaded on every web page that uses this master page.
+		-Use CssRegistration to include your CSS file in the above SharePoint:CssLink control.
+		Sample: <SharePoint:CssRegistration name="/Style Library/INSERT_PATH.css"  After="corev4.css"/> **When using this control add runat="server" to the control to make it work.**
+		-Can use CssRegistration to reference CSS file(s) that include theming comments.
+		-Use SPUrl (publishing sites only) to create a fully flexible relative path that will resolve to the top site (~site) or site collection (~sitecollection).   Can be used in LINK tag or CssRegistration tag.
+		Sample: <link rel="stylesheet" type="text/css" href="lessthan percent space dollarsign SPUrl:~sitecollection/Style Library/INSERT_PATH.css%>" /> **When using this replace "lessthan percent space dollarsign" with the appropriate characters.**
+		
+		-STORAGE OPTIONS
+		***UPDATE the paths below to correctly link to the CSS files.***
+		-Store the CSS in the content database in the Style Library (/Style Library/CUSTOM FOLDER OPTIONAL/INSERT_PATH.css).
+		-Store the CSS file on the web server in the STYLES directory (/_layouts/1033/styles/CUSTOM FOLDER OPTIONAL/INSERT_PATH.css).
+		-Store themable CSS files in the Themeable directory either in the Style Library or the web server (/Style Library/en-us/Themable/INSERT_PATH.css   or  /_layouts/1033/styles/themable/INSERT_PATH.css).
+		-->
+		<!-- CssRegistration sample -->
+		<!-- Roger turned this off as we are using the style sheet in choice alternate in the master page section of site settings in --> 
+		<!-- the kcc topsite. This is done so we can use for search results master -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script  type="text/javascript" src="/Style Library/en-us/KCC2010/kcc2010.js"></script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TNVWT2L');</script>
+<!-- End Google Tag Manager -->
+
+<script type="text/javascript">
+/*<![CDATA[*/
+(function() {
+var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+sz.src = '//us1.siteimprove.com/js/siteanalyze_66358454.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+})();
+/*]]>*/
+</script>
+
+<script>
+/**
+* Function that tracks a click on an outbound link in Analytics.
+* This function takes a valid URL string as an argument, and uses that URL string
+* as the event label. Setting the transport method to 'beacon' lets the hit be sent
+* using 'navigator.sendBeacon' in browser that support it.
+*/
+var trackOutboundLink = function(url) {
+   ga('send', 'event', 'outbound', 'click', url, {
+     'transport': 'beacon',
+     'hitCallback': function(){document.location = url;}
+   });
+}
+</script>
+
+	<!-- =Content Placeholder - adds body styles, must be stored in HEAD element -->
+		
+	
+	<!-- =Content Placeholder - adds title area styles, must be stored in HEAD element -->
+		
+	<!-- =Content Placeholder - allows for content page/page layout additions of CSS and scripts, must be stored in HEAD element -->
+		
+<meta name='description' content='Kankakee Community College prepares students to transfer to four-year colleges and enter the workforce. An accredited college, KCC awards associate degrees and certificates of completion.' />	
+
+<style type="text/css">
+
+span.s4-notdlg.kcc-breadcrumb {
+/* 
+   This rule is specifically for the home page. The rule is 
+   an adjustment as there is no breadcrumb on the homepage.
+   This has not been added to global style sheet as it would 
+   hide all pages where kcc-breadcrumbs are laid out.
+*/
+    text-indent: -9999px;
+    height: 1px;
+    overflow: hidden;
+}
+
+body #MSO_ContentTable {
+/*
+    This rule adjusts the main area of the page layout and is 
+    specifically set for the homepage.
+*/
+  float: none;
+  padding: 20px 0px 25px 12px;
+  width: 100%;
+}
+
+@media screen and (max-width: 481px) {
+span.s4-notdlg.kcc-breadcrumb {
+    padding-top: 0;
+    margin-bottom: 0;
+}
+
+body #MSO_ContentTable {
+  padding: 0 0px 25px 12px;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 800px) {
+span.s4-notdlg.kcc-breadcrumb {
+    padding-top: 0;
+    margin-bottom: 0;
+}
+
+body #MSO_ContentTable {
+  padding: 0 0px 25px 12px;
+}
+
+}
+
+</style>
+    <script src="/Style%20Library/en-us/KCC2010/responsiveslides.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+  
+        // Slideshow 1
+        $("#slider1").responsiveSlides({
+          auto: true,
+          pager: true,
+          nav: false,
+          random: true,
+          timeout: 25000,
+          maxwidth: 720,
+          namespace: "centered-btns"
+        });        
+  
+      });
+
+    </script>
+	 
+	<!-- =SharePoint - allows for HEAD element modifications via custom control, must be stored in the HEAD element -->
+		<style type="text/css">
+	.s4-skipribbonshortcut { display:none; }
+
+</style></head>
+<body scroll="no" onload="if (typeof(_spBodyOnLoadWrapper) != 'undefined') _spBodyOnLoadWrapper();" class="v4master">
+<!-- ^ =Structure - Body tag
+  -Ribbon: Set scroll to "no" if you want the Ribbon docked at the top of the browser window via default SharePoint methods. 
+  -Ribbon: The 'v4master' CSS class is necessary if you want the Ribbon docked at the top of the browser window via default SharePoint methods.
+  -Modal Dialog:  Must add height, width and overflow properties to the body either through including the 'v4master' class in the BODY tag or by adding the properties to your custom body class in order for the modal dialog windows to auto generate their sizing correctly. 
+  -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNVWT2L"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  
+<!-- =SharePoint - Leave the following in place -->
+	<form name="aspnetForm" method="post" action="Home.aspx" id="aspnetForm">
+<input type="hidden" name="MSOWebPartPage_PostbackSource" id="MSOWebPartPage_PostbackSource" value="" />
+<input type="hidden" name="MSOTlPn_SelectedWpId" id="MSOTlPn_SelectedWpId" value="" />
+<input type="hidden" name="MSOTlPn_View" id="MSOTlPn_View" value="0" />
+<input type="hidden" name="MSOTlPn_ShowSettings" id="MSOTlPn_ShowSettings" value="False" />
+<input type="hidden" name="MSOGallery_SelectedLibrary" id="MSOGallery_SelectedLibrary" value="" />
+<input type="hidden" name="MSOGallery_FilterString" id="MSOGallery_FilterString" value="" />
+<input type="hidden" name="MSOTlPn_Button" id="MSOTlPn_Button" value="none" />
+<input type="hidden" name="__REQUESTDIGEST" id="__REQUESTDIGEST" value="0xEB6C5FC29DDD31564C4808C1D014C612364D6FBDD2B3B7DFD46A7C4053E8D96A67A7794A2AB0D21B8FDE703549D001FF565B831170E7A0438B9A442446C7D1A5,28 Jan 2020 17:52:18 -0000" />
+<input type="hidden" name="MSOSPWebPartManager_DisplayModeName" id="MSOSPWebPartManager_DisplayModeName" value="Browse" />
+<input type="hidden" name="MSOSPWebPartManager_ExitingDesignMode" id="MSOSPWebPartManager_ExitingDesignMode" value="false" />
+<input type="hidden" name="MSOWebPartPage_Shared" id="MSOWebPartPage_Shared" value="" />
+<input type="hidden" name="MSOLayout_LayoutChanges" id="MSOLayout_LayoutChanges" value="" />
+<input type="hidden" name="MSOLayout_InDesignMode" id="MSOLayout_InDesignMode" value="" />
+<input type="hidden" name="_wpSelected" id="_wpSelected" value="" />
+<input type="hidden" name="_wzSelected" id="_wzSelected" value="" />
+<input type="hidden" name="MSOSPWebPartManager_OldDisplayModeName" id="MSOSPWebPartManager_OldDisplayModeName" value="Browse" />
+<input type="hidden" name="MSOSPWebPartManager_StartWebPartEditingName" id="MSOSPWebPartManager_StartWebPartEditingName" value="false" />
+<input type="hidden" name="MSOSPWebPartManager_EndWebPartEditing" id="MSOSPWebPartManager_EndWebPartEditing" value="false" />
+<input type="hidden" name="_maintainWorkspaceScrollPosition" id="_maintainWorkspaceScrollPosition" value="0" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTU2NzY4NjgwMw9kFgJmD2QWAgICD2QWBAIBD2QWAgIND2QWAmYPZBYCAgEPFgIeE1ByZXZpb3VzQ29udHJvbE1vZGULKYgBTWljcm9zb2Z0LlNoYXJlUG9pbnQuV2ViQ29udHJvbHMuU1BDb250cm9sTW9kZSwgTWljcm9zb2Z0LlNoYXJlUG9pbnQsIFZlcnNpb249MTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49NzFlOWJjZTExMWU5NDI5YwFkAgMPZBYOAhUPZBYCZg9kFgJmDxQrAANkZGRkAhcPZBYCAgEPEBYCHgdWaXNpYmxlaGQUKwEAZAIZDw8WAh8BaGRkAhsPFgIfAWgWAmYPZBYEAgIPZBYEAgEPFgIfAWhkAgMPFggeE0NsaWVudE9uQ2xpY2tTY3JpcHQFYmphdmFTY3JpcHQ6Q29yZUludm9rZSgnVGFrZU9mZmxpbmVUb0NsaWVudFJlYWwnLDEsIDUzLCAnaHR0cDpcdTAwMmZcdTAwMmZrY2MuZWR1JywgLTEsIC0xLCAnJywgJycpHhhDbGllbnRPbkNsaWNrTmF2aWdhdGVVcmxkHihDbGllbnRPbkNsaWNrU2NyaXB0Q29udGFpbmluZ1ByZWZpeGVkVXJsZB4MSGlkZGVuU2NyaXB0BSJUYWtlT2ZmbGluZURpc2FibGVkKDEsIDUzLCAtMSwgLTEpZAIDDw8WCh4JQWNjZXNzS2V5BQEvHg9BcnJvd0ltYWdlV2lkdGgCBR4QQXJyb3dJbWFnZUhlaWdodAIDHhFBcnJvd0ltYWdlT2Zmc2V0WGYeEUFycm93SW1hZ2VPZmZzZXRZAusDZGQCIw9kFgICAQ9kFgJmD2QWAmYPD2QWBh4FY2xhc3MFIm1zLXNidGFibGUgbXMtc2J0YWJsZS1leCBzNC1zZWFyY2geC2NlbGxwYWRkaW5nBQEwHgtjZWxsc3BhY2luZwUBMGQCJQ9kFgICAQ9kFgICAQ88KwANAgAPFgIeC18hRGF0YUJvdW5kZ2QMFCsACgUjMDowLDA6MSwwOjIsMDozLDA6NCwwOjUsMDo2LDA6NywwOjgUKwACFg4eBFRleHQFCkFkbWlzc2lvbnMeBVZhbHVlBQpBZG1pc3Npb25zHgtOYXZpZ2F0ZVVybAUeL2FkbWlzc2lvbnMvUGFnZXMvZGVmYXVsdC5hc3B4HgdFbmFibGVkZx4KU2VsZWN0YWJsZWceCERhdGFQYXRoBRkvP1NQTmF2aWdhdGlvbk5vZGVJZD0yMjc1HglEYXRhQm91bmRnZBQrAAIWDh8PBQdDbGFzc2VzHxAFB0NsYXNzZXMfEQUnL3N0dWRlbnRzL2FjYWRlbWljcy9QYWdlcy9zY2hlZHVsZS5hc3B4HxJnHxNnHxQFGS8/U1BOYXZpZ2F0aW9uTm9kZUlkPTIyNTUfFWdkFCsAAhYOHw8FCFByb2dyYW1zHxAFCFByb2dyYW1zHxEFIy9mdXR1cmUvY2hvb3NpbmcvUGFnZXMvZGVmYXVsdC5hc3B4HxJnHxNnHxQFGS8/U1BOYXZpZ2F0aW9uTm9kZUlkPTIyNTYfFWdkFCsAAhYOHw8FDUZpbmFuY2lhbCBBaWQfEAUNRmluYW5jaWFsIEFpZB8RBS0vZnV0dXJlL3BheWluZy9mZWRzdGF0ZWFpZC9QYWdlcy9kZWZhdWx0LmFzcHgfEmcfE2cfFAUZLz9TUE5hdmlnYXRpb25Ob2RlSWQ9MjI3NB8VZ2QUKwACFg4fDwUHTGlicmFyeR8QBQdMaWJyYXJ5HxEFGy9saWJyYXJ5L1BhZ2VzL2RlZmF1bHQuYXNweB8SZx8TZx8UBRkvP1NQTmF2aWdhdGlvbk5vZGVJZD0yMjg5HxVnZBQrAAIWEB8PBQlBdGhsZXRpY3MfEAUJQXRobGV0aWNzHxEFGGh0dHA6Ly9hdGhsZXRpY3Mua2NjLmVkdR8SZx8TZx8UBRkvP1NQTmF2aWdhdGlvbk5vZGVJZD0yMzA1HxVnHgZUYXJnZXQFBl9ibGFua2QUKwACFg4fDwUMU3R1ZGVudCBMaWZlHxAFDFN0dWRlbnQgTGlmZR8RBSgvc3R1ZGVudHMvc3R1ZGVudGxpZmUvUGFnZXMvZGVmYXVsdC5hc3B4HxJnHxNnHxQFGS8/U1BOYXZpZ2F0aW9uTm9kZUlkPTIyNjgfFWdkFCsAAhYQHw8FCkZvdW5kYXRpb24fEAUKRm91bmRhdGlvbh8RBRlodHRwOi8vZm91bmRhdGlvbi5rY2MuZWR1HxJnHxNnHxQFGS8/U1BOYXZpZ2F0aW9uTm9kZUlkPTIzMjMfFWcfFgUGX2JsYW5rZBQrAAIWEh8SZx8TZx8VZx8UBRkvP1NQTmF2aWdhdGlvbk5vZGVJZD0yMzIyHw8FDU5ld3MgJiBFdmVudHMfEAUNTmV3cyAmIEV2ZW50cx4HVG9vbFRpcAU5VGhlIGxhdGVzdCBuZXdzIGFuZCBldmVudHMgb24gS2Fua2FrZWUgQ29tbXVuaXR5IENvbGxlZ2UuHxYFBl9ibGFuax8RBRNodHRwOi8vbmV3cy5rY2MuZWR1ZGQCKQ9kFgICBg9kFgQCAQ8WAh8ACysEAWQCAw8WAh8ACysEAWRkloNaNmcG9gSoj5OxAy3cxB8+0TM=" />
+
+
+<script type="text/javascript">
+//<![CDATA[
+var MSOWebPartPageFormName = 'aspnetForm';
+var g_presenceEnabled = true;
+var g_wsaEnabled = false;
+var g_wsaLCID = 1033;
+var g_wsaSiteTemplateId = 'BLANKINTERNET#0';
+var g_wsaListTemplateId = 850;
+var _fV4UI=true;var _spPageContextInfo = {webServerRelativeUrl: "\u002f", webLanguage: 1033, currentLanguage: 1033, webUIVersion:4,pageListId:"{b72645d8-c40c-4fa2-a551-89b54886450b}",pageItemId:1, alertsEnabled:true, siteServerRelativeUrl: "\u002f", allowSilverlightPrompt:'True'};document.onreadystatechange=fnRemoveAllStatus; function fnRemoveAllStatus(){removeAllStatus(true)};//]]>
+</script>
+
+<script src="/_layouts/blank.js?rev=QGOYAJlouiWgFRlhHVlMKA%3D%3D" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(DeferWebFormInitCallback) == 'function') DeferWebFormInitCallback();//]]>
+</script>
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5A3F4659" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwKCoLObAwLNrvW5AwKOtvisAfoY+Ov6Gx8AWf9Zzw1NZvNEDkJy" />
+	
+	
+
+<!-- =SharePoint - Accessibility Controls -->
+	<span id="TurnOnAccessibility" style="display:none" class="s4-notdlg">
+		<a id="linkTurnOnAcc" href="#" class="ms-TurnOnAcc" onclick="SetIsAccessibilityFeatureEnabled(true);UpdateAccessibilityUI();document.getElementById('linkTurnOffAcc').focus();return false;">
+	Turn on more accessible mode</a>
+	</span>
+	<span id="TurnOffAccessibility" style="display:none" class="s4-notdlg">
+		<a id="linkTurnOffAcc" href="#" class="ms-TurnOffAcc" onclick="SetIsAccessibilityFeatureEnabled(false);UpdateAccessibilityUI();document.getElementById('linkTurnOnAcc').focus();return false;">
+	Turn off more accessible mode</a>
+	</span>
+	<span class="s4-notdlg s4-skipribbonshortcut">
+		<a href="javascript:;" onclick="javascript:this.href='#startNavigation';" class="ms-SkiptoNavigation" accesskey="Y">
+	Skip Ribbon Commands</a>
+	</span>
+	<span class="s4-notdlg">
+		<a href="javascript:;" onclick="javascript:this.href='#mainContent';" class="ms-SkiptoMainContent" accesskey="X">
+	Skip to main content</a>
+	</span>
+	<a id="HiddenAnchor" href="javascript:;" style="display:none;"></a>
+	
+<!-- =Temporary - Custom Design and Development 
+-Insert your code here and move SharePoint components into your code. Be sure to move any wrapper content placeholders and/or DIVs along with the SharePoint component.
+-Move any unused SharePoint components to the hidden ASP Panel at the bottom of the this file.
+-Add a class of s4-notdlg to any element that you do not want to display in a modal dialog window OR add the element's ID/class in a descedent selector after the .ms-dialog class in your CSS file and set the display to none.   Example:     .ms-dialog .YourClass {display:none;}
+-->
+
+<!-- =SharePoint - allows for page modifications via custom control -->
+	
+	
+<!-- =Custom top div above header has red gradient. 
+	-I have it hiding the ribbon in live site. it uses the ASP control to show only in LoginView -->
+<div class="customTop s4-notdlg">
+  <ul>
+	<li>
+	
+			<style type="text/css">
+  body #s4-ribbonrow{
+	display:none;
+	}
+		.customTop {
+	display:none;
+}
+
+  </style>
+		
+  <!-- ^ =Temporary - Wrapper DIV 
+-Shows the following components with a dark background as their default styling renders white text.
+-This DIV should be removed after you place these components in their respecitve places in your code. 
+-->
+
+	<!-- =Navigation - Personal Actions ('Welcome User') Menu 
+	-Not required.
+	-->
+	
+<a id="ctl00_IdWelcome_ExplicitLogin" class="s4-signInLink" href="http://kcc.edu/_layouts/Authenticate.aspx?Source=%2FPages%2FHome%2Easpx" style="display:inline;">Sign In</a>
+
+	
+	<!-- =Navigation - Variation Labels menu 
+	-Not required.
+	-->
+	
+
+	
+	<!-- =Navigation - My Links menu 
+	-Not required.
+	-->
+	
+
+	<!-- =Navigation - Multi-lingual User Interface menu 
+	-Not required.
+	-->
+	
+<script type ="text/javascript">
+// <![CDATA[
+function OnSelectionChange(value)
+{
+	var today = new Date();
+	var oneYear = new Date(today.getTime() + 365 * 24 * 60 * 60 * 1000);
+	var url = window.location.href;
+	document.cookie = "lcid=" + value + ";path=/;expires=" + oneYear.toGMTString();
+	window.location.href = url;
+}
+// ]]>
+</script>
+
+
+	
+	<!-- =SharePoint - Developer Dashboard -->
+	
+	<span class="ms-siteactionsmenu" id="siteactiontd">
+	<!-- ^ =Navigation - Site Actions
+	-Site Actions menu must be listed above the Ribbon control or 'Page Layout' in the Ribbon Page tab for publishing pages will be disabled.
+	-Reorder items by changing 'MenuGroupId' and 'Sequence'.
+	-'Text' is the Site Actions item title and 'Description' is the descriptive text listed under the title.
+	-->						
+		
+	</span>
+<!-- =Temporary - END DIV for background color for visibility -->
+  	</li>
+	</ul>
+  </div>
+
+<!-- =SharePoint - Content in Ribbon --> 
+	<div id="s4-ribbonrow" class="s4-pr s4-ribbonrowhidetitle">
+	<!-- ^ =SharePoint =Container - Ribbon Block 
+	  -The s4-ribbonrow DIV ID is mandatory and must be kept for the ECMAScript logic (Ribbon) so the Ribbon will function; also used for modal dialog box styles.
+	  -It is not recommended to add anything within the Ribbon container below as the height is set using static values that will not adjust to additional content. 
+	  -->
+
+	  	<div id="s4-ribboncont">
+			<!-- =Ribbon =Container - Control -->
+			<div class='ms-cui-ribbonTopBars'><div class='ms-cui-topBar1'></div><div class='ms-cui-topBar2'><div id='RibbonContainer-TabRowLeft' class='ms-cui-TabRowLeft ms-siteactionscontainer s4-notdlg'><!-- =Ribbon - Page state icon that displays when in Edit mode (Edit/Save) --></div></div></div>
+<script type="text/javascript">
+//<![CDATA[
+var g_commandUIHandlers = {"name":"CommandHandlers","attrs":{},"children":[]};
+//]]>
+</script>
+		</div>	
+
+		<!-- =Ribbon =Container - Notification area under Ribbon -->
+		<div id="notificationArea" class="s4-noti"></div>
+		
+		
+			<!-- =Publishing - Enables publishing features on Publish tab in Ribbon -->
+			
+<span id="ctl00_SPNavigation_ctl00_publishingConsoleV4_publishingRibbon"></span>
+
+
+
+		
+		
+		<div id="WebPartAdderUpdatePanelContainer">
+		<!-- ^ =Page Tools =Container - Add Web Parts Panel -->
+			<div id="ctl00_WebPartAdderUpdatePanel">
+	
+					<span id="ctl00_WebPartAdder"></span>
+				
+</div>
+		</div>
+	<!-- ^ =SharePoint =Container - Ribbon Block - END s4-ribbonrow -->
+	</div>
+					
+
+
+<!-- =SharePoint - Content below Ribbon --> 
+	<div id="s4-workspace" class="s4-nosetwidth">
+	<!-- ^ =SharePoint =Container - Workspace Container  - DO NOT DELETE
+	  -The  above DIV and DIV ID is mandatory and must be kept for the ECMAScript logic (Ribbon) IF you want the Ribbon docked at the top of the browser window.
+	  -Creates scrollable area when Ribbon is enabled. 
+	  -Used to set up modal dialog box sizing.
+	  -The s4-workspace ID is referenced in many SharePoint script files.
+	  -s4-nosetwidth class should be added to this DIV if the web page design is a fixed width design or includes a right/left margin for the entire web page.
+	  -->
+	  
+<!-- Temporary presidential search hello bar -->
+	<div id="hello-bar" class="hello-bar">
+		<div class="hello-bar__inner">
+			<div class="hello-bar__content">
+			    
+			</div>
+		</div>
+	</div>
+
+  <div id="header" class="clearfix">
+  <a href="#mainContent" class="offscreen">Skip Content</a>
+  <div class="toggle-nav"></div>
+      <div id="search">
+      				
+				<!-- ^ =Page Tools - Search - Content placeholder and control -->
+					<table class="s4-wpTopTable" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td valign="top"><div WebPartID="00000000-0000-0000-0000-000000000000" HasPers="true" id="WebPartWPQ1" width="100%" OnlyForMePart="true" allowDelete="false" style="" ><div id="SRSB"> <div>
+			<table class="ms-sbtable ms-sbtable-ex s4-search" cellpadding="0" cellspacing="0" border="0">
+				<tr class="ms-sbrow">
+					<td class="ms-sbcell"><input name="ctl00$PlaceHolderSearchArea$ctl01$S3031AEBB_InputKeywords" type="text" value="Search this site..." maxlength="200" id="ctl00_PlaceHolderSearchArea_ctl01_S3031AEBB_InputKeywords" accesskey="S" title="Search..." class="ms-sbplain" alt="Search..." onkeypress="javascript: return S3031AEBB_OSBEK(event);" onfocus="if (document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_ctl03').value =='0') {this.value=''; if (this.className == 's4-searchbox-QueryPrompt') this.className = ''; else this.className = this.className.replace(' s4-searchbox-QueryPrompt',''); document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_ctl03').value=1;}" onblur="if (this.value =='') {this.value='Search this site...'; if (this.className.indexOf('s4-searchbox-QueryPrompt') == -1) this.className += this.className?' s4-searchbox-QueryPrompt':'s4-searchbox-QueryPrompt'; document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_ctl03').value = '0'} else {document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_ctl03').value='1';}" style="width:170px;" /></td><td class="ms-sbgo ms-sbcell"><a id="ctl00_PlaceHolderSearchArea_ctl01_S3031AEBB_go" title="Search" href="javascript:S3031AEBB_Submit()"><img title="Search" onmouseover="this.src='\u002f_layouts\u002fimages\u002fgosearchhover15.png'" onmouseout="this.src='\u002f_layouts\u002fimages\u002fgosearch15.png'" class="srch-gosearchimg" alt="Search" src="/_layouts/images/gosearch15.png" border="0" /></a></td><td class="ms-sbLastcell"></td>
+				</tr>
+			</table><input name="ctl00$PlaceHolderSearchArea$ctl01$ctl03" type="hidden" id="ctl00_PlaceHolderSearchArea_ctl01_ctl03" value="0" />
+		</div></div></div></td>
+	</tr>
+</table>
+				
+      </div>
+
+      <div class="logo">
+        <a href="/Pages/Home.aspx" title="KCC home">KCC logo</a>
+      </div>
+      <ul class="site-audience nav">
+          <li><a href="/contact/Pages/contact-us.aspx" title="Contact Us">Contact Us</a></li>
+          <li><a href="/Community/Collegeinfo/Pages/directionsmaps.aspx" title="Campus Maps">Campus Maps</a></li>
+          <li><a href="/future/Pages/index.aspx" title="Future Students">Future Students</a></li>
+          <li><a href="/students/Pages/index.aspx" title="Current Students">Current Students</a></li>
+          <li><a href="/Foundation/alumni/Pages/default.aspx" title="Alumni">Alumni</a></li>
+          <li><a href="/Community/Pages/default.aspx" title="Community">Community</a></li>
+          <li><a href="/FacultyStaff/Pages/default.aspx" title="Faculty and Staff">Faculty and Staff</a></li>
+      </ul>
+       <select class="selectnav"> 
+    		<option value="" selected="selected">Info for:</option> 
+    
+    <option value="/future/Pages/index.aspx">Future Student</option> 
+    <option value="/students/Pages/index.aspx">Current Student</option> 
+    <option value="/Foundation/alumni/Pages/default.aspx">Alumni</option> 
+    <option value="/Community/Pages/default.aspx">Community</option> 
+    <option value="/FacultyStaff/Pages/default.aspx">Faculty and Staff</option> 
+  </select> 
+    		<div class="global-nav">
+				<!-- =Navigation - Keep with main navigation to maintain fast browsing for accessibility. -->
+				<a name="startNavigation"></a>			
+					
+				
+				<!-- ^ =Navigation - Top Nav (Global Navigation) - Top Nav Bar Content Placeholder -->
+					
+					<!-- ^ =Navigation - Top Nav (Global Navigation) - Horizontal Nav Content Placeholder -->			
+						<!-- =Navigation - Top Nav (Global Navigation) - AspMenu
+						-Different SP master pages use various IDs and DataSourceIDs; these can be switched out based on needs.
+						-->
+						<div id="zz1_CurrentNavigation" class="s4-tn">
+	<div class="menu horizontal menu-horizontal">
+		<ul class="root static">
+			<li class="static"><a class="static menu-item" href="/admissions/Pages/default.aspx"><span class="additional-background"><span class="menu-item-text">Admissions</span></span></a></li><li class="static"><a class="static menu-item" href="/students/academics/Pages/schedule.aspx"><span class="additional-background"><span class="menu-item-text">Classes</span></span></a></li><li class="static"><a class="static menu-item" href="/future/choosing/Pages/default.aspx"><span class="additional-background"><span class="menu-item-text">Programs</span></span></a></li><li class="static"><a class="static menu-item" href="/future/paying/fedstateaid/Pages/default.aspx"><span class="additional-background"><span class="menu-item-text">Financial Aid</span></span></a></li><li class="static"><a class="static menu-item" href="/library/Pages/default.aspx"><span class="additional-background"><span class="menu-item-text">Library</span></span></a></li><li class="static"><a class="static menu-item new-window" href="http://athletics.kcc.edu" target="_blank"><span class="additional-background"><span class="menu-item-text">Athletics</span></span></a></li><li class="static"><a class="static menu-item" href="/students/studentlife/Pages/default.aspx"><span class="additional-background"><span class="menu-item-text">Student Life</span></span></a></li><li class="static"><a class="static menu-item new-window" href="http://foundation.kcc.edu" target="_blank"><span class="additional-background"><span class="menu-item-text">Foundation</span></span></a></li><li class="static"><a class="static menu-item new-window" title="The latest news and events on Kankakee Community College." href="http://news.kcc.edu" target="_blank"><span class="additional-background"><span class="menu-item-text">News & Events</span></span></a></li>
+		</ul>
+	</div>
+</div>
+												
+				
+				</div>
+
+  </div><!-- END HEADER -->
+
+		<div id="s4-bodyContainer" class="clearfix">
+		<!-- ^ =SharePoint =Container - Body Container - DO NOT DELETE
+		  -The above DIV and s4-bodyContainer DIV ID is mandatory and must be kept for the ECMAScript logic (Ribbon) IF you want the Ribbon docked at the top of the browser window.
+		  -s4-bodyContainer ID is used to create proper modal dialog box scrollbars and widths.
+		  -Used to determine width of the page.
+		  -->	  
+			<div id="s4-titlerow" class="s4-pr s4-notdlg s4-titlerowhidetitle">
+			<!-- ^ =Container =Ribbon - Title Area Container (Browse tab in ribbon) 
+			  -Not a mandatory inclusion; if removed the Ribbon will continue to function and the elements below (usually title, header, search, etc.) will just appear under the Ribbon at all times.
+			  -s4-notdlg CSS class is stopping contents from displaying in dialog windows.
+			-->						
+
+			<!-- =Container =Ribbon - Title Area Container (Browse tab in ribbon) - END s4-titlerow -->
+			</div>
+			
+			<!-- =Page Tools =Container - Edit Mode - Status Bar 
+			-#pageStatusBar DIV is needed to display Status Bar.
+			-->
+			<div id="pageStatusBar" class="s4-status-s1">
+			</div>
+
+			<!-- =Navigation - Breadcrumb -->
+			<span class="s4-notdlg kcc-breadcrumb" SiteMapProviders="SPSiteMapProvider,SPXmlContentMapProvider" HideInteriorRootNodes="true"><span><a title="Kankakee Community College" class="breadcrumbCurrentNode" href="/Pages/Home.aspx">KCC</a></span></span>
+					
+			<div id="MSO_ContentTable">
+			<!-- ^ =Page Data =Container - Main Content  
+			-Keep the MSO_ContentTable ID, it is referenced in many SharePoint script files and is used for web parts.
+			-Switch this to DIV if ARTICLE will be used in content pages and page layouts within PlaceHolderMain.
+			-->		
+				<div id="ctl00_MSO_ContentDiv">
+				<!-- ^ =Page Tools =Container - Web Part Tool Pane
+				-Keep the MSO_ContentDiv ID, it sets up the Web Part Tool Pane.
+				-->
+
+								<!-- =Page Data - Page title -->
+				
+	
+				<!-- =Page Data - Page description-->
+				
+
+					<a name="mainContent"></a>
+					<!-- =Content Placeholder - Large content block -->
+					
+			<div class="kccalert">
+              <div id="ctl00_PlaceHolderMain_ctl00_label" style='display:none'>KCC Alert</div><div id="ctl00_PlaceHolderMain_ctl00__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl00_label"></div>
+              <!-- kccalert end -->
+            </div>
+          <div class="section hero">
+            <div class="row">
+              <div class="small medium large col_12">
+                <div class="featured">
+                  <div class="small medium large">
+                  <div id="ctl00_PlaceHolderMain_ctl01_label" style='display:none'>KCC Page Content</div><div id="ctl00_PlaceHolderMain_ctl01__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl01_label">​​<ul class="rslides" id="slider1">
+<li><a href="http://foundation.kcc.edu/scholarships/"><img src="/PublishingImages/slider/scholarships-open_superhero-banner.jpg" alt="The Scholarship application is now open. Application is open November 1 to March 1 for Fall 2020. Apply one time to be considered for all available scholarships at foundation.kcc.edu/scholarships. $200,000 in scholarships is awarded annually." /></a></li>
+<li><a href="/welcome/Pages/default.aspx"><img src="/PublishingImages/slider/welcome_back_banner_2020.jpg" alt="Welcome back!" /></a></li>
+<li><a href="https://kcc.libguides.com/renovation"><img src="/PublishingImages/slider/library-renovation-2019-banner.png" alt="Renovation Underway! Follow our progress. Updates, photos, timelines and more. Get Details banner" /></a></li>
+<li><a href="http://register.kcc.edu/"><img src="/PublishingImages/slider/enroll-2nd-8-weeks-spr-20-banner.jpg" alt="Enroll now more classes begin in mid-march. banner" /></a></li>
+
+</ul>
+<br /><div class="ms-rtestate-read ms-rte-wpbox"><div class="ms-rtestate-notify  ms-rtestate-read a7b143f8-15dd-4670-8d77-a9129b00b4d8" id="div_a7b143f8-15dd-4670-8d77-a9129b00b4d8" unselectable="on"></div>
+<div id="vid_a7b143f8-15dd-4670-8d77-a9129b00b4d8" unselectable="on" style="display:none"></div></div>
+<br /><br />​​​​​​​​​​​​​​​​​​​​</div><!-- KCC Page Content -->
+					<div class="section home-business">
+            			<div class="row">
+            		    	<div class="figure"><a href="http://continuinged.kcc.edu/" target="_blank" rel="noopener noreferrer" title="Continuing education and career services site"><img class="circle" src="/Style%20Library/Images/kcc2010/con-ed_000039521158.png" alt="photo of people who are helped through continuing education"/></a><div class="figcaption"><h2><a href="http://continuinged.kcc.edu/" target="_blank" rel="noopener noreferrer" title="Continuing education and career services site">
+								Continuing Education &amp; <br />Career Services</a></h2></div></div>
+                			<div class="figure"><a href="http://wioa.kcc.edu" title="Workforce Services site"><img class="circle" src="/Style%20Library/Images/kcc2010/workforce_000009756035.png" alt="photo of a woman helped through workforce services" /></a><div class="figcaption"><h2><a href="http://wioa.kcc.edu" title="Workforce Services site">
+								Workforce <br />Services</a></h2></div></div>
+                			<div class="figure"><a href="http://adulted.kcc.edu" title="GED and high school credit site"><img class="circle" src="/Style%20Library/Images/kcc2010/GED-D31_1149.png" alt="photo of a GED grads" /></a><div class="figcaption"><h2><a href="http://adulted.kcc.edu" title="GED and high school credit site">
+								GED &amp; <br />High School Credit</a></h2></div></div>
+            			</div>
+          			</div>
+                </div>
+                </div>
+                <a href="http://my.kcc.edu" target="_blank" class="mykcc__logo--home" alt="My KCC">
+					My KCC</a>
+				<div class="home-button-set centered">
+					<a href="http://www.kcc.edu/apply" target="_blank" class="applynow button home-button">
+					Apply now</a>
+					<a href="/admissions/registration/Pages/default.aspx" class="register button home-button">
+					Register</a>
+					<a href="/students/academics/Pages/schedule.aspx" class="classschedule button home-button">
+					Class Schedule</a>
+					<a href="http://foundation.kcc.edu/give/form/general/" target="_blank" class="Donate button home-button">
+					Donate</a>
+				</div>                
+                <div class="home-access studentaccess">
+                  <ul>
+                    <li class="angellms"><div class="angelicon">&nbsp;</div><h2><a href="/students/helpful/onlinelearningsupport/Pages/default.aspx">
+					Online Learning</a></h2><p><a href="https://kcc.instructure.com/" target="_blank">
+					Canvas</a></p></li>
+                    <li class="campusemail"><div class="campusemailicon">&nbsp;</div><h2><a href="/Pages/campusemail.aspx">
+					Campus Email</a></h2><p><a href="https://mail.google.com/a/student.kcc.edu" target="_blank">
+					Student</a> | <!-- <a href="https://webmail.kcc.edu/owa" target="_blank">
+					Faculty/Staff</a> --><a href="http://outlook.com/owa/kankakeecc.onmicrosoft.com" target="_blank">
+					Faculty/Staff</a></p></li>
+                    <li class="kcconnect"><div class="kcconnecticon">&nbsp;</div><h2><a href="https://connect.kcc.edu/wa/wa" target="_blank">
+					KCC Connect</a></h2><span>.</span></li>
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+
+				</div>						
+			</div>
+			
+			<!-- ^ =Temporary 
+			-s4-notdlg added to stop contents showing in dialog window during development. This may be removed.
+			-->
+
+			<div id="sideItemGroup">
+				
+				
+				
+				
+				
+
+				
+				
+			</div>
+							
+				
+
+				
+				
+				
+				
+				
+				
+				
+							
+				
+
+			
+	<div class="footer clearfix s4-notdlg">
+	<div class="logo">
+        <a href="/Pages/Home.aspx" title="KCC home">KCC logo</a>
+      </div>
+		             <ul class="nav-footer-list">
+		                <li><a href="/students/academics/Pages/academiccalendar.aspx">Academic calendar</a>
+		                </li>
+		                <li><a href="http://kcc.smartcatalogiq.com/en/current/Academic-Catalog" rel="noopener noreferrer" target="_blank">Academic catalog</a>
+		                </li>
+		                <li><a href="/students/helpful/Pages/bookstore.aspx">Bookstore</a>
+		                </li>
+		                <li><a href="/Community/campus-safety/Pages/default.aspx">Campus safety</a>
+		                </li>
+		                <li><a href="/students/Pages/cancellations.aspx">Class cancellations</a>
+		                </li>
+		                <li><a href="/Community/Collegeinfo/Pages/collegehours.aspx">College hours</a>
+		                </li>
+		                <li><a href="/contact/Pages/contact-us.aspx">Contact us</a>
+		                </li>
+		            </ul>
+					 <ul class="nav-footer-list">
+					 	<li><a href="http://continuinged.kcc.edu" title="Continuing education and career services site" rel="noopener noreferrer" target="_blank">Continuing Education &amp; Career Services</a>
+		                </li>
+					 	<li><a href="/FacultyStaff/departments/Pages/default.aspx">Department directory</a>
+					 	</li>
+					    <li><a href="/Community/Collegeinfo/collegelocations/Pages/default.aspx">Directions &amp; maps</a>
+		                </li>
+		                <li><a href="/FacultyStaff/departments/hr/jobs/Pages/default.aspx">Employment</a>
+		                </li>
+		                <li><a href="/students/academics/Pages/finalexamschedule.aspx">Final exam schedule</a>
+		                </li>
+		                <li><a href="http://adulted.kcc.edu" target="_blank">GED &amp; High School Credit</a>
+		                </li>
+
+		            </ul>
+		            <ul class="nav-footer-list">
+		            	<li><a href="/admissions/records/Pages/transcriptrequest.aspx">Request a transcript</a>
+		                </li>
+		                <li><a href="/facultystaff/pages/staffdirectory.aspx">Staff directory</a>
+		                </li>
+		                <li><a href="/students/helpful/testingservices/pages/default.aspx">Testing center</a>
+		                </li>
+		                <li><a href="/students/helpful/transfer/Pages/default.aspx">Transfer Services</a>
+		                </li>
+
+		                <li><a href="/future/paying/fedstateaid/veteran-services/Pages/default.aspx" title="Veteran's Resources">Veterans Resources</a>
+		                </li>
+		                <li><a href="http://wioa.kcc.edu" title="Workforce Services site" target="_blank">Workforce Services</a>
+		                </li>
+		            </ul>
+
+		            <div class="legal-and-icons">
+		            <div class="legal">
+		                <p>100 College Drive Kankakee, IL 60901 
+		                	<br/>Ph: <a href="tel:18158028100">815-802-8100</a>
+		                    <br/>&#169; 2004 &ndash; <span class="copyright"></span> Kankakee Community College
+		                    <br/><a href="http://iccbdbsrv.iccb.org/salarysearch/home.cfm" rel="noopener noreferrer" target="_blank">ICCB Salary and Benefits Portal</a>
+		                </p>
+		            </div>	
+		            <div class="nav-icons-logos">
+		            	<a href="http://www.nsf.gov/ate" rel="noopener noreferrer" target="_blank"><img src="/Style%20Library/Images/KCC2010/nsf1.png" alt="National Science Foundation logo"/></a>
+		                <ul class="nav-social">
+		                    <li><a href="http://www.facebook.com/pages/Kankakee-IL/Kankakee-Community-College/126145965854" rel="noopener noreferrer"  target="_blank">Facebook</a>
+		                    </li>
+		                    <li><a href="http://pinterest.com/kccedu/" rel="noopener noreferrer"  target="_blank">Pinterest</a>
+		                    </li>
+		                    <li><a href="http://twitter.com/KCCedu" rel="noopener noreferrer" target="_blank">Twitter</a>
+		                    </li>
+		                    <li><a href="http://www.youtube.com/kankakeecommcollege" rel="noopener noreferrer" target="_blank">Youtube</a>
+		                    </li>
+		                    <li><a href="http://www.linkedin.com/company/kankakee-community-college" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+		                    <li><a href="http://instagram.com/kccedu" rel="noopener noreferrer" target="_blank">Instagram</a></li>
+		                    <li><a href="http://www.flickr.com/kccedu" rel="noopener noreferrer" target="_blank">Flickr</a></li>
+		                    <li><a href="https://raw.githubusercontent.com/KankakeeCommunityCollege/newsroom/master/rss.xml" rel="noopener noreferrer" target="_blank">RSS</a>
+		                    </li>
+		                    <li><a href="http://itunes.apple.com/WebObjects/DZR.woa/wa/viewArtist?cc=us&id=421854028#" rel="noopener noreferrer" target="_blank">ItunesU</a>
+		                    </li>
+		                </ul>
+		            </div>
+		            </div>
+		        </div>
+    <!-- footer -->
+    
+		<!-- =SharePoint =Container - Body Container - END s4-bodyContainer -->
+		</div>
+	<!-- =SharePoint =Container - Workspace Container - END s4-workspace -->
+	</div>
+	
+
+
+<!-- =SharePoint - Leave below items intact -->
+<!-- Inserts security validation within form -->
+
+	
+
+<div id="ctl00_panelZone">
+	<div style='display:none' id='hidZone'><menu class="ms-SrvMenuUI">
+		<ie:menuitem id="MSOMenu_Help" iconsrc="/_layouts/images/HelpIcon.gif" onmenuclick="MSOWebPartPage_SetNewWindowLocation(MenuWebPart.getAttribute('helpLink'), MenuWebPart.getAttribute('helpMode'))" text="Help" type="option" style="display:none">
+
+		</ie:menuitem>
+	</menu></div>
+</div><input type='hidden' id='_wpcmWpid' name='_wpcmWpid' value='' /><input type='hidden' id='wpcmVal' name='wpcmVal' value=''/>
+
+<script type="text/javascript">
+//<![CDATA[
+var _spFormDigestRefreshInterval = 1440000;
+function EnsureScripts(scriptInfoList, finalFunction)
+{
+if (scriptInfoList.length == 0)
+{
+finalFunction();
+}
+else
+{
+var scriptInfo = scriptInfoList.shift();
+var rest = function () { EnsureScripts(scriptInfoList, finalFunction); };
+var defd;
+try
+{
+eval('defd = typeof(' + scriptInfo[1] + ');');
+}
+catch (e)
+{
+defd = 'undefined';
+}
+if (scriptInfo[2])
+{
+EnsureScript(scriptInfo[0], defd, null);
+ExecuteOrDelayUntilScriptLoaded(rest, scriptInfo[0]);
+}
+else
+{
+EnsureScript(scriptInfo[0], defd, rest);
+}
+}
+}
+function PublishingRibbonUpdateRibbon()
+{
+var pageManager = SP.Ribbon.PageManager.get_instance();
+if (pageManager)
+{
+pageManager.get_commandDispatcher().executeCommand('appstatechanged', null);
+}
+}var _fV4UI = true;
+function _RegisterWebPartPageCUI()
+{
+    var initInfo = {editable: false,isEditMode: false,allowWebPartAdder: false,listId: "{b72645d8-c40c-4fa2-a551-89b54886450b}",itemId: 1,recycleBinEnabled: true,enableMinorVersioning: true,enableModeration: true,forceCheckout: true,rootFolderUrl: "\u002fPages",itemPermissions:{High:16,Low:200769}};
+    SP.Ribbon.WebPartComponent.registerWithPageManager(initInfo);
+    var wpcomp = SP.Ribbon.WebPartComponent.get_instance();
+    var hid;
+    hid = document.getElementById("_wpSelected");
+    if (hid != null)
+    {
+        var wpid = hid.value;
+        if (wpid.length > 0)
+        {
+            var zc = document.getElementById(wpid);
+            if (zc != null)
+                wpcomp.selectWebPart(zc, false);
+        }
+    }
+    hid = document.getElementById("_wzSelected");
+    if (hid != null)
+    {
+        var wzid = hid.value;
+        if (wzid.length > 0)
+        {
+            wpcomp.selectWebPartZone(null, wzid);
+        }
+    }
+}
+ExecuteOrDelayUntilScriptLoaded(_RegisterWebPartPageCUI, "sp.ribbon.js"); var __wpmExportWarning='This Web Part Page has been personalized. As a result, one or more Web Part properties may contain confidential information. Make sure the properties contain information that is safe for others to read. After exporting this Web Part, view properties in the Web Part description file (.WebPart) by using a text editor such as Microsoft Notepad.';var __wpmCloseProviderWarning='You are about to close this Web Part.  It is currently providing data to other Web Parts, and these connections will be deleted if this Web Part is closed.  To close this Web Part, click OK.  To keep this Web Part, click Cancel.';var __wpmDeleteWarning='You are about to permanently delete this Web Part.  Are you sure you want to do this?  To delete this Web Part, click OK.  To keep this Web Part, click Cancel.';
+ExecuteOrDelayUntilScriptLoaded(
+function()
+{
+var initInfo = 
+{
+itemPermMasks: {High:16,Low:200769},
+listPermMasks: {High:16,Low:200769},
+listId: "b72645d8-c40c-4fa2-a551-89b54886450b",
+itemId: 1,
+workflowsAssociated: true,
+editable: false,
+doNotShowProperties: false,
+enableVersioning: true
+};
+SP.Ribbon.DocLibAspxPageComponent.registerWithPageManager(initInfo);
+},
+"sp.ribbon.js");
+var g_disableCheckoutInEditMode = false;
+var _spWebPermMasks = {High:16,Low:200769};//]]>
+</script>
+<script type="text/javascript" language="JavaScript" defer="defer">
+<!--
+function SearchEnsureSOD() { EnsureScript('search.js',typeof(GoSearch)); } _spBodyOnLoadFunctionNames.push('SearchEnsureSOD');function S3031AEBB_Submit() {if (document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_ctl03').value == '0') { document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_S3031AEBB_InputKeywords').value=''; }SearchEnsureSOD();GoSearch('ctl00_PlaceHolderSearchArea_ctl01_ctl03','ctl00_PlaceHolderSearchArea_ctl01_S3031AEBB_InputKeywords',null,true,false,null,null,null,null,null,'\u002fSearch\u002fResults.aspx', 'This Site','This List', 'This Folder', 'Related Sites', '\u002f_layouts\u002fOSSSearchResults.aspx', '', 'Please enter one or more search words.');if (document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_ctl03').value == '0') { document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_S3031AEBB_InputKeywords').value=''; }}
+// -->
+</script><script type="text/javascript" language="JavaScript" >
+// append an onload event handler
+$addHandler(window, 'load', function() {
+  document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_S3031AEBB_InputKeywords').name = 'InputKeywords';
+});
+function S3031AEBB_OSBEK(event1) { 
+if((event1.which == 10) || (event1.which == 13))
+{   
+S3031AEBB_Submit();return false;
+}
+}
+{ var searchTextBox = document.getElementById('ctl00_PlaceHolderSearchArea_ctl01_S3031AEBB_InputKeywords');if (searchTextBox.className.indexOf('s4-searchbox-QueryPrompt') == -1) searchTextBox.className += searchTextBox.className?' s4-searchbox-QueryPrompt':'s4-searchbox-QueryPrompt'; }// -->
+</script><script type="text/javascript">
+// <![CDATA[
+// ]]>
+</script>
+<script type="text/javascript">RegisterSod("sp.core.js", "\u002f_layouts\u002fsp.core.js?rev=7ByNlH\u00252BvcgRJg\u00252BRCctdC0w\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("sp.res.resx", "\u002f_layouts\u002fScriptResx.ashx?culture=en\u00252Dus\u0026name=SP\u00252ERes\u0026rev=b6\u00252FcRx1a6orhAQ\u00252FcF\u00252B0ytQ\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("sp.ui.dialog.js", "\u002f_layouts\u002fsp.ui.dialog.js?rev=IuXtJ2CrScK6oX4zOTTy\u00252BA\u00253D\u00253D");RegisterSodDep("sp.ui.dialog.js", "sp.core.js");RegisterSodDep("sp.ui.dialog.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("core.js", "\u002f_layouts\u002f1033\u002fcore.js?rev=thUAOrLfyaU\u00252Fgyxy0eiMiw\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("sp.runtime.js", "\u002f_layouts\u002fsp.runtime.js?rev=9sKdsC9N6p2BiRk3313M7Q\u00253D\u00253D");RegisterSodDep("sp.runtime.js", "sp.core.js");RegisterSodDep("sp.runtime.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("sp.js", "\u002f_layouts\u002fsp.js?rev=enHIfHdAu7IvZTmLeGCCbA\u00253D\u00253D");RegisterSodDep("sp.js", "sp.core.js");RegisterSodDep("sp.js", "sp.runtime.js");RegisterSodDep("sp.js", "sp.ui.dialog.js");RegisterSodDep("sp.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("cui.js", "\u002f_layouts\u002fcui.js?rev=k\u00252B4HtUzT9\u00252B3mSycgD7gPaQ\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("inplview", "\u002f_layouts\u002finplview.js?rev=ZfVDYd30Z2D01DIRRl8ETA\u00253D\u00253D");RegisterSodDep("inplview", "core.js");RegisterSodDep("inplview", "sp.js");</script>
+<script type="text/javascript">RegisterSod("ribbon", "\u002f_layouts\u002fsp.ribbon.js?rev=F\u00252BUEJ66rbXzSvpf7nN69wQ\u00253D\u00253D");RegisterSodDep("ribbon", "core.js");RegisterSodDep("ribbon", "sp.core.js");RegisterSodDep("ribbon", "sp.js");RegisterSodDep("ribbon", "cui.js");RegisterSodDep("ribbon", "sp.res.resx");RegisterSodDep("ribbon", "sp.runtime.js");RegisterSodDep("ribbon", "inplview");</script>
+<script type="text/javascript">RegisterSod("sp.publishing.resources.resx", "\u002f_layouts\u002fScriptResx.ashx?culture=en\u00252Dus\u0026name=SP\u00252EPublishing\u00252EResources\u0026rev=q6nxzZIVVXE5X1SPZIMD3A\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("sp.ui.pub.ribbon.js", "\u002f_layouts\u002fsp.ui.pub.ribbon.js?rev=RGQSBI9Dm0E345iq\u00252FxUpHg\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("msstring.js", "\u002f_layouts\u002f1033\u002fmsstring.js?rev=QtiIcPH3HV7LgVSO7vONFg\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("browserScript", "\u002f_layouts\u002f1033\u002fnon_ie.js?rev=EVTj1bu32\u00252FMla6SDN\u00252FsNTA\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("WPAdderClass", "\u002f_layouts\u002fwpadder.js?rev=hnGJJEMcU5XH\u00252BCq7PlSxJw\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("search.js", "\u002f_layouts\u002fsearch.js?rev=BjP0\u00252BmPXUFhF7kDZmHIaVg\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSodDep("browserScript", "msstring.js");</script>
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.initialize();
+function init_zz1_CurrentNavigation() {$create(SP.UI.AspMenu, null, null, null, $get('zz1_CurrentNavigation'));}ExecuteOrDelayUntilScriptLoaded(init_zz1_CurrentNavigation, 'sp.js');
+//]]>
+</script>
+</form>
+<!-- Added content beneath closing FORM tag -->
+
+
+<!--
+SharePoint Experts, Inc. 
+-sharepointexperience.com
+-->
+
+</body>
+</html>

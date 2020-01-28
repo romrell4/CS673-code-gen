@@ -1,0 +1,913 @@
+
+
+<!DOCTYPE html>
+<!-- UNCG WEB3 WRAPPER::HEADER::PHP VERSION 3.0.0::9/1/2014 -->
+<html lang="en-US">
+<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UNC Greensboro</title>
+
+  <link rel='stylesheet' id='uncg-libraries'  href='/rincuncg/css/lib.min.css?ver=1.2.0' type='text/css' media='all' />
+  <link rel='stylesheet' id='uncg-print-css'  href='/rincuncg/css/print.min.css?ver=1.2.0' type='text/css' media='print' />
+  <link rel='stylesheet' id='fastfonts-css'  href='//fast.fonts.com/cssapi/7860d9f9-615c-442e-ab9b-bd4fe7794024.css?ver=3.9.2' type='text/css' media='all' />
+  <link href="/rincuncg/css/common.min.css?ver=1.2.0" rel="stylesheet" type="text/css" />
+  <link href="/rincuncg/css/print.min.css?ver=1.2.0" rel="stylesheet" type="text/css" media="print" />
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script type='text/javascript' src='/rincuncg/js/bootstrap.min.js?ver=3.9.2'></script>
+  <script type="text/javascript" src="/rincuncg/js/common.min.js?ver=1.2.0"></script>
+     <script type="text/javascript">/* Google Analytics */
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-34361385-1']);
+     _gaq.push(['_setDomainName', '.uncg.edu']);
+     _gaq.push(['_trackPageview']);
+
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+   </script>
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/rincuncg/js/lt-ie-9.min.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="/rincuncg/css/lt-ie-9.min.css"/>
+<![endif]-->
+
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.0/lity.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.0/lity.min.css" />
+
+<link rel="stylesheet" href="/rincuncg/css/secondary.min.css?ver=1.2.0">
+<link rel="stylesheet" href="/inc/css/top.css?ver=1.0.0">
+<link rel="stylesheet" href="/inc/css/home.css?ver=1.0.1">
+<link rel="stylesheet" type="text/css" href="/inc/css/fancybox/jquery.fancybox.css">
+<!--[if lt IE 10]>
+  <link rel="stylesheet" type="text/css" href="/inc/css/ie9.css">
+<![endif]-->
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="/inc/js/jquery.mobile.custom.min.js"></script>
+<script src="/inc/js/home.js?ver=1.0.0"></script>
+<script src="/inc/js/splash.js?ver=1.0.0"></script>
+<script src="/inc/js/top.js?ver=1.0.0"></script>
+<script src="/inc/js/jquery.fancybox.pack.js"></script>
+<script src="/inc/js/jquery.fancybox-media.js"></script>
+<!--[if IE]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+
+
+<script type="text/javascript">
+
+var rotateId = 0;
+
+$(document).ready(function(){
+
+
+
+  $("#next").click(function()
+    {
+      var numArticles = $("#feature-select article").length;
+      var index = $("#feature-select article.featured").index()+1;
+      var newIndex = 0;
+
+      ( index == numArticles ) ? newIndex = 1 : newIndex = index + 1;
+
+      $("#feature-select article.featured").fadeOut(350).removeClass("featured").attr('aria-hidden', 'true');
+      $("#feature-select article:nth-child(" + (newIndex) + ")").fadeIn(350).addClass("featured").attr('aria-hidden', 'false');
+
+      $("#dotIndicators button:nth-child(" + index + ") span").removeClass("active-dot").addClass("inactive-empty-dot");
+      $("#dotIndicators button:nth-child(" + (newIndex) + ") span").addClass("active-dot").removeClass("inactive-empty-dot");
+
+      window.clearInterval(rotateId);
+
+      if ( $(window).width() >= 992 )
+      {
+        $("#pause").hide();
+        $("#play").show();
+      }
+
+    });
+
+  $("#prev").click(function()
+    {
+      var numArticles = $("#feature-select article").length;
+      var index = $("#feature-select article.featured").index()+1;
+      var newIndex = 0;
+
+      ( index == 1 ) ? newIndex = numArticles : newIndex = index - 1;
+
+      $("#feature-select article.featured").fadeOut(350).removeClass("featured").attr('aria-hidden', 'true');
+      $("#feature-select article:nth-child(" + (newIndex) + ")").fadeIn(350).addClass("featured").attr('aria-hidden', 'false');
+
+      $("#dotIndicators button:nth-child(" + index + ") span").removeClass("active-dot").addClass("inactive-empty-dot");
+      $("#dotIndicators button:nth-child(" + (newIndex) + ") span").addClass("active-dot").removeClass("inactive-empty-dot");
+
+      window.clearInterval(rotateId);
+      if ( $(window).width() >= 992 )
+      {
+        $("#pause").hide();
+        $("#play").show();
+      }
+    });
+
+
+  $("#dotIndicators button").click(function()
+    {
+      var index = $(this).index()+1;
+
+      $("#feature-select article.featured").fadeOut(350).removeClass("featured").attr('aria-hidden', 'true');
+      $("#feature-select article:nth-child(" + (index) + ")").fadeIn(350).addClass("featured").attr('aria-hidden', 'false');
+
+      $("#dotIndicators button span").removeClass("active-dot").addClass("inactive-empty-dot");
+      $("#dotIndicators button:nth-child(" + (index) + ") span").addClass("active-dot").removeClass("inactive-empty-dot");
+
+      window.clearInterval(rotateId);
+      if ( $(window).width() >= 992 )
+      {
+        $("#pause").hide();
+        $("#play").show();
+      }
+    });
+
+  $("#pause").click(function()
+    {
+        $("#pause").hide();
+        $("#play").show().focus();
+
+        window.clearInterval(rotateId);
+    });
+
+  $("#play").click(function()
+    {
+        $("#play").hide();
+        $("#pause").show().focus();
+
+        rotateId = window.setInterval(featureNext, 10000);
+    });
+
+  $(".eventsDown").click(function()
+  {
+
+    $(".eventsPanel1").slideUp().attr('aria-hidden', 'true');;
+    $(".eventsPanel2").slideDown().attr('aria-hidden', 'false');;
+
+  });
+
+  $(".eventsUp").click(function()
+  {
+
+    $(".eventsPanel1").slideDown().attr('aria-hidden', 'false');
+    $(".eventsPanel2").slideUp().attr('aria-hidden', 'true');;
+
+  });
+
+  if ( $(window).width() >= 992 && $("div.features article").length > 1 )
+  {
+    rotateId = window.setInterval(featureNext, 10000);
+  }
+
+    //fancybox for videos
+    $(".fancybox").fancybox({
+	openEffect: 'none',
+	closeEffect: 'none',
+	    scrolling: 'visible',
+	type: 'iframe',
+	helpers: {
+	    media: {
+		youtube: {
+		    params: {
+			wmode: 'window'
+		    }
+		}
+	    }
+	},
+	beforeLoad: function() {
+	    $("#site-navigation").addClass("fancybox");
+	},
+	beforeClose: function() {
+	    $("#site-navigation").removeClass("fancybox");
+	}
+    });
+});
+
+function featureNext()
+{
+  var numArticles = $("#feature-select article").length;
+  var index = $("#feature-select article.featured").index()+1;
+  var newIndex = 0;
+
+  ( index == numArticles ) ? newIndex = 1 : newIndex = index + 1;
+
+  $("#feature-select article.featured").fadeOut(350).removeClass("featured").attr('aria-hidden', 'true');
+  $("#feature-select article:nth-child(" + (newIndex) + ")").fadeIn(350).addClass("featured").attr('aria-hidden', 'false');
+
+  $("#dotIndicators button:nth-child(" + index + ") span").removeClass("active-dot").addClass("inactive-empty-dot");
+  $("#dotIndicators button:nth-child(" + (newIndex) + ") span").addClass("active-dot").removeClass("inactive-empty-dot");
+
+}
+
+</script>
+
+
+
+</head>
+<body ontouchstart="">
+    <ul id="uncgAccessNav">
+        <li><a href="#startcontent">Skip to Main Content</a></li>
+    </ul>
+
+    <div id="header-wrapper" class="header-wrapper gradient ">
+    <nav id="nav-container" class="navbar container" role="navigation">
+        <div class="header-subwrapper">
+            <div class="navbar-header row">
+
+                <div id="header-left">
+    <a href="http://www.uncg.edu/" title="The University of North Carolina at Greensboro" class="logo-uncg">
+        <span class="sr-only">The University of North Carolina at Greensboro</span>
+    </a>
+</div>
+
+
+                <div id="header-right" class="col-xs-12 col-sm-7">
+    <div id="header-extras" class="row">
+        <div id="searchContainer" class="hidden-xs col-sm-6 col-md-5 col-sm-pull-1 col-md-pull-0">
+            <form id="uncgSearch" class="navbar-form navbar-right search-form" action="//search.uncg.edu/s/search.html" method="get">
+                <div class="input-group">
+
+                    <input id="q" name="query" type="text" placeholder="Search UNCG" class="form-control input-sm" aria-label="search string"  />
+                    <span class="input-group-btn">
+                        <button id="searchSub" type="submit" title="Submit Search" class="btn btn-sm btn-default">Go</button>
+                    </span>
+                    <input type="hidden" name="collection" value="uncg-search">
+                </div>
+                <div id="searchInContainer" role="radiogroup" aria-labelledby="searchTarget">
+                    <span id="searchTarget" class="sr-only">Search Target</span>
+                    <label><input id="eduSearch" name="scope" type="radio" value="" checked="checked" aria-checked="true"  /> UNCG.edu</label>
+                    <label><input class="hidden" id="siteSearch" name="scope" type="radio" value="" aria-checked="false"  /> this site</label>
+                </div>
+                <div class="col-xs-2 search-control visible-xs">
+                    <button type="submit" class="btn search-submit main-nav">
+                        <span class="sr-only">Submit Search</span>
+                        <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                </div>
+
+                            </form>
+        </div>
+        <div id="tools-nav" class="hidden-xs col-sm-5 col-md-4">
+            <ul id="navlist-tools">
+                <li>
+                    <a href="http://ispartan.uncg.edu/" title="iSpartan Email" class="icon-iSpartan">
+                        <span class="sr-only">iSpartan Email</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://ssb.uncg.edu/" title="UNCGenie System" class="icon-uncgenie">
+                        <span class="sr-only">UNCGenie System</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://directory.uncg.edu" title="UNCG Directory" class="icon-directory">
+                        <span class="sr-only">UNCG Directory</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://uncg.instructure.com/" title="Canvas at UNCG" class="icon-lms">
+                        <span class="sr-only">Canvas &commat; UNCG</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12" id="mobileToggle">
+            <button class="dropdown-toggle main-nav btn" type="button" data-toggle="dropdown" id="navMenu1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="glyphicon glyphicon-th-list"></span>
+            </button>
+            <button class="navbar-toggle main-nav btn hidden-sm hidden-md hidden-lg" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle search</span>
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <ul class="dropdown-menu unit-nav" role="menu" aria-labelledby="navMenu1">
+                <li class="visible-xs">
+                    <div class="col-xs-3">
+                        <div class="mobileIcons">
+                            <a href="http://ispartan.uncg.edu/" title="iSpartan Email" class="icon-iSpartan">
+                                <span class="sr-only">iSpartan Email</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="mobileIcons">
+                            <a href="https://ssb.uncg.edu/" title="UNCGenie System" class="icon-uncgenie">
+                                <span class="sr-only">UNCGenie System</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="mobileIcons">
+                            <a href="https://directory.uncg.edu" title="UNCG Directory" class="icon-directory">
+                                <span class="sr-only">UNCG Directory</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="mobileIcons">
+                            <a href="https://uncg.instructure.com/" title="Canvas at UNCG" class="icon-lms">
+                                <span class="sr-only">Canvas &commat; UNCG</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="audience"><a href="http://www.uncg.edu/future-students/">Future Students</a>
+                </li>
+                <li class="audience"><a href="http://www.uncg.edu/current-students/">Current Students</a>
+                </li>
+                <li class="audience"><a href="http://www.uncg.edu/faculty-staff/">Faculty &amp; Staff</a>
+                </li>
+                <li class="audience"><a href="http://alumni.uncg.edu/">Alumni</a>
+                </li>
+                <li class="audience"><a href="http://communityengagement.uncg.edu/">Community &amp; Friends</a>
+                </li>
+                <li class="audience mobile-cl"><a href="http://www.uncg.edu/campus-links/" id="cllink">CAMPUS LINKS</a>
+                </li>
+                <li id="site-nav-m" >
+                    <ul id="mobile-menu" class="menu">
+<li class="menu-item"><a href="http://www.uncg.edu/administration/">Administration</a></li>
+<li class="menu-item"><a href="http://www.uncg.edu/academics/">Academics</a></li>
+<li class="menu-item"><a href="http://research.uncg.edu/">Research</a></li>
+<li class="menu-item"><a href="http://www.uncg.edu/admissions/">Admissions</a></li>
+<li class="menu-item"><a href="http://www.uncg.edu/arts-entertainment/">Arts</a></li>
+<li class="menu-item"><a href="http://www.uncg.edu/ipg/">Global</a></li>
+<li class="menu-item"><a href="http://uncgspartans.com/">Athletics</a></li>
+<li class="menu-item"><a href="http://giving.uncg.edu/">Giving</a></li>
+</ul>                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="header-audience-nav" class="visible-md visible-lg row">
+        <ul id="navlist-audience">
+            <li><a href="http://www.uncg.edu/future-students/">Future Students</a></li>
+            <li><a href="http://www.uncg.edu/current-students/">Current Students</a></li>
+            <li><a href="http://www.uncg.edu/faculty-staff/">Faculty &amp; Staff</a></li>
+            <li><a href="http://alumni.uncg.edu/">Alumni</a></li>
+            <li class="noBorder"><a href="http://communityengagement.uncg.edu/">Community &amp; Friends</a></li>
+        </ul>
+    </div>
+</div>
+
+
+                <div class="navbar-collapse collapse col-xs-12">
+    <form class="navbar-form navbar-right search-form visible-xs" role="search" action="//search.uncg.edu/s/search.html" method="get">
+        <div class="form-group search-group">
+            <div class="col-xs-10 search-control">
+                <label class="sr-only" for="bsq">Search UNCG</label>
+                <input type="hidden" name="collection" value="uncg-search">
+                <input type="text" id="bsq" class="form-control search-box" placeholder="Search UNCG" name="query" autofocus="autofocus" />
+            </div>
+            <div class="col-xs-2 search-control">
+                <button type="submit" class="btn search-submit main-nav">
+                    <span class="sr-only">Search Submit</span>
+                    <span class="glyphicon glyphicon-play"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+            </div>
+
+            <div id="header-bottom" class="row">
+   <div id="header-yellow-nav" class="hidden-xs hidden-sm col-md-12">
+      <ul id="navlist-yellow">
+         <li class="yellow-nav-administration"><a href="http://www.uncg.edu/administration/">ADMINISTRATION</a></li>
+         <li class="yellow-nav-academics"><a href="http://www.uncg.edu/academics/">ACADEMICS</a></li>
+         <li class="yellow-nav-research"><a href="http://research.uncg.edu/">RESEARCH</a></li>
+         <li class="yellow-nav-admissions"><a href="http://www.uncg.edu/admissions/">ADMISSIONS</a></li>
+         <li class="yellow-nav-arts"><a href="http://www.uncg.edu/arts-entertainment/">ARTS</a></li>
+         <li class="yellow-nav-global"><a href="https://www.uncg.edu/global">GLOBAL</a></li>
+         <li class="yellow-nav-athletics"><a href="http://uncgspartans.com/">ATHLETICS</a></li>
+         <li class="yellow-nav-giving"><a href="http://giving.uncg.edu/">GIVING</a></li>
+         <li id="cl" class="noBorder current"><a id="campusLinks" href="http://www.uncg.edu/campus-links/">CAMPUS LINKS</a>
+            <ul class="subitems">
+               <li><a href="http://www.uncg.edu/inside-uncg/" title="Learn About UNCG">Inside <abbr title="The University of North Carolina at Greensboro">UNCG</abbr></a></li>
+               <li><a href="http://www.uncg.edu/academics/">Academics</a></li>
+               <li><a href="http://www.uncg.edu/administration/">Administration</a></li>
+               <li><a href="http://www.uncg.edu/admissions/">Admissions</a></li>
+               <li><a href="http://www.uncg.edu/arts-entertainment/">Arts &amp; Entertainment</a></li>
+               <li><a href="http://www.uncg.edu/employment/">Employment</a></li>
+               <li><a href="http://diversity-inclusion.uncg.edu/">Equity, Diversity  &amp; Inclusion</a> </li>
+               <li><a href="http://giving.uncg.edu">Giving to UNCG</a></li>
+               <li><a href="https://www.uncg.edu/global" title="Global">Global</a></li>
+               <li><a href="http://library.uncg.edu/" title="Jackson Library">Libraries</a></li>
+               <li><a href="http://online.uncg.edu/" title="Online Courses &amp; Degrees">Online Courses &amp; Degrees</a></li>
+               <li><a href="http://research.uncg.edu/">Research</a></li>
+               <li><a href="http://sa.uncg.edu/">Student Affairs</a> </li>
+               <li><a href="http://its.uncg.edu/">Technology</a></li>
+               <li><a href="http://newsandfeatures.uncg.edu/">University News</a></li>
+            </ul>
+         </li>
+      </ul>
+   </div>
+</div>
+
+
+        </div>
+    </nav>
+</div>
+<div class="shadow-box">
+  <div class=""><a id="startcontent"></a>
+
+  <div class="main-content ">
+
+
+    <div>
+        <div class="container no-bottom-padding ">
+
+          <div id="content-wrapper">
+
+                  <div id="content">
+
+                        
+                    <section id="feature" class="row">
+                        <div id="feature-select" aria-live="polite">
+                          <div class="col-xs-12 col-md-9 features">
+<!--
+                          <article class="featured" style="background-image: url(&quot;inc/images/installation-HM.jpg&quot;); display: block;" aria-hidden="false">
+                           <div style="margin-bottom: 0;">
+                            <h1><a href="https://installation.uncg.edu/">Chancellor Installation&nbsp;<span class="glyphicon glyphicon-menu-right"></span></a></h1>
+                            </div>
+                          </article>
+-->
+
+ 
+                        <article class="featured" style="background-image: url(&quot;images/home/10-23-19-UNCG_Brand-Homepage_ABE.jpg&quot;); display: block;" aria-hidden="false">
+                           <div>
+                            <h1><a href="https://uncgstories.uncg.edu/meet-faculty-and-staff/">Find Your Way Here&nbsp;<span class="glyphicon glyphicon-menu-right"></span></a></h1>
+                            </div>
+                          </article> 
+                   
+
+                            
+<article  style="display:none;background-image:url(inc/images/harris-44643-HM.jpg);" aria-hidden="true">
+	<div>
+		<h1><a href="https://newsandfeatures.uncg.edu/red-letter-day-red-dirt-girl/">A red letter day with ‘Red Dirt Girl’&nbsp;<span class="glyphicon glyphicon-menu-right"></span></a></h1>
+	</div>
+</article>
+<article  style="display:none;background-image:url(inc/images/mlk-service-day-44595-HM.jpg);" aria-hidden="true">
+	<div>
+		<h1><a href="https://newsandfeatures.uncg.edu/mlk-day-of-service-2020/">Spartans honor King with service&nbsp;<span class="glyphicon glyphicon-menu-right"></span></a></h1>
+	</div>
+</article>
+<article  style="display:none;background-image:url(inc/images/welcome-back-students-44488-HM.jpg);" aria-hidden="true">
+	<div>
+		<h1><a href="https://newsandfeatures.uncg.edu/welcome-back-spartans/">Welcome back, Spartans&nbsp;<span class="glyphicon glyphicon-menu-right"></span></a></h1>
+	</div>
+</article><fieldset aria-label="carousel buttons" class="carousel-buttons" aria-controls="feature-select">
+	<div class="hidden-xs col-sm-3 controls"><button value="prev" aria-label="previous" id="prev" class="btn carousel-button "><span class="glyphicon glyphicon-arrow-left"></span></button></div>
+
+	<div class="col-xs-12 col-sm-6"><fieldset id='dotIndicators' aria-controls='feature-select'><button value='featureItem0' id='featureItem0' aria-label='featureItem0' class='btn carousel-button'><span class='active-dot'></span></button><button value='featureItem1' id='featureItem1' aria-label='featureItem1' class='btn carousel-button'><span class='inactive-empty-dot'></span></button><button value='featureItem2' id='featureItem2' aria-label='featureItem2' class='btn carousel-button'><span class='inactive-empty-dot'></span></button><button value='featureItem3' id='featureItem3' aria-label='featureItem3' class='btn carousel-button'><span class='inactive-empty-dot'></span></button></fieldset>	</div>
+
+	<div class="hidden-xs col-sm-3 controls"> <button value="next" id="next" aria-label="next" class="btn carousel-button "><span class="glyphicon glyphicon-arrow-right"></span></button><button value="pause" id="pause" aria-label="pause" class="btn carousel-button "><span class="glyphicon glyphicon-pause"></span></button>
+	            <button value="play" id="play" class="btn carousel-button "><span class="glyphicon glyphicon-play"></span></button></div>
+</fieldset>
+
+                          </div>
+
+                          <div class="col-xs-12 col-md-3">
+                              <ul id="feature4" class="row">
+                                <li class="visible-lg-block col-xs-12 col-sm-3"><a href="http://www.uncg.edu/admissions/" title="Apply Now">Apply Now<span class="glyphicon glyphicon-menu-right"></span></a></li>
+                                <li class="hidden-lg col-xs-12 col-sm-3"><a href="http://www.uncg.edu/admissions/" title="Apply Now">Apply<span class="glyphicon glyphicon-menu-right"></span></a></li>
+                                <li class="col-xs-12 col-sm-3"><a href="https://admissions.uncg.edu/academics/majors-concentrations/"  title="UNCG Majors">Majors<span class="glyphicon glyphicon-menu-right"></span></a></li>
+                                <li class="visible-lg-block col-xs-12 col-sm-3"><a href="http://www.uncg.edu/campus-life/" title="Campus Life">Campus Life<span class="glyphicon glyphicon-menu-right"></span></a></li>
+                                <li class="hidden-lg col-xs-12 col-sm-3"><a href="http://www.uncg.edu/campus-life/" title="Campus Life">Campus<span class="glyphicon glyphicon-menu-right"></span></a></li>
+                                <li class="visible-lg-block col-xs-12 col-sm-3 last"><a href="https://admissions.uncg.edu/visit/campus-tours/" title="Visit UNCG">Visit UNCG<span class="glyphicon glyphicon-menu-right"></span></a></li>
+                                <li class="hidden-lg col-xs-12 col-sm-3 last"><a href="https://admissions.uncg.edu/visit/campus-tours/" title="Visit UNCG">Visit<span class="glyphicon glyphicon-menu-right"></span></a></li>
+                              </ul>
+                          </div>
+                        </div>
+                    </section>
+
+<!--                       <section id="one-twenty-five" class="row"> -->
+			<section id="one-twenty-five" class="row" style="padding-top: 10px; padding-bottom:10px;"> 
+<!-- 125
+                        <div class="banner col-xs-12 col-sm-6 col-md-5">
+                                <img src="images/home/125th_banner.png" class="img-responsive" alt="Celebrating 125 Years of Opportunity and Excellence">
+                        </div>
+                        <div class="visit col-xs-12 col-sm-6 col-md-7">Visit the <a href="https://125.uncg.edu">125th anniversary website</a></div>
+-->
+<!-- Commencement 
+                        <div class="visit col-xs-12 col-sm-6 col-md-6" style="border-right:1px solid #a8a8a8;line-height:1.2;font-size:27px">Congratulations<br />UNC Greensboro Graduates
+                        </div>
+                        <div class="visit col-xs-12 col-sm-6 col-md-6" style="line-height:1.2;font-size:27px;">
+                                <a href="https://www.youtube.com/channel/UCcF6sJaHCmxM2SBkPxU4Hag/live" target="_blank">
+                                Watch May 2018<br />Commencement live</a>
+                        </div>
+-->
+<!-- Social -->
+<!-- <div class="col-xs-12 col-sm-12 col-md-6" style="padding-left:0px;padding-top:13px;">
+                                <a href="http://www.believeintheg.com"  target="_blank"><img src="images/home/Believe_in_the_G.png" style="width:430px;" alt="Believe in the G graphic"></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6" style="padding-top:7px;"><h1 style="font-size:2.7em;margin-top:7px;">Celebrate and Support UNCG Today <a href="http://www.believeintheg.com" target="_blank" style="text-decoration: underline;">Here</a></h1></div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12" style="padding-left:35px;padding-top:7px;">
+                        <a href="https://weekattheg.uncg.edu" ><img src="/images/home/Week_at_the_G_ribbon.png" class="img-responsive"></a></div>
+-->
+
+<!--December 2019 Commencement
+ <div class="col-xs-12 col-sm-12 col-md-6" style="padding-left:35px;padding-top:9px;border-right:1px solid #a8a8a8;line-height:1.2;">
+                        <h1 style="font-size:2em;margin-top:7px;">CONGRATULATIONS<br />UNCG GRADUATES</h1></div>
+                        <div class="col-xs-12 col-sm-12 col-md-6" style="padding-top:9px;"><a href="https://www.youtube.com/channel/UCcF6sJaHCmxM2SBkPxU4Hag/live" target="_blank" style="text-decoration: underline;color: #ffb71b;"><h1 style="font-size:2em;margin-top:7px;">WATCH DECEMBER 13th<br />COMMENCEMENT LIVE</a></h1></div>
+-->                        
+<!--Summer 
+
+<div class="col-xs-12 col-sm-12 col-md-6" style="padding-left:35px;padding-top:7px;">
+                        <h1 style="font-size:2.7em;margin-top:7px;">Graduate On Time With Summer Session</h1></div>
+                        <div class="col-xs-12 col-sm-12 col-md-6" style="padding-top:13px;"><a href="https://summer.uncg.edu" style="text-decoration: underline;color: #ffb71b;"><h1 style="font-size:2.7em;">Register Now</a></h1></div>
+-->
+                        <div class="col-xs-12 col-sm-12 col-md-6"><h1 style="font-size:2.1em;margin-top:7px;">Get #UNCGsocial with us!</h1></div>
+                        <div class="col-xs-12 col-sm-12 col-md-6" style="padding-left:0px;padding-top:7px;">
+                                <a href="https://www.facebook.com/uncg1891/" style="padding:3px;" target="_blank"><img src="images/home/Facebook.png" style="height:47px;" alt="Facebook"></a>
+                                <a href="https://twitter.com/UNCG" style="padding:3px;" target="_blank"><img src="images/home/Twitter.png" style="height:47px;" alt="Twitter"></a>
+                                <a href="https://www.instagram.com/uncg/" style="padding:3px;" target="_blank"><img src="images/home/Instagram.png" style="height:47px;" alt="Instagram"></a>
+                                <a href="https://www.linkedin.com/school/uncg/" style="padding:3px;" target="_blank"><img src="images/home/Linkedin.png" style="height:47px;" alt="Linkedin"></a>
+                                <a href="https://www.youtube.com/uncg" style="padding:3px;" target="_blank"><img src="images/home/YouTube.png" style="height:47px;" alt="YouTube"></a>
+                                <a href="https://www.snapchat.com/add/uncgreensboro" style="padding:3px; position:relative;" target="_blank">
+                                        <img src="images/home/Snapchat.png" style="height:47px;" alt="Snapchat">
+                                        <img src="images/home/clickarrow.png" style="height:35px; position:absolute; top: -16px;left:35px;" alt="Snapchat">
+                                </a>
+                        </div>
+                      </section>
+                    
+                      <section id="accomplishment" class="row gradient"  style="position:relative">
+                      <div id="accomplishments" class="col-xs-12">
+                      <h1>Recognized for <span>challenging academic programs,</span><br />
+                                              a <span>supportive environment</span> and an <span>engaged community.</span></h1>
+						<div class="row">
+                                                <div class="col-xs-12 col-sm-6 col-md-3" align="center">
+                                                    <img src="inc.ure/images/homepage/accolades/acco-no-1-sm.png" alt="US News &amp World Report" />
+                                                    <p>#1 in NC for social mobility, U.S. News &amp; World Report</p>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3" align="center">
+                                                    <img src="inc.ure/images/homepage/accolades/acco-placeholder_sm.png" alt="US News &amp; World Report Best Colleges icon" />
+                                                    <p>U.S. News &amp; World Report's Best Colleges for 29 consecutive years</p>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3" align="center">
+                                                    <img src="inc.ure/images/homepage/accolades/acco-princeton-385-best-2020-sm.png" alt="Princeton icon" />
+                                                    <p>Princeton Review's Best Colleges for 21 consecutive years</p>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3" align="center">
+                                                    <img src="inc.ure/images/homepage/accolades/acco-money-best-colleges-2019-sm.png" alt="Money icon" />
+                                                    <p>Money's Best Colleges 2019-2020</p>
+                                                </div>
+						</div>
+						<div class="row">
+                                                <div class="col-xs-12 col-sm-6 col-md-3" align="center">
+                                                    <img src="inc.ure/images/homepage/accolades/acco-kip-best-value-2019-sm.png" alt="Kiplinger icon" />
+                                                    <p>Kiplinger's Best College Values, Public University</p>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3" align="center">
+                                                    <img src="inc.ure/images/homepage/accolades/acco-heed-2019-sm.png" alt="HEED 2019 icon" />
+                                                    <p>Insight into Diversity's HEED 2019</p>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3" align="center">
+                                                    <img src="inc.ure/images/homepage/accolades/acco-campus_sm.png" alt="LendEDU icon" />
+                                                    <p>Recognized for low student debt in 2019 LendEDU Student Debt Rankings</p>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3" align="center">
+                                                    <img src="inc.ure/images/homepage/accolades/acco-veterans_sm.png" alt="Veteran award icon" />
+                                                    <p>Recognized as a Military Friendly School and Best for Vets</p>
+                                                </div>
+						</div>
+                    </div>
+                    <a href="https://newsandfeatures.uncg.edu/accolades-table/" title="View all Accomplishments" style="z-index:1000;position:absolute;width:100%;height:100%;top:0;left:0"><span class="sr-only">View all Accomplishments"</span></a>
+                    </section>
+                    <section id="news-event" class="row">
+
+                      <section id="news" class="col-xs-6 gradient">
+
+                            <div class="row"><h1>News <a href="http://newsandfeatures.uncg.edu/feed">RSS Feed</a></h1></div>
+
+
+                            <div class="row">
+                              <article class="row">
+	<div class="hidden-xs col-sm-4 newsImage"><a href="https://newsandfeatures.uncg.edu/trustee-mae-douglas-honored-chamber-commerce/"><img src="inc/images/Mae-Douglas-44634-F.jpg" alt="Photo of Mae Douglas on left and Greensboro Chamber of Commerce logo on the right" /></a></div>
+	<div class="col-xs-12 col-sm-8 newsHeadline">
+		<p><a href="https://newsandfeatures.uncg.edu/trustee-mae-douglas-honored-chamber-commerce/">Trustee Mae Douglas honored by Chamber of Commerce</a></p>
+	</div>
+	<br class="clear">
+</article>
+<article class="row">
+	<div class="hidden-xs col-sm-4 newsImage"><a href="https://newsandfeatures.uncg.edu/honorary-degrees-rhiannon-giddens-emmylou-harris/"><img src="inc/images/Harris-Giddens-Harris-Giddens-44622-F.jpg" alt="Portrait of Rhiannon Giddens on left and Emmylou Harris on right" /></a></div>
+	<div class="col-xs-12 col-sm-8 newsHeadline">
+		<p><a href="https://newsandfeatures.uncg.edu/honorary-degrees-rhiannon-giddens-emmylou-harris/">UNCG to honor Rhiannon Giddens, Emmylou Harris</a></p>
+	</div>
+	<br class="clear">
+</article>
+                            </div>
+
+                            <div class="row">
+
+                              <p class="btn btn-default"><a href="http://newsandfeatures.uncg.edu/">More University News</a></p>
+
+                            </div>
+
+
+
+
+                      </section>
+                      <section id="events" class="col-xs-6 gradient">
+                        <div>
+                                <div class="row"><h1>Events</h1></div>
+
+                                 <div class="row">
+                                    <div class="eventsWindow">
+                                      <div class="eventsPanel1" aria-hidden="false"><div class="dayEvents"><h2><span class="glyphicon glyphicon-check"></span>&nbsp;<time datetime="2020-01-28">Tuesday, January 28</time></h2><ul class="dailyEventList"><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=MTZoc3UxZzJhbjhjbjF2MTZsbnR0Y2x1bXZfMjAyMDAxMjhUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Finding Meaning: The Power and &hellip;</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=MXFjcGdyNzBiYWVxbTFwajZnMWd1ZWFwc2dfMjAyMDAxMjhUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Mirror, Mirror: The Prints of &hellip;</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=NHZsbDJsbXU4ajYxbHUxc2NuODR1ODJscmlfMjAyMDAxMjhUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Time, Space, Place, Trace</a></li></ul></div><div class="dayEvents"><h2><span class="glyphicon glyphicon-check"></span>&nbsp;<time datetime="2020-01-29">Wednesday, January 29</time></h2><ul class="dailyEventList"><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=MTZoc3UxZzJhbjhjbjF2MTZsbnR0Y2x1bXZfMjAyMDAxMjlUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Finding Meaning: The Power and &hellip;</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=MXFjcGdyNzBiYWVxbTFwajZnMWd1ZWFwc2dfMjAyMDAxMjlUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Mirror, Mirror: The Prints of &hellip;</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=NHZsbDJsbXU4ajYxbHUxc2NuODR1ODJscmlfMjAyMDAxMjlUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Time, Space, Place, Trace</a></li></ul></div><a class="eventsDown btn" aria-controls="events" title="Next Events Page"><span class="glyphicon glyphicon-chevron-down eventsControl"></span></a>
+</div>
+<div class="eventsPanel2" aria-hidden="true">
+<a class="eventsUp btn" aria-controls="events" title="Previous Events Page"><span class="glyphicon glyphicon-chevron-up eventsControl"></span></a>
+<div class="dayEvents"><h2><span class="glyphicon glyphicon-check"></span>&nbsp;<time datetime="2020-01-30">Thursday, January 30</time></h2><ul class="dailyEventList"><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=MjBvMHV1ZTA3MDZmZTVsN3UyM3J0aGpvcjZfMjAyMDAxMzBUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Finding Meaning: The Power and &hellip;</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=NGtscHNuZ3JlZmR1cWV1cmpjajM4MmxlbGFfMjAyMDAxMzBUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Time, Space, Place, Trace</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=NWh0YnBlbmhkaDV2aXBwOG5rcnV0ZTFyOHRfMjAyMDAxMzBUMTUwMDAwWiB1bmNnLmVkdV9wdjlqMXNsYWxqZ25tMTc5YTJhMXZhN2c2c0Bn&ctz=America/New_York"><span>10 am </span>&nbsp;Exhibition: Mirror, Mirror: The Prints of &hellip;</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=MTNlNjhyYXA3cjk0ZW41NmppZWppYnY4aTYgdW5jZy5lZHVfcHY5ajFzbGFsamdubTE3OWEyYTF2YTdnNnNAZw&ctz=America/New_York"><span>6:30 pm </span>&nbsp;UNCG Sustainability Film & Discussion: A &hellip;</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=NDVsOW41ZXI3YTRsYXNoNGpraTkwOHA0aDYgdW5jZy5lZHVfcHY5ajFzbGFsamdubTE3OWEyYTF2YTdnNnNAZw&ctz=America/New_York"><span>6:30 pm </span>&nbsp;Film: A Quest for Meaning</a></li><li class="eventTitle"><a href="https://www.google.com/calendar/event?eid=NzN1bmlqc204aTFnYzFkNDk1ZXZybW5oMGUgdW5jZy5lZHVfcHY5ajFzbGFsamdubTE3OWEyYTF2YTdnNnNAZw&ctz=America/New_York"><span>7 pm </span>&nbsp;WBasketball vs. Mercer </a></li></ul></div></div>
+                                    </div>
+
+                                  </div>
+
+                                <div class="row">
+                                  <p class="btn btn-default"><a href="//calendar.uncg.edu/">Visit The UNCG Public Calendar</a></p>
+                                </div>
+                        </div>
+
+                      </section>
+
+
+
+                    </section>
+                    <section id="callout" class="row">
+                      <div id="callouts" >
+                        <div class="first col-xs-1" aria-controls="calloutsWindow">&nbsp;</div>
+                        <div class="col-xs-10 calloutContent">
+
+                            <div id="calloutsWindow" class="slideWindow center-block">
+                              <ul class="slides">
+                                <li style="background-image:url('inc/images/uncgstories_2019_2020.jpg')">
+	<span><a href="https://uncgstories.uncg.edu/" title="FIND YOUR WAY HERE">FIND YOUR WAY HERE</a></span>
+</li>			
+<li style="background-image:url('inc/images/promo-fall-research-mag-2019.jpg')">
+	<span><a href="https://researchmagazine.uncg.edu/" title="Research Magazine">Research Magazine</a></span>
+</li>			
+<li style="background-image:url('inc/images/Broadway_UNCG_Mag_F19-Deonte_Goodman_074_280x200_pixels.jpg')">
+	<span><a href="https://alumnimagazine.uncg.edu/" title="UNCG<br />MAGAZINE">UNCG<br />MAGAZINE</a></span>
+</li>			
+<li style="background-image:url('inc/images/callout-stub-campustours-2016.jpg')">
+	<span><a href="http://admissions.uncg.edu/visit-campus-tour.php" title="Campus Tours">Campus Tours</a></span>
+</li>			
+<li style="background-image:url('inc/images/callout-stub-guarantee3.jpg')">
+	<span><a href="http://guarantee.uncg.edu/" title="Learn more">Learn more</a></span>
+</li>			
+                              </ul>
+                            </div>
+
+                        </div>
+                        <div class="last col-xs-1" aria-controls="calloutsWindow">&nbsp;</div>
+                      </div>
+                    </section>
+
+                    <section id="video-gallery" class="row">
+                    <div  class="col-xs-12 gradient">
+                      <h1>Video Gallery</h1>
+                      <div id="videos" class="row">
+                      <div class="first col-xs-1" aria-controls="videosWindow">&nbsp;</div>
+                        <div class="col-xs-10">
+
+                            <div id="videosWindow" class="slideWindow center-block">
+                              <div class="slides">
+                                		<div >
+			<div class="utube-img">
+				<a href="https://www.youtube.com/embed/97DmnPOPZ7w" class="fancybox">
+					<img class="utube-ss" src="https://i.ytimg.com/vi/97DmnPOPZ7w/hqdefault.jpg" alt="YouTube screenshot" />
+					<img class="utube-play" src="/images/home/video-play.png" alt="play video" />
+				</a>
+			</div>
+			<div class="utube-desc">
+				<p><a href="https://www.youtube.com/embed/97DmnPOPZ7w" class="fancybox">Emmylou Harris, award winning artist, producer, and UNC Greensboro alumna, visited campus as part of the University's annual concert and lecture series. She participated in a Q&A with students and fans ahead of a sold-out performance.
+
+Read more: https://newsandfeatures.uncg.edu/red-letter-day-red-dirt-girl/</a></p>
+			</div>
+		</div>
+		<div >
+			<div class="utube-img">
+				<a href="https://www.youtube.com/embed/4dozJhTgInQ" class="fancybox">
+					<img class="utube-ss" src="https://i.ytimg.com/vi/4dozJhTgInQ/hqdefault.jpg" alt="YouTube screenshot" />
+					<img class="utube-play" src="/images/home/video-play.png" alt="play video" />
+				</a>
+			</div>
+			<div class="utube-desc">
+				<p><a href="https://www.youtube.com/embed/4dozJhTgInQ" class="fancybox">We spent #MLKDay at the Greensboro Swarm with the local community celebrating the life and accomplishments of Dr. Martin Luther King Jr. #UNCGWay</a></p>
+			</div>
+		</div>
+		<div >
+			<div class="utube-img">
+				<a href="https://www.youtube.com/embed/8jw2bsmVzlY" class="fancybox">
+					<img class="utube-ss" src="https://i.ytimg.com/vi/8jw2bsmVzlY/hqdefault.jpg" alt="YouTube screenshot" />
+					<img class="utube-play" src="/images/home/video-play.png" alt="play video" />
+				</a>
+			</div>
+			<div class="utube-desc">
+				<p><a href="https://www.youtube.com/embed/8jw2bsmVzlY" class="fancybox">Learn about UNCG and get a unique look at our campus in our 360 VR campus tour!
+
+Schedule a tour to visit our beautiful campus at: https://admissions.uncg.edu/visit/campus-tours/.</a></p>
+			</div>
+		</div>
+		<div >
+			<div class="utube-img">
+				<a href="https://www.youtube.com/embed/Fh6ZWsmKkWo" class="fancybox">
+					<img class="utube-ss" src="https://i.ytimg.com/vi/Fh6ZWsmKkWo/hqdefault.jpg" alt="YouTube screenshot" />
+					<img class="utube-play" src="/images/home/video-play.png" alt="play video" />
+				</a>
+			</div>
+			<div class="utube-desc">
+				<p><a href="https://www.youtube.com/embed/Fh6ZWsmKkWo" class="fancybox">As 2019 comes to a close, it’s the perfect time to reflect on all that UNC Greensboro has accomplished over the past year. Take a look through our year in our highlights video above! #UNCGWay</a></p>
+			</div>
+		</div>
+		<div >
+			<div class="utube-img">
+				<a href="https://www.youtube.com/embed/KXTwZu8H6X0" class="fancybox">
+					<img class="utube-ss" src="https://i.ytimg.com/vi/KXTwZu8H6X0/hqdefault.jpg" alt="YouTube screenshot" />
+					<img class="utube-play" src="/images/home/video-play.png" alt="play video" />
+				</a>
+			</div>
+			<div class="utube-desc">
+				<p><a href="https://www.youtube.com/embed/KXTwZu8H6X0" class="fancybox">Men's and women's basketball coaches Wes Miller and Trina Patterson came down to our Holiday Pop Up Shop to hangout with Spartans and give away tickets to games!</a></p>
+			</div>
+		</div>
+		<div >
+			<div class="utube-img">
+				<a href="https://www.youtube.com/embed/k6nmhgLEw1c" class="fancybox">
+					<img class="utube-ss" src="https://i.ytimg.com/vi/k6nmhgLEw1c/hqdefault.jpg" alt="YouTube screenshot" />
+					<img class="utube-play" src="/images/home/video-play.png" alt="play video" />
+				</a>
+			</div>
+			<div class="utube-desc">
+				<p><a href="https://www.youtube.com/embed/k6nmhgLEw1c" class="fancybox">As the fall 2019 UNC Greensboro Spartan graduates turned their tassels in Greensboro Coliseum today, they also turned a new page in their life journeys. #UNCGgrad</a></p>
+			</div>
+		</div>
+		<div >
+			<div class="utube-img">
+				<a href="https://www.youtube.com/embed/GTWP99h1AUY" class="fancybox">
+					<img class="utube-ss" src="https://i.ytimg.com/vi/GTWP99h1AUY/hqdefault.jpg" alt="YouTube screenshot" />
+					<img class="utube-play" src="/images/home/video-play.png" alt="play video" />
+				</a>
+			</div>
+			<div class="utube-desc">
+				<p><a href="https://www.youtube.com/embed/GTWP99h1AUY" class="fancybox">Happy Holidays from UNCG! Watch the making of our annual holiday card, when members of the campus community gather to share Spartan spirit and celebrate the university's unique culture and legacy.  #UNCGWay
+
+View the holiday message and photo: https://chancellor.uncg.edu/seasons-greetings-2019/</a></p>
+			</div>
+		</div>
+		<div >
+			<div class="utube-img">
+				<a href="https://www.youtube.com/embed/gTKcFIHVT70" class="fancybox">
+					<img class="utube-ss" src="https://i.ytimg.com/vi/gTKcFIHVT70/hqdefault.jpg" alt="YouTube screenshot" />
+					<img class="utube-play" src="/images/home/video-play.png" alt="play video" />
+				</a>
+			</div>
+			<div class="utube-desc">
+				<p><a href="https://www.youtube.com/embed/gTKcFIHVT70" class="fancybox">Akm Zubair Siam found his way to UNC Greensboro because of his desire to be part of a diverse community. Siam moved to North Carolina from Bangladesh at age 11.
+
+Read more on our profile of him here: https://newsandfeatures.uncg.edu/class-of-2019-akm-zubair-siam/ #UNCGgrad #UNCGWay</a></p>
+			</div>
+		</div>
+                              </div>
+                            </div>
+
+                        </div>
+                      <div class="last col-xs-1" aria-controls="videosWindow">&nbsp;</div>
+                      </div>
+                      <ul><li><a href="https://youtube.com/uncg">View YouTube Channel</a></li></ul>
+                      </div>
+                    </section>
+
+                    <section id="site-navigation" class="row hidden-xs hidden-sm">
+                    <h1><span>More Campus Links</span></h1>
+                    <div class=" col-sm-12">
+
+                      <div>
+                        <div class="nav-centered">
+                          <ul class="first">
+                            <li><a href="/academics/">Academics</a></li>
+                            <li><a href="/administration/">Administration</a></li>
+                            <li><a href="/admissions/">Admissions</a></li>
+                            <li><a href="/arts-entertainment/">Arts &amp; Entertainment</a></li>
+                            <li><a href="http://uncgspartans.com/">Athletics</a></li>
+                          </ul>
+                          <ul>
+                            <li><a href="/employment/">Employment</a></li>
+                            <li><a href="http://diversity-inclusion.uncg.edu/">Equity, Diversity &amp; Inclusion</a></li>
+                            <li><a href="http://giving.uncg.edu/">Giving</a></li>
+                            <li><a href="https://www.uncg.edu/global/">Global</a></li>
+                          </ul>
+                          <ul>
+                            <li><a href="/inside-uncg/">Inside UNCG</a></li>
+                            <li><a href="http://library.uncg.edu/">Libraries</a></li>
+                            <li><a href="http://online.uncg.edu/">Online Courses &amp; Degrees</a></li>
+                            <li><a href="http://research.uncg.edu/">Research</a></li>
+                            <li><a href="https://sustainability.uncg.edu/">Sustainability</a></li>
+                            <li><a href="http://its.uncg.edu/">Technology</a></li>
+                          </ul>
+                          <div>
+                            <h2>IMPORTANT LINKS</h2>
+                            <ul>
+                              <li><a href="http://policy.uncg.edu/">Policy Updates</a></li>
+                              <li><a href="http://campusenterprises.uncg.edu/community/">Spartan Village</a></li>
+                              <li><a href="http://uncgqep.uncg.edu/"><abbr title="Southern Association of Colleges and Schools/Quality Enhancement Plan">SACS/QEP</abbr></a></li>
+                              <li><a href="http://strategicplan.uncg.edu/">Strategic Plan</a></li>
+                              <li><a href="http://opportunitygreensboro.com/">Opportunity Greensboro</a></li>
+                            </ul>
+                          </div>
+                          <div class="last">
+                            <h2>SITE TOOLS</h2>
+                            <ul>
+                              <li><a href="/online-map/">Campus Map</a></li>
+                              <li><a href="/comments/">Comments</a></li>
+                              <li><a href="http://directory.uncg.edu/">Directory</a></li>
+                              <li><a href="http://www.visitgreensboronc.com/">Greensboro, NC</a></li>
+                              <li><a href="http://calendar.uncg.edu/">Public Calendar</a></li>
+                            </ul>
+                          </div>
+                          <br class="clear">
+                        </div>
+                      </div>
+<span style="color:white; font-size:.7em;">
+Graphics credits: From Kiplinger’s Personal Finance, ©2019 The Kiplinger Washington Editors, Used under license. |
+
+From MONEY Magazine, ©2019 Meredith Corp. Used under license.<br>
+
+Used with permission. ©2019 TPR Education IP Holdings, LLC. The Princeton Review is not affiliated with Princeton University.
+</span>
+                      </div>
+                    </section>
+                  </div>
+
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+
+  <div id="footer" class="site-footer" role="contentinfo">
+     <div id="footer-content" class="row">
+        <div id="footer-left" class="site-footer-inner-left col-xs-12 col-sm-4 col-md-6">
+               <dl title="University Contact Information">
+      <dt>UNC Greensboro</dt>
+      <dd><strong>Location</strong> 1400 Spring Garden Street Greensboro, NC 27412</dd>
+      <dd><strong>Mailing Address</strong> PO Box 26170, Greensboro, NC 27402-6170</dd>
+      <dd><strong>Telephone</strong> 336.334.5000</dd>
+      <dd><strong><a href="/comments/">Comments</a></strong></dd>
+    </dl>
+	<p> Copyright &copy; 2019. UNC Greensboro.
+<br />All rights reserved.</p>
+        </div>
+        <div id="footer-right" class="site-footer-inner-right col-md-6 hidden-xs">
+          <!-- Footer Version 1.6 -->
+<div class="footer-logo">
+    
+</div>
+
+<div id="footer-nav">
+    <ul id="navlist-footer">
+        <li class="social"><a href="https://www.facebook.com/uncg1891/"><img src="/rincuncg/images/FB.svg" alt="Facebook"></a></li>
+        <li class="social"><a href="https://twitter.com/UNCG"><img src="/rincuncg/images/Twitter.svg" alt="Twitter"></a></li>
+        <li class="social"><a href="https://www.instagram.com/uncg/"><img src="/rincuncg/images/Instagram.svg" alt="Instagram"></a></li>
+        <li class="social"><a href="https://www.linkedin.com/school/uncg/"><img src="/rincuncg/images/Linkedin.svg" alt="Linkedin"></a></li>
+        <li class="social"><a href="https://www.youtube.com/uncg"><img src="/rincuncg/images/YT.svg" alt="Youtube"></a></li>
+        <li class="social"><a href="https://www.snapchat.com/add/uncgreensboro"><img src="/rincuncg/images/Snapchat.svg" alt="Snapchat"></a></li>
+    </ul>
+    <div id="google_translate_element"></div>
+    <a href="https://www.northcarolina.edu/" title="northcarolina.edu" alt="northcarolina.edu"><div id="unc-system"></div></a>
+</div>
+        </div>
+     </div>
+  </div>
+  <div style="clear:both;display:block;height:0">&nbsp;</div>
+</div>
+</div>
+<div id="shadow-bottom">&nbsp;</div>
+
+</body>
+</html>
+

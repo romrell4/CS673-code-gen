@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<!--partial: 'head'-->
+<html lang="en">
+    <head>     
+        <meta charset="utf-8" />
+		
+		
+        <title>A.T. Still University | Osteopathic Medical School | ATSU</title>
+		
+		
+        <link rel="stylesheet" href="/themes/atsu/css/all.css?v0-0-5">
+    	<link rel="stylesheet" href="/themes/atsu/css/global2-large.css?v0-0-2" type="text/css" media="all" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto:300,400,500,600,700" rel="stylesheet">
+		<link rel="stylesheet" href="/themes/atsu/css/ASHS-degree.css" />
+		<link rel="stylesheet" href="/themes/atsu/css/freshschoolstyle.css" />
+        <link rel="stylesheet" href="/themes/atsu/css/index-styles.css?v0-0-3" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+        <!-- ATSU-GTM-20171201 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PC45WR');</script>
+<!-- End ATSU-GTM -->
+
+<script src="/themes/atsu/scripts/jquery.validate.js"></script>
+   
+
+
+	
+    <!-- BREADCRUMBS -->
+    <script>
+		function convertText(path){
+			text = path.replace(/-/g,' ');
+			/*text = text.toUpperCase()*/
+			return text;
+		}
+		
+		function breadcrumbs() {
+			var url = $(location).attr('href');
+			url = url.replace(/\/$/, '');
+			var skip = 0;
+			
+			var pathArray = window.location.pathname.split('/');
+			console.log(pathArray)
+			
+			if (pathArray[4] == ''){
+				pathArray.pop
+				skip = 1;
+			}
+		
+			if (pathArray.length == 4 || skip == 1){
+				breadOutput = '<div class=topnav-bread><a href="/"> Home </a>' + ' / <a href="/' + pathArray[1] + '">' + convertText(pathArray[1]) + '</a> ' + '/ <a href="/' + pathArray[1] + '/' + pathArray[2] + '">' + convertText(pathArray[2]) + '</a> / ' + convertText(pathArray[3]) + '</div>'
+				document.write (breadOutput)
+			} else if(pathArray.length == 5){
+				breadOutput = '<div class=topnav-bread><a href="/"> Home </a>' + ' / <a href="/' + pathArray[1] + '">' + convertText(pathArray[1]) + '</a> ' + '/ <a href="/' + pathArray[1] + '/' + pathArray[2] + '">' + convertText(pathArray[2]) + '</a> / ' + '<a href="/' + pathArray[1] + '/' + pathArray[2] + '/' + pathArray[3] + '">' + convertText(pathArray[3]) + '</a> / ' + convertText(pathArray[4]) + '</div>'
+				document.write (breadOutput)
+			}
+		}
+    </script>
+
+    <!--legacy-head-if-statements partial-->
+	
+    
+	
+	
+    </head>
+
+    <body>
+            <!-- ATSU-GTM-20171201 (noscript) -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PC45WR"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End ATSU-GTM (noscript) -->
+       
+
+<style>
+    .trigger-hidden{color: #00538a;font-size:14px;cursor: pointer;}
+    .trigger-hidden:hover{font-weight: bold;}
+    .hidden-links{display: none;}
+    .hidden-links.active{display: inline-block;margin-top:8px;}
+    .hidden-link {float: left;margin-right: 30px;color:#50505b;}
+    .nav-inner-wrap .trigger-hidden{font-weight: 400;}
+    .marg-b-20{margin-bottom:20px;}
+    </style>
+    <!-- partial: navigation -->
+    	<a href="#content" class="skip">Skip to content</a>
+            <div id="side-drawer-modal" data-active="false"></div>
+            <div id="scroll-to-top"><i class="fa fa-chevron-up"></i></div>
+            <header id="fresh-header">
+                <div id="blue-top-nav">
+                    <div class="wrapper">
+                        <div class="row">
+                            <div class="mobile-visible mobile-buttons">
+                                <a class="phone-icon" href="/connect/contact-atsu" aria-label="phone"><i class="fas fa-phone"></i></a>
+                                <a class="map-icon" href="/contact/locate" aria-label="location"><i class="fas fa-map-marker-alt"></i></a>
+                                <!--<a class="contact-form-icon" href="/connect/contact-atsu"><i class="fas fa-pen-square"></i></a>-->
+                                <a class="search-icon" href="#" id="launch-search" aria-label="search icon"><i class="fas fa-search"></i></a>
+                            </div>
+                            
+                            <div class="one-half weather-info">
+                                <div>
+                                    <div id="minMaxTemps">
+                                      <div>
+                                        Mo. <span id="moMinTemp"></span>&#176; / <span id="moMaxTemp"></span>&#176;   
+                                      </div>
+                                      <div>   
+                                        Ariz. <span id="azMinTemp"></span>&#176; / <span id="azMaxTemp"></span>&#176;
+                                      </div>
+                                      <div>
+                                        Calif. <span id="caMinTemp"></span>&#176; / <span id="caMaxTemp"></span>&#176;
+                                      </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="one-half text-right blue-top-nav-items">
+                                <ul>
+                                    <li><a href="//www.atsu.edu/alumni/index.htm">Alumni</a></li>
+                                    <li><a href="//www.giving.atsu.edu/s/1883/bp19/home.aspx?gid=2&pgid=61">Support ATSU</a></li>
+                                    <li><a href="//my.atsu.edu/LoginPolicy.jsp">my.ATSU</a></li>
+                                    <li><a id="launch-search" aria-label="search launch" href="#"><i class="fas fa-search"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="white-top-nav">
+                    <div class="wrapper">
+                        <div class="row">
+                            <div class="one-half header-logo">
+                            <!-- <a href="/"> -->
+                            
+
+                            <a href="/">
+                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 143.9 34.3" aria-labelledby="A.T. Still University"><defs><style>.cls-1{fill:#3487b7;}.cls-2{fill:#666766;}</style></defs><title>A.T. Still University</title><path class="cls-1" d="M7.4,15.8a.22.22,0,0,0-.2.2L5.7,19.8a4.92,4.92,0,0,0-.4,1.7c0,.5.2.9,1.1.9h.4c.3,0,.4.1.4.2s-.2.3-.5.3c-.9,0-2.1-.1-2.9-.1-.3,0-1.8.1-3.2.1-.3,0-.5-.1-.5-.3s.1-.2.3-.2a2.77,2.77,0,0,0,.9-.1c1.3-.2,1.8-1.1,2.3-2.5L10.5,2.7c.3-.8.5-1.1.8-1.1s.4.2.7.9C12.7,4,17.1,15,18.8,19.2c1,2.5,1.8,2.9,2.4,3a4.87,4.87,0,0,0,1.2.1c.2,0,.4,0,.4.2s-.2.3-1.3.3-3,0-5.2-.1c-.5,0-.8,0-.8-.2s.1-.2.4-.2a.49.49,0,0,0,.3-.6L13.8,16c-.1-.1-.1-.2-.3-.2ZM13,14.5c.1,0,.2-.1.1-.2L10.6,7.5a.35.35,0,0,0-.1-.2l-.2.2L7.8,14.2c0,.1,0,.2.1.2l5.1.1Z" transform="translate(-0.1)"></path><path class="cls-1" d="M26.9,3.6l-4.1.1c-1.6.1-2.3.2-2.7.8a3.09,3.09,0,0,0-.5,1c-.1.2-.1.3-.3.3s-.2-.1-.2-.4a26.13,26.13,0,0,1,.6-3.2c.1-.4.2-.5.3-.5a3.87,3.87,0,0,0,1.2.3,23.48,23.48,0,0,0,2.7.1H34.8c.9,0,1.5-.1,1.9-.1a2.64,2.64,0,0,1,.7-.1c.2,0,.2.2.2.6,0,.6-.1,2.5-.1,3.2,0,.3-.1.4-.2.4S37,6,37,5.5V5.2c-.1-.7-.8-1.5-3.2-1.5l-3.5-.1V14.9c0,2.5,0,4.7.1,5.9.1.8.2,1.4,1.1,1.5a6.6,6.6,0,0,0,1.4.1c.3,0,.4.1.4.2s-.2.3-.5.3c-1.8,0-3.5-.1-4.3-.1-.6,0-2.4.1-3.5.1-.4,0-.5-.1-.5-.3s.1-.2.4-.2.7-.1,1-.1c.5-.1.7-.7.8-1.5.1-1.2.1-3.3.1-5.9l.1-11.3Z" transform="translate(-0.1)"></path><path class="cls-1" d="M40.1,22.5c-.4-.2-.5-.3-.5-.9,0-1.5.1-3.2.1-3.6s.1-.7.3-.7.3.2.3.5a7.84,7.84,0,0,0,.2,1.4A3.81,3.81,0,0,0,44.4,22c2.5,0,3.7-1.7,3.7-3.1s-.4-2.6-2.7-4.4l-1.3-1C41.1,11.1,40,9.2,40,7c0-3,2.5-5.2,6.4-5.2a12.91,12.91,0,0,1,3.7.5c.2.1.4.1.4.3,0,.4-.1,1.2-.1,3.3,0,.6-.1.8-.3.8s-.3-.2-.3-.5a3.14,3.14,0,0,0-.7-1.8,3.51,3.51,0,0,0-3-1.3c-2,0-3.3,1.2-3.3,2.8,0,1.3.6,2.2,2.9,4l.8.6c3.3,2.5,4.5,4.4,4.5,7a5.54,5.54,0,0,1-2.6,4.8A7.81,7.81,0,0,1,44,23.4,12.36,12.36,0,0,1,40.1,22.5Z" transform="translate(-0.1)"></path><path class="cls-1" d="M56.5,10a57.12,57.12,0,0,0-.1-5.8c-.1-.9-.3-1.4-1.2-1.6a3.42,3.42,0,0,0-1.1-.1c-.3,0-.5-.1-.5-.2s.3-.3.7-.3c1.5,0,3.2.1,4,.1S60.7,2,61.7,2c.4,0,.6.1.6.2s-.2.2-.4.2a2.2,2.2,0,0,0-.8.1c-.7.1-1,.6-1,1.6S60,5.8,60,10v3.8c0,4,.8,5.7,2.2,6.8a5,5,0,0,0,3.4,1.1,5.43,5.43,0,0,0,3.8-1.5c1.5-1.5,1.6-4,1.6-6.8V10a57.12,57.12,0,0,0-.1-5.8c-.1-.9-.3-1.4-1.2-1.6a3.08,3.08,0,0,0-1-.1c-.3,0-.5-.1-.5-.2s.3-.3.7-.3c1.4,0,3.1.1,3.2.1.3,0,2.1-.1,3.1-.1.4,0,.6.1.6.2s-.2.2-.5.2a2.2,2.2,0,0,0-.8.1c-.7.1-1,.6-1,1.6s-.1,1.7-.1,5.8V13c0,3.1-.3,6.3-2.6,8.3a8,8,0,0,1-5.7,2A8.85,8.85,0,0,1,59,21.4c-1.4-1.3-2.5-3.3-2.5-7.3Z" transform="translate(-0.1)"></path><path class="cls-2" d="M91,2.1h.9l4.1,9H94.9l-1-2.3H89l-1.1,2.4h-1Zm2.4,5.7-2-4.5-2,4.5Z" transform="translate(-0.1)"></path><path class="cls-2" d="M97,9.7h1.2V11H97Z" transform="translate(-0.1)"></path><path class="cls-2" d="M100.9,3.1h-3V2.2h7v.9h-3v8h-1C101,11.1,101,3.1,100.9,3.1Z" transform="translate(-0.1)"></path><path class="cls-2" d="M104.3,9.7h1.2V11h-1.2Z" transform="translate(-0.1)"></path><path class="cls-2" d="M110.9,9.8l.6-.7a4.39,4.39,0,0,0,3.1,1.3c1.2,0,2-.6,2-1.5h0c0-.8-.4-1.3-2.3-1.7-2.1-.4-3-1.1-3-2.6h0c0-1.4,1.2-2.4,2.9-2.4a4.69,4.69,0,0,1,3.1,1.1l-.6.8a3.88,3.88,0,0,0-2.6-1c-1.2,0-1.9.6-1.9,1.4h0c0,.8.5,1.3,2.4,1.7s2.9,1.2,2.9,2.5h0c0,1.5-1.3,2.5-3,2.5A5.43,5.43,0,0,1,110.9,9.8Z" transform="translate(-0.1)"></path><path class="cls-2" d="M119.4,9.3v-4h-.9V4.5h.9v-2h1v2h2.1v.9h-2.1V9.2a1,1,0,0,0,1.1,1.1,2.92,2.92,0,0,0,.9-.2v.8a2.13,2.13,0,0,1-1.2.3A1.71,1.71,0,0,1,119.4,9.3Z" transform="translate(-0.1)"></path><path class="cls-2" d="M124.1,2h1.1V3.1h-1.1Zm.1,2.5h1v6.6h-1Z" transform="translate(-0.1)"></path><path class="cls-2" d="M127.2,1.8h1v9.3h-1Z" transform="translate(-0.1)"></path><path class="cls-2" d="M130.3,1.8h1v9.3h-1Z" transform="translate(-0.1)"></path><path class="cls-2" d="M87,19V13.8h1V19c0,1.9,1,3,2.7,3a2.58,2.58,0,0,0,2.7-2.9V13.9h1V19c0,2.6-1.5,3.9-3.7,3.9S87,21.5,87,19Z" transform="translate(-0.1)"></path><path class="cls-2" d="M95.7,16.2h1v1.1A2.44,2.44,0,0,1,98.9,16a2.39,2.39,0,0,1,2.5,2.6v4.1h-1V18.9a1.79,1.79,0,0,0-1.8-2,2,2,0,0,0-2,2.1v3.8h-1C95.7,22.7,95.7,16.2,95.7,16.2Z" transform="translate(-0.1)"></path><path class="cls-2" d="M102.8,13.6h1.1v1.1h-1.1Zm.1,2.6h1v6.6h-1Z" transform="translate(-0.1)"></path><path class="cls-2" d="M104.9,16.2H106l2.2,5.5,2.2-5.5h1.1l-2.9,6.6h-.9Z" transform="translate(-0.1)"></path><path class="cls-2" d="M111.8,19.5h0A3.3,3.3,0,0,1,115,16c1.9,0,3.1,1.5,3.1,3.5v.3h-5.2a2.24,2.24,0,0,0,2.3,2.2,3.12,3.12,0,0,0,2.1-.9l.6.5a3.6,3.6,0,0,1-2.7,1.2A3.17,3.17,0,0,1,111.8,19.5Zm5.3-.4a2.14,2.14,0,0,0-2.1-2.2,2.27,2.27,0,0,0-2.1,2.2Z" transform="translate(-0.1)"></path><path class="cls-2" d="M119.4,16.2h1v1.7a2.7,2.7,0,0,1,2.7-1.8v1.1H123c-1.4,0-2.6,1-2.6,3v2.6h-1V16.2Z" transform="translate(-0.1)"></path><path class="cls-2" d="M123.6,21.9l.5-.7a4,4,0,0,0,2.3.8c.8,0,1.4-.4,1.4-1h0c0-.7-.8-.9-1.6-1.2-1-.3-2.2-.6-2.2-1.9h0a2,2,0,0,1,2.2-1.9,5.13,5.13,0,0,1,2.4.7l-.4.7a3.53,3.53,0,0,0-1.9-.6c-.8,0-1.3.4-1.3,1h0c0,.6.8.9,1.7,1.1s2.1.7,2.1,1.9h0a2.09,2.09,0,0,1-2.3,2A3.9,3.9,0,0,1,123.6,21.9Z" transform="translate(-0.1)"></path><path class="cls-2" d="M130.2,13.6h1.1v1.1h-1.1Zm0,2.6h1v6.6h-1Z" transform="translate(-0.1)"></path><path class="cls-2" d="M133.5,21V17h-.9v-.9h.9v-2h1v2h2.1V17h-2.1v3.8a1,1,0,0,0,1.1,1.1,2.92,2.92,0,0,0,.9-.2v.8a2.13,2.13,0,0,1-1.2.3C134.3,22.9,133.5,22.3,133.5,21Z" transform="translate(-0.1)"></path><path class="cls-2" d="M143,16.2h1L141.2,23c-.6,1.4-1.2,1.9-2.2,1.9a3.19,3.19,0,0,1-1.4-.3l.3-.8a1.64,1.64,0,0,0,1,.2c.6,0,.9-.3,1.4-1.2l-3-6.6h1.1l2.4,5.5Z" transform="translate(-0.1)"></path><rect class="cls-2" x="80.5" width="0.4" height="24.9"></rect><path d="M1,30.4H3.3v.5H1.6V32H3.3v.5H1.6v1.6H1.1L1,30.4Z" transform="translate(-0.1)"></path><path d="M5.5,30.4H6v3.7H5.5Z" transform="translate(-0.1)"></path><path d="M8.4,30.4H9.7a1,1,0,1,1,.3,2l1.1,1.7h-.6l-.9-1.6H8.9v1.6H8.4V30.4ZM8.9,32h.7c.4,0,.8-.1.8-.6s-.4-.6-.8-.6H8.9Z" transform="translate(-0.1)"></path><path d="M13.3,33.3a.91.91,0,0,0,.8.4.66.66,0,0,0,.7-.6c0-.9-1.8-.3-1.8-1.8a1.16,1.16,0,0,1,1.3-1,1.5,1.5,0,0,1,1.1.4l-.4.4a.78.78,0,0,0-.7-.3c-.6,0-.7.3-.7.6,0,.9,1.8.4,1.8,1.7a1.24,1.24,0,0,1-1.3,1.2,1.66,1.66,0,0,1-1.2-.5Z" transform="translate(-0.1)"></path><path d="M18.4,30.9H17.2v-.5h2.9v.5H18.9v3.2h-.5Z" transform="translate(-0.1)"></path><path d="M25.2,30.4h.5v3.7h-.5Z" transform="translate(-0.1)"></path><path d="M28.3,30.4H29l2,3.1h0V30.4h.5v3.7h-.6l-2.1-3h0v3h-.5Z" transform="translate(-0.1)"></path><path d="M36.2,30.4h.5l.8,3h0l.9-3H39l.9,3h0l.8-3h.5l-1.1,3.7h-.5l-.9-3h0l-.9,3h-.5Z" transform="translate(-0.1)"></path><path d="M43.1,30.4h.5V32h1.9V30.5H46v3.7h-.5V32.5H43.6v1.7h-.5Z" transform="translate(-0.1)"></path><path d="M48.3,32.3a1.9,1.9,0,1,1,1.9,2A1.92,1.92,0,0,1,48.3,32.3Zm3.3,0a1.4,1.4,0,1,0-1.4,1.5A1.39,1.39,0,0,0,51.6,32.3Z" transform="translate(-0.1)"></path><path d="M54.2,30.4h.5v3.2h1.7v.5H54.2Z" transform="translate(-0.1)"></path><path d="M58.5,30.4h2.4v.5H59V32h1.8v.5H59v1.2h2v.5H58.5V30.4Z" transform="translate(-0.1)"></path><path d="M65.9,30.4h1.3a1.06,1.06,0,0,1,1.2,1c0,.5-.2,1-1.2,1h-.8V34h-.5V30.4Zm.5,1.6h.7c.4,0,.8-.1.8-.6s-.4-.6-.8-.6h-.7Z" transform="translate(-0.1)"></path><path d="M70.4,30.4h2.4v.5H71V32h1.8v.5H71v1.2h2v.5H70.5l-.1-3.8Z" transform="translate(-0.1)"></path><path d="M74.9,30.4h1.3a1.06,1.06,0,0,1,1.2,1,1,1,0,0,1-.9,1l1.1,1.7H77l-1-1.6h-.6v1.6h-.5Zm.5,1.6h.7c.4,0,.8-.1.8-.6s-.4-.6-.8-.6h-.7Z" transform="translate(-0.1)"></path><path d="M79.7,33.3a.91.91,0,0,0,.8.4.66.66,0,0,0,.7-.6c0-.9-1.8-.3-1.8-1.8a1.16,1.16,0,0,1,1.3-1,1.5,1.5,0,0,1,1.1.4l-.4.4a.78.78,0,0,0-.7-.3c-.6,0-.7.3-.7.6,0,.9,1.8.4,1.8,1.7a1.24,1.24,0,0,1-1.3,1.2,1.66,1.66,0,0,1-1.2-.5Z" transform="translate(-0.1)"></path><path d="M83.8,32.3a1.9,1.9,0,1,1,1.9,2A1.92,1.92,0,0,1,83.8,32.3Zm3.3,0a1.4,1.4,0,1,0-1.4,1.5A1.45,1.45,0,0,0,87.1,32.3Z" transform="translate(-0.1)"></path><path d="M89.8,30.4h.7l2.1,3.1h0V30.4H93v3.7h-.6l-2.1-3h0v3h-.5Z" transform="translate(-0.1)"></path><path d="M98.1,30.4h.5V32h1.9V30.5h.5v3.7h-.5V32.5H98.6v1.7h-.5Z" transform="translate(-0.1)"></path><path d="M103.5,30.4h2.4v.5H104V32h1.8v.5H104v1.2h2v.5h-2.5Z" transform="translate(-0.1)"></path><path d="M109.1,30.4h.5l1.6,3.7h-.6l-.4-.9h-1.8l-.4.9h-.6Zm.9,2.4-.7-1.7h0l-.7,1.7Z" transform="translate(-0.1)"></path><path d="M113.1,30.4h.5v3.2h1.7v.5h-2.2Z" transform="translate(-0.1)"></path><path d="M117.8,30.9h-1.2v-.5h2.9v.5h-1.2v3.2h-.5Z" transform="translate(-0.1)"></path><path d="M121.6,30.4h.5V32H124V30.5h.5v3.7H124V32.5h-1.9v1.7h-.5Z" transform="translate(-0.1)"></path><path d="M129.5,31.2a1.09,1.09,0,0,0-.9-.4,1.45,1.45,0,0,0-1.4,1.5,1.39,1.39,0,0,0,1.4,1.5,1.23,1.23,0,0,0,1-.5l.4.3a1.65,1.65,0,0,1-1.4.7,1.9,1.9,0,0,1-1.9-1.9,1.92,1.92,0,0,1,1.9-2,1.61,1.61,0,0,1,1.3.6Z" transform="translate(-0.1)"></path><path d="M132.7,30.4h.5l1.6,3.7h-.6l-.4-.9H132l-.4.9H131Zm.9,2.4-.7-1.7h0l-.7,1.7Z" transform="translate(-0.1)"></path><path d="M136.7,30.4H138a1,1,0,1,1,.3,2l1.1,1.7h-.6l-.9-1.6h-.6v1.6h-.5l-.1-3.7Zm.5,1.6h.7c.4,0,.8-.1.8-.6s-.4-.6-.8-.6h-.7Z" transform="translate(-0.1)"></path><path d="M141.4,30.4h2.4v.5h-1.9V32h1.8v.5h-1.8v1.2h2v.5h-2.5Z" transform="translate(-0.1)"></path></svg>
+                            
+</a>
+                            <!-- </a> -->
+                            </div>
+                            <div id="top-bar-cta" class="one-half text-right">
+                                <a href="//www.atsu.edu/connect/contact-atsu" class="link-button hollow">Request info</a>
+                                
+                                <a href="//www.atsu.edu/contact/apply" class="link-button">Apply</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="nav-top-level">
+                    <div class="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <ul>
+                        <li data-active="false" data-sub-menu="about" href="//www.atsu.edu/about-atsu"><button>About ATSU</button></li>
+                        <li data-active="false" data-sub-menu="programs" href="//catalog.atsu.edu/content.php?catoid=6&navoid=174"><button>Programs</button></li>
+                        <li data-active="false" data-sub-menu="admissions" href="//www.atsu.edu/contact/apply"><button>Admissions</button></li>
+                        <li data-active="false" data-sub-menu="colleges" href="//www.atsu.edu/about-atsu#Colleges-Schools"><button>Colleges & Schools</button></li>
+                        <li data-active="false" data-sub-menu="students" href="//www.atsu.edu/department-of-student-affairs"><button>Students</button></li>
+                        <li data-active="false" data-sub-menu="diversity" href="//www.atsu.edu/diversity-webinars"><a href="//www.atsu.edu/diversity-webinars">Diversity</a></li>
+                    </ul>
+                    <div class="mobile-visible">
+                        <ul style="padding-top: 0;">
+                            <li><a href="//www.atsu.edu/connect/contact-atsu">Contact Us</a></li>
+                            <li><a href="//www.atsu.edu/alumni/index.htm">Alumni</a></li>
+                            <li><a href="//www.atsu.edu/support_atsu/index.htm">Support ATSU</a></li>
+                            <li><a href="//my.atsu.edu/LoginPolicy.jsp">my.ATSU</a></li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- ABOUT -->
+                <nav data-sub-menu="about" data-active="false" class="fresh-nav">
+                    <i class="far fa-times-circle closing-icon"></i>
+                    <div class="nav-inner-wrap">
+                        <div class="row">
+                            <div class="sub-menu-snippet">
+                                <h2>ATSU Mission</h2>
+                                <p>A.T. Still University of Health Sciences serves as a learning-centered university dedicated to preparing highly competent professionals through innovative academic programs with a commitment to continue its osteopathic heritage and focus on whole person healthcare, scholarship, community health, interprofessional education, diversity, and underserved populations.</p>
+                                <a class="naked-link-button chevron" href="//www.atsu.edu/about-atsu#Mission-Vision">See our history</a>
+                            </div>
+                            <div class="flex1">
+                                <h3>Get to know us</h3>
+                                <a class="naked-link-button" href="//www.atsu.edu/about-atsu">About ATSU</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/accreditation">Accreditation</a>
+                                <a class="naked-link-button" href="/contact/locate">Our Locations</a>
+    <!--                        <a class="naked-link-button needs-href">Departments</a> -->
+                                <a class="naked-link-button" href="//www.atsu.edu/a-t-still-university/clinics">Facilities & Clinics</a>
+                            </div>
+                            <div class="flex1">
+                                <div class="h3-spacing"></div>
+                                <a class="naked-link-button" href="//www.atsu.edu/a-t-still-university/faculty">Faculty & Administration</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/museum-of-osteopathic-medicine/">Museum of Osteopathic Medicine</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/about-atsu#Quick-Facts">Quick Facts</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/research/index.htm">Research</a>
+                            </div>
+                            <div class="text-right" style="width: 200px;">
+                                <h3>Quick links</h3>
+                                <a class="naked-link-button chevron" href="//www.atsu.edu/connect/contact-atsu">Contact Us</a>
+                                <a class="naked-link-button chevron" href="//iconnect.atsu.edu/">ATSU News</a>
+                                <a class="naked-link-button chevron" href="/events/index.htm">ATSU Events</a>
+                                <a class="naked-link-button chevron" href="//www.atsu.edu/connect/contact-atsu">Schedule a Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+    
+                <!-- PROGRAMS -->
+                <nav data-sub-menu="programs" data-active="false" class="fresh-nav">
+                    <i class="far fa-times-circle closing-icon"></i>
+                    <div class="nav-inner-wrap">
+                        <div class="row">
+                            <div class="sub-menu-button-bank">
+                                <button class="naked-link-button" data-active="true" data-button-bank-menu="on campus">On Campus<i class="fas fa-chevron-right"></i></button>
+                                <button class="naked-link-button" data-active="false" data-button-bank-menu="online">Online<i class="fas fa-chevron-right"></i></button>
+                                <!--<span class="naked-link-button" data-active="false" data-button-bank-menu="blended">Blended Learning<i class="fas fa-chevron-right"></i></span>-->
+                                <button class="naked-link-button" data-active="false" data-button-bank-menu="certificates">Certificates<i class="fas fa-chevron-right"></i></button>
+                                <button class="naked-link-button" data-active="false" data-button-bank-menu="residencies">Residencies<i class="fas fa-chevron-right"></i></button>
+                                <button class="naked-link-button" data-active="false" data-button-bank-menu="continuing education">Continuing Education<i class="fas fa-chevron-right"></i></button>
+                                <a class="naked-link-button" href="//catalog.atsu.edu/" target="_blank">View University Catalog<i class="fas fa-chevron-right"></i></a>
+                            </div>
+    
+                            <!-- ON CAMPUS -->
+                            <div class="row flex1 button-bank-menu" data-active="true" data-button-bank-menu="on campus" style="justify-content: space-evenly;">
+                                <div>
+                                    <h3>Doctorate programs</h3>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-audiology-degree">Doctor of Audiology</a>
+                                    
+                                    <div class="marg-b-20">
+                                        <button class="trigger-hidden">Doctor of Dental Medicine <br></button>
+                                        <div class="hidden-links">
+                                            <div class="hidden-link"><a href="/asdoh">Arizona</a></div>
+                                            <div class="hidden-link"><a href="/missouri-school-of-dentistry-and-oral-health">Missouri</a></div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <a class="naked-link-button" href="//www.atsu.edu/occupational-therapy-doctorate-entry-level-degree">Doctor of Occupational Therapy</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-physical-therapy-degree">Doctor of Physical Therapy</a>
+                                    <div  class="marg-b-20">
+                                        <button class="trigger-hidden">Doctor of Osteopathic Medicine<br></button>
+                                        <div class="hidden-links">
+                                            <div class="hidden-link"><a href="/school-of-osteopathic-medicine-arizona/academics/do-program">Arizona</a></div>
+                                            <div class="hidden-link"><a href="/kirksville-college-of-osteopathic-medicine/academics/do-program">Missouri</a></div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div>
+                                    <h3>Master's programs</h3>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-science-in-athletic-training-degree">Master of Science in Athletic Training</a>
+                                    <a class="naked-link-button" href="/kirksville-college-of-osteopathic-medicine/academics/ms-program">Master of Science in Biomedical Sciences</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/asdoh/programs/orthodontics/index.htm">Master of Science in Orthodontics</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/occupational-therapy-degree">Master of Science in Occupational Therapy</a>
+                                    <div class="marg-b-20">
+                                        <button class="trigger-hidden">Master of Science in Physician Assistant Studies<br></button>
+                                        <div class="hidden-links">
+                                            <div class="hidden-link"><a href="/physician-assistant-degree">Arizona</a></div>
+                                            <div class="hidden-link"><a href="/college-for-healthy-communities/prospective-students/ccpap">California</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            <!-- ONLINE -->
+                            <div class="row flex1 button-bank-menu" data-active="false" data-button-bank-menu="online" style="justify-content: space-evenly;">
+                                <div>
+                                    <h3>Doctorate programs</h3>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-athletic-training-degree-online">Doctor of Athletic Training</a>
+                                    
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-education-in-health-professions-degree">Doctor of Education in Health Professions</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-health-administration-degree">Doctor of Health Administration</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-health-science-degree">Doctor of Health Sciences</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-medical-science">Doctor of Medical Science</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-nursing-practice-online">Doctor of Nursing Practice</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-audiology-degree-online">Post-Professional Doctor of Audiology</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/post-professional-doctor-of-audiology-non-degree">Post-Professional Doctor of Audiology - (non-degree)</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/post-professional-doctor-of-physical-therapy-degree">Post-Professional Doctor of Physical Therapy</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/post-professional-doctor-of-physical-therapy-non-degree">Post-Professional Physical Therapy - (non-degree)</a>
+                                </div>
+                                
+                                <div>
+                                    <h3>Master's programs</h3>
+                                    <a class="naked-link-button" href="//www.atsu.edu/advanced-physician-assistant-degree">Advanced Physician Assistant Studies</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-health-administration-degree">Master of Health Administration</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-public-health-degree">Master of Public Health</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-public-health-dental-emphasis-degree">Master of Public Health - Dental Emphasis</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-public-health-dental-emphasis-dental-public-health-residency">Master of Public Health - Dental Emphasis with <br>a Dental Public Health Residency Certificate</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-science-in-kinesiology-degree">Master of Science in Kinesiology</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-science-in-nursing-online">Master of Science in Nursing</a>
+    
+                                </div>
+                            </div>
+    
+                            <!-- BLENDED LEARNING -->
+    <!--                    <div class="row flex1 button-bank-menu" data-active="false" data-button-bank-menu="blended">
+                                <div>   
+                                    <h3>Doctorate programs</h3>
+                                    <a class="naked-link-button" href="//www.atsu.edu/doctor-of-health-science-degree">Doctor of Health Sciences</a>
+                                </div>
+                                <div>
+                                    <h3>Master's programs</h3>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-science-in-kinesiology-degree">Master of Science in Kinesiology</a>
+                                </div>
+                            </div>
+    -->
+                            <!-- CERTIFICATES -->
+                            <div class="row flex1 button-bank-menu" data-active="false" data-button-bank-menu="certificates">
+                                    <div>
+                                    <a class="naked-link-button" href="https://www.atsu.edu/master-of-science-in-kinesiology-degree#curriculum">Certificate in Adaptive Sports</a>
+                                    <a class="naked-link-button" href="/athletic-training-clinical-decision-making-graduate-certificate">Certificate in Clinical Decision-Making in Athletic Training</a>
+                                    <a class="naked-link-button" href="/doctor-of-health-science-degree/fundamentals-of-education-certificate">Certificate in Fundamentals of Education</a>
+                                    <a class="naked-link-button" href="/doctor-of-health-science-degree/global-health-certificate">Certificate in Global Health</a>
+                                    <a class="naked-link-button" href="/athletic-training-leadership-and-education-graduate-certificate">Certificate in Leadership and Education</a>
+                                    <a class="naked-link-button" href="/doctor-of-health-science-degree/leadership-and-organizational-behavior-certificate">Certificate in Leadership and Organizational Behavior</a>
+                                    <a class="naked-link-button" href="/athletic-training-orthopaedics-graduate-certificate">Certificate in Orthopaedics</a>
+                                    </div>
+                                    
+                                    <div>
+                                    <a class="naked-link-button" href="/athletic-training-rehabilitation-graduate-certificate">Certificate in Rehabilitation</a>
+                                    <a class="naked-link-button" href="/athletic-training-sports-neurology-and-concussion-graduate-certificate">Certificate in Sport Neurology and Concussion</a>
+                                    <a class="naked-link-button" href="https://www.atsu.edu/master-of-science-in-kinesiology-degree#curriculum">Certificate in Corrective Exercise & Orthopedic Rehabilitation</a>
+                                    <a class="naked-link-button" href="/master-of-science-in-kinesiology-degree#curriculum">Certificate in Exercise and Sport Psychology</a>
+                                    <a class="naked-link-button" href="/master-of-science-in-kinesiology-degree#curriculum">Certificate in Geriatric Exercise Science</a>
+                                   
+                                    <a href="https://www.atsu.edu/master-of-science-in-kinesiology-degree#curriculum" class="naked-link-button">Sports Conditioning Track</a>
+                                    </div>
+                               
+                            </div>
+    
+                            <!-- RESIDENCIES -->
+                            <div class="row flex1 button-bank-menu" data-active="false" data-button-bank-menu="residencies">
+                                <div style="max-width: 100%;">
+                                    <h3>Residency Programs</h3>
+                                    <a class="naked-link-button" href="//www.atsu.edu/master-of-public-health-dental-emphasis-dental-public-health-residency">Dental Public Health Residency</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/orthopedic-physical-therapy-residency">Orthopedic Physical Therapy Residency</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/neurologic-physical-therapy-residency">Neurologic Physical Therapy Residency</a>
+                                </div>
+                            </div>
+    
+                            <!-- CONTINUING EDUCATION -->
+                            <div class="row flex1 button-bank-menu" data-active="false" data-button-bank-menu="continuing education">
+                                <div style="max-width: 100%;">
+                                    <h3>Continuing Education</h3>
+                                    <a class="naked-link-button" href="//ce.atsu.edu/">Upcoming Programs</a>
+                                    <a class="naked-link-button" href="//ce.atsu.edu/continuing-education/preceptor-credit/">Clincal Preceptor</a>
+                                    <a class="naked-link-button" href="//www.atsu.edu/continuing-education/preceptor_credit.asp">Credit Request</a>
+                                    <a class="naked-link-button" href="//ce.atsu.edu/event-archive/">Previous Program Resources</a>
+                                    <a class="naked-link-button" href="//ce.atsu.edu/continuing-medical-education/">Registration</a>
+                                    
+                                    <a class="naked-link-button" href="//ce.atsu.edu/about-continuing-education/">Who's Who</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+    
+                <!-- ADMISSIONS-->
+                <nav data-sub-menu="admissions" data-active="false" class="fresh-nav">
+                    <i class="far fa-times-circle closing-icon"></i>
+                    <div class="nav-inner-wrap">
+                        <div class="row">
+                            <div class="sub-menu-snippet">
+                                <h2>Visit ATSU</h2>
+                                <p>Schedule your tour today or <br>view our virtual tours.</p>
+                                <a class="naked-link-button chevron" href="//www.atsu.edu/contact/connect">Learn more</a>
+                            </div>
+                            <div class="flex1">
+                                <h3>Lets get started</h3>
+                                <a class="naked-link-button" href="/department-of-student-affairs/admissions">Admissions</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/department-of-student-affairs/enrollment-services">Enrollment Services</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/department-of-student-affairs/enrollment-services/types-of-aid">Student Financial Assistance</a>
+                                <a class="naked-link-button" href="/department-of-student-affairs">Student Affairs</a>
+                            </div>
+                            <div class="flex1">
+                                <div class="h3-spacing"></div>
+                                <a class="naked-link-button" href="/finance/tuition">Tuition and Fees</a>
+                                <a class="naked-link-button" href="//aztour.atsu.edu">Virtual Tour - Mesa, Ariz.</a>
+                                <a class="naked-link-button" href="//motour.atsu.edu">Virtual Tour - Kirksville, Mo.</a>
+                                <a class="naked-link-button needs-href" style="display: none;">Virtual Tour - California</a>
+                            </div>
+                            <div class="text-right" style="width: 200px;">
+                                <h3>Quick links</h3>
+                                <a class="naked-link-button chevron" href="//www.atsu.edu/contact/apply">Apply now</a>
+                                <a class="naked-link-button chevron" href="//www.atsu.edu/contact/connect">Contact a representative</a>
+                                <a class="naked-link-button chevron" href="//www.atsu.edu/connect/contact-atsu">Request information</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+    
+                <!-- COLLEGES-->
+                <nav data-sub-menu="colleges" data-active="false" class="fresh-nav">
+                    <i class="far fa-times-circle closing-icon"></i>
+                    <div class="nav-inner-wrap">
+                        <div class="row">
+                            <div class="sub-menu-snippet">
+                                <h2>Our locations</h2>
+                                <p>With locations in the heart of Arizona, Missouri, and California, one of our colleges/schools will be the perfect <br>fit for you.</p>
+                                <a class="naked-link-button chevron" href="/contact/locate">Learn more</a>
+                            </div>
+                            <div class="flex1">
+                                <h3>Explore our colleges & schools</h3>
+                                <a class="naked-link-button" href="/asdoh">Arizona School of Dentistry & Oral Health</a>
+                                <a class="naked-link-button" href="/arizona-school-of-health-sciences">Arizona School of Health Sciences</a>
+                                <a class="naked-link-button" href="/college-of-graduate-health-studies">College of Graduate Health Studies</a>
+                                <a class="naked-link-button" href="/college-for-healthy-communities">College for Healthy Communities</a>
+                            </div>
+                            <div class="flex1">
+                                <div class="h3-spacing"></div>
+                                <a class="naked-link-button" href="//www.atsu.edu/kirksville-college-of-osteopathic-medicine">Kirksville College of Osteopathic Medicine</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/missouri-school-of-dentistry-and-oral-health">Missouri School of Dentistry & Oral Health</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/school-of-osteopathic-medicine-arizona">School of Osteopathic Medicine in Arizona</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+    
+            <!-- STUDENTS -->
+                <nav data-sub-menu="students" data-active="false" class="fresh-nav">
+                    <i class="far fa-times-circle closing-icon"></i>
+                    <div class="nav-inner-wrap">
+                        <div class="row">
+                            <div class="sub-menu-snippet">
+                                <h2>Stay in the know</h2>
+                                <p>ATSU encourages students to get involved in and outside of the classroom.</p>
+                                <a href="//www.atsu.edu/contact/atsu-social-feed" class="naked-link-button chevron">Social media feed</a>
+                            </div>
+                            <div class="flex1">
+                                <h3>Resources to guide you</h3>
+                                <a class="naked-link-button" href="//www.atsu.edu/department-of-student-affairs/enrollment-services">Enrollment Services</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/department-of-student-affairs">Student Affairs</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/department-of-student-affairs/student-life">Student Life</a>
+                                <button class="trigger-hidden">Student Organizations<br></button>
+                                        <div class="hidden-links">
+                                            <div class="hidden-link"><a href="//atsu.campuslabs.com/engage/">Arizona</a></div>
+                                            <div class="hidden-link"><a href="//atsumo.campuslabs.com/engage/">Missouri</a></div>
+                                        </div>
+                                <a class="naked-link-button" href="/department-of-student-affairs/student-life#career-professional-development">Career Services</a>
+                                <!--<a class="naked-link-button needs-href">Post Doctoral Studies</a>-->
+                                <a class="naked-link-button" href="https://www.atsu.edu/department-of-student-affairs#graduation">Graduation Information</a>
+                            </div>
+                            <div class="flex1">
+                                <div class="h3-spacing"></div>
+                                
+                                <a class="naked-link-button" href="//www.atsu.edu/department-of-student-affairs/counseling">Counseling Services</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/department-of-student-affairs/still-well-student-wellness-program">Wellness Programs</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/asdoh/community/">Community Initiatives</a>
+                                <a class="naked-link-button" href="//www.atsu.edu/library">A.T. Still Memorial Library</a>
+                                <a class="naked-link-button" href="/department-of-student-affairs/enrollment-services/my-academics">Forms & Resources</a>
+                            </div>
+                            <div class="text-right" style="width: 200px;">
+                                <h3>Quick links</h3>
+                                <a class="naked-link-button chevron" href="https://my.atsu.edu">my.ATSU Login</a>
+                                <a class="naked-link-button chevron" href="//www.webmedbooks.com/atsu/default2.aspx">ATSU Bookstore</a>
+                                <a class="naked-link-button chevron" href="//www.stillopti.org">Still OPTI</a>
+                                <a class="naked-link-button chevron" href="//catalog.atsu.edu/content.php?catoid=11&navoid=366">Student Handbook</a>
+                                <a class="naked-link-button chevron" href="//catalog.atsu.edu/" target="_blank">University Catalog</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+    
+            </header>
+
+<!-- ************************************************************************ -->
+<!-- ***************************** HERO SECTION ***************************** -->
+<!-- ************************************************************************ -->
+
+<!-- 
+Template = 'home' 
+-->
+<style>
+body{ font-size: 16px; font-family: 'Roboto', sans-serif !important; line-height: 1.5em !important; overflow-x: hidden; color: #50505b; background: none !important; }
+a{ text-decoration: none; color: inherit; }
+a:hover{ text-decoration: none; }
+h1, h2, h3{ font-weight: 300; margin: .5em 0; }
+header{ position: relative; }
+img{ max-width: 100%; }
+h2{ font-size: 2em; line-height: 1em; }
+ul, li{ margin: 0; padding: 0; }
+
+.swiper-container {max-height:600px;}
+</style>
+
+<div class="fresh-hero-container">
+	<div class="fresh-hero">
+		<video preload="metadata" style="z-index: -1;" id="home_video" class="top_home_slider" loop="" autoplay="" muted=""></video>
+		<div class="fresh-hero-overlay" data-aos="fade-down">
+			
+			<div class="fresh-hero-title">
+			  
+			  	
+			  
+			  	
+					<h1>Begin your journey at ATSU</h1>
+				
+			  
+			</div>
+			<div class="fresh-hero-content">
+			  
+				
+			  
+				<p>Find your place with <br>
+ whole person healthcare. <br>
+ <br>
+ <b>Your future self will thank you.</b></p>
+			  
+				<a href="//www.atsu.edu/contact/apply" class="fresh-hero-button">
+				
+					
+				
+					Find your program
+				
+				</a>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<script>
+var screenWidth = $(window).outerWidth();
+
+if(screenWidth < 768){$("#home_video").remove();}
+</script>
+
+
+<div class="ib-gallery-container home-rtb">
+	<div class="ib-gallery">
+		<div class="ib-gallery-option-container active" data-id="On Campus">
+			<button class="ib-gallery-option">
+				<i class="fal fa-books icons"></i><br>On Campus
+			</button>
+			<div class="arrow-down"></div>
+		</div>
+		<div class="ib-gallery-option-container" data-id="Online">
+			<button class="ib-gallery-option">
+				<i class="fal fa-laptop-medical icons"></i><br>Online
+			</button>
+			<div class="arrow-down"></div>
+		</div>
+		<!--
+		<div class="ib-gallery-option-container" data-id="Blended Learning">
+			<div class="ib-gallery-option">
+				<i class="fal fa-code-branch icons"></i><br>Blended learning
+			</div>	
+			<div class="arrow-down"></div>
+		</div>-->
+		<div class="ib-gallery-option-container" data-id="Certificates">
+			<button class="ib-gallery-option">
+				<i class="fal fa-award icons"></i><br>Certificates
+			</button>
+			<div class="arrow-down"></div>
+		</div>
+		<div class="ib-gallery-option-container" data-id="Residencies">
+			<button class="ib-gallery-option">
+				<i class="fal fa-address-card icons"></i><br>Residencies
+			</button>
+			<div class="arrow-down"></div>
+		</div>
+		<div class="ib-gallery-option-container" data-id="Continuing Ed">
+			<button class="ib-gallery-option">
+				<i class="fal fa-business-time icons"></i><br>Continuing Education
+			</button>
+			<div class="arrow-down"></div>
+		</div>
+	</div>
+</div>
+
+<div class="ib-gallery-content-container">
+	<div class="ib-gallery">
+		<div class="ib-gallery-mobile" data-id="On Campus">
+			<div class="ib-gallery-mobile-left">
+				<i class="fal fa-books icons"></i> <span>On Campus programs</span>
+			</div>
+			<div class="ib-gallery-mobile-right">
+				-
+			</div>
+		</div>
+		<div class="ib-gallery-content active" data-id="On Campus">
+			<div class="ib-col-3">
+				<div class="ib-gallery-title">On-campus programs</div>
+				ATSU offers a variety of residential doctorate- and master-level programs. Choose from any of our schools and colleges and thrive in our hybrid didactic-clinical environments and osteopathic heritage.
+			</div>
+			<div class="ib-col-3">
+				<div class="ib-gallery-sub-title">Doctorate programs</div>
+				<a href="//www.atsu.edu/doctor-of-audiology-degree">Doctor of Audiology<br></a>
+				<div>
+					<button class="trigger-hidden">Doctor of Dental Medicine<br></button>
+					<div class="hidden-links">
+						<div class="hidden-link"><a href="/asdoh/programs/dental_medicine/index.htm">Arizona</a></div>
+						<div class="hidden-link"><a href="/missouri-school-of-dentistry-and-oral-health/academics/doctor-of-dental-medicine-program">Missouri</a></div>
+					</div>
+				</div>
+
+				<a href="//www.atsu.edu/occupational-therapy-doctorate-entry-level-degree">Doctor of Occupational Therapy<br></a>
+				<a href="//www.atsu.edu/doctor-of-physical-therapy-degree">Doctor of Physical Therapy<br></a>
+				
+				<div>
+					<button class="trigger-hidden">Doctor of Osteopathic Medicine<br></button>
+					<div class="hidden-links">
+						<div class="hidden-link"><a href="/school-of-osteopathic-medicine-arizona">Arizona</a></div>
+						<div class="hidden-link"><a href="/kirksville-college-of-osteopathic-medicine">Missouri</a></div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="ib-col-3">
+				<div class="ib-gallery-sub-title">Master's programs</div>
+				<a href="//www.atsu.edu/master-of-science-in-athletic-training-degree">Master of Science in Athletic Training <br></a>
+				<a href="/kirksville-college-of-osteopathic-medicine/academics/ms-program">Master of Science in Biomedical Sciences<br></a>
+				<a href="//www.atsu.edu/asdoh/programs/orthodontics/index.htm">Master of Science in Orthodontics			   <br></a>
+				<a href="//www.atsu.edu/occupational-therapy-degree">Master of Science in Occupational Therapy	   <br></a>
+				<div>
+					<button class="trigger-hidden">Master of Science in Physician Assistant Studies<br></button>
+					<div class="hidden-links">
+						<div class="hidden-link"><a href="/physician-assistant-degree">Arizona</a></div>
+						<div class="hidden-link"><a href="/college-for-healthy-communities/prospective-students/ccpap">California</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="ib-gallery-mobile" data-id="Online">
+			<div class="ib-gallery-mobile-left">
+				<i class="fal fa-laptop-medical icons"></i> <span>Online programs</span>
+			</div>
+			<div class="ib-gallery-mobile-right">
+				+
+			</div>
+		</div>
+		<div class="ib-gallery-content" data-id="Online">
+			<div class="ib-col-3">
+				<div class="ib-gallery-title">Online programs</div>
+				ATSU offers online doctorate- and master-level programs. Whether you’re immersed in your career or just busy with life, ATSU has an option for you to continue furthering your education.
+			</div>
+			<div class="ib-col-3">
+				<div class="ib-gallery-sub-title">Doctorate programs</div>
+				<a href="//www.atsu.edu/doctor-of-athletic-training-degree-online">Doctor of Athletic Training<br></a>
+				<a href="//www.atsu.edu/doctor-of-education-in-health-professions-degree">Doctor of Education in Health Professions<br></a>
+				<a href="/doctor-of-health-administration-degree">Doctor of Health Administration</a>
+				<a href="//www.atsu.edu/doctor-of-health-science-degree">Doctor of Health Sciences<br></a>
+				<a href="//www.atsu.edu/doctor-of-medical-science">Doctor of Medical Science<br></a>
+				<a href="/doctor-of-nursing-practice-online">Doctor of Nursing Practice<br></a>
+				<a href="//www.atsu.edu/doctor-of-audiology-degree-online">Post-Professional Doctor of Audiology<br></a>
+				<a href="//www.atsu.edu/post-professional-doctor-of-audiology-non-degree">Post-Professional Doctor of Audiology - (non-degree)<br></a>
+				<a href="//www.atsu.edu/post-professional-doctor-of-physical-therapy-degree">Post-Professional Doctor of Physical Therapy<br></a>
+				<a href="//www.atsu.edu/post-professional-doctor-of-physical-therapy-non-degree">Post-Professional Physical Therapy - (non-degree)</a>
+			</div>
+			<div class="ib-col-3">
+				<div class="ib-gallery-sub-title">Master's programs</div>
+				<a href="//www.atsu.edu/advanced-physician-assistant-degree">Advanced Physician Assistant Studies<br></a>
+				<a href="//www.atsu.edu/master-of-health-administration-degree">Master of Health Administration<br></a>
+				<a href="//www.atsu.edu/master-of-public-health-degree">Master of Public Health<br></a>
+				<a href="//www.atsu.edu/master-of-public-health-dental-emphasis-degree">Master of Public Health - Dental Emphasis<br></a>
+				<a href="//www.atsu.edu/master-of-public-health-dental-emphasis-dental-public-health-residency">Master of Public Health - Dental Emphasis with <br class="trev-br">a Dental Public Health Residency Certificate<br></a>
+				<a href="//www.atsu.edu/master-of-science-in-kinesiology-degree">Master of Science in Kinesiology<br></a>
+				<a href="/master-of-science-in-nursing-online">Master of Science in Nursing<br></a>
+<!-- 				<a href="//www.atsu.edu/post-professional-master-of-science-in-occupational-therapy-online">Post-Professional Advanced Master of Science <br class="trev-br">in Occupational Therapy<br></a> -->
+			</div>
+		</div>
+		
+		<!--
+		<div class="ib-gallery-mobile" data-id="Blended Learning">
+			<div class="ib-gallery-mobile-left">
+				<i class="fal fa-code-branch icons"></i><br>Blended learning programs
+			</div>
+			<div class="ib-gallery-mobile-right">
+				+
+			</div>
+		</div>
+		<div class="ib-gallery-content" data-id="Blended Learning">
+			<div class="ib-col-3">
+				<div class="ib-gallery-title">Blended learning programs</div>
+				Our blended learning programs offer students the balance they need between being a full-time student and fill-time healthcare professional. This structure provides students exposure to a variety of teaching styles and learning opportunities.
+			</div>
+			<div class="ib-col-3">
+				<div class="ib-gallery-sub-title">Doctorate programs</div>
+				<a href="">Doctor of Health Sciences</a>
+			</div>
+			<div class="ib-col-3">
+				<div class="ib-gallery-sub-title">Master's programs</div>
+				<a href="">Master of Science in Kineslology<br></a>
+			</div>
+		</div>
+		-->
+		<div class="ib-gallery-mobile" data-id="Certificates">
+			<div class="ib-gallery-mobile-left">
+				<i class="fal fa-award icons"></i> <span>Certificate programs</span>
+			</div>
+			<div class="ib-gallery-mobile-right">
+				+
+			</div>
+		</div>
+		
+		<div class="ib-gallery-content" data-id="Certificates">
+			<div class="ib-col-3">
+				<div class="ib-gallery-title">Certificate programs</div>
+				ATSU offers a variety of certificate programs <br class="trev-br">to supplement your education and provide distinguished areas of focus.
+			</div>
+			<div class="ib-col-3">
+				<a href="https://www.atsu.edu/master-of-science-in-kinesiology-degree#curriculum">Certificate in Adaptive Sports</a>
+                                <a href="/athletic-training-clinical-decision-making-graduate-certificate">Certificate in Clinical Decision-Making in Athletic Training</a>
+                                <a href="https://www.atsu.edu/master-of-science-in-kinesiology-degree#curriculum">Certificate in Corrective Exercise & Orthopedic Rehabilitation</a>
+								<a href="/master-of-science-in-kinesiology-degree#curriculum">Certificate in Exercise and Sport Psychology</a>
+								<a href="/doctor-of-health-science-degree/fundamentals-of-education-certificate">Certificate in Fundamentals of Education</a>
+								<a href="/master-of-science-in-kinesiology-degree#curriculum">Certificate in Geriatric Exercise Science</a>
+                                
+                                
+				</div>
+				<div class="ib-col-3">
+								<a href="/doctor-of-health-science-degree/global-health-certificate">Certificate in Global Health</a>
+								<a href="/athletic-training-leadership-and-education-graduate-certificate">Certificate in Leadership and Education</a>
+                                <a href="/doctor-of-health-science-degree/leadership-and-organizational-behavior-certificate" >Certificate in Leadership and Organizational Behavior</a>
+                                <a href="/athletic-training-orthopaedics-graduate-certificate">Certificate in Orthopaedics</a>
+                                <a href="/athletic-training-rehabilitation-graduate-certificate">Certificate in Rehabilitation</a>
+								<a href="/athletic-training-sports-neurology-and-concussion-graduate-certificate">Certificate in Sport Neurology and Concussion</a>
+                                <a href="https://www.atsu.edu/master-of-science-in-kinesiology-degree#curriculum">Certificate in Sports Conditioning</a>
+			</div>
+		</div>
+		
+		<div class="ib-gallery-mobile" data-id="Residencies">
+			<div class="ib-gallery-mobile-left">
+				<i class="fal fa-address-card icons"></i> <span>Residency programs</span>
+			</div>
+			<div class="ib-gallery-mobile-right">
+				+
+			</div>
+		</div>
+		<div class="ib-gallery-content" data-id="Residencies">
+			<div class="ib-col-3">
+				<div class="ib-gallery-title">Residency programs</div>
+				Our physical therapy residency programs are designed as a post-professional curriculum dedicated to elevating your skills and knowledge from a clinical specialist.
+			</div>
+			<div class="ib-col-3">
+				<a href="//www.atsu.edu/master-of-public-health-dental-emphasis-dental-public-health-residency">Dental Public Health Residency<br></a>
+				<a href="http://www.atsu.edu/orthopedic-physical-therapy-residency">Orthopedic Physical Therapy Residency <br></a>
+				<a href="http://www.atsu.edu/neurologic-physical-therapy-residency">Neurologic Physical Therapy Residency </a>
+			</div>
+		</div>
+		
+		<div class="ib-gallery-mobile" data-id="Continuing Ed">
+			<div class="ib-gallery-mobile-left">
+				<i class="fal fa-business-time icons"></i> <span>Continuing Education programs</span>
+			</div>
+			<div class="ib-gallery-mobile-right">
+				+
+			</div>
+		</div>
+		<div class="ib-gallery-content" data-id="Continuing Ed">
+			<div class="ib-col-3">
+				<div class="ib-gallery-title">Continuing education programs</div>
+				ATSU’s continuing education programs <br class="trev-br">provide opportunities for healthcare professionals to learn the latest information <br class="trev-br">in their field and specialties.
+			</div>
+			<div class="ib-col-3">
+				<a href="http://ce.atsu.edu/continuing-education/preceptor-credit/">Clinical Preceptor </a><br>
+				<a href="http://www.atsu.edu/continuing-education/preceptor_credit.asp">Credit Request</a><br>
+				<a href="http://ce.atsu.edu/event-archive/">Previous Program Resources</a>
+			</div>
+			<div class="ib-col-3">
+				<a href="http://ce.atsu.edu/continuing-medical-education/">Registration</a><br>
+				<a href="http://ce.atsu.edu/">Upcoming Programs</a><br>
+				<a href="http://ce.atsu.edu/about-continuing-education/">Who's Who </a>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<script>
+$('.trigger-hidden').on('click',function(){
+	$('.hidden-links').removeClass('active')
+	$(this).parent().find('.hidden-links').addClass('active')
+})
+</script>
+</div>
+
+<div id="content"></div>
+<div class="sm-center">
+
+	<h2>Undecided?</h2>
+	<p>Selecting the perfect degree program can be challenging—let us give you <br class="trev-br">a hand by narrowing down the search by area of interest. </p>
+
+	<a href="/contact/apply" class="fresh-btn">Find your program</a>
+
+</div>
+
+<div class="sm-center" data-aos="fade-right" data-aos-duration="800">
+
+	<h2>A true learning experience</h2>
+	
+				
+	
+		<p>As a leading healthcare sciences university, A.T. Still University is comprised of three locations on more than 200 acres with six (soon to be seven) prestigious schools. </p>		
+	
+	
+</div>
+
+
+
+<style>
+	.school-info .hidden-link{font-size:14px;}
+	.trigger-hidden {background:none;}
+</style>
+<div class="swiper-container home-swipe-container" data-aos="fade-left" data-aos-duration="800" style="overflow-x:hidden;position:relative;">
+<div class="swiper-wrapper home-swiper">
+	<div class="swiper-slide">
+	<div class="video-box">
+		<video preload="metadata" id="home_video" class="swiper_home_first" loop="" autoplay="" muted="">
+			<source type="video/mp4; codecs=&quot;avc1.4D401E, mp4a.40.2&quot;"  data-replacesrc="https://embedwistia-a.akamaihd.net/deliveries/ed7f6be5522a371b5315a67b5c61950a/file.mp4">
+		</video>
+	</div>
+	<div class="school-info">
+		<div>
+			<h2>Kirksville, Mo. campus</h2>
+			<p>A.T. Still University is home to the founding college of osteopathic medicine. As the first osteopathic institution in the world, the Missouri campus has a rich history of leadership in healthcare education and correlated research.</p>
+			
+			<ul>				
+				<li>
+					<button class="trigger-hidden">Explore programs at this campus <i class="fal fa-chevron-right"></i><br></button>
+					<div class="hidden-links">
+						<div class="hidden-link"><a href="/kirksville-college-of-osteopathic-medicine">Kirksville College of Osteopathic Medicine</a></div>
+						<div class="hidden-link"><a href="/missouri-school-of-dentistry-and-oral-health">Missouri School of Dentistry and Oral Health</a></div>
+					</div>
+				</li>
+				
+				
+				<li><a href="https://motour.atsu.edu/?_ga=2.217094036.349433507.1559682045-1955093479.1547745255#LANG_2014061803120%7CUMAP_2014091873124%7B%22expanded%22%3Afalse%7D%7CTTP_2014061868421%7CTOS_2014061899299">Take the virtual tour <i class="fal fa-chevron-right"></i></a></li>
+				<li><a href="https://www.google.com/maps/place/800+W+Jefferson+Street,+Kirksville,+MO+63501" target="_blank">Map it <i class="fas fa-map-marker-alt"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="swiper-slide">
+	<div class="video-box">
+		<video preload="metadata" id="home_video" loop="" autoplay="" muted="" class="swiper_home_2">
+		<source type="video/mp4; codecs=&quot;avc1.4D401E, mp4a.40.2&quot;"  data-replacesrc="https://embedwistia-a.akamaihd.net/deliveries/e6c4d60d617deae0f8137e85fad5cc4b/file.mp4">
+		</video>
+	</div>
+	<div class="school-info">
+		<div>
+			<h2>Mesa, Ariz. campus</h2>
+			<p>Located in the east valley of the greater Phoenix area, the Mesa campus is surrounded by beautiful desert scenery with the perfect climate for outdoor activities year-round. This campus is teeming with life and education on whole person healthcare.</p>
+			
+			<ul>
+
+				
+				 <li>
+					<button class="trigger-hidden">Explore programs at this campus <i class="fal fa-chevron-right"></i><br></button>
+					<div class="hidden-links">
+						<div class="hidden-link"><a href="/arizona-school-of-health-sciences">Arizona School of Health Sciences</a></div>
+						<div class="hidden-link"><a href="/asdoh">Arizona School of Dentistry & Oral Health</a></div>
+						<div class="hidden-link"><a href="/school-of-osteopathic-medicine-arizona">School of Osteopathic Medicine Arizona</a></div>
+					</div>
+				</li>
+
+				
+				<li><a href="https://aztour.atsu.edu/?_ga=2.49806244.349433507.1559682045-1955093479.1547745255#LANG_2014061803120%7CUMAP_2015022614963%7B%22expanded%22%3Afalse%7D%7CTTP_2014061868421%7CTOS_2015040945116">Take the virtual tour <i class="fal fa-chevron-right"></i></a></li>
+				<li><a href="https://www.google.com/maps/place/5850+E+Still+Cir,+Mesa,+AZ+85206/@33.3825388,-111.7070537,16.94z/data=!4m2!3m1!1s0x872bae52e0d69061:0xf29dd9c015d5e3f0" target="_blank">Map it <i class="fas fa-map-marker-alt"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="swiper-slide">
+	<div class="video-box" style="max-height: 425px;">
+		<video preload="metadata" id="home_video" loop="" autoplay="" muted="" style="max-height:fit-content;" class="swiper_home_3">
+		<source type="video/mp4; codecs=&quot;avc1.4D401E, mp4a.40.2&quot;"  data-replacesrc="https://embedwistia-a.akamaihd.net/deliveries/a7c6555e351a97c91c81ffe14fd9a822/file.mp4">
+		</video>
+	</div>
+	<div class="school-info">
+		<div>
+			<h2>Santa Maria, Calif. facility</h2>
+			<p>Located on California's central coast, the Santa Maria site is dedicated to furthering ATSU’s mission of whole person healthcare and serving the underserved while educating the next generation of physician assistants at the master's level.</p>
+			
+			<ul>
+				<li><a href="/college-for-healthy-communities">Explore programs at this location <i class="fal fa-chevron-right"></i></a></li>
+				<!--<li><a href="#">Take the virtual tour <i class="fal fa-chevron-right"></i></a></li>-->
+				<li><a href="https://www.google.com/maps/place/1075+Betteravia+Rd,+Santa+Maria,+CA+93454/@34.9225172,-120.4172487,200a,35y,305.37h,44.96t/data=!3m1!1e3!4m5!3m4!1s0x80ec6cb0a5445805:0xffc054dba3ae1fef!8m2!3d34.9246681!4d-120.4192549" target="_blank">Map it <i class="fas fa-map-marker-alt"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+
+</div>
+	<span id="grid-prev" class="swiper-button-prev"><i class="fal fa-chevron-left"></i></span>
+	<span id="grid-next" class="swiper-button-next"><i class="fal fa-chevron-right"></i></span>
+
+</div>
+
+
+<div class="schools-wrap">
+<div class="row">
+  <div class="col-md-12 col-lg-4">
+    <div class="ib-gallery-title">Schools and colleges</div>
+    <p>ATSU has schools and colleges spread across three states. Each has a unique osteopathic focus that includes whole person healthcare and serving the underserved.</p>
+  </div>
+  <div class="col-md-12 col-lg-4">
+    <a href="/asdoh/index.htm">Arizona School of Dentistry & Oral Health</a><br>
+	<a href="/arizona-school-of-health-sciences">Arizona School of Health Sciences</a><br>
+	<a href="/college-of-graduate-health-studies">College of Graduate Health Studies</a><br>
+	<a href="/college-for-healthy-communities">College for Healthy Communities</a>
+  </div>
+  <div class="col-md-12 col-lg-4">
+    <a href="/kirksville-college-of-osteopathic-medicine">Kirksville College of Osteopathic Medicine</a><br>
+	<a href="/missouri-school-of-dentistry-and-oral-health">Missouri School of Dentistry & Oral Health</a><br>
+	<a href="/school-of-osteopathic-medicine-arizona">School of Osteopathic Medicine in Arizona</a>
+  </div>
+</div>
+</div>
+
+<div class="sm-center" data-aos="fade-down">
+	<h2>
+	 
+		
+	 
+		ATSU quick facts
+	 	
+	</h2>
+	 
+		
+	 
+		<p>ATSU is renowned for its preeminence as a multidisciplinary healthcare educator and continually earns distinctions as the graduate health sciences university with best-in-class curriculum.</p>
+	 
+</div>
+
+<!-- Grid Slider -->
+<style>
+.arrow-indicator{ background: #172a40; display: flex; height: 100%;  position: absolute;  top: 0;  right: 0;  width: 50px;  z-index: 9;  justify-content: center;
+    align-items: center;   font-size: 2em;    opacity: .9;    transition: .2s ease-in-out;}
+.arrow-indicator i {    z-index: 10;    position: relative;    color: white;}
+.arrow-indicator.fade-me {	opacity: 0;}
+/* width */
+.grid-slide::-webkit-scrollbar {  height: 5px;}
+/* Track */
+.grid-slide::-webkit-scrollbar-track {  background: #cecbcb; }
+/* Handle */
+.grid-slide::-webkit-scrollbar-thumb {  background: #172a40; }
+/* Handle on hover */
+.grid-slide::-webkit-scrollbar-thumb:hover {  background: #172a40;}
+</style>
+<div class="grid-wrapper scroll-target">
+<div class="grid-slide">
+<div class="arrow-indicator"><i class="fas fa-chevron-right"></i></div>
+
+
+	
+
+	
+	
+	
+	  <div class="grid-row-1">
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/Rectangle_737.png" alt="ATSU-KCOM founded">
+			</div>
+			
+			<div class="tile text-tile and-go" data-aos="fade-up">
+				<div class="main-fact">
+				<h3>1892</h3>
+				<p>ATSU-KCOM founded</p>
+				</div>
+				
+					<div class="secondary-fact">
+						<h3>1st</h3>
+						<p>in whole person healthcare</p>
+					</div>
+				
+			</div>
+			
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/Rectangle_737_copy_2_1.png" alt="ATSU-SOMA enrollment fall 2019">
+			</div>
+			
+			<div class="tile text-tile and-go" data-aos="fade-up">
+				<div class="main-fact">
+				<h3>480</h3>
+				<p>ATSU-SOMA enrollment fall 2019</p>
+				</div>
+				
+			</div>
+			
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/Rectangle_737_copy_41_1.png" alt="ATSU-ASHS founded ">
+			</div>
+			
+			<div class="tile text-tile and-go" data-aos="fade-up">
+				<div class="main-fact">
+				<h3>1998</h3>
+				<p>ATSU-ASHS founded </p>
+				</div>
+				
+			</div>
+			
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/Rectangle_737_copy_a.png" alt="ATSU-ASHS enrollment fall 2019">
+			</div>
+			
+			<div class="tile text-tile and-go" data-aos="fade-up">
+				<div class="main-fact">
+				<h3>1,025</h3>
+				<p>ATSU-ASHS enrollment fall 2019</p>
+				</div>
+				
+					<div class="secondary-fact">
+						<h3>80,000+</h3>
+						<p>Artifacts in the Museum of Osteopathic Medicine</p>
+					</div>
+				
+			</div>
+			
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/Rectangle_737_copy_2-1.png" alt="ATSU-CGHS programs available online">
+			</div>
+			
+			<div class="tile text-tile and-go" data-aos="fade-up">
+				<div class="main-fact">
+				<h3>100%</h3>
+				<p>ATSU-CGHS programs available online</p>
+				</div>
+				
+			</div>
+			
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/ASHS_2015_Commencement_PM-2834.png" alt="ATSU-MOSDOH students fall 2019">
+			</div>
+			
+			<div class="tile text-tile and-go" data-aos="fade-up">
+				<div class="main-fact">
+				<h3>63</h3>
+				<p>ATSU-MOSDOH students fall 2019</p>
+				</div>
+				
+			</div>
+			
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/BA0B0031.png" alt="ATSU-CGHS enrollment fall 2019 ">
+			</div>
+			
+			<div class="tile text-tile and-go" data-aos="fade-up">
+				<div class="main-fact">
+				<h3>1,133</h3>
+				<p>ATSU-CGHS enrollment fall 2019 </p>
+				</div>
+				
+			</div>
+			
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/untitled-8705.png" alt="ATSU-MOSDOH graduation rate 2019">
+			</div>
+			
+			<div class="tile text-tile and-go" data-aos="fade-up">
+				<div class="main-fact">
+				<h3>100%</h3>
+				<p>ATSU-MOSDOH graduation rate 2019</p>
+				</div>
+				
+			</div>
+			
+		
+			<div class="tile and-go" data-aos="fade-down">
+				<img src="/images/uploads/WhiteCoatEvent-549.png" alt="">
+			</div>
+			
+		
+	  </div>
+	
+
+	
+	  <div class="grid-row-2">
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>185</h3>
+			  <p>ATSU-MOSDOH enrollment fall 2019</p>
+			  </div>
+			  
+		  </div>
+		  
+		  <div class="tile and-go" data-aos="fade-down">
+			  <img src="/images/uploads/Rectangle_737_copy_4.png" alt="ATSU-MOSDOH enrollment fall 2019">
+		  </div>
+		  
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>1st</h3>
+			  <p>Ariz. dental school, ATSU-ASDOH</p>
+			  </div>
+			  
+		  </div>
+		  
+		  <div class="tile and-go" data-aos="fade-down">
+			  <img src="/images/uploads/Rectangle_737_1.png" alt="Ariz. dental school, ATSU-ASDOH">
+		  </div>
+		  
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>314</h3>
+			  <p>ATSU-ASDOH enrollment fall 2019</p>
+			  </div>
+			  
+		  </div>
+		  
+		  <div class="tile and-go" data-aos="fade-down">
+			  <img src="/images/uploads/DrRamiAlSaidi-20.png" alt="ATSU-ASDOH enrollment fall 2019">
+		  </div>
+		  
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>3,857 </h3>
+			  <p>ATSU students fall 2019</p>
+			  </div>
+			  
+		  </div>
+		  
+		  <div class="tile and-go" data-aos="fade-down">
+			  <img src="/images/uploads/Rectangle_737_copy_41.png" alt="ATSU students fall 2019">
+		  </div>
+		  
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>40+</h3>
+			  <p>ATSU residential and online programs</p>
+			  </div>
+			  
+		  </div>
+		  
+		  <div class="tile and-go" data-aos="fade-down">
+			  <img src="/images/uploads/BA0B0772.png" alt="ATSU residential and online programs">
+		  </div>
+		  
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>1st</h3>
+			  <p>ATSU-KCOM founding institution of osteopathic medicine</p>
+			  </div>
+			  
+				  <div class="secondary-fact">
+					  <h3>125+</h3>
+					  <p>years educating medical students</p>
+				  </div>
+			  
+		  </div>
+		  
+		  <div class="tile and-go" data-aos="fade-down">
+			  <img src="/images/uploads/GroupStudyKirksville-2.png" alt="ATSU-KCOM founding institution of osteopathic medicine">
+		  </div>
+		  
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>25+</h3>
+			  <p>Community health centers </p>
+			  </div>
+			  
+		  </div>
+		  
+		  <div class="tile and-go" data-aos="fade-down">
+			  <img src="/images/uploads/Outdoors-37.png" alt="Community health centers ">
+		  </div>
+		  
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>3</h3>
+			  <p>Locations in Missouri, Arizona, and California</p>
+			  </div>
+			  
+		  </div>
+		  
+		  <div class="tile and-go" data-aos="fade-down">
+			  <img src="/images/uploads/ZM6K0492.png" alt="Locations in Missouri, Arizona, and California">
+		  </div>
+		  
+		
+		  <div class="tile text-tile and-go"  data-aos="fade-up">
+			  <div class="main-fact">
+			  <h3>7</h3>
+			  <p>schools/colleges</p>
+			  </div>
+			  
+				  <div class="secondary-fact">
+					  <h3>1</h3>
+					  <p>Dedicated mission</p>
+				  </div>
+			  
+		  </div>
+		  
+		
+	  </div>
+	
+	
+</div>
+</div>
+
+
+<div class="sm-center">
+
+<a href="https://www.atsu.edu/about-atsu" class="fresh-btn">
+	
+		
+	
+		Learn more
+	
+</a>
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+<style>
+html:not(.no-js) .grid-slide [data-aos^=fade][data-aos^=fade].aos-animate.and-go:not(.in-view) {
+    position: relative;
+    transform: rotateY(90deg)!important;
+}
+
+html:not(.no-js) .grid-slide .grid-row-2 [data-aos^=fade][data-aos^=fade].aos-animate.and-go.in-view {
+    transition-delay: .12s !important;
+}
+</style>
+
+
+
+<script>
+/* SIDE SCROLLING GRID FACTS */
+$(document).ready(function() {	
+
+
+$(".grid-row-1, .grid-row-2").each(function(){
+  if($(this).children().length == 0){$(this).remove();}
+});
+
+
+$(function(){
+	  var animationElements = document.querySelectorAll(".and-go"), i;
+	  
+	  var slideArea = $(".grid-slide");
+
+	  var checkInView = function() {
+	  
+		  for (i = 0; i < animationElements.length; ++i) {
+			  var slideArea = $(".grid-slide");
+			  var scrollProgress = slideArea.scrollLeft();
+			  var scrollVertical = $(document).scrollTop();
+			  var thisWidth = animationElements[i].offsetWidth;
+			  var windowWidth = window.innerWidth;
+			  var thisFromRight = animationElements[i].offsetLeft - windowWidth;
+			  var thisFromTop = $(animationElements[i]).scrollTop();
+			
+			  if (scrollProgress > thisFromRight + (thisWidth / 5) && scrollVertical > thisFromTop) {$(animationElements[i]).addClass("in-view");} else {$(animationElements[i]).removeClass("in-view");}
+			  
+			  if (scrollProgress > 30){
+			  	$(".arrow-indicator").css("opacity", "0");
+			  } else {
+			  	$(".arrow-indicator").css("opacity", "0.9");
+			  }
+		  }
+	  }
+	  
+	  checkInView();
+
+ 	  slideArea.on("scroll", function(){checkInView();});
+	  
+	  $(window).on("load", function(){checkInView();})
+	  
+	  $(window).on("scroll", function(){checkInView();});
+});
+
+	  
+	  /* RANDOM TIME START HERO VID */
+	  document.getElementById('home_video').addEventListener('loadedmetadata', function() {
+	  	var min=0; 
+		var max=118;  
+		var random =Math.floor(Math.random() * (+max - +min)) + +min; 
+		
+		this.currentTime = random;
+	  }, false);
+	  
+	  /* VERTICAL SCROLL - ELEMENT IN VIEW TRIGGER */
+	  var vertElements = document.querySelectorAll(".scroll-target"), i;
+
+	  function vertInView() {
+		for (i = 0; i < vertElements.length; ++i) {
+		  var thisFromTop = vertElements[i].offsetTop;
+		  var scrollProgress = window.pageYOffset;
+		  var thisHeight = vertElements[i].offsetHeight;
+		  var windowHeight = window.innerHeight;
+
+
+		  if (scrollProgress > (thisFromTop + thisHeight)) {vertElements[i].classList.add("target-reached");} else {vertElements[i].classList.remove("target-reached");}
+
+		  if (scrollProgress > (thisFromTop + (windowHeight + thisHeight * 2))) {vertElements[i].classList.remove("target-reached");}
+		}
+	  }
+
+	  window.onscroll = function() {vertInView();};
+	  
+	  /* FACT SQUARE SECTION AUTO-SCROLL ANIMATION */
+		var slideMagic = function() {
+		  var windowWidth = $(".grid-wrapper").outerWidth(true);
+		  var slideWidth = $(".grid-row-1").outerWidth(true);
+		  var slideFromLeft = $(".grid-row-1").position().left;
+		  var visiblePartOfRow = windowWidth - slideFromLeft;
+		  var offScreenWidth = slideWidth - visiblePartOfRow;
+		  var slideSpeed = 1200;
+		  var pauseLength = 4000;
+
+		  // media query and change slice count, pause length, and slide speed
+		  if (windowWidth < 1200) {
+			var sliceCount = 6;
+			var pauseLength = 4000;
+			var slideSpeed = 1300;
+		  } else if (windowWidth < 800) {
+			var sliceCount = 7;
+			var pauseLength = 3000;
+			var slideSpeed = 1400;
+		  } else {
+			var sliceCount = 3;
+			var slideSpeed = 1200;
+		  	var pauseLength = 4000;
+		  }
+
+		  // loop animation based on slice count and offscreen width
+		  var desktopAnimation = function(segments) {
+			var i;
+			for (i = 0; i < sliceCount; i++) {
+			  $(".grid-slide")
+				.animate({ scrollLeft: offScreenWidth / segments * i }, slideSpeed)
+				.delay(pauseLength);
+			}
+			if (sliceCount == i) {
+			  $(".grid-slide")
+				.animate({ scrollLeft: offScreenWidth / segments * i }, slideSpeed)
+				.delay(pauseLength)
+				.animate({ scrollLeft: 0 }, slideSpeed, function() {desktopAnimation(segments);});
+			}
+		  };
+//		  if($(window).outerWidth(true) > 500){
+//		  	desktopAnimation(sliceCount);
+//		  }
+		};
+	  	
+		
+		if($(window).outerWidth(true) > 500){slideMagic();}
+
+		
+		$(window).on("resize", function() {
+		  if($(window).outerWidth(true) > 500){slideMagic();}
+		});
+		
+		
+		$(window).on("load", function(){
+			$("input#st-overlay-search-input").attr("aria-label", "search input");
+		});
+		
+});// GRID SLIDE
+
+var mySwiper = new Swiper ('.swiper-container', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      
+      navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+      }
+    })
+    
+$('.arrow-indicator').on('click',function(){
+	$(".grid-slide").animate({scrollLeft: 450}, 800);    	
+})
+
+    
+</script>
+
+<style>
+    #fresh-footer a:hover {
+        color: #63bef2;
+    }
+
+</style>
+
+<!-- template partial: footer -->
+<footer id="fresh-footer">
+        <div class="footer-social-icons">
+            <ul>
+                <li><a href="https://www.facebook.com/atstilluniversity" target="_blank" aria-label="facebook" rel="noopener"><i class="fab fa-facebook-square scroll-down-view"></i></a></li>
+                <li><a href="https://twitter.com/ATSU_news" target="_blank" aria-label="twitter" rel="noopener"><i class="fab fa-twitter-square scroll-down-view"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/a-t-still-university/about/" target="_blank" aria-label="linkedin" rel="noopener"><i class="fab fa-linkedin scroll-down-view"></i></a></li>
+                <li><a href="https://www.instagram.com/atstilluniversity/" target="_blank" aria-label="instagram" rel="noopener"><i class="fab fa-instagram scroll-down-view"></i></a></li>
+                <li><a href="https://www.youtube.com/user/atstilluniversity" target="_blank" aria-label="youtube" rel="noopener"><i class="fab fa-youtube-square scroll-down-view"></i></a></li>
+            </ul>
+        </div>
+      <div class="footer-inner-wrap">
+        <div class="row">
+            <div class="footer-logo">
+                <a href="/"><img src="/themes/atsu/images/footer-logo.svg" alt="A.T. Still University" /></a>
+            </div>
+            <div class="flex1">
+                <div class="address-block">
+                    <a href="https://www.google.com/maps/place/A+T+Still+University/@40.1935599,-92.5889708,15z/data=!4m5!3m4!1s0x0:0xbd52da008c906b97!8m2!3d40.1935599!4d-92.5889708" target="_blank">
+                        800 W. Jefferson St.<br />
+                        Kirksville, MO 63501</a><br>
+                        <a href="tel:6606262121">660.626.2121</a>
+                </div>
+                <div class="address-block">
+                    <a href="https://www.google.com/maps/place/A.T.+Still+University+School+of+Osteopathic+Medicine/@33.38271,-111.705045,15z/data=!4m2!3m1!1s0x0:0x3c556364024f7ae6?sa=X&ved=2ahUKEwjZu8nyyuThAhX4FjQIHYB0An8Q_BIwGXoECAcQCA" target="_blank">
+                        5850 E. Still Circle<br />
+                        Mesa, AZ 85206</a><br>
+                        <a href="tel:4802196000">480.219.6000</a>
+                </div>
+                <div class="address-block">
+                    <a href="https://www.google.com/maps/place/1075+Betteravia+Rd,+Santa+Maria,+CA+93454/@34.9246681,-120.4214436,17z/data=!3m1!4b1!4m5!3m4!1s0x80ec6cb0a5445805:0xffc054dba3ae1fef!8m2!3d34.9246681!4d-120.4192549" target="_blank">Coming soon...<br/>
+                        1075 E. Betteravia Rd, Suite B<br />
+                        Santa Maria, CA 93454</a><br>
+                        <a href="tel:8666262878">866.626.2878</a>
+                </div>
+            </div>
+            <div class="nav-wrapper">
+                <div class="footer-nav-items flex1">
+                    <ul>
+                        <li><a href="//www.atsu.edu/about-atsu">About Us</a></li>
+                        <li><a href="//catalog.atsu.edu/content.php?catoid=6&navoid=174">Programs</a></li>
+                        <li><a href="/department-of-student-affairs/admissions">Admissions</a></li>
+                        <li><a href="//www.atsu.edu/about-atsu#Colleges-Schools">Colleges & Schools</a></li>
+                        <li><a href="//www.atsu.edu/department-of-student-affairs">Students</a></li>
+                        <li><a href="//www.atsu.edu/diversity-webinars">Diversity</a></li>
+                    </ul>
+                </div> 
+                <div class="footer-nav-items flex1">
+                    <ul>
+                        <li><a href="//www.atsu.edu/accreditation">Accreditation</a></li>
+                        <li><a href="//www.atsu.edu/alumni/index.htm">Alumni</a></li>
+                        <li><a href="//www.atsu.edu/connect/contact-atsu">Contact</a></li>
+                        <li><a href="//ce.atsu.edu">Continuing Education</a></li>
+                        <li><a href="//jobs.atsu.edu">Employment</a></li>
+                        <li><a href="//www.atsu.edu/about-atsu#Mission-Vision">Mission</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-items flex1">
+                    <ul>
+	                    <li><a href="//www.atsu.edu/support_atsu/partners_friends.htm">Partners</a></li>
+                        <li><a href="//www.atsu.edu/security/emergency.html">Security & Emergencies</a></li>
+                        <li><a href="//www.atsu.edu/policies/fcoi.htm#sts=FINANCIAL%20CONFLICT%20OF%20INTEREST%20IN%20RESEARCH%20POLICY">Financial Conflict of Interest in Research Policy</a></li>
+                        <li><a href="//www.atsu.edu/prohibition-of-discrimination-harassment-and-retaliation">Nondiscrimination Policy</a></li>
+                        <li><a href="//www.atsu.edu/student-consumer-information">Student Consumer Information</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div id="copy-bar">
+            <div>
+                ©1892–2020 A.T. Still University<span class="pipe">|</span><span aria-hidden="true">All Rights Reserved</span>
+            </div>
+            <div>
+                <a href="//www.atsu.edu/privacy-policy">Privacy Policy</a><span class="pipe">|</span><a href="//www.fabcomlive.com" target="_blank" aria-hidden="true">Design by FabCom</a>
+            </div>
+      </div>
+    </footer>
+
+
+
+
+<script src="/themes/atsu/scripts/plugins.js"></script>
+<script src="/themes/atsu/scripts/fresh-global.js?v0-0-914"></script>
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','GrT68RN7UhCdXU53g_GY','2.0.0');
+</script>
+
+
+
+
+
+    </body>
+</html>
+
+
+

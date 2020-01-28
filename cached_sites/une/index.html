@@ -1,0 +1,864 @@
+<!doctype html>
+
+<html class="no-js" lang="en" dir="ltr" >
+  <!--[if IE 8]><html class="no-js ie8" lang="en" dir="ltr" > <![endif]-->
+  <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en" dir="ltr" > <!--<![endif]-->
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"5a14fe33b4",applicationID:"392863527"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+
+    <!-- $head -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/node/108166" />
+<link rel="shortlink" href="/node/108166" />
+<link rel="shortcut icon" href="https://www.une.edu/sites/all/themes/une_theme/favicon.ico" type="image/vnd.microsoft.icon" />
+
+    <title>Home | University of New England in Maine, Tangier and Online</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/sites/all/themes/une_theme/images/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/sites/all/themes/une_theme/images/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/sites/all/themes/une_theme/images/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/sites/all/themes/une_theme/images/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/sites/all/themes/une_theme/images/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/sites/all/themes/une_theme/images/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/sites/all/themes/une_theme/images/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/sites/all/themes/une_theme/images/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/sites/all/themes/une_theme/images/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/sites/all/themes/une_theme/images/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/sites/all/themes/une_theme/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/sites/all/themes/une_theme/images/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/sites/all/themes/une_theme/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="/sites/all/themes/une_theme/images/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/sites/all/themes/une_theme/images/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    <!-- stylesheets -->
+    <link type="text/css" rel="stylesheet" href="https://www.une.edu/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.une.edu/sites/default/files/css/css_HYzTS6hS2zT-jLzSAbTnG8aKP3X1ModHHY4-NoJhl7M.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.une.edu/sites/default/files/css/css_L_vSm7eZlfS46DbTGwHLAA06AQhXBhA3WLXfAJAnJ1A.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.une.edu/sites/default/files/css/css_fmdbP4a4COaT98aAOTii2njblNcrI_DHD0ri20dDnto.css" media="all" />
+
+<!--[if IE 9]>
+<link type="text/css" rel="stylesheet" href="https://www.une.edu/sites/all/themes/une_theme/css/iestyle.css?q4tvha" media="all" />
+<![endif]-->
+
+    <!-- scripts -->
+    <script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js_uLSchadrhfmQvh0JQT4KgQ1hwNUtgeG4u0Br2HRI0pE.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/contrib/jquery_update/replace/jquery/1.9/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.migrateMute=true;jQuery.migrateTrace=false;
+//--><!]]>
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery && window.jQuery.migrateWarnings || document.write("<script src='/sites/all/modules/contrib/jquery_update/replace/jquery-migrate/1/jquery-migrate.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js_dWhBODswdXXk1M5Z5nyqNfGljmqwxUwAK9i6D0YSDNs.js"></script>
+<script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js__7Mjvj_fIAGoauK0xklylKBUIHrCcijyT8yucEi2E0o.js"></script>
+<script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js_mrZEM17TmcOHVfz3r7BUmyJTZ6LCPXe5xkISbkuIpJk.js"></script>
+<script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js_zMOgpMFJn8lws-dghXCUXupPvz-xfznDZA-C2hBhZ5g.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-381657-1", {"cookieDomain":"auto"});ga("require", "linkid", "linkid.js");ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+<script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js_gsRojzcXYRtFv8QHp89dxyJVklpAK8YiSqSpCQgUdak.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var switchTo5x=true;
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+stLight.options({publisher: "7bd46d21-e8d7-4a48-a3a5-575aafc0d653", doNotHash: true, doNotCopy: true, hashAddressBar: false});
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js_8Sj6dmDTPp5pn02lnZaLdwudymLEQycDuUW3WGln2HI.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jwplayer.key="WHW14z5M44BFHwod/t4vUm/QTW1LCwKLkj4LFu2LhII=";
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js_D9_-XksMxnkRnYmDGwb6hW_MGgPsuH0EY6kHXCaakng.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"une_theme","theme_token":"usGwvesqLv5zoJt0U9DmpVDQEhOmkK6l0z8ir0fIj0g","jquery_version":"1.9","js":{"sites\/all\/modules\/features\/une_video\/une_video.js":1,"public:\/\/google_tag\/google_tag.script.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.9.1\/jquery.min.js":1,"0":1,"1":1,"\/\/code.jquery.com\/jquery-migrate-1.4.1.min.js":1,"2":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery.form\/4\/jquery.form.min.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js":1,"sites\/all\/modules\/custom\/une_astra_calendar\/js\/une_astra_calendar.js":1,"sites\/all\/modules\/custom\/une_emergency\/une_emergency.js":1,"misc\/progress.js":1,"sites\/all\/modules\/custom\/une_gdpr\/une_gdpr.js":1,"sites\/all\/modules\/contrib\/views\/js\/base.js":1,"sites\/all\/modules\/contrib\/quicktabs\/js\/quicktabs.js":1,"sites\/all\/modules\/contrib\/field_group\/field_group.js":1,"sites\/all\/modules\/contrib\/views\/js\/ajax_view.js":1,"sites\/all\/modules\/contrib\/google_analytics\/googleanalytics.js":1,"3":1,"https:\/\/www.youtube.com\/iframe_api":1,"sites\/all\/themes\/une_theme\/js\/vendor\/modernizr-2.6.2.min.js":1,"4":1,"https:\/\/ws.sharethis.com\/button\/buttons.js":1,"5":1,"sites\/all\/libraries\/jwplayer\/jwplayer.js":1,"6":1,"sites\/all\/themes\/une_theme\/js\/vendor\/media.match.min.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/enquire.min.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/hypenate.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/scrollReveal.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/jquery.flexslider.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/jquery.scrollTo.min.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/jquery.localscroll-1.2.7-min.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/jquery.matchHeight.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/jquery.reveal.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/jquery.fitvids.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/jquery.hoverIntent.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/jquery.fastLiveFilter.js":1,"sites\/all\/themes\/une_theme\/js\/vendor\/imagesloaded.pkgd.min.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/une_banner.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/by-the-numbers.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/events-featured.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/events-listing.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/events-posters.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/events-single.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/events-subsite.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/events-live-video.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/full-width-page.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/forms.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/gallery.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/highlight-box.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/home.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/main-menu.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/maps-custom.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/news-featured.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/news-single.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/news-subsite.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/people-listings.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/portraits-single.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/search.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/subsite.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/table.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/theme-misc.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/testimonial-map.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/testimonial-slider.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/tours.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/videos-listing.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/videos-custom.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/views_scrolltotop.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/wysiwyg-grids.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/catalog.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/profile.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/une-reveal.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/job-opportunities.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/une-tv.js":1,"sites\/all\/themes\/une_theme\/js\/custom\/accordion.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/contrib\/ldap\/ldap_user\/ldap_user.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/calendar\/css\/calendar_multiday.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/custom\/une_astra_calendar\/css\/calendar_override.css":1,"sites\/all\/modules\/custom\/une_emergency\/une_emergency.css":1,"sites\/all\/modules\/custom\/une_gdpr\/une_gdpr.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/ldap\/ldap_servers\/ldap_servers.admin.css":1,"sites\/all\/modules\/custom\/une_custom\/css\/une-vertical-right.css":1,"sites\/all\/themes\/une_theme\/css\/style.css":1,"sites\/all\/themes\/une_theme\/css\/iestyle.css":1}},"quicktabs":{"qt_majors_homepage":{"name":"majors_homepage","tabs":[{"vid":"majors_type_blocks_without_campus","display":"filtered","args":"all\/bachelors\/all","view_path":"node%2F108166","view_dom_id":1,"ajax_args":"all%2Fbachelors%2Fall","actual_args":["all","bachelors","all"]},{"vid":"majors_type_blocks_without_campus","display":"filtered","args":"all\/masters\/all","view_path":"node%2F108166","view_dom_id":2,"ajax_args":"all%2Fmasters%2Fall","actual_args":["all","masters","all"]},{"vid":"majors_type_blocks_without_campus","display":"filtered","args":"all\/all\/online","view_path":"node%2F108166","view_dom_id":3,"ajax_args":"all%2Fall%2Fonline","actual_args":["all","all","online"]},{"vid":"majors_type_blocks_without_campus","display":"filtered","args":"all\/doctorate\/all","view_path":"node%2F108166","view_dom_id":4,"ajax_args":"all%2Fdoctorate%2Fall","actual_args":["all","doctorate","all"]},{"vid":"majors_type_blocks_without_campus","display":"filtered","args":"all\/certificate\/all","view_path":"node%2F108166","view_dom_id":5,"ajax_args":"all%2Fcertificate%2Fall","actual_args":["all","certificate","all"]}],"ajaxPageState":{"jquery_version":"1.9"}}},"field_group":{"div":"homepage_display","html-element":"homepage_display"},"views":{"ajax_path":"\/views\/ajax","ajaxViews":{"views_dom_id:5f7906862ac06ec686c32fdbce71065a":{"view_name":"events","view_display_id":"homepage","view_args":"","view_path":"node\/108166","view_base_path":null,"view_dom_id":"5f7906862ac06ec686c32fdbce71065a","pager_element":0}}},"urlIsAjaxTrusted":{"\/views\/ajax":true},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"une_search":{"research_path":"\/research\/search"}});
+//--><!]]>
+</script>
+
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  </head>
+
+  <body class="0 2 3 4 5 6 7 full-width-page not-logged-in" >
+    <!-- page_top -->
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHVCZ5" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager">Google Tag Manager</iframe></noscript>
+    <!-- page -->
+      <style>
+.fw-text-color,
+.fw-text-color:visited {
+  color: #fb833d !important;
+}
+.fw-text-color--hover:hover {
+  color: #e15505 !important;
+}
+.fw-background-color {
+  background-color: #fb833d !important;
+}
+.fw-background-color--hover:hover {
+  background-color: #e15505 !important;
+}
+</style>
+<div class="wrapper">
+  <header role="banner">
+  <h1 class="logotype"><a href="/">University of New England</a></h1>
+  <a href="#" class="menu-revealer">menu</a>
+  <div class="search-revealer">
+    <a href="/search">search</a>
+  </div>
+    <div class="region region-header">
+    <div id="block-menu-menu-une-portal" class="block block-menu">
+
+    <h2>Portal</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="http://alumni.une.edu" target="_blank">Alumni</a></li>
+<li class="leaf"><a href="/employees">Employees</a></li>
+<li class="leaf"><a href="/patients">Patients</a></li>
+<li class="leaf"><a href="/students">Students</a></li>
+<li class="leaf"><a href="http://athletics.une.edu" class="athletics" target="_blank">Athletics</a></li>
+<li class="last leaf"><a href="https://www.une.edu/calendar-node-field-event-date/month">Events Calendar</a></li>
+</ul>  </div>
+</div>
+<div id="block-menu-menu-une-portal-location" class="block block-menu">
+
+    <h2>Portal Location</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="/maps?campus=biddeford%2Cportland&amp;type=cities">Maine, USA</a></li>
+<li class="leaf"><a href="/maps?campus=tangier">Tangier, Morocco</a></li>
+<li class="last leaf"><a href="http://online.une.edu" target="_blank">Online</a></li>
+</ul>  </div>
+</div>
+<div id="block-blockify-blockify-logo" class="block block-blockify">
+
+    
+  <div class="content">
+    <a href="/" id="logo" rel="home" title="Return to the University of New England in Maine, Tangier and Online home page" class="active"><img src="https://www.une.edu/sites/all/themes/une_theme/logo.svg" alt="University of New England in Maine, Tangier and Online logo" /></a>  </div>
+</div>
+<div id="block-une-search-une-search" class="block block-une-search">
+
+    
+  <div class="content">
+    
+<form action="/search" method="GET" class="search">
+  <input type="text" name="s" placeholder="Search..." />
+  <div class="search-radio-container">
+    <input type="radio" name="search-type" id="search-type-website" value="website" checked /> <label for="search-type-website">website</label>
+    <input type="radio" name="search-type" id="search-type-expertise" value="expertise" /> <label for="search-type-expertise">expertise</label>
+    <input type="radio" name="search-type" id="search-type-research" value="research" /> <label for="search-type-research">research and scholarship</label>
+    <!-- <input type="radio" name="search-type" id="search-type-facultystaff" value="facultystaff" /> <label for="search-type-facultystaff">faculty & staff</label> -->
+    <!-- <input type="radio" name="search-type" id="search-type-officesservices" value="officesservices" /> <label for="search-type-officesservices">offices & services</label> -->
+    <div class="search-filter-reveal"><p>FILTER</p></div>
+  </div>
+  <button>Search</button>
+</form>
+  </div>
+</div>
+<div id="block-menu-block-une-main-menu" class="block block-menu-block">
+
+    <h2>Main menu</h2>
+  
+  <div class="content">
+    <div class="menu-block-wrapper menu-block-une-main-menu menu-name-main-menu parent-mlid-0 menu-level-1">
+  <ul class="menu"><li class="first expanded menu-mlid-280"><a href="/about">About</a><ul class="menu"><li class="first expanded menu-mlid-2961"><a href="/about/glance">At a Glance</a><ul class="menu"><li class="first leaf menu-mlid-4522"><a href="/about/glance/mission-vision-values">Mission, Vision, &amp; Values</a></li>
+<li class="leaf menu-mlid-4938"><a href="/about/history">History</a></li>
+<li class="leaf menu-mlid-359"><a href="/about/campuses">Campuses</a></li>
+<li class="leaf menu-mlid-2064"><a href="/news" class="branch-link">News</a></li>
+<li class="last leaf menu-mlid-2963"><a href="/about/offices-services" class="branch-link">Offices &amp; Services</a></li>
+</ul></li>
+<li class="leaf menu-mlid-299"><a href="/emergency">Emergency Preparedness and Response</a></li>
+<li class="leaf menu-mlid-3811"><a href="/president" class="branch-link">Office of the President</a></li>
+<li class="leaf menu-mlid-4532"><a href="/president/strategicplan">Strategic Plan</a></li>
+<li class="expanded menu-mlid-2951"><a href="/about/visit-une">Visit UNE</a><ul class="menu"><li class="first leaf menu-mlid-4498"><a href="/about/tours">Virtual Tours</a></li>
+<li class="leaf menu-mlid-2492"><a href="/maps" title="Maps">Maps &amp; Directions</a></li>
+<li class="last leaf menu-mlid-1502"><a href="/about/visit-une/events-calendar" class="branch-link">Events Calendar</a></li>
+</ul></li>
+<li class="leaf menu-mlid-8841"><a href="/communications">Office of Communications</a></li>
+<li class="leaf menu-mlid-6521"><a href="/hr/jobs">Careers</a></li>
+<li class="leaf menu-mlid-5679"><a href="/pdfs/faculty-and-staff-personnel-directory" target="_blank">Faculty &amp; Staff Directory</a></li>
+<li class="last leaf menu-mlid-16206"><a href="/about/contact-us">Contact Us</a></li>
+</ul></li>
+<li class="expanded menu-mlid-279"><a href="/academics">Academics</a><ul class="menu"><li class="first expanded menu-mlid-2982"><a href="/academics/programs">Majors &amp; Programs</a><ul class="menu"><li class="first leaf menu-mlid-3222"><a href="/academics/programs?qt-majors=0#qt-majors">Undergraduate Programs</a></li>
+<li class="leaf menu-mlid-3223"><a href="/academics/programs?qt-majors=1#qt-majors">Graduate and Professional Programs</a></li>
+<li class="leaf menu-mlid-4932"><a href="/academics/programs?qt-majors=3#qt-majors">Online Programs</a></li>
+<li class="last leaf menu-mlid-4931"><a href="/academics/programs?qt-majors=2#qt-majors">By College</a></li>
+</ul></li>
+<li class="expanded menu-mlid-880"><a href="/academics/colleges">Colleges</a><ul class="menu"><li class="first leaf has-children menu-mlid-892"><a href="/cas">Arts and Sciences</a></li>
+<li class="leaf menu-mlid-1192"><a href="/dentalmedicine">Dental Medicine</a></li>
+<li class="leaf has-children menu-mlid-893"><a href="/wchp">Health Professions</a></li>
+<li class="leaf has-children menu-mlid-2677"><a href="/com">Osteopathic Medicine</a></li>
+<li class="leaf has-children menu-mlid-3124"><a href="/pharmacy">Pharmacy</a></li>
+<li class="last leaf menu-mlid-8146"><a href="http://online.une.edu" target="_blank">Graduate and Professional Studies - Online</a></li>
+</ul></li>
+<li class="leaf menu-mlid-3887"><a href="/provost">Office of the Provost</a></li>
+<li class="leaf menu-mlid-857"><a href="/library" class="branch-link">Library Services</a></li>
+<li class="leaf menu-mlid-731"><a href="/registrar" class="branch-link">University Registrar&#039;s Office</a></li>
+<li class="last leaf menu-mlid-28521"><a href="/academics/learning-outcomes">Learning Outcomes</a></li>
+</ul></li>
+<li class="expanded menu-mlid-285"><a href="/admissions">Admission</a><ul class="menu"><li class="first expanded menu-mlid-311"><a href="/admissions/undergrad">Undergraduate Admissions</a><ul class="menu"><li class="first leaf menu-mlid-4318"><a href="/admissions/undergrad/how-to-apply">Apply</a></li>
+<li class="leaf menu-mlid-5008"><a href="/admissions/undergrad/visit">Visit UNE</a></li>
+<li class="last leaf menu-mlid-5003"><a href="/sfs/undergraduate">Costs &amp; Financial Aid</a></li>
+</ul></li>
+<li class="expanded menu-mlid-312"><a href="/admissions/graduate">Graduate Admissions</a><ul class="menu"><li class="first leaf menu-mlid-5001"><a href="/admissions/graduate/how-to-apply">Apply</a></li>
+<li class="leaf menu-mlid-5009"><a href="/admissions/graduate/visit">Visit UNE</a></li>
+<li class="last leaf menu-mlid-5004"><a href="/sfs/graduate">Costs &amp; Financial Aid</a></li>
+</ul></li>
+<li class="expanded menu-mlid-2968"><a href="http://online.une.edu/admissions/" target="_blank">Online Education Admissions</a><ul class="menu"><li class="first leaf menu-mlid-5002"><a href="https://srm1.targetx.com/orgs/00D80000000Lc6PEAS/registration/step_1" target="_blank">Apply</a></li>
+<li class="last leaf menu-mlid-5005"><a href="/sfs/online">Costs &amp; Financial Aid</a></li>
+</ul></li>
+<li class="leaf menu-mlid-310"><a href="/sfs" class="branch-link">Financial Aid</a></li>
+<li class="last leaf menu-mlid-24191"><a href="/admissions/intl">International Admissions</a></li>
+</ul></li>
+<li class="expanded menu-mlid-282"><a href="/research">Research</a><ul class="menu"><li class="first leaf menu-mlid-4330"><a href="/research/student-research">Student Research</a></li>
+<li class="leaf menu-mlid-3539"><a href="/research/sponsored-programs">Office of Sponsored Programs</a></li>
+<li class="leaf menu-mlid-3540"><a href="/research/compliance">Compliance</a></li>
+<li class="expanded menu-mlid-5123"><a href="/research/centers">Centers &amp; Institutes</a><ul class="menu"><li class="first leaf menu-mlid-3943"><a href="/research/cobre">NIH Center of Biomedical Research Excellence for the Study of Pain and Sensory Function</a></li>
+<li class="leaf menu-mlid-25316"><a href="/ceah">Center for Excellence in Aging and Health</a></li>
+<li class="leaf menu-mlid-3861"><a href="/cece">Center for Excellence in Collaborative Education</a></li>
+<li class="leaf menu-mlid-16811"><a href="/research/centers/center-excellence-public-health">Center for Excellence in Public Health</a></li>
+<li class="leaf menu-mlid-3118"><a href="/research/cen">Center for Excellence in the Neurosciences</a></li>
+<li class="leaf menu-mlid-5243"><a href="/cetl">Center for Excellence in Teaching &amp; Learning</a></li>
+<li class="last leaf menu-mlid-28691"><a href="/UNE-North">UNE NORTH: the UNE Institute for North Atlantic Studies</a></li>
+</ul></li>
+<li class="last leaf menu-mlid-29851"><a href="/research/core-facilities">Shared Resources</a></li>
+</ul></li>
+<li class="expanded menu-mlid-286"><a href="/studentlife">Student Life</a><ul class="menu"><li class="first leaf menu-mlid-3860"><a href="http://athletics.une.edu" target="_blank">Athletics</a></li>
+<li class="leaf menu-mlid-31091"><a href="/commencement">Commencement</a></li>
+<li class="leaf menu-mlid-5681"><a href="/studentlife/security">Safety &amp; Security</a></li>
+<li class="leaf menu-mlid-5680"><a href="/studentlife/student-affairs">Student Affairs</a></li>
+<li class="leaf menu-mlid-25546"><a href="/student-support">Student Support</a></li>
+<li class="leaf menu-mlid-28841"><a href="/studentlife/southern-maine">Life in Southern Maine</a></li>
+<li class="expanded menu-mlid-1314"><a href="/studentlife/biddeford">Biddeford Campus</a><ul class="menu"><li class="first leaf menu-mlid-5011"><a href="/studentlife/biddeford/activities">Student Engagement</a></li>
+<li class="leaf menu-mlid-1315"><a href="/studentlife/biddeford/residential">Residential Life</a></li>
+<li class="last leaf has-children menu-mlid-5220"><a href="/studentlife/biddeford/orientation">Orientation for New Students</a></li>
+</ul></li>
+<li class="last expanded menu-mlid-2081"><a href="/studentlife/portland">Portland Campus</a><ul class="menu"><li class="first leaf menu-mlid-5012"><a href="/studentlife/portland/activities">Student Involvement and Activities</a></li>
+<li class="leaf menu-mlid-5016"><a href="/studentlife/portland/ocss">Living off Campus</a></li>
+<li class="last leaf menu-mlid-5253"><a href="/studentlife/portland/orientation">Orientation for New Students</a></li>
+</ul></li>
+</ul></li>
+<li class="expanded menu-mlid-287"><a href="/global">Global</a><ul class="menu"><li class="first leaf menu-mlid-2973"><a href="/global/mission">Mission</a></li>
+<li class="leaf menu-mlid-2974"><a href="/global/agreements">Agreements</a></li>
+<li class="expanded menu-mlid-5686"><a href="/cgh">Center for Global Humanities</a><ul class="menu"><li class="first leaf menu-mlid-25441"><a href="/cgh/events">Upcoming Events</a></li>
+<li class="leaf menu-mlid-25446"><a href="/cgh/video">Videos</a></li>
+<li class="last leaf menu-mlid-25451"><a href="/cgh/video/live">Watch Live</a></li>
+</ul></li>
+<li class="expanded menu-mlid-25436"><a href="/morocco">UNE Morocco Campus</a><ul class="menu"><li class="first leaf menu-mlid-12671"><a href="/tgf">Tangier Global Forum</a></li>
+<li class="leaf menu-mlid-25456"><a href="/morocco/about">About</a></li>
+<li class="leaf menu-mlid-25466"><a href="/morocco/people">People</a></li>
+<li class="last leaf menu-mlid-25461"><a href="/morocco/semester-program">Semester Abroad</a></li>
+</ul></li>
+<li class="last expanded menu-mlid-459"><a href="/global/ed">Global Education: Study Abroad</a><ul class="menu"><li class="first leaf menu-mlid-22291"><a href="/global/ed/iceland">Akureyri, Iceland</a></li>
+<li class="leaf menu-mlid-20376"><a href="/global/ed/france">Aix-en-Provence, France</a></li>
+<li class="leaf menu-mlid-561"><a href="/global/ed/seville-spain">Seville, Spain</a></li>
+<li class="leaf menu-mlid-22256"><a href="/morocco/semester-program">Tangier, Morocco</a></li>
+<li class="last leaf menu-mlid-25431"><a href="/global/ed/travel-courses">Travel Courses</a></li>
+</ul></li>
+</ul></li>
+<li class="last expanded menu-mlid-288"><a href="/giving">Give</a><ul class="menu"><li class="first leaf menu-mlid-6471"><a href="https://securelb.imodules.com/s/1080/index.aspx?sid=1080&amp;gid=1&amp;pgid=525&amp;cid=1491" target="_blank">Make a Gift</a></li>
+<li class="leaf menu-mlid-29831"><a href="/giving/types-gifts">Types of Gifts</a></li>
+<li class="leaf menu-mlid-6481"><a href="/giving/support">Ways to Give</a></li>
+<li class="leaf menu-mlid-29841"><a href="/giving/why-i-give">Why I Give</a></li>
+<li class="leaf menu-mlid-29836"><a href="/giving/your-impact">Your Impact</a></li>
+<li class="last leaf menu-mlid-29846"><a href="/giving/contact">Contact</a></li>
+</ul></li>
+</ul></div>
+  </div>
+</div>
+  </div>
+</header>
+
+  <div id="highlighted">
+      <div class="region region-highlighted">
+    
+<div id="block-une-banner-banner" class="banner banner--front">
+  <div class="view view-banner view-id-banner view-display-id-banner_block banner--view view-dom-id-415dd576c0532ff0c2b2c18760505d8f">
+    
+  </div>
+</div>
+  </div>
+  </div>
+
+
+  <section id="main" role="main" class="l-fw-section__section">
+    <div class="content-wrapper">
+      
+            
+              <div class="tabs l-fw-page__tabs">
+                  </div>
+      
+      
+      
+      <!-- banner block -->
+      <div class="view view-banner view-id-banner view-display-id-banner_block banner--view view-dom-id-b38a42e192d38f8efed525d1ef3f7ab3 style1">
+    
+      
+<div class="home-hero banner__slider banner__slider--front">
+
+<ul class="slides">
+
+  <li class="slide slide-1 slide--image">
+	  
+<div class="l-slide__wrap-container">
+  <div class="l-slide__container">
+    
+    
+    
+    
+                  <div class="slide__teaser is-div-container" id="teaser117556"><p>&nbsp;</p>
+
+<div class="homecopy">
+	<h5>Curl Up</h5>
+
+	<h4>with the Newly Redesigned UNE Magazine</h4>
+
+	<p><a href="https://www.une.edu/node/278145">Read UNE Magazine</a></p>
+</div>
+</div>
+      
+              <button class="btn slide__info-button slide__info-button--front" id="button-teaser117556">About photo</button>
+          
+    
+  </div>
+</div>
+
+<div class="l-slide__image--front">
+      <div class="l-slide__image-wrap l-slide__image-wrap--front" aria-label="Curl Up" style="background-image: url(https://www.une.edu/sites/default/files/styles/une_banner_home/public/homepage_slider-une_magazine-2020.jpg?itok=GU_F_3VI);">
+  
+    </div>
+</div>
+  </li>
+  <li class="slide slide-2 slide--image">
+	  
+<div class="l-slide__wrap-container">
+  <div class="l-slide__container">
+    
+    
+    
+    
+                  <div class="slide__teaser is-div-container" id="teaser117555"><p>&nbsp;</p>
+
+<div class="homecopy">
+	<h5>Climate Change</h5>
+
+	<h4>in the Gulf of Maine</h4>
+
+	<p><a href="https://www.une.edu/node/278263">Read UNE Magazine</a></p>
+</div>
+</div>
+      
+              <button class="btn slide__info-button slide__info-button--front" id="button-teaser117555">About photo</button>
+          
+    
+  </div>
+</div>
+
+<div class="l-slide__image--front">
+      <div class="l-slide__image-wrap l-slide__image-wrap--front" aria-label="Climate Change" style="background-image: url(https://www.une.edu/sites/default/files/styles/une_banner_home/public/homepage_slider-climate_change-2020.jpg?itok=R-cZtKCT);">
+  
+    </div>
+</div>
+  </li>
+  <li class="slide slide-3 slide--image">
+	  
+<div class="l-slide__wrap-container">
+  <div class="l-slide__container">
+    
+    
+    
+    
+                  <div class="slide__teaser is-div-container" id="teaser117554"><p>&nbsp;</p>
+
+<div class="homecopy">
+	<h5>Behind Angela Davis’</h5>
+
+	<h4>Historic Visit</h4>
+
+	<p><a href="https://www.une.edu/node/278282">Read UNE Magazine</a></p>
+</div>
+</div>
+      
+              <button class="btn slide__info-button slide__info-button--front" id="button-teaser117554">About photo</button>
+          
+    
+  </div>
+</div>
+
+<div class="l-slide__image--front">
+      <div class="l-slide__image-wrap l-slide__image-wrap--front" aria-label="Behind Angela Davis’" style="background-image: url(https://www.une.edu/sites/default/files/styles/une_banner_home/public/homepage_slider-angela_davis-2020.jpg?itok=YhkGItiJ);">
+  
+    </div>
+</div>
+  </li>
+  <li class="slide slide-4 slide--image">
+	  
+<div class="l-slide__wrap-container">
+  <div class="l-slide__container">
+    
+    
+    
+    
+                  <div class="slide__teaser is-div-container" id="teaser117552"><p>&nbsp;</p>
+
+<div class="homecopy">
+	<h5>A Social Work Alum</h5>
+
+	<h4>Looks at Climate Change</h4>
+
+	<p><a href="https://www.une.edu/node/278354">Read UNE Magazine</a></p>
+</div>
+</div>
+      
+              <button class="btn slide__info-button slide__info-button--front" id="button-teaser117552">About photo</button>
+          
+    
+  </div>
+</div>
+
+<div class="l-slide__image--front">
+      <div class="l-slide__image-wrap l-slide__image-wrap--front" aria-label="A Social Work alum" style="background-image: url(https://www.une.edu/sites/default/files/styles/une_banner_home/public/homepage_slider-climate_comic-2020.jpg?itok=NfxyJiwA);">
+  
+    </div>
+</div>
+  </li>
+
+</ul>
+ 
+  <div class="cta-buttons-container">
+
+    <div class="fw-section__floater l-fw-section__floater-right cta-buttons">
+      <div class="floater__button">
+        <a class="btn fw-background-color fw-background-color--hover h"
+          href="/request-info" style="color: #FFF;">
+          <strong>Request Info</strong>
+        </a>
+      </div>
+      <div class="floater__button">
+        <a class="btn fw-background-color fw-background-color--hover h"
+          href="/admissions/undergrad/how-to-apply" style="color: #FFF;">
+          Apply
+        </a>
+      </div>
+      <div id="block-bean-cta-visit-une" class="block block-bean">
+
+    
+  <div class="content">
+    
+<div class="bean-cta" style="background-color: #163e70;" >
+      <a href="https://www.une.edu/admissions/undergrad/visit">
+
+              <h2 style="color: #ffffff;">VISIT UNE</h2>
+      
+              <div class="cta-body" style="color: #ffffff;"><p>Attend open houses, walking tours, and more.</p>
+</div>
+      
+              <p class="cta-link" style="color: #ffffff;">SIGN UP</p>
+          </a>
+  
+</div>
+  </div>
+</div>
+    </div>
+
+  </div>
+ 
+
+</div>
+  </div>
+
+        <div class="region region-content">
+    <div class="gdpr">
+    <div class="gdpr-container">
+      <p>This website uses cookies to understand how you use the website and to improve your experience. By continuing to use the website, you accept the University of New England’s use of cookies and similar technologies. To learn more about our use of cookies and how to manage your browser cookie settings, please review our <a href="https://www.une.edu/communications/privacy-policy">Privacy Notice</a>.</p>
+      <a href="#0" class="gdpr-button">Accept</a>
+    </div>
+  </div><div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <article role="article" id="node-108166" class="node node-page node-view-mode-full l-fw clearfix">
+  <div class="content">
+        <div class="l-fw-section__container section-1 l-fw-section__container--no-image" style="background-color:">
+      <div class="fw-section__image fw-section__image--first" style="max-height: 180px">
+      </div>
+            <div class="l-fw-section__text l-fw-section__text-- l-fw-section__text--ordered" >
+      <div class="fw-section__text fw-section__text--no-image fw-section__text--ordered">
+        <p><div class="view view-js-news-triptick view-id-js_news_triptick view-display-id-default view-dom-id-3e500d1f386851764d79f773e55cb9a7">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1">
+      
+  <div>        <div><a href="/news/2020/une-joins-top-60-2020-us-news-and-world-report-graduate-education-rankings"><img src="https://www.une.edu/sites/default/files/styles/news_listing/public/top_images/usnewsreport_online.jpg?itok=mc2DNQM9" width="600" height="400" alt="U.S. News and World Report badge" title="The UNE College of Graduate and Professional Studies has been named among the top 60 online programs for graduate education for 2020 by U.S. News and World Report." /></a></div>  </div>  
+  <div class="views-field views-field-title">        <h3 class="field-content"><a href="/news/2020/une-joins-top-60-2020-us-news-and-world-report-graduate-education-rankings">UNE joins Top 60 in 2020 U.S. News and World Report graduate education rankings</a></h3>  </div>  </div>
+  <div class="views-row views-row-2">
+      
+  <div>        <div><a href="/news/2019/une-launches-new-center-dedicated-team-based-collaborative-education"><img src="https://www.une.edu/sites/default/files/styles/news_listing/public/top_images/img_3546.jpg?itok=tgZEY3n-" width="600" height="400" alt="Students from various colleges within the University of New England work together during a collaborative learning activity." title="Students from various colleges within the University of New England work together during a collaborative learning activity." /></a></div>  </div>  
+  <div class="views-field views-field-title">        <h3 class="field-content"><a href="/news/2019/une-launches-new-center-dedicated-team-based-collaborative-education">UNE launches new center dedicated to team-based, collaborative education</a></h3>  </div>  </div>
+  <div class="views-row views-row-3">
+      
+  <div>        <div><a href="/news/2019/une-takes-climate-change-curriculum-and-research"><img src="https://www.une.edu/sites/default/files/styles/news_listing/public/top_images/img_0782_0.jpg?itok=CsSyznhs" width="600" height="400" alt="The Gulf of Maine is warming faster than 99% of all of the oceans in the world" title="The Gulf of Maine is warming faster than 99% of all of the oceans in the world" /></a></div>  </div>  
+  <div class="views-field views-field-title">        <h3 class="field-content"><a href="/news/2019/une-takes-climate-change-curriculum-and-research">UNE takes on climate change in curriculum and research</a></h3>  </div>  </div>
+  <div class="views-row views-row-4">
+      
+  <div>        <div><a href="/news/2019/defying-odds-une-recognized-growing-enrollment-%E2%80%98chronicle-higher-education%E2%80%99"><img src="https://www.une.edu/sites/default/files/styles/news_listing/public/top_images/jherbert-1474_3.jpg?itok=DgAaodH1" width="600" height="400" alt="President James Herbert" /></a></div>  </div>  
+  <div class="views-field views-field-title">        <h3 class="field-content"><a href="/news/2019/defying-odds-une-recognized-growing-enrollment-%E2%80%98chronicle-higher-education%E2%80%99">Defying the odds: UNE recognized for growing enrollment by ‘Chronicle of Higher Education’</a></h3>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></p>
+
+<p style="text-align: center;"><a class="btn" href="/news" style="color: #FFF;"><strong>READ ALL NEWS</strong></a></p>
+      </div>
+    </div>
+        </div>
+  </div>
+
+  
+</article>
+  </div>
+</div>
+  </div>
+
+      <div class="une-84">
+
+
+  <!-- une-84-1 -- FIRST DARK BLUE CALLOUT -->
+	<div class="une-84-bg-primary" id="une-84-1">
+		<div class="grid center">
+			<section class="une-84-padding-top">
+         <h2 style="color: #fff !important;">The University of New England is Inspiring U</h2>
+         <p>Discover UNE, Maine’s largest private university—a supportive, welcoming community that empowers students to lead and succeed in a rapidly changing world. On our three beautiful campuses—in coastal Biddeford and Portland, Maine, and in Tangier, Morocco—as well as online, you’ll find countless opportunities for global explorations and experiential learning.</p>
+      </section>
+		</div>
+	</div>
+
+  <!-- une-84-2 -- CAMPUSES TRIPTYCH -->
+	<div id="une-84-2">
+		<div class="une-84-grid">
+			<h2 style="color: #1b3e70;">Our Three Campuses:</h2>
+    </div>
+
+		<div class="une-84-grid une-84-col3">
+			<div class="une-84-column"><img alt="Portland Campus" src="sites/all/themes/une_theme/images/campuses/portland-campus.jpg" class="une-84-img" />
+				<div class="une-84-content"><span>Portland Campus</span>
+
+					<p>Quintessential New England beauty in a vibrant city</p>
+					<a href="/about/campuses">Read More</a></div>
+			</div>
+
+			<div class="une-84-column"><img alt="Biddeford Campus" src="sites/all/themes/une_theme/images/campuses/biddeford-campus.jpg" class="une-84-img" />
+				<div class="une-84-content"><span>Biddeford Campus</span>
+
+          <p>
+            State-of-the-art facilities on the scenic coast of Maine
+          </p>
+					<a href="/about/campuses">Read More</a></div>
+			</div>
+
+			<div class="une-84-column"><img alt="Tangier Campus" src="sites/all/themes/une_theme/images/campuses/tangier-campus.jpg" class="une-84-img" />
+				<div class="une-84-content"><span>Tangier Campus</span>
+
+					<p>Study abroad while staying on track to graduate</p>
+					<a href="/about/campuses">Read More</a></div>
+			</div>
+		</div>
+	</div>
+
+  <!-- une-84-3 -- ACADEMIC MAJORS -->
+	<div class="une-84-bg-primary" id="une-84-3">
+		<div class="une-84-grid une-84-academic-majors">
+    <div class="une-84-column">
+        <h2>Our Programs</h2>
+        <p>
+          Choose from more than 40 undergraduate and 32 graduate/professional programs in fascinating fields.
+        </p>
+			</div>
+
+			<div class="une-84-column">
+				<ul class="une-84-nav">
+					<li><a class="une-84-button" href="/academics/programs?qt-majors=0#qt-majors">Undergraduate Programs</a></li>
+					<li><a class="une-84-button" href="/academics/programs?qt-majors=1#qt-majors">Graduate Programs</a></li>
+					<li><a class="une-84-button" href="/academics/programs?qt-majors=1#qt-majors">Doctorate Programs</a></li>
+          <li><a class="une-84-button" href="/academics/programs?qt-majors=3#qt-majors">Online Courses</a></li>
+
+				</ul>
+			</div>
+		</div>
+  </div>
+
+  <!-- une-84-4 -- A SOUND INVESTMENT -->
+  <div style="background-color: #4796d6;">
+    <div id="une-84-4" class="une-84-padding-top">
+      <div class="une-84-grid" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+        <h2>A Sound Investment</h2>
+        <div class="une-84-item">
+          <div class="une-84-number">#1</div>
+          <p>UNE’s 2015 ranking among Maine universities and colleges for its ability to increase students’ career earnings, according to the Brookings Institution.</p>
+        </div>
+        <div class="une-84-item">
+          <div class="une-84-number">98%</div>
+          <p>of our undergraduate students receive some type of financial assistance.</p>
+        </div>
+        <div class="une-84-item">
+          <div class="une-84-number">93%</div>
+          <p>of graduates are employed or continuing higher education within a year of graduating (based on 2016-2018 graduate surveys)</p>
+        </div>
+        <div class="une-84-item">
+          <div class="une-84-number">A3</div>
+          <p>UNE's <a href="/news/2017/une-looks-future-solid-financial-ground-strong-ratings-moody%E2%80%99s-and-fitch" style="color: #fff; text-decoration: underline;">financial&nbsp;rating</a> from leading credit rating firm Moody's Investors Service.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- une-84-5 -- BADGES -->
+<div id="une-84-5" class="une-84-padding-top" style="padding-left: 3em; padding-right: 3em;">
+  <h2 style="color: #1b3e70;
+    margin-bottom: 35px; font-family: 'Lato'; font-size: 28px;">National Recognition</h2>
+  <div class="flex" style="margin-bottom: 40px;">
+    <div class="une-84-item">
+      <img alt="Forbes America's Top Colleges 2019" src="/sites/all/themes/une_theme/images/badges/badge-1.png">
+    </div>
+    <div class="une-84-item">
+      <img alt="Money Best Colleges 2018-2019" src="/sites/all/themes/une_theme/images/badges/money.png">
+    </div>
+    <div class="une-84-item">
+      <img alt="US News and World Report 2019 badge" src="/sites/all/themes/une_theme/images/badges/badge-3.png">
+    </div>
+    <div class="une-84-item">
+      <img alt="Princeton Review 2020" src="/sites/all/themes/une_theme/images/badges/badge-4.png">
+    </div>
+  </div>
+
+  <hr>
+  <p>Used with permission. ©2018 TPR Education IP Holdings, LLC. The Princeton Review is not affiliated with Princeton University. For more information about reprints from The Princeton Review visit PARS International Corp. at <a href="https://www.tpr-licensing.com" target="_blank">www.TPR-licensing.com</a>.</p>
+  <p>MONEY is a registered trademark of Meredith Corp. and is used under license</p>
+</div>
+
+<style>
+.flex {
+  display: flex;
+}
+.une-84 body {
+  font-family: "Lato";
+  font-weight: 100;
+}
+.une-84 p {
+  color: #fff;
+  font-weight: 400;
+  font-family: "Lato";
+}
+.une-84 h2 {
+  line-height: 1.4;
+  margin-top: 0;
+  font-size: 28px;
+  font-family: "Lato";
+}
+.une-84-img {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  height: auto;
+}
+@media (min-width: 1024px) {
+  .une-84 img {
+    width: 100%;
+    height: auto;
+  }
+}
+.une-84-center {
+  text-align: center;
+}
+.une-84 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.une-84-padding-top {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+.une-84-grid {
+  padding: 1em 3em;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .une-84-grid {
+    display: flex; /* fallback */
+    display: grid;
+    grid-gap: 30px;
+  }
+  .une-84-academic-majors {
+    grid-template-columns: 1.3fr 2fr;
+    align-content: center;
+    padding: 4em 3em;
+  }
+}
+@media (min-width: 1024px) {
+  .une-84-col3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+  }
+}
+.une-84-nav {
+  display: grid;
+  align-content: space-between;
+  grid-gap: 20px;
+}
+@media (min-width: 700px) {
+  .une-84-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.une-84-bg-primary {
+  background-color: #083e6e;
+  color: #fff;
+}
+.une-84-button {
+  color: #fff !important;
+  padding: 10px;
+  text-transform: uppercase;
+  display: block;
+  text-decoration: none;
+  border: 1px solid transparent;
+  font-weight: 400;
+}
+.une-84-button:hover {
+  text-decoration: underline;
+}
+.une-84-button:focus {
+  border: 1px dotted #eee;
+}
+@media (min-width: 600px) {
+  .une-84-button {
+    background-color: #0096d3;
+    text-align: center;
+  }
+}
+#une-84-1 p {
+  margin-bottom: 0;
+  font-size: 17px;
+  line-height: 1.9;
+}
+#une-84-1 h2 { color: #083e6e !important; }
+#une-84-2 .une-84-column {
+  position: relative;
+}
+@media (max-width: 1024px) {
+  #une-84-2 .une-84-column {
+    text-align: center;
+  }
+}
+#une-84-2 .une-84-content {
+  position: absolute;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 2em;
+  padding: 0 1em;
+}
+#une-84-2 span {
+  font-size: 12px;
+}
+#une-84-2 span,
+#une-84-2 p,
+#une-84-2 a {
+  text-shadow: 1px 1px 5px #0000009e !important;
+}
+#une-84-2 a,
+#une-84-2 span {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#une-84-2 a { font-size: 14px !important; }
+#une-84-2 a::after {
+  content: " >>";
+}
+#une-84-3 h2 { color: #fff !important; }
+#une-84-4 .une-84-item {
+  text-align: center;
+}
+#une-84-4 h2 { color: #fff; grid-column-start: 1; grid-column-end: 5; }
+.une-84-number {
+  color: #fff;
+  font-size: 4rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+#une-84-5 {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+#une-84-5 .une-84-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#une-84-5 img { width: 75%; }
+
+</style>
+
+    </div>
+  </section>
+
+  <footer role="contentinfo">
+    <div class="region region-footer">
+    <p class="copyright">&copy; 2020 <a href="/maps">University of New England</a> &nbsp;|&nbsp; +1 (207) 283-0171 | <a href="/communications/privacy-policy">Privacy Notice</a></p><div id="block-menu-menu-footer-social-menu" class="block block-menu">
+
+    <h2>Footer Social Menu</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="http://www.facebook.com/universityofnewengland" class="facebook" target="_blank">Facebook</a></li>
+<li class="leaf"><a href="https://www.instagram.com/universitynewengland/" class="instagram" target="_blank">Instagram</a></li>
+<li class="leaf"><a href="http://www.twitter.com/unetweets" class="twitter" target="_blank">Twitter</a></li>
+<li class="leaf"><a href="http://youtube.com/unecommunications" class="youtube" target="_blank">YouTube</a></li>
+<li class="last leaf"><a href="https://www.linkedin.com/edu/university-of-new-england-18588" class="linkedin" target="_blank">Linkedin</a></li>
+</ul>  </div>
+</div>
+  </div>
+</footer>
+</div>
+
+    <!-- page_bottom -->
+    <script type="text/javascript" src="https://www.une.edu/sites/default/files/js/js_lSl-Ekr9LQ9q1gBnddSfZoMr-IiyoHrVKxgWwN6K7r0.js"></script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"5a14fe33b4","applicationID":"392863527","transactionName":"NAEGMURYV0QHVUMMWA1LMRdfFhZeCFJSHRkTDBQ=","queueTime":0,"applicationTime":18,"atts":"GEYFRwxCREo=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+
+  </html>
+

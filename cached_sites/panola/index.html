@@ -1,0 +1,496 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"f4e9f872fd",applicationID:"3409927"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+      <link rel="stylesheet" href="/_resources/css/ouforms-bootstrap-horizontal.css">
+<!-- this is the headcode include -->
+<!-- Bootstrap -->
+<link rel="stylesheet" href="/_resources/2016/css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="/_resources/2016/css/styles.css" type="text/css">
+<script src="https://use.fontawesome.com/8c52728a36.js"></script>
+<link rel="stylesheet" href="/_resources/2016/css/owl.carousel.css">
+<link rel="stylesheet" href="/_resources/2016/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/_resources/2016/css/totopstyle.css">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WP7JQ94');</script>
+<!-- End Google Tag Manager -->
+
+<script src="https://use.typekit.net/fnp4ndi.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="/_resources/2016/js/jquery-1.11.3.min.js"></script> 
+<script src="//code.jquery.com/jquery-migrate-1.4.1.min.js"   integrity="sha256-SOuLUArmo4YXtXONKz+uxIGSKneCJG4x0nVcA0pFzV0="   crossorigin="anonymous"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+      <title>Panola College</title>
+      
+      <meta name="keywords" content="">
+      <meta name="description" content="Panola College, 1109 West Panola Street, Carthage, TX 75633. (903) 693-2000">
+      <style>
+					body {
+					background-image: url(/_resources/2016/images/body-bg-3.jpg);
+					}
+				</style><style>
+			#headerbar .module {
+			max-width: 300px;
+			margin-right: 0;
+			float: right;
+			}
+			
+			@media (max-width: 1000px) {#headerbar .module {max-width: 400px !important;}}
+			
+			.box-warning {
+			background-color: #fff0eb;
+			background-image: url("/_resources/images/tools/box_warning.png");
+			background-repeat: no-repeat;
+			border-color: #edb1a2;
+			color: #963e27;			
+			border: 1px solid #ccc;
+			padding-left: 40px;
+			border-radius: 3px;  
+			box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+			margin: 15px 0;			
+			padding: 10px 10px 10px 40px;
+			}
+
+			.module {
+			position: relative;
+			}
+		</style></head>
+   <body>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WP7JQ94" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) --><header class="siteHeader">
+<div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
+<nav class="navbar navbar-default topbar">
+<div class="container"><!-- Brand and toggle get grouped for better mobile display -->
+<div id="headerbar" class="navbar-header navbar-brand"><a href="/index.html"><img class="navbar-brand" src="/_resources/2016/images/logo.png" alt="Panola College, Established 1947" /> </a></div>
+</div>
+<!-- /.container --></nav><nav class="navbar navbar-default bottombar" aria-label="Primary navigation">
+<div class="container">
+<div id="siteNavigation" class="siteNavigation"><a class="menuClose visible-xs" href="#">Close Menu</a>
+<ul class="nav navbar-nav">
+<li class="dropdown"><a class="dropdown-toggle" role="button" href="#" data-toggle="dropdown" data-hover="dropdown" aria-label="Home" aria-haspopup="true" aria-expanded="false">Home</a>
+<ul class="dropdown-menu">
+<li><a href="/index.html">Home</a></li>
+<li><a href="/about/">About Us</a></li>
+<li><a href="/alumni/">Alumni Association</a></li>
+<li><a href="/about/campus-extensions.html">Off-Campus Sites</a></li>
+<li><a href="/about/campus-map.html">Campus Map</a></li>
+<li><a href="/fiscal-services/campus-police/index.html">Campus Police</a></li>
+<li><a title="Panola College Store" href="https://www.panolacollegestore.com/home.aspx">College Store</a></li>
+<li><a href="/emergency-management/">Emergency Management</a></li>
+<li><a href="/calendar">Event Calendar</a></li>
+<li><a href="/fiscal-services/">Fiscal Services</a></li>
+<li><a href="/human-resources/">Human Resources</a></li>
+<li><a href="/about/goals.html">Institutional Goals</a></li>
+<li><a href="/ir/">Institutional Research</a></li>
+<li><a href="/about/comments.html">Panola Cares: Feedback</a></li>
+<li><a href="/panola-foundation/index.html">Panola College Foundation</a></li>
+<li><a title="Virtual Tour of the Panola College Carthage campus" href="/about/tour.html">Panola College Virtual Tour</a></li>
+<li><a href="https://pcponyexpress.org/">The Pony Express</a></li>
+<li><a href="/public_info_act.html">Public Information Act</a></li>
+<li><a href="/public-relations/">Public Relations</a></li>
+<li><a href="/qep/">Quality Enhancement Plan</a></li>
+<li><a href="/about/travel-to-panola.html">Travel to Panola</a></li>
+</ul>
+</li>
+<li class="dropdown"><a class="dropdown-toggle" role="button" href="#" data-toggle="dropdown" data-hover="dropdown" aria-label="Programs" aria-haspopup="true" aria-expanded="false">Programs</a>
+<ul class="dropdown-menu">
+<li><a href="/programs/index.html">Programs</a></li>
+<li><a title="Adult Education and Literacy" href="/ael/">Adult Education and Literacy</a></li>
+<li><a title="Agriculture" href="/programs/agriculture/">Agriculture</a></li>
+<li><a href="/programs/computer-information-technology/">Computer Information Technology</a></li>
+<li><a href="/programs/communications/">Communications</a></li>
+<li><a href="/programs/cosmetology/">Cosmetology</a></li>
+<li><a href="/programs/criminal-justice/">Criminal Justice</a></li>
+<li><a href="/programs/developmental-education/">Developmental Education</a></li>
+<li><a href="/programs/education/">Education</a></li>
+<li><a href="/programs/industrial-technology/index.html">Energy</a></li>
+<li><a href="/programs/fine-arts/">Fine Arts</a></li>
+<li><a href="/programs/general-business/">General Business</a></li>
+<li><a href="/programs/health-sciences/">Health Sciences</a></li>
+<li><a href="/programs/pe/">Kinesiology</a></li>
+<li><a href="/programs/letters/">Letters</a></li>
+<li><a href="/programs/math/">Math</a></li>
+<li><a href="/programs/office-professional/">Office Professional</a></li>
+<li><a href="/programs/science/">Science</a></li>
+<li><a title="Social and Behavioral Sciences " href="/programs/social-sciences/index.html">Social and Behavioral Sciences</a></li>
+<li><a href="/programs/welding/index.html">Welding</a></li>
+<li><a href="/wkfc-cont-ed/">Workforce/Continuing Education</a></li>
+</ul>
+</li>
+<li class="dropdown"><a class="dropdown-toggle" role="button" href="#" aria-label="Athletics" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Athletics</a>
+<ul class="dropdown-menu">
+<li><a title="Panola Athlethics" href="https://panola.prestosports.com/" target="_blank">Panola Athletics</a></li>
+</ul>
+</li>
+<li class="dropdown"><a class="dropdown-toggle" role="button" href="#" aria-label="Student Success" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Student Success</a>
+<ul class="dropdown-menu">
+<li><a href="/student-success/index.html">Student Success</a></li>
+<li><a title="Apply Texas Online" href="https://www.applytexas.org/">Apply Online Now!</a></li>
+<li><a href="/admissions/">Admissions</a></li>
+<li><a title="Testing Services" href="/student-success/placement-testing/index.html">Testing Services</a></li>
+<li><a href="/financial-aid/">Financial Aid</a></li>
+<li><a title="Pathfinder" href="/student-success/documents/202019fallpathfinderupdated9-10-19.pdf1.pdf" target="_blank">Pathfinder</a></li>
+<li><a href="/student-success/advising/">Advising</a></li>
+<li><a href="/student-success/disability-support-services/">Disability Support Services</a></li>
+<li><a title="Mental Health Services" href="/student-success/disability-support-services/mental_health.html">Mental Health Services</a></li>
+<li><a href="/student-success/childcare-assistance/">Childcare Assistance</a></li>
+<li><a href="/student-success/texas-success-initiative.html">Texas Success Initiative</a></li>
+<li><a href="/student-success/catalog.html">College Catalog</a></li>
+<li><a href="/student-success/fitnesscenter.html">Fitness Center</a></li>
+<li><a href="/student-success/residence-life/">Residence Life</a></li>
+<li><a href="/student-success/international-students/">International Students</a></li>
+<li><a title="Panola College Dining Services" href="https://panolacollege.sodexomyway.com/">Dining Services</a></li>
+<li><a href="/student-success/veterans-benefits.html">Veterans Benefits</a></li>
+<li><a href="/student-success/clubs-and-organizations/">Clubs and Organizations</a></li>
+<li><a href="/student-success/id-cards/">Student Identification Cards</a></li>
+<li><a href="http://www.texasgenuine.org/">Texas Genuine</a></li>
+<li><a title="Feed The Need" href="/feedtheneed.html">Feed the Need</a></li>
+</ul>
+</li>
+<li class="dropdown"><a class="dropdown-toggle" role="button" href="#" aria-label="Library" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Library</a>
+<ul class="dropdown-menu">
+<li><a href="/library/index.html">Library</a></li>
+<li><a title="Dual Credit" href="https://libguides.panola.edu/DualCredit">Dual Credit</a></li>
+<li><a title="Electronic Resources" href="https://libguides.panola.edu/Resources">Electronic Resources</a></li>
+<li><a title="Exhibits/Lectures" href="https://libguides.panola.edu/ExhibitsandLectures">Exhibits/Lectures</a></li>
+<li><a title="LibGuides" href="https://libguides.panola.edu/">Guides</a></li>
+<li><a title="Local History" href="/library/Genealogy.html">Local History</a></li>
+<li><a title="Wepa Printer Kiosk" href="https://libguides.panola.edu/printing">Printing @ Panola</a></li>
+<li><a href="/library/services.html">Services</a></li>
+<li><a href="/library/spaces.html">Spaces</a></li>
+<li><a href="/library/team.html">Support Team</a></li>
+<li><a href="https://libanswers.panola.edu/">FAQ</a></li>
+<li><a title="Library Policy Manual" href="/library/documents/policy_manual_january_2019.pdf">Library Policy Manual</a></li>
+</ul>
+</li>
+<li class="dropdown"><a class="dropdown-toggle" role="button" href="#" aria-label="Financial Aid" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Financial Aid</a>
+<ul class="dropdown-menu">
+<li><a href="/financial-aid/index.html">Financial Aid</a></li>
+</ul>
+</li>
+<li class="dropdown"><a href="/human-resources/">Human Resources</a>
+<ul class="dropdown-menu">
+<li><a href="/human-resources/index.html">Human Resources</a></li>
+<li><a href="/human-resources/employment/">Employment</a></li>
+<li><a href="/human-resources/directory.html">Directory</a></li>
+<li><a href="/human-resources/parttime-adjunct-pool.html">Part-time Adjunct Pool</a></li>
+<li><a href="/human-resources/forms.html">HR Forms</a></li>
+<li><a href="/human-resources/job-descriptions.html">Job Descriptions</a></li>
+<li><a href="/human-resources/organizational-charts.html">Organizational Charts</a></li>
+</ul>
+</li>
+<li class="dropdown"><a class="dropdown-toggle" role="button" href="#" aria-label="Dual Credit" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Dual Credit</a>
+<ul class="dropdown-menu">
+<li><a title="Dual Credit &amp; Early Admission" href="/dual-credit/index.html">Dual Credit &amp; Early Admission</a></li>
+</ul>
+</li>
+<li class="dropdown last"><a class="dropdown-toggle" role="button" href="#" aria-label="Sign on" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Sign on</a>
+<ul class="dropdown-menu">
+<li><a href="/signon.html">Sign on</a></li>
+<li><a href="https://panola.instructure.com/login">Canvas</a></li>
+<li><a href="https://mail.google.com/a/students.panola.edu">Student Email</a></li>
+<li><a href="https://alpha.panola.edu/cc4/sis.html">Student CampusConnect</a></li>
+<li><a href="https://mail.google.com/a/panola.edu">Employee Email</a></li>
+<li><a href="https://alpha.panola.edu/cc4/fas.html">Employee CampusConnect</a></li>
+<li><a href="https://alpha.panola.edu/cc4/adv.html">CampusConnect for Advisors</a></li>
+</ul>
+</li>
+</ul>
+<form class="navbar-form navbar-right" role="search" action="/search/" method="get">
+<div class="form-group"><label for="search"><span class="sr-only">Search Panola</span></label> <input id="search" class="form-control" type="text" placeholder="Search Panola" name="q" /></div>
+<button class="search"><span class="fa fa-search" aria-hidden="true"><span class="sr-only">Search Panola</span></span></button></form></div>
+</div>
+</nav><a class="menuToggle btn btn-default visible-xs" role="button" href="#siteNavigation">Menu</a></header>      <div class="content" id="maincontent">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="owl-carousel home">
+                     
+                     
+                     <div class="item"><img src="https://www.panola.edu/_resources/ldp/.private_ldp/a15105/production/master/0de0bb8c-055d-4924-afc6-d65336ff826e.jpg" alt="Free Tutoring Available"><div class="carousel-caption">
+                           <h2>Free Tutoring Available</h2>
+                           <p>Get a great start this semester by taking advantage of free tutoring in reading, writing
+                              and math. Tutoring is available to all students. Academic coaches will be on hand
+                              to assist students, either in face-to-face sessions or with online Zoom conferencing.
+                           </p>
+                           <p class="read-more"><a href="https://www.panola.edu/programs/developmental-education/documents/academic-support-lab-schedule-spring-2020.pdf">Read More <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a></p>
+                        </div>
+                     </div>
+                     <div class="item"><img src="https://www.panola.edu/_resources/ldp/.private_ldp/a15105/production/master/de4739f7-7a6d-4f44-b958-fd9f3dfcb564.jpg" alt="1098-T Form"><div class="carousel-caption">
+                           <h2>1098-T Form</h2>
+                           <p>Panola College students can receive the Tuition Statement by downloading the 1098-T
+                              Form at 1098tforms.com.
+                           </p>
+                           <p class="read-more"><a href="http://1098tforms.com/">Read More <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a></p>
+                        </div>
+                     </div>
+                     <div class="item"><img src="https://www.panola.edu/_resources/ldp/.private_ldp/a15105/production/master/5829e735-dfa3-409a-ab37-f8e8265fca19.png" alt="Applying for Financial Aid"><div class="carousel-caption">
+                           <h2>Applying for Financial Aid</h2>
+                           <p>The Free Application for Federal Student Aid (FAFSA) has opened. Panola College is
+                              committed to helping students find the resources needed for college.
+                           </p>
+                           <p class="read-more"><a href="https://www.panola.edu/financial-aid/index.html">Read More <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a></p>
+                        </div>
+                     </div>
+                     <div class="item"><img src="https://www.panola.edu/_resources/ldp/.private_ldp/a15105/production/master/16184eb8-52d3-47a9-88ab-e9f0d00d7268.png" alt="Free Course Materials"><div class="carousel-caption">
+                           <h2>Free Course Materials</h2>
+                           <p>Panola College offers 200+ courses with FREE course materials! </p>
+                           <p class="read-more"><a href="https://www.panola.edu/save">Read More <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a></p>
+                        </div>
+                     </div>
+                     
+                  </div>
+                  <div class="tag-line"><img src="/_resources/2016/images/tagline-white17.png" alt="We Are Panola" class="img-responsive"></div>
+                  <div class="news">
+                     <h2>
+                        
+                        
+                        <h2>Latest News from the Pony Express</h2>
+                        
+                     </h2>
+                     <div class="owl-carousel-news">
+                        
+                        
+		<div class='item'>
+		  <p class='title'><a 'https://pcponyexpress.org/panola-takes-down-trinity-valley-112-105/' title='Panola takes down Trinity Valley 112-105'>Panola takes down Trinity Valley 112-105</a></p><p>The Panola Ponies hosted the Trinity Valley Cardinals in what proved to be a high scoring affair on Wednesday, Jan. 22.  Panola outlasted the Cardinals for a 112-105 final. It was hot shooting that helped seal the win for the men.  Panola went an astounding 15-23 from the 3-point range in the first half and... […] <a href='https://pcponyexpress.org/panola-takes-down-trinity-valley-112-105/' title='more'>more</a></p>
+		</div>
+		<div class='item'>
+		  <p class='title'><a 'https://pcponyexpress.org/book-club-to-meet-330-p-m-wednesday-jan-22/' title='Book Club to meet 3:30 p.m. Wednesday, Jan. 22'>Book Club to meet 3:30 p.m. Wednesday, Jan. 22</a></p><p>The Panola College Book Club will meet from 3:30-4:30 p.m. on Wednesday, Jan.22 in the Murphy Payne Room on the first floor of the M.P. Baker Library. Faculty sponsor is Patricia Hooten, speech professor. &#8220;We’re really excited about Book Club. Everyone is welcome here,&#8221; she said. Stop by the meeting for more information or email... […] <a href='https://pcponyexpress.org/book-club-to-meet-330-p-m-wednesday-jan-22/' title='more'>more</a></p>
+		</div>
+		<div class='item'>
+		  <p class='title'><a 'https://pcponyexpress.org/ponies-start-2020-strong/' title='Ponies start 2020 strong'>Ponies start 2020 strong</a></p><p>The Ponies hosted Lee College on Friday January 3 and came away with a 93-79 victory.  Sixteen made 3-Point field goals helped seal the deal.  Jermaine Drewey&#8217;s hot shooting early set the tone for the rest of the game. Drewey led the way with 23 points (7-12 3PFG).  He was joined in double figures by... […] <a href='https://pcponyexpress.org/ponies-start-2020-strong/' title='more'>more</a></p>
+		</div>
+		<div class='item'>
+		  <p class='title'><a 'https://pcponyexpress.org/baptist-student-ministry-offers-free-lunch-on-tuesdays/' title='Baptist Student Ministry offers free lunch on Tuesdays'>Baptist Student Ministry offers free lunch on Tuesdays</a></p><p>Beginning this semester, the Baptist Student Ministry will host free lunches for Panola College students, faculty and staff on Tuesdays. Hours are 11 a.m. to 1 p.m. Churches in the area support the ministry by providing the lunches. On Tuesday, Jan. 14, First United Methodist Church supplied pizza for the event. Hunter Fountain is the... […] <a href='https://pcponyexpress.org/baptist-student-ministry-offers-free-lunch-on-tuesdays/' title='more'>more</a></p>
+		</div>
+		<div class='item'>
+		  <p class='title'><a 'https://pcponyexpress.org/library-gallery-exhibits-local-artists-wood-creations/' title='Library gallery exhibits local artist’s wood creations'>Library gallery exhibits local artist’s wood creations</a></p><p>The M.P. Baker Library of Panola College will host an exhibit of hand-turned wood creations beginning January 13 and ending Friday, Feb. 28 in the Fay Allison Gallery of the M.P. Baker Library.  The library will host an opening reception for the artist, Dr. Arnold Shrewsbury, at 2 p.m., Wednesday, Jan. 15. Shrewsbury was born... […] <a href='https://pcponyexpress.org/library-gallery-exhibits-local-artists-wood-creations/' title='more'>more</a></p>
+		</div>                        
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row flex">
+               <div class="col-md-4">
+                  <div class="white">
+                     
+                     
+                     <h3><a href="/calendar">Calendar</a></h3>
+                     
+                     
+                     
+                     <ul><li><span style='color: #444444;'><a href="https://www.panola.edu/calendar/index.php?eID=4832">01/29/2020 - Official Reporting Date</a> </span></li><li><span style='color: #444444;'><a href="https://www.panola.edu/calendar/index.php?eID=5032">01/29/2020 - Fillies Basketball @ TJC*</a> </span></li><li><span style='color: #444444;'><a href="https://www.panola.edu/calendar/index.php?eID=5006">01/29/2020 - Ponies Basketball @ Bossier Parish*</a> </span></li><li><span style='color: #444444;'><a href="https://www.panola.edu/calendar/index.php?eID=5116">01/31/2020 - Ponies Baseball @ Baton Rouge</a> </span></li><li><span style='color: #444444;'><a href="https://www.panola.edu/calendar/index.php?eID=4927">01/31/2020 - Lion's Club Show</a> </span></li></ul>
+                     
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="white">
+                     
+                     
+                     <h3><a title="Workforce and Continuing Ed" href="https://www.panola.edu/wkfc-cont-ed/">Continuing Education</a></h3>
+                     
+                     
+                     
+                     <ul>
+                        <li><a href="http://alpha.panola.edu/cc4/ce_course_avail.html">View the CE schedule</a></li>
+                        <li><a href="https://alpha.panola.edu/cc4/wf_app.html">Complete&nbsp;your student profile</a></li>
+                        <li><a href="https://alpha.panola.edu/cc4/ce_sis.html">Register for CE courses</a></li>
+                     </ul>
+                     <h3>Public Announcement</h3>
+                     <p><a title="Property Tax Resolution" href="/documents/property_tax_resolution.pdf" target="_blank">Property Tax Resolution</a></p>
+                     <p>&nbsp;</p>
+                     <h3>Panola College Office Hours</h3>
+                     <ul>
+                        <li><span style="color: #000000;">Monday - Thursday: 7:30am-5:00pm</span></li>
+                        <li><span style="color: #000000;">Friday: 7:30am-12:30pm</span></li>
+                     </ul>
+                     
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="white">
+                     
+                     
+                     <h3>Quick Links</h3>
+                     
+                     <c_content>
+                        
+                        
+                        <ul>
+                           <li><a title="Displays the website to register for Apply Texas" href="https://www.applytexas.org/adappc/gen/c_start.WBX" target="_blank">Apply online now</a></li>
+                           <li><a title="Campus Carry Regulations" href="/fiscal-services/documents/policy-campus-carry-2-24-2017.pdf">Campus Carry Regulations</a></li>
+                           <li><a title="Survey used to discover the areas of interest from high school students" href="https://goo.gl/forms/8cG4CtRujn">Career Interest Survey (High Schools)</a></li>
+                           <li><a title="eLearning" href="/elearning/index.html">Distance Learning</a></li>
+                           <li><a title="Emergency Management" href="/emergency-management/index.html">Emergency Management</a></li>
+                           <li><a title="Online Institutional Resumes" href="/ir/online-resumes.html">Online Institutional Resumes</a></li>
+                           <li><a title="Panola College Store" href="https://www.panolacollegestore.com/home.aspx">Panola College Store</a></li>
+                           <li><strong><a href="https://exchange.parchment.com/send/adds/index.php?main_page=login&amp;s_id=Q08kkponAt62Pnpp">Request an Official Transcript</a></strong></li>
+                           <li><a title="Title IX - Report Sexual Assault or Harassment" href="/human-resources/title9.html">Title IX&nbsp;- Report Sexual Assault or Harassment</a></li>
+                           <li><strong><span style="background-color: #ffff00;"><a style="background-color: #ffff00;" title="Virtual Tour of the Carthage Campus" href="/about/tour.html">Virtual Tour of the Carthage Campus</a></span></strong></li>
+                           <li><a title="CMAR Documents" href="/fiscal-services/requests-for-proposals.html" target="_blank">CMAR Documents</a></li>
+                        </ul>
+                        
+                     </c_content>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="sub-footer">
+            <div class="container">
+               <div class="row">
+<div class="col-sm-3">
+	<h3>STUDENTS &amp; PARENTS</h3>
+	
+	<ul>
+<li><a href="/_resources/2016/includes/2020_calendar_info_1.pdf">2020 Calendar &amp; Info</a></li>
+<li><a title="Admissions" href="/admissions/index.html">Admissions</a></li>
+<li><a title="Apply online now" href="https://www.applytexas.org/adappc/gen/c_start.WBX">Apply online now</a></li>
+<li><a title="List of available classes" href="https://alpha.panola.edu/cc4/course_avail.html">Browse Class Schedule</a></li>
+<li><a title="Campus Map" href="/about/campus-map.html">Campus Map</a></li>
+<li><a title="Identity Theft Prevention" href="/documents/identity-theft-prevention-tips.pdf">Identity Theft Prevention</a></li>
+<li><a title="Own Your Own Future" href="http://www.ownyourownfuture.com/">Own Your Own Future</a></li>
+<li><a title="Schedule a Tour" href="https://form.jotform.com/73406494846163">Schedule a Tour</a></li>
+</ul>
+</div>
+<div class="col-sm-3">
+	<h3>ALUMNI &amp; FRIENDS</h3>
+	<ul>
+<li><a href="/alumni/alumni-scholarship-fund.html">Alumni Association Scholarship Fund</a></li>
+<li><a href="/alumni/association-board.html">Alumni Association Board</a></li>
+<li><a href="/alumni/alumni-news/">Alumni News</a></li>
+<li><a href="/alumni/stay-in-touch.html">Stay in Touch</a></li>
+<li><a title="Panola Foundation" href="/panola-foundation/">Give to Panola&nbsp;College</a></li>
+</ul>
+</div>
+<div class="col-sm-3">
+	<h3>FACULTY &amp; STAFF</h3>
+	<ul>
+<li><a title="Faculty and Staff Resources" href="/faculty-and-staff/index.html">Faculty and Staff Resources</a></li>
+<li><a title="College Directory" href="/human-resources/directory.html">College Directory</a></li>
+<li><a title="Panola College Catalog" href="/student-success/catalog.html">Panola College Catalog</a></li>
+<li><a title="Course Syllabi" href="/syllabi/">Course Syllabi</a></li>
+</ul>
+</div>
+<div class="col-sm-3">
+	<h3>OPPORTUNITIES</h3>
+	<ul>
+<li><a title="Calendar of Events" href="/calendar/">Calendar of Events</a></li>
+<li><a title="Join a club or organization" href="/student-success/clubs-and-organizations/">Join a club or organization</a></li>
+<li><a title="Dining Opportunities" href="https://panolacollege.sodexomyway.com/">Dining Opportunities</a></li>
+<li><a title="Explore Scholarships" href="/financial-aid/endowed-application-guidelines.html">Explore Scholarships</a></li>
+<li><a title="Online Ticket Sales" href="https://tickets.vendini.com/ticket-software.html?t=tix&amp;w=90cbd2bcd21960b74dbe99f898814697&amp;vqitq=d5abc1e5-0694-4d2f-b613-a747b73d733b&amp;vqitp=f6c982e9-9f97-475e-a9cc-b79ac999a478&amp;vqitts=1497386598&amp;vqitc=vendini&amp;vqite=itl&amp;vqitrt=Safetynet&amp;vqith=3a61774fb47df7aeb89a86f7a73400b9">Online Ticket Sales</a></li>
+<li><a title="2A Region UIL" href="/programs/fine-arts/drama/RegionUIL.html">2A Region UIL</a></li>
+</ul>
+
+<p class="social"><a href="https://www.pcponyexpress.org/" target="_blank"><span class="fa fa-rss-square" aria-hidden="true"><span class="sr-only">RSS Feed</span></span></a> <a href="https://twitter.com/PanolaCollege" target="_blank"><span class="fa fa-twitter-square" aria-hidden="true"><span class="sr-only">Twitter</span></span></a> <a href="https://www.facebook.com/PanolaCollege" target="_blank"><span class="fa fa-facebook-square" aria-hidden="true"><span class="sr-only">Facebook</span></span></a> <a title="Linked In" href="https://www.linkedin.com/school/panola-college/" target="_blank"><span class="fa fa-linkedin-square" aria-hidden="true"><span class="sr-only">Linked In</span></span></a> <a title="Youtube" href="https://www.youtube.com/PanolaVideos" target="_blank"><span class="fa fa-youtube-square" aria-hidden="true"><span class="sr-only">YouTube</span></span></a> <a href="https://secure.acceptiva.com/?cst=90672d" target="_blank"><span class="fa fa-gift" aria-hidden="true"><span class="sr-only">Give</span></span> </a></p>
+</div>
+</div>
+            </div>
+         </div>
+      </div>
+      <footer>
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12">
+<img src="/_resources/2016/images/footer_logo.png" alt="Panola College, Established 1947" class="img-responsive"/> 
+<ul class="contact-info">
+	<li>1109 W. Panola · Carthage, Texas 75633</li>
+	<li>903.693.2000</li>
+	<li>Copyright © 2016 Panola College</li>
+</ul>
+<ul class="footer-nav">
+	<li>All Rights Reserved</li>
+	<li><a href="https://www.panola.edu/about/privacy.html">Privacy Policy</a></li>
+	<li><a href="https://www.panola.edu/fiscal-services/investments-policies.html">Investment Policy</a></li>
+	<li><a href="http://www.thecb.state.tx.us/apps/resumes/">College Resume</a></li>
+</ul>
+<p>Panola College is accredited by the Southern Association of Colleges and Schools Commission on Colleges to award Certificates and Associate Degrees. Contact the Southern Association of Colleges and Schools Commission on Colleges at 1866 Southern Lane, Decatur, Georgia 30033-4097 or call 404-679-4500 for questions about the accreditation of Panola College.</p>
+<p>Panola College is an Equal Opportunity Institution that provides educational and employment opportunities on the basis of merit and without discrimination because of race, color, religion, sex, age, national origin, veteran status, disability, or genetic information.</p>
+<p>Email webmaster@panola.edu to make comments or report website problems.</p>
+                  <p>
+                     <a id="de" href="https://a.cms.omniupdate.com/10?skin=oucampus&amp;account=panola&amp;site=www&amp;action=de&amp;path=/index.pcf" >Last Updated: 1/27/20</a>
+                  </p>
+               </div>
+            </div>
+         </div>
+      </footer>
+<a href="#0" class="cd-top">Top</a>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="/_resources/2016/js/bootstrap.js"></script>
+<script src="/_resources/2016/js/owl.carousel.js"></script>
+<script src="/_resources/2016/js/scripts.js"></script>
+<script src="/_resources/2016/js/drop-down.js"></script>
+<script src="/_resources/js/jquery.fancybox.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/_resources/css/print.css"/>
+<link rel="stylesheet" href="/_resources/css/jquery.fancybox.css"/>
+		
+		
+		<script  type="text/javascript">
+			$(document).ready(function(){
+			$('.fancybox').fancybox({
+			'titlePosition'	:	'over',
+			'onComplete'	:	function() {
+			$("#fancybox-wrap").hover(function() {
+			$("#fancybox-title").show();
+			}, function() {
+			$("#fancybox-title").hide();
+			});
+			}
+			});
+			
+			
+			});
+		</script>
+<link rel="icon" 
+      type="image/png" 
+	  href="/favicon.ico">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+	
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38938294-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript" src="/_resources/js/emergency-alert.js"></script>
+      <!-- Start Quantcast Tag --><script type="text/javascript"> 
+	
+var _qevents = _qevents || [];
+
+(function() { 
+var elem = document.createElement('script'); 
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js"; 
+elem.async = true; 
+elem.type = "text/javascript"; 
+var scpt = document.getElementsByTagName('script')[0]; 
+scpt.parentNode.insertBefore(elem, scpt); 
+})();
+
+_qevents.push( 
+{qacct:"p-QUthQ3kFjAvWb",labels:"_fp.event.Home Page"} 
+); 
+
+</script><noscript><img src="//pixel.quantserve.com/pixel/p-QUthQ3kFjAvWb.gif?labels=_fp.event.Home+Page" style="display: none;" border="0" height="1" width="1" alt="Quantcast"></noscript>
+      <!-- End Quantcast tag -->
+   <!-- ouc:info uuid="8b1f895a-143f-483a-afdd-e14f1cf485ab"/ --><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"f4e9f872fd","applicationID":"3409927","transactionName":"Z1RaMEFXW0FVVhYLCl4ebRZaGVxcUFAaTA1EXFQ=","queueTime":0,"applicationTime":1859,"atts":"SxNZRglNSE8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

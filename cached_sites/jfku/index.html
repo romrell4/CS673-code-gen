@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"4c98807ce5",applicationID:"62430737"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.jfku.edu/xmlrpc.php">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TBJRGVX');</script>
+<!-- End Google Tag Manager -->
+<title>Higher Education Degrees &amp; Programs - John F. Kennedy University</title>
+
+<!-- This site is optimized with the Yoast SEO Premium plugin v12.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Earn a degree at John F. Kennedy University, a graduate university with programs including Law, Psychology, Health Education, and Innovation &amp; Creative Technology."/>
+<link rel="canonical" href="https://www.jfku.edu/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Higher Education Degrees &amp; Programs - John F. Kennedy University" />
+<meta property="og:description" content="Earn a degree at John F. Kennedy University, a graduate university with programs including Law, Psychology, Health Education, and Innovation &amp; Creative Technology." />
+<meta property="og:url" content="https://www.jfku.edu/" />
+<meta property="og:site_name" content="John F. Kennedy University" />
+<meta property="og:image" content="https://www.jfku.edu/wp-content/uploads/2018/05/yoastimage.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Earn a degree at John F. Kennedy University, a graduate university with programs including Law, Psychology, Health Education, and Innovation &amp; Creative Technology." />
+<meta name="twitter:title" content="Higher Education Degrees &amp; Programs - John F. Kennedy University" />
+<meta name="twitter:image" content="https://www.jfku.edu/wp-content/uploads/2018/05/yoastimage.jpg" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.jfku.edu/#website","url":"https://www.jfku.edu/","name":"John F. Kennedy University","potentialAction":{"@type":"SearchAction","target":"https://www.jfku.edu/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://www.jfku.edu/#webpage","url":"https://www.jfku.edu/","inLanguage":"en-US","name":"Higher Education Degrees &amp; Programs - John F. Kennedy University","isPartOf":{"@id":"https://www.jfku.edu/#website"},"datePublished":"2018-04-05T18:22:54-07:00","dateModified":"2019-11-22T20:11:16-08:00","description":"Earn a degree at John F. Kennedy University, a graduate university with programs including Law, Psychology, Health Education, and Innovation & Creative Technology."}]}</script>
+<!-- / Yoast SEO Premium plugin. -->
+
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//www.jfku.edu' />
+<link rel='dns-prefetch' href='//maps.googleapis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="John F. Kennedy University &raquo; Feed" href="https://www.jfku.edu/feed/" />
+<link rel="alternate" type="application/rss+xml" title="John F. Kennedy University &raquo; Comments Feed" href="https://www.jfku.edu/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.jfku.edu\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='featherlight-style-css'  href='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/featherlight/featherlight.min.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-css'  href='https://fonts.googleapis.com/css?family=Montserrat%3A400%2C500%2C600%2C700%7CPT+Serif%3A400%2C400i%2C700&#038;ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-style-css'  href='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/slick/slick.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-theme-style-css'  href='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/slick/slick-theme.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='mCustom-scrollbar-style-css'  href='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/custom-scrollbar/jquery.mCustomScrollbar.min.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='jfku-style-css'  href='https://www.jfku.edu/wp-content/themes/jfku/style.css?ver=5.3.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.7.1/lazyload.min.js?ver=20180606'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/modernizr-custom.js?ver=20180430'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/featherlight/featherlight.min.js?ver=1'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/scrollmagic/ScrollMagic.min.js?ver=1'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/jquery.matchHeight.js'></script>
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAF-zPqRIAY5VgRhgs48NQjEWzL5KGPmuk&#038;ver=5.3.2'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/slick/slick.min.js?ver=1'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/truncate.js?ver=1'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js?ver=1'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/built.min.js?ver=1'></script>
+<link rel='https://api.w.org/' href='https://www.jfku.edu/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.jfku.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.jfku.edu/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel='shortlink' href='https://www.jfku.edu/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.jfku.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.jfku.edu%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.jfku.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.jfku.edu%2F&#038;format=xml" />
+<!-- Stream WordPress user activity plugin v3.4.2 -->
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><!--[if IE 9]> <script>var _fusionParallaxIE9 = true;</script> <![endif]--><link rel="icon" href="https://www.jfku.edu/wp-content/uploads/2018/05/cropped-JFKU_Favicon_512x512-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.jfku.edu/wp-content/uploads/2018/05/cropped-JFKU_Favicon_512x512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.jfku.edu/wp-content/uploads/2018/05/cropped-JFKU_Favicon_512x512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.jfku.edu/wp-content/uploads/2018/05/cropped-JFKU_Favicon_512x512-270x270.png" />
+		<style type="text/css" id="wp-custom-css">
+			#gform_wrapper_19 fieldset {
+	block-size: 20px;
+}
+
+#gform_wrapper_19 .ginput_container_checkbox  {
+	margin-top: 5px;
+}
+
+#gform_wrapper_19 .ginput_container_checkbox  {
+	margin-top: 0;
+}
+
+#gform_wrapper_19 input[type="checkbox"]  {
+	margin-top: 0;
+}		</style>
+		</head>
+
+<body class="home page-template-default page page-id-41 wp-custom-logo group-blog" id="body">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBJRGVX"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<main id="page" class="site">
+	<a class="skip-link screen-reader-text" title="Skip To Content" href="#main">Skip to content</a>
+
+	<header class="site-header" role="banner">
+		<div class="container">
+			<div class="main-header">
+				<div class="ham-icon-wrapper">
+					<button title="Expand Menu" class="mobile-menu-icon"  id="header-ham-menu-btn">
+						<span class="sr-only">
+							Expand Menu
+						</span>
+					</button>
+				</div>
+				<div class="header-left-container">
+					<div class="header-left-top">
+						<div class="header-left">
+															<div class="header-logo d-header-logo">
+									<a href="https://www.jfku.edu/" class="custom-logo-link" rel="home" itemprop="url" title="Visit John F. Kennedy University Homepage"><img width="314" height="45" src="https://www.jfku.edu/wp-content/uploads/2018/05/cropped-Logo_BlackGold.png" class="custom-logo" alt="John F. Kennedy University" itemprop="logo" srcset="https://www.jfku.edu/wp-content/uploads/2018/05/cropped-Logo_BlackGold.png 314w, https://www.jfku.edu/wp-content/uploads/2018/05/cropped-Logo_BlackGold-300x43.png 300w" sizes="(max-width: 314px) 100vw, 314px" /></a>								</div>
+							
+															<div class="header-logo m-header-logo">
+									<a href="https://www.jfku.edu" title="Link to Homepage"><img src="https://www.jfku.edu/wp-content/uploads/2018/05/mobile-logo.png " alt="John F. Kennedy University" /></a>
+								</div>
+													</div>
+
+						<div class="header-center">
+							<a href="#" title="Display Online Programs Menu Items" class="dropdown-menu header-link header-link-1" id="header-dropdown-link">Online Programs</a>
+							<a href="#" title="Display Campus Programs Menu Items" class="dropdown-menu header-link header-link-2" id="header-dropdown-link-2">Campus Programs</a>
+						</div>
+					</div>
+					<div class="header-left-bottom">
+													<a href="https://www.jfku.edu" title="Link back to homepage" class="site-small-logo"><img src="https://www.jfku.edu/wp-content/uploads/2018/04/Logo_BlackGold-icon.png" alt="John F. Kennedy University" /></a>
+												<h1 class="header-page-title">John F. Kennedy University</h1>
+					</div>
+				</div>
+
+				<div class="header-right">
+											<a class="header-link apply-link" title="Apply to JFKU" href="https://www.jfku.edu/apply/" target="">Apply</a>
+					
+											<a class="header-link request-btn" title="Request More Information from JFKU" href="https://www.jfku.edu/request-info/" target="">Request Info</a>
+					
+					<button title="Open Search Window" class="header-search-btn" id="header-search-btn">
+						<span class="sr-only">
+							Open Search Window
+						</span>
+					</button>
+				</div>
+
+				<div class="m-header-right">
+					<a href="#" class="m-header-dropdown-btn">I Want To</a>
+				</div>
+			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<header id="masthead" class="site-header jfk-ham-site-header" role="banner">
+        <div class="container">
+            <div class="main-header">
+                <div class="ham-icon-wrapper">
+				<button title="Expand Menu" class="mobile-menu-icon"  title="Close Menu" id="header-ham-close-menu-btn">
+						<span class="sr-only">
+							Close Menu
+						</span>
+				</button>
+                </div>
+                <div class="header-left-container"></div>
+
+                <div class="header-right">
+                                            <a class="header-link apply-link" title="Apply to JFKU" href="https://www.jfku.edu/apply/" target="">Apply</a>
+                    
+                                            <a class="header-link request-btn" title="Request More Information from JFKU" href="https://www.jfku.edu/request-info/" target="">Request Info</a>
+                                    </div>
+            </div>
+        </div>
+    </header><!-- #masthead -->
+
+	<div class="header-background"></div>
+
+	<!-- dropdown menu -->
+	<div class="explore-program-menu header-dropdown-menu-section mCustomScrollbar" id="header-dropdown-menu-section">
+		<div class="container">
+			<div class="hdropdown-container">
+				<div class="hdropdown_menu_container">
+					<div class="menu-online-programs-container"><ul id="menu-online-programs" class="header_dropdown_menu"><li id="menu-item-5155" class="column_one menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5155"><a href="#">Column One</a>
+<ul class="sub-menu">
+	<li id="menu-item-5110" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-5110"><a title="JFKu Online FlexCourse℠ Programs" href="https://www.jfku.edu/online/">JFKu Online FlexCourse℠ Programs</a>
+	<ul class="sub-menu">
+		<li id="menu-item-5793" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5793"><a title="Master of Business Administration" href="https://www.jfku.edu/program/mba/">Master of Business Administration</a></li>
+		<li id="menu-item-5794" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5794"><a title="Bachelor of Arts in Management" href="https://www.jfku.edu/program/ba-management/">Bachelor of Arts in Management</a></li>
+		<li id="menu-item-5795" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5795"><a title="Bachelor of Arts in Psychology" href="https://www.jfku.edu/program/clinical-psychology/ba-psychology/">Bachelor of Arts in Psychology</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-10010" class="column_two menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-10010"><a href="#">Column Two</a>
+<ul class="sub-menu">
+	<li id="menu-item-10011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-10011"><a title="Traditional Online" href="https://www.jfku.edu/online/">Traditional Online</a>
+	<ul class="sub-menu">
+		<li id="menu-item-5801" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5801"><a title="MA in Consciousness and Transformative Studies" href="https://www.jfku.edu/program/ma-consciousness-and-transformative-studies/">MA in Consciousness and Transformative Studies</a></li>
+		<li id="menu-item-5796" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5796"><a title="MA in Sport Psychology" href="https://www.jfku.edu/program/sport-psychology/ma-sport-psychology/">MA in Sport Psychology</a></li>
+		<li id="menu-item-10012" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10012"><a title="Academic Certificate in Human Resources" href="https://www.jfku.edu/program/academic-certificate-in-human-resources/">Academic Certificate in Human Resources</a></li>
+	</ul>
+</li>
+	<li id="menu-item-9203" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9203"><a title="Continuing Education" href="https://www.jfku.edu/college/continuing-education/">Continuing Education</a></li>
+</ul>
+</li>
+</ul></div>				</div>
+									<div class="hdropdown-footer">
+						<a class="hdropdown-btn" href="https://www.jfku.edu/program-finder/" target="">Browse Program Finder</a>
+					</div>
+							</div>
+		</div>
+	</div>
+
+	<div class="explore-program-menu header-dropdown-menu-section mCustomScrollbar" id="header-dropdown-menu-section-2">
+		<div class="container">
+			<div class="hdropdown-container">
+				<div class="hdropdown_menu_container">
+					<div class="menu-campus-programs-container"><ul id="menu-campus-programs" class="header_dropdown_menu"><li id="menu-item-76" class="column_one menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-76"><a href="#">Column One</a>
+<ul class="sub-menu">
+	<li id="menu-item-6295" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6295"><a title="On Campus Programs" href="https://www.jfku.edu/on-campus/">JFKu On Campus Programs</a></li>
+	<li id="menu-item-5809" class="menu-item menu-item-type-post_type menu-item-object-college menu-item-5809"><a title="Business and Professional Studies" href="https://www.jfku.edu/college/business-professional-studies/">Business &#038; Professional Studies</a></li>
+	<li id="menu-item-5806" class="menu-item menu-item-type-post_type menu-item-object-college menu-item-has-children menu-item-5806"><a title="College of Law" href="https://www.jfku.edu/college/law/">College of Law</a>
+	<ul class="sub-menu">
+		<li id="menu-item-5814" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5814"><a title="Juris Doctor Program" href="https://www.jfku.edu/program/juris-doctor-2/">Juris Doctor</a></li>
+		<li id="menu-item-5815" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5815"><a title="BA Completion in Legal Studies" href="https://www.jfku.edu/program/ba-completion-in-legal-studies/">BA Completion in Legal Studies</a></li>
+		<li id="menu-item-5816" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5816"><a title="Paralegal Certificate" href="https://www.jfku.edu/program/paralegal-certificate/">Paralegal Certificate</a></li>
+	</ul>
+</li>
+	<li id="menu-item-5808" class="menu-item menu-item-type-post_type menu-item-object-college menu-item-5808"><a title="Continuing Education" href="https://www.jfku.edu/college/continuing-education/">Continuing Education</a></li>
+	<li id="menu-item-5807" class="menu-item menu-item-type-post_type menu-item-object-college menu-item-5807"><a title="Sanford Institute of Philanthropy" href="https://www.jfku.edu/college/sanford-institute-of-philanthropy/">Sanford Institute of Philanthropy</a></li>
+</ul>
+</li>
+<li id="menu-item-92" class="column_two menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-92"><a href="#">Column Two</a>
+<ul class="sub-menu">
+	<li id="menu-item-93" class="has_sub_sub_menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-93"><a title="Psychology" href="https://www.jfku.edu/college/psychology/">Psychology</a>
+	<ul class="sub-menu">
+		<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-has-children menu-item-5833"><a title="Clinical Psychology" href="https://www.jfku.edu/program/clinical-psychology/">Clinical Psychology</a>
+		<ul class="sub-menu">
+			<li id="menu-item-5825" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5825"><a title="Doctorate of Psychology" href="https://www.jfku.edu/program/clinical-psychology/doctor-of-psychology/">Doctorate of Psychology</a></li>
+			<li id="menu-item-5823" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5823"><a title="Dual MA in Sport Psychology &#038; PsyD Psychology" href="https://www.jfku.edu/program/sport-psychology/dual-ma-sport-psychology-and-psyd-psychology/">Dual MA in Sport Psychology &#038; PsyD Psychology</a></li>
+			<li id="menu-item-10015" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10015"><a title="Academic Certificate in  Human Resources" href="https://www.jfku.edu/program/academic-certificate-in-human-resources/">Academic Certificate in  Human Resources</a></li>
+		</ul>
+</li>
+		<li id="menu-item-5826" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5826"><a title="Consciousness and Transformative Studies" href="https://www.jfku.edu/program/ma-consciousness-and-transformative-studies/">Consciousness and Transformative Studies</a></li>
+		<li id="menu-item-5820" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-has-children menu-item-5820"><a title="Counseling Psychology" href="https://www.jfku.edu/program/counseling-psychology/">Counseling Psychology</a>
+		<ul class="sub-menu">
+			<li id="menu-item-5828" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5828"><a title="MA in Counseling Psychology" href="https://www.jfku.edu/program/counseling-psychology/ma-counseling-psychology/">MA in Counseling Psychology</a></li>
+			<li id="menu-item-5824" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5824"><a title="MA Holistic Psychology (Specializations: Depth, Expressive Arts, Holistic Studies, Somatic, Transpersonal)" href="https://www.jfku.edu/program/counseling-psychology/ma-counseling-psychology/ma-holistic-psychology-2/">MA Holistic Psychology (Specializations: Depth, Expressive Arts, Holistic Studies, Somatic, Transpersonal)</a></li>
+			<li id="menu-item-5827" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5827"><a title="Academic Certificate in Trauma Studies" href="https://www.jfku.edu/program/counseling-psychology/academic-certificate-trauma-studies/">Academic Certificate in Trauma Studies</a></li>
+		</ul>
+</li>
+		<li id="menu-item-5819" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-has-children menu-item-5819"><a title="Sport Psychology" href="https://www.jfku.edu/program/sport-psychology/">Sport Psychology</a>
+		<ul class="sub-menu">
+			<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5831"><a title="Dual MA in Sport Psychology &#038; PsyD Psychology" href="https://www.jfku.edu/program/sport-psychology/dual-ma-sport-psychology-and-psyd-psychology/">Dual MA in Sport Psychology &#038; PsyD Psychology</a></li>
+			<li id="menu-item-5829" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5829"><a title="MA in Sport Psychology" href="https://www.jfku.edu/program/sport-psychology/ma-sport-psychology/">MA in Sport Psychology</a></li>
+			<li id="menu-item-5822" class="menu-item menu-item-type-post_type menu-item-object-program menu-item-5822"><a title="Graduate Certificate in Sport Psychology" href="https://www.jfku.edu/program/sport-psychology/graduate-certificate-in-sport-psychology/">Graduate Certificate in Sport Psychology</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+</ul></div>				</div>
+									<div class="hdropdown-footer">
+						<a class="hdropdown-btn" href="https://www.jfku.edu/program-finder/" target="">Browse Program Finder</a>
+					</div>
+							</div>
+		</div>
+	</div>
+
+	<!-- Hamburger Menu -->
+	<div class="header-ham-menu">
+				<div class="ham-left-container" style="background-image: linear-gradient(rgba(243, 199, 39, .87), rgba(243, 199, 39, .87)), url('https://www.jfku.edu/wp-content/uploads/2018/05/JFKU_blank_yellow.jpg') ;">
+			<div class="ham-left-content">
+				<div class="ham_left_menu_container">
+					<div class="menu-hamburger-left-menu-container"><ul id="menu-hamburger-left-menu" class="ham_left_menu"><li id="menu-item-45" class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-45"><a>Information For</a>
+<ul class="sub-menu">
+	<li id="menu-item-2058" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2058"><a title="Prospective Students" href="https://www.jfku.edu/prospective-students/">Prospective Students</a></li>
+	<li id="menu-item-2060" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2060"><a title="Current Students" href="https://www.jfku.edu/current-students/">Current Students</a></li>
+	<li id="menu-item-2059" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2059"><a title="Alumni" href="https://www.jfku.edu/alumni-2/">Alumni</a></li>
+	<li id="menu-item-2061" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2061"><a title="Donors" href="https://www.jfku.edu/donors/">Donors</a></li>
+</ul>
+</li>
+</ul></div>				</div>
+			</div>
+		</div>
+		<div class="ham-right-container jfk-m-hidden" >
+			<div class="ham-right-content mCustomScrollbar">
+				<div class="ham_right_menu_container">
+					<div class="menu-hamburger-right-menu-container"><ul id="menu-hamburger-right-menu" class="ham_right_menu"><li id="menu-item-452" class="column_one menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-452"><a href="#">Column One</a>
+<ul class="sub-menu">
+	<li id="menu-item-50" class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-50"><a>Academics</a>
+	<ul class="sub-menu">
+		<li id="menu-item-2065" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2065"><a title="Degrees" href="https://www.jfku.edu/degrees/">Degrees</a></li>
+		<li id="menu-item-2062" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2062"><a title="Programs" href="https://www.jfku.edu/program-finder/">Programs</a></li>
+		<li id="menu-item-2063" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2063"><a title="Online" href="https://www.jfku.edu/online/">Online</a></li>
+		<li id="menu-item-8217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8217"><a title="On Campus" href="https://www.jfku.edu/on-campus/">On Campus</a></li>
+		<li id="menu-item-2814" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2814"><a title="Continuing Education" href="https://www.jfku.edu/college/continuing-education/">Continuing Education</a></li>
+	</ul>
+</li>
+	<li id="menu-item-62" class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-62"><a>Student Life</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1595"><a title="Ways to Learn" href="https://www.jfku.edu/student-experience/ways-to-learn/">Ways to Learn</a></li>
+		<li id="menu-item-1583" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1583"><a title="Our Service Learning Model" href="https://www.jfku.edu/student-experience/service-learning-model/">Our Service Learning Model</a></li>
+		<li id="menu-item-2066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a title="Student Experience" href="https://www.jfku.edu/student-experience/">Student Experience</a></li>
+		<li id="menu-item-1580" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1580"><a title="Support for Working Adults" href="https://www.jfku.edu/student-experience/support-for-working-adults/">Support for Working Adults</a></li>
+		<li id="menu-item-1587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1587"><a title="Support for Military/Veterans" href="https://www.jfku.edu/student-experience/support-for-military-veterans/">Support for Military/Veterans</a></li>
+		<li id="menu-item-1582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1582"><a title="Support for Underserved Students" href="https://www.jfku.edu/student-experience/support-for-underserved-students/">Support for Underserved Students</a></li>
+		<li id="menu-item-2067" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2067"><a title="Locations and Libraries" href="https://www.jfku.edu/student-experience/locations/">Locations and Libraries</a></li>
+		<li id="menu-item-4465" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4465"><a title="Blog" href="https://www.jfku.edu/blog/">Blog</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-453" class="column_two menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-453"><a>Column Two</a>
+<ul class="sub-menu">
+	<li id="menu-item-926" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-926"><a href="https://www.jfku.edu/about-us/">About JFKU</a>
+	<ul class="sub-menu">
+		<li id="menu-item-2068" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2068"><a title="Admissions" href="https://www.jfku.edu/admissions/">Admissions</a></li>
+		<li id="menu-item-2070" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2070"><a title="Tuition &#038; Financial Aid" href="https://www.jfku.edu/admissions/financial-aid/">Tuition &#038; Financial Aid</a></li>
+		<li id="menu-item-3453" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3453"><a title="Open Houses" href="https://www.jfku.edu/events/open-houses/">Open Houses</a></li>
+		<li id="menu-item-2069" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2069"><a title="Faculty" href="https://www.jfku.edu/faculty/">Faculty</a></li>
+	</ul>
+</li>
+	<li id="menu-item-5602" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-5602"><a href="https://www.jfku.edu/community/">In the Community</a>
+	<ul class="sub-menu">
+		<li id="menu-item-5877" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5877"><a title="Event Calendar" href="https://www.jfku.edu/events/">Event Calendar</a></li>
+		<li id="menu-item-5608" class="menu-item menu-item-type-post_type menu-item-object-college menu-item-5608"><a title="Sanford Institute of Philanthropy" href="https://www.jfku.edu/college/sanford-institute-of-philanthropy/">Sanford Institute of Philanthropy</a></li>
+		<li id="menu-item-8219" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8219"><a title="VALOR Center" href="https://www.jfku.edu/student-experience/valor-center/">VALOR Center</a></li>
+		<li id="menu-item-4436" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4436"><a title="The LEAP Program" href="https://www.jfku.edu/community/leap-program/">The LEAP Program</a></li>
+		<li id="menu-item-4435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4435"><a title="JFKU Legal Clinics" href="https://www.jfku.edu/community/jfku-law-clinics/">JFKU Legal Clinics</a></li>
+		<li id="menu-item-4434" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4434"><a title="Office of Clinical Training" href="https://www.jfku.edu/community/office-of-clinical-training/">Office of Clinical Training</a></li>
+		<li id="menu-item-4437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4437"><a title="Holistic Research Center" href="https://www.jfku.edu/community/hrc/">Holistic Research Center</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+</ul></div>				</div>
+
+				<div class="ham_right_sec_menu_container">
+					<div class="menu-hamburger-footer-menu-container"><ul id="menu-hamburger-footer-menu" class="ham_right_sec_menu"><li id="menu-item-2071" class="event-link m-hidden menu-item menu-item-type-post_type menu-item-object-page menu-item-2071"><a title="Event Calendar" href="https://www.jfku.edu/events/">Event Calendar</a></li>
+<li id="menu-item-2072" class="faculty-link menu-item menu-item-type-post_type menu-item-object-page menu-item-2072"><a title="Faculty Finder" href="https://www.jfku.edu/faculty/">Faculty Finder</a></li>
+<li id="menu-item-2073" class="location-link menu-item menu-item-type-post_type menu-item-object-page menu-item-2073"><a title="Campus Locations" href="https://www.jfku.edu/student-experience/locations/">Campus Locations</a></li>
+</ul></div>				</div>
+			</div>
+		</div>
+
+		<div class="ham-right-container jfk-m-visible jfk-l-hidden m-ham-right-container">
+			<div class="ham-right-content mCustomScrollbar">
+				<div class="ham_right_menu_container">
+					<div class="menu-hamburger-right-menu-container"><ul id="menu-hamburger-right-menu-1" class="ham_right_menu"><li class="column_one menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-452"><a href="#">Column One</a>
+<ul class="sub-menu">
+	<li class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-50"><a>Academics</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2065"><a title="Degrees" href="https://www.jfku.edu/degrees/">Degrees</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2062"><a title="Programs" href="https://www.jfku.edu/program-finder/">Programs</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2063"><a title="Online" href="https://www.jfku.edu/online/">Online</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8217"><a title="On Campus" href="https://www.jfku.edu/on-campus/">On Campus</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2814"><a title="Continuing Education" href="https://www.jfku.edu/college/continuing-education/">Continuing Education</a></li>
+	</ul>
+</li>
+	<li class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-62"><a>Student Life</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1595"><a title="Ways to Learn" href="https://www.jfku.edu/student-experience/ways-to-learn/">Ways to Learn</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1583"><a title="Our Service Learning Model" href="https://www.jfku.edu/student-experience/service-learning-model/">Our Service Learning Model</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a title="Student Experience" href="https://www.jfku.edu/student-experience/">Student Experience</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1580"><a title="Support for Working Adults" href="https://www.jfku.edu/student-experience/support-for-working-adults/">Support for Working Adults</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1587"><a title="Support for Military/Veterans" href="https://www.jfku.edu/student-experience/support-for-military-veterans/">Support for Military/Veterans</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1582"><a title="Support for Underserved Students" href="https://www.jfku.edu/student-experience/support-for-underserved-students/">Support for Underserved Students</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2067"><a title="Locations and Libraries" href="https://www.jfku.edu/student-experience/locations/">Locations and Libraries</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4465"><a title="Blog" href="https://www.jfku.edu/blog/">Blog</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li class="column_two menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-453"><a>Column Two</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-926"><a href="https://www.jfku.edu/about-us/">About JFKU</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2068"><a title="Admissions" href="https://www.jfku.edu/admissions/">Admissions</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2070"><a title="Tuition &#038; Financial Aid" href="https://www.jfku.edu/admissions/financial-aid/">Tuition &#038; Financial Aid</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3453"><a title="Open Houses" href="https://www.jfku.edu/events/open-houses/">Open Houses</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2069"><a title="Faculty" href="https://www.jfku.edu/faculty/">Faculty</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-5602"><a href="https://www.jfku.edu/community/">In the Community</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5877"><a title="Event Calendar" href="https://www.jfku.edu/events/">Event Calendar</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-college menu-item-5608"><a title="Sanford Institute of Philanthropy" href="https://www.jfku.edu/college/sanford-institute-of-philanthropy/">Sanford Institute of Philanthropy</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8219"><a title="VALOR Center" href="https://www.jfku.edu/student-experience/valor-center/">VALOR Center</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4436"><a title="The LEAP Program" href="https://www.jfku.edu/community/leap-program/">The LEAP Program</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4435"><a title="JFKU Legal Clinics" href="https://www.jfku.edu/community/jfku-law-clinics/">JFKU Legal Clinics</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4434"><a title="Office of Clinical Training" href="https://www.jfku.edu/community/office-of-clinical-training/">Office of Clinical Training</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4437"><a title="Holistic Research Center" href="https://www.jfku.edu/community/hrc/">Holistic Research Center</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+</ul></div>				</div>
+
+				<div class="ham_right_sec_menu_container">
+					<div class="menu-hamburger-footer-menu-container"><ul id="menu-hamburger-footer-menu-1" class="ham_right_sec_menu"><li class="event-link m-hidden menu-item menu-item-type-post_type menu-item-object-page menu-item-2071"><a title="Event Calendar" href="https://www.jfku.edu/events/">Event Calendar</a></li>
+<li class="faculty-link menu-item menu-item-type-post_type menu-item-object-page menu-item-2072"><a title="Faculty Finder" href="https://www.jfku.edu/faculty/">Faculty Finder</a></li>
+<li class="location-link menu-item menu-item-type-post_type menu-item-object-page menu-item-2073"><a title="Campus Locations" href="https://www.jfku.edu/student-experience/locations/">Campus Locations</a></li>
+</ul></div>				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="header-search-section">
+		<div class="container">
+			<div class="search-close-main-header">
+				<div class="hsc-right">
+					<a class="header-search-close" id="header-search-close"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<form role="search" method="get" class="search-form header-searchform" name="searchform" action="https://www.jfku.edu/">
+				<label class="search-field-box">
+					<h3 class="search-label">Search</h3>
+					<input type="search" class="search-field" placeholder="Programs, Colleges, People or Events"
+						value="" name="s" title="Search for:" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>
+		</div>
+	</div>
+
+		<div class="m-dropdown-section mCustomScrollbar" data-mcs-theme="dark" style="background-image: linear-gradient(rgba(233, 208, 142, .87), rgba(233, 208, 142, .87)), url('https://www.jfku.edu/wp-content/uploads/2018/05/JFKU_blank_yellow.jpg'); ">
+					<ul class="m-dd-buttons">
+															<li>
+							<a class="button" href="https://www.jfku.edu/request-info/" target="">Request Info</a>
+						</li>
+																				<li>
+							<a class="button" href="https://www.nu.edu/applynow/?filterAppGroup=JFK&filterAppGroup=JFK" target="_blank">Apply</a>
+						</li>
+																				<li>
+							<a class="button" href="https://www.jfku.edu/program-finder/" target="">Explore Programs</a>
+						</li>
+																				<li>
+							<a class="button" href="https://www.jfku.edu/online/" target="">Explore JFKu Online</a>
+						</li>
+									
+				<li>
+					<a class="button" href="#" id="m-header-search-btn">Search</a>
+				</li>
+			</ul>
+			</div>
+
+	<div class="header-freespace"></div>
+
+	<div id="content" class="site-content">
+
+	
+
+	<div class="jfku-hero-section home hero-bg-yellow" style="background-color: #53C8EA;">
+		<div class="home-hero-image">
+							<picture>
+										<img src="https://www.jfku.edu/wp-content/uploads/2018/05/JFKU_Header_New_Home_v1-compressor.jpg" alt="JFKU_Header_New_Home_v1" />
+											<div class="hero-overlay">
+							<img src="https://www.jfku.edu/wp-content/themes/jfku/images/hero_overlay.png" alt="Decoration" />
+						</div>
+									</picture>
+															<div class="hero-overlay">
+						<img src="https://www.jfku.edu/wp-content/themes/jfku/images/hero_overlay.png" alt="Decoration" />
+					</div>
+									</div>
+		<div class="hero-content white">
+			<div class="container">
+				<div class="hero-content-container">
+					<h2>It's About Time</h2>
+					<div class="content">
+						<p>Earn your degree the same way you stream your favorite TV shows: on your own time, from wherever you are, for less with JFKu Online, powered by FlexCourse℠.</p>
+						<div class="hero-cta">
+																						<div class="jfk-button blue  primary_btn">
+									<a href="https://www.jfku.edu/flexible-paced-online-learning/" title="Learn More" target="">Learn More</a>
+								</div>
+													</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+			
+<div  class="two-thirds-one-third" style="background-color: #FFFFFF;">
+    <div class="container">
+                <div class="two-thirds">
+            <h2>On-Demand Online Programs, Powered by FlexCourse℠</h2>
+<p><span style="font-size: 1.5em;line-height: 1.6em">With JFKu Online’s innovative FlexCourse℠ platform, you can earn your degree faster with unlimited access to on-demand online courses for just $8,500 per year.</span></p>
+        </div>
+        <div class="one-third">
+            
+                <div class='gf_browser_unknown gform_wrapper' id='gform_wrapper_4' ><form method='post' enctype='multipart/form-data'  id='gform_4'  action='/' name='gform20200128170105'>
+                        <div class='gform_body'><ul id='gform_fields_4' class='gform_fields top_label form_sublabel_below description_below'><li id='field_4_1'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible first_name' ><label class='gfield_label' for='input_4_1' >First Name<span class='gfield_required'> * <span class='sr-only'> Required</span></span></label><div class='ginput_container ginput_container_text'><input name='input_1' id='input_4_1' type='text' value='' class='large'    placeholder='First Name' aria-required="true" aria-invalid="false" /></div></li><li id='field_4_2'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible last_name' ><label class='gfield_label' for='input_4_2' >Last Name<span class='gfield_required'> * <span class='sr-only'> Required</span></span></label><div class='ginput_container ginput_container_text'><input name='input_2' id='input_4_2' type='text' value='' class='large'    placeholder='Last Name' aria-required="true" aria-invalid="false" /></div></li><li id='field_4_3'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible email_address' ><label class='gfield_label' for='input_4_3' >Email Address<span class='gfield_required'> * <span class='sr-only'> Required</span></span></label><div class='ginput_container ginput_container_email'>
+                            <input name='input_3' id='input_4_3' type='email' value='' class='large'   placeholder='Email' aria-required="true" aria-invalid="false" />
+                        </div></li><li id='field_4_4'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible phone_number' ><label class='gfield_label' for='input_4_4' >Phone Number<span class='gfield_required'> * <span class='sr-only'> Required</span></span></label><div class='ginput_container ginput_container_phone'><input name='input_4' id='input_4_4' type='tel' value='' class='large'  placeholder='Phone Number' aria-required="true" aria-invalid="false"  /></div></li><li id='field_4_22'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible zip_code' ><label class='gfield_label' for='input_4_22' >Zip Code<span class='gfield_required'> * <span class='sr-only'> Required</span></span></label><div class='ginput_container ginput_container_text'><input name='input_22' id='input_4_22' type='text' value='' class='medium'    placeholder='Zip Code - International? Enter &#039;00000&#039;' aria-required="true" aria-invalid="false" /></div></li><li id='field_4_8'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible elqformname' ><input name='input_8' id='input_4_8' type='hidden' class='gform_hidden'  aria-invalid="false" value='inq' /></li><li id='field_4_9'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible elqsiteid' ><input name='input_9' id='input_4_9' type='hidden' class='gform_hidden'  aria-invalid="false" value='1015724034' /></li><li id='field_4_10'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible elqcampaignid' ><input name='input_10' id='input_4_10' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></li><li id='field_4_16'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible utm_source' ><input name='input_16' id='input_4_16' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></li><li id='field_4_21'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible utm_medium' ><input name='input_21' id='input_4_21' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></li><li id='field_4_20'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible utm_term' ><input name='input_20' id='input_4_20' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></li><li id='field_4_19'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible utm_content' ><input name='input_19' id='input_4_19' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></li><li id='field_4_18'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible utm_campaign' ><input name='input_18' id='input_4_18' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></li><li id='field_4_17'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible track' ><input name='input_17' id='input_4_17' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></li><li id='field_4_14'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible modeofinstruction' ><input name='input_14' id='input_4_14' type='hidden' class='gform_hidden'  aria-invalid="false" value='online' /></li><li id='field_4_15'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible formid' ><input name='input_15' id='input_4_15' type='hidden' class='gform_hidden'  aria-invalid="false" value='https://www.jfku.edu' /></li><li id='field_4_11'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible degree_of_interest' ><label class='gfield_label' for='input_4_11' >Degree of Interest<span class='gfield_required'> * <span class='sr-only'> Required</span></span></label><div class='ginput_container ginput_container_select'><select name='input_11' id='input_4_11' class='medium gfield_select'   aria-required="true" aria-invalid="false"><option value=''  class='gf_placeholder'>Degree of Interest</option><option value='Undecided' >--- ONLINE PROGRAMS ---</option><option value='Bachelor of Arts in Management' >Bachelor of Arts in Management</option><option value='BA Management - Concentration in Entrepreneurship' >-- Concentration in Entrepreneurship</option><option value='BA Management - Concentration in Leadership' >-- Concentration in Leadership</option><option value='Bachelor of Arts in Psychology' >Bachelor of Arts in Psychology</option><option value='BA Psychology - Concentration in Early Childhood Education' >-- Concentration in Early Childhood Education</option><option value='BA Psychology - Concentration in Criminal Justice' >-- Concentration in Criminal Justice</option><option value='BA Psychology - Concentration in Industrial-Organizational' >-- Concentration in Industrial-Organizational</option><option value='MA Consciousness and Transformative Studies - Online' >MA Consciousness and Transformative Studies</option><option value='MA Holistic Health Education - Online' >MA Holistic Health Education</option><option value='MA Sport Psychology - Online' >MA Sport Psychology</option><option value='Master of Business Administration' >Master of Business Administration</option><option value='MBA - Concentration in Management' >-- Concentration in Management</option><option value='MBA - Concentration in Finance' >-- Concentration in Finance</option><option value='MBA - Concentration in Health Care' >-- Concentration in Health Care</option><option value='MBA - Concentration in Strategic Management' >-- Concentration in Strategic Management</option><option value='MBA - Concentration in Sales Management' >-- Concentration in Sales Management</option><option value='MBA - Concentration in Human Resources' >-- Concentration in Human Resources</option><option value='MBA - Concentration in Information Technology' >-- Concentration in Information Technology</option><option value='Graduate Certificate in Creative Strategy' >Graduate Certificate in Creative Strategy</option><option value='Graduate Certificate in Holistic Health Coaching' >Graduate Certificate in Holistic Health Coaching</option><option value='On Campus' >--- ON CAMPUS PROGRAMS ---</option><option value='Doctor of Psychology - PsyD' >Doctor of Psychology - PsyD</option><option value='Juris Doctor' >Juris Doctor</option><option value='Juris Doctor - MBA Dual Degree' >Juris Doctor - MBA Dual Degree</option><option value='MA Applied Behavior Analysis' >MA Applied Behavior Analysis</option><option value='MA Consciousness and Transformative Studies' >MA Consciousness and Transformative Studies</option><option value='MA Counseling Psychology' >MA Counseling Psychology</option><option value='MA Counseling Psychology - Holistic' >MA Counseling Psychology - Holistic</option><option value='MA Creative Strategy' >MA Creative Strategy</option><option value='MA Holistic Health Education' >MA Holistic Health Education</option><option value='MA Sport Psychology' >MA Sport Psychology</option><option value='MA Sport Psychology - MBA Dual Degree' >MA Sport Psychology - MBA Dual Degree</option><option value='MA Sport Psychology-Clinical PsyD Dual Degree' >MA Sport Psychology-Clinical PsyD Dual Degree</option><option value='BA Completion Legal Studies' >BA Completion Legal Studies</option><option value='BA Completion Psychology' >BA Completion Psychology</option><option value='Graduate Certificate Sport Psychology' >Graduate Certificate Sport Psychology</option><option value='Academic Certificate in Human Resources' >Academic Certificate in Human Resources</option><option value='Academic Certificate in Trauma Studies' >Academic Certificate in Trauma Studies</option><option value='Paralegal Studies Certificate' >Paralegal Studies Certificate</option><option value='Undecided On Campus' >Undecided</option></select></div></li><li id='field_4_7'  class='gfield hide-label field_sublabel_below field_description_below gfield_visibility_visible military' ><fieldset class='gfieldset'><legend class='gfield_label'>Military</legend><div class='ginput_container ginput_container_checkbox'><ul class='gfield_checkbox' id='input_4_7'><li class='gchoice_4_7_1'>
+								<input name='input_7.1' type='checkbox'  value='YES_MIL_RFI'  id='choice_4_7_1'   />
+								<label for='choice_4_7_1' id='label_4_7_1'>Yes, I'm affiliated with the U.S. Military</label>
+							</li></ul></div></fieldset></li><li id='field_4_13'  class='gfield hide-label gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible agree' ><fieldset aria-required='true' class='gfieldset'><legend class='gfield_label'>Agree<span class='gfield_required'> * <span class='sr-only'> Required</span></span></legend><div class='ginput_container ginput_container_checkbox'><ul class='gfield_checkbox' id='input_4_13'><li class='gchoice_4_13_1'>
+								<input name='input_13.1' type='checkbox'  value='Yes'  id='choice_4_13_1'   />
+								<label for='choice_4_13_1' id='label_4_13_1'>I agree to the <a href="#" title="View Terms & Conditions" data-featherlight="#terms-and-conditions">terms & conditions</a>.</label>
+							</li></ul></div></fieldset></li><li id='field_4_23'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible state' ><input name='input_23' id='input_4_23' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></li><li id='field_4_24'  class='gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible adkey' ><input name='input_24' id='input_4_24' type='hidden' class='gform_hidden'  aria-invalid="false" value='NUSPMDEFAULT' /></li>
+                            </ul></div>
+        <div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_4' class='gform_button button' value='SUBMIT'  onclick='if(window["gf_submitting_4"]){return false;}  if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){window["gf_submitting_4"]=true;}  ' onkeypress='if( event.keyCode == 13 ){ if(window["gf_submitting_4"]){return false;} if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){window["gf_submitting_4"]=true;}  jQuery("#gform_4").trigger("submit",[true]); }' /> 
+            <input type='hidden' class='gform_hidden' name='is_submit_4' value='1' />
+            <input type='hidden' class='gform_hidden' name='gform_submit' value='4' />
+            
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+            <input type='hidden' class='gform_hidden' name='state_4' value='WyJbXSIsIjJlZDRmMjQwZjdiZmYzNjc0MDcwOTdlODAwN2MzNmQwIl0=' />
+            <input type='hidden' class='gform_hidden' name='gform_target_page_number_4' id='gform_target_page_number_4' value='0' />
+            <input type='hidden' class='gform_hidden' name='gform_source_page_number_4' id='gform_source_page_number_4' value='1' />
+            <input type='hidden' name='gform_field_values' value='' />
+            
+        </div>
+                        </form>
+                        </div><script type='text/javascript'> jQuery(document).bind('gform_post_render', function(event, formId, currentPage){if(formId == 4) {if(typeof Placeholders != 'undefined'){
+                        Placeholders.enable();
+                    }jQuery('#input_4_4').mask('(999) 999-9999').bind('keypress', function(e){if(e.which == 13){jQuery(this).blur();} } );} } );jQuery(document).bind('gform_post_conditional_logic', function(event, formId, fields, isInit){} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } ); </script>
+        </div>
+    </div>
+</div>
+
+<div class="three-column" style="background-color: #F3C727;">
+	<div class="container">
+		<div class="upper-content">
+							</div>
+		<div class="three-column-section">
+												<div>
+																			<div class="column-image">
+								<img src="https://www.jfku.edu/wp-content/uploads/2018/05/Icon_Own-Pace.svg" alt="Icon featuring a clock." />
+							</div>
+												<div class="column-content">
+							<h2>Learn at Your Own Pace</h2>
+							<p>FlexCourse℠ gives you the freedom to complete your courses as fast as you want while still enjoying close interaction with your instructors.</p>
+						</div>
+					</div>
+									<div>
+																			<div class="column-image">
+								<img src="https://www.jfku.edu/wp-content/uploads/2018/05/Icon_Programs.svg" alt="Icon featuring checkboxes, with one checked." />
+							</div>
+												<div class="column-content">
+							<h2>From AA to MBA</h2>
+							<p>Choose from an AA in General Studies, BA in Management, BA in Psychology, or Master of Business Administration.</p>
+						</div>
+					</div>
+									<div>
+																			<div class="column-image">
+								<img src="https://www.jfku.edu/wp-content/uploads/2018/05/Icon_Nonprofit.svg" alt="Icon featuring graduation cap with a heart over it." />
+							</div>
+												<div class="column-content">
+							<h2>Accredited Nonprofit</h2>
+							<p>John F. Kennedy University is private, nonprofit university accredited by WASC Senior College and University Commission (WSCUC). </p>
+						</div>
+					</div>
+									</div>
+	</div>
+</div>
+
+    <div class="info-blocks-section layered-section no-title layered-section-2" id="" >
+        <div class="container">
+                </div>
+
+                                                
+                                            <div class="layered-blocks-container right_content_first">
+                                                                                            <div class="layered-block layered-block-2_1 layered-block-none"> <!-- end div opening -->
+
+                                    
+                                    <div class="layered-block-media">
+                                                                                    <div class="m-layered-block-media lb-block-media-container">
+                                                <img data-src="https://www.jfku.edu/wp-content/uploads/2018/06/online_home.jpg" alt="Student working on laptop listening to headphones." data-srcset="https://www.jfku.edu/wp-content/uploads/2018/06/online_home.jpg 2048w, https://www.jfku.edu/wp-content/uploads/2018/06/online_home-300x153.jpg 300w, https://www.jfku.edu/wp-content/uploads/2018/06/online_home-768x391.jpg 768w, https://www.jfku.edu/wp-content/uploads/2018/06/online_home-1024x522.jpg 1024w" sizes="(max-width: 2048px) 100vw, 2048px" />
+                                                <span class="lb-media-filter" style=""></span>
+                                            </div>
+                                                                            </div>
+
+                                     <div class="layered-block-content-area"  style="background-color: #e5f7fc" >
+                                         <div class="lb-content-outer-container">
+
+
+                                             <div class="lb-content-container left_text_alignment">
+                                                                                                      <h3 class="layered-block-title">
+                                                         On-Demand Online Programs                                                     </h3>
+                                                 
+                                                                                                      <div class="layered-block-content jfku-wysiwig-content jfku-medium-font">
+                                                         <p>JFKu Online offers affordable on-demand online degree programs powered by FlexCourse™, our innovative online learning platform. Get unlimited access to online courses for one affordable flat rate per year, and earn your degree as fast as you want, on your own time. Choose from associate, bachelor’s, and master’s degrees in a variety of career fields.</p>
+                                                     </div>
+                                                 
+                                                                                                                                                          <div class="lb_btn jfk-button blue secondary">
+                                                         <a class="" href="https://www.jfku.edu/program-finder/" title="Find Your Program" target="">Find Your Program</a>
+                                                     </div>
+                                                                                              </div>
+                                         </div>
+                                     </div>
+
+                                </div>
+                                                                                            <div class="layered-block layered-block-2_2 layered-block-none"> <!-- end div opening -->
+
+                                    
+                                    <div class="layered-block-media">
+                                                                                    <div class="m-layered-block-media lb-block-media-container">
+                                                <img data-src="https://www.jfku.edu/wp-content/uploads/2018/05/A63B0102.MOV.14_45_51_10.Still003-compressor.jpg" alt="Woman discussing classroom topics with classmate." data-srcset="https://www.jfku.edu/wp-content/uploads/2018/05/A63B0102.MOV.14_45_51_10.Still003-compressor.jpg 1920w, https://www.jfku.edu/wp-content/uploads/2018/05/A63B0102.MOV.14_45_51_10.Still003-compressor-300x169.jpg 300w, https://www.jfku.edu/wp-content/uploads/2018/05/A63B0102.MOV.14_45_51_10.Still003-compressor-768x432.jpg 768w, https://www.jfku.edu/wp-content/uploads/2018/05/A63B0102.MOV.14_45_51_10.Still003-compressor-1024x576.jpg 1024w" sizes="(max-width: 1920px) 100vw, 1920px" />
+                                                <span class="lb-media-filter" style=""></span>
+                                            </div>
+                                                                            </div>
+
+                                     <div class="layered-block-content-area"  style="background-color: #fdf6e0" >
+                                         <div class="lb-content-outer-container">
+
+
+                                             <div class="lb-content-container left_text_alignment">
+                                                                                                      <h3 class="layered-block-title">
+                                                         Campus Programs                                                     </h3>
+                                                 
+                                                                                                      <div class="layered-block-content jfku-wysiwig-content jfku-medium-font">
+                                                         <p>John F. Kennedy University offers a range of master’s and doctoral degree programs designed to give you the education to make a difference in your life, your family’s lives, and in your community. Our Bay Area campuses are conveniently located in Pleasant Hill and San Jose and feature classroom, library, and computer facilities.</p>
+                                                     </div>
+                                                 
+                                                                                                                                                          <div class="lb_btn jfk-button blue secondary">
+                                                         <a class="" href="https://www.jfku.edu/on-campus/" title="Find Your Program" target="">Find Your Program</a>
+                                                     </div>
+                                                                                              </div>
+                                         </div>
+                                     </div>
+
+                                </div>
+                                                    </div>
+                    
+                                </div>
+
+<div class="jfku-cards-section" >
+
+<div class="group-cards-section" style="background-color: #ffffff; ">
+    <div class="container">
+	Attend an Upcoming Open House    </div>
+
+        
+    </div>
+</div>
+<div class="info-blocks-section testimonials-section bg-lazy  has-bg-image mulitple-testimonials" id="" data-src="https://www.jfku.edu/wp-content/uploads/2018/08/Testimonial_Home-compressor.jpg">
+	<div class="container">
+			<h2 class="section-title">
+			Meet Your Community		</h2>
+	
+														<div class="testmonial-quotes">
+													<div class="testimonial-quote">
+								
+								<div class="quote-top-content">
+																			<div class="quoter-image-area">
+											<img width="150" height="150" src="https://www.jfku.edu/wp-content/uploads/2018/05/Home-Mark-0963-150x150.jpg" class="quoter_image" alt="Student named Mark." srcset="https://www.jfku.edu/wp-content/uploads/2018/05/Home-Mark-0963-150x150.jpg 150w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Mark-0963-270x270.jpg 270w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Mark-0963-570x570.jpg 570w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Mark-0963-285x285.jpg 285w" sizes="(max-width: 150px) 100vw, 150px" />										</div>
+									
+									<div class="quote-content">
+																					<div class="quote-text quote-small">
+												"I've found a really good school that supports my goals of making the world a better place, The best way to make a change, is getting a good education."
+											</div>
+										
+																					<div class="quoter-info jfk-medium-font">
+												- MARK, STUDENT, COLLEGE OF LAW											</div>
+																			</div>
+								</div>
+
+																	<div class="quote-footer">
+																				<div class="quoter-image-area"></div>
+																			<div class="video-btn-area">
+											<a title="Play video" href="https://www.youtube.com/embed/8emxbUKdETU" class="play-video-link jfk-small-font"  data-featherlight="iframe" data-featherlight-iframe-style="display:block;border:none; margin: 0 auto;" data-featherlight-iframe-frameborder="0"  data-featherlight-iframe-width="800" data-featherlight-iframe-height="450" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true" data-featherlight-variant="fl-media-overlay"><span>Play Video</span></a>
+										</div>
+
+										<!-- <div class="media-overlay-box" id="quote-video-overlay-">
+											<div class="media-overlay-inner-box">
+												<div class="media-container">
+													<div class="em_video">
+														<div class="video_container">
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> -->
+									</div>
+															</div>
+													<div class="testimonial-quote">
+								
+								<div class="quote-top-content">
+																			<div class="quoter-image-area">
+											<img width="150" height="150" src="https://www.jfku.edu/wp-content/uploads/2018/05/Home-Kimya-0756-150x150.jpg" class="quoter_image" alt="Student named Kimya." srcset="https://www.jfku.edu/wp-content/uploads/2018/05/Home-Kimya-0756-150x150.jpg 150w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Kimya-0756-270x270.jpg 270w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Kimya-0756-570x570.jpg 570w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Kimya-0756-285x285.jpg 285w" sizes="(max-width: 150px) 100vw, 150px" />										</div>
+									
+									<div class="quote-content">
+																					<div class="quote-text quote-small">
+												"I love the fact that, in the psychology field, I can support someone who may not have had support before."
+											</div>
+										
+																					<div class="quoter-info jfk-medium-font">
+												- KIMYA, STUDENT, COLLEGE OF PSYCHOLOGY											</div>
+																			</div>
+								</div>
+
+																	<div class="quote-footer">
+																				<div class="quoter-image-area"></div>
+																			<div class="video-btn-area">
+											<a title="Play video" href="https://www.youtube.com/embed/SuGWOJPKBpY" class="play-video-link jfk-small-font"  data-featherlight="iframe" data-featherlight-iframe-style="display:block;border:none; margin: 0 auto;" data-featherlight-iframe-frameborder="0"  data-featherlight-iframe-width="800" data-featherlight-iframe-height="450" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true" data-featherlight-variant="fl-media-overlay"><span>Play Video</span></a>
+										</div>
+
+										<!-- <div class="media-overlay-box" id="quote-video-overlay-">
+											<div class="media-overlay-inner-box">
+												<div class="media-container">
+													<div class="em_video">
+														<div class="video_container">
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> -->
+									</div>
+															</div>
+													<div class="testimonial-quote">
+								
+								<div class="quote-top-content">
+																			<div class="quoter-image-area">
+											<img width="150" height="150" src="https://www.jfku.edu/wp-content/uploads/2018/05/home-Daniel-8778-150x150.jpg" class="quoter_image" alt="Student named Daniel." srcset="https://www.jfku.edu/wp-content/uploads/2018/05/home-Daniel-8778-150x150.jpg 150w, https://www.jfku.edu/wp-content/uploads/2018/05/home-Daniel-8778-270x270.jpg 270w, https://www.jfku.edu/wp-content/uploads/2018/05/home-Daniel-8778-570x570.jpg 570w, https://www.jfku.edu/wp-content/uploads/2018/05/home-Daniel-8778-285x285.jpg 285w" sizes="(max-width: 150px) 100vw, 150px" />										</div>
+									
+									<div class="quote-content">
+																					<div class="quote-text quote-small">
+												"I've always wanted to be an attorney since I was very young, to serve as a role model for my community."
+											</div>
+										
+																					<div class="quoter-info jfk-medium-font">
+												- DANIEL, STUDENT, COLLEGE OF LAW											</div>
+																			</div>
+								</div>
+
+																	<div class="quote-footer">
+																				<div class="quoter-image-area"></div>
+																			<div class="video-btn-area">
+											<a title="Play video" href="https://www.youtube.com/embed/8Wd6FINJ1g4" class="play-video-link jfk-small-font"  data-featherlight="iframe" data-featherlight-iframe-style="display:block;border:none; margin: 0 auto;" data-featherlight-iframe-frameborder="0"  data-featherlight-iframe-width="800" data-featherlight-iframe-height="450" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true" data-featherlight-variant="fl-media-overlay"><span>Play Video</span></a>
+										</div>
+
+										<!-- <div class="media-overlay-box" id="quote-video-overlay-">
+											<div class="media-overlay-inner-box">
+												<div class="media-container">
+													<div class="em_video">
+														<div class="video_container">
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> -->
+									</div>
+															</div>
+													<div class="testimonial-quote">
+								
+								<div class="quote-top-content">
+																			<div class="quoter-image-area">
+											<img width="150" height="150" src="https://www.jfku.edu/wp-content/uploads/2018/05/Home-Akaisa-0956-150x150.jpg" class="quoter_image" alt="Student named Akasia." srcset="https://www.jfku.edu/wp-content/uploads/2018/05/Home-Akaisa-0956-150x150.jpg 150w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Akaisa-0956-270x270.jpg 270w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Akaisa-0956-570x570.jpg 570w, https://www.jfku.edu/wp-content/uploads/2018/05/Home-Akaisa-0956-285x285.jpg 285w" sizes="(max-width: 150px) 100vw, 150px" />										</div>
+									
+									<div class="quote-content">
+																					<div class="quote-text quote-small">
+												"I've always wanted to work with youth. Through my education, I can help them to become successful, confident contributors to our community."
+											</div>
+										
+																					<div class="quoter-info jfk-medium-font">
+												- AKASIA, STUDENT, COLLEGE OF PSYCHOLOGY											</div>
+																			</div>
+								</div>
+
+																	<div class="quote-footer">
+																				<div class="quoter-image-area"></div>
+																			<div class="video-btn-area">
+											<a title="Play video" href="https://www.youtube.com/embed/G9LNCezOG4s" class="play-video-link jfk-small-font"  data-featherlight="iframe" data-featherlight-iframe-style="display:block;border:none; margin: 0 auto;" data-featherlight-iframe-frameborder="0"  data-featherlight-iframe-width="800" data-featherlight-iframe-height="450" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true" data-featherlight-variant="fl-media-overlay"><span>Play Video</span></a>
+										</div>
+
+										<!-- <div class="media-overlay-box" id="quote-video-overlay-">
+											<div class="media-overlay-inner-box">
+												<div class="media-container">
+													<div class="em_video">
+														<div class="video_container">
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> -->
+									</div>
+															</div>
+											</div>
+										</div>
+</div>
+                <div >
+
+                
+    <div class="highlights-section stacked-logo-section" >
+        <div class="container">
+		Accreditations/Approvals
+                            <div class="stacked-logo-container">
+                                            <div class="stacked-icon">
+                                                        <div class="hsi-title">
+                                WSCUC                            </div>
+                            <div class="hsi-description jfk-medium-font">
+                                The WASC Senior College And University Commission                            </div>
+                        </div>
+                                            <div class="stacked-icon">
+                                                        <div class="hsi-title">
+                                CalBar                            </div>
+                            <div class="hsi-description jfk-medium-font">
+                                The Committee of Bar Examiners of the State Bar of California                            </div>
+                        </div>
+                                            <div class="stacked-icon">
+                                                        <div class="hsi-title">
+                                APA                            </div>
+                            <div class="hsi-description jfk-medium-font">
+                                American Psychology Association                            </div>
+                        </div>
+                                            <div class="stacked-icon">
+                                                        <div class="hsi-title">
+                                ABA                            </div>
+                            <div class="hsi-description jfk-medium-font">
+                                American Bar Association                            </div>
+                        </div>
+                                            <div class="stacked-icon">
+                                                        <div class="hsi-title">
+                                BBS                            </div>
+                            <div class="hsi-description jfk-medium-font">
+                                California Board of Behavioral Science                            </div>
+                        </div>
+                                            <div class="stacked-icon">
+                                                        <div class="hsi-title">
+                                SOC                            </div>
+                            <div class="hsi-description jfk-medium-font">
+                                Member of – Service members Opportunity Colleges                            </div>
+                        </div>
+                                            <div class="stacked-icon">
+                                                        <div class="hsi-title">
+                                HSI                            </div>
+                            <div class="hsi-description jfk-medium-font">
+                                Hispanic Serving Institute                            </div>
+                        </div>
+                                    </div>
+                    </div>
+    </div>
+                </div>
+                       <div class="jfku-cta-section normal-cta"  style="background-color: #374694"  >
+           <div class="container">
+               <div class="cta-content-container white_font">
+                                          <h3 class="cta_intro">Contact us to learn more about earning your degree at John F. Kennedy </h3>
+                   
+                                                                                                <div class="cta-buttons cta-buttons-2">
+                                                                                                         <div class="cta-btn jfk-button light-blue primary_btn">
+                                           <a class="" href="https://www.jfku.edu/apply" title="Apply" target="_blank">Apply</a>
+                                       </div>
+                                                                                                                                            <div class="cta-btn jfk-button light-blue primary_btn">
+                                           <a class="" href="https://www.jfku.edu/request-info/" title="Request Info" target="">Request Info</a>
+                                       </div>
+                                                                                             </div>
+                                                         </div>
+           </div>
+       </div>
+   
+
+
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<div class="footer_top">
+			<div class="container">
+				<div class="footer_top_top">
+
+											<div class="footer_logo_wrapper">
+							<img class="footer_logo" src="https://www.jfku.edu/wp-content/uploads/2018/05/footer-Logo.png" alt="John F. Kennedy University">
+						</div>
+					
+					<ul class="customizer_social_links">
+
+					    					        <li class="facebook_link"><a title="Visit our Facebook page" href="https://www.facebook.com/JFKUniv" target="_blank">
+								<span class="sr-only">
+									Facebook
+								</span>
+							</a></li>
+					    
+					    					        <li class="linkedin_link"><a title="Visit our LinkedIn page" href="https://www.linkedin.com/school/john-f.-kennedy-university/" target="_blank">
+								<span class="sr-only">
+									LinkedIn
+								</span>
+							</a></li>
+					    
+					    					        <li class="twitter_link"><a title="Visit our Twitter page" href="https://twitter.com/jfkuniv" target="_blank">
+								<span class="sr-only">
+									Twitter
+								</span>
+							</a></li>
+					    
+					</ul>
+
+				</div>
+				<div class="footer_main_menu_container">
+					<div class="menu-main-footer-menu-container"><ul id="menu-main-footer-menu" class="footer_menu"><li id="menu-item-17" class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-17"><a>Information for</a>
+<ul class="sub-menu">
+	<li id="menu-item-2035" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2035"><a title="Prospective Students" href="https://www.jfku.edu/prospective-students/">Prospective Students</a></li>
+	<li id="menu-item-2036" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2036"><a title="Current Students" href="https://www.jfku.edu/current-students/">Current Students</a></li>
+	<li id="menu-item-2037" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2037"><a title="Alumni" href="https://www.jfku.edu/alumni-2/">Alumni</a></li>
+	<li id="menu-item-2038" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2038"><a title="Donors" href="https://www.jfku.edu/donors/">Donors</a></li>
+</ul>
+</li>
+<li id="menu-item-22" class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-22"><a>ACADEMICS</a>
+<ul class="sub-menu">
+	<li id="menu-item-4447" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4447"><a title="Degrees" href="https://www.jfku.edu/degrees/">Degrees</a></li>
+	<li id="menu-item-4448" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4448"><a title="Programs" href="https://www.jfku.edu/program-finder/">Programs</a></li>
+	<li id="menu-item-4449" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4449"><a title="JFKu Online" href="https://www.jfku.edu/online/">JFKu Online</a></li>
+	<li id="menu-item-4450" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4450"><a title="Continuing Education" href="https://www.jfku.edu/college/continuing-education/">Continuing Education</a></li>
+</ul>
+</li>
+<li id="menu-item-28" class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-28"><a>STUDENT LIFE</a>
+<ul class="sub-menu">
+	<li id="menu-item-2039" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2039"><a title="Our Service Learning Model" href="https://www.jfku.edu/student-experience/service-learning-model/">Our Service Learning Model</a></li>
+	<li id="menu-item-2040" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2040"><a title="Ways to Learn" href="https://www.jfku.edu/student-experience/ways-to-learn/">Ways to Learn</a></li>
+	<li id="menu-item-2041" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2041"><a title="Student Experience" href="https://www.jfku.edu/student-experience/">Student Experience</a></li>
+	<li id="menu-item-2044" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2044"><a title="Support for Working Adults" href="https://www.jfku.edu/student-experience/support-for-working-adults/">Support for Working Adults</a></li>
+	<li id="menu-item-2042" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2042"><a title="Support for Military/Veterans" href="https://www.jfku.edu/student-experience/support-for-military-veterans/">Support for Military/Veterans</a></li>
+	<li id="menu-item-2043" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2043"><a title="Support for Underserved Students" href="https://www.jfku.edu/student-experience/support-for-underserved-students/">Support for Underserved Students</a></li>
+	<li id="menu-item-2045" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045"><a title="Locations" href="https://www.jfku.edu/student-experience/locations/">Locations</a></li>
+	<li id="menu-item-4464" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4464"><a title="Blog" href="https://www.jfku.edu/blog/">Blog</a></li>
+</ul>
+</li>
+<li id="menu-item-2048" class="no_link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2048"><a>ABOUT</a>
+<ul class="sub-menu">
+	<li id="menu-item-2050" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2050"><a title="About JFKU" href="https://www.jfku.edu/about-us/">About JFKU</a></li>
+	<li id="menu-item-2051" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2051"><a title="Admissions" href="https://www.jfku.edu/admissions/">Admissions</a></li>
+	<li id="menu-item-2049" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2049"><a title="Tuition &#038; Financial Aid" href="https://www.jfku.edu/admissions/financial-aid/">Tuition &#038; Financial Aid</a></li>
+	<li id="menu-item-4451" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4451"><a title="Academic Freedom" href="https://www.jfku.edu/academic-freedom/">Academic Freedom</a></li>
+	<li id="menu-item-4453" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4453"><a title="Open Houses" href="https://www.jfku.edu/events/open-houses/">Open Houses</a></li>
+	<li id="menu-item-4452" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4452"><a title="Faculty" href="https://www.jfku.edu/faculty/">Faculty</a></li>
+	<li id="menu-item-2083" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2083"><a title="Accreditation" href="https://www.jfku.edu/accreditations/">Accreditation</a></li>
+</ul>
+</li>
+<li id="menu-item-5605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-5605"><a href="https://www.jfku.edu/community/">IN THE COMMUNITY</a>
+<ul class="sub-menu">
+	<li id="menu-item-5606" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5606"><a title="Event Calendar" href="https://www.jfku.edu/events/">Event Calendar</a></li>
+	<li id="menu-item-5610" class="menu-item menu-item-type-post_type menu-item-object-college menu-item-5610"><a title="Sanford Institute of Philanthropy" href="https://www.jfku.edu/college/sanford-institute-of-philanthropy/">Sanford Institute of Philanthropy</a></li>
+	<li id="menu-item-2057" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2057"><a title="Holistic Research Center" href="https://www.jfku.edu/community/hrc/">Holistic Research Center</a></li>
+	<li id="menu-item-2056" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2056"><a title="The LEAP Program" href="https://www.jfku.edu/community/leap-program/">The LEAP Program</a></li>
+	<li id="menu-item-2053" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2053"><a title="JFKU Legal Clinics" href="https://www.jfku.edu/community/jfku-law-clinics/">JFKU Legal Clinics</a></li>
+	<li id="menu-item-2054" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2054"><a title="Office of Clinical Training" href="https://www.jfku.edu/community/office-of-clinical-training/">Office of Clinical Training</a></li>
+</ul>
+</li>
+</ul></div>				</div>
+			</div>
+		</div>
+
+		<div class="footer_bottom">
+			<div class="container">
+				<div class="footer_sec_menu_container">
+					<div class="menu-secondary-footer-menu-container"><ul id="menu-secondary-footer-menu" class="sec_footer_menu"><li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a title="Careers" href="https://www.nu.edu/jobs.cfm?affiliate=John%20F.%20Kennedy%20University#jobs">Careers</a></li>
+<li id="menu-item-2032" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2032"><a title="Merchandise" href="https://www.jfkustore.com/default.asp">Merchandise</a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a title="Request a Transcript" href="https://secure.studentclearinghouse.org/tsorder/faces/TranscriptOrder">Request a Transcript</a></li>
+<li id="menu-item-2033" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2033"><a title="Terms &#038; Conditions" href="https://www.jfku.edu/terms-and-conditions/">Terms &#038; Conditions</a></li>
+<li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a title="MyJFKU" href="https://login.jfku.edu/">MyJFKU</a></li>
+<li id="menu-item-8224" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8224"><a title="FlexCourse℠ Login" href="https://online.jfku.edu/sign_in">FlexCourse℠ Login</a></li>
+<li id="menu-item-2031" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-2031"><a title="Privacy Policy" href="https://www.jfku.edu/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-2034" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2034"><a title="About The National University System" href="https://www.jfku.edu/about-us/about-the-national-university-system/">About The National University System</a></li>
+</ul></div>				</div>
+				<div class="copyright">
+					<p class="copyright_content"> &copy; 2020 <span class="copyright_name">John F. Kennedy University, All Rights Reserved</span>
+				</div>
+			</div>
+		</div>
+
+					<div id="terms-and-conditions" class="copy-overlay"><p>By submitting this form, I confirm that the information provided on this form is accurate and complete and I agree to receive email communications, phone calls, and SMS/Text Messages about Educational opportunities from National University System and/or it&#8217;s affiliates. I understand that I may withdraw my consent at any time. I understand that if I am submitting my personal data from outside of the United States, I am consenting to the transfer of my personal data to, and it&#8217;s storage in, the United States, and I understand that my personal data will be subject to processing in accordance with U.S. laws. Please review our <a href="https://www.jfku.edu/privacy-policy/" target="_blank" rel="noopener">privacy policy</a> or contact us for more details at <a href="mailto:dataprotection@nu.edu">dataprotection@nu.edu</a>.</p>
+</div>
+		
+	</footer><!-- #colophon -->
+</main>
+
+<link rel='stylesheet' id='gforms_reset_css-css'  href='https://www.jfku.edu/wp-content/plugins/gravityforms/css/formreset.min.css?ver=2.4.16' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_formsmain_css-css'  href='https://www.jfku.edu/wp-content/plugins/gravityforms/css/formsmain.min.css?ver=2.4.16' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_ready_class_css-css'  href='https://www.jfku.edu/wp-content/plugins/gravityforms/css/readyclass.min.css?ver=2.4.16' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_browsers_css-css'  href='https://www.jfku.edu/wp-content/plugins/gravityforms/css/browsers.min.css?ver=2.4.16' type='text/css' media='all' />
+<link rel='stylesheet' id='airdatepicker-css-css'  href='https://www.jfku.edu/wp-content/themes/jfku/css/datepicker.min.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='gravity-forms-wcag-20-form-fields-css-css'  href='https://www.jfku.edu/wp-content/plugins/gravity-forms-wcag-20-form-fields/css/gf_wcag20_form_fields.min.css?ver=5.3.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/jquery.ddslick.min.js?ver=20180430'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/ofi.min.js?ver=20180507'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/navigation.js?ver=20151215'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/skip-link-focus-fix.js?ver=20151215'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jfku_ajax_object = {"ajaxUrl":"https:\/\/www.jfku.edu\/wp-admin\/admin-ajax.php","theme":"https:\/\/www.jfku.edu\/wp-content\/themes\/jfku"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/form.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/plugins/bj-lazy-load/js/bj-lazy-load.min.js?ver=2'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-includes/js/wp-embed.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/plugins/gravityforms/js/jquery.maskedinput.min.js?ver=2.4.16'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/plugins/gravityforms/js/placeholders.jquery.min.js?ver=2.4.16'></script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/themes/jfku/js/vendor/datepicker.min.js?ver=1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var gf_wcag20_form_fields_settings = {"new_window_text":"this link will open in a new window","failed_validation":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.jfku.edu/wp-content/plugins/gravity-forms-wcag-20-form-fields/js/gf_wcag20_form_fields.min.js?ver=5.3.2'></script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"4c98807ce5","applicationID":"62430737","transactionName":"b1QDYxBRCEQAUxVQWFYeIFQWWQlZTkAAXlI=","queueTime":0,"applicationTime":2362,"atts":"QxMAFVhLG0o=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

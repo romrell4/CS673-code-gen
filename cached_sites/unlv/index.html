@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="profile" href="http://www.w3.org/1999/xhtml/vocab" />
+  <meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"49746aa591",applicationID:"29937636"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Chrome, Firefox OS, Opera and Vivaldi -->
+  <meta name="theme-color" content="#6b7178">
+  <!-- Windows Phone -->
+  <meta name="msapplication-TileColor" content="#b10202">
+  <meta name="msapplication-TileImage" content="/sites/all/themes/unlv_internal_2015/global/logos/start-screen-tile.png">
+  <meta name="format-detection" content="telephone=no">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#6b7178">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/sites/all/themes/unlv_internal_2015/global/logos/apple-touch-icon.png">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="https://www.unlv.edu/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="UNLV is a premier metropolitan research university. Its 332-acre main campus, located on the Southern tip of Nevada in a desert valley surrounded by mountains, is home to more than 350 undergraduate and graduate degrees, all accredited by the Northwest Commission on Colleges and Universities." />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="https://www.unlv.edu/" />
+<link rel="shortlink" href="https://www.unlv.edu/" />
+<script src="https://kit.fontawesome.com/9f8f8475fe.js"></script><meta name="google-site-verification" content="OA77oRkY8Nl1DmtEgtXbO01AKGSH2h4PImvBxCiRgdc" /><meta property="fb:pages" content="324378595057" /><meta name="sitemaster-verification-code" content="1662fc1aff965fd0bd53bbd658ec04d2"><!-- Begin Inspectlet JS Code -->
+    <script type="text/javascript" id="inspectletjs">
+    (function() {
+    var insp_ab_loader = true; // set this boolean to false to disable the A/B testing loader
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 527406690]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=527406690&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x);if(typeof insp_ab_loader != "undefined" && insp_ab_loader){ var adlt = function(){ var e = document.getElementById('insp_abl'); if(e){ e.parentNode.removeChild(e); __insp.push(['ab_timeout']); }}; var adlc = "body{ visibility: hidden !important; }"; var adln = typeof insp_ab_loader_t != "undefined" ? insp_ab_loader_t : 1200; insp.onerror = adlt; var abti = setTimeout(adlt, adln); window.__insp_abt = abti; var abl = document.createElement('style'); abl.id = "insp_abl"; abl.type = "text/css"; if(abl.styleSheet) abl.styleSheet.cssText = adlc; else abl.appendChild(document.createTextNode(adlc)); document.head.appendChild(abl); } };
+    setTimeout(ldinsp, 0);
+    })();
+    </script>
+    <!-- End Inspectlet JS Code --> 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0049/6294.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>  <title>University of Nevada, Las Vegas</title>
+  <link type="text/css" rel="stylesheet" href="https://www.unlv.edu/sites/default/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.unlv.edu/sites/default/files/css/css_9KkQ01o2yEebuZ04kxcFdgiUdcBtxo0ju3PNutWOkC4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.unlv.edu/sites/default/files/css/css_JKOKMg1kxY-4xtWCpsZdZqcQiRFKEW4mG_9tCG2J9Ps.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.unlv.edu/sites/default/files/css/css_TP8jVnCXpwMfiupNlM9Hf5aUMivCmxa0LlEurGCDJ6U.css" media="all" />
+<link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700|Roboto+Condensed:400,100,300,700|Roboto+Mono|Roboto+Slab:400,100,300,400,700" media="all" />
+<link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.3.2/css/bootstrap.min.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.unlv.edu/sites/default/files/css/css_gTmXLp5fah0YYCySVsdBCuBW2BmkfxWvT8mqixT07r0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.unlv.edu/sites/default/files/css/css_d9usVmLzwxTf2qy_oSaA-CYFF5R8Vh1xAVKzVKtJ1bs.css" media="all" />
+  <!-- HTML5 element support for IE6-8 -->
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="https://www.unlv.edu/sites/default/files/js/js_EebRuRXFlkaf356V0T2K_8cnUVfCKesNTxdvvPSEhCM.js"></script>
+<script src="https://www.unlv.edu/sites/default/files/js/js_4rck9RkHEK_Q2thEWNS_Do_PlGWkTbGuI-J0fNRUnso.js"></script>
+<script src="//cdn.jsdelivr.net/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script>document.createElement( "picture" );</script>
+<script src="https://www.unlv.edu/sites/default/files/js/js_Jqs0VGk8lvjv6-ybrkbSJzRdMZNq4AZ9s8a3rCei_1M.js"></script>
+<script>
+    (function(w,d,s,u,g,a,b){w['GetFeedbackObject']=g;w[g]=w[g]||function(){ 
+    (w[g].q=w[g].q||[]).push(arguments)};a=d.createElement(s), 
+    b=d.getElementsByTagName(s)[0];a.async=1;a.src=u;b.parentNode.insertBefore(a,b) 
+    })(window,document,'script','//websites.cdn.getfeedback.com/embed/tagaq0DMsB/gf.js','gf') 
+    </script>
+<script src="https://www.unlv.edu/sites/default/files/js/js_Cg7bZyjJtpEv3q2crhm0AbVLfmsV2GWaLdN3Ymkdr68.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/balance-text/3.1.1/balancetext.min.js"></script>
+<script src="https://www.unlv.edu/sites/default/files/js/js_nn2TB4NyhKnVe38nKRfT5Xj3jjLLkR3EFgxxAoKvxDk.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"unlv_internal_2015","theme_token":"es12Ra5zvpdOCfZnWz8AfDMRE-V4BYYX1Vki8s6vcjs","js":{"sites\/all\/modules\/picture\/picturefill2\/picturefill.min.js":1,"sites\/all\/modules\/picture\/picture.min.js":1,"sites\/all\/modules\/flickr_lightbox\/js\/flickr_lightbox.js":1,"0":1,"sites\/all\/modules\/important_messages\/js\/important_messages.js":1,"sites\/all\/themes\/bootstrap\/js\/bootstrap.js":1,"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.core.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.widget.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.datepicker.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.accordion.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.button.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.mouse.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.draggable.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.position.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.resizable.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.dialog.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.tabs.min.js":1,"\/\/cdn.jsdelivr.net\/bootstrap\/3.3.2\/js\/bootstrap.min.js":1,"1":1,"sites\/all\/modules\/global_includes\/js\/gen-functions.js":1,"sites\/all\/modules\/global_includes\/js\/views-reset-btn-fix.js":1,"sites\/all\/modules\/lazyloader\/jquery.lazyloader.js":1,"2":1,"sites\/all\/libraries\/lightbox2\/dist\/js\/lightbox.min.js":1,"sites\/all\/modules\/image_caption\/image_caption.js":1,"\/\/cdnjs.cloudflare.com\/ajax\/libs\/balance-text\/3.1.1\/balancetext.min.js":1,"sites\/all\/themes\/unlv_internal_2015\/js\/global.js":1},"css":{"modules\/system\/system.base.css":1,"misc\/ui\/jquery.ui.core.css":1,"misc\/ui\/jquery.ui.theme.css":1,"misc\/ui\/jquery.ui.datepicker.css":1,"misc\/ui\/jquery.ui.accordion.css":1,"misc\/ui\/jquery.ui.button.css":1,"misc\/ui\/jquery.ui.resizable.css":1,"misc\/ui\/jquery.ui.dialog.css":1,"misc\/ui\/jquery.ui.tabs.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/picture\/picture_wysiwyg.css":1,"sites\/all\/modules\/siteimprove\/css\/siteimprove.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/lazyloader\/lazyloader.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/libraries\/lightbox2\/dist\/css\/lightbox.min.css":1,"sites\/all\/modules\/page_section_restrictor\/css\/page_section_restrictor.css":1,"\/\/fonts.googleapis.com\/css?family=Roboto:400,100,300,500,700|Roboto+Condensed:400,100,300,700|Roboto+Mono|Roboto+Slab:400,100,300,400,700":1,"\/\/cdn.jsdelivr.net\/bootstrap\/3.3.2\/css\/bootstrap.min.css":1,"sites\/all\/themes\/bootstrap\/css\/3.3.2\/overrides.min.css":1,"sites\/all\/themes\/unlv_internal_2015\/css\/style.css":1,"sites\/all\/themes\/unlv_internal_2015\/css\/bootstrap-4-alpha.css":1,"sites\/all\/themes\/unlv_internal_2015\/css\/base.css":1,"sites\/all\/themes\/unlv_internal_2015\/css\/layout.css":1,"sites\/all\/themes\/unlv_internal_2015\/css\/content.css":1,"sites\/all\/themes\/unlv_internal_2015\/css\/legacy.css":1,"sites\/all\/modules\/global_includes\/css\/global-includes.css":1,"sites\/all\/modules\/flickr_lightbox\/css\/flickr_lightbox.css":1}},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"picture":{"mappings":[["CKEditor - Third Width","third_ckeditor"],["CKEditor - Full Width","full_size_ckeditor"],["CKEditor - Half Width","half_ckeditor"],["CKEditor - Don\u0027t Resize","default_image_ckeditor"],["Not Set","not_set"]],"label":"Image size (required)"},"bootstrap":{"anchorsFix":0,"anchorsSmoothScrolling":1,"formHasError":1,"popoverEnabled":1,"popoverOptions":{"animation":1,"html":0,"placement":"right","selector":"","trigger":"click","triggerAutoclose":1,"title":"","content":"","delay":0,"container":"body"},"tooltipEnabled":1,"tooltipOptions":{"animation":1,"html":0,"placement":"auto left","selector":"","trigger":"hover focus","delay":0,"container":"body"}}});</script>
+  <script src="https://www.unlv.edu/sites/all/themes/unlv_internal_2015/js/detect-viewport.js"></script>
+<link type="text/css" rel="stylesheet" href="/sites/all/themes/unlv_internal_2015/css/section-css/homepage/homepage-2019.09.04.css?011" media="all">
+
+<style>
+#introduction .layer-2-overlay {
+  background: rgb(160,40,22,.8);
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,.1) 50%, rgba(0,0,0,.8) 90%);
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,.1) 50%,rgba(0,0,0,.8) 90%);
+  background: linear-gradient(to top, rgba(0,0,0,.1) 50%,rgba(0,0,0,.8) 90%);
+}
+/*
+@media (min-width: 768px)  {
+  #introduction {
+    padding-bottom: 60%;
+  }
+  #introduction .layer-1-image > picture img {
+    top: auto;
+    bottom: 0;
+  }
+}
+*/
+</style>
+<!-- Custom Head -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3KMGF');</script>
+</head>
+<body class="navbar-is-fixed-top html front not-logged-in no-sidebars page-node page-node- page-node-214018 node-type-secondary-page">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3KMGF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable sr-only sr-only-focusable" tabindex="1">Skip to main content</a>
+  </div>
+    <header role="banner" aria-label="header">
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-top">
+      <div class="container">
+        <div class="row">
+          <div class="unlv-name col-xs-5">
+            <a href="/" tabindex="-1" role="presentation" aria-hidden="true">University of Nevada, Las Vegas</a>
+          </div><!--end .unlv-name-->
+    
+          <div id="audience-container" class="col-xs-7">
+						<ul id="audience" role="navigation" aria-label="audiences"><li class="menu-13034 first"><a href="/students" title="Students">Students</a></li>
+<li class="menu-13035"><a href="/facultystaff" title="Faculty/Staff">Faculty/Staff</a></li>
+<li class="menu-18657"><a href="/about-alumni" title="">Alumni</a></li>
+<li class="menu-13037"><a href="/donors" title="Donors">Donors</a></li>
+<li class="menu-13038 last"><a href="/community" title="Community">Community</a></li>
+</ul>          </div><!--end #audience-container-->
+
+          <div id="dropdown-container" class="col-xs-7">
+            <div id="audience-dropdown-container" class="dropdown">
+              <a class="btn btn-default dropdown-toggle" role="button" id="audience-dropdown" data-toggle="dropdown" aria-haspopup="true" tabindex="7 ">Audiences <span class="caret"></span></a>
+              <ul class="dropdown-menu dropdown-menu-right" role="navigation" aria-label="audiences dropdown"><li class="menu-13034 first"><a href="/students" title="Students">Students</a></li>
+<li class="menu-13035"><a href="/facultystaff" title="Faculty/Staff">Faculty/Staff</a></li>
+<li class="menu-18657"><a href="/about-alumni" title="">Alumni</a></li>
+<li class="menu-13037"><a href="/donors" title="Donors">Donors</a></li>
+<li class="menu-13038 last"><a href="/community" title="Community">Community</a></li>
+</ul>                        
+            </div><!--end #audience-dropdown-container-->
+                
+            <div id="topic-dropdown-container" class="dropdown">
+              <a class="btn btn-default dropdown-toggle" role="button" id="topic-dropdown" data-toggle="dropdown" aria-haspopup="true" tabindex="6">Topics <span class="caret"></span></a>
+              <ul class="dropdown-menu dropdown-menu-right" role="navigation" aria-label="topics dropdown"><li class="menu-13004 first"><a href="/about" title="About">About</a></li>
+<li class="menu-13005"><a href="/academics" title="Academics">Academics</a></li>
+<li class="menu-13032"><a href="/apply" title="Admissions">Admissions</a></li>
+<li class="menu-13033"><a href="/athletics" title="Athletics">Athletics</a></li>
+<li class="menu-13006"><a href="/campuslife" title="Campus Life">Campus Life</a></li>
+<li class="menu-13031 last"><a href="/about-research" title="Research">Research</a></li>
+</ul>                        
+            </div><!--end #topic-dropdown-container-->
+          </div><!--end #dropdown-container-->
+
+				</div><!--end .row-->
+			</div><!--end .container-->
+		</div><!--end .navbar-top-->
+
+    <div class="navbar-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="menu-button-container">
+            <a role="button" id="menu-button" href="#" tabindex="4" data-toggle="tooltip" data-placement="right" title="" data-original-title="Menu" onclick="void(0)">
+              <span class="sr-only" aria-label="open Homepages
+ menu">Menu</span>
+            </a>
+          </div><!--end .menu-button-container-->
+                    
+          <div class="unlv-logo-container">
+            <h1 class="clear-margins clear-padding"><a class="transition" href="/" tabindex="2">U-N-L-V</a></h1>
+          </div><!--end .unlv-logo-container-->
+ 
+          <div class="website-title">
+            <h1>
+                                  <a href="/homepages" tabindex="3">
+                      <span class="short-title">Homepages
+</span>
+                      <span class="full-title">Homepages</span>
+                    </a>
+                						</h1>
+          </div><!--end .website-title-->
+                    
+          <div id="topic-container">
+            <ul id="topics" role="navigation" aria-label="topics"><li class="menu-13004 first"><a href="/about" title="About">About</a></li>
+<li class="menu-13005"><a href="/academics" title="Academics">Academics</a></li>
+<li class="menu-13032"><a href="/apply" title="Admissions">Admissions</a></li>
+<li class="menu-13033"><a href="/athletics" title="Athletics">Athletics</a></li>
+<li class="menu-13006"><a href="/campuslife" title="Campus Life">Campus Life</a></li>
+<li class="menu-13031 last"><a href="/about-research" title="Research">Research</a></li>
+</ul>          </div><!--end #topic-container-->
+                    
+          <div class="search-button-container">
+            <a role="button" class="search-button transition pull-right text-hide" href="#" id="search-button" tabindex="5" data-toggle="tooltip" data-placement="left" title="" data-original-title="Find" onclick="void(0)" aria-label="open find region">Find</a>
+          </div><!--end .search-button-container-->
+                
+        </div><!--end .row-->
+			</div><!--end .container-->
+		</div><!--end .navbar-bottom-->  
+	</nav>
+</header>
+
+<div id="navigation" role="navigation" aria-label="Homepages
+ navigation">
+
+  <div class="scroller" id="navigation-scroller" tabindex="-1">
+    <div class="nav-close"><a href="#" id="menu-close">close Homepages
+ menu</a></div>
+                <h2>Homepages
+</h2>  <div class="region region-section-menu">
+    
+<div id="block-menu-block-1" class="block block-menu-block clearfix">
+
+      
+  <div class="menu-block-wrapper menu-block-1 menu-name-menu-homepages parent-mlid-0 menu-level-1">
+  <ul class="menu-sections"><li class="first last expanded active-trail menu-mlid-13442 active"><a href="/homepages" class="active-trail">Homepages Home</a><ul class="menu-section-level-2"><li class="first leaf menu-mlid-14122"><a href="/dev-guide/launch-new-unlv-homepage">Launch New UNLV Homepage</a></li>
+<li class="leaf menu-mlid-17096"><a href="/homepages/messages-events">Special Messages and Events</a></li>
+<li class="expanded menu-mlid-13444"><a href="/homepages/dev" title="">Development</a><ul class="menu-section-level-3" style="display:none;"><li class="first leaf menu-mlid-18453"><a href="/homepages/2018.06.01-html5">2018 June - HTML5 Video Test</a></li>
+<li class="leaf menu-mlid-18452"><a href="/homepages/2018.06.01-vimeo">2018 June - Vimeo Video Test</a></li>
+<li class="last leaf menu-mlid-18454"><a href="/homepages/2018.06.01-youtube">2018 June - YouTube Video Test</a></li>
+</ul></li>
+<li class="expanded menu-mlid-13093"><a href="/homepages/review" title="">Review</a><ul class="menu-section-level-3" style="display:none;"><li class="first last leaf menu-mlid-21246"><a href="/homepages/2020.02.01">2020 Feb - Las Vegas</a></li>
+</ul></li>
+<li class="expanded active-trail menu-mlid-13443 active"><a href="/homepages/live" title="" class="active-trail">Live</a><ul class="menu-section-level-3" style="display:none;"><li class="first last leaf active-trail active menu-mlid-21076 active"><a href="/homepages/2020.01.01" class="active-trail active">2020 Jan - Health and Wellness</a></li>
+</ul></li>
+<li class="expanded menu-mlid-20485"><a href="/homepages/2019-refresh" title="">Previous - 2019 Refresh</a><ul class="menu-section-level-3" style="display:none;"><li class="first leaf menu-mlid-21074"><a href="/homepages/2020.01.01-unused">2020 Jan - Health and Wellness (unused)</a></li>
+<li class="leaf menu-mlid-21077"><a href="/homepages/2019.12.13">2019 Dec - Arts and Entertainment (Commencement Promo)</a></li>
+<li class="leaf menu-mlid-21042"><a href="/homepages/2019.12.04">2019 Dec - Arts and Entertainment (NSHE Promo)</a></li>
+<li class="leaf menu-mlid-21018"><a href="/homepages/2019.12.01-unused">2019 Dec - Arts and Entertainment (unused)</a></li>
+<li class="leaf menu-mlid-21020"><a href="/homepages/2019.12.01">2019 Dec - Arts and Entertainment</a></li>
+<li class="leaf menu-mlid-20954"><a href="/homepages/2019.11.06">2019 Nov - Rebels Give</a></li>
+<li class="leaf menu-mlid-20945"><a href="/homepages/2019.11.01">2019 Nov - School Spirit</a></li>
+<li class="leaf menu-mlid-20949"><a href="/homepages/2019.11.01-unused-1">2019 Nov - School Spirit (unused 1)</a></li>
+<li class="leaf menu-mlid-20952"><a href="/homepages/2019.11.01-unused-2">2019 Nov - School Spirit (unused 2)</a></li>
+<li class="leaf menu-mlid-20712"><a href="/homepages/2019.10.01">2019 Oct - Academically Cool</a></li>
+<li class="leaf menu-mlid-20910"><a href="/homepages/2019.10.15">2019 Oct - Academically Cool with SOTU</a></li>
+<li class="leaf menu-mlid-20618"><a href="/homepages/2019.09.01">2019 Sep - Get Involved</a></li>
+<li class="leaf menu-mlid-20631"><a href="/homepages/2019.09.01-unused">2019 Sep - Get Involved (unused)</a></li>
+<li class="leaf menu-mlid-20552"><a href="/homepages/2019.08.01">2019 August - Diversity</a></li>
+<li class="leaf menu-mlid-20550"><a href="/homepages/2019.08.01-unused">2019 August - Diversity (unused)</a></li>
+<li class="leaf menu-mlid-20493"><a href="/homepages/2019.07.08">2019 July - Enrichment</a></li>
+<li class="leaf menu-mlid-20345"><a href="/homepages/2019.06.28">2019 June-July - Rebels Forever</a></li>
+<li class="last leaf menu-mlid-20356"><a href="/homepages/2019.06.07">2019 June - Our Campus</a></li>
+</ul></li>
+<li class="expanded menu-mlid-18467"><a href="/homepages/previous-2018" title="">Previous - 2018 Refresh</a><ul class="menu-section-level-3" style="display:none;"><li class="first leaf menu-mlid-20266"><a href="/homepage/2019.06.01">2019 June - Our Campus</a></li>
+<li class="leaf menu-mlid-20235"><a href="/homepages/2019.05.16">2019 May - Life After UNLV with Commencement</a></li>
+<li class="leaf menu-mlid-20075"><a href="/homepages/2019.05.01">2019 May - Life After UNLV</a></li>
+<li class="leaf menu-mlid-19904"><a href="/homepages/2019.04.01">2019 April - Academically Cool</a></li>
+<li class="leaf menu-mlid-19688"><a href="/homepages/2019.03.01">2019 March - Community Connections</a></li>
+<li class="leaf menu-mlid-19665"><a href="/homepages/2019.02.01">2019 Feb - Las Vegas</a></li>
+<li class="leaf menu-mlid-19570"><a href="/homepages/2019.01.01-2">2019 Jan - Wellness and Recreation</a></li>
+<li class="leaf menu-mlid-19520"><a href="/homepages/2018.12.19">2018 Dec - A&amp;E w Top Tier Announcement</a></li>
+<li class="leaf menu-mlid-19516"><a href="/homepage/2018.12.17">2018 Nov - Cool Classes w Commencement</a></li>
+<li class="leaf menu-mlid-19252"><a href="/homepages/2018.12.01">2018 Dec - Arts and Entertainment</a></li>
+<li class="leaf menu-mlid-19100"><a href="/homepage/2018.11.29">2018 Nov - Cool Classes with NSHE Meeting</a></li>
+<li class="leaf menu-mlid-19022"><a href="/homepages/2018.11.01">2018 Nov - Cool Classes 1</a></li>
+<li class="leaf menu-mlid-19023"><a href="/homepages/2018-nov-cool-classes-2">2018 Nov - Cool Classes 2</a></li>
+<li class="leaf menu-mlid-18934"><a href="/homepages/2018.10.12">2018 Oct - School Spirit w Call to Caption</a></li>
+<li class="leaf menu-mlid-18827"><a href="/homepages/2018.10.09">2018 Oct - School Spirit Photo w Rebels Give</a></li>
+<li class="leaf menu-mlid-18876"><a href="/homepage/2018.10.02">2018 Oct 2 - Remembrance</a></li>
+<li class="leaf menu-mlid-18842"><a href="/homepage/2018.10.01">2018 Oct 1 - Remembrance Ceremony</a></li>
+<li class="leaf menu-mlid-18813"><a href="/homepages/2018.09.13">2018 Sept - Cardboard Angel Photo w SOTU</a></li>
+<li class="leaf menu-mlid-18655"><a href="/homepages/2018.08.03">2018 August - Cardboard Angel Photo</a></li>
+<li class="leaf menu-mlid-18460"><a href="/homepages/2018.06.04-bor-meeting">2018 June - With BOR Meeting</a></li>
+<li class="leaf menu-mlid-18439"><a href="/homepages/viewbook-refresh-knights-1">2018 June - With Vegas Knights</a></li>
+<li class="leaf menu-mlid-18465"><a href="/homepages/2018.06.07">2018 June - Video Hero</a></li>
+<li class="leaf menu-mlid-18383"><a href="/homepages/2018.05.11">2018 May - With Commencement</a></li>
+<li class="last leaf menu-mlid-17982"><a href="/homepages/2018-viewbook-refresh">2018 May - Viewbook Refresh Launch</a></li>
+</ul></li>
+<li class="last expanded menu-mlid-13446"><a href="/homepages/previous-2016">Previous - 2016 Redesign</a><ul class="menu-section-level-3" style="display:none;"><li class="first leaf menu-mlid-18052"><a href="/homepages/2018-04-03">2018 April-May - Rebels Lead</a></li>
+<li class="leaf menu-mlid-17952"><a href="/homepages/2018-03-01">2018 March - Change the World</a></li>
+<li class="leaf menu-mlid-17197"><a href="/homepages/2018-01-04">2018 January - Different Daring Diverse</a></li>
+<li class="leaf menu-mlid-17125"><a href="/homepages/2017-12-01">2017 December - Year in Review</a></li>
+<li class="leaf menu-mlid-16893"><a href="/homepages/2017-11-02">2017 November - Time for Thanks</a></li>
+<li class="leaf menu-mlid-16588"><a href="/homepages/2017-10-01">2017 October - Research</a></li>
+<li class="leaf menu-mlid-16281"><a href="/homepages/2017-09-05">2017 September - 60th - Back to School</a></li>
+<li class="leaf menu-mlid-15912"><a href="/homepages/2017-08-08">2017 August - Back to School</a></li>
+<li class="leaf menu-mlid-15426"><a href="/homepages/2017-07-01">2017 July - Health and Medicine</a></li>
+<li class="leaf menu-mlid-14974"><a href="/homepages/2017-06-01">2017 June - Community Engagement</a></li>
+<li class="leaf menu-mlid-14960"><a href="/hompages/2017-05-16">2017 May - Student Success 2</a></li>
+<li class="leaf menu-mlid-14834"><a href="/hompages/2017-05-01">2017 May - Student Success</a></li>
+<li class="leaf menu-mlid-14640"><a href="/hompages/2017-04-01">2017 April - Scholarly Activity</a></li>
+<li class="leaf menu-mlid-14445"><a href="/homepages/2017-03-01">2017 March - Campus Improvement</a></li>
+<li class="leaf menu-mlid-14078"><a href="/homepages/2017-02-08">2017 February - Creative Activity (Video)</a></li>
+<li class="leaf menu-mlid-13991"><a href="/homepages/2017-02-01">2017 February - Creative Activity</a></li>
+<li class="leaf menu-mlid-13973"><a href="/homepages/2017-01-17">2017 January - Daring-Different-Diverse Video</a></li>
+<li class="leaf menu-mlid-13873"><a href="/homepages/2016-12-21">2016 December - Winter</a></li>
+<li class="leaf menu-mlid-13850"><a href="/homepages/2016-12-13">2016 December - Commencement 2</a></li>
+<li class="leaf menu-mlid-13641"><a href="/homepages/2016-12-05">2016 December - Commencement</a></li>
+<li class="leaf menu-mlid-13606"><a href="/homepages/2016-10-12">2016 October - Awareness Video Teaser</a></li>
+<li class="leaf menu-mlid-13593"><a href="/homepages/2016-10-10">2016 October - Who We Are With Hero Photo and Carousel</a></li>
+<li class="leaf menu-mlid-13589"><a href="/homepages/2016-10-04">2016 October - Research Week With Hero Photo and Carousel</a></li>
+<li class="leaf menu-mlid-13557"><a href="/homepages/2016-09-23">2016 September - Homecoming With Hero Photo</a></li>
+<li class="leaf menu-mlid-13488"><a href="/homepages/2016-09-02">2016 September - With Hero Photo</a></li>
+<li class="leaf menu-mlid-13272"><a href="/homepages/2016-08">2016 August - Welcome Back</a></li>
+<li class="last leaf menu-mlid-12533"><a href="/homepages/2016-05">2016 May Redesign Launch</a></li>
+</ul></li>
+</ul></li>
+</ul></div>
+
+</div>  </div>
+          </div> <!--end .scroller-->    
+</div> <!-- #navigation -->
+
+<div id="search" role="search">
+  <div class="scroller" id="search-scroller" tabindex="-1">
+    <div class="nav-close"><a href="#" id="search-close">close find region</a></div>
+         
+    <h2>Find</h2>
+
+    <div id="global-search-tabs">
+      <ul class="nav nav-tabs">
+        <li role="presentation"><a id="findtab-search" href="#search-tab">Search</a></li>
+        <li role="presentation"><a id="findtab-az-index" href="#a-z-tab" aria-label="eh to zee index">A-Z Index</a></li>
+        <li role="presentation"><a id="findtab-directories" href="#directories-tab">Directories</a></li>
+      </ul>
+    
+      <div id="search-tab">
+                      <div class="region region-search">
+    <section id="block-block-56" class="block block-block clearfix">
+
+      
+  <script>
+  (function() {
+    var cx = '002367027510554248077:krw4pudpzig';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+<!--
+<div class="alert alert-warning alert-dismissible fade in" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+<a href="https://www.unlv.edu/outages">Important Notice:<br>Major IT service outages April 7-10</a>
+</div>
+-->
+
+<!-- QUICK LINKS-->
+
+<div id="quicklinks">
+<h3 class="label text-center">Quick Links</h3>
+<div class="flex-three-column">
+<div class="grid">
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="/academics/books">Bookstore</a></div>
+<div><i class="fas fa-book fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">Bookstore</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="/calendar">Calendar</a></div>
+<div><i class="far fa-calendar-alt fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">Calendar</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="/maps">Campus Maps</a></div>
+<div><i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">Campus&nbsp;Maps</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="/academics/degrees">Degrees</a></div>
+<div><i class="fas fa-graduation-cap fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">Degrees</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="https://www.library.unlv.edu">Libraries</a></div>
+<div><i class="far fa-book fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">Libraries</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="https://my.unlv.nevada.edu">MyUNLV</a></div>
+<div><i class="fas fa-feather-alt fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">MyUNLV</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="/news">News Center</a></div>
+<div><i class="far fa-newspaper fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">News Center</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="/rebelcard">RebelCard</a></div>
+<div><i class="far fa-id-card fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">RebelCard</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="https://www.it.unlv.edu/rebelmail">Rebelmail</a></div>
+<div><i class="far fa-envelope fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">Rebelmail</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="/directories/social-media">Social Media</a></div>
+<div><i class="fas fa-share-alt fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">Social Media</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="https://www.it.unlv.edu/unlvmail">UNLV Mail</a></div>
+<div><i class="far fa-envelope-open fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">UNLV Mail</div>
+</div>
+</div><!--end .cell-->
+
+<div class="cell text-center">
+<div class="click-region">
+<div class="click-region-link"><a href="https://www.it.unlv.edu/webcampus">WebCampus</a></div>
+<div><i class="fas fa-globe fa-2x" aria-hidden="true"></i></div>
+<div class="text-xs">WebCampus</div>
+</div>
+</div><!--end .cell-->
+
+</div><!--end .grid-->
+</div><!--end .flex-two-column-->
+</div><!--/#frequent-links-->
+</section>
+  </div>
+                 
+      </div>
+      
+      <div id="a-z-tab">
+                      <div class="region region-az-tab">
+    <section id="block-block-61" class="block block-block clearfix">
+
+      
+  <div class="text-center"><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i><br />
+<span class="text-xs">Loading</span></div>
+
+</section>
+  </div>
+                </div>
+      
+      <div id="directories-tab">
+                      <div class="region region-directories-tab">
+    <section id="block-block-55" class="block block-block clearfix">
+
+      
+  <ul class="list-group">
+<li><a class="list-group-item" href="/directories">Directories Home</a></li>
+<li><a class="list-group-item" href="/directories/a-z">A-Z Index</a></li>
+<li><a class="list-group-item" href="/directories/academic-units">Colleges, Schools, and Departments</a></li>
+<li><a class="list-group-item" href="/directories/admin-units">Administrative Units</a></li>
+<li><a class="list-group-item" href="/directories/research-centers-institutes">Research Centers and Institutes</a></li>
+<li><a class="list-group-item" href="/directories/resources-services">Resources and Services</a></li>
+<li><a class="list-group-item" href="https://web.oit.unlv.edu/eel">Employee Directory</a></li>
+<li><a class="list-group-item" href="/directories/contact">Contact UNLV</a></li>
+<li><a class="list-group-item" href="/directories/social-media">Social Media Directory</a></li>
+<li><a class="list-group-item" href="/directories/mobile">UNLV Mobile Apps</a></li>
+</ul>
+
+</section>
+  </div>
+                </div>
+      
+    </div><!--end #global-search-tabs-->
+  </div><!--end .scroller-->  
+</div><!--end #search-->
+
+<div class="system-container container">
+  <div class="row">
+    <div class="col-sm-12">
+            <div id="main-content"></div>
+                                                      </div>
+  </div>
+</div> <!-- /.system-container -->
+
+<div id="content" class="unlv-node-published">
+  <div id="content-main" role="main" aria-label="main content">
+
+     
+  
+        
+			  <!-- If there is primary or secondary content, then make this column smaller. -->
+                  
+          
+            <div class="region region-content">
+    <section id="block-system-main" class="block block-system clearfix">
+
+      
+  
+
+<article id="node-214018" class="node node-secondary-page clearfix" about="/homepages/2020.01.01" typeof="sioc:Item foaf:Document">
+    <header>
+            <span property="dc:title" content="2020 Jan - Health and Wellness" class="rdf-meta element-hidden"></span>      </header>
+      <div class="content-area-start"></div><section id="introduction" class="homepage-section" aria-label="Introduction">
+
+  <div class="layer-1-image">
+    <picture>
+      <source media="(min-width: 1800px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/2020-01-01-health-wellness/D72572_061-2000x1333.jpg?123"></source>
+      <source media="(min-width: 1600px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/2020-01-01-health-wellness/D72572_061-1800x1200.jpg?123"></source>
+      <source media="(min-width: 1400px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/2020-01-01-health-wellness/D72572_061-1600x1067.jpg?123"></source>
+      <source media="(min-width: 1200px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/2020-01-01-health-wellness/D72572_061-1400x934.jpg?123"></source>
+      <source media="(min-width: 992px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/2020-01-01-health-wellness/D72572_061-1200x800.jpg?123"></source>
+      <source media="(min-width: 768px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/2020-01-01-health-wellness/D72572_061-992x661.jpg?123"></source>
+      <source media="(min-width: 480px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/2020-01-01-health-wellness/D72572_061-768x512.jpg?123"></source>
+      <img src="/sites/default/files/assets/homepage/images-redesign/2019-refresh/2020-01-01-health-wellness/D72572_061-480x320.jpg?123" alt="A group of students performing yoga">
+    </picture>
+
+    <div id="call-to-caption" class="layer-call-to-caption">
+      <div class="click-region">
+        <div class="click-region-link"><a href="/campuslife/wellness-recreation">Wellness and Recreation: Get Started</a></div>
+        <div class="call-to-caption text-light" aria-hidden="true">
+          <div class="call-to-caption-label"><span>Wellness and</span><span>Recreation</span></div><div class="call-to-caption-action text-pink-50"><strong>Get Started</strong> <i class="fas fa-caret-right"></i></div>
+        </div><!--/.card-->
+      </div><!--/.click-region-->
+    </div><!--/.layer-6-section-label-->
+
+  </div><!--/.layer-1-image-->
+
+  <div class="layer-2-overlay"></div><!--/.layer-2-overlay-->
+  <div class="layer-5-content text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h2 class="clear-margins">A Place of Infinite Possibilities</h2>
+          <p class="lead">As you consider your future, consider UNLV.<br>We are different, daring, and diverse.</p>
+          <div class="text-uppercase"><ul class="list-inline clear-margins"><li><a class="btn btn-ghost btn-lg margin-right-sm" href="/admissions/visits">Visit</a></li><li><a class="btn btn-ghost btn-lg margin-right-sm" href="/apply">Apply</a></li><li><a class="btn btn-ghost btn-lg" href="/donors">Give</a></li></ul></div><!--/.text-uppercase-->
+        </div><!--/.col-sm-12-->
+      </div><!--/.row-->
+    </div><!--/.container-->
+  </div><!--/.layer-5-content-->
+</section>
+
+
+
+
+<section id="intro-quote" class="homepage-quote padding-sm" aria-label="Top Tier Announcement">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h3 class="text-light margin-top-sm margin-bottom-xs">It's a short list. We're on it.</h3>
+        <div class="h3 text-light clear-margin-top margin-bottom-md">UNLV attains highest status as research university.</div>
+        <div><a class="btn btn-default btn-lg" href="/news/release/unlv-attains-highest-status-research-university">Learn more about our research status&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+      </div>
+      <div class="col-sm-4 col-md-3 hidden-xs visible-sm-block visible-md-block visible-lg-block">
+        <img src="/sites/default/files/assets/homepage/images-redesign/2018-refresh/top_tier-D72012_019.jpg" class="img-circle" alt="Man works with test tubes">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="different-value" class="homepage-section" aria-label="Value of a UNLV Education">
+  <div class="layer-1-image">
+    <picture>
+      <source media="(min-width: 1800px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/different_value-D69732_121-2000x1333.jpg"></source>
+      <source media="(min-width: 1600px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/different_value-D69732_121-1800x1200.jpg"></source>
+      <source media="(min-width: 1400px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/different_value-D69732_121-1600x1067.jpg"></source>
+      <source media="(min-width: 1200px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/different_value-D69732_121-1400x934.jpg"></source>
+      <source media="(min-width: 992px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/different_value-D69732_121-1200x800.jpg"></source>
+      <source media="(min-width: 768px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/different_value-D69732_121-992x661.jpg"></source>
+      <source media="(min-width: 480px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/different_value-D69732_121-768x512.jpg"></source>
+      <img src="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/different_value-D69732_121-480x320.jpg" alt="Female graduate raises her hands up in celebration during commencement">
+    </picture>
+  </div><!--/.layer-1-image-->
+  <div class="layer-2-overlay"></div><!--/.layer-2-overlay-->
+  <div class="layer-3-tagline" aria-hidden="true">Different</div><!--/.layer-3-tagline-->
+  <div class="layer-4-stat">
+    <div class="stat">
+      <div class="stat-value">76<sup>%</sup></div><!--/.stat-value-->
+      <div class="stat-label">Students received some form of financial aid in 2016-17</div><!--/.stat-label-->
+    </div><!--/.stat-->
+  </div><!--/.layer-4-stat-->
+  <div class="layer-5-content text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 text-xs-center text-sm-left">
+          <h2 class="clear-margins">A Different Value</h2>
+          <p class="lead">UNLV is an affordable choice, costing just half the price of the national average. In addition to our low-cost tuition, most of our students benefit from loans, grants, scholarships, and work-study programs to help pay their college expenses, ensuring an affordable education.</p>
+          <div><a class="btn btn-default btn-lg" href="/paying-for-college">Get tuition and financial aid info&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+        </div><!--/.col-sm-6-->
+      </div><!--/.row-->
+    </div><!--/.container-->
+  </div><!--/.layer-5-content-->
+</section>
+
+
+<section id="different-quote" class="homepage-quote padding-sm" aria-label="Ana Munoz Quote">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-md-3 hidden-xs visible-sm-block visible-md-block visible-lg-block">
+          <img src="/sites/default/files/assets/homepage/images-redesign/2018-refresh/ana_munoz.jpg?123" class="img-circle" alt="Ana Munoz Portrait">
+        </div><!--/.col-sm-4-->
+        <div class="col-sm-8">
+          <blockquote class="no-border clear-margin-bottom">
+            <div class="quote-text text-xs-center text-sm-left">"This funding was important because it allowed me to enjoy college without the stress of worrying about money."</div>
+            <div class="quote-cite text-xs-center text-sm-left">
+              <cite>Ana Munoz, '16 BA Journalism and Media Studies, multiple scholarship recipient and first-generation student</cite>
+            </div>
+          </blockquote>
+        </div><!--/.col-sm-8-->
+    </div><!--/.row-->
+  </div><!--/.container-->
+</section>
+
+
+<section id="daring-opportunity" class="homepage-section" aria-label="Degree Programs">
+  <div class="layer-1-image">
+    <picture>
+      <source media="(min-width: 1800px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/daring_opportunity-EC2016-2000x1333.jpg"></source>
+      <source media="(min-width: 1600px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/daring_opportunity-EC2016-1800x1200.jpg"></source>
+      <source media="(min-width: 1400px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/daring_opportunity-EC2016-1600x1067.jpg"></source>
+      <source media="(min-width: 1200px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/daring_opportunity-EC2016-1400x934.jpg"></source>
+      <source media="(min-width: 992px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/daring_opportunity-EC2016-1200x800.jpg"></source>
+      <source media="(min-width: 768px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/daring_opportunity-EC2016-992x661.jpg"></source>
+      <source media="(min-width: 480px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/daring_opportunity-EC2016-768x512.jpg"></source>
+      <img src="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/daring_opportunity-EC2016-480x320.jpg" alt="Female student with red-rmmed glasses sits in front of colorful artwork.">
+    </picture>
+  </div><!--/.layer-1-image-->
+  <div class="layer-2-overlay"></div><!--/.layer-2-overlay-->
+  <div class="layer-3-tagline" aria-hidden="true">Daring</div><!--/.layer-3-tagline-->
+  <div class="layer-4-stat">
+    <div class="stat">
+      <div class="stat-value">21:1</div><!--/.stat-value-->
+      <div class="stat-label">Student-Faculty Ratio</div><!--/.stat-label-->
+    </div><!--/.stat-->
+  </div><!--/.layer-4-stat-->
+  <div class="layer-5-content text-light text-xs-center text-sm-left">
+    <div  class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2 class="clear-margins">A Daring Opportunity</h2>
+          <p class="lead">UNLV is moving toward a future as a Top Tier university with innovative academic programs, expanded research opportunities for both undergraduates and graduates, and new community partnerships that will greatly enhance your experience both in and out of the classroom.</p>
+          <div><a class="btn btn-default btn-lg" href="/academics">Explore our degree programs&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+        </div><!--/.col-sm-6-->
+      </div><!--/.row-->
+    </div><!--/.container-->
+  </div><!--/.layer-5-content-->
+</section>
+
+
+<section id="daring-quote" class="homepage-quote padding-sm" aria-label="Valentina Alayon Quote">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <blockquote class="no-border clear-margin-bottom clear-margin-left">
+          <div class="quote-text text-xs-center text-sm-left">"I have been offered the opportunity to push the boundaries of my comfort zone and be different and daring in my approach."</div>
+          <div class="quote-cite text-xs-center text-sm-left">
+            <cite>Valentina Alayon, '17 BSE Mechanical Engineering, multiple scholarship recipient</cite>
+          </div>
+        </blockquote>
+      </div><!--/.col-sm-8-->
+        <div class="col-sm-4 col-md-3 hidden-xs visible-sm-block visible-md-block visible-lg-block">
+          <img src="/sites/default/files/assets/homepage/images-redesign/2018-refresh/valentina_alayon-D71457_004.jpg?123" class="img-circle" alt="Valentina Alayon Portrait">
+        </div><!--/.col-sm-4-->
+    </div><!--/.row-->
+  </div><!--/.container-->
+</section>
+
+
+<section id="diverse-place" class="homepage-section" aria-label="Campus Life">
+  <div class="layer-1-image">
+    <picture>
+      <source media="(min-width: 1800px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/diverse_place-D71045_001-2000x1333.jpg"></source>
+      <source media="(min-width: 1600px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/diverse_place-D71045_001-1800x1200.jpg"></source>
+      <source media="(min-width: 1400px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/diverse_place-D71045_001-1600x1067.jpg"></source>
+      <source media="(min-width: 1200px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/diverse_place-D71045_001-1400x934.jpg"></source>
+      <source media="(min-width: 992px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/diverse_place-D71045_001-1200x800.jpg"></source>
+      <source media="(min-width: 768px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/diverse_place-D71045_001-992x661.jpg"></source>
+      <source media="(min-width: 480px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/diverse_place-D71045_001-768x512.jpg"></source>
+      <img src="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/diverse_place-D71045_001-480x320.jpg" alt="View of campus during sunset with the Las Vegas strip in the background">
+    </picture>
+  </div><!--/.layer-1-image-->
+  <div class="layer-2-overlay"></div><!--/.layer-2-overlay-->
+  <div class="layer-3-tagline" aria-hidden="true">Diverse</div><!--/.layer-3-tagline-->
+  <div class="layer-4-stat">
+    <div class="stat">
+      <div class="stat-value">&#60;1</div><!--/.stat-value-->
+      <div class="stat-label">Mile from the Las Vegas Strip</div><!--/.stat-label-->
+    </div><!--/.stat-->
+  </div><!--/.layer-4-stat-->
+  <div class="layer-5-content text-xs-center text-sm-left">
+    <div  class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2 class="clear-margins">A Diverse Place</h2>
+        <p class="lead">One of our most valuable assets is our location right in the heart of Fabulous Las Vegas. Our campus location provides us with unique connections to industry, technology and leadership exclusive to the Las Vegas Strip and surrounding areas.</p>
+        <div><a class="btn btn-default btn-lg" href="/campuslife">Learn what life is like at UNLV&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+      </div><!--/.col-sm-6-->
+    </div><!--/.row-->
+    </div><!--/.container-->
+    <div class="clearfix"></div>
+  </div><!--/.layer-5-content-->
+</section>
+
+
+<section id="diverse-quote" class="homepage-quote padding-sm" aria-label="Tre' Norman Quote">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-3 hidden-xs visible-sm-block visible-md-block visible-lg-block">
+        <img src="/sites/default/files/assets/homepage/images-redesign/2018-refresh/tre_norman-D71551_019.jpg?123" class="img-circle" alt="Tre' Norman Portrait">
+      </div><!--/.col-sm-4-->
+      <div class="col-sm-6 col-md-7">
+        <blockquote class="no-border clear-margin-bottom">
+          <div class="quote-text text-xs-center text-sm-left">"Las Vegas is a melting pot of different cultures. UNLV, as a result, is also a melting pot. It makes the student experience way better."</div>
+          <div class="quote-cite text-xs-center text-sm-left">
+            <cite>Tre' Norman, '17 BSBA Marketing, and multiple scholarship recipient</cite>
+          </div>
+        </blockquote>
+      </div><!--/.col-sm-6-->
+      <div class="col-sm-2 hidden-xs visible-sm-block visible-md-block visible-lg-block">
+        <div class="stat margin-top-md">
+        </div><!--/.stat-->
+      </div><!--/.col-sm-2-->
+    </div><!--/.row-->
+  </div><!--/.container-->
+</section>
+
+
+<section id="rebel-spirit" class="homepage-section" aria-label="Apply to UNLV">
+  <div class="layer-1-image">
+    <picture>
+      <source media="(min-width: 1800px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/pioneering_spirit-D71340_026-2000x1333.jpg"></source>
+      <source media="(min-width: 1600px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/pioneering_spirit-D71340_026-1800x1200.jpg"></source>
+      <source media="(min-width: 1400px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/pioneering_spirit-D71340_026-1600x1067.jpg"></source>
+      <source media="(min-width: 1200px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/pioneering_spirit-D71340_026-1400x934.jpg"></source>
+      <source media="(min-width: 992px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/pioneering_spirit-D71340_026-1200x800.jpg"></source>
+      <source media="(min-width: 768px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/pioneering_spirit-D71340_026-992x661.jpg"></source>
+      <source media="(min-width: 480px)" srcset="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/pioneering_spirit-D71340_026-768x512.jpg"></source>
+      <img src="/sites/default/files/assets/homepage/images-redesign/2019-refresh/main/pioneering_spirit-D71340_026-480x320.jpg" alt="Students in front of the Student Union at dusk.">
+    </picture>
+  </div><!--/.layer-1-image-->
+  <div class="layer-2-overlay"></div><!--/.layer-2-overlay-->
+  <div class="layer-3-tagline" aria-hidden="true">Different<br>Daring<br>Diverse</div><!--/.layer-3-tagline-->
+  <div class="layer-5-content text-xs-center text-sm-left text-light">
+    <div  class="container">
+      <div class="row">
+        <div class="col-sm-10 col-md-8">
+          <h2 class="clear-margins">UNLV has a Pioneering Rebel Spirit</h2>
+          <p class="lead">It’s a place where things happen. It’s a place where you can define your own journey. It’s a place where you have free rein to determine your future and push the boundaries. UNLV provides infinite possibilities in different, daring, and diverse ways.</p>
+          <div><a class="btn btn-red btn-lg" href="/apply">Get started on your future today&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+        </div><!--/.col-sm-8-->
+      </div><!--/.row-->
+    </div><!--/.container-->
+    <div class="clearfix"></div>
+  </div><!--/.layer-5-content-->
+</section>    <footer>
+          </footer>
+    </article>
+
+</section>
+  </div>
+      
+                          
+         
+ 
+        
+  </div><!-- /#content-main-->
+
+        
+</div><!--end #content-->
+
+  <footer id="footer" role="contentinfo">
+      <div class="region region-footer">
+    <section id="block-block-54" class="block block-block clearfix">
+
+      
+  <nav arial-label="footer links and copyright">
+<div class="container">
+<div class="row">
+
+<div class="col-sm-4">
+<ul class="list-unstyled">
+<li><a href="/presidentsearch" title="President Search">President Search</a></li>
+<li><a href="/about/statements-compliance" title="Compliance">Compliance</a></li>
+<li><a href="/web/accessibility" title="Web Accessibility">Web Accessibility</a></li>
+<li><a href="/diversity" title="Diversity">Diversity</a></li>
+<li><a href="/toptier" title="Top Tier">Top Tier</a></li>
+<li><a href="/news" title="News Center">News Center</a></li>
+</ul>
+</div><!--/.col-sm-4-->
+
+<div class="col-sm-4">
+<ul class="list-unstyled">
+<li><a href="/campuslife/our-campus" title="Visit UNLV">Visit UNLV</a></li>
+<li><a href="/jobs" title="Employment">Employment</a></li>
+<li><a href="/maps" title="Campus Maps">Campus Maps</a></li>
+<li><a href="/parking" title="Parking Information">Parking Information</a></li>
+<li><a href="/safety" title="Safety and Emergency">Safety and Emergency</a></li>
+</ul>
+</div><!--/.col-sm-4-->
+
+<div class="col-sm-4">
+<ul class="list-unstyled">
+<li><a href="/directories/contact" title="Contact UNLV">Contact UNLV</a></li>
+<li><address><a href="/maps/campus" title="View Campus Map">University of Nevada, Las Vegas<br />
+4505 S. Maryland Pkwy.<br />
+Las Vegas, NV 89154</a></address></li>
+<li><a href="tel:+17028953011" title="Phone">Phone: 702-895-3011</a></li>
+<li><a href="/info">Campus Notifications</a></li>
+
+</ul>
+</div><!--/.col-sm-4-->
+
+<div class="col-xs-12 text-center">
+<div class="row produced-copy margin-top-sm clear-padding-top">
+<div class="col-sm-8 text-sm-left text-xs-center">
+<ul class="list-inline text-xs"><li><a class="padding-left-xs" href="/about/copyright">©&nbsp;2019&nbsp;UNLV</a></li><li>Produced&nbsp;by&nbsp;<a href="/web">UNLV&nbsp;Web&nbsp;&amp;&nbsp;Digital Strategy</a></li><li><a href="/about/website-privacy" title="Website Privacy Statement">UNLV.edu&nbsp;Privacy&nbsp;Statement</a></li><li><a href="/web/feedback">Website&nbsp;Feedback</a></li></ul>
+</div><!--/.col-sm-8-->
+<div class="col-sm-4 text-sm-right text-xs-center social-media-links">
+<ul class="list-inline clear-margin-bottom"><li class="clear-margin-bottom"><a href="https://www.facebook.com/OfficialUNLV" title="Find us on Facebook" aria-label="Find us on Facebook"><span class="sm-footer-facebook"></span></a></li><li class="clear-margin-bottom"><a href="https://www.instagram.com/unlv" title="Find us on Instagram" aria-label="Find us on Instagram"><span class="sm-footer-instagram"></span></a></li><li class="clear-margin-bottom"><a href="https://www.snapchat.com/add/officialunlv" title="Follow us on Snapchat" aria-label="Follow us on Snapchat"><span class="sm-footer-snapchat"></span></a></li><li class="clear-margin-bottom"><a href="https://twitter.com/UNLV" title="Follow us on Twitter" aria-label="Follow us on Twitter"><span class="sm-footer-twitter"></span></a></li><li class="clear-margin-bottom"><a href="https://www.youtube.com/user/UNLV" title="Watch us on YouTube" aria-label="Watch us on YouTube"><span class="sm-footer-youtube"></span></a></li></ul>
+<div class="text-xs padding-right-xs"><a href="/directories/social-media">Social Media at UNLV</a></div>
+</div><!--/.col-sm-4-->
+</div><!--/.row-->
+</div><!--/.col-sm-12-->
+
+</div><!--/.row-->
+</div><!--/.container-->
+</nav>
+</section>
+  </div>
+  </footer>
+
+<div id="modal-menu-overlay"></div>
+        <noscript>
+        <style type="text/css" media="all">
+          img[data-src] { display: none !important; }
+        </style>
+      </noscript><script src="https://www.unlv.edu/sites/default/files/js/js_7Ukqb3ierdBEL0eowfOKzTkNu-Le97OPm-UqTS5NENU.js"></script>
+<script src="https://www.unlv.edu/sites/default/files/js/js_ObAppr3K2QBDZXGpUSJ_W4SVQIqyQN2AZKtPI3R1DNA.js"></script>
+<script>      (function ($) {
+        Drupal.behaviors.lazyloader = {
+          attach: function (context, settings) {
+            $("img[data-src]").lazyloader({distance: 0, icon: "" });
+          }
+        };
+      }(jQuery));</script>
+<script src="https://www.unlv.edu/sites/default/files/js/js_aKzDdsNbXvqxFqMkF4FAck1krUQ77927cKp7wsUZtY0.js"></script>
+<script src="https://www.unlv.edu/sites/default/files/js/js_MRdvkC2u4oGsp5wVxBG1pGV5NrCPW3mssHxIn6G9tGE.js"></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"49746aa591","applicationID":"29937636","transactionName":"MlJaNUdWWUIAVE1dCwsYbRNcGBhYD1NcTEoVX0g=","queueTime":0,"applicationTime":72,"atts":"HhVZQw9MSkw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

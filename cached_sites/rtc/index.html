@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns# content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
+<head>
+  <link rel="profile" href="http://www.w3.org/1999/xhtml/vocab" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"37ee7577e6",applicationID:"25277829"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="google-site-verification" content="D6IMojvcVpe25TIPXKfaUfCnPI82Q3ITWMM8IQkKtiM" />
+<link rel="alternate" type="application/rss+xml" title="Front page feed" href="https://www.rtc.edu/rss.xml" />
+<link rel="shortcut icon" href="https://www.rtc.edu/sites/all/themes/rainier/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="Renton Technical College offers world class career training opportunities." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="canonical" href="https://www.rtc.edu/" />
+<link rel="shortlink" href="https://www.rtc.edu/" />
+<meta property="fb:admins" content="Admins" />
+<meta property="fb:app_id" content="123377944425053" />
+<meta property="og:site_name" content="Renton Technical College" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.rtc.edu/frontpage" />
+<meta property="og:see_also" content="https://www.rtc.edu/frontpage" />
+  <title>Renton Technical College | Careers Start Here</title>
+  <link type="text/css" rel="stylesheet" href="https://www.rtc.edu/sites/default/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.rtc.edu/sites/default/files/css/css_YmuMqUm--85MDg6GF8xFt60xnxOSYeKArfr5yk0-sVc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.rtc.edu/sites/default/files/css/css_GI6blkqPcOQK_cCe3kxjI8LAKqCJUYDOLe48lHSC_1s.css" media="all" />
+<style>.md-objects .md-object.md-layer-2-0-0{background:#98002e;z-index:999 !important;padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px;color:#ffffff !important;text-align:left;font-size:5em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-0-1 a{border:1px solid #ffffff;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;color:#ffffff !important;text-align:left;font-size:1.6666666666667em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-0-1{z-index:1000!important;}.md-objects .md-object.md-layer-2-1-0 a{background:rgb(152,0,46);background:rgba(152,0,46,1);padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px;color:#ffffff !important;text-align:left;font-size:3.5em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-1-0{z-index:1000!important;}.md-objects .md-object.md-layer-2-1-1 a{border:1px solid #ffffff;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;color:#ffffff !important;text-align:center;font-size:1.6666666666667em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-1-1{z-index:999!important;}.md-objects .md-object.md-layer-2-2-0{background:#98002e;z-index:999 !important;padding-top:20px;padding-right:10px;padding-bottom:10px;padding-left:20px;color:#ffffff !important;text-align:left;font-size:6em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-2-1{z-index:1000 !important;color:#ffffff !important;text-align:left;font-size:3em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-3-0 a{background:rgb(152,0,46);background:rgba(152,0,46,1);padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px;color:#ffffff !important;text-align:left;font-size:4em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-3-0{z-index:1000!important;}.md-objects .md-object.md-layer-2-3-1 a{background:#98002e;padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px;color:#ffffff !important;text-align:left;font-size:4em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-3-1{z-index:999!important;}.md-objects .md-object.md-layer-2-4-0{z-index:1000 !important;color:#ffffff !important;text-align:center;font-size:3.5em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-4-1 a{border:1px solid #ff0000;padding-top:2px;padding-right:2px;padding-bottom:2px;padding-left:2px;color:#ffffff !important;text-align:center;font-size:1.6666666666667em;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-4-1{z-index:998!important;}.md-objects .md-object.md-layer-2-4-2{background:#002d56;z-index:997 !important;font-size:4em;}.md-objects .md-object.md-layer-2-4-3{z-index:999 !important;color:#ffffff !important;text-align:center;font-size:2em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-5-0{z-index:2 !important;color:#98002e !important;text-align:center;font-size:6em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-5-1{z-index:2 !important;color:#98002e !important;text-align:center;font-size:3em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-6-0{z-index:998 !important;color:#ffffff !important;text-align:center;font-size:6em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-7-0{z-index:998 !important;color:#ffffff !important;font-size:4em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-7-1{z-index:999 !important;color:#ffffff !important;font-size:2em;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-7-2 a{border:2px solid #98002e;-webkit-border-top-left-radius:1px;-moz-border-radius-topleft:1px;border-top-left-radius:1px;-webkit-border-top-right-radius:1px;-moz-border-radius-topright:1px;border-top-right-radius:1px;-webkit-border-bottom-left-radius:1px;-moz-border-radius-bottomleft:1px;border-bottom-left-radius:1px;-webkit-border-bottom-right-radius:1px;-moz-border-radius-bottomright:1px;border-bottom-right-radius:1px;padding-top:10px;padding-right:5px;padding-bottom:12px;padding-left:5px;color:#ffffff !important;text-align:center;font-size:1.1666666666667em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-7-2{z-index:1000!important;}.md-objects .md-object.md-layer-2-7-3{background:#002d56;z-index:997 !important;}.md-objects .md-object.md-layer-2-8-0{z-index:2 !important;color:#ffffff !important;text-align:center;font-size:6em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-8-1{z-index:2 !important;color:#ffffff !important;text-align:center;font-size:3em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-9-0{z-index:999 !important;color:#ffffff !important;font-size:4em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-9-1 a{border:2px solid #ffffff;-webkit-border-top-left-radius:1px;-moz-border-radius-topleft:1px;border-top-left-radius:1px;-webkit-border-top-right-radius:1px;-moz-border-radius-topright:1px;border-top-right-radius:1px;-webkit-border-bottom-left-radius:1px;-moz-border-radius-bottomleft:1px;border-bottom-left-radius:1px;-webkit-border-bottom-right-radius:1px;-moz-border-radius-bottomright:1px;border-bottom-right-radius:1px;padding-top:10px;padding-right:5px;padding-bottom:12px;padding-left:5px;color:#ffffff !important;text-align:center;font-size:1.1666666666667em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-9-1{z-index:997!important;}.md-objects .md-object.md-layer-2-9-2{background:#98002e;z-index:1000 !important;}.md-objects .md-object.md-layer-2-10-0{z-index:998 !important;color:#ffffff !important;font-size:4em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-10-1{z-index:999 !important;color:#ffffff !important;font-size:2em;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-10-2 a{border:2px solid #98002e;-webkit-border-top-left-radius:1px;-moz-border-radius-topleft:1px;border-top-left-radius:1px;-webkit-border-top-right-radius:1px;-moz-border-radius-topright:1px;border-top-right-radius:1px;-webkit-border-bottom-left-radius:1px;-moz-border-radius-bottomleft:1px;border-bottom-left-radius:1px;-webkit-border-bottom-right-radius:1px;-moz-border-radius-bottomright:1px;border-bottom-right-radius:1px;padding-top:10px;padding-right:10px;padding-bottom:12px;padding-left:5px;color:#ffffff !important;text-align:center;font-size:1.1666666666667em;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-10-2{z-index:1000!important;}.md-objects .md-object.md-layer-2-10-3{background:#002d56;z-index:996 !important;}.md-objects .md-object.md-layer-2-11-0{z-index:998 !important;color:#ffffff !important;font-size:4em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-11-1{z-index:999 !important;color:#ffffff !important;font-size:2em;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-11-2 a{border:2px solid #98002e;-webkit-border-top-left-radius:1px;-moz-border-radius-topleft:1px;border-top-left-radius:1px;-webkit-border-top-right-radius:1px;-moz-border-radius-topright:1px;border-top-right-radius:1px;-webkit-border-bottom-left-radius:1px;-moz-border-radius-bottomleft:1px;border-bottom-left-radius:1px;-webkit-border-bottom-right-radius:1px;-moz-border-radius-bottomright:1px;border-bottom-right-radius:1px;padding-top:10px;padding-right:5px;padding-bottom:12px;padding-left:5px;color:#ffffff !important;text-align:center;font-size:1.1666666666667em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-11-2{z-index:1000!important;}.md-objects .md-object.md-layer-2-11-3{background:#002d56;z-index:997 !important;}.md-objects .md-object.md-layer-2-12-0{z-index:2 !important;color:#98002e !important;text-align:center;font-size:5.3333333333333em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-13-0{z-index:2 !important;color:#44464d !important;text-align:center;font-size:6em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-13-1{z-index:2 !important;color:#bb4949 !important;text-align:center;font-size:3em;font-weight:600;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-14-0 a{padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px;color:#98002e !important;text-align:center;font-size:4em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-14-0{z-index:1000!important;}.md-objects .md-object.md-layer-2-14-1 a{padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px;color:#98002e !important;text-align:left;font-size:2em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-14-1{z-index:999!important;}.md-objects .md-object.md-layer-2-15-0{background:rgb(152,0,46);background:rgba(152,0,46,0.7);z-index:2 !important;padding-top:20px;padding-right:10px;padding-bottom:10px;padding-left:20px;color:#ffffff !important;text-align:center;font-size:3.5em;font-weight:800;font-family:"Open Sans";}.md-objects .md-object.md-layer-2-15-1{z-index:2 !important;color:#ffffff !important;text-align:left;font-size:2em;font-weight:800;font-family:"Open Sans";}
+</style>
+<link type="text/css" rel="stylesheet" href="https://www.rtc.edu/sites/default/files/css/css_bXD_KwDY4Uxf2ADDnUfO7XE540GTrR5Wdcv4k3-RX2A.css" media="all" />
+<style>@media (max-width:460px){.hideonmobile{display:none !important;}}
+</style>
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:800,600" media="all" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.5/dist/css/bootstrap.min.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.3.1/7.x-3.x/drupal-bootstrap.min.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.rtc.edu/sites/default/files/css/css_WORLeTvZcEZNn2OBti7GOnaliL-b9SmejizMoafI-dM.css" media="all" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+  <!-- HTML5 element support for IE6-8 -->
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="https://www.rtc.edu/sites/default/files/js/js_8MbnXxDQ9Q4JAMf9_QfJd9a-qzdiXTsDpNtZRaPmHfQ.js"></script>
+<script src="https://www.rtc.edu/sites/default/files/js/js_kk2vH0jnj_QqyxbiWjf2Vr_MSKwbwPI9hlYZ1m6ffkY.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.5/dist/js/bootstrap.min.js"></script>
+<script src="https://www.rtc.edu/sites/default/files/js/js_HSOSVOQAub0755ADwSJDJq4Oq-3sRguwgBxs7ROKK5k.js"></script>
+<script>(function($) {
+      $(document).ready(function() {
+          effectsIn = Drupal.settings.inEffects;
+          effectsOut = Drupal.settings.outEffects;
+          var options_2 = Drupal.settings.md_slider_options_2;
+          if(!window.listMegaSlide){window.listMegaSlide = [];} $('.md-slide-items').each(function(index, item){
+            if($(item).attr('id') == 'md-slider-2-block'){
+              listMegaSlide[index] = $('#md-slider-2-block').mdSlider(options_2);
+            }
+          });
+      });
+    })(jQuery);</script>
+<script src="https://www.rtc.edu/sites/default/files/js/js_rsGiM5M1ffe6EhN-RnhM5f3pDyJ8ZAPFJNKpfjtepLk.js"></script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-75255923-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+<script src="https://www.rtc.edu/sites/default/files/js/js_getRojmObow-Nv7fOZgucCDIgTwOCSlH8y1R6L6-LF0.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"rainier","theme_token":"8sao5CJjMwV6sbQMMhh_ipBXCvIwfjHeyTu_H3i3wfM","js":{"sites\/all\/themes\/bootstrap\/js\/bootstrap.js":1,"public:\/\/google_tag\/google_tag.script.js":1,"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@3.3.5\/dist\/js\/bootstrap.min.js":1,"sites\/all\/modules\/md_slider\/js\/jquery.touchwipe.js":1,"sites\/all\/modules\/md_slider\/js\/modernizr.js":1,"sites\/all\/modules\/md_slider\/js\/jquery-migrate-1.2.1.min.js":1,"sites\/all\/modules\/md_slider\/js\/jquery.easing.js":1,"sites\/all\/modules\/md_slider\/js\/md-slider.js":1,"0":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"1":1,"sites\/all\/themes\/rainier\/js\/responsivenav.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/md_slider\/css\/animate.css":1,"sites\/all\/modules\/md_slider\/css\/md-slider.css":1,"0":1,"sites\/all\/modules\/md_slider\/css\/md-slider-style.css":1,"1":1,"https:\/\/fonts.googleapis.com\/css?family=Open+Sans:800,600":1,"https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@3.3.5\/dist\/css\/bootstrap.min.css":1,"https:\/\/cdn.jsdelivr.net\/npm\/@unicorn-fail\/drupal-bootstrap-styles@0.0.2\/dist\/3.3.1\/7.x-3.x\/drupal-bootstrap.min.css":1,"sites\/all\/themes\/rainier\/css\/style.css":1}},"inEffects":["bounceIn","bounceInDown","bounceInUp","bounceInLeft","bounceInRight","fadeIn","fadeInUp","fadeInDown","fadeInLeft","fadeInRight","fadeInUpBig","fadeInDownBig","fadeInLeftBig","fadeInRightBig","flipInX","flipInY","foolishIn","lightSpeedIn","puffIn","rollIn","rotateIn","rotateInDownLeft","rotateInDownRight","rotateInUpLeft","rotateInUpRight","twisterInDown","twisterInUp","swap","swashIn","tinRightIn","tinLeftIn","tinUpIn","tinDownIn","vanishIn"],"outEffects":["bombRightOut","bombLeftOut","bounceOut","bounceOutDown","bounceOutUp","bounceOutLeft","bounceOutRight","fadeOut","fadeOutUp","fadeOutDown","fadeOutLeft","fadeOutRight","fadeOutUpBig","fadeOutDownBig","fadeOutLeftBig","fadeOutRightBig","flipOutX","flipOutY","foolishOut","hinge","holeOut","lightSpeedOut","puffOut","rollOut","rotateOut","rotateOutDownLeft","rotateOutDownRight","rotateOutUpLeft","rotateOutUpRight","rotateDown","rotateUp","rotateLeft","rotateRight","swashOut","tinRightOut","tinLeftOut","tinUpOut","tinDownOut","vanishOut"],"md_slider_options_2":{"fullwidth":true,"transitionsSpeed":800,"width":"1140","height":"420","enableDrag":true,"responsive":true,"pauseOnHover":false,"loop":true,"showLoading":false,"loadingPosition":"bottom","showArrow":false,"showBullet":true,"showNavigationLinks":false,"posBullet":"2","showThumb":false,"posThumb":"1","slideShowDelay":"8000","slideShow":true,"styleBorder":"0","styleShadow":"0","videoBox":false,"autoplayVideo":false},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"urlIsAjaxTrusted":{"\/":true},"bootstrap":{"anchorsFix":"0","anchorsSmoothScrolling":"0","formHasError":1,"popoverEnabled":1,"popoverOptions":{"animation":1,"html":0,"placement":"right","selector":"","trigger":"click","triggerAutoclose":1,"title":"","content":"","delay":0,"container":"body"},"tooltipEnabled":1,"tooltipOptions":{"animation":1,"html":0,"placement":"auto left","selector":"","trigger":"hover focus","delay":0,"container":"body"}}});</script>
+  
+  <!-- jQuery library -->
+</head>
+<body class="html front not-logged-in no-sidebars page-frontpage">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5WNWK3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>  </div>
+  
+<div class="whitewash"><!-- begin color correction -->
+
+
+
+<header id="redheader">
+    <div class="container hidden-xs generalpadding">
+      <div class="col-sm-5 col-md-3">
+                <a class="logo navbar-btn pull-left img-responsive" href="/" title="Home">
+          <img src="https://www.rtc.edu/sites/all/themes/rainier/logo.png" alt="Home" class="img-responsive" />
+        </a>
+            </div>
+      <div class="col-sm-7 col-md-9">
+                      <div class="region region-header">
+    <section id="block-search-form" class="block block-search clearfix">
+
+      
+  <form class="form-search content-search" action="/" method="post" id="search-block-form" accept-charset="UTF-8"><div><nav class="nav quicklinks">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+	    <li class="dropdown"><a class="dropdown-toggle text-center" data-toggle="dropdown" href="#"><img class="glyphs" src="/sites/default/files/front-page/graphic-elements/graphicelement-icon-list-48x48.png" />
+	Quick Links</a>
+	<ul class="dropdown-menu">
+		<li class="dropdown-header">For Current Students</li>
+		<li><a href="/academic-calendar">Academic Calendar</a></li>
+		<li><a href="/bookstore" target="_blank">Bookstore</a></li>
+		<li><a href="/canvas" target="_blank">Canvas</a></li>
+		<li><a href="https://www.public.ctc.edu/DAStudentWeb/Login.aspx?col=270" target="_blank">Degree Audit</a></li>
+		<li><a href="http://mail.office365.com/" target="_blank">Email</a></li>
+		<li><a href="/etutoring" target="_blank">eTutoring</a></li>
+		<li><a href="/software">Software</a></li>
+		<li class="divider" role="separator">&nbsp;</li>
+		<li class="dropdown-header">For The Community</li>
+		<li><a href="/catering">Catering &amp; Events</a></li>
+		<li><a href="/dining-services">Culinaire Room</a></li>
+		<li><a href="/dental-clinic">Dental Clinic</a></li>
+		<li><a href="/massage-clinic">Massage Clinic</a></li>
+		<li><a href="/testing-services">Testing Services</a></li>
+		<li class="divider" role="separator">&nbsp;</li>
+		<li class="dropdown-header">For Faculty &amp; Staff</li>
+		<li><a href="/canvas">Canvas</a></li>
+		<li><a href="http://email.rtc.edu" target="_blank">Email</a></li>
+		<li><a href="https://www.ctc.edu/~renton/wts/empearnlv/index.html" target="_blank">Earnings History</a></li>
+		<li><a href="/intranet" target="_blank">Intranet</a></li>
+		<li><a href="https://tlr.rtc.edu/default.aspx" target="_blank">Time &amp; Leave Reporting</a></li>
+		<li><a href="/faculty-staff-resources">Other Resources</a></li>
+	</ul>
+	</li>
+	<li><a class="dropdown-toggle text-center" href="https://foundation.rtc.edu/" target="_blank"><img class="glyphs"  src="/sites/default/files/20170328-graphicelement-icon-star-36x36.png"/>
+	Foundation</a></li>
+	
+	<li class="dropdown"><a class="dropdown-toggle text-center" data-toggle="dropdown" href="#"><img class="glyphs" src="/sites/default/files/front-page/graphic-elements/graphicelement-icon-email-36x36.png" />
+	Contact</a>
+	<ul class="dropdown-menu">
+		<li><a href="/employee-directory">Employee Directory</a></li>
+		<li class="divider" role="separator">&nbsp;</li>
+		<li class="dropdown-header">Campus Phone</li>
+		<li><a href="tel:4252352352" title="Call Renton Technical College on your Mobile Phone">(425) 235-2352</a></li>
+		<li class="divider" role="separator">&nbsp;</li>
+		<li class="dropdown-header">Campus Fax</li>
+		<li><a href="tel:4252357832" title="Fax Renton Technical College">(425) 235-7832</a></li>
+		<li class="divider" role="separator">&nbsp;</li>
+		<li class="dropdown-header">Washington Relay Services</li>
+		<li><a href="/wa-relay-service" title="Washington Relay Services">Washington Relay Services</a></li>
+		<li class="divider" role="separator">&nbsp;</li>
+		<li class="dropdown-header">Campus Address</li>
+		<li><a href="https://www.google.com/maps/place/Renton+Technical+College/@47.4895026,-122.1776037,17z/data=!4m7!1m4!3m3!1s0x5490680aa2406291:0x5c2227745c0066ea!2sRenton+Technical+College!3b1!3m1!1s0x5490680aa2406291:0x5c2227745c0066ea" target="_blank" title="View Renton Technical College on Google Maps">3000 NE 4th St.<br />
+		Renton, WA 98056</a></li>
+		<li><a href="/campus-map-and-directions" title="Renton Technical College Building Directory">Building Directory</a></li>
+		<li class="divider" role="separator">&nbsp;</li>
+		<li class="dropdown-header">Have a question?</li>
+		<li><a href="/askrtc" title="Use AskRTC to send a question">AskRTC</a></li>
+	</ul>
+	</li>
+	<li><a class="dropdown-toggle text-center" href="/library"><img class="glyphs" src="/sites/default/files/front-page/graphic-elements/graphicelement-icon-bookmark-36x36.png" />
+	Library</a></li>
+	
+	<li class="dropdown"><a class="dropdown-toggle text-center" data-toggle="dropdown" href="#"><img class="glyphs" src="/sites/default/files/front-page/graphic-elements/graphicelement-icon-share-36x36.png" />
+	Social Media</a>
+	<ul class="dropdown-menu">
+		<li class="dropdown-header">Official RTC Social Media Accounts</li>
+		<li><a href="https://www.facebook.com/rentontechnicalcollege" target="_blank" title="Friend RTC on Facebook">Facebook</a></li>
+		<li><a href="https://instagram.com/rentontechnicalcollege/" target="_blank" title="Follow RTC on Instagram">Instagram</a></li>
+		<li><a href="https://www.linkedin.com/company/renton-technical-college" target="_blank" title="Follow RTC on LinkedIn">LinkedIn</a></li>
+		<li><a href="https://twitter.com/rentontech" target="_blank" title="Follow RTC on Twitter">Twitter</a></li>
+		<li><a href="https://www.youtube.com/channel/UCz8KTvrBuCUZSblVj-mknmg" target="_blank" title="Subscribe to RTC on YouTube">YouTube</a></li>
+	</ul>
+	</li>
+	<li class="dropdown">
+        <a class="dropdown-toggle text-center" data-toggle="dropdown" href="#">
+          <img class="glyphs" src="/sites/default/files/front-page/graphic-elements/graphicelement-icon-translate-36x36.png" />
+          Translate
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="row translatordrop">
+                    <ul class="list-unstyled col-md-4">
+                        <li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=af&amp;u=http://www.rtc.edu/" target="_blank">Afrikaans</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=sq&amp;u=https://www.rtc.edu/" target="_blank">shqiptar</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ar&amp;u=https://www.rtc.edu/" target="_blank">العربية</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=hy&amp;u=https://www.rtc.edu/" target="_blank">հայերեն</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=az&amp;u=https://www.rtc.edu/" target="_blank">Azərbaycan</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=eu&amp;u=https://www.rtc.edu/" target="_blank">Euskal</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=be&amp;u=https://www.rtc.edu/" target="_blank">беларускі</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=bn&amp;u=https://www.rtc.edu/" target="_blank">বাঙালি</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=bs&amp;u=https://www.rtc.edu/" target="_blank">bosanski</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=bg&amp;u=https://www.rtc.edu/" target="_blank">български</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ca&amp;u=https://www.rtc.edu/" target="_blank">Català</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ceb&amp;u=https://www.rtc.edu/" target="_blank">Cebuano</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ny&amp;u=https://www.rtc.edu/" target="_blank">Chichewa</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=zh-CN&amp;u=https://www.rtc.edu/" target="_blank">简体中文</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=zh-TW&amp;u=https://www.rtc.edu/" target="_blank">中國傳統的</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=hr&amp;u=https://www.rtc.edu/" target="_blank">hrvatski</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=cs&amp;u=https://www.rtc.edu/" target="_blank">čeština</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=da&amp;u=https://www.rtc.edu/" target="_blank">danske</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=nl&amp;u=https://www.rtc.edu/" target="_blank">Nederlands</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=eo&amp;u=https://www.rtc.edu/" target="_blank">Esperanto</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=et&amp;u=https://www.rtc.edu/" target="_blank">eesti</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=tl&amp;u=https://www.rtc.edu/" target="_blank">Pilipino</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=fi&amp;u=https://www.rtc.edu/" target="_blank">suomi</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=fr&amp;u=https://www.rtc.edu/" target="_blank">français</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=gl&amp;u=https://www.rtc.edu/" target="_blank">galego</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ka&amp;u=https://www.rtc.edu/" target="_blank">ქართული</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=de&amp;u=https://www.rtc.edu/" target="_blank">Deutsche</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=el&amp;u=https://www.rtc.edu/" target="_blank">ελληνικά</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=gu&amp;u=https://www.rtc.edu/" target="_blank">ગુજરાતી</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ht&amp;u=https://www.rtc.edu/" target="_blank">kreyòl ayisyen</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ha&amp;u=https://www.rtc.edu/" target="_blank">Hausa</a></li>
+                    </ul>
+                    <ul class="list-unstyled col-md-4">
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=iw&amp;u=https://www.rtc.edu/" target="_blank">עִברִית</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=hi&amp;u=https://www.rtc.edu/" target="_blank">हिंदी</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=hmn&amp;u=https://www.rtc.edu/" target="_blank">Hmong</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=hu&amp;u=https://www.rtc.edu/" target="_blank">Magyar</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=is&amp;u=https://www.rtc.edu/" target="_blank">íslenska</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ig&amp;u=https://www.rtc.edu/" target="_blank">Igbo</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=id&amp;u=https://www.rtc.edu/" target="_blank">bahasa Indonesia</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ga&amp;u=https://www.rtc.edu/" target="_blank">Gaeilge</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=it&amp;u=https://www.rtc.edu/" target="_blank">italiano</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ja&amp;u=https://www.rtc.edu/" target="_blank">日本語</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=jw&amp;u=https://www.rtc.edu/" target="_blank">Jawa</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=kn&amp;u=https://www.rtc.edu/" target="_blank">ಕನ್ನಡ</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=kk&amp;u=https://www.rtc.edu/" target="_blank">Қазақ</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=km&amp;u=https://www.rtc.edu/" target="_blank">ខ្មែរ</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ko&amp;u=https://www.rtc.edu/" target="_blank">한국어</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=lo&amp;u=https://www.rtc.edu/" target="_blank">ລາວ</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=la&amp;u=https://www.rtc.edu/" target="_blank">Latine</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=lv&amp;u=https://www.rtc.edu/" target="_blank">Latvijā</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=lt&amp;u=https://www.rtc.edu/" target="_blank">Lietuvos</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=mk&amp;u=https://www.rtc.edu/" target="_blank">македонски</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=mg&amp;u=https://www.rtc.edu/" target="_blank">Malagasy</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ms&amp;u=https://www.rtc.edu/" target="_blank">Melayu</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ml&amp;u=https://www.rtc.edu/" target="_blank">മലയാളം</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=mt&amp;u=https://www.rtc.edu/" target="_blank">Malti</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=mi&amp;u=https://www.rtc.edu/" target="_blank">Maori</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=mr&amp;u=https://www.rtc.edu/" target="_blank">मराठी</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=mn&amp;u=https://www.rtc.edu/" target="_blank">Монгол</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=my&amp;u=https://www.rtc.edu/" target="_blank">မြန်မာ (ဗမာ)</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ne&amp;u=https://www.rtc.edu/" target="_blank">नेपाली</a></li>
+                    </ul>
+                    <ul class="list-unstyled col-md-4">
+                        <li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=no&amp;u=https://www.rtc.edu/" target="_blank">norsk</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=fa&amp;u=https://www.rtc.edu/" target="_blank">فارسی</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=pl&amp;u=https://www.rtc.edu/" target="_blank">polski</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=pt&amp;u=https://www.rtc.edu/" target="_blank">português</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ma&amp;u=https://www.rtc.edu/" target="_blank">ਪੰਜਾਬੀ ਦੇ</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ro&amp;u=https://www.rtc.edu/" target="_blank">Română</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ru&amp;u=https://www.rtc.edu/" target="_blank">Русский</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=sr&amp;u=https://www.rtc.edu/" target="_blank">Srpski</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=st&amp;u=https://www.rtc.edu/" target="_blank">Sesotho</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=si&amp;u=https://www.rtc.edu/" target="_blank">සිංහල</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=sk&amp;u=https://www.rtc.edu/" target="_blank">slovenský</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=sl&amp;u=https://www.rtc.edu/" target="_blank">slovenščina</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=so&amp;u=https://www.rtc.edu/" target="_blank">Soomaali</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=es&amp;u=https://www.rtc.edu/" target="_blank">Español</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=su&amp;u=https://www.rtc.edu/" target="_blank">Sunda</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=sw&amp;u=https://www.rtc.edu/" target="_blank">Kiswahili</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=sv&amp;u=https://www.rtc.edu/" target="_blank">svenska</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=tg&amp;u=https://www.rtc.edu/" target="_blank">тоҷик</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ta&amp;u=https://www.rtc.edu/" target="_blank">தமிழ்</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=te&amp;u=https://www.rtc.edu/" target="_blank">తెలుగు</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=th&amp;u=https://www.rtc.edu/" target="_blank">ภาษาไทย</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=tr&amp;u=https://www.rtc.edu/" target="_blank">Türk</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=uk&amp;u=https://www.rtc.edu/" target="_blank">Український</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=ur&amp;u=https://www.rtc.edu/" target="_blank">اردو</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=uz&amp;u=https://www.rtc.edu/" target="_blank">O'zbekiston</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=vi&amp;u=https://www.rtc.edu/" target="_blank">Tiếng Việt</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=cy&amp;u=https://www.rtc.edu/" target="_blank">Cymraeg</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=yi&amp;u=https://www.rtc.edu/" target="_blank">ייִדיש</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=yo&amp;u=https://www.rtc.edu/" target="_blank">yorùbá</a></li>
+		<li><a href="https://translate.google.com/translate?hl=en&amp;sl=en&amp;tl=zu&amp;u=https://www.rtc.edu/" target="_blank">Zulu</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+	<li class="dropdown">
+        <a class="dropdown-toggle text-center" data-toggle="dropdown" href="#">
+          <img class="glyphs" src="/sites/default/files/front-page/graphic-elements/graphicelement-icon-search-36x36.png" />
+          Search
+        </a>
+        <ul class="dropdown-menu quicksearch">
+          <li>
+            <div class="input-group"><input title="Enter the terms you wish to search for." placeholder="Search" class="form-control form-text" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" /><span class="input-group-btn"><button type="submit" class="btn btn-primary"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>
+</button></span></div><div class="form-actions form-wrapper form-group" id="edit-actions"><button class="element-invisible btn btn-primary form-submit" type="submit" id="edit-submit" name="op" value="Search">Search</button>
+</div><input type="hidden" name="form_build_id" value="form-AdATaeMYbA5hJmRHtRDCtG6palroz8jARaNb9VBllDo" />
+<input type="hidden" name="form_id" value="search_block_form" />
+          </li>
+        </ul>
+      </li>
+      
+</ul>
+</div>
+</nav>
+
+
+
+</div></form>
+</section>
+  </div>
+                </div>
+    </div>
+</header>
+
+<div role="banner" id="page-header">
+    <div id="mainnavrwrapper">
+    <nav class="container" role="navigation" id="mobilepadding">
+        <div class="region region-mainnav">
+    <section id="block-block-4" class="block block-block clearfix">
+
+      
+  <ul class="topnav justify" id="megamenu" style="margin:0 auto;">
+	<li><a href="#" onclick="openbecome()">Become a Student</a></li>
+	<li><a href="#" onclick="opencurrent()">Current Students</a></li>
+	<li><a href="#" onclick="opencampus()">Campus Life</a></li>
+	<li><a href="#" onclick="opencommunity()">Community Resources</a></li>
+	<li><a href="#" onclick="openabout()">About RTC</a></li>
+	<li class="visible-xs"><a href="/search" style="font-size:18px;">Search</a></li>
+	<li class="icon"><a href="javascript:void(0);" onclick="togglenav()" style="font-size:18px;">Menu ☰</a></li>
+</ul>
+
+<nav class="megacontainer container openbecome animateopacity" id="become">
+<div class="row">
+<div class="col-sm-3 megacolumn">
+<h3>Find a Program</h3>
+
+<p>With more than 60 options, there is something here for you.</p>
+
+<hr />
+<ul>
+	<li><a href="http://catalog.rtc.edu">RTC Catalog</a></li>
+	<li>
+	<hr />
+	<p><a href="/career-training-programs">Career Training Programs</a></p>
+	</li>
+	<li><a href="/Continuing-Education-Courses" title="Continuing Education">Continuing Education</a></li>
+	<li><a href="/elearning">eLearning</a></li>
+	<li><a href="/online-and-hybrid-options" title="Online &amp; Hybrid Options">Online &amp; Hybrid Options</a></li>
+	<li><a href="/short-term-programs" title="Short Term Programs">Short Term Options</a></li>
+	<li><a href="/transfer-degree-options" title="Transfer Options">Transfer Options</a></li>
+	<li>
+	<hr /></li>
+	<li><a href="/learn-english" title="Learn English">Learn English</a></li>
+	<li><a href="/high-school-completion" title="High School Completion">High School Completion</a></li>
+	<li><a href="/bilingual-diploma" title="Bilingual Spanish Diploma">Bilingual (Spanish) Diploma</a></li>
+	<li><a href="/college-preparation" title="College Preparation">College Preparation</a></li>
+	<li><a class="I-Best" href="/i-best">I-BEST</a></li>
+	<li>
+	<hr /></li>
+	<li><a href="/Apprenticeships" title="Apprenticeships">Apprenticeships</a></li>
+	<li><a href="/general-education" title="General Education Courses">General Education Courses</a></li>
+	<li><a href="/high-school-programs" title="High School Programs">High School Programs</a></li>
+</ul>
+
+<ul>
+	<li>
+	<p>&nbsp;</p>
+	</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Paying for School</h3>
+
+<ul>
+	<li>Our programs are affordable. Find out the options available at RTC.</li>
+	<li>
+	<hr />
+	<p><a href="/financial-aid" title="Financial Aid">Financial Aid</a></p>
+	</li>
+	<li>
+	<p><a href="/apply-for-scholarship" title="Scholarship Opportunities">Scholarship Opportunities</a></p>
+	</li>
+	<li>
+	<hr />
+	<p><a href="/types-of-aid" title="Additional Types of Aid">Additional Types of Aid</a></p>
+	</li>
+	<li>
+	<p><a href="/BFET" title="BFET">Basic Food Employment Training (BFET)</a></p>
+	</li>
+	<li><a href="/international-student-services" title="International Student Services">International Student Information</a></li>
+	<li><a href="/opportunity-grant" title="Opportunity Grant">Opportunity Grant</a></li>
+</ul>
+
+<ul>
+	<li><a href="/workfirst" title="WorkFirst">WorkFirst</a></li>
+	<li><a href="/workforce-education-funding" title="WorkForce Education Funding">WorkForce Education Funding</a></li>
+	<li><a href="/worker-retraining" title="Worker Retraining">Worker Retraining</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<ul>
+	<li>
+	<h3>Student Resources</h3>
+	</li>
+	<li>Explore these&nbsp;services to see what helpful options are available.</li>
+	<li>
+	<hr />
+	<p><a href="/Academic-Calendar" title="Academic Calendar">Academic Calendar</a></p>
+	</li>
+	<li>
+	<p><a href="/Admissions-Entry-Services" title="Admissions and Entry Services">Admissions &amp; Entry Services</a></p>
+	</li>
+	<li>
+	<p><a href="/Class-Schedule-Publications" title="Class Schedule &amp; Course Catalog">Class Schedule &amp; Course Catalog</a></p>
+	</li>
+	<li>
+	<p><a href="/advising" title="Counseling and Advising">Counseling &amp; Advising</a></p>
+	</li>
+	<li>
+	<p><a href="/daca" title="DACA Resources">DACA Resources</a></p>
+	</li>
+	<li><a href="/disability-resource-services" title="Disability Resource Services">Disability Resource Services</a></li>
+	<li><a href="/enrollment-services" title="Enrollment Services">Enrollment Services</a></li>
+	<li><a href="/international-student-services" title="International Student Services">International Student Information</a></li>
+	<li><a href="http://live-renton-technical-college-website.pantheon.io/lgbtq-resources" title="LGBTQ Resources">LGBTQ Resources</a></li>
+	<li><a href="/hr-title-IX" title="Title IX">Title IX</a></li>
+	<li><a href="/tuition-and-fees" title="Tuition and Fees">Tuition &amp; Fees</a></li>
+	<li><a href="/veteran-services" title="Veteran Services">Veteran Services</a></li>
+	<li><a href="/women-in-trades-and-technology" title="Women in Trades and Technology">Women In Trades &amp; Technology</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<ul>
+	<li>
+	<h3>Get Started at RTC</h3>
+	</li>
+	<li>Choose your path to get started at Renton Technical College.</li>
+	<li>
+	<hr />
+	<p>Are you a...</p>
+	</li>
+	<li>
+	<p><a href="/basic-studies-new-students" title="New Basic Studies Students">New Basic Studies Student</a>?</p>
+	</li>
+	<li>
+	<p><a href="/new-career-training-students" title="New Career Training Students">New Career Training Student</a>?</p>
+	</li>
+	<li>
+	<p><a href="/new-continuing-education-students" title="New Continuing Education Students">New Continuing Education Student</a>?</p>
+	</li>
+	<li>
+	<p><a href="/new-general-education-students" title="New General Education Students">New General Education Student</a>?</p>
+	</li>
+	<li>
+	<hr />
+	<p><a href="/get-started">Get Started &amp; Enroll Now</a></p>
+	</li>
+	<li>
+	<p><a href="/registration" title="Registration">Registration</a></p>
+	</li>
+	<li>
+	<p>&nbsp;</p>
+	</li>
+	<li>
+	<p>&nbsp;</p>
+	</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12"><a class="closemegacontainer" onclick="dropclose()" style="color:#fff;">×</a></div>
+</div>
+</nav>
+
+<nav class="megacontainer container opencurrent animateopacity" id="contact">
+<div class="row">
+<div class="col-sm-3  megacolumn">
+<h3>Enrollment Services</h3>
+
+<ul>
+	<li><a href="/enrollment-services" title="Enrollment Services">Enrollment Services</a></li>
+	<li><a href="/Academic-Calendar" title="Academic Calendar">Academic Calendar</a></li>
+	<li><a href="/education-tax-credit" title="Education Tax Credit">Education Tax Credit</a></li>
+	<li><a href="/Enrollment-Verification">Enrollment Verification</a></li>
+	<li><a href="https://www.ctc.edu/~renton/wts/kiosk/waci003.html">Get My Schedule</a></li>
+	<li><a href="https://www.ctc.edu/~renton/wts/wccba/waci600.html">Pay Tuition &amp; Fees</a></li>
+	<li><a href="/registration">Registration</a></li>
+	<li><a href="/residency" title="Residency">Residency</a></li>
+	<li><a href="/student-forms-library" title="Student Forms LIbrary">Student Forms Library</a></li>
+	<li><a href="/student-online-services" target="_blank" title="Student Online Services">Student Online Services</a></li>
+	<li><a href="/transcripts" title="Transcripts">Transcripts</a></li>
+	<li><a href="/transfer-degree-options" title="Transfer Degree Information">Transfer Degree Information</a></li>
+	<li><a href="/tuition-refund" title="Tuition Refund">Tuition&nbsp;Refund</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Campus Information</h3>
+
+<ul>
+	<li><a href="/campus-map-and-directions" title="Campus Map and Directions">Campus Map &amp; Directions</a></li>
+	<li><a href="/campus-reflection-areas" title="Campus Reflection Areas">Campus Reflection Areas</a></li>
+	<li><a href="/Class-Schedule-Publications" title="Class Schedule &amp; Course Catalog">Class Schedule &amp; Course Catalog</a></li>
+	<li><a href="/graduation" title="Graduation &amp; Commencement">Graduation &amp; Commencement</a></li>
+	<li><a href="/parking" title="Parking Information">Parking Information</a></li>
+	<li><a href="/student-rights-report-incident" title="Report an Incident or Concern">Report an Incident or Concern</a></li>
+	<li><a href="/student-rights-and-responsibilities" title="Student Rights and Responsibilities">Student Rights &amp; Responsibilities</a></li>
+	<li><a href="/worksource" title="WorkSource">WorkSource</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Support Services</h3>
+
+<ul>
+	<li><a href="/campus-security" title="Campus Security">Campus Security</a></li>
+	<li><a href="/Career-Services" title="Career Services">Career Services</a></li>
+	<li><a href="/advising" title="Counseling and Advising">Counseling &amp; Advising</a></li>
+	<li><a href="/dining-services" title="Dining Services">Dining Services</a></li>
+	<li><a href="/disability-resource-services" title="Disability Resource Services">Disability Resource Services</a></li>
+	<li><a href="/financial-aid" title="Financial Aid">Financial Aid</a></li>
+	<li><a href="/lgbtq-resources" title="LGBTQ Resources">LGBTQ Resources</a></li>
+	<li><a href="/testing-services" title="Testing Services">Testing Services</a></li>
+	<li><a href="/hr-title-IX" title="Title IX">Title IX</a></li>
+	<li><a href="/veteran-services" title="Veteran Services">Veteran Services</a></li>
+	<li><a href="http://www.wois.org.ezproxy.rtc.edu/" target="_blank" title="WOIS Career Assessment Tool">WOIS Career Assessment Tool</a></li>
+	<li><a href="/workforce-education-funding" title="WorkForce Education Funding">WorkForce Education Funding</a></li>
+</ul>
+
+<ul>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Learning &amp; Technology</h3>
+
+<ul>
+	<li><a href="/bookstore" target="_blank" title="Bookstore">Bookstore</a></li>
+	<li><a href="/canvas" target="_blank" title="Canvas">Canvas</a></li>
+	<li><a href="/etutoring" title="eTutoring">eTutoring</a></li>
+	<li><a href="/LRCC" title="Learning Resource &amp; Career Center">Learning Resource &amp; Career Center</a></li>
+	<li><a href="/library" title="Library">Library</a></li>
+	<li><a href="/software" title="Software">Software</a></li>
+	<li><a href="/student-email" title="Student Email">Student Email</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12"><a class="closemegacontainer" onclick="dropclose()"><span style="color:#ffffff;">×</span></a></div>
+</div>
+</nav>
+
+<nav class="megacontainer container opencampus animateopacity" id="about">
+<div class="row">
+<div class="col-sm-3  megacolumn">
+<h3>Campus Life</h3>
+
+<ul>
+	<li><a href="/calendar" title="Campus Calendar">Campus Calendar</a></li>
+	<li><a href="/campus-reflection-areas" title="Campus Reflection Areas">Campus Reflection Areas</a></li>
+	<li><a href="/graduation" title="Graduation &amp; Commencement">Graduation &amp; Commencement</a></li>
+	<li><a href="/LRCC" title="Learning Resource &amp; Career Center">Learning Resource &amp; Career Center</a></li>
+	<li><a href="/lgbtq-resources" title="LGBTQ Resources">LGBTQ Resources</a></li>
+	<li><a href="/news" title="News and Events">News &amp; Events</a></li>
+	<li><a href="/student-rights-report-incident" title="Report an Incident or Concern">Report an Incident or Concern</a></li>
+	<li><a href="/student-rights-and-responsibilities" title="Student Rights and Responsibilities">Student Rights &amp; Responsibilities</a></li>
+</ul>
+
+<ul>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Around Campus</h3>
+
+<ul>
+	<li><a href="/bookstore" target="_blank" title="Bookstore">Bookstore</a></li>
+	<li><a href="/campus-map-and-directions">Campus Map &amp; Directions</a></li>
+	<li><a href="/campus-security" title="Campus Security">Campus Security</a></li>
+	<li><a href="/dining-services" title="Dining Services">Dining Services</a></li>
+	<li><a href="/library" title="Library">Library</a></li>
+	<li><a href="/parking" title="Parking Information">Parking Information</a></li>
+</ul>
+
+<ul>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Student Programs</h3>
+
+<ul>
+	<li><a href="/student-leadership" title="Student Leadership">Student Leadership</a></li>
+	<li><a href="/asg" title="Associated Student Government">Associated Student Government (ASG)</a></li>
+	<li><a href="/Clubs-Student-Organizations" title="Clubs and Student Organizations">Clubs &amp; Student Organizations</a></li>
+	<li><a href="/phi-theta-kappa" title="Phi Theta Kappa">Phi Theta Kappa</a></li>
+	<li><a href="https://www.rtc.edu/elections-voting" title="Elections &amp; Voting in Washington">Elections &amp; Voting in Washington</a></li>
+</ul>
+
+<ul>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Follow Us</h3>
+
+<ul>
+	<li><a href="https://www.facebook.com/rentontechnicalcollege" target="_blank" title="Facebook">Facebook</a></li>
+	<li><a href="https://twitter.com/rentontech" target="_blank" title="Twitter">Twitter</a></li>
+	<li><a href="https://www.linkedin.com/company/renton-technical-college" target="_blank" title="LinkedIn">LinkedIn</a></li>
+	<li><a href="https://www.youtube.com/channel/UCz8KTvrBuCUZSblVj-mknmg" target="_blank" title="YouTube">YouTube</a></li>
+	<li><a href="https://instagram.com/rentontechnicalcollege/" target="_blank" title="Instagram">Instagram</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12"><a class="closemegacontainer" onclick="dropclose()" style="color:#fff;">×</a></div>
+</div>
+</nav>
+
+<nav class="megacontainer container opencommunity animateopacity" id="about">
+<div class="row">
+<div class="col-sm-3  megacolumn">
+<h3>Popular Areas</h3>
+
+<ul>
+	<li><a href="/calendar" title="Campus Calendar">Campus Calendar</a></li>
+	<li><a href="/campus-reflection-areas" title="Campus Reflection Areas">Campus Reflection Areas</a></li>
+	<li><a href="/campus-security" title="Campus Security">Campus Security</a></li>
+	<li><a href="/lactation-room" title="Lactation Room">Lactation Room</a></li>
+	<li><a href="/LRCC" title="Learning Resource &amp; Career Center">Learning Resource &amp; Career Center</a></li>
+	<li><a href="/library" title="Library">Library</a></li>
+	<li><a href="/public-records-request" title="Public Records Request">Public Records Request</a></li>
+	<li><a href="/worksource" title="WorkSource">WorkSource</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Public Resources</h3>
+
+<ul>
+	<li>
+	<p><a href="/bookstore" target="_blank" title="Bookstore">Bookstore</a></p>
+	</li>
+	<li>
+	<p><a href="/catering" title="Catering and Events">Catering &amp; Events</a></p>
+	</li>
+	<li>
+	<p><a href="/dental-clinic" title="Dental Clinic">Dental Clinic</a></p>
+	</li>
+	<li>
+	<p><a href="/dining-services" title="Dining Services">Dining Services</a></p>
+	</li>
+	<li>
+	<p><a href="/Employer-Resources" title="Employer Resources">Employer Resources</a></p>
+	</li>
+	<li><a href="/massage-clinic" title="Massage Clinic">Massage Clinic</a></li>
+	<li>
+	<p><a href="/testing-services" title="Testing Services">Testing Services</a></p>
+	</li>
+	<li>
+	<p>&nbsp;</p>
+	</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>RTC Foundation</h3>
+
+<ul>
+	<li><a href="https://foundation.rtc.edu" target="_blank" title="Foundation">Foundation</a></li>
+	<li><a href="https://foundation.rtc.edu/events" target="_blank" title="Foundation Events">Foundation Events</a></li>
+	<li><a href="https://foundation.rtc.edu/foundation-blog" target="_blank" title="Foundation Blog">Foundation Blog</a></li>
+	<li><a href="https://foundation.rtc.edu/foundation-scholarships" target="_blank" title="Foundation Scholarships">Foundation Scholarships</a></li>
+	<li><a href="https://foundation.rtc.edu/donate" target="_blank" title="Donations">Make a Donation</a></li>
+</ul>
+
+<hr />
+<p><a href="/rtc-75th-anniversary" title="75th Anniversary">75th Anniversary</a></p>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Faculty &amp; Instruction</h3>
+
+<ul>
+	<li><a href="/citl" title="Center for Innovative Teaching and Learning">CITL: Center for Innovative Teaching &amp; Learning</a></li>
+	<li><a href="/faculty-staff-resources" title="Faculty and Staff Resources">Faculty &amp; Staff Resources</a></li>
+	<li><a href="/ir-pep" title="Program Enhancement Plan">Program Review Process</a></li>
+	<li><a href="/RTC-learning-outcomes" title="RTC Learning Outcomes">RTC Learning Outcomes</a></li>
+	<li><a href="/rtcsearch">RTC Search</a></li>
+	<li><a href="/reading-apprenticeship" title="Reading Apprenticeship">Reading Apprenticeship</a></li>
+	<li><a href="/universal-design-for-learning" title="Universal Design for Learning">Universal Design for Learning</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12"><a class="closemegacontainer" onclick="dropclose()" style="color:#fff;">×</a></div>
+</div>
+</nav>
+
+<nav class="megacontainer container openabout animateopacity" id="about">
+<div class="row">
+<div class="col-sm-3  megacolumn">
+<h3>About RTC</h3>
+
+<ul>
+	<li><a href="/about-rtc" title="About Renton Technical College">About Renton Technical College</a></li>
+	<li><a href="/atd" title="Achieving the Dream">Achieving the Dream</a></li>
+	<li><a href="/campus-map-and-directions" title="Campus Map and Directions">Campus Map &amp; Directions</a></li>
+	<li><a href="/college-governance" title="College Governance">College Governance</a></li>
+	<li><a href="/guided-pathways" title="Learn more about Guided Pathways at RTC">Guided Pathways</a></li>
+	<li><a href="/mission-vision-values" title="Mission, Vision, Values">Mission, Vision, Values</a></li>
+	<li><a href="/news" title="RTC News">News &amp; Events</a></li>
+	<li><a href="/Community" title="Community">RTC Community</a></li>
+	<li><a href="/rtc-school-history" title="RTC History">RTC History</a></li>
+	<li><a href="/college-planning" title="Strategic Planning">Strategic&nbsp;Planning</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Office of the President</h3>
+
+<ul>
+	<li><a href="/board" title="Board of Trustees">Board of Trustees</a></li>
+	<li><a href="/letter-from-the-president" title="Letter From the President">President's Message</a></li>
+	<li><a href="/advisory-council" title="Advisory Council">Advisory Council</a></li>
+	<li><a href="/fast-facts" title="Fast Facts">Fast Facts</a></li>
+	<li><a href="https://foundation.rtc.edu" target="_blank" title="Foundation">Foundation</a></li>
+	<li><a href="/RTC-learning-outcomes" title="RTC Learning Outcomes">RTC Learning Outcomes</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Human Resources</h3>
+
+<ul>
+	<li><a href="/human-resources" title="Human resources">Human Resources</a></li>
+	<li><a href="/employee-benefits" title="Employee Benefits">Employee Benefits</a></li>
+	<li><a href="/Equal-Opportunity">Equal Opportunity Information</a></li>
+	<li><a href="/contracts" title="Faculty and Staff Contract Information">Faculty &amp; Staff Contract Information</a></li>
+	<li><a href="/jobs-at-rtc" title="Jobs at RTC">Jobs at RTC</a></li>
+	<li><a href="/student-rights-report-incident" title="Report an Incident or Concern">Report an Incident or Concern</a></li>
+	<li><a href="https://tlr.rtc.edu/default.aspx" target="_blank" title="Time and Leave Reporting">Time &amp;&nbsp;Leave Reporting</a></li>
+	<li><a href="/hr-title-IX" title="Title IX">Title IX</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3  megacolumn">
+<h3>Institutional Advancement</h3>
+
+<ul>
+	<li><a href="/ia" title="Institutional Advacement">Institutional Advancement</a></li>
+	<li><a href="/RTC-accreditation" title="Accreditation">Accreditation</a></li>
+	<li><a href="/communications-and-marketing" title="Communications and Marketing">Communications &amp; Marketing</a></li>
+	<li><a href="/grant-development" title="Grant Development">Grant Development</a></li>
+	<li><a href="/IR" title="Institutional Research">Institutional Research</a></li>
+	<li><a href="/irb" title="Institutional Review Board">Institutional Review Board</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12"><a class="closemegacontainer" onclick="dropclose()" style="color:#fff;">×</a></div>
+</div>
+</nav>
+
+</section>
+  </div>
+    </nav>
+  </div>
+  <div id="mobilebranding" style="background-color: #98002e;" class="visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <a href="/" title="Home"><img src="/sites/default/files/rtc-logo-inline-500x30.png" class="img-responsive" style="margin: 0 auto; padding:15px 0;"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="region region-topbar">
+    <section id="block-md-slider-md-slider-56e2d55873596" class="block block-md-slider clearfix">
+
+      
+  <div id="md-slider-2-block" class="md-slide-items" data-thumb-width='100' data-thumb-height='75' style='min-height:420px;'>
+    <div class="wrap-loader-slider animated">
+        <div class="wrap-cube">
+            <div class="sk-cube-grid">
+                <div class="sk-cube sk-cube1"></div>
+                <div class="sk-cube sk-cube2"></div>
+                <div class="sk-cube sk-cube3"></div>
+                <div class="sk-cube sk-cube4"></div>
+                <div class="sk-cube sk-cube5"></div>
+                <div class="sk-cube sk-cube6"></div>
+                <div class="sk-cube sk-cube7"></div>
+                <div class="sk-cube sk-cube8"></div>
+                <div class="sk-cube sk-cube9"></div>
+            </div>
+        </div>
+    </div>
+          
+          
+  <div class="md-slide-item slide-2" data-timeout='9000' data-transition="strip-left-down" data-thumb-type='image' data-thumb-alt='' data-thumb='https://www.rtc.edu/sites/default/files/styles/md_slider_2_thumb/public/slider-aspen-2021.jpg?itok=fkoEfVT9'>
+    <div class="md-mainimg" style="">
+              
+        <img src="https://www.rtc.edu/sites/default/files/slider-aspen-2021.jpg" alt="" />        
+          </div>
+            <div class="md-objects"
+      data-url="https://www.rtc.edu/aspen-2021" style='cursor:pointer;'    >
+                <div class="md-object md-layer-2-1-0 fdsfds" data-x='307' data-y='172' data-width='583' data-height='42' data-start='400' data-stop='9000' data-easein='fadeInRight' data-easeout='fadeOutRight' data-paddingtop='10' data-paddingright='20' data-paddingbottom='10' data-paddingleft='20'>
+                        <a href="https://www.rtc.edu/aspen-2021">RTC  ASPEN TOP 150 AGAIN </a>
+              </div>
+                <div class="md-object md-layer-2-1-1 fdsfds" data-x='307' data-y='248' data-width='225' data-height='18' data-start='600' data-stop='9000' data-paddingtop='10' data-paddingright='10' data-paddingbottom='10' data-paddingleft='10'>
+                        <a href="https://www.rtc.edu/aspen-2021">LEARN MORE</a>
+              </div>
+          </div>    
+  </div>
+          
+          
+          
+  <div class="md-slide-item slide-5" data-timeout='8000' data-transition="strip-left-down,slide-in-right" data-thumb-type='image' data-thumb-alt='' data-thumb='https://www.rtc.edu/sites/default/files/styles/md_slider_2_thumb/public/20181212-cover.jpg?itok=XP6SdSJG'>
+    <div class="md-mainimg" style="">
+              
+        <img src="https://www.rtc.edu/sites/default/files/20181212-cover.jpg" alt="" />        
+          </div>
+            <div class="md-objects"
+          >
+                <div class="md-object md-layer-2-4-0 fdsfds" data-x='93' data-y='143' data-width='327' data-height='95' data-start='600' data-stop='7500' data-easein='fadeInRight' data-easeout='fadeOutRight'>
+                        Students succeed at RTC.               </div>
+                <div class="md-object md-layer-2-4-1 fdsfds" data-x='134' data-y='284' data-width='228' data-height='25' data-start='900' data-stop='7500' data-easein='fadeInRight' data-easeout='fadeOutRight' data-paddingtop='2' data-paddingright='2' data-paddingbottom='2' data-paddingleft='2'>
+                        <a href="https://www.rtc.edu/advising">Get Advising Help</a>
+              </div>
+              <div class="md-item-opacity" style="-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)'; filter: alpha(opacity=80); opacity: 0.8;">
+  <div class="md-object md-layer-2-4-2 fdsfds" data-x='12' data-y='92' data-width='491' data-height='261' data-start='0' data-stop='8000' data-easein='fadeIn' data-paddingtop='0' data-paddingright='0' data-paddingbottom='0' data-paddingleft='0'>
+                                      </div>
+</div>
+                <div class="md-object md-layer-2-4-3 fdsfds" data-x='59' data-y='238' data-width='403' data-height='39' data-start='700' data-stop='7500' data-easein='fadeInRight' data-easeout='fadeOutRight'>
+                        We're here to help.              </div>
+          </div>    
+  </div>
+          
+          
+          
+          
+          
+  <div class="md-slide-item slide-10" data-timeout='8000' data-transition="slide-in-right" data-thumb-type='image' data-thumb-alt='' data-thumb='https://www.rtc.edu/sites/default/files/styles/md_slider_2_thumb/public/20180511-IT-cover-v4.jpg?itok=RIjQfTgY'>
+    <div class="md-mainimg" style="">
+              
+        <img src="https://www.rtc.edu/sites/default/files/20180511-IT-cover-v4.jpg" alt="" />        
+          </div>
+            <div class="md-objects"
+          >
+                <div class="md-object md-layer-2-9-0 fdsfds" data-x='697' data-y='77' data-width='400' data-height='108' data-start='600' data-stop='7500' data-easein='fadeInRight' data-easeout='fadeOutRight'>
+                        Prepare for a 
+job in the IT field              </div>
+                <div class="md-object md-layer-2-9-1 fdsfds" data-x='699' data-y='249' data-width='127' data-height='11' data-start='1200' data-stop='7500' data-easein='fadeInUpBig' data-easeout='fadeOutRight' data-paddingtop='10' data-paddingright='5' data-paddingbottom='12' data-paddingleft='5'>
+                        <a href="https://www.rtc.edu/information-technology">LEARN MORE</a>
+              </div>
+              <div class="md-item-opacity" style="-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)'; filter: alpha(opacity=80); opacity: 0.8;">
+  <div class="md-object md-layer-2-9-2 fdsfds" data-x='683' data-y='52' data-width='425' data-height='261' data-start='0' data-stop='8000' data-easein='fadeIn'>
+                                      </div>
+</div>
+          </div>    
+  </div>
+          
+          
+  <div class="md-slide-item slide-12" data-timeout='8000' data-transition="slide-in-right" data-thumb-type='image' data-thumb-alt='' data-thumb='https://www.rtc.edu/sites/default/files/styles/md_slider_2_thumb/public/20180611-mechatronics.jpg?itok=DZZJyYdA'>
+    <div class="md-mainimg" style="">
+              
+        <img src="https://www.rtc.edu/sites/default/files/20180611-mechatronics.jpg" alt="" />        
+          </div>
+            <div class="md-objects"
+          >
+                <div class="md-object md-layer-2-11-0 fdsfds" data-x='30' data-y='102' data-width='593' data-height='52' data-start='600' data-stop='7500' data-easein='fadeInLeft' data-easeout='fadeOutLeft'>
+                        High-wage, in-demand jobs available              </div>
+                <div class="md-object md-layer-2-11-1 fdsfds" data-x='31' data-y='219' data-width='417' data-height='55' data-start='900' data-stop='7500' data-easein='fadeInLeft' data-easeout='fadeOutLeft'>
+                        Find the right program for you               </div>
+                <div class="md-object md-layer-2-11-2 fdsfds" data-x='30' data-y='286' data-width='100' data-height='10' data-start='1200' data-stop='7500' data-easein='fadeInUpBig' data-easeout='fadeOutLeft' data-paddingtop='10' data-paddingright='5' data-paddingbottom='12' data-paddingleft='5'>
+                        <a href="https://www.rtc.edu/get-started">GET STARTED
+</a>
+              </div>
+              <div class="md-item-opacity" style="-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)'; filter: alpha(opacity=80); opacity: 0.8;">
+  <div class="md-object md-layer-2-11-3 fdsfds" data-x='0' data-y='72' data-width='570' data-height='283' data-start='0' data-stop='8000' data-easein='fadeIn'>
+                                      </div>
+</div>
+          </div>    
+  </div>
+          
+          
+          
+          
+    </div>
+
+</section>
+<section id="block-block-6" class="block block-block clearfix">
+
+      
+  <div class="container" id="meta-mojo">
+<div class="row">
+<div class="col-md-12 col-lg-6">
+<div class="row">
+<div class="col-xs-6 col-sm-6 col-md-3">
+<div class="meta"><a href="/advanced-manufacturing"><img alt="The Advanced Manufacturing icon featuring two cogs spinning in a green circle." class="img-responsive" src="https://www.rtc.edu/sites/default/files/Advanced-Manufacturing-2016.jpg" /> </a>
+<div class="meta-overlay hidden-xs">
+<div class="meta-text">
+<p class="override-color"><a class="override-color" href="/advanced-manufacturing">The Advanced Manufacturing programs prepare students for careers in precision manufacturing, technical design, and the skilled trades.</a></p>
+
+<p class="meta-link override-color"><a class="override-color" href="/advanced-manufacturing">Learn more</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-6 col-sm-6 col-md-3">
+<div class="meta"><a href="/business-management"><img alt="The Business Management icon featuring two shaking hands in a purple circle." class="img-responsive" src="https://www.rtc.edu/sites/default/files/Business-Management-2016.jpg" /> </a>
+
+<div class="meta-overlay hidden-xs">
+<div class="meta-text">
+<p class="override-color"><a class="override-color" href="/business-management">The Business Management programs are designed to give students skills and experience in the highly competitive fields of business support, management, and entrepreneurship.</a></p>
+
+<p class="meta-link override-color"><a class="override-color" href="/business-management">Learn more</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-6 col-sm-6 col-md-3">
+<div class="meta"><a href="/basic-studies-courses"><img alt="The College &amp; Career Pathways icon featuring a gray road in a teal circle." class="img-responsive" src="https://www.rtc.edu/sites/default/files/College-Career-Pathways-2016.jpg" /> </a>
+
+<div class="meta-overlay hidden-xs">
+<div class="meta-text">
+<p class="override-color"><a class="override-color" href="/basic-studies-courses">The College &amp; Career Pathways programs support students to succeed in the next steps for enrolling in a certificate or degree program.</a></p>
+
+<p class="meta-link override-color"><a class="override-color" href="/basic-studies-courses">Learn more</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-6 col-sm-6 col-md-3">
+<div class="meta"><a href="/culinary"><img alt="The Culinary Arts icon featuring a chef's hat and with a fork and knife in a blue circle." class="img-responsive" src="https://www.rtc.edu/sites/default/files/Culinary-Arts-2016.jpg" /> </a>
+
+<div class="meta-overlay hidden-xs">
+<div class="meta-text">
+<p class="override-color"><a class="override-color" href="/culinary">The Culinary Arts programs prepare students for a rewarding career in the food, baking, and restaurant management industries.</a></p>
+
+<p class="meta-link override-color"><a class="override-color" href="/culinary">Learn more</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 col-lg-6">
+<div class="row">
+<div class="col-xs-6 col-sm-6 col-md-3">
+<div class="meta"><a href="/health-and-human-services"><img alt="The Health and Human Services icon featuring a heart with a red medical cross held by two hands in a red circle." class="img-responsive" src="https://www.rtc.edu/sites/default/files/Health-Human-Services-2016.jpg" /> </a>
+
+<div class="meta-overlay hidden-xs">
+<div class="meta-text">
+<p class="override-color"><a class="override-color" href="/health-and-human-services">The Health &amp; Human Services programs prepare students for rewarding careers in the field of healthcare and assistance.</a></p>
+
+<p class="meta-link override-color"><a class="override-color" href="/health-and-human-services">Learn more</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-6 col-sm-6 col-md-3">
+<div class="meta"><a href="/information-technology"><img alt="The Information Technology icon featuring two computers exchanging information via a data stream in an orange circle." class="img-responsive" src="https://www.rtc.edu/sites/default/files/Icons-Information-Technology-2016.jpg" /> </a>
+
+<div class="meta-overlay hidden-xs">
+<div class="meta-text">
+<p class="override-color"><a class="override-color" href="/information-technology">The Information Technology programs give students a convenient and supportive way to enter the fields of computer science and networking.</a></p>
+
+<p class="meta-link override-color"><a class="override-color" href="/information-technology">Learn more</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-6 col-sm-6 col-md-3">
+<div class="meta"><a href="/transportation-technology"><img alt="The Transportation Technology icon featuring a crossed screwdriver and wrench in a yellow circle." class="img-responsive" src="https://www.rtc.edu/sites/default/files/Transportation-Technology-2016.jpg" /> </a>
+
+<div class="meta-overlay hidden-xs">
+<div class="meta-text">
+<p class="override-color"><a class="override-color" href="/transportation-technology">The Transportation Technology programs are your on-ramp into a career as an automotive mechanic, technician, or specialist.</a></p>
+
+<p class="meta-link override-color"><a class="override-color" href="/transportation-technology">Learn more</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-6 col-sm-6 col-md-3">
+<div class="meta"><a href="/cce"><img alt="The Construction Center of Excellence logo featuring the words Construction Center of Excellence in green." class="img-responsive" src="https://www.rtc.edu/sites/default/files/CCE-logo.svg" /> </a>
+
+<div class="meta-overlay hidden-xs">
+<div class="meta-text">
+<p class="override-color"><a class="override-color" href="/cce">The Construction Center of Excellence (CCE) brings industry and education together to develop a highly skilled and diverse workforce.</a></p>
+
+<p class="meta-link override-color"><a class="override-color" href="/cce">Learn more</a></p>
+<a class="override-color"> </a></div>
+<a class="override-color"> </a></div>
+<a class="override-color"> </a></div>
+<a class="override-color"> </a></div>
+<a class="override-color"> </a></div>
+<a class="override-color"> </a></div>
+<a class="override-color"> </a></div>
+<a class="override-color"> </a>
+
+<hr /></div>
+
+<p><a class="override-color"> </a></p>
+
+</section>
+<section id="block-block-3" class="block block-block clearfix">
+
+      
+  <div class="container hidden-xs" id="vitals">
+<div class="row">
+<div class="col-sm-6 col-md-3">
+<h3>Enroll Now</h3>
+
+<p><img alt="Enroll Now" class="img-responsive" height="500" src="/sites/default/files/vital-enrol-1000x500.jpg" width="1000" /></p>
+<img alt="Graphic Element" class="img-responsive" src="/sites/default/files/graphicelement-hashes-263x16.png" />
+<p>In just a few minutes you can sign up to be a student.</p>
+<a href="/get-started" title="Enroll Now">Enroll Now</a></div>
+
+<div class="col-sm-6 col-md-3">
+<h3>Find a Program</h3>
+
+<p><img alt="Find a Program" class="img-responsive" height="500" src="/sites/default/files/vital-rtcstudents-1000x500.jpg" width="1000" /></p>
+<img alt="Graphic Element" class="img-responsive" height="16" src="/sites/default/files/graphicelement-hashes-263x16.png" width="263" />
+<p>With more than 60 options, there is something for you.</p>
+<a href="/career-training-programs" title="Find a Program">Learn More</a></div>
+
+<div class="col-sm-6 col-md-3">
+<h3>Class Schedule</h3>
+
+<p><img alt="Class Schedule" class="img-responsive" height="500" src="/sites/default/files/vital-classes-1000x500.jpg" width="1000" /></p>
+<img alt="Graphic Element" class="img-responsive" height="16" src="/sites/default/files/graphicelement-hashes-263x16.png" width="263" />
+<p>Our classes are scheduled at convenient times.</p>
+<a href="/Class-Schedule-Publications" title="Class Schedule &amp; Publications">Details</a></div>
+
+<div class="col-sm-6 col-md-3">
+<h3>DACA Resources</h3>
+
+<p><img alt="Visit Campus" class="img-responsive" height="500" src="/sites/default/files/vital-rtccampus-1000x500.jpg" width="1000" /></p>
+<img alt="Graphic Element" class="img-responsive" height="16" src="/sites/default/files/graphicelement-hashes-263x16.png" width="263" />
+<p>We experience strength through our diversity.</p>
+<a href="/daca" title="DACA Resources">DACA Resources</a></div>
+</div>
+</div>
+
+<div class="container visible-xs text-center" style="padding-top:15px; padding-bottom:15px;">
+<div class="row">
+<div class="col-xs-12">
+<ul class="list-inline socialmediacenter">
+	<li><a href="https://www.facebook.com/rentontechnicalcollege" target="_blank" title="Facebook"><img alt="Facebook" src="/sites/default/files/SocialIcon-Facebook-Garnet-22x22.png" style="width:22px;height:22px;" /></a></li>
+	<li><a href="https://twitter.com/rentontech" target="_blank" title="Twitter"><img alt="Twitter" src="/sites/default/files/SocialIcon-Twitter-Garnet-22x22.png" style="width:22px;height:22px;" /></a></li>
+	<li><a href="https://www.instagram.com/rentontechnicalcollege" target="_blank" title="Instagram"><img alt="Instagram" src="/sites/default/files/SocialIcon-Instagram-Garnet-22x22.png" style="width:22px;height:22px;" /></a></li>
+	<li><a href="https://www.linkedin.com/edu/school?id=32523&amp;trk=edu-cp-logo" target="_blank" title="LinkedIn"><img alt="LinkedIn" src="/sites/default/files/SocialIcon-LinkedIn-Garnet-22x22.png" style="width:22px;height:22px;" /></a></li>
+	<li><a href="https://www.youtube.com/channel/UCz8KTvrBuCUZSblVj-mknmg" target="_blank" title="YouTube"><img alt="YouTube" src="/sites/default/files/SocialIcon-YouTube-Garnet-22x22.png" style="width:22px;height:22px;" /></a></li>
+</ul>
+
+<p><a class="rtcbtn" href="/Admissions-Entry-Services" style="width:100%;" title="Enroll Now">Enroll Now</a></p>
+
+<p><a class="rtcbtn" href="/career-training-programs" style="width:100%;" title="Find a Program">Find a Program</a></p>
+
+<p><a class="rtcbtn" href="/Class-Schedule-Publications" style="width:100%;" title="Class Schedule &amp; Publications">Class Schedule</a></p>
+
+<p><a class="rtcbtn" href="/daca" style="width:100%;" title="DACA Resources">DACA Resources</a></p>
+</div>
+</div>
+</div>
+
+</section>
+  </div>
+</div> <!-- /#page-header -->
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    
+    <section class="col-sm-12">
+                  <a id="main-content"></a>
+                                                        
+    </section>
+
+    
+  </div>
+  
+</div>
+  <div class="region region-content">
+    <section id="block-system-main" class="block block-system clearfix">
+
+      
+  <div class="view view-frontpage view-id-frontpage view-display-id-page view-dom-id-5b7ce342426e1ac606d735121bfd4989">
+        
+  
+  
+      <div class="view-content">
+      <div id="newsevents">
+  <div class="container frontblockheader">
+    <div class="row">
+      <div class="col-sm-4 col-md-6">
+        <h3>News & Events</h3>
+      </div>
+      <div class="col-sm-4 col-md-3 hidden-xs">
+        <a href="/news">All News & Events</a>
+      </div>
+      <div class="col-sm-4 col-md-3 hidden-xs">
+        <ul class="list-inline socialmediacenter">
+          <li><a href="https://www.facebook.com/rentontechnicalcollege" target="_blank" title="Facebook"><img src="/sites/default/files/SocialIcon-Facebook-Garnet-22x22.png" alt="Facebook" style="width:22px;height:22px;"></a></li>
+          <li><a href="https://twitter.com/rentontech" target="_blank" title="Twitter"><img src="/sites/default/files/SocialIcon-Twitter-Garnet-22x22.png" alt="Twitter" style="width:22px;height:22px;"></a></li>
+          <li><a href="https://www.instagram.com/rentontechnicalcollege" target="_blank" title="Instagram"><img src="/sites/default/files/SocialIcon-Instagram_Garnet_22x22.png" alt="Instagram" style="width:22px;height:22px;"></a></li>
+          <li><a href="https://www.linkedin.com/edu/school?id=32523&trk=edu-cp-logo" target="_blank" title="LinkedIn"><img src="/sites/default/files/SocialIcon-LinkedIn-Garnet-22x22.png" alt="LinkedIn" style="width:22px;height:22px;"></a></li>
+          <li><a href="https://www.youtube.com/channel/UCz8KTvrBuCUZSblVj-mknmg" target="_blank" title="YouTube"><img src="/sites/default/files/SocialIcon-YouTube-Garnet_22x22.png" alt="YouTube" style="width:22px;height:22px;"></a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    	      	    <div class="row" >
+		    			    <article class="col-sm-3" >
+				      
+  <div class="views-field views-field-field-teaser-image-1">        <div class="field-content"><a href="/yasmin-ali"><img typeof="foaf:Image" class="img-responsive" src="https://www.rtc.edu/sites/default/files/styles/news_stories_teaser/public/yasmin-ali-teaser.jpg?itok=uPBdX-vy" width="768" height="384" alt="Yasmin Ali smiling" /></a></div>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">Monday, December 16, 2019</span>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content">New dean revitalizes Registered Nurse program</span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p>The program looks forward to welcoming its newest students in the upcoming winter quarter.</p>
+</div>  </div>  
+  <div class="views-field views-field-view-node">        <span class="field-content"><a href="/yasmin-ali">Read More</a></span>  </div>			    </article>
+		    			    <article class="col-sm-3" >
+				      
+  <div class="views-field views-field-field-teaser-image-1">        <div class="field-content"><a href="/Gordon-gift"><img typeof="foaf:Image" class="img-responsive" src="https://www.rtc.edu/sites/default/files/styles/news_stories_teaser/public/20191216-gordons-teaser-article.jpg?itok=Yr6wM9bS" width="768" height="384" alt="Eva and Ed Gordon smiling" /></a></div>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">Monday, December 16, 2019</span>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content">Extraordinary bequest will benefit RTC students</span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p>RTC is one of 17 colleges in the state to receive $550,000 from the Eva Gordon Estate.</p>
+</div>  </div>  
+  <div class="views-field views-field-view-node">        <span class="field-content"><a href="/Gordon-gift">Read More</a></span>  </div>			    </article>
+		    			    <article class="col-sm-3" >
+				      
+  <div class="views-field views-field-field-teaser-image-1">        <div class="field-content"><a href="/angie_mar"><img typeof="foaf:Image" class="img-responsive" src="https://www.rtc.edu/sites/default/files/styles/news_stories_teaser/public/angie%20smaller.jpg?itok=ztv2zLZk" width="768" height="384" alt="Photo of Chef Angie Mar in black dress on a bar stool in her restaurant " /></a></div>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">Friday, December 13, 2019</span>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content">NYC chef Angie Mar will serve as the 2020 Celebrity Chef</span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p>Chef Mar will bring her passion for luxury and meat for two evening events on Tuesday, January 28.</p>
+</div>  </div>  
+  <div class="views-field views-field-view-node">        <span class="field-content"><a href="/angie_mar">Read More</a></span>  </div>			    </article>
+		    			    <article class="col-sm-3" >
+				      
+  <div class="views-field views-field-field-teaser-image-1">        <div class="field-content"><a href="/aspen-2021"><img typeof="foaf:Image" class="img-responsive" src="https://www.rtc.edu/sites/default/files/styles/news_stories_teaser/public/aspen-story-teaser-2021.jpg?itok=a7uk5kyM" width="768" height="384" alt="Aspen Prize - top 150 " /></a></div>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">Tuesday, November 5, 2019</span>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content">Aspen again names RTC a Top 150 Community College</span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p>RTC was recognized for&nbsp;student outcomes – including equity and completion rates.&nbsp;</p>
+</div>  </div>  
+  <div class="views-field views-field-view-node">        <span class="field-content"><a href="/aspen-2021">Read More</a></span>  </div>			    </article>
+		    	    </div>
+      </div>
+</div>    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</section>
+  </div>
+  <div class="region region-bottombar">
+    <section id="block-views-rtc-stories-block" class="block block-views clearfix">
+
+      
+  <div class="view view-rtc-stories view-id-rtc_stories view-display-id-block view-dom-id-e76141450a589148c39c0b705f3256ad">
+        
+  
+  
+      <div class="view-content">
+      <div id="rtcstories">
+  <div class="container frontblockheader">
+    <div class="row">
+      <div class="col-sm-4 col-md-6">
+        <h3>RTC Stories</h3>
+      </div>
+      <div class="col-sm-4 col-md-3 hidden-xs">
+        <a href="/stories">All Stories</a>
+      </div>
+      <div class="col-sm-4 col-md-3 hidden-xs">
+        <ul class="list-inline socialmediacenter">
+          <li><a href="https://www.facebook.com/rentontechnicalcollege" target="_blank" title="Facebook"><img src="/sites/default/files/SocialIcon-Facebook-White-22x22.png" alt="Facebook" style="width:22px;height:22px;"></a></li>
+          <li><a href="https://twitter.com/rentontech" target="_blank" title="Twitter"><img src="/sites/default/files/SocialIcon-Twitter-White-22x22.png" alt="Twitter" style="width:22px;height:22px;"></a></li>
+          <li><a href="https://www.instagram.com/rentontechnicalcollege/" target="_blank" title="Instagram"><img src="/sites/default/files/SocialIcon-Instagram_White_22x22.png" alt="Instagram" style="width:22px;height:22px;"></a></li>
+          <li><a href="https://www.linkedin.com/edu/school?id=32523&trk=edu-cp-logo" target="_blank" title="LinkedIn"><img src="/sites/default/files/SocialIcon-LinkedIn-White-22x22.png" alt="LinkedIn" style="width:22px;height:22px;"></a></li>
+          <li><a href="https://www.youtube.com/channel/UCz8KTvrBuCUZSblVj-mknmg" target="_blank" title="YouTube"><img src="/sites/default/files/SocialIcon-YouTube-White-22x22.png" alt="YouTube" style="width:22px;height:22px;"></a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    	      	    <div class="row" >
+		    			    <article class="col-sm-3" >
+				      
+  <div class="views-field views-field-field-teaser-image">        <div class="field-content"><a href="/node/4512"><img typeof="foaf:Image" class="img-responsive" src="https://www.rtc.edu/sites/default/files/styles/news_stories_teaser/public/20190822-dhawkins-teaser_0.jpg?itok=ka1zEc4W" width="768" height="384" alt="" /></a></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content">Harvard-bound graduate grateful for RTC’s support</span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p>RTC student leader, Don Hawkins will study economics at an elite university this fall.</p>
+</div>  </div>  
+  <div class="views-field views-field-view-node">        <span class="field-content"><a href="/node/4512">Read More</a></span>  </div>			    </article>
+		    			    <article class="col-sm-3" >
+				      
+  <div class="views-field views-field-field-teaser-image">        <div class="field-content"><a href="/math-teachers"><img typeof="foaf:Image" class="img-responsive" src="https://www.rtc.edu/sites/default/files/styles/news_stories_teaser/public/20190702-elizabeth-marty-teaser-v2.jpg?itok=VzDBo_bS" width="768" height="384" alt="" /></a></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content">Teachers partner to demystify math</span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p>Marty Cooksey and Elizabeth Flanagan relate to their students’ struggles and fear.</p>
+</div>  </div>  
+  <div class="views-field views-field-view-node">        <span class="field-content"><a href="/math-teachers">Read More</a></span>  </div>			    </article>
+		    			    <article class="col-sm-3" >
+				      
+  <div class="views-field views-field-field-teaser-image">        <div class="field-content"><a href="/ronnie-larry-story"><img typeof="foaf:Image" class="img-responsive" src="https://www.rtc.edu/sites/default/files/styles/news_stories_teaser/public/20190422-rlarry-teaserv2.jpg?itok=PRHP77Du" width="768" height="384" alt="" /></a></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content">Student doesn’t let his past define him anymore</span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p>Ronnie Larry talks about his journey to RTC, finding support and a future in Ford Asset Program.</p>
+</div>  </div>  
+  <div class="views-field views-field-view-node">        <span class="field-content"><a href="/ronnie-larry-story">Read More</a></span>  </div>			    </article>
+		    			    <article class="col-sm-3" >
+				      
+  <div class="views-field views-field-field-teaser-image">        <div class="field-content"><a href="/Anna-White-story"><img typeof="foaf:Image" class="img-responsive" src="https://www.rtc.edu/sites/default/files/styles/news_stories_teaser/public/IMG_7263_0.jpg?itok=zcpObn88" width="768" height="384" alt="" /></a></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content">Resilient student finds her place at RTC </span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p>Anna says attending RTC was one of the best decisions of her life. “There truly is a place for everybody.”</p>
+</div>  </div>  
+  <div class="views-field views-field-view-node">        <span class="field-content"><a href="/Anna-White-story">Read More</a></span>  </div>			    </article>
+		    	    </div>
+      </div>
+</div>    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</section>
+<section id="block-block-2" class="block block-block clearfix">
+
+      
+  <div class="container" id="achievements">
+<div class="row text-center">
+<div class="col-sm-3 col-md-3">
+<h2>52</h2>
+
+<h3>Career Programs</h3>
+
+<h2>85%</h2>
+
+<h3>Job Placement</h3>
+
+<h2>75</h2>
+
+<h3>Years of Excellence</h3>
+<a class="rtcbtn" href="/fast-facts" title="Fast Facts">Fast Facts</a>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="col-sm-6"><img alt="RTC is one of the Top 10 Community Colleges in the country." class="img-responsive" height="364" src="/sites/default/files/logo-aspenprize-275x364-2018.png" style=" margin:0 auto;" width="275" />
+<h4>For the third straight year, The Aspen Institute named Renton Technical College one of the Top Community Colleges in the Country.&nbsp;</h4>
+<a class="rtcbtn" href="/Aspen-2019" title="Top 10 in the Country">Learn More</a>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="col-sm-3 col-md-3"><img alt="RTC is proud to be a Military Friendly School." height="160" src="/sites/default/files/logo-militaryfriendly-160x160-2018.png" style="height: 160px; width: 160px;" width="160" /><br />
+<a class="rtcbtn" href="/thewire-2015-RTC-earns-military-friendly-school-designation-for-2016" title="RTC is Military Friendly">Learn More</a>
+
+<hr /><img alt="RTC is Proud to be a Achieving the Dream Leader College" height="160" src="/sites/default/files/logo-achievingthedream-160x160.png" style="height: 160px; width: 160px;" width="160" /><br />
+<a class="rtcbtn" href="/atd" title="Achieving the Dream">Learn More</a></div>
+</div>
+</div>
+
+</section>
+  </div>
+</div><!-- end color correction -->
+
+  <footer>
+      <div class="region region-footer">
+    <section id="block-block-1" class="block block-block clearfix">
+
+      
+  <div class="container">
+<div class="row" id="footermenu">
+<div class="col-sm-3">
+<h4>Information</h4>
+
+<ul>
+	<li><a href="/campus-security" title="Campus Security">Campus Security</a></li>
+	<li><a href="/jobs-at-rtc" title="Current Job Openings">Employment</a></li>
+	<li><a href="/Equal-Opportunity" title="Equal Opportunity">Non-Discrimination Policy</a></li>
+	<li><a href="/public-records-request" title="Public Records Request Information">Public Records Request</a></li>
+	<li><a href="/student-rights-report-incident" title="Report an Incident or Concern">Report an Incident or Concern</a></li>
+	<li><a href="/rulemaking" title="Rule Making">Rule-Making</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3">
+<h4>Contact</h4>
+
+<ul>
+	<li><a href="/employee-directory" title="Employee Directory">Employee Directory</a></li>
+	<li><a href="/askrtc" title="Use AskRTC">Questions? Use AskRTC!</a></li>
+	<li><a href="/campus-map-and-directions" title="Campus Map and Directions">Campus Maps</a></li>
+	<li><a href="/wa-relay-service" title="Washington Relay Service Information">Washington Relay Service</a></li>
+	<li><a href="tel:4252352352"><avayaelement class="contentWrapper" contenteditable="false"><avayaelement class="dcelink" contenteditable="false" id="dceLink-1" originaltext="(425) 235-2352">(425) 235-2352</avayaelement></avayaelement><span>&nbsp;</span></a></li>
+	<li><a href="http://www.google.com/maps/place/Renton+Technical+College/@47.4895026,-122.1776037,17z/data=!3m1!4b1!4m2!3m1!1s0x5490680aa2406291:0x5c2227745c0066ea" target="_blank" title="Renton Technical College Location and Directions">3000 NE 4th St.<br />
+	Renton, WA 98056</a>​</li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3">
+<h4>Website</h4>
+
+<ul>
+	<li><a href="/accessibility" title="Website Accessibility">Accessibility</a></li>
+	<li><a href="/disclaimer-privacy" title="Disclaimer and Privacy">Disclaimer &amp; Privacy</a></li>
+	<li><a href="/website-feedback" title="Website Feedback">Link broken? Let us know!</a></li>
+	<li><a href="/wa-relay-service" title="Washington Relay Service Information">Washington Relay Service</a></li>
+	<li>&nbsp;</li>
+</ul>
+</div>
+
+<div class="col-sm-3"><img alt="Renton Technical College Logo" class="img-responsive" src="/sites/all/themes/rainier/logo.png" />
+<h6 style="padding-top:15px;">Copyright ©2020&nbsp;Renton Technical College. All rights reserved.</h6>
+</div>
+</div>
+</div>
+
+</section>
+  </div>
+  </footer>
+  <script src="https://www.rtc.edu/sites/default/files/js/js_MRdvkC2u4oGsp5wVxBG1pGV5NrCPW3mssHxIn6G9tGE.js"></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"37ee7577e6","applicationID":"25277829","transactionName":"YQAGMBdSWEZTUhYPXFhKMRYMHBlcXFUHHh1GDRQ=","queueTime":0,"applicationTime":26,"atts":"TUcFRl9IS0g=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

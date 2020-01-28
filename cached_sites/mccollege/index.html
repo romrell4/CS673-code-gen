@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://mccollege.edu/xmlrpc.php">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500%7CRoboto+Slab:700' rel='stylesheet' type='text/css'>
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116660317-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-116660317-1');
+    </script>
+		<script>
+
+	// Breadcrumbs fix
+	// 
+	document.addEventListener('DOMContentLoaded', function() {
+
+	jQuery('select').select2();
+
+//	function fixMenuFlip() {
+//		jQuery('.mega-sub-menu').each((index, el) => {
+//			if(el.getBoundingClientRect().right > window.innerWidth) {
+//				el.style.right = '0';
+//			} else {
+//				//el.style.right = 'auto';
+//			}
+//		})
+//	}
+
+	// window.addEventListener('resize', function(event){
+	//   fixMenuFlip();
+	// });
+
+//	var doit;
+//	window.onresize = function(){
+//	  clearTimeout(doit);
+//	  doit = setTimeout(fixMenuFlip, 200);
+//	};
+//
+//	fixMenuFlip();
+
+	/**
+	 * Get all of an element's parent elements up the DOM tree
+	 * @param  {Node}   elem     The element
+	 * @param  {String} selector Selector to match against [optional]
+	 * @return {Array}           The parent elements
+	 */
+	var getParents = function ( elem, selector ) {
+
+	    // Element.matches() polyfill
+	    if (!Element.prototype.matches) {
+	        Element.prototype.matches =
+	            Element.prototype.matchesSelector ||
+	            Element.prototype.mozMatchesSelector ||
+	            Element.prototype.msMatchesSelector ||
+	            Element.prototype.oMatchesSelector ||
+	            Element.prototype.webkitMatchesSelector ||
+	            function(s) {
+	                var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+	                    i = matches.length;
+	                while (--i >= 0 && matches.item(i) !== this) {}
+	                return i > -1;
+	            };
+	    }
+
+	    // Setup parents array
+	    var parents = [];
+
+	    // Get matching parent elements
+	    for ( ; elem && elem !== document; elem = elem.parentNode ) {
+
+	        // Add matching parents to array
+	        if ( selector ) {
+	            if ( elem.matches( selector ) ) {
+	                parents.push( elem );
+	            }
+	        } else {
+	            parents.push( elem );
+	        }
+
+	    }
+
+	    return parents;
+
+	};
+
+		var isExist = false;
+		var breadCrumbs = document.querySelector('.breadcrumbs');
+		if(!breadCrumbs) {
+			return;
+		}
+		var before = breadCrumbs.querySelector('.step');
+		var mainMenu = document.querySelector('#mega-menu-primary');
+		var currentLinkElement = mainMenu.querySelector('a[href="'+window.location.href+'"]');
+		if(currentLinkElement == null) {
+			return
+		}
+		if(!$) {
+			$ = jQuery;
+		}
+		try{
+			var megaMenuSub = getParents(currentLinkElement, '.mega-sub-menu:first');
+		}
+		catch(err) {
+			return;
+		}
+		var megaMenuLink = megaMenuSub.parentElement.querySelector('.mega-menu-link');
+		var clone = megaMenuLink.cloneNode(true);
+		var separator = breadCrumbs.querySelector("span.separator").cloneNode(true);
+		clone.className = 'step';
+		var befores = before.parentElement.childNodes;
+		befores.forEach(function(el) {
+			var itterLink = el.querySelector('a');
+			if(!itterLink) {
+				return
+			}
+			if(itterLink.getAttribute('href') == clone.getAttribute('href')) {
+				isExist = true;
+			}
+		});
+		if(!isExist) {
+			var separator = before.parentElement.insertBefore(separator, before);
+			before.parentElement.insertBefore(clone, separator); 
+		}
+
+	})
+	// Breadcrumbs fix
+
+
+		/*
+		 function mobileResize(e){
+		 if (document.documentElement.clientWidth < 992) {
+		 jQuery('.hidden-sm,.hidden-xs').hide();
+		 jQuery('.hidden-md,.hidden-lg').show();
+		 } else {
+		 jQuery('.hidden-sm,.hidden-xs').show();
+		 jQuery('.hidden-md,.hidden-lg').hide();
+		 }
+		 currOnResize();
+		 }
+		 var currOnResize = window.onresize || function(){};
+		 window.onresize = mobileResize;
+		 var currOnLoad = window.onload || function(){};
+		 window.onload = function(){
+		 mobileResize();
+		 currOnLoad();
+		 };
+		 */
+	</script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '568829826617574');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=568829826617574&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+	<link type="text/css" media="all" href="https://mccollege.edu/wp-content/cache/autoptimize/css/autoptimize_4d3c32cacc532f3fa6fcd9be3c118f39.css" rel="stylesheet" /><title>Midwestern Career College |</title>
+<script>(function(d, s, id){
+				 var js, fjs = d.getElementsByTagName(s)[0];
+				 if (d.getElementById(id)) {return;}
+				 js = d.createElement(s); js.id = id;
+				 js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+				 fjs.parentNode.insertBefore(js, fjs);
+			   }(document, 'script', 'facebook-jssdk'));</script>
+<!-- All in One SEO Pack 3.3.4 by Michael Torbert of Semper Fi Web Designob_start_detected [-1,-1] -->
+<meta name="description"  content="10-20 month trainings in Dialysis Tech, Medical Assistant, MRI Tech, Surgical Tech, Ultrasound Tech and Neurodiagnostic Tech in Chicago, Naperville and Blue Island." />
+
+<script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mccollege.edu/#organization","url":"https://mccollege.edu/","name":"Midwestern Career College","sameAs":[]},{"@type":"WebSite","@id":"https://mccollege.edu/#website","url":"https://mccollege.edu/","name":"Midwestern Career College","publisher":{"@id":"https://mccollege.edu/#organization"}},{"@type":"WebPage","@id":"https://mccollege.edu/#webpage","url":"https://mccollege.edu/","inLanguage":"en-US","name":"Front Page","isPartOf":{"@id":"https://mccollege.edu/#website"},"datePublished":"2011-05-20T18:49:43-05:00","dateModified":"2020-01-27T18:49:36-06:00","about":{"@id":"https://mccollege.edu/#organization"},"description":"10-20 month trainings in Dialysis Tech, Medical Assistant, MRI Tech, Surgical Tech, Ultrasound Tech and Neurodiagnostic Tech in Chicago, Naperville and Blue Island."}]}</script>
+<link rel="canonical" href="https://mccollege.edu/" />
+<!-- All in One SEO Pack -->
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//d2ieqaiwehnqqp.cloudfront.net' />
+<link rel='dns-prefetch' href='//ws.sharethis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Midwestern Career College &raquo; Feed" href="https://mccollege.edu/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Midwestern Career College &raquo; Comments Feed" href="https://mccollege.edu/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"\/\/mccollege.edu\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='select2-css'  href='//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css?ver=5.3.2' type='text/css' media='all' />
+
+
+
+<link rel='stylesheet' id='ls-google-fonts-css'  href='//fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+
+
+<link rel='stylesheet' id='simple-share-buttons-adder-indie-css'  href='//fonts.googleapis.com/css?family=Indie+Flower&#038;ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='simple-share-buttons-adder-font-awesome-css'  href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css?ver=5.3.2' type='text/css' media='all' />
+
+
+
+
+
+<script type='text/javascript' src='//mccollege.edu/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='//mccollege.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='//d2ieqaiwehnqqp.cloudfront.net/tced7f4a8054163a550c4348a5085b116.js?itvr=2.1.7&#038;ver=2.1.7'></script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_75b9233c69d1a9ced3e8cc55339cc6af.js?ver=3.3.3'></script>
+<script id='st_insights_js' type='text/javascript' src='//ws.sharethis.com/button/st_insights.js?publisher=4d48b7c5-0ae3-43d4-bfbe-3ff8c17a8ae6&#038;product=simpleshare'></script>
+<script type='text/javascript' src='//mccollege.edu/wp-content/themes/college-theme/js/bootstrap.min.js?ver=5.3.2'></script>
+<link rel='https://api.w.org/' href='https://mccollege.edu/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://mccollege.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://mccollege.edu/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel='shortlink' href='https://mccollege.edu/' />
+<link rel="alternate" type="application/json+oembed" href="https://mccollege.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmccollege.edu%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://mccollege.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmccollege.edu%2F&#038;format=xml" />
+<script type="text/javascript">
+(function(url){
+	if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+	var addEvent = function(evt, handler) {
+		if (window.addEventListener) {
+			document.addEventListener(evt, handler, false);
+		} else if (window.attachEvent) {
+			document.attachEvent('on' + evt, handler);
+		}
+	};
+	var removeEvent = function(evt, handler) {
+		if (window.removeEventListener) {
+			document.removeEventListener(evt, handler, false);
+		} else if (window.detachEvent) {
+			document.detachEvent('on' + evt, handler);
+		}
+	};
+	var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
+	var logHuman = function() {
+		if (window.wfLogHumanRan) { return; }
+		window.wfLogHumanRan = true;
+		var wfscr = document.createElement('script');
+		wfscr.type = 'text/javascript';
+		wfscr.async = true;
+		wfscr.src = url + '&r=' + Math.random();
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+		for (var i = 0; i < evts.length; i++) {
+			removeEvent(evts[i], logHuman);
+		}
+	};
+	for (var i = 0; i < evts.length; i++) {
+		addEvent(evts[i], logHuman);
+	}
+})('//mccollege.edu/?wordfence_lh=1&hid=C01C3191D48CD2B604BCF25D12F700A6');
+</script><style type="text/css">/** Mega Menu CSS: fs **/</style>
+<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
+	
+<script type="text/javascript">
+(function(a,e,c,f,g,h,b,d){var k ={ak:"934088969",cl:"GuOkCJyvmmwQiaK0vQM",autoreplace:"(312) 236-9000"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[g]||
+(a[g]=k.ak);b=e.createElement(h);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(h)[0];d.parentNode.insertBefore(b,d);a[f]=function(b,d,e){a[c](2,b,k,d,null,new 
+Date,e)};a[f]()})(window,document,"_googWcmImpl","_googWcmGet","_googWcmAk","script");
+</script> 
+<script async src='https://tag.simpli.fi/sifitag/fdc5a7d0-be8b-0135-e106-06659b33d47c'></script>
+
+<!-- Global site tag (gtag.js) - Google Ads: 934088969 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-934088969"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+        gtag('config', 'AW-934088969');
+        </script>
+
+</head>
+
+<!--Body starts-->
+<body class="home page-template-default page page-id-701 mega-menu-primary group-blog">
+
+
+
+<header id="masthead" class="site-header" data-role="banner">
+	<div class="head-cont rel">
+		<!-- home slider -->
+		        <pre style='display: none;' class='test123'>string(21) "[layerslider id="44"]"
+</pre>
+					<div class="row">
+				<div id="home-slider">
+					 <div class="ls-wp-fullwidth-container" style="height:450px;"><div class="ls-wp-fullwidth-helper"><div id="layerslider_44" class="ls-wp-container" style="width:100%;height:450px;margin:0 auto;margin-bottom: 0px;"><div class="ls-slide" data-ls="transition2d:1;"><img src="https://mccollege.edu/wp-content/uploads/2019/01/Grad-Globe.jpg" class="ls-bg" alt="Grad-Globe" /></div><div class="ls-slide" data-ls="transition2d:1;"><img src="https://mccollege.edu/wp-content/uploads/2019/12/0170-EMPOWER.png" class="ls-bg" alt="0170 EMPOWER" /></div><div class="ls-slide" data-ls="transition2d:1;"><img src="https://mccollege.edu/wp-content/uploads/2019/12/0190-GIRL-EMPOWER.png" class="ls-bg" alt="0190 GIRL EMPOWER" /></div><div class="ls-slide" data-ls="transition2d:1;"><img src="https://mccollege.edu/wp-content/uploads/2019/12/0204-ROSES-RED.png" class="ls-bg" alt="0204 ROSES RED" /></div><div class="ls-slide" data-ls="transition2d:1;"><img src="https://mccollege.edu/wp-content/uploads/2019/12/0218-All-graduates-III.png" class="ls-bg" alt="0218 All graduates III" /></div></div></div></div>				</div>
+			</div>
+				<!-- home slider end-->
+		<div class="top-transparent-menu ">
+			<div class="container">
+				<div class="mcc-contact-cont">
+					<div class="mcc-contact"> <span class="glyphicon glyphicon-earphone"></span> <a href="tel:(312) 236-9000">(312) 236-9000</a></div><div class="mcc-contact"><span class="glyphicon  glyphicon-envelope"></span> <a href="mailto:admissions@mccollege.edu">admissions@mccollege.edu</a></div>				</div>
+				<nav class="pull-right transparent-menu-main">
+					<div class="menu-transparent-menu-container"><ul id="transparent-menu" class="menu"><li id="menu-item-2287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2287"><a href="https://mccollege.edu/request-information/">Request Information</a></li>
+</ul></div>				</nav>
+			</div>
+		</div>
+
+		<!--		navigation -->
+		<div id="brand-and-nav" class="brand-nav-div " >
+			<div class="container">
+				<div class="site-branding">
+											<a class="site-logo-link" href="https://mccollege.edu/" rel="home">
+
+							<img src="https://mccollege.edu/wp-content/uploads/2019/02/MCC-Logo-2018-white-letters.png" alt="" >
+							<!--							<h3>--><!--</h3>-->
+						</a>
+									</div><!-- .site-branding -->
+
+
+				<!--				<nav id="site-top-navigation">-->
+				<!--					-->				<!--				</nav>-->
+
+
+
+				<nav id="site-navigation" class="main-navigation " data-role="navigation">
+					<div id="mega-menu-wrap-primary" class="mega-menu-wrap"><div class="mega-menu-toggle"><div class="mega-toggle-blocks-left"></div><div class="mega-toggle-blocks-center"></div><div class="mega-toggle-blocks-right"><div class='mega-toggle-block mega-menu-toggle-block mega-toggle-block-1' id='mega-toggle-block-1' tabindex='0'><span class='mega-toggle-label' role='button' aria-expanded='false'><span class='mega-toggle-label-closed'>MENU</span><span class='mega-toggle-label-open'>MENU</span></span></div></div></div><ul id="mega-menu-primary" class="mega-menu max-mega-menu mega-menu-horizontal mega-no-js" data-event="hover_intent" data-effect="disabled" data-effect-speed="200" data-effect-mobile="disabled" data-effect-speed-mobile="0" data-mobile-force-width="false" data-second-click="go" data-document-click="collapse" data-vertical-behaviour="standard" data-breakpoint="769" data-unbind="true"><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-1865' id='mega-menu-item-1865'><a class="mega-menu-link" href="https://mccollege.edu/why-mcc/" aria-haspopup="true" aria-expanded="false" tabindex="0">Why  MCC<span class="mega-indicator"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1908' id='mega-menu-item-1908'><a class="mega-menu-link" href="https://mccollege.edu/mission/">Mission and Vision</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1841' id='mega-menu-item-1841'><a class="mega-menu-link" href="https://mccollege.edu/locations/">MCC Locations</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1906' id='mega-menu-item-1906'><a class="mega-menu-link" href="https://mccollege.edu/accreditations-approvals-and-affiliations/">Accreditations and Approvals</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-2170' id='mega-menu-item-2170'><a class="mega-menu-link" href="https://mccollege.edu/consumer-information/">Consumer Information</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-3565' id='mega-menu-item-3565'><a class="mega-menu-link" href="https://mccollege.edu/careers-at-mcc">Careers at MCC</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-4347' id='mega-menu-item-4347'><a class="mega-menu-link" href="//mccollege.libguides.com/home" target="_blank" rel="nofollow">Library</a></li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-megamenu mega-menu-item-has-children mega-align-bottom-left mega-menu-megamenu mega-menu-item-1759' id='mega-menu-item-1759'><a class="mega-menu-link" href="/programs/" aria-haspopup="true" aria-expanded="false" tabindex="0">Academics<span class="mega-indicator"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-widget widget_nav_menu mega-menu-columns-2-of-4 mega-menu-item-nav_menu-3' id='mega-menu-item-nav_menu-3'><h4 class="mega-block-title">Associate of Applied Science (AAS)</h4><div class="menu-associate-of-applied-science-in-container"><ul id="menu-associate-of-applied-science-in" class="menu"><li id="menu-item-7628" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7628"><a href="https://mccollege.edu/associate-of-applied-science-in-accounting/">Accounting</a></li>
+<li id="menu-item-5055" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-5055"><a href="https://mccollege.edu/associate-of-applied-science-in-business-administration/">Business Administration</a></li>
+<li id="menu-item-7627" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7627"><a href="https://mccollege.edu/associate-of-applied-science-in-marketing/">Marketing</a></li>
+<li id="menu-item-2014" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2014"><a href="https://mccollege.edu/healthcare-degree-programs/associates-in-diagnostic-medical-sonography-dms/">Diagnostic Medical Sonography</a></li>
+<li id="menu-item-1957" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-1957"><a href="https://mccollege.edu/healthcare-degree-programs/magnetic-resonance-imaging-mri-technology/">Magnetic Resonance Imaging (MRI) Technology</a></li>
+<li id="menu-item-2013" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2013"><a href="https://mccollege.edu/healthcare-degree-programs/associates-in-noninvasive-cardiovascular-sonography-nicvs/">Non-Invasive Cardiovascular Sonography</a></li>
+<li id="menu-item-4735" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-4735"><a href="https://mccollege.edu/healthcare-degree-programs/associates-in-surgical-technology/">Surgical Technology</a></li>
+</ul></div></li><li class='mega-menu-item mega-menu-item-type-widget widget_nav_menu mega-menu-columns-2-of-4 mega-menu-item-nav_menu-4' id='mega-menu-item-nav_menu-4'><h4 class="mega-block-title">Certificate Programs</h4><div class="menu-certificate-programs-container"><ul id="menu-certificate-programs" class="menu"><li id="menu-item-1955" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-1955"><a href="https://mccollege.edu/dialysis-technologist-training/">Dialysis Technologist Training Program</a></li>
+<li id="menu-item-1954" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-1954"><a href="https://mccollege.edu/healthcare-programs/electroneurodiagnostic-technologist-end/">Electroneurodiagnostic (END) Technologist</a></li>
+<li id="menu-item-2393" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2393"><a href="https://mccollege.edu/magnetic-resonance-imaging-mri-technologist">Magnetic Resonance Imaging (MRI) Technologist</a></li>
+<li id="menu-item-1953" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-1953"><a href="https://mccollege.edu/healthcare-programs/medical-assisting-diploma-dma/">Medical Assisting</a></li>
+<li id="menu-item-5359" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-5359"><a href="https://mccollege.edu/healthcare-programs/surgical-technologist-training/">Surgical Technologist Training Program</a></li>
+</ul></div></li><li class='mega-menu-item mega-menu-item-type-widget widget_nav_menu mega-menu-columns-2-of-4 mega-menu-clear mega-menu-item-nav_menu-6' id='mega-menu-item-nav_menu-6'><h4 class="mega-block-title">English Language Training</h4><div class="menu-english-language-training-container"><ul id="menu-english-language-training" class="menu"><li id="menu-item-1940" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-1940"><a href="https://mccollege.edu/vocational-english-as-a-second-language-vesl/">Vocational English as a Second Language</a></li>
+<li id="menu-item-5453" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5453"><a href="https://mccollege.edu/english-as-a-second-language/">English as a Second Language</a></li>
+<li id="menu-item-5681" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-5681"><a href="https://mccollege.edu/english-for-healthcare/">English for Healthcare</a></li>
+</ul></div></li><li class='mega-menu-item mega-menu-item-type-widget widget_nav_menu mega-menu-columns-2-of-4 mega-menu-item-nav_menu-18' id='mega-menu-item-nav_menu-18'><h4 class="mega-block-title">Library</h4><div class="menu-library-container"><ul id="menu-library" class="menu"><li id="menu-item-4349" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4349"><a href="//mccollege.libguides.com/home" target="_blank" rel="nofollow">MCC Online Library</a></li>
+</ul></div></li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-2369' id='mega-menu-item-2369'><a class="mega-menu-link" href="https://mccollege.edu/locations/" aria-haspopup="true" aria-expanded="false" tabindex="0">Locations<span class="mega-indicator"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-3770' id='mega-menu-item-3770'><a class="mega-menu-link" href="https://mccollege.edu/locations/">All Locations</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-4043' id='mega-menu-item-4043'><a class="mega-menu-link" href="https://mccollege.edu/chicago-campus/">Chicago Main Campus</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-4042' id='mega-menu-item-4042'><a class="mega-menu-link" href="https://mccollege.edu/blue-island/">Blue Island Extension Campus</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-4041' id='mega-menu-item-4041'><a class="mega-menu-link" href="https://mccollege.edu/naperville/">Naperville Extension Campus</a></li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-disable-link mega-menu-item-1864' id='mega-menu-item-1864'><a class="mega-menu-link" tabindex="0" aria-haspopup="true" aria-expanded="false" role="button">Admissions<span class="mega-indicator"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-2244' id='mega-menu-item-2244'><a class="mega-menu-link" href="https://mccollege.edu/apply-now/">Online Application</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1902' id='mega-menu-item-1902'><a class="mega-menu-link" href="https://mccollege.edu/admissions-requirements/">Admission Requirements</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1899' id='mega-menu-item-1899'><a class="mega-menu-link" href="https://mccollege.edu/financial-aid/">Financial Aid and Grants</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-2991' id='mega-menu-item-2991'><a class="mega-menu-link" href="https://mccollege.edu/net-price-calculator/">Net Price Calculator</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-4164' id='mega-menu-item-4164'><a class="mega-menu-link" href="https://mccollege.edu/pay/">Make a Payment</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-8108' id='mega-menu-item-8108'><a class="mega-menu-link" href="https://mccollege.libguides.com/BusinessOffice/home" target="_blank" rel="nofollow">Business Office</a></li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-megamenu mega-menu-item-has-children mega-align-bottom-left mega-menu-megamenu mega-menu-item-4044' id='mega-menu-item-4044'><a class="mega-menu-link" href="https://mccollege.edu/international-students/" aria-haspopup="true" aria-expanded="false" tabindex="0">International<span class="mega-indicator"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-widget widget_nav_menu mega-menu-columns-1-of-2 mega-menu-item-nav_menu-15' id='mega-menu-item-nav_menu-15'><h4 class="mega-block-title">International Admissions</h4><div class="menu-intl-adm-req-in-mega-container"><ul id="menu-intl-adm-req-in-mega" class="menu"><li id="menu-item-4879" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4879"><a href="https://mccollege.edu/apply/">Apply or Transfer</a></li>
+<li id="menu-item-4880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4880"><a href="https://mccollege.edu/visa-requirements/">Visa Requirements</a></li>
+<li id="menu-item-4881" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4881"><a href="https://mccollege.edu/tuition-and-fees/">Tuition and Fees</a></li>
+<li id="menu-item-4882" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4882"><a href="https://mccollege.edu/support-and-orientation/">Support and Orientation</a></li>
+<li id="menu-item-6239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6239"><a href="https://mccollege.edu/student-housing/">Student Housing</a></li>
+<li id="menu-item-5452" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5452"><a href="//mccollege.libguides.com/home" target="_blank" rel="nofollow">Library</a></li>
+<li id="menu-item-8107" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8107"><a href="https://mccollege.libguides.com/BusinessOffice/home" target="_blank" rel="nofollow">Business Office</a></li>
+</ul></div></li><li class='mega-menu-item mega-menu-item-type-widget widget_nav_menu mega-menu-columns-1-of-2 mega-menu-item-nav_menu-16' id='mega-menu-item-nav_menu-16'><h4 class="mega-block-title">Programs</h4><div class="menu-intl-prog-in-mega-container"><ul id="menu-intl-prog-in-mega" class="menu"><li id="menu-item-3677" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-3677"><a href="https://mccollege.edu/vocational-english-as-a-second-language-vesl/">Vocational English as a Second Language</a></li>
+<li id="menu-item-5451" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5451"><a href="//mccollege.edu/english-as-a-second-language/">English as a Second Language</a></li>
+<li id="menu-item-5682" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-5682"><a href="https://mccollege.edu/english-for-healthcare/">English for Healthcare</a></li>
+<li id="menu-item-7626" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7626"><a href="https://mccollege.edu/associate-of-applied-science-in-accounting/">AAS in Accounting (NEW)</a></li>
+<li id="menu-item-7625" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7625"><a href="https://mccollege.edu/associate-of-applied-science-in-marketing/">AAS in Marketing (NEW)</a></li>
+<li id="menu-item-4644" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-4644"><a href="https://mccollege.edu/associate-of-applied-science-in-business-administration/">AAS in Business Administration</a></li>
+<li id="menu-item-3678" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-3678"><a href="https://mccollege.edu/healthcare-degree-programs/associates-in-diagnostic-medical-sonography-dms/">AAS in Diagnostic Medical Sonography</a></li>
+<li id="menu-item-3679" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-3679"><a href="https://mccollege.edu/healthcare-degree-programs/magnetic-resonance-imaging-mri-technology/">AAS in Magnetic Resonance Imaging (MRI) Technology</a></li>
+<li id="menu-item-3680" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-3680"><a href="https://mccollege.edu/healthcare-degree-programs/associates-in-noninvasive-cardiovascular-sonography-nicvs/">AAS in Non-Invasive Cardiovascular Sonography</a></li>
+</ul></div></li><li class='mega-menu-item mega-menu-item-type-widget widget_nav_menu mega-menu-columns-1-of-2 mega-menu-clear mega-menu-item-nav_menu-19' id='mega-menu-item-nav_menu-19'><h4 class="mega-block-title">International Students</h4><div class="menu-intl-students-in-mega-container"><ul id="menu-intl-students-in-mega" class="menu"><li id="menu-item-3669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3669"><a href="https://mccollege.edu/international-students/">International Students</a></li>
+<li id="menu-item-8006" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8006"><a href="https://mccollege.edu/spanish">Estudiantes Internacionales</a></li>
+<li id="menu-item-7471" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7471"><a href="https://mccollege.edu/mongolian">Олон Улсын Оюутан</a></li>
+<li id="menu-item-5218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5218"><a href="https://mccollege.edu/sinh-vien-quoc-te/">Sinh Viên Quốc Tế</a></li>
+<li id="menu-item-3673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3673"><a href="https://mccollege.edu/thai-international-students/">นักเรียนต่างชาติ</a></li>
+<li id="menu-item-3667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3667"><a href="https://mccollege.edu/portuguese-international-students/">Estudantes Internacionais</a></li>
+<li id="menu-item-3672" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3672"><a href="https://mccollege.edu/korean-international-students/">한국 유학생</a></li>
+<li id="menu-item-8010" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8010"><a href="//mccollege.libguides.com/dso/home" target="_blank" rel="nofollow">International Student Services</a></li>
+</ul></div></li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-1863' id='mega-menu-item-1863'><a class="mega-menu-link" href="https://mccollege.edu/career-services/" aria-haspopup="true" aria-expanded="false" tabindex="0">Careers<span class="mega-indicator"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-3430' id='mega-menu-item-3430'><a class="mega-menu-link" href="https://mccollege.edu/healthcare-job-listings/mccollege.edu/healthcare-job-listings/">Healthcare Job Listings</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1897' id='mega-menu-item-1897'><a class="mega-menu-link" href="https://mccollege.edu/externships/">Externships</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1904' id='mega-menu-item-1904'><a class="mega-menu-link" href="https://mccollege.edu/employment-opportunities/">For Employers</a></li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-3868' id='mega-menu-item-3868'><a class="mega-menu-link" href="/blog/" tabindex="0">Blog</a></li></ul></div>				</nav><!-- #site-navigation -->
+			</div>
+
+			<!--			<div class="clearfix"></div>-->
+
+
+		</div><!-- brand and nav -->
+					<div class="header-links-container">
+				<div class="container">
+					<div class="header-links row">
+																				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+								<a href="https://mccollege.edu/request-information/">
+									<div class="link-block">
+										<img src="https://mccollege.edu/wp-content/uploads/2016/02/top-link-3.png" alt="REQUEST INFO"
+										     title="REQUEST INFO" style="float: left">
+										<!--								<div class="links-text-block" style="float: left">-->
+										<h3>REQUEST INFO</h3>
+										<!--								</div>-->
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
+																				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+								<a href="https://mccollege.edu/apply-now/">
+									<div class="link-block">
+										<img src="https://mccollege.edu/wp-content/uploads/2016/02/logo-top-1.png" alt="APPLY ONLINE"
+										     title="APPLY ONLINE" style="float: left">
+										<!--								<div class="links-text-block" style="float: left">-->
+										<h3>APPLY ONLINE</h3>
+										<!--								</div>-->
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
+																				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+								<a href="https://mccollege.edu/visit-campus/">
+									<div class="link-block">
+										<img src="https://mccollege.edu/wp-content/uploads/2016/03/Untitled-1.png" alt="VISIT CAMPUS"
+										     title="VISIT CAMPUS" style="float: left">
+										<!--								<div class="links-text-block" style="float: left">-->
+										<h3>VISIT CAMPUS</h3>
+										<!--								</div>-->
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
+																				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+								<a href="https://mccollege.edu/events/">
+									<div class="link-block">
+										<img src="https://mccollege.edu/wp-content/uploads/2016/02/top-link-2.png" alt="EVENTS"
+										     title="EVENTS" style="float: left">
+										<!--								<div class="links-text-block" style="float: left">-->
+										<h3>EVENTS</h3>
+										<!--								</div>-->
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
+											</div>
+				</div>
+			</div>
+		
+	</div>
+	<div id="page" class="site" style="position: relative;">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<div class="container">
+
+		</div>
+	</div>
+</header><!-- #masthead -->
+
+
+
+
+<!--Bread crumbs-->
+<div class="container">
+	</div>
+
+
+
+<div class="container">
+	<div id="content" class="site-content row">
+
+	<div id="primary" class="content-area col-xs-12 col-sm-8 col-md-9 col-lg-9">
+		<main id="main" class="site-main" data-role="main" >
+
+		
+	<article id="post-701" class="post-701 page type-page status-publish hentry">
+		<div class="front-page-content">
+			
+			<p></p>
+<header class="entry-header">
+<h2 class="entry-title">Free Seminar on How to Access Up to $8,000 for College!</h2>
+<p class="selectionShareable">Do you want to go back to school in 2020 but don’t know how to pay for it? Are you unemployed or underemployed? You can get up to $8,000 to help fund your education! Each year many of our students take advantage of this resource.</p>
+<p class="selectionShareable">On Wednesday, January 29 at 10:00 a.m., Midwestern Career College in Blue Island will host a free seminar on funding available through the Workforce Innovation Opportunity Act (WIOA), hosted by MCC and a local WIOA representative. <a href="https://mccollege.edu/learn-how-to-access-money-for-college/"><strong>Read more.</strong></a></p>
+</header>
+<h2>Students and Staff Speak with Amor 106.7 and Entre Cafe y Cafe</h2>
+<p><a href="https://mccollege.edu/wp-content/uploads/2020/01/FB-Cafe-Vicky-1.jpg"><img class="alignleft wp-image-9050" src="https://mccollege.edu/wp-content/uploads/2020/01/FB-Cafe-Vicky-1.jpg" alt="Univision Amor 106.7 FM's Entre Cafe y Cafe con Vicky" width="125" height="94" /></a></p>
+<p>Students and staff stopped by Amor 106.7&#8217;s students on January 15 to speak with Entre Cafe y Cafe with Vicky. They talked about how Midwestern Career College&#8217;s programs can help you change your life in this new year. <strong><a href="https://www.facebook.com/Amor1067/videos/696211277577826/?__tn__=%2Cd%2CP-R&amp;eid=ARCBZGYH9k039LwHFxy-XTP0oNy0M_IfmNygUooYDMA58-KHeRQlM5etIbAnOZc4e8CdcSP3qkR8t1B6" target="_blank" rel="nofollow">Watch the video here (in Spanish).</a></strong></p>
+<h2>CAAHEP Accredits MCC Surgical Technology Program</h2>
+<p><a href="https://mccollege.edu/wp-content/uploads/2019/12/CAAHEP.gif"><img class="alignleft  wp-image-8718" src="https://mccollege.edu/wp-content/uploads/2019/12/CAAHEP.gif" alt="" width="112" height="109" /></a>In November, Midwestern Career College achieved the gold standard for its Associate of Applied Science in Surgical Technology—accreditation by<strong> CAAHEP, the Commission on Accreditation of Allied Health Education Programs</strong> (<strong><a href="https://www.caahep.org" target="_blank" rel="nofollow">www.caahep.org</a></strong>). Graduates are eligible to take the <strong><a href="https://www.nbstsa.org/cst-certification" target="_blank" rel="nofollow">National Board of Surgical Technology and Surgical Assisting national Certified Surgical Technologist (CST)</a></strong> examination. With this certification, the demand for MCC graduates from hospitals and surgical centers should increase dramatically, making them highly competitive in the marketplace. <a href="https://mccollege.edu/mcc-surgical-technology-program-earns-coveted-caahep-accreditation/"><strong>Learn more.</strong></a></p>
+<h2>Winter 2020 Enrollment Now Open</h2>
+<div class="entry-content">Enrollment is now open for cohorts of healthcare, business and English-language programs. Come in for a tour of campus to learn more about our programs and ways we can help you move forward. <a href="//mccollege.edu/fall-enrollment-now-open/"><strong>Read more</strong> </a></div>
+<h2>A Message from an MCC Grad: “Everyone Helped Me in a Big Way”</h2>
+<p><iframe style="border: none; overflow: hidden;" src="//www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FMidwesternCareerCollege%2Fvideos%2F443399036516498%2F&amp;show_text=0&amp;width=" width="560" height="315" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe></p>
+<h2>A Message from an MCC Grad: “It Was a Perfect Fit for Me”</h2>
+<p><iframe style="border: none; overflow: hidden;" src="//www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FMidwesternCareerCollege%2Fvideos%2F2358366764451205%2F&amp;show_text=0&amp;width=" width="560" height="315" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe></p>
+<h2>A Message from an MCC Grad: “Others Weren&#8217;t Exposed to Dialysis Like We Were”</h2>
+<p><iframe style="border: none; overflow: hidden;" src="//www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FMidwesternCareerCollege%2Fvideos%2F2407891309454880%2F&amp;show_text=0&amp;width=" width="560" height="315" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe></p>
+<h2>A Message from an MCC Grad: “Hired Before I Graduated”</h2>
+<p><iframe style="border: none; overflow: hidden;" src="//www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FMidwesternCareerCollege%2Fvideos%2F2906990229372593%2F&amp;show_text=0&amp;width=" width="560" height="315" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe></p>
+<h2>A Message from an MCC Grad: &#8220;It&#8217;s Never Too Late&#8221;</h2>
+<p><script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script></p>
+<div class="fb-video" data-show-text="false" data-width="560" data-href="//www.facebook.com/facebook/videos/1311375665670906/"> </div>
+<h1>Student Success Stories</h1>
+<p><em><img class="alignleft wp-image-4225" src="//mccollege.edu/wp-content/uploads/2017/07/Venessa-Gonzalez.png" alt="" width="95" height="96" />Using the tools provided to me by Midwestern Career College, I have accomplished things in my field that were beyond any of my expectations. Now I&#8217;m returning to Midwestern to continue my education. I know that the courses offered will be in arranged in a way that&#8217;s easy to understand and succeed in, both in and outside the classroom.</em> – <strong><a href="//mccollege.edu/student-success-story-venessa-gonzalez-sonographer/">Venessa Gonzalez, Sonography Technician</a></strong></p>
+<p><img class="alignleft wp-image-4176" src="//mccollege.edu/wp-content/uploads/2011/05/Carla-Pinto-Circle.png" alt="" width="95" height="95" /></p>
+<p><em>I studied in MCC’s Vocational English as a Second Language program prior to being accepted at University of Illinois Chicago’s master of arts program in public health. MCC’s Vocational English as a Second Language program has devoted, knowledgeable teachers who challenge students and encourage you to work harder. The program has flexible schedules that I really appreciated. </em><em>–</em> <strong><a href="//mccollege.edu/student-success-story-carla-pinto-md-vocational-english-as-a-second-language/">Carla Pinto, MD</a></strong></p>
+<p><a href="//mccollege.edu/student-testimonial-devonna-taylor-mri-technologist/"><img class="alignleft wp-image-4181" src="//mccollege.edu/wp-content/uploads/2011/05/Devonna-Taylor.png" alt="" width="95" height="95" /></a></p>
+<p><em>I loved MCC’s <strong><a href="//mccollege.edu/healthcare-degree-programs/magnetic-resonance-imaging-mri-technology/">Associate of Applied Science in Magnetic Resonance Imaging (MRI) Technology</a></strong> program. It challenged me to expand my mind, to think outside the box and to grow my potential. By studying MRI technology, I’m now able to help people who are sick, to see what’s going on inside their bodies, and to have a positive impact on their well-being. –</em> <strong><a href="//mccollege.edu/student-testimonial-devonna-taylor-mri-technologist/">Devonna Taylor, MRI Technologist</a></strong></p>
+<p><a href="//mccollege.edu/wp-content/uploads/2011/05/Suhi-Garcia-DSC02894-SMALL.png"><img class="alignleft wp-image-4410" src="//mccollege.edu/wp-content/uploads/2011/05/Suhi-Garcia-DSC02894-SMALL.png" alt="Suhi Garcia, Medical Assistant Student, Certified Phlebotomist, Midwestern Career College, " width="95" height="95" /></a></p>
+<p><em>Being a student at MCC filled me with knowledge, intelligence and skills I needed to start my career as a medical assistant.</em> — <strong><a href="//mccollege.edu/medical-assistant-students-get-certified-for-phlebotomy/">Suhi Garcia, Medical Assisting, Certified for Phlebotomy</a></strong></p>
+<header class="entry-header"></header>
+<p>&nbsp;</p>
+<h2>ARRT Recognition for MRI and Sonography Programs</h2>
+<p>The <strong><a href="//www.arrt.org/" target="_blank" rel="noopener noreferrer nofollow">American Registry of Radiologic Technologists (ARRT)</a></strong> recognizes Midwestern Career College&#8217;s <strong><a href="//mccollege.edu/healthcare-degree-programs/associates-in-magnetic-resonance-imaging-mri-technology/">Associate of Applied Science in Magnetic Resonance Imaging (MRI) Technology</a></strong> and <a href="//mccollege.edu/healthcare-degree-programs/associates-in-diagnostic-medical-sonography-dms/"><strong>Associate of Applied Science in Diagnostic Medical Sonography</strong></a> programs as approved educational programs for ARRT&#8217;s magnetic resonance imaging and sonography certification and registration respectively. Find MCC on the ARRT website <strong><a href="//www.arrt.org/Education/Educational-Programs" target="_blank" rel="noopener noreferrer nofollow">here</a></strong>.</p>
+<h2>Looking to Start a Career in Healthcare?</h2>
+<p>Are you considering becoming a <strong><a href="//mccollege.edu/so-you-want-to-be-a-cna/">CNA</a></strong>, <strong><a href="//mccollege.edu/phlebotomist/">phlebotomist</a></strong>, <strong><a href="//mccollege.edu/hha">home health aide</a></strong> or <strong><a href="//mccollege.edu/caregiver">caregiver</a></strong>? These short programs can be a great foot in the door to a healthcare career. But you can advance your career faster by becoming a <strong><a href="//mccollege.edu/healthcare-programs/medical-assisting-diploma-dma/">medical assistant</a></strong> or <strong><a href="//mccollege.edu/healthcare-programs/dialysis-technologist-training/">dialysis tech</a></strong>. We&#8217;re now enrolling for summer and fall 2019. Financial aid is available to those who qualify.</p>
+<h2><a href="//mccollege.edu/fresenius-medical-care-and-midwestern-career-college-announce-clinical-affiliation-agreement/">Fresenius Medical Care Signs Affiliation Agreement with MCC</a></h2>
+<p><img class=" alignleft" src="//mccollege.edu/wp-content/uploads/2018/03/FMC-Logo-338.png" width="225" height="48" />In February 2018, Midwestern Career College signed a clinical affiliation agreement with Fresenius Medical Care, a premier dialysis provider. Covering 285 Fresenius locations in Illinois, Indiana and Ohio, this agreement will enable MCC students to utilize their clinical skills as dialysis technologists in a real-world environment. <strong><a href="//mccollege.edu/fresenius-medical-care-and-midwestern-career-college-announce-clinical-affiliation-agreement/">Read more</a></strong></p>
+<h2><a href="//mccollege.edu/midwestern-career-college-named-to-victory-medias-2017-military-friendly-schools-list/">MCC Named Military Friendly® School by Victory Media</a></h2>
+<p><img class="alignleft wp-image-3469" src="//mccollege.edu/wp-content/uploads/2011/05/MFS17_Designation_ca7f639de5b52e0a3008aa287917a2b1-1.png" alt="" width="70" height="70" /> Midwestern Career College is proud that it has earned the 2019 Military Friendly® School designation by Victory Media, publisher of G.I. Jobs®, STEM Jobs℠, and Military Spouse. <strong><a href="//mccollege.edu/midwestern-career-college-named-to-victory-medias-2017-military-friendly-schools-list/">Read more</a></strong></p>
+<p>
+
+</p>
+<p>&nbsp;</p>
+<p></p>
+		</div><!-- .front-page-content -->
+
+	</article><!-- #post-## -->
+
+
+	<!--<div class="news">
+			
+			
+						<?
+				//php wp_reset_query();
+			
+			?>
+		</div>-->
+
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+<div class="secondary widget-area right-sidebar col-xs-12 col-sm-4 col-md-3" data-role="complementary">
+	<aside id="text-7" class="widget widget_text">			<div class="textwidget"></div>
+		</aside><aside id="search-2" class="widget widget_search"><h2 class="widget-title">SEARCH</h2><form role="search" method="get" class="search-form" action="https://mccollege.edu/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></aside><aside id="custom_html-6" class="widget_text widget widget_custom_html"><h2 class="widget-title">Request Information</h2><div class="textwidget custom-html-widget"><form accept-charset="UTF-8" action="//ho303.infusionsoft.com/app/form/process/2afc338b2efbd75eac3b0cccd6f6520d" class="infusion-form" id="inf_form_2afc338b2efbd75eac3b0cccd6f6520d" method="POST">
+    <input name="inf_form_xid" type="hidden" value="2afc338b2efbd75eac3b0cccd6f6520d" />
+    <input name="inf_form_name" type="hidden" value="RFI (Public, Web)" />
+    <input name="infusionsoft_version" type="hidden" value="1.70.0.174739" />
+    <div class="infusion-field">
+        <input class="infusion-field-input" id="inf_field_FirstName" name="inf_field_FirstName" placeholder="First Name *" type="text" />
+    </div>
+    <div class="infusion-field">
+        <input class="infusion-field-input" id="inf_field_LastName" name="inf_field_LastName" placeholder="Last Name *" type="text" />
+    </div>
+    <div class="infusion-field">
+        <input class="infusion-field-input" id="inf_field_Email" name="inf_field_Email" placeholder="Email *" type="text" />
+    </div>
+    <div class="infusion-field">
+        <input class="infusion-field-input" id="inf_field_Phone1" name="inf_field_Phone1" placeholder="Phone *" type="text" />
+    </div>
+    <div class="infusion-field">
+        <select id="inf_custom_Program" name="inf_custom_Program"><optgroup><option value="">Program of Interest *</option></optgroup><optgroup label="Associates of Applied Science"><option value="253">Accounting</option><option value="236">Business Administration</option><option value="255">Marketing</option><option value="241">Diagnostic Medical Sonography (DMS)</option><option value="243">Magnetic Resonance Imaging (MRI) Technology</option><option value="245">Non-Invasive Cardiovascular Sonography (NICVS)</option><option value="249">Surgical Technology</option></optgroup><optgroup label="Certificates"><option value="77">Dialysis Technologist Training</option><option value="79">Electroneurodiagnostic Technologist (END)</option><option value="81">Medical Assisting (DMA)</option></optgroup><optgroup label="English as a Second Language (ESL)"><option value="85">English as a Second Language (ESL)</option><option value="247">English for Healthcare</option></optgroup><optgroup label="I'm Not Sure"><option value="147">I'm Not Sure</option></optgroup></select>
+    </div>
+    <div class="infusion-field">
+        <div class="infusion-field-input-container">
+            <select id="inf_custom_Campus0" name="inf_custom_Campus0"><option value="">Campus *</option><option value="Chicago">Chicago</option><option value="Naperville">Naperville</option><option value="Blue Island">Blue Island</option><option value="Skokie">Skokie</option></select>
+        </div>
+    </div>
+    <div class="infusion-field">
+        <div class="infusion-field-input-container">
+            <select id="inf_custom_HowDidYouHearFromUs" name="inf_custom_HowDidYouHearFromUs"><option value="">How did you hear about us? *</option><option value="Google">Google</option><option value="Other online search">Other online search</option><option value="Facebook">Facebook</option><option value="Referral (friend/student/alumni)">Referral (friend/student/alumni)</option><option value="Banner Ad">Banner Ad</option><option value="Direct mail">Direct mail</option><option value="WIOA">WIOA</option><option value="Instagram">Instagram</option><option value="YouTube">YouTube</option><option value="LinkedIn">LinkedIn</option><option value="Fresenius">Fresenius</option><option value="Jubilee">Jubilee</option><option value="Flyer">Flyer</option><option value="Event">Event</option><option value="Library">Library</option><option value="Marta H.">Marta H.</option><option value="Medical office">Medical office</option><option value="Newspaper ad">Newspaper ad</option><option value="NCL">NCL</option><option value="EDA">EDA</option><option value="TRA">TRA</option><option value="ESL 500">ESL 500</option><option value="Desi Talk">Desi Talk</option><option value="Pasaportete">Pasaportete</option><option value="Pinoy News">Pinoy News</option><option value="Polish Daily News">Polish Daily News</option><option value="Reklama">Reklama</option><option value="Siam Town">Siam Town</option><option value="ESLDirectory.com">ESLDirectory.com</option><option value="Twitter">Twitter</option><option value="Other">Other</option><option value="Unknown">Unknown</option></select>
+        </div>
+    </div>
+    <div class="infusion-field">
+        <div class="infusion-field-input-container">
+            <select id="inf_custom_USCitizenPermanentResident" name="inf_custom_USCitizenPermanentResident"><option value="">Citizenship*</option><option value="US Citizen">US Citizen</option><option value="Permanent Resident">Permanent Resident</option><option value="International (in US)">International (in US)</option><option value="International (Not in US)">International (Not in US)</option></select>
+        </div>
+    </div>
+    <div class="infusion-field">
+        <span class="infusion-option">
+            <input id="inf_option_BycheckingthisboxIgiveconsentforMCCtotextmeatthenumberprovidedabove" name="inf_option_BycheckingthisboxIgiveconsentforMCCtotextmeatthenumberprovidedabove" type="checkbox" value="873" />
+            <label for="inf_option_BycheckingthisboxIgiveconsentforMCCtotextmeatthenumberprovidedabove">By checking this box, I give consent for MCC to text me at the number provided above.</label>
+        </span>
+    </div>
+    <div class="infusion-field">
+        <label for="inf_misc_Questions">Questions</label>
+        <textarea cols="24" id="inf_misc_Questions" name="inf_misc_Questions" placeholder="Questions" rows="5"></textarea></div>
+    <div>
+        <div>&nbsp;</div>
+    </div>
+    <div class="infusion-submit">
+        <button type="submit" style='color:#ffff;'>Submit</button>
+    </div>
+    <input name="inf_custom_Term" type="hidden" value="null" />
+    <input name="inf_custom_Source" type="hidden" value="null" />
+    <input name="inf_custom_Medium" type="hidden" value="null" />
+    <input name="inf_custom_Content" type="hidden" value="null" />
+    <input name="inf_custom_Campaign" type="hidden" value="null" />
+    <input name="inf_custom_Position" type="hidden" value="null" />
+    <input name="inf_custom_AdGroup" type="hidden" value="null" />
+    <input name="inf_custom_GaReferurl" type="hidden" value="null" />
+    <input name="inf_custom_IPAddress" type="hidden" value="null" />
+    <div>
+            <script>
+(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"5707817"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+</script>
+                <noscript>
+                    <img height="0" src="//bat.bing.com/action/0?ti=5707817&Ver=2" width="0" />
+                </noscript>
+    </div>
+</form>
+<script type="text/javascript" src="//ho303.infusionsoft.app/app/webTracking/getTrackingCode"></script>
+<script type="text/javascript" src="//ho303.infusionsoft.com/app/timezone/timezoneInputJs?xid=559253841cf131441000265b6929d754"></script>
+</div></aside><aside id="sfmsb_settings-2" class="widget sfmsb_widget"><div class="sfmsb-follow-social-buttons sfmsb-under sfmsb-square 40 sfmsb-horizontal"><h2 class="widget-title">Connect with us!</h2><a target="_blank" href="https://www.facebook.com/MidwesternCareerCollege/?ref=hl"><span class="sfmsb-icon-facebook sfmsb-square" style="color:#3a5795;font-size:40px;" data-color="#3a5795"></span></a><a target="_blank" href="https://www.linkedin.com/edu/school?id=188132&#038;goback=%2Epts_188132_*1_*1_*1_*1_*1_*1&#038;trk=edu-cp-title"><span class="sfmsb-icon-linkedin sfmsb-square" style="color:#0077b5;font-size:40px;" data-color="#0077b5"></span></a><a target="_blank" href="https://www.instagram.com/midwestern_career_college/"><span class="sfmsb-icon-instagram sfmsb-square" style="color:#b09375;font-size:40px;" data-color="#b09375"></span></a><a target="_blank" href="https://www.youtube.com/channel/UCCP8MAxe0MOP4CVZA-VBNxw"><span class="sfmsb-icon-youtube sfmsb-square" style="color:#e12b28;font-size:40px;" data-color="#e12b28"></span></a><div class="sfmsb-clearfix"></div></div></aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><a class="maxbutton-1 maxbutton maxbutton-apply-now" href="/apply-now/"><span class='mb-text'>Apply Now</span></a>
+</div>
+		</aside><aside id="text-9" class="widget widget_text"><h2 class="widget-title">Make a Payment</h2>			<div class="textwidget"><p><a href="https://mccollege.edu/pay/">Pay for tuition, graduation, or other fees here.</a></p>
+</div>
+		</aside>
+</div><!-- #secondary -->
+
+
+
+</div><!-- #content -->
+</div><!-- container -->
+<div class="site-info"></div><!-- .site-info -->
+
+<!--noptimize--><!--email_off--><style type='text/css'>.maxbutton-1.maxbutton.maxbutton-apply-now{position:relative;text-decoration:none;display:inline-block;vertical-align:middle;border-color:#0e1a9e;width:160px;height:50px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-style:solid;border-width:2px;background:rgba(25, 33, 125, 1);-pie-background:linear-gradient(rgba(25, 33, 125, 1) 45%, rgba(54, 138, 201, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(25, 33, 125, 1)), color-stop(1, rgba(54, 138, 201, 1)));background:-moz-linear-gradient(rgba(25, 33, 125, 1) 45%, rgba(54, 138, 201, 1));background:-o-linear-gradient(rgba(25, 33, 125, 1) 45%, rgba(54, 138, 201, 1));background:linear-gradient(rgba(25, 33, 125, 1) 45%, rgba(54, 138, 201, 1));-webkit-box-shadow:0px 0px 2px 0 #333;-moz-box-shadow:0px 0px 2px 0 #333;box-shadow:0px 0px 2px 0 #333}.maxbutton-1.maxbutton.maxbutton-apply-now:hover{border-color:#1d2ab8;background:rgba(255, 255, 255, 1);-pie-background:linear-gradient(rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(255, 255, 255, 1)), color-stop(1, rgba(255, 255, 255, 1)));background:-moz-linear-gradient(rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1));background:-o-linear-gradient(rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1));background:linear-gradient(rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1));-webkit-box-shadow:0px 0px 2px 0 #333;-moz-box-shadow:0px 0px 2px 0 #333;box-shadow:0px 0px 2px 0 #333}.maxbutton-1.maxbutton.maxbutton-apply-now .mb-text{color:#fff;font-family:Arial;font-size:20px;text-align:center;font-style:normal;font-weight:bold;padding-top:13px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset}.maxbutton-1.maxbutton.maxbutton-apply-now:hover .mb-text{color:#1f2778}@media only screen and (max-width:480px){.maxbutton-1.maxbutton.maxbutton-apply-now{width:90%}.maxbutton-1.maxbutton.maxbutton-apply-now .mb-text{font-size:16px}}
+</style><!--/email_off--><!--/noptimize-->
+<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'b2342199-9807-4f1e-b157-bf31ca29191d', f: true }); done = true; } }; })();</script><script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/mccollege.edu\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_1534f06aa2b1b721a45372f8238e2461.js?ver=5.1.6'></script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_69a36fcdd9c836d36b1bed7734ddeba5.js?ver=5.3.2'></script>
+<script type='text/javascript'>
+Main.boot( [] );
+</script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_8a25965d822705f957a243443d219787.js?ver=20130115'></script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_c5f210c1633d09fc7c0fcb925235140f.js?ver=20130115'></script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_3583baa2f907831390ab8f4c049ef59c.js?ver=20130115'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7cf_global_settings = {"ajaxurl":"https:\/\/mccollege.edu\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_da723fe06f860cd05edb247f8730858d.js?ver=1.7.8'></script>
+<script type='text/javascript' src='//mccollege.edu/wp-includes/js/hoverIntent.min.js?ver=1.8.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var megamenu = {"timeout":"300","interval":"100"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_b397d565c78cc3c3f39a7a4216cdf336.js?ver=2.7.3'></script>
+<script type='text/javascript' src='//mccollege.edu/wp-includes/js/wp-embed.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_fe8905e9cd1829d1d15f91a9dfa51a64.js?ver=1.11.8'></script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_c240328741176c8c1e159d63795a50f6.js?ver=5.6.2'></script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_767519d48621df8e1ebf4f5eb423aae3.js?ver=5.6.2'></script>
+<script type='text/javascript' src='https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_14517966e5b9a1daf14362a45f81a094.js?ver=5.6.2'></script>
+<script data-cfasync="false" type="text/javascript">var lsjQuery = jQuery;</script><script data-cfasync="false" type="text/javascript" src="https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_c240328741176c8c1e159d63795a50f6.js?ver=5.6.2"></script> <script data-cfasync="false" type="text/javascript" src="https://mccollege.edu/wp-content/cache/autoptimize/js/autoptimize_single_fe8905e9cd1829d1d15f91a9dfa51a64.js?ver=1.11.8"></script> <script data-cfasync="false" type="text/javascript"> lsjQuery(document).ready(function() { if(typeof lsjQuery.fn.layerSlider == "undefined") { lsShowNotice('layerslider_44','jquery'); } else { lsjQuery("#layerslider_44").layerSlider({skinsPath: 'https://mccollege.edu/wp-content/plugins/layer_slider/static/skins/'}) } }); </script>
+
+<footer id="colophon" class="site-footer" data-role="contentinfo">
+	<div class="footer">
+		<div class="container">
+			<div class="logo-share col-md-3">
+				<div class="foot-cont">
+											<a class="site-logo-link" href="https://mccollege.edu/" rel="home">
+							<img src="https://mccollege.edu/wp-content/uploads/2019/02/MCC-Logo-2018-white-letters.png" alt="" >
+						</a>
+										<div class="foot-info">
+						<div class="mcc-contact"> <span class="glyphicon glyphicon-earphone"></span><a href="tel:(312) 236-9000">(312) 236-9000</a></div><div class="mcc-contact"><span class="glyphicon  glyphicon-envelope"></span><a href="mailto:admissions@mccollege.edu">admissions@mccollege.edu</a></div>						<div>
+							<a class="location" href="https://mccollege.edu/locations/">Chicago | Naperville | Blue Island</a>
+						</div>
+						<!-- Simple Share Buttons Adder (7.6.21) simplesharebuttons.com --><div class="ssba-classic-2 ssba ssbp-wrap left ssbp--theme-1"><div style="text-align:center"><a data-site="" class="ssba_facebook_share" href="http://www.facebook.com/sharer.php?u=https://mccollege.edu/"  target="_blank" ><img src="https://mccollege.edu/wp-content/uploads/2016/03/facebook.png" title="Facebook" style="width: 40px;" class="ssba ssba-img" alt="Share on Facebook" /><div title="Facebook" class="ssbp-text">Facebook</div></a><a data-site="" class="ssba_twitter_share" href="http://twitter.com/share?url=https://mccollege.edu/&amp;text=Front%20Page%20"  target=&quot;_blank&quot; ><img src="https://mccollege.edu/wp-content/uploads/2016/03/twitter.png" style="width: 40px;" title="Twitter" class="ssba ssba-img" alt="Tweet about this on Twitter" /><div title="Twitter" class="ssbp-text">Twitter</div></a></div></div>					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-md-offset-1">
+				<div class="footer-menu-content row">
+											<div class="col-sm-4 col-md-3 col-xs-12">
+							<!--								<h4>About </h4>-->
+							<div class="menu-footer-about-container"><ul id="menu-footer-about" class="menu"><li id="menu-item-2316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2316"><a href="https://mccollege.edu/mission/">About</a></li>
+<li id="menu-item-2345" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2345"><a href="https://mccollege.edu/mission/">Mission and Vision</a></li>
+<li id="menu-item-2344" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2344"><a href="https://mccollege.edu/locations/">MCC Locations</a></li>
+<li id="menu-item-2346" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2346"><a href="https://mccollege.edu/accreditations-approvals-and-affiliations/">Accreditations and Approvals</a></li>
+<li id="menu-item-2347" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2347"><a href="https://mccollege.edu/consumer-information/">Consumer Information</a></li>
+<li id="menu-item-3563" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3563"><a href="https://mccollege.edu/careers-at-mcc">Careers at MCC</a></li>
+</ul></div>						</div>
+												<div class="col-sm-4 col-md-3 col-xs-12">
+							<!--								<h4>Programs</h4>-->
+							<div class="menu-footer-programs-container"><ul id="menu-footer-programs" class="menu"><li id="menu-item-2325" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2325"><a href="//mccollege.edu/programs/">Programs</a></li>
+<li id="menu-item-7630" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7630"><a href="https://mccollege.edu/associate-of-applied-science-in-accounting/">AAS in Accounting</a></li>
+<li id="menu-item-7633" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7633"><a href="https://mccollege.edu/associate-of-applied-science-in-business-administration/">AAS in Business Administration</a></li>
+<li id="menu-item-7629" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7629"><a href="https://mccollege.edu/associate-of-applied-science-in-marketing/">AAS in Marketing</a></li>
+<li id="menu-item-2350" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2350"><a href="https://mccollege.edu/healthcare-degree-programs/associates-in-diagnostic-medical-sonography-dms/">AAS in Diagnostic Medical Sonography</a></li>
+<li id="menu-item-2355" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2355"><a href="https://mccollege.edu/healthcare-degree-programs/magnetic-resonance-imaging-mri-technology/">AAS in Magnetic Resonance Imaging (MRI) Technology</a></li>
+<li id="menu-item-2349" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2349"><a href="https://mccollege.edu/healthcare-degree-programs/associates-in-noninvasive-cardiovascular-sonography-nicvs/">AAS in Non-Invasive Cardiovascular Sonography</a></li>
+<li id="menu-item-7632" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7632"><a href="https://mccollege.edu/healthcare-degree-programs/associates-in-surgical-technology/">AAS in Surgical Technology</a></li>
+<li id="menu-item-2353" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2353"><a href="https://mccollege.edu/dialysis-technologist-training/">Dialysis Technologist Training Program</a></li>
+<li id="menu-item-2352" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2352"><a href="https://mccollege.edu/healthcare-programs/electroneurodiagnostic-technologist-end/">Electroneurodiagnostic (END) Technologist</a></li>
+<li id="menu-item-2351" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2351"><a href="https://mccollege.edu/healthcare-programs/medical-assisting-diploma-dma/">Medical Assisting</a></li>
+<li id="menu-item-2359" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-2359"><a href="https://mccollege.edu/vocational-english-as-a-second-language-vesl/">Vocational English as a Second Language</a></li>
+<li id="menu-item-7631" class="menu-item menu-item-type-post_type menu-item-object-col_program menu-item-7631"><a href="https://mccollege.edu/english-for-healthcare/">English for Healthcare</a></li>
+</ul></div>						</div>
+												<div class="col-sm-4 col-md-3 col-xs-12">
+							<!--								<h4>Student Services</h4>-->
+							<div class="menu-footer-admissions-container"><ul id="menu-footer-admissions" class="menu"><li id="menu-item-2330" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2330"><a href="https://mccollege.edu/programs/">Admissions</a></li>
+<li id="menu-item-2331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2331"><a href="https://mccollege.edu/apply-now/">Apply Now</a></li>
+<li id="menu-item-2332" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2332"><a href="https://mccollege.edu/request-information/">Request Information</a></li>
+<li id="menu-item-2361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2361"><a href="https://mccollege.edu/visit-campus/">Visit Campus</a></li>
+<li id="menu-item-2363" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2363"><a href="https://mccollege.edu/admissions-requirements/">Admission Requirements</a></li>
+<li id="menu-item-2362" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2362"><a href="https://mccollege.edu/financial-aid/">Financial Aid and Grants</a></li>
+</ul></div>						</div>
+						
+				</div>
+				<!--					-->			</div>
+			
+		</div>
+		<div class="text-center">
+			<!--				<p>©2016 Midwestern Career College | <a href="--><!--">Legal and Privacy</a></p>-->
+			<p class="copyright">©2020 Midwestern Career College | <a href="https://mccollege.edu/legal-notices/">Legal and Privacy</a></p>
+		</div>		</div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "http://www.schema.org",
+  "@type": "Organization",
+  "name": "Midwestern Career College",
+  "url": "https://mccollege.edu/",
+  "logo": "https://mccollege.edu/wp-content/uploads/2019/02/MCC-Logo-2018-white-letters.png",
+  "description": "10-20 month trainings in Dialysis Tech, Medical Assistant, MRI Tech, Surgical Tech, Ultrasound Tech and Neurodiagnostic Tech in Chicago, Naperville and Blue Island.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1 (312) 236-9000",
+    "email": "admissions@mccollege.edu",
+    "contactType": "customer service"
+  }
+}
+</script>
+</body>
+</html>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+
+Served from: mccollege.edu @ 2020-01-28 11:52:14 by W3 Total Cache
+-->

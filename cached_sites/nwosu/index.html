@@ -1,0 +1,714 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Language" content="en">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Homepage | Northwestern Oklahoma State University</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<link rel="shortcut icon" href="/favicon.ico" />
+
+	
+	<link href="/monthly/css/monthly.css" rel="stylesheet">
+<script src="/monthly/js/monthly.js?v=1.1"></script>
+
+	<script src="/js/vendor/jquery.bxslider.min.js"></script>
+	<link href="/js/vendor/jquery.bxslider.min.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="/css/layout.css"/>
+	<script>
+		(function(d) {
+			var config = {
+					kitId: 'tcj4eor',
+					scriptTimeout: 3000,
+					async: true
+				},
+				h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+		})(document);
+	</script>
+    <!-- Facebook Pixel Code --> <script> !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '281304729354981'); fbq('track', 'PageView'); </script>
+    <noscript> <img height="1" width="1" style="display:none"
+
+                    src="https://www.facebook.com/tr?id=281304729354981&ev=PageView&noscript=1"
+
+        /></noscript>
+
+    <!-- End Facebook Pixel Code -->
+</head>
+<body class="home ">
+<a href="#mainnav" class="skip">Skip Top Navigation</a>
+	<div class="layout">
+
+		<div class="main content">
+
+			
+			<nav>
+				<div class="upper">
+					<div class="hamburger mobile-only">
+						<img class="black-burger" src="/img/hamburger.png" />
+						<img class="grey-burger" src="/img/x-burger.png" />
+						<div class="menu">MENU</div>
+					</div>
+					<div class="search-box">
+						<input type="text" name="query" id="search-input" placeholder="SEARCH" />
+						<button><img src="/img/zoom.png" /></button>
+					</div>
+					<!--Algolia Autocomplete-->
+					<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+					<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+					<script>
+						var client = algoliasearch("VK6C1BM305", "84422853fe0d4655c37518872bca640f");
+						var index = client.initIndex('pages_production');
+						var staffIndex = client.initIndex('staff_production');
+						autocomplete('#search-input', { hint: false, debug: true, dropdownMenuContainer: '.upper' }, [
+							{
+								source: autocomplete.sources.hits(staffIndex, { hitsPerPage: 3 }),
+								displayKey: 'content',
+								templates: {
+									suggestion: function(suggestion) {
+										var h4 = suggestion.title;
+										if(suggestion._highlightResult.hasOwnProperty('first_name'))
+										{
+											h4 = suggestion._highlightResult.first_name.value + ' ' + suggestion._highlightResult.last_name.value;
+										}
+
+										var p = suggestion.content;
+										if(suggestion._highlightResult.hasOwnProperty('last_name'))
+										{
+											p = suggestion._highlightResult.first_name.value + ' ' + suggestion._highlightResult.last_name.value;
+										}
+										if(suggestion._highlightResult.hasOwnProperty('title'))
+										{
+											p = p  + '<br>' + suggestion._highlightResult.title.value;
+										}
+										if(p == null)
+										{
+											p = '';
+										}
+
+										var lastname = jQuery(suggestion._highlightResult.last_name.value).text();
+
+										return '<a href="' + suggestion.path + '#' + lastname.substring(0,1) + '" class="search-link"><div class="search-result">'
+											+ '<h4>' + h4 + '</h4>'
+											+ '<h5>www.nwosu.edu' + suggestion.path + '</h5>'
+											+ '<p>' + p + '</p>'
+											+ '<hr /></div></a>';
+									}
+								}
+							},
+							{
+								source: autocomplete.sources.hits(index, { hitsPerPage: 6 }),
+								displayKey: 'content',
+								templates: {
+									suggestion: function(suggestion) {
+										var h4 = suggestion.title;
+										if(suggestion._highlightResult.hasOwnProperty('title'))
+										{
+											h4 = suggestion._highlightResult.title.value;
+										}
+
+										var p = suggestion.content;
+										if(suggestion._highlightResult.hasOwnProperty('content'))
+										{
+											p = suggestion._highlightResult.content.value.substring(0,200);
+										}
+										if(p == null)
+										{
+											p = '';
+										}
+
+										return '<a href="' + suggestion.path + '" class="search-link"><div class="search-result">'
+											+ '<h4>' + h4 + '</h4>'
+											+ '<h5>www.nwosu.edu' + suggestion.path + '</h5>'
+											+ '<p>' + p + '</p>'
+											+ '<hr /></div></a>';
+									}
+								}
+							}
+						]).on('autocomplete:selected', function(event, suggestion, dataset) {
+							console.log(suggestion, dataset);
+						});
+					</script>
+
+<!--					<button type="submit"><img src="/img/zoom.png" /></button>-->
+
+					<ul class="upper-nav">
+						<li><a href="/news" target="_blank">UNIVERSITY NEWS</a></li>
+						<li><a href="/apply-online" target="_blank">ONLINE APPLICATION</a></li>
+						<li><a href="/title-ix">TITLE IX INFO</a></li>
+						<li><a href="/a-z-index">A-Z INDEX</a></li>
+						<li><a href="/employee-directory" target="_blank">EMPLOYEE DIRECTORY</a></li>
+						<li><span class="red">|</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/enid"><strong>ENID</strong></a></li>
+						<li><a href="/woodward"><strong>WOODWARD</strong></a></li>
+					</ul>
+				</div>
+				<div class="lower" id="mainnav">
+					<a href="#content" class="skip">Skip Main Nav</a>
+					<div class="logo">
+						<a href="/" title="Home" style="color: transparent;"><img src="/img/nav-logo.png" alt="NWOSU Logo" /></a>
+					</div>
+					<ul class="main-nav">
+						<li>
+							<a href="#">RESOURCES</a>
+							<div class="subnav">
+                                <div class="column">
+                    <a href="/e-mail-access" class="first-column" >Email Access</a><br>
+                    <a href="http://www.bkstr.com/nwosuniversitystore/home/en" class="first-column" target="_blank">NWOSU Bookstore</a><br>
+            </div>
+    <div class="column">
+                    <a href="/blackboard"  >Blackboard</a><br>
+                    <a href="https://rangernet.nwosu.edu/ics"  >RangerNet</a><br>
+            </div>
+    <div class="column">
+                    <a href="/library"  target="_blank">Library Services</a><br>
+                    <a href="https://selfservice.nwosu.edu/student "  target="_blank">Self Service</a><br>
+            </div>
+                                							</div>
+						</li>
+						<li>
+							<a href="#">FUTURE RANGER</a>
+							<div class="subnav">
+                                <div class="column">
+                    <a href="/apply-for-admission" class="first-column" >Apply for Admission</a><br>
+                    <a href="/visit-northwestern" class="first-column" >Visit Northwestern</a><br>
+                    <a href="/forms/prospective-student-questionnaire" class="first-column" target="_blank">Prospective Student Questionnaire</a><br>
+            </div>
+    <div class="column">
+                    <a href="/paying-for-college"  >Paying for College</a><br>
+                    <a href="/living-on-campus"  >Living on Campus</a><br>
+                    <a href="/uploads//student-services/viewbook.pdf"  target="_blank">Recruitment Viewbook</a><br>
+            </div>
+    <div class="column">
+                    <a href="/office-of-recruitment"  target="_blank">Office of Recruitment</a><br>
+                    <a href="/important-dates"  target="_blank">Important Dates</a><br>
+                    <a href="/parent-and-family-resources"  >Parent & Family Resources</a><br>
+            </div>
+    <div class="column">
+                    <a href="/guidance-counselors"  >Guidance Counselors</a><br>
+                    <a href="/plc"  >President's Leadership Class</a><br>
+            </div>
+															</div>
+						</li>
+						<li>
+							<a href="#">ACADEMICS</a>
+							<div class="subnav">
+                                <div class="column">
+                    <a href="/academics" class="first-column" >Overview</a><br>
+                    <a href="/school-of-arts-and-sciences" class="first-column" >School of Arts & Sciences</a><br>
+                    <a href="/school-of-education" class="first-column" >School of Education</a><br>
+                    <a href="/school-of-professional-studies" class="first-column" >School of Professional Studies</a><br>
+                    <a href="/academic-degrees" class="first-column" >Academic Degrees</a><br>
+            </div>
+    <div class="column">
+                    <a href="/undergraduate-catalog"  >Undergraduate Catalog</a><br>
+                    <a href="/course-schedules"  >Course Schedules</a><br>
+                    <a href="/online-programs"  >Online Programs</a><br>
+                    <a href="/graduate-studies"  >Graduate Studies</a><br>
+                    <a href="/academic-calendar"  >Academic Calendar</a><br>
+            </div>
+    <div class="column">
+                    <a href="/accreditation"  >Accreditation</a><br>
+                    <a href="/commencement-information"  >Commencement Information</a><br>
+                    <a href="/transcript-request"  >Transcript Request</a><br>
+                    <a href="/study-abroad"  >Study Abroad</a><br>
+                    <a href="/service-learning"  target="_blank">Service Learning/Civic Engagement</a><br>
+            </div>
+    <div class="column">
+                    <a href="/assessment"  target="_blank">Assessment and Institutional Effectiveness</a><br>
+                    <a href="/sponsored-programs"  target="_blank">Sponsored Programs (Grants)</a><br>
+                    <a href="/finals-schedule"  target="_blank">Finals Schedule</a><br>
+                    <a href="/apply-for-admission/transfer-student/bridge-program"  target="_blank">Bridge Program Between NWOSU & NOC</a><br>
+            </div>
+															</div>
+						</li>
+						<li data-nav-id="about">
+							<a href="#">ABOUT</a>
+							<div class="subnav">
+                                <div class="column">
+                    <a href="/university-profile" class="first-column" >University Profile</a><br>
+                    <a href="/history" class="first-column" >History</a><br>
+                    <a href="/governance" class="first-column" >Governance</a><br>
+            </div>
+    <div class="column">
+                    <a href="/leadership"  >Leadership</a><br>
+                    <a href="/employment"  >Employment</a><br>
+                    <a href="/strategic-plan"  >Strategic Plan</a><br>
+            </div>
+    <div class="column">
+                    <a href="/traditions"  >Traditions</a><br>
+                    <a href="/university-relations"  target="_blank">University Relations</a><br>
+                    <a href="/uploads//factbook.pdf"  target="_blank">FactBook</a><br>
+            </div>
+    <div class="column">
+                    <a href="/diversity"  target="_blank">Diversity at Northwestern</a><br>
+                    <a href="/visit-northwestern/campus-map"  target="_blank">Campus Map</a><br>
+            </div>
+															</div>
+						</li>
+						<li data-nav-id="student-life">
+							<a href="#">STUDENT LIFE</a>
+							<div class="subnav">
+                                <div class="column">
+                    <a href="/student-life" class="first-column" >Overview</a><br>
+                    <a href="/clubs-and-organizations" class="first-column" >Clubs and Organizations</a><br>
+            </div>
+    <div class="column">
+                    <a href="/living-on-campus"  >Living on Campus</a><br>
+                    <a href="/student-events-calendar"  >Student Events Calendar</a><br>
+            </div>
+    <div class="column">
+                    <a href="/student-services"  >Student Services</a><br>
+                    <a href="/campus-safety"  >Campus Safety</a><br>
+            </div>
+    <div class="column">
+                    <a href="/uploads//student-services/student-handbook.pdf"  target="_blank">Student Handbook</a><br>
+            </div>
+															</div>
+						</li>
+						<li class="no-subnav"><a href="http://www.riderangersride.com">ATHLETICS</a></li>
+						<li class="no-subnav"><a href="https://my.nwfoundation.com/ ">ALUMNI & GIVING</a></li>
+					</ul>
+					<hr class="uppers mobile-only">
+					<ul class="upper-nav-for-mobile mobile-only">
+						<li><a href="/news">UNIVERSITY NEWS</a></li>
+						<li><a href="/apply-online">ONLINE APPLICATION</a></li>
+						<li><a href="/docs/Title-IX-Handbook.pdf">TITLE IX INFO</a></li>
+						<li><a href="/a-z-index">A-Z INDEX</a></li>
+						<li><a href="/employee-directory">EMPLOYEE DIRECTORY</a></li>
+					</ul>
+					<hr class="uppers mobile-only">
+					<ul class="upper-nav-for-mobile mobile-only">
+						<li><a href="/enid"><strong>ENID</strong></a></li>
+						<li><a href="/woodward"><strong>WOODWARD</strong></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="content" id="content">
+
+				
+				<div id="page-content" class="page_content">
+					<div data-component="4" data-component-data-id="3"><div class="home-hero">
+    <a href="#fourbox" class="skip">Skip Slider</a>
+    <ul class="bxslider">
+                    <li>
+                <img alt="Campus Closing Tuesday" src="/uploads/slide-1580234574.jpg" />
+
+                <div class="primary-title">
+                    <h1>Campus Closing Tuesday</h1>
+                    <hr align="left">
+                    <p>Watch for further announcements on news/social</p>
+                    <a target="_blank" href="/winter-weather">
+                        <div class="home-button">
+                            <p>WINTER WEATHER PROCEDURES</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+                    <li>
+                <img alt="Spring Showcase Feb. 22 - $500 Scholarship for Attending!" src="/uploads/slide-1579279333.jpg" />
+
+                <div class="primary-title">
+                    <h1>Spring Showcase Feb. 22 - $500 Scholarship for Attending!</h1>
+                    <hr align="left">
+                    <p>Open to transfer students & high school juniors/seniors</p>
+                    <a target="_blank" href="/spring-showcase">
+                        <div class="home-button">
+                            <p>REGISTER TODAY!</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+                    <li>
+                <img alt="Success Lives Here" src="/uploads/slide-1570111403.jpg" />
+
+                <div class="primary-title">
+                    <h1>Success Lives Here</h1>
+                    <hr align="left">
+                    <p>#BeARanger at #NWOSU</p>
+                    <a target="_blank" href="/apply-online">
+                        <div class="home-button">
+                            <p>APPLY NOW</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+                    <li>
+                <img alt="Success Lives Here" src="/uploads/slide-1566065350.jpg" />
+
+                <div class="primary-title">
+                    <h1>Success Lives Here</h1>
+                    <hr align="left">
+                    <p>See how YOU Can Be A Ranger, too!</p>
+                    <a target="_blank" href="/visit-northwestern">
+                        <div class="home-button">
+                            <p>VISIT NWOSU</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+                    <li>
+                <img alt="Visit Campus Today!" src="/uploads/slide-1570631371.jpg" />
+
+                <div class="primary-title">
+                    <h1>Visit Campus Today!</h1>
+                    <hr align="left">
+                    <p>Come see why YOU should #BeARanger!</p>
+                    <a target="_blank" href="/visit-northwestern">
+                        <div class="home-button">
+                            <p>VISIT TODAY!</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+                    <li>
+                <img alt="Graduation/Pinning Photos Available" src="/uploads/slide-1576099687.jpg" />
+
+                <div class="primary-title">
+                    <h1>Graduation/Pinning Photos Available</h1>
+                    <hr align="left">
+                    <p>All photos may be downloaded for free!</p>
+                    <a target="_blank" href="https://nwosucommencement.shutterfly.com">
+                        <div class="home-button">
+                            <p>SEE PHOTOS!</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+                    <li>
+                <img alt="Concurrent Education at NWOSU" src="/uploads/slide-1563478985.jpg" />
+
+                <div class="primary-title">
+                    <h1>Concurrent Education at NWOSU</h1>
+                    <hr align="left">
+                    <p>High school seniors/juniors can get a head start on their college education</p>
+                    <a target="_blank" href="/apply-for-admission/concurrent-students">
+                        <div class="home-button">
+                            <p>MORE INFO</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+                    <li>
+                <img alt="Be A Ranger!" src="/uploads/slide-1532026986.jpg" />
+
+                <div class="primary-title">
+                    <h1>Be A Ranger!</h1>
+                    <hr align="left">
+                    <p>Check out our video showing life at Northwestern!</p>
+                    <a target="_blank" href="https://www.youtube.com/watch?v=STjXB17NkGk&feature=youtu.be">
+                        <div class="home-button">
+                            <p>WATCH VIDEO</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+                    <li>
+                <img alt="Ride, Rangers, Ride!" src="/uploads/slide-1496249371.jpg" />
+
+                <div class="primary-title">
+                    <h1>Ride, Rangers, Ride!</h1>
+                    <hr align="left">
+                    <p>From football to rodeo, we've got your sport!</p>
+                    <a target="_blank" href="http://www.riderangersride.com">
+                        <div class="home-button">
+                            <p>ATHLETICS</p>
+                            <img src="/img/red-right-arrow.png" />
+                        </div>
+                    </a>
+                </div>
+            </li>
+            </ul>
+</div>
+
+<section class="home" id="fourbox">
+    <div class="four-col-component">
+    <div class="grid row">
+                <div class="col-3" style="background-image:url(/uploads/1-15975.jpg);"><div data-slot=data-1 id="data-1_vdM" class="editor " ><p style="text-align: center;"><img alt="" src="/uploads//folder.png" style="height: 40px; width: 40px;" /></p>
+
+<h2 style="text-align: center;">Resources</h2>
+
+<p style="text-align: center;"><a href="/e-mail-access" target="_blank"><span>Email</span></a></p>
+
+<p style="text-align: center;"><a href="/blackboard" target="_blank"><span>Blackboard</span></a></p>
+
+<p style="text-align: center;"><a href="https://rangernet.nwosu.edu/ics" target="_blank"><span>RangerNet</span></a></p>
+
+<p style="text-align: center;"><a href="https://selfservice.nwosu.edu/student" target="_blank"><span>Self Service</span></a></p>
+
+<p style="text-align: center;"><a href="/library"><span>Library Services</span></a></p>
+
+<p style="text-align: center;"><a href="http://www.bkstr.com/nwosuniversitystore/home/en" target="_blank"><span>NWOSU&nbsp;</span></a><a href="http://www.bkstr.com/nwosuniversitystore/home/en" target="_blank"><span>Bookstore</span></a></p>
+</div></div>
+        <div class="col-3" style="background-image:url(/uploads/1-11927.jpg);"><div data-slot=data-2 id="data-2_0ZW" class="editor " ><p style="text-align: center;"><img alt="" src="/uploads/ranger.png" style="height: 80px; width: 80px;" /></p>
+
+<h2 style="text-align: center;"><span style="color:#ffffff;">Apply Now</span></h2>
+
+<p style="text-align: center;"><a class="white" href="/apply-online" target="_blank"><span style="color:#ffffff;">Begin</span></a></p>
+</div></div>
+        <div class="col-3" style="background-image:url(/uploads/1-13970.jpg);"><div data-slot=data-3 id="data-3_hTi" class="editor " ><h2 style="text-align: center;">PLC APPS DUE MARCH 9</h2>
+
+<p style="text-align: center;"><a href="/plc" target="_blank">Apply Today Here</a></p>
+</div></div>
+        <div class="col-3" style="background-image:url(/uploads/1-10538.jpg);"><div data-slot=data-4 id="data-4_BHo" class="editor " ><h2 style="text-align: center;"><span style="color:#ffffff;">SPRING SHOWCASE FEB. 22!</span></h2>
+
+<p style="text-align: center;"><a href="/spring-showcase" target="_blank"><span style="color:#ffffff;">Get Registered</span></a></p>
+</div></div>
+    </div>
+</div>
+
+    <div class="wrapper">
+        <div class="news-events">
+            <div class="events">
+                <div class="title">
+                    <h3>UNIVERSITY CALENDAR</h3>
+                    <div class="link"><a href="/university-calendar">ALL EVENTS ></a>&nbsp;&nbsp;&nbsp;</div>
+                </div>
+                <div class="clearfix"></div>
+                <hr />
+
+                                    <a href="/events/914/w-required-for-dropped-courses-16-week-classes">
+                        <div class="event-container">
+                            <div class="date">
+                                <div class="month">JAN</div>
+                                <div class="day">28</div>
+                            </div>
+                            <div class="description">
+                                <h3>W required for dropped courses, 16-week classes</h3>
+                                <p>W required for dropped courses, 16-week classes</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/events/915/processing-of-student-financial-aid-begins">
+                        <div class="event-container">
+                            <div class="date">
+                                <div class="month">JAN</div>
+                                <div class="day">28</div>
+                            </div>
+                            <div class="description">
+                                <h3>Processing of student financial aid begins</h3>
+                                <p>Processing of student financial aid begins</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/events/989/student-teacher-seminars-and-classes">
+                        <div class="event-container">
+                            <div class="date">
+                                <div class="month">JAN</div>
+                                <div class="day">28</div>
+                            </div>
+                            <div class="description">
+                                <h3>Student Teacher Seminars and Classes</h3>
+                                <p>Student Teacher Seminars and Classes, Education Center, room 109</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/events/993/singin-and-sundaes">
+                        <div class="event-container">
+                            <div class="date">
+                                <div class="month">JAN</div>
+                                <div class="day">28</div>
+                            </div>
+                            <div class="description">
+                                <h3>Singin' and Sundaes</h3>
+                                <p>SGA is playing host to an open mic/karaoke night for NWOSU students in the Student Center and will also have ice cream sundaes for everyone who attends! You do not have to participate in the open mic/karaoke to get a sundae!  Student Center Commons.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/events/955/goodie-giveaway-at-ranger-basketball">
+                        <div class="event-container">
+                            <div class="date">
+                                <div class="month">JAN</div>
+                                <div class="day">30</div>
+                            </div>
+                            <div class="description">
+                                <h3>Goodie Giveaway at Ranger Basketball</h3>
+                                <p>Baked item giveaway fundraiser, 3 tickets for $1, drawings for goodies... All home basketball games. Three groups will work together on dates -- NWOSU Art Society, Red Hot Chili Preppers, Campus Cabinet food pantry. </p>
+                            </div>
+                        </div>
+                    </a>
+                
+            </div>
+            <div class="news">
+                <div class="title">
+                    <h3>UNIVERSITY NEWS</h3>
+                    <div class="link"><a href="/news">ALL NEWS ></a>&nbsp;&nbsp;&nbsp;</div>
+                </div>
+                <div class="clearfix"></div>
+                <hr />
+
+                                    <div class="post-container">
+                        <div class="image">
+                            <img alt="Thelma Crouch" src="/uploads/blog/2020-homecoming-theme-submissions-parade-marshal-nominations-sought-for-oct-8-10-event.jpg" />
+                        </div>
+                        <div class="post">
+                            <h3>2020 Homecoming theme submissions, parade marshal nominations sought for Oct. 8-10 event</h3>
+                            <p>January 27, 2020 - The annual contest to select a homecoming theme and parade marshal for the 2020 Alva/Northwestern Oklahoma State University Homecoming has begun and is open to the public. Deadline for submitting entries is noon Friday, Feb. 14.<a title="Read more about 2020 Homecoming theme submissions, parade marshal nominations sought for Oct. 8-10 event" href="/news/2020-homecoming-theme-submissions-parade-marshal-nominations-sought-for-oct-8-10-event">READ MORE</a></p>
+                        </div>
+                    </div>
+                                    <div class="post-container">
+                        <div class="image">
+                            <img alt="NWOSU Ranger Logo" src="/img/ranger-blog-default.png" />
+                        </div>
+                        <div class="post">
+                            <h3>Northwestern to present 'Almost, Maine' theatre production February 20-22</h3>
+                            <p>January 27, 2020 - The Northwestern Oklahoma State University fine arts department will present its first theater production of the spring semester, “Almost, Maine,” in Herod Hall Auditorium in Alva on Feb. 20 and 21 at 7 p.m. and Feb. 22 at 2 p.m.<a title="Read more about Northwestern to present 'Almost, Maine' theatre production February 20-22" href="/news/northwestern-to-present-almost-maine-theatre-production-february-20-22">READ MORE</a></p>
+                        </div>
+                    </div>
+                                    <div class="post-container">
+                        <div class="image">
+                            <img alt="Spring 2020 Student Teachers from NWOSU" src="/uploads/blog/19-student-teachers-from-northwestern-begin-assignments-in-area-schools.jpg" />
+                        </div>
+                        <div class="post">
+                            <h3>19 student teachers from Northwestern begin assignments in area schools</h3>
+                            <p>January 27, 2020 - Nineteen education majors from Northwestern Oklahoma State University have reached their final semester and have received their student teaching assignments to enter area schools to gain hands-on experience.<a title="Read more about 19 student teachers from Northwestern begin assignments in area schools" href="/news/19-student-teachers-from-northwestern-begin-assignments-in-area-schools">READ MORE</a></p>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            controls: true,
+            pager: false,
+            auto: true,
+            speed: 400,
+            pause: 5000,
+            touchEnabled : (navigator.maxTouchPoints > 0)
+        });
+    });
+</script>
+
+
+</div><!-- component home -->
+				</div>
+				<div class="push"></div>
+			</div>
+
+		<footer id="footer">
+			<div class="left">
+				<div class="img">
+					<img src="/img/footer-rider.png" />
+				</div>
+				<div class="text">
+					<strong>Northwestern Oklahoma State University</strong>
+										<p>709 Oklahoma Blvd., Alva, OK 73717<br>Phone: (580) 327-1700</p>
+					<p>© 2008-2020 Northwestern Oklahoma State<br> University. All Rights Reserved.</p>
+					
+					<div class="social">
+						<a href="https://www.facebook.com/nwosu.rangers" target="_blank" title="Northwestern's Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path id="facebook-icon" class="social-icon" d="M19.5 0C22 0 24 2 24 4.5v15c0 2.5-2 4.5-4.5 4.5h-2.9v-9.3h3.1l0.5-3.6h-3.6V8.8c0-1 0.3-1.8 1.8-1.8l1.9 0V3.8c-0.3 0-1.5-0.1-2.8-0.1 -2.8 0-4.7 1.7-4.7 4.8v2.7H9.7v3.6h3.1V24H4.5C2 24 0 22 0 19.5v-15C0 2 2 0 4.5 0H19.5L19.5 0z"/></svg></a>
+						<a href="https://twitter.com/nwosu" target="_blank" title="Northwestern's Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 28"><path class="social-icon" d="M25.3 6.4c-0.7 1-1.5 1.9-2.5 2.6 0 0.2 0 0.4 0 0.7 0 6.7-5.1 14.4-14.4 14.4 -2.9 0-5.5-0.8-7.8-2.3 0.4 0 0.8 0.1 1.2 0.1 2.4 0 4.5-0.8 6.3-2.2 -2.2 0-4.1-1.5-4.7-3.5 0.3 0 0.6 0.1 1 0.1 0.5 0 0.9-0.1 1.3-0.2 -2.3-0.5-4-2.5-4-5V11c0.7 0.4 1.5 0.6 2.3 0.6 -1.4-0.9-2.2-2.5-2.2-4.2 0-0.9 0.2-1.8 0.7-2.5C4.9 8 8.6 10 12.8 10.2c-0.1-0.4-0.1-0.8-0.1-1.2 0-2.8 2.2-5 5-5 1.5 0 2.8 0.6 3.7 1.6 1.1-0.2 2.2-0.6 3.2-1.2 -0.4 1.2-1.2 2.2-2.2 2.8C23.4 7 24.4 6.8 25.3 6.4L25.3 6.4z"/></svg></a>
+						<a href="https://www.instagram.com/nwosurangers" target="_blank" title="Northwestern's Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="social-icon" d="M16 12c0-2.2-1.8-4-4-4s-4 1.8-4 4 1.8 4 4 4S16 14.2 16 12zM18.2 12c0 3.4-2.7 6.2-6.2 6.2S5.8 15.4 5.8 12 8.6 5.8 12 5.8 18.2 8.6 18.2 12zM19.8 5.6c0 0.8-0.6 1.4-1.4 1.4S17 6.4 17 5.6s0.6-1.4 1.4-1.4S19.8 4.8 19.8 5.6zM12 2.2c-1.8 0-5.5-0.1-7.1 0.5C4.4 2.9 4 3.1 3.5 3.5S2.9 4.4 2.6 4.9C2 6.5 2.2 10.2 2.2 12S2 17.5 2.6 19.1c0.2 0.5 0.5 1 0.9 1.4s0.8 0.7 1.4 0.9c1.6 0.6 5.3 0.5 7.1 0.5s5.5 0.1 7.1-0.5c0.5-0.2 1-0.5 1.4-0.9s0.7-0.8 0.9-1.4c0.6-1.6 0.5-5.3 0.5-7.1s0.1-5.5-0.5-7.1c-0.2-0.5-0.5-1-0.9-1.4s-0.8-0.7-1.4-0.9C17.5 2 13.7 2.2 12 2.2zM24 12c0 1.7 0 3.3-0.1 5 -0.1 1.9-0.5 3.6-1.9 5s-3.1 1.8-5 1.9C15.3 24 13.7 24 12 24s-3.3 0-5-0.1c-1.9-0.1-3.6-0.5-5-1.9s-1.8-3.1-1.9-5C0 15.3 0 13.7 0 12s0-3.3 0.1-5C0.2 5.1 0.6 3.4 2 2s3.1-1.8 5-1.9C8.7 0 10.3 0 12 0s3.3 0 5 0.1c1.9 0.1 3.6 0.5 5 1.9s1.8 3.1 1.9 5C24 8.7 24 10.3 24 12z"/></svg></a>
+						<a href="https://www.snapchat.com/add/nwosurangers" target="_blank" title="Northwestern's Snapchat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.5 24"><path class="social-icon" d="M13 0c2.8 0 5.1 1.5 6.3 4.1 0.4 0.8 0.4 2 0.4 2.8 0 1-0.1 2-0.1 3C19.7 9.9 19.9 10 20 10c0.6 0 1-0.4 1.6-0.4 0.5 0 1.3 0.4 1.3 1 0 1.5-3.1 1.2-3.1 2.5 0 0.2 0.1 0.5 0.2 0.7 0.8 1.6 2.2 3.2 3.9 3.9 0.4 0.2 0.8 0.3 1.2 0.4 0.3 0.1 0.4 0.3 0.4 0.5 0 1.1-2.7 1.5-3.4 1.6 -0.3 0.5-0.1 1.6-0.9 1.6 -0.6 0-1.3-0.2-2-0.2 -0.3 0-0.7 0-1 0.1C16.4 22 15.8 24 12.7 24c-2.9 0-3.6-2-5.5-2.3 -0.3-0.1-0.7-0.1-1-0.1 -0.7 0-1.4 0.2-1.9 0.2 -0.9 0-0.6-1.2-0.9-1.7C2.7 20.1 0 19.6 0 18.6c0-0.3 0.2-0.5 0.4-0.5 0.4-0.1 0.8-0.2 1.2-0.4 1.7-0.7 3.1-2.3 3.9-3.9 0.1-0.2 0.2-0.4 0.2-0.7 0-1.3-3.2-1.1-3.2-2.5 0-0.6 0.7-1 1.3-1 0.5 0 1 0.4 1.6 0.4 0.2 0 0.3 0 0.5-0.1 -0.1-1-0.1-2-0.1-3 0-0.8 0.1-2 0.4-2.8C7.6 1.1 9.9 0 13 0L13 0z"/></svg></a>
+						<a href="https://www.youtube.com/user/nwOKst" target="_blank" title="Northwestern's Youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 721"><path id="youtube-icon" class="social-icon" d="M1013 156.3c0 0-10-70.4-40.6-101.4C933.6 14.2 890 14 870.1 11.6 727.1 1.3 512.7 1.3 512.7 1.3h-0.4c0 0-214.4 0-357.4 10.3C135 14 91.4 14.2 52.6 54.9 22 85.9 12 156.3 12 156.3S1.8 238.9 1.8 321.6v77.5C1.8 481.8 12 564.4 12 564.4s10 70.4 40.6 101.4c38.9 40.7 89.9 39.4 112.6 43.7 81.7 7.8 347.3 10.3 347.3 10.3s214.6-0.3 357.6-10.7c20-2.4 63.5-2.6 102.3-43.3 30.6-31 40.6-101.4 40.6-101.4s10.2-82.7 10.2-165.3v-77.5C1023.2 238.9 1013 156.3 1013 156.3zM407 493l0-287 276 144L407 493z"/></svg></a>
+						<a href="/university-relations/nwosu-photos"  title="Northwestern's Shutterfly"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><path class="social-icon" d="M800 698c0 56.3-45.7 102-102 102H102C45.7 800 0 754.3 0 698V102C0 45.7 45.7 0 102 0h596c56.3 0 102 45.7 102 102V698zM411 133.7c-96.7 0-175.3 58.3-175.3 144 0 156.7 265.3 136.3 265.3 245 0 32.3-23.7 77.3-95 77.3 -82 0-140.3-56.3-140.3-56.3l-43.3 54.7c0 0 63 67.7 183.7 67.7 101.3 0 171-59.7 171-146 0-164.3-265.3-138.7-265.3-243.7 0-33.7 32.3-76.7 100-76.7S532 244.3 532 244.3l34.3-59.7C566.3 184.7 511.7 133.7 411 133.7z"/></svg></a>
+						<a href="https://www.pinterest.com/NWOSURangers" target="_blank" title="Northwestern's Pinterest"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path class="social-icon" d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" fill-rule="evenodd" clip-rule="evenodd"/></svg></a>
+						<a href="https://www.linkedin.com/school/64848" target="_blank" title="Northwestern's LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path class="social-icon" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+					</div>
+
+				</div>
+			</div>
+			<div class="middle">
+				<strong>Mission Statement</strong>
+				<p>Northwestern Oklahoma State University provides quality educational and cultural opportunities to learners with diverse needs by cultivating ethical leadership and service, critical thinking and fiscal responsibility.</p>
+			</div>
+			<div class="right" style="display:inline-flex;justify-content: space-between;width:25%;">
+				<a href="http://www.ruso.edu" target="_blank" style="display:block"><img src="/img/rus.png" alt="Proud Member of RUSO" style="display:block"></a>
+                <iframe allowtransparency="" frameborder="0" height="166" scrolling="no" src="https://cdn.yoshki.com/iframe/54732.html" style="BORDER-TOP: 0px;BORDER-RIGHT: 0px;BORDER-BOTTOM: 0px;PADDING-BOTTOM: 0px;PADDING-TOP: 0px;PADDING-LEFT: 0px;MARGIN: 0px;BORDER-LEFT: 0px;PADDING-RIGHT: 0px;backgroundColor: transparent;" width="150"></iframe>
+			</div>
+		</footer>
+
+	</div>
+
+<script src="/js/SubNav.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "709 E Oklahoma Blvd",
+	"addressLocality": "Alva",
+    "addressRegion": "OK",
+	"postalCode": "73717"
+  },
+  "description": "Northwestern Oklahoma State University is a university in Alva, Oklahoma, United States, with satellite campuses in Enid and Woodward. A state university, it offers both bachelor's and master's degrees.",
+  "name": "Northwestern Oklahoma State University",
+  "telephone": "580-327-1700"
+}
+</script>
+
+	<!-- JS -->
+	<script type="text/javascript">
+		$(document).ready(function($) {
+			$(".accordion-content:first").addClass('default');
+			$(".accordion-toggle:first").addClass('no-border').addClass('open');
+
+			$('.gray-section').find('.accordion-toggle').click(function(){
+
+				//Expand or collapse this panel
+				$(this).next().show();
+				$(this).addClass('open');
+
+				//Hide the other panels
+				$(".accordion-toggle").not($(this)).removeClass('open');
+				$(".accordion-content").not($(this).next()).hide();
+
+			});
+		});
+
+		// ADA/Accessibility skip links to include tab change
+		$( document ).ready(function() {
+			// bind a click event to the 'skip' link
+			$(".skip").click(function(event){
+
+				// strip the leading hash and declare
+				// the content we're skipping to
+				var skipTo="#"+this.href.split('#')[1];
+
+				// Setting 'tabindex' to -1 takes an element out of normal
+				// tab flow but allows it to be focused via javascript
+				$(skipTo).attr('tabindex', -1).on('blur focusout', function () {
+
+					// when focus leaves this element,
+					// remove the tabindex attribute
+					$(this).removeAttr('tabindex');
+
+				}).focus(); // focus on the content container
+			});
+		});
+	</script>
+	<!-- CSS -->
+	<style>
+		.accordion-toggle {cursor: pointer;}
+		.accordion-content {display: none;}
+		.accordion-content.default {display: block;}
+	</style>
+
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-88253055-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+		<script src="/js/PageTab.js"></script>
+</body>
+</html>

@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:book="http://ogp.me/ns/book#"
+  xmlns:profile="http://ogp.me/ns/profile#"
+  xmlns:video="http://ogp.me/ns/video#"
+  xmlns:product="http://ogp.me/ns/product#">
+<head>
+  <link rel="profile" href="http://www.w3.org/1999/xhtml/vocab" />
+  <meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"fde492189e",applicationID:"49129281"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<title>Cincinnati State | Degrees On Campus in Ohio & Online!</title>
+<script src="https://use.typekit.net/nwu4hcc.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+<script type="text/javascript" src="/sites/all/themes/cstate/js/jquery-1.8.3.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if IE]><![endif]-->
+<link rel="preconnect" href="//www.cincinnatistate.net" />
+<link rel="dns-prefetch" href="//www.cincinnatistate.net" />
+<link rel="preconnect" href="//google_tag" />
+<link rel="dns-prefetch" href="//google_tag" />
+<link rel="preconnect" href="//code.jquery.com" />
+<link rel="dns-prefetch" href="//code.jquery.com" />
+<link rel="preconnect" href="//cdn.jsdelivr.net" />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+<link rel="preconnect" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="preconnect" href="//stats.g.doubleclick.net" />
+<link rel="dns-prefetch" href="//stats.g.doubleclick.net" />
+<link rel="preconnect" href="//use.typekit.com" />
+<link rel="dns-prefetch" href="//use.typekit.com" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="https://www.cincinnatistate.edu/sites/all/themes/cstate/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="Cincinnati State offers hundreds of associate degrees, certificate programs and online courses. Co-op job placements and workforce training available." />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="https://www.cincinnatistate.edu/" />
+<link rel="shortlink" href="https://www.cincinnatistate.edu/" />
+<meta property="og:site_name" content="Cincinnati State" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.cincinnatistate.edu/" />
+<meta property="og:title" content="Cincinnati State" />
+<meta property="og:description" content="Cincinnati State | Degrees On Campus in Ohio &amp; Online!" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://www.cincinnatistate.edu/" />
+<meta name="twitter:title" content="Cincinnati State" />
+<meta name="twitter:description" content="Cincinnati State | Degrees On Campus in Ohio &amp; Online!" />
+  <link type="text/css" rel="stylesheet" href="https://www.cincinnatistate.edu/sites/default/files/advagg_css/css__9cWqptSUNYq5YedfIwh33VxtugFVWjDdEsblT8GhLKI__quUjyhSfbEukHj8a0hYvzm9VTmPALmSZvA0xfM_Oxzo__f_7JzdNpTyjCTq4op6LkG8GRIIl2LphsOmY57rtn64U.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.cincinnatistate.edu/sites/default/files/advagg_css/css__jVy8hBmrFvNYgSAd33ct0YHmNh05qiAfGfbm_gwOTt0__WA4UGlc_RyovgMl8udOg8Erqk2XPOOancGnS7-yojFA__f_7JzdNpTyjCTq4op6LkG8GRIIl2LphsOmY57rtn64U.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.cincinnatistate.edu/sites/default/files/advagg_css/css__Mq31Wo3wssxXwhhtlA1sYzsj7viMh5vUDFwWqRvUnfA__-HeyfsiNSCmbFr86mndacsnemwLgBrAyhZl33lkwu0w__f_7JzdNpTyjCTq4op6LkG8GRIIl2LphsOmY57rtn64U.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.0/dist/css/bootstrap.min.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.cincinnatistate.edu/sites/default/files/advagg_css/css__QSvIPub4SJvcOsByuHupE2d-mLvajcKpibmkaKw9Tdw__2DRJ-5qK-1cb8l1p8mVB9JONf-MGYaI91KJ9qoaDSsc__f_7JzdNpTyjCTq4op6LkG8GRIIl2LphsOmY57rtn64U.css" media="all" />
+<link type="text/css" rel="stylesheet" href="&amp;q4tvjy" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.cincinnatistate.edu/sites/default/files/advagg_css/css__aDhHKrYjYZZ6v-2_bQTg9U90-_H7qu05G-LxNjtASU0__odWN2aWDmNoBHuHHi6QG5_TwG0JDqITXZatWk9NXWUQ__f_7JzdNpTyjCTq4op6LkG8GRIIl2LphsOmY57rtn64U.css" media="all" />
+  <!-- HTML5 element support for IE6-8 -->
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="https://www.cincinnatistate.edu/sites/default/files/google_tag/google_tag.script.js?q4tvjy"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/contrib/jquery_update/replace/jquery/1.10/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/misc/jquery-extend-3.4.0.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/misc/drupal.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/libraries/isotope/jquery.isotope.min.js?v=1.5.03"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/libraries/fitvids/jquery.fitvids.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/jquery_update/replace/ui/external/jquery.cookie.js?v=67fb34f6a866c40d0570"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/jquery_update/replace/misc/jquery.form.min.js?v=2.69"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/misc/form.js?v=7.67"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/misc/ajax.js?v=7.67"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/jquery_update/js/jquery_update.js?v=0.0.1"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.0/dist/js/bootstrap.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+document.createElement( "picture" );
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/custom/cstate_daily_news/cstate_daily_news.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/fitvids/fitvids.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/libraries/flexslider/jquery.flexslider-min.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/highlight/js/jquery.highlight.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/google_analytics/googleanalytics.js?q4tvjy"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-7573282-1", {"cookieDomain":"auto"});ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/themes/bootstrap/js/misc/_collapse.js?v=7.67"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/themes/bootstrap/js/misc/_progress.js?v=7.67"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/webform/js/webform.js?q4tvjy"></script>
+<script type="text/javascript" src="https://use.typekit.com/nwu4hcc.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{Typekit.load();}catch(e){}
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/themes/cstate/js/main.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/themes/cstate/js/jquery.maskedinput.min.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/themes/bootstrap/js/misc/ajax.js?q4tvjy"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"cstate","theme_token":"m3jRjANM59zoIC1qJobTRFtlvfV-v_XBbie6qaqC0R0","jquery_version":"1.10","css":{"modules\/system\/system.base.css":1,"sites\/all\/modules\/contrib\/calendar\/css\/calendar_multiday.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/contrib\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/fitvids\/fitvids.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/contrib\/picture\/picture_wysiwyg.css":1,"sites\/all\/modules\/contrib\/views_sexy_throbber\/css\/views_sexy_throbber.css":1,"sites\/all\/modules\/contrib\/workflow\/workflow_admin_ui\/workflow_admin_ui.css":1,"sites\/all\/modules\/contrib\/asset\/css\/assets.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/isotope\/css\/isotope.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"sites\/all\/modules\/contrib\/flexslider\/assets\/css\/flexslider_img.css":1,"sites\/all\/libraries\/flexslider\/flexslider.css":1,"sites\/all\/modules\/contrib\/webform\/css\/webform.css":1,"https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@3.4.0\/dist\/css\/bootstrap.min.css":1,"sites\/all\/themes\/bootstrap\/css\/3.4.0\/overrides.min.css":1,"sites\/all\/themes\/cstate\/https:\/\/fonts.googleapis.com\/css?family=Montserrat:400,700":1,"sites\/all\/themes\/cstate\/css\/main.css":1,"sites\/all\/themes\/cstate\/css\/calendar.css":1},"js":{"sites\/all\/modules\/contrib\/picture\/picturefill2\/picturefill.min.js":1,"sites\/all\/modules\/contrib\/picture\/picture.min.js":1,"sites\/all\/modules\/contrib\/flexslider\/assets\/js\/flexslider.load.js":1,"sites\/all\/modules\/contrib\/highlight\/js\/highlight.js":1,"sites\/all\/themes\/bootstrap\/js\/bootstrap.js":1,"public:\/\/google_tag\/google_tag.script.js":1,"\/\/code.jquery.com\/jquery-1.10.2.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/isotope\/jquery.isotope.min.js":1,"sites\/all\/libraries\/fitvids\/jquery.fitvids.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/misc\/jquery.form.min.js":1,"misc\/form.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js":1,"https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@3.4.0\/dist\/js\/bootstrap.js":1,"sites\/all\/modules\/custom\/cstate_daily_news\/cstate_daily_news.js":1,"sites\/all\/modules\/contrib\/fitvids\/fitvids.js":1,"sites\/all\/libraries\/flexslider\/jquery.flexslider-min.js":1,"sites\/all\/modules\/contrib\/highlight\/js\/jquery.highlight.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"sites\/all\/themes\/bootstrap\/js\/misc\/_collapse.js":1,"sites\/all\/themes\/bootstrap\/js\/misc\/_progress.js":1,"sites\/all\/modules\/contrib\/webform\/js\/webform.js":1,"https:\/\/use.typekit.com\/nwu4hcc.js":1,"sites\/all\/themes\/cstate\/js\/main.js":1,"sites\/all\/themes\/cstate\/js\/jquery.maskedinput.min.js":1,"sites\/all\/themes\/bootstrap\/js\/misc\/ajax.js":1}},"better_exposed_filters":{"views":{"calendar_block":{"displays":{"block":{"filters":[]}}},"news_block":{"displays":{"block":{"filters":[]}}},"campus_life":{"displays":{"block":{"filters":[]}}},"slider":{"displays":{"block":{"filters":[]}}}}},"flexslider":{"optionsets":{"default":{"namespace":"flex-","selector":".slides \u003E li","easing":"swing","direction":"horizontal","reverse":false,"smoothHeight":false,"startAt":0,"animationSpeed":600,"initDelay":0,"useCSS":true,"touch":true,"video":false,"keyboard":true,"multipleKeyboard":false,"mousewheel":0,"controlsContainer":".flex-control-nav-container","sync":"","asNavFor":"","itemWidth":0,"itemMargin":0,"minItems":0,"maxItems":0,"move":0,"animation":"fade","slideshow":true,"slideshowSpeed":"6000","directionNav":true,"controlNav":true,"prevText":"Previous","nextText":"Next","pausePlay":false,"pauseText":"Pause","playText":"Play","randomize":false,"thumbCaptions":false,"thumbCaptionsBoth":false,"animationLoop":true,"pauseOnAction":false,"pauseOnHover":true,"manualControls":""}},"instances":{"flexslider-1":"default"}},"fitvids":{"custom_domains":["iframe[src^=\u0027http:\/\/www.vimeo.com\u0027]"],"selectors":["body"],"simplifymarkup":1},"highlight":{"area":".view-search","class":"highlight","color":"yellow","textColor":"black","wordsonly":0,"patterns":"^.+[\u0026?]combine=([^\u0026]+).*$","referrerPatterns":"^http:\/\/www\\.google\\.com.+[\u0026?]q=([^\u0026]+).*$\r\n^http:\/\/www\\.google\\.co\\.uk.+[\u0026?]q=([^\u0026]+).*$\r\n^http:\/\/search\\.yahoo\\.com.+[\u0026?]p=([^\u0026]+).*$\r\n^http:\/\/search\\.yahoo\\.co\\.uk.+[\u0026?]p=([^\u0026]+).*$\r\n^http:\/\/www\\.bing\\.com.+[\u0026?]q=([^\u0026]+).*$","stopwords":"a,about,above,above,across,after,afterwards,again,against,all,almost,alone,along,already,also,although,always,am,among,amongst,amoungst,amount,an,and,another,any,anyhow,anyone,anything,anyway,anywhere,are,around,as,at,back,be,became,because,become,becomes,becoming,been,before,beforehand,behind,being,below,beside,besides,between,beyond,bill,both,bottom,but,by,call,can,cannot,cant,co,con,could,couldnt,cry,de,describe,detail,do,done,down,due,during,each,eg,eight,either,eleven,else,elsewhere,empty,enough,etc,even,ever,every,everyone,everything,everywhere,except,few,fifteen,fify,fill,find,fire,first,five,for,former,formerly,forty,found,four,from,front,full,further,get,give,go,had,has,hasnt,have,he,hence,her,here,hereafter,hereby,herein,hereupon,hers,herself,him,himself,his,how,however,hundred,ie,if,in,inc,indeed,interest,into,is,it,its,itself,keep,last,latter,latterly,least,less,ltd,made,many,may,me,meanwhile,might,mill,mine,more,moreover,most,mostly,move,much,must,my,myself,name,namely,neither,never,nevertheless,next,nine,no,nobody,none,noone,nor,not,nothing,now,nowhere,of,off,often,on,once,one,only,onto,or,other,others,otherwise,our,ours,ourselves,out,over,own,part,per,perhaps,please,put,rather,re,same,see,seem,seemed,seeming,seems,serious,several,she,should,show,side,since,sincere,six,sixty,so,some,somehow,someone,something,sometime,sometimes,somewhere,still,such,system,take,ten,than,that,the,their,them,themselves,then,thence,there,thereafter,thereby,therefore,therein,thereupon,these,they,thickv,thin,third,this,those,though,three,through,throughout,thru,thus,to,together,too,top,toward,towards,twelve,twenty,two,un,under,until,up,upon,us,very,via,was,we,well,were,what,whatever,when,whence,whenever,where,whereafter,whereas,whereby,wherein,whereupon,wherever,whether,which,while,whither,who,whoever,whole,whom,whose,why,will,with,within,without,would,yet,you,your,yours,yourself,yourselves,the"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"ajax":{"edit-webform-ajax-next-13412":{"callback":"webform_ajax_callback","wrapper":"webform-ajax-wrapper-13412","progress":{"message":"","type":"throbber"},"event":"click","url":"\/system\/ajax","submit":{"_triggering_element_name":"op","_triggering_element_value":"Next Step"}}},"urlIsAjaxTrusted":{"\/system\/ajax":true,"\/":true},"bootstrap":{"anchorsFix":"0","anchorsSmoothScrolling":"0","formHasError":1,"popoverEnabled":"1","popoverOptions":{"animation":1,"html":0,"placement":"right","selector":"","trigger":"click","triggerAutoclose":1,"title":"","content":"","delay":0,"container":"body"},"tooltipEnabled":"1","tooltipOptions":{"animation":1,"html":0,"placement":"auto left","selector":"","trigger":"hover focus","delay":0,"container":"body"}}});
+//--><!]]>
+</script>
+
+  <link rel="stylesheet" href="https://use.typekit.net/c/0528e7/1w;proxima-nova,2,2clzCB:W:i3,2clzCG:W:i4,2clzC6:W:i7,2clzC9:W:n3,2clzCF:W:n4,2clzC5:W:n7;proxima-nova-extra-condensed,2,2clzDk:W:i3,2clzDf:W:i7,2clzDj:W:n3,2clzDd:W:n7/l" media="all">
+  <!-- start number replacer -->
+  <script type="text/javascript"><!--
+  vs_account_id      = "Ch4NmVnw2CIwIwCb";
+  //--></script>
+  <script type="text/javascript" src="https://rw1.calls.net/euinc/number-changer.js">
+  </script>
+  <!-- end ad widget -->
+
+  <!-- Facebook Pixel Code -->
+<!-- DO NOT MODIFY -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '510333339159835', {em: 'insert_email_variable,'});fbq('track', 'PageView'); fbq('track', 'ViewContent');fbq('track', 'Lead'); fbq('track', 'CompleteRegistration'); </script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=510333339159835&ev=PageView&noscript=1"/>
+</noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+
+<!-- Begin BugHerd Code -->
+<script type='text/javascript'>
+(function (d, t) {
+  var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  bh.type = 'text/javascript';
+  bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=y9wiqgbbomoye6ddto05eq';
+  s.parentNode.insertBefore(bh, s);
+  })(document, 'script');
+</script>
+<!-- End BugHerd Code -->
+
+</head>
+
+
+<body class="html front not-logged-in no-sidebars page-node page-node- page-node-13584 node-type-home-page-new"html front not-logged-in no-sidebars page-node page-node- page-node-13584 node-type-home-page-new>
+
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+  <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMXC6T" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager">Google Tag Manager</iframe></noscript>  <header>
+<!-- ===================================== NAV-MENUBAR -->
+	<nav id="nav-menubar">
+		<div class="nav-logo"> <a href="/"><span class="logoText"></span></a> </div>
+		<div class="nav-icons">
+			<img id="iconSearch" class="navIcon" src="/sites/all/themes/cstate/images/icon-search-66x66.svg" alt="search" />
+			<a target="_blank" href="/about/cstate-foundation"><img class="navIcon" src="/sites/all/themes/cstate/images/give-icon.svg" alt="give" /></a>
+			<a target="_blank" href="https://mycstate.cincinnatistate.edu/"><img  class="navIcon" src="/sites/all/themes/cstate/images/icon-mycstate-66x66.svg" alt="login" /></a>
+			<a href="#" class="icon_menu"><img id="iconMenu" class="navIcon" src="/sites/all/themes/cstate/images/icon-menu-66x66.svg" alt="menu" /><span id="menu_text">MENU</span></a>
+		</div>
+		
+	</nav>
+<!-- ===================================== NAV-DRAWER -->
+	<nav id="nav-drawer">
+<!-- ===================================== NAV-LOGIN -->
+		<div id="menuLogin" class="row nav-login hide">
+							  <div class="region region-nav-login">
+    <section id="block-bean-main-login-block" class="block block-bean clearfix">
+
+      
+  <div>
+	<ul>	
+		<li><h2>Why Login?</h2></li>
+		<li>See information just for you.<br />
+Comment on stories.<br />
+Blackboard access is automatic.</li>
+	</ul>
+</div>
+<div>
+	<form action="/user" method="post" id="header-login-form">
+		<ul>
+			<li><h2>Login</h2></li>
+			<li><input type="text" id="login-user" name="name" placeholder="user name"></li>
+			<li><input type="text" id="login-pw" name="pass" placeholder="password"></li>
+			<li>
+				<button type=submit class="nav-btn">Login</button>
+			</li>
+		</ul>
+		<input type="hidden" name="form_id" value="user_login" />
+	</form>
+</div>
+</section>
+  </div>
+				<!--
+				<div>
+					<ul>
+						<li><h2>Login</h2></li>
+						<li><input type="text" id="login-user" name="login-user" placeholder="user name" /></li>
+						<li>
+							<input type="text" id="login-pw" name="login-pw" placeholder="password" />
+						</li>
+						<li>
+							<button class="nav-btn">Login</button>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li><h2>Why Login?</h2></li>
+						<li>See information just for you.<br />
+							Comment on stories.<br />
+							Blackboard access is automatic.
+						</li>
+					</ul>
+				</div>
+				-->
+					</div>
+<!-- ===================================== NAV-SEARCH -->
+		<div id="menuSearch" class="row nav-search hide">
+							  <div class="region region-nav-search">
+    <section id="block-bean-main-search-block" class="block block-bean clearfix">
+
+      
+  <script type="text/javascript">
+	$(function(){
+	    
+	    $("#searchTerm").keypress(function (e) {
+	  		if (e.which == 13) {
+	  			self.location.href="/content/search?combine=" + $(this).val();
+	  		}
+	  	});
+	  	
+	  	$("#btnSearch").click(function(){
+	  		self.location.href="/content/search?combine=" + $("#searchTerm").val();
+	  	})
+	});
+</script>
+<div>
+	<div class="field field-name-field-menu field-type-blockreference field-label-above"><div class="field-label">Menu:&nbsp;</div><div class="field-items"><div class="field-item even"><section id="block-menu-menu-quick-links-menu" class="block block-menu clearfix">
+
+        <h2 class="block-title">Quick Links Menu</h2>
+    
+  <ul class="menu nav"><li class="first leaf"><a href="/academic-calendar">Calendars &amp; Important Dates</a></li>
+<li class="leaf"><a href="/academics/course-search">Course Search</a></li>
+<li class="leaf"><a href="/academics/degrees-and-certificates">Degrees &amp; Certificates</a></li>
+<li class="leaf"><a href="/students/library">Library</a></li>
+<li class="leaf"><a href="https://mycstate.cincinnatistate.edu/" target="_blank">MyCState</a></li>
+<li class="last leaf"><a href="/academics/registration/registration-resources/college-policies/weather-notices">Weather Alerts</a></li>
+</ul>
+</section></div></div></div>	<!-- <ul>
+		<li><h2>Quick Links</h2></li>
+		<li><a href="#">Blackboard</a></li>
+		<li><a href="#">Course Search</a></li>
+		<li><a href="#">Library</a></li>
+		<li><a href="#">Programs & Certificates</a></li>
+		<li><a href="#">Surge Mail</a></li>
+	</ul> -->
+</div>
+<div>
+	<ul>
+		<li><h2>Search</h2></li>
+		<li>
+			<input type="text" id="searchTerm" name="searchTerm" placeholder="enter search terms" />
+		</li>
+		<li>
+			<button id="btnSearch" class="nav-btn">Search</button>
+		</li>
+	</ul>
+</div>
+</section>
+  </div>
+					</div>
+<!-- ===================================== NAV-MENU -->
+		<div id="menuMenu" class="row nav-menu hide">
+							  <div class="region region-nav-main">
+    <section id="block-bean-main-menu-block" class="block block-bean clearfix">
+
+      
+  <div class="entity entity-bean bean-main-menu clearfix">
+        <div class="content">
+    <div class="field field-name-field-menu field-type-blockreference field-label-above"><div class="field-label">Menus:&nbsp;</div><div class="field-items"><div class="field-item even"><section id="block-menu-menu-main-contact-us" class="block block-menu clearfix">
+
+      
+  <ul class="menu nav"><li class="first leaf"><a href="/contact-us">Contact Us</a></li>
+<li class="expanded"><a href="/contact-us/campuses">Campuses</a><ul class="menu nav"><li class="first leaf"><a href="/contact-us/campuses/clifton">Clifton</a></li>
+<li class="leaf"><a href="/contact-us/campuses/middletown">Middletown</a></li>
+<li class="leaf"><a href="/contact-us/campuses/evendale">Evendale</a></li>
+<li class="leaf"><a href="/contact-us/campuses/harrison">Harrison</a></li>
+<li class="last leaf"><a href="/academics/workforce-development-center">Workforce Development Center</a></li>
+</ul></li>
+<li class="leaf"><a href="/contact-us/faculty-directory">Faculty / Staff Directory</a></li>
+<li class="leaf"><a href="/contact-us/social-media">Social Media</a></li>
+<li class="leaf"><a href="https://web3.cincinnatistate.edu/eforms/eform.aspx?form_id=1589" target="_blank">Send Website Feedback</a></li>
+<li class="last leaf"><a href="/contact-us/speak-out">Speak Out!</a></li>
+</ul>
+</section></div><div class="field-item odd"><section id="block-menu-menu-main-about-us" class="block block-menu clearfix">
+
+      
+  <ul class="menu nav"><li class="first leaf"><a href="/about" class="menu-node-unpublished">About Us</a></li>
+<li class="leaf"><a href="/about/cstate-overview">About CState</a></li>
+<li class="leaf"><a href="/about/administration">Administration</a></li>
+<li class="leaf"><a href="/about/governance">Governance</a></li>
+<li class="leaf"><a href="/about/cstate-foundation/donate-online">Give</a></li>
+<li class="last leaf"><a href="/about/media-center">Media Inquiries </a></li>
+</ul>
+</section></div><div class="field-item even"><section id="block-menu-menu-main-my-cstate" class="block block-menu clearfix">
+
+      
+  <ul class="menu nav"><li class="first leaf"><a href="/students">Students</a></li>
+<li class="leaf"><a href="https://www.cincinnatistate.edu/students/student-support/academic-advising#">Academic Advising</a></li>
+<li class="leaf"><a href="/students/bookstore">Bookstore</a></li>
+<li class="leaf"><a href="/academic-calendar">Calendars</a></li>
+<li class="leaf"><a href="/my-cstate/campus-life">Campus Life</a></li>
+<li class="leaf"><a href="/students/dining-0">Dining</a></li>
+<li class="leaf"><a href="/students/library">Library</a></li>
+<li class="leaf"><a href="/students/student-support">Student Support</a></li>
+<li class="leaf"><a href="/news-events/cstate-news">News</a></li>
+<li class="last leaf"><a href="/students/calendars/athletics-calendar">Athletics</a></li>
+</ul>
+</section></div><div class="field-item odd"><section id="block-menu-menu-main-academics" class="block block-menu clearfix">
+
+      
+  <ul class="menu nav"><li class="first leaf"><a href="/academics">Academics</a></li>
+<li class="leaf"><a href="/academics/admission">Admissions</a></li>
+<li class="leaf"><a href="/catalog">Catalogs</a></li>
+<li class="leaf"><a href="/academics/cooperative-education">Cooperative Education</a></li>
+<li class="leaf"><a href="/academics/course-search">Course Search</a></li>
+<li class="leaf"><a href="/online-learning-programs">CState Online</a></li>
+<li class="leaf"><a href="/academics/degrees-and-certificates">Degrees &amp; Certificates</a></li>
+<li class="leaf"><a href="/academics/financial-aid">Financial Aid</a></li>
+<li class="leaf"><a href="/registrar">Registration</a></li>
+<li class="last leaf"><a href="/academics/workforce-development-center">Workforce Development Center</a></li>
+</ul>
+</section></div></div></div>  </div>
+</div>
+
+</section>
+  </div>
+						<!--
+			<ul class="academics">
+				<li><a href="#">Academics</a></li>
+				<li><a href="/node/3726">Admission</a></li>
+				<li><a href="/node/3787">Catalogs</a></li>
+				<li><a href="/node/3521">Cooperative Education</a></li>
+				<li><a href="/node/5006">Course Search</a></li>
+				<li><a href="/node/3530">Degrees &amp; Certificates</a></li>
+				<li><a href="/node/3531">Financial Aid</a></li>
+				<li><a href="/node/3532">Registration</a></li>
+			</ul>
+			<ul class="mycstate">
+				<li><a href="#">My CState</a></li>
+				<li><a href="/node/3534">Athletics</a></li>
+				<li><a href="/node/5368">Bookstore</a></li>
+				<li><a href="/node/6707">Calendars</a></li>
+				<li><a href="/node/3537">Campus Life</a></li>
+				<li><a href="/node/3538">Dining</a></li>
+				<li><a href="/node/3539">Library</a></li>
+				<li><a href="/node/3611">Student Support</a></li>
+				<li><a href="/node/5327">News</a></li>
+			</ul>
+			<ul class="aboutus">
+				<li><a href="#">About Us</a></li>
+				<li><a href="/node/3541">About CState</a></li>
+				<li><a href="/node/3542">Administration</a></li>
+				<li><a href="/node/3543">Governance</a></li>
+				<li><a href="/node/3544">Give</a></li>
+				<li><a href="/node/3545">Media Center</a></li>
+			</ul>
+			<ul class="contactus">
+				<li><a href="#">Contact Us</a></li>
+				<li><a href="/node/5290">Answer Center</a></li>
+				<li><a href="/node/3548">Campuses</a></li>
+				<li><a href="/node/3549">Faculty / Staff Directory</a></li>
+				<li><a href="/node/3550">Speak Out</a></li>
+				<li><a href="/node/3551">Social Media</a></li>
+			</ul>
+			-->
+		</div>
+<!-- ===================================== NAV-CONVERSION -->
+		<div id="navButtons" class="row nav-conversion">
+		<!--
+			<ul>
+				<li><a href="#">Request Info</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">Apply Now</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">Schedule A Visit</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">Virtual Tour</a></li>
+			</ul>
+		-->
+		</div>
+	</nav>
+</header>
+<div id="wrapper-flex">
+	<div id="site_notifications">
+					  <div class="region region-region-top">
+    <section id="block-bean-warning-notification" class="block block-bean clearfix">
+
+      
+  <style type="text/css">
+
+
+
+
+
+@media(max-width: 1024px){
+  
+  .warning-image{
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+    display: block;
+    padding-bottom: 12px;
+  }
+  
+  .warning-content{
+    display: block;
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+  }
+  
+  .warning-title{
+    text-align: center;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    padding-bottom: 12px;
+  }
+  
+  .warning-separator{
+    display: none;
+  }
+  
+  .warning-body{
+    max-width: 72%;
+    margin-left: 4%;
+  }
+  
+  .warning-button{
+    max-width: 24%;
+  }
+  
+    .warning-body{
+  	max-width: 94%;
+  }
+    
+}
+
+@media(max-width: 768px){
+	  .warning-title{
+	    font-size: 30px;
+	  }
+	  
+	  .warning-body{
+	    font-size: 18px;
+	    width: 94%;
+	    max-width: 94%;
+	    display: block;
+	    padding-bottom: 12px;
+	  }
+	  
+	  .warning-button{
+	    width: 100%;
+	    text-align: center;
+	    margin: 0px;
+	    max-width: 100%;
+	  }
+	  
+	  .warning-button a{
+	    font-size: 14px;
+	  }
+}
+</style>
+
+</section>
+<section id="block-bean-standard-notification" class="block block-bean clearfix">
+
+      
+  <style type="text/css">
+
+	.standard-body{
+		max-width: 73%;
+	}
+
+
+	.standard-content{
+		width: 96%;
+	}
+
+
+@media(max-width: 1024px){
+  
+  .standard-image{
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+    display: block;
+    padding-bottom: 12px;
+  }
+  
+  .standard-content{
+    display: block;
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+  }
+  
+  .standard-title{
+    text-align: center;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    padding-bottom: 12px;
+  }
+  
+  .standard-separator{
+    display: none;
+  }
+  
+  .standard-body{
+    max-width: 72%;
+    margin-left: 4%;
+  }
+  
+  .standard-button{
+    max-width: 24%;
+  }
+  
+    .standard-body{
+  	max-width: 94%;
+  }
+    
+}
+
+@media(max-width: 768px){
+	  .standard-title{
+	    font-size: 30px;
+	  }
+	  
+	  .standard-body{
+	    font-size: 18px;
+	    width: 94%;
+	    max-width: 94%;
+	    display: block;
+	    padding-bottom: 12px;
+	  }
+	  
+	  .standard-button{
+	    width: 100%;
+	    text-align: center;
+	    margin: 0px;
+	    max-width: 100%;
+	  }
+	  
+	  .standard-button a{
+	    font-size: 14px;
+	  }
+}
+</style>
+
+</section>
+  </div>
+			</div>
+	<main>
+				<div id="content">
+					<div class="contentColumns">
+                <div class="hgroup">
+                                        <a id="main-content"></a>
+                                                            	<h1 class="page-header">Home Page</h1>
+                                                        </div>
+                                                                                                                                              <div class="region region-content">
+    <section id="block-views-slider-block" class="block block-views clearfix">
+
+      
+  <div class="view view-slider view-id-slider view-display-id-block view-dom-id-56e8570bfa4c8cde2ca0519203716cc7">
+        
+  
+  
+      <div class="view-content">
+      <div  id="flexslider-1" class="flexslider optionset-default">
+  <ul class="slides"><li>  
+  <div class="views-field views-field-field-image">        <div class="field-content"><a href="https://www.cincinnatistate.edu/academics/registration/register"><img class="img-responsive" src="https://www.cincinnatistate.edu/sites/default/files/Welcome%20Back%20Students%20Spring%20Semester%202020.jpg" width="1920" height="779" alt="students" /></a></div>  </div><div class="flex-caption"><span style="">It All Starts Here.</span> <a href="https://apply.cincinnatistate.edu" style="border: none; -webkit-border-radius: 9px; -moz-border-radius: 9px; border-radius: 9px; padding: 0.25em 1em; display: inline-block; background: #e73c00; color: white; text-transform: uppercase; text-decoration: none; margin-left: 0.25em;" target="_blank" title="Click this button to submit your application for admission.">Apply Now!</a></div></li>
+<li>  
+  <div class="views-field views-field-field-image">        <div class="field-content"><a href="https://www.cincinnatistate.edu/academics/workforce-development-center"><img class="img-responsive" src="https://www.cincinnatistate.edu/sites/default/files/WDC%20Slider.png" width="1920" height="779" alt="Work Force Development" /></a></div>  </div><div class="flex-caption"><span style="">It All Starts Here.</span> <a href="https://apply.cincinnatistate.edu" style="border: none; -webkit-border-radius: 9px; -moz-border-radius: 9px; border-radius: 9px; padding: 0.25em 1em; display: inline-block; background: #e73c00; color: white; text-transform: uppercase; text-decoration: none; margin-left: 0.25em;" target="_blank" title="Click this button to submit your application for admission.">Apply Now!</a></div></li>
+<li>  
+  <div class="views-field views-field-field-image">        <div class="field-content"><a href="https://www.cincinnatistate.edu/butlertech"><img class="img-responsive" src="https://www.cincinnatistate.edu/sites/default/files/Butlertech%20Bioscience%20Slider%20use%20this%20one.jpg" width="1920" height="779" alt="building image and students" /></a></div>  </div><div class="flex-caption"><span style="">It All Starts Here.</span> <a href="https://apply.cincinnatistate.edu" style="border: none; -webkit-border-radius: 9px; -moz-border-radius: 9px; border-radius: 9px; padding: 0.25em 1em; display: inline-block; background: #e73c00; color: white; text-transform: uppercase; text-decoration: none; margin-left: 0.25em;" target="_blank" title="Click this button to submit your application for admission.">Apply Now!</a></div></li>
+<li>  
+  <div class="views-field views-field-field-image">        <div class="field-content"><a href="https://www.cincinnatistate.edu/academics/admission/visit-cincinnati-state"><img class="img-responsive" src="https://www.cincinnatistate.edu/sites/default/files/College%20Information%20Session%20slider.jpg" width="1920" height="779" alt="students filming on the lawn" /></a></div>  </div><div class="flex-caption"><span style="">It All Starts Here.</span> <a href="https://apply.cincinnatistate.edu" style="border: none; -webkit-border-radius: 9px; -moz-border-radius: 9px; border-radius: 9px; padding: 0.25em 1em; display: inline-block; background: #e73c00; color: white; text-transform: uppercase; text-decoration: none; margin-left: 0.25em;" target="_blank" title="Click this button to submit your application for admission.">Apply Now!</a></div></li>
+</ul></div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</section>
+<section id="block-system-main" class="block block-system clearfix">
+
+      
+  <script type="text/javascript">
+
+$(function(){
+	
+	$("#webform-ajax-wrapper-13412").show();
+	
+	$(".node-readmore a").html("More...");
+	$(".node-readmore a").addClass('button');
+	
+	$(window).resize(resizeHeaderImage);
+	
+	resizeHeaderImage();
+})
+
+function resizeHeaderImage(){
+	
+	var img = $(".home-header-image img");
+	var wrapper = $(".home-header-image");
+	
+	if($(img).height() > $(wrapper).height()){
+		
+		var difference = img.height() - wrapper.height();
+		
+		$(img).css({
+			//marginTop: ((difference / 2) * -1) - 30
+		});
+		
+	}
+	
+	if($(window).width() <= 800){
+		
+		if(!$(".bottomRight").hasClass('mobile')){
+		
+			$(".bottomRight").prependTo(".home-wrapper.top");
+			
+			$(".bottomRight").addClass('mobile');
+			
+		}
+		
+	}
+	else{
+		
+		if($(".bottomRight").hasClass('mobile')){
+		
+			$(".bottomRight").appendTo(".home-wrapper.header");
+			
+			$(".bottomRight").removeClass('mobile');
+			
+		}
+		
+	}
+	
+}
+</script>
+<!--<div class="home-header-image">
+	<img alt="Cincinnati State" src="https://www.cincinnatistate.edu/sites/default/files/Panorama-Buildings-Image-for-Website-1920px.jpg" />
+	<div class="header-banner">
+		<div class="container">
+					</div>
+	</div>
+</div>-->
+<!--<div class="home-wrapper header">
+	<div class="home-header-text">
+			</div>
+</div>-->
+<div class="home-wrapper top">
+	<div class="info-blurbs">
+								<div class="info-blurb">
+				<div class="blurb-icon">
+					<img alt="Start Now Preparing For Your Future" src="https://www.cincinnatistate.edu/sites/default/files/future_icon_1.png" />
+				</div>
+				<div class="info-blurb-text-wrapper">
+					<div class="blurb-header-text">
+						Explore Your Potential.					</div>
+					<div class="blurb-body-text">
+						We offer more than 130 associate degrees and certificates in nursing and healthcare, engineering technologies, culinary arts, business and information technologies, environmental technologies, humanities and sciences, and a wide range of specialized areas.					</div>
+				</div>
+			</div>
+								<div class="info-blurb">
+				<div class="blurb-icon">
+					<img alt="Real-world experience. Real-life Opportunities" src="https://www.cincinnatistate.edu/sites/default/files/employment_icon_0.png" />
+				</div>
+				<div class="info-blurb-text-wrapper">
+					<div class="blurb-header-text">
+						Real-World Experience. Real-Life Opportunities.					</div>
+					<div class="blurb-body-text">
+						CState works with more than 600 local and national co-op employers in fields like business, healthcare, engineering, culinary arts, education and many more to provide students with valuable on-the-job experience that can lead to employment after graduation.					</div>
+				</div>
+			</div>
+								<div class="info-blurb">
+				<div class="blurb-icon">
+					<img alt="Need Assistance Paying for College?" src="https://www.cincinnatistate.edu/sites/default/files/assistance_icon_0.png" />
+				</div>
+				<div class="info-blurb-text-wrapper">
+					<div class="blurb-header-text">
+						Need Assistance Paying for College?					</div>
+					<div class="blurb-body-text">
+						We are committed to a high quality education at an affordable price, and we offer financial aid to those who qualify. Our Financial Aid Office works with students to help secure scholarships, grants and loans. In fact, 77% of our students are receiving<br />
+financial aid.					</div>
+				</div>
+			</div>
+								<div class="info-blurb">
+				<div class="blurb-icon">
+					<img alt="Great Education. Great Value" src="https://www.cincinnatistate.edu/sites/default/files/value_icon_0.png" />
+				</div>
+				<div class="info-blurb-text-wrapper">
+					<div class="blurb-header-text">
+						Great Education.<br/>Great Value.					</div>
+					<div class="blurb-body-text">
+						CState offers an affordable tuition rate -&nbsp;about $3,800 per year.&nbsp;Students in nearby counties in N. KY and S.E. IN pay instate tuition for most programs. You can fast-forward your success at half the cost of other Ohio colleges and universities.					</div>
+				</div>
+			</div>
+			</div>
+</div>
+<div style="text-align: center;">
+	<div class="homepage-degree-title">
+		<div class="field field-name-field-degree-title field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Learn About CState&#039;s Degree Programs</div></div></div>	</div>
+</div>
+<div class="home-wrapper">
+	<div style="overflow: hidden;">
+		<div class="home-program-wrapper">
+											<a href="/node/13578" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Bachelor&#039;s Bound" src="https://www.cincinnatistate.edu/sites/default/files/program1_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Bachelor&#039;s Bound						</span>
+					</span>
+				</a>
+											<a href="/node/5852" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Culinary" src="https://www.cincinnatistate.edu/sites/default/files/program2_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Culinary						</span>
+					</span>
+				</a>
+											<a href="/node/5854" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Environment" src="https://www.cincinnatistate.edu/sites/default/files/program3_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Environment						</span>
+					</span>
+				</a>
+											<a href="/node/13577" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Online Degrees" src="https://www.cincinnatistate.edu/sites/default/files/program4_1_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Online Degrees						</span>
+					</span>
+				</a>
+											<a href="/node/5850" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Business" src="https://www.cincinnatistate.edu/sites/default/files/program5_0_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Business						</span>
+					</span>
+				</a>
+											<a href="/node/5849" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Education/Service" src="https://www.cincinnatistate.edu/sites/default/files/program6_0_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Education &amp; Service						</span>
+					</span>
+				</a>
+											<a href="/node/5855" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Health &amp; Wellness" src="https://www.cincinnatistate.edu/sites/default/files/program7_0_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Health &amp; Wellness						</span>
+					</span>
+				</a>
+											<a href="/node/5857" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Public Safety" src="https://www.cincinnatistate.edu/sites/default/files/program8_0_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Public Safety						</span>
+					</span>
+				</a>
+											<a href="/node/5851" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Computers" src="https://www.cincinnatistate.edu/sites/default/files/program9_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Computers						</span>
+					</span>
+				</a>
+											<a href="/node/5853" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Engineering" src="https://www.cincinnatistate.edu/sites/default/files/program10_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Engineering						</span>
+					</span>
+				</a>
+											<a href="/node/5856" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Multimedia &amp; Design" src="https://www.cincinnatistate.edu/sites/default/files/program11_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Multimedia &amp; Design						</span>
+					</span>
+				</a>
+											<a href="/node/5858" class="home-program">
+					<span class="home-program-bg">
+						<img alt="Transportation" src="https://www.cincinnatistate.edu/sites/default/files/program12_0.png" />
+					</span>
+					<span class="home-program-mask">
+						<span class="home-program-text">
+							Transportation						</span>
+					</span>
+				</a>
+					</div>
+	</div>
+	<div class="homepage_columns">
+		<div class="field field-name-field-footer-columns field-type-blockreference field-label-hidden"><div class="field-items"><div class="field-item even"><section id="block-views-calendar-block-block" class="block block-views clearfix">
+
+        <h2 class="block-title">Calendar</h2>
+    
+  <div class="view view-calendar-block view-id-calendar_block view-display-id-block view-dom-id-9ed4b0e23553234bfd72ee807f29fc48">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-field-daily-news-event-date">        <p class="field-content"><span class="date-display-single">January 28, 2020</span></p>  </div>  
+  <div>        <span><h3>Website vendor meetings...</span>  </div>  
+  <div>        <span><p>ATLC 102 Student Conference Room Tuesday, January 28, 2020, 2&nbsp;&ndash;&nbsp;3:30pm Organization:&nbsp;MARKETING &amp; COMMUNICATION DEPARTMENT</p></span>  </div>  
+  <div class="views-field views-field-path">        <span class="field-content"><p><a href="/event/website-vendor-meetings-0" class="button">More...</a></p></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-field-daily-news-event-date">        <p class="field-content"><span class="date-display-single">January 28, 2020</span></p>  </div>  
+  <div>        <span><h3>Board of Trustees</h3></span>  </div>  
+  <div>        <span><p>MAIN 344-346 Conference Center Rooms Tuesday, January 28, 2020, 3&nbsp;&ndash;&nbsp;6pm Organization:&nbsp;PRESIDENT&#39;S OFFICE</p></span>  </div>  
+  <div class="views-field views-field-path">        <span class="field-content"><p><a href="/event/board-trustees" class="button">More...</a></p></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-field-daily-news-event-date">        <p class="field-content"><span class="date-display-single">January 28, 2020</span></p>  </div>  
+  <div>        <span><h3>Phi Theta Kappa Officer Me...</span>  </div>  
+  <div>        <span><p>ATLC 101 Student Conference Room Tuesday, January 28, 2020, 3&nbsp;&ndash;&nbsp;4:30pm Organization:&nbsp;PHI THETA KAPPA</p></span>  </div>  
+  <div class="views-field views-field-path">        <span class="field-content"><p><a href="/event/phi-theta-kappa-officer-meetings" class="button">More...</a></p></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <article class="trailingButton">
+		<p><a href="/calendars" class="button">All Calendar Events…</a></p>
+	</article>    </div>
+  
+  
+</div>
+</section></div><div class="field-item odd"><section id="block-views-news-block-block" class="block block-views clearfix">
+
+        <h2 class="block-title">News</h2>
+    
+  <div class="view view-news-block view-id-news_block view-display-id-block view-dom-id-1176cf1fd6aec99f01791f72010a21b0">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div>        <span><h3>Cincinnati State Clifton C...</span>  </div>  
+  <div>        <span><p><p>Cincinnati State's Clifton Campus is the new home of Wilmington College Cincinnati.</p>
+
+<p>President Monica Posey said the College is happy to welcome the Wilmington team to their office in...</span>  </div>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><p><a href="/node/17056" class="button">More…</a></p></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div>        <span><h3>Dr. Denise Rohr is Associa...</span>  </div>  
+  <div>        <span><p><p></p>
+
+<p>Provost Robbin Hoopes announced that Dr. Denise Rohr has been selected as the College’s first Associate Provost of Assessment and Accreditation.</p>
+
+<p>Provost Hoopes said, "Dr. Rohr...</span>  </div>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><p><a href="/node/17013" class="button">More…</a></p></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div>        <span><h3>Counselors attended ENGAGE...</span>  </div>  
+  <div>        <span><p><p></p>
+
+<p>Cincinnati State welcomed 30 counselors from Cincinnati Public Schools and a dozen other area high schools and community agencies to the ENGAGE | Counselors event on Jan. 10, 2020, on...</span>  </div>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><p><a href="/node/17012" class="button">More…</a></p></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <article class="trailingButton">
+		<p><a href="/news-events/cstate-news" class="button" title="Cincinnati State News">All News…</a></p>
+	</article>    </div>
+  
+  
+</div>
+</section></div><div class="field-item even"><section id="block-views-campus-life-block" class="block block-views clearfix">
+
+        <h2 class="block-title">Campus Life</h2>
+    
+  <div class="view view-campus-life view-id-campus_life view-display-id-block view-dom-id-94e9b3ca3869970313ec59b7663e3e2e">
+        
+  
+  
+      <div class="view-content">
+        <div>
+    <article id="node-3610" class="node node-page node-teaser clearfix">
+    <header>
+            <h2><a href="/students/campus-life/student-activities">Student Activities</a></h2>
+              </header>
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>No matter what sort of activity you’re looking for, you can find it at Cincinnati State!</p></div></div></div>          <ul class="links list-inline"><li class="node-readmore first last"><a href="/students/campus-life/student-activities" rel="tag" title="Student Activities">Read more<span class="element-invisible"> about Student Activities</span></a></li>
+</ul>    </article>
+  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <a href="/node/3642" class="button">SCHEDULE A VISIT...</a>    </div>
+  
+  
+</div>
+</section></div></div></div>	</div>
+</div>	
+<div class="apply-now-wrapper" style="background-image: url('https://www.cincinnatistate.edu/sites/default/files/apply_now_bg.png');">
+	<div class="getting-started-text"><div class="field field-name-field-getting-started-text field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">North of Cincinnati?</div></div></div></div>
+	
+	<a  target="_blank"  href="https://www.cincinnatistate.edu/contact-us/campuses/middletown">Visit Middletown Campus</a>
+</div>
+</section>
+<section id="block-bean-contact-form-brochure" class="block block-bean clearfix">
+
+      
+  <div class="entity entity-bean bean-brochure clearfix">
+        <div class="content">
+    <div class="field field-name-field-brochure field-type-file field-label-above"><div class="field-label">Brochure:&nbsp;</div><div class="field-items"><div class="field-item even"><span class="file"><img class="file-icon" alt="Binary Data" title="" src="/modules/file/icons/application-octet-stream.png" /> <a href="https://www.cincinnatistate.edu/" type="; length="></a></span></div></div></div>  </div>
+</div>
+
+</section>
+  </div>
+            </div>
+        </div>
+					<aside id="content-secondary" >
+				<div class="column">
+																<section class="calendar">
+							  <div class="region region-sidebar-r1-bottom">
+    <section id="block-views-calendar-block-block--2" class="block block-views clearfix">
+
+        <h2 class="block-title">Calendar</h2>
+    
+  <div class="view view-calendar-block view-id-calendar_block view-display-id-block view-dom-id-b1eca4d7535d5c7583b27d296715bff4">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-field-daily-news-event-date">        <p class="field-content"><span class="date-display-single">January 28, 2020</span></p>  </div>  
+  <div>        <span><h3>Website vendor meetings...</span>  </div>  
+  <div>        <span><p>ATLC 102 Student Conference Room Tuesday, January 28, 2020, 2&nbsp;&ndash;&nbsp;3:30pm Organization:&nbsp;MARKETING &amp; COMMUNICATION DEPARTMENT</p></span>  </div>  
+  <div class="views-field views-field-path">        <span class="field-content"><p><a href="/event/website-vendor-meetings-0" class="button">More...</a></p></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-field-daily-news-event-date">        <p class="field-content"><span class="date-display-single">January 28, 2020</span></p>  </div>  
+  <div>        <span><h3>Board of Trustees</h3></span>  </div>  
+  <div>        <span><p>MAIN 344-346 Conference Center Rooms Tuesday, January 28, 2020, 3&nbsp;&ndash;&nbsp;6pm Organization:&nbsp;PRESIDENT&#39;S OFFICE</p></span>  </div>  
+  <div class="views-field views-field-path">        <span class="field-content"><p><a href="/event/board-trustees" class="button">More...</a></p></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-field-daily-news-event-date">        <p class="field-content"><span class="date-display-single">January 28, 2020</span></p>  </div>  
+  <div>        <span><h3>Phi Theta Kappa Officer Me...</span>  </div>  
+  <div>        <span><p>ATLC 101 Student Conference Room Tuesday, January 28, 2020, 3&nbsp;&ndash;&nbsp;4:30pm Organization:&nbsp;PHI THETA KAPPA</p></span>  </div>  
+  <div class="views-field views-field-path">        <span class="field-content"><p><a href="/event/phi-theta-kappa-officer-meetings" class="button">More...</a></p></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <article class="trailingButton">
+		<p><a href="/calendars" class="button">All Calendar Events…</a></p>
+	</article>    </div>
+  
+  
+</div>
+</section>
+  </div>
+						</section>
+									</div>
+				<div class="column">
+											<section class="news">
+							  <div class="region region-sidebar-r2">
+    <section id="block-views-news-block-block--2" class="block block-views clearfix">
+
+        <h2 class="block-title">News</h2>
+    
+  <div class="view view-news-block view-id-news_block view-display-id-block view-dom-id-e5e3002b27e804aebee0be7e43df4dad">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div>        <span><h3>Cincinnati State Clifton C...</span>  </div>  
+  <div>        <span><p><p>Cincinnati State's Clifton Campus is the new home of Wilmington College Cincinnati.</p>
+
+<p>President Monica Posey said the College is happy to welcome the Wilmington team to their office in...</span>  </div>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><p><a href="/node/17056" class="button">More…</a></p></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div>        <span><h3>Dr. Denise Rohr is Associa...</span>  </div>  
+  <div>        <span><p><p></p>
+
+<p>Provost Robbin Hoopes announced that Dr. Denise Rohr has been selected as the College’s first Associate Provost of Assessment and Accreditation.</p>
+
+<p>Provost Hoopes said, "Dr. Rohr...</span>  </div>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><p><a href="/node/17013" class="button">More…</a></p></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div>        <span><h3>Counselors attended ENGAGE...</span>  </div>  
+  <div>        <span><p><p></p>
+
+<p>Cincinnati State welcomed 30 counselors from Cincinnati Public Schools and a dozen other area high schools and community agencies to the ENGAGE | Counselors event on Jan. 10, 2020, on...</span>  </div>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><p><a href="/node/17012" class="button">More…</a></p></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <article class="trailingButton">
+		<p><a href="/news-events/cstate-news" class="button" title="Cincinnati State News">All News…</a></p>
+	</article>    </div>
+  
+  
+</div>
+</section>
+  </div>
+						</section>
+									</div>
+			</aside>
+			</main>
+	<aside id="nav-secondary">
+	                  <div class="region region-sidebar-left">
+    <section id="block-bean-left-menu-image" class="block block-bean clearfix">
+
+      
+  <!-- Testing Image -->
+<style type="text/css">
+@media (min-width: 960px) {
+    #nav-secondary{
+		background: #dbe8d5 url('https://www.cincinnatistate.edu/sites/default/files/Panorama%20Buildings%20Image%20for%20Website-1920px.png') 60% bottom no-repeat fixed;
+	}
+}
+</style>
+</section>
+  </div>
+            </aside>
+</div>
+
+<footer>
+		<div class="footerRow">
+                              <div class="region region-footer-row-1">
+    <section id="block-menu-menu-footer-menu" class="block block-menu clearfix">
+
+      
+  <ul class="menu nav"><li class="first expanded"><span class="nolink">Centers</span><ul class="menu nav"><li class="first leaf"><a href="/academics/degrees-and-certificates/career-center">Career Center</a></li>
+<li class="leaf"><a href="/airport">Cincinnati West Airport</a></li>
+<li class="leaf"><a href="/node/4964">Conference Center</a></li>
+<li class="leaf"><a href="/node/4966">Occupational Therapy Center</a></li>
+<li class="leaf"><a href="/academics/degrees-and-certificates/transfer-center">Transfer Center</a></li>
+<li class="last leaf"><a href="/academics/workforce-development-center">Workforce Development Center</a></li>
+</ul></li>
+<li class="expanded"><span class="nolink">Culinary</span><ul class="menu nav"><li class="first leaf"><a href="/students/dining-0/bakery-hill">Bakery Hill</a></li>
+<li class="leaf"><a href="/students/dining/overlook-caf">Overlook Cafe</a></li>
+<li class="leaf"><a href="/students/dining-0/midwest-culinary-institute">Midwest Culinary Institute</a></li>
+<li class="leaf"><a href="/students/dining/summit-restaurant">Summit Restaurant</a></li>
+<li class="last leaf"><a href="/students/dining/teambuilding">Teambuilding Events</a></li>
+</ul></li>
+<li class="expanded"><span class="nolink">Friends</span><ul class="menu nav"><li class="first leaf"><a href="/about/cstate-foundation/alumni-association">Alumni Association</a></li>
+<li class="leaf"><a href="/students/anonymous/cstate-accelerate">CState Accelerate</a></li>
+<li class="last leaf"><a href="/trio">TRiO</a></li>
+</ul></li>
+<li class="last expanded"><span class="nolink">Groups</span><ul class="menu nav"><li class="first leaf"><a href="/node/5037">Adult Learners</a></li>
+<li class="leaf"><a href="/disability-services">Disability Services</a></li>
+<li class="last leaf"><a href="/veteran">Veterans</a></li>
+</ul></li>
+</ul>
+</section>
+  </div>
+            		</div>
+
+		<div class="footerRow">
+                              <div class="region region-footer-row-2">
+    <section id="block-menu-menu-footer-locations" class="block block-menu clearfix">
+
+      
+  <ul class="menu nav"><li class="first expanded"><a href="/contact-us/campuses/clifton" class="campus-link">Clifton</a><ul class="menu nav"><li class="first last leaf"><a href="/contact-us/campuses/clifton/directions#main">3520 Central Parkway<br/>Cincinnati, Ohio 45223<br/>513.569.1500</a></li>
+</ul></li>
+<li class="expanded"><a href="/contact-us/campuses/evendale" class="campus-link">Evendale</a><ul class="menu nav"><li class="first last leaf"><a href="/contact-us/campuses/clifton/directions#workforce">10100 Reading Road<br/>Cincinnati, Ohio 45241<br/>513.569.1643</a></li>
+</ul></li>
+<li class="expanded"><a href="/contact-us/campuses/harrison" class="campus-link">Harrison</a><ul class="menu nav"><li class="first last leaf"><a href="/contact-us/campuses/clifton/directions#airport">10030 West Road<br/>Harrison, Ohio 45030<br/>513.569.4970</a></li>
+</ul></li>
+<li class="last expanded"><a href="/contact-us/campuses/middletown" class="campus-link">Middletown</a><ul class="menu nav"><li class="first last leaf"><a href="/contact-us/campuses/clifton/directions#middle">1 North Main Street<br/>Middletown, Ohio 45042<br/>513.217.3700</a></li>
+</ul></li>
+</ul>
+</section>
+  </div>
+            		</div>
+
+		<div class="footerRow">
+                              <div class="region region-copyright">
+    <section id="block-block-14" class="block block-block clearfix">
+
+      
+  <div class="row">
+<div class="col-xs-12">
+<div class="col-sm-4 col-xs-12">
+<ul>
+	<li>Copyright © 2020 Cincinnati State | <a href="https://web3.cincinnatistate.edu/eforms/eform.aspx?form_id=1589" target="_blank">Send Us Feedback</a></li>
+</ul>
+</div>
+
+<div class="col-sm-4 col-xs-12">
+<div class="col-md-6 col-sm-7 col-xs-8 center-block" style="float:none; padding-top:2em;">
+<div class="col-xs-4 text-center"><a href="https://www.facebook.com/cincinnatistate/" target="_blank"><img alt="" class="center-block" src="/sites/default/files/uploadedfiles/s2.png" style="width:2em;" /></a></div>
+
+<div class="col-xs-4 text-center"><a href="https://twitter.com/CinState" target="_blank"><img alt="" class="center-block" src="/sites/default/files/uploadedfiles/s1.png" style="width:2em;" /></a></div>
+
+<div class="col-xs-4 text-center"><a href="https://www.instagram.com/cinstate/" target="_blank"><img alt="" class="center-block" src="/sites/default/files/uploadedfiles/s3.png" style="width:2em;" /></a></div>
+</div>
+</div>
+
+<div class="col-sm-4 col-xs-12">&nbsp;</div>
+</div>
+</div>
+
+</section>
+<section id="block-block-20" class="block block-block clearfix">
+
+      
+  <div id="ttdUniversalPixelTagf9f4265306dc447194876cacdd96a246" style="display:none"><script src="https://js.adsrvr.org/up_loader.1.1.0.js" type="text/javascript"></script><script type="text/javascript">
+                (function(global) {
+                    if (typeof TTDUniversalPixelApi === 'function') {
+                        var universalPixelApi = new TTDUniversalPixelApi();
+                        universalPixelApi.init("2uetl4e", ["gdfycya"], "https://insight.adsrvr.org/track/up", "ttdUniversalPixelTagf9f4265306dc447194876cacdd96a246");
+                    }
+                })(this);
+            </script></div>
+<!-- Facebook Pixel Code --><script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '173335246592087'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script><noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=173335246592087&ev=PageView&noscript=1"
+/></noscript><!-- DO NOT MODIFY --><!-- End Facebook Pixel Code -->
+</section>
+  </div>
+                    </div>
+</footer>
+
+<div class="bottomRight">
+				  <div class="region region-bottom-right">
+    <section id="block-webform-client-block-13412" class="block block-webform clearfix">
+
+        <h2 class="block-title">Get More Information</h2>
+    
+  <div id="webform-ajax-wrapper-13412"><form class="webform-client-form webform-client-form-13412" action="/" method="post" id="webform-client-form-13412" accept-charset="UTF-8"><div><div class="webform-progressbar">
+  
+
+  
+  </div>
+<div class="form-item webform-component webform-component-markup webform-component--complete-this-short-form-to-download-your-free-college-brochure form-group form-item form-type-markup form-group"><div class="markup-wrapper"><p>Complete this short form to download your free college brochure.</p>
+<img src="/sites/default/files/step1-form.png" /></div></div><div class="form-item webform-component webform-component-select webform-component--Field8 form-group form-item form-item-submitted-field8 form-type-select form-group"> <label class="control-label" for="edit-submitted-field8">What field of study interests you? <span class="form-required" title="This field is required.">*</span></label>
+<select required="required" class="form-control form-select required" id="edit-submitted-field8" name="submitted[Field8]"><option value="" selected="selected">-- Select --</option><option value="Arts &amp; Sciences">Arts &amp; Sciences</option><option value="Business">Business</option><option value="Computers">Computers</option><option value="Culinary">Culinary</option><option value="Engineering">Engineering</option><option value="Environment">Environment</option><option value="Health">Health</option><option value="Multimedia">Multimedia</option><option value="Public Safety">Public Safety</option><option value="Transportation">Transportation</option></select></div><input type="hidden" name="details[sid]" />
+<input type="hidden" name="details[page_num]" value="1" />
+<input type="hidden" name="details[page_count]" value="2" />
+<input type="hidden" name="details[finished]" value="0" />
+<input type="hidden" name="form_build_id" value="form-aKr8OW3f44oSN9y5d5_w5IX7K-JDRzdXIioddjjjhnc" />
+<input type="hidden" name="form_id" value="webform_client_form_13412" />
+<input type="hidden" name="webform_ajax_wrapper_id" value="webform-ajax-wrapper-13412" />
+<div class="form-actions"><button class="webform-next button-primary btn btn-default form-submit" id="edit-webform-ajax-next-13412" type="submit" name="op" value="Next Step">Next Step</button>
+</div></div></form></div>
+</section>
+  </div>
+	</div>
+  <script type="text/javascript" async="async" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/picture/picturefill2/picturefill.min.js?v=2.3.1"></script>
+<script type="text/javascript" async="async" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/picture/picture.min.js?v=7.67"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/flexslider/assets/js/flexslider.load.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/modules/contrib/highlight/js/highlight.js?q4tvjy"></script>
+<script type="text/javascript" src="https://www.cincinnatistate.edu/sites/all/themes/bootstrap/js/bootstrap.js?q4tvjy"></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"fde492189e","applicationID":"49129281","transactionName":"ZANSMBQCVktSU0xcDV1JZRYPTBdRXVRdTUxDDkA=","queueTime":0,"applicationTime":13,"atts":"SERRRlwYRUU=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

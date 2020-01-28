@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html class="no-js" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"edc4967dfd",applicationID:"70828766"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Yale University</title>
+
+
+    <!-- Favions / Touch Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-57x57.png">
+
+    <!-- Favions / Touch Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/sites/all/themes/yale_blue/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/sites/all/themes/yale_blue/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/sites/all/themes/yale_blue/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/sites/all/themes/yale_blue/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/sites/all/themes/yale_blue/images/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#00356b">
+    <meta name="msapplication-TileImage" content="/sites/all/themes/yale_blue/images/favicons/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="/sites/all/themes/yale_blue/images/favicons/favicon.ico">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="https://www.yale.edu/sites/all/themes/yale_blue/images/favicons/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta name="_globalsign-domain-verification" content="wkpgXqnxKdVz7GZbXbNUpAeBFDRTeve6uffKnIz_aA" />
+<meta name="description" content="Since its founding in 1701, Yale University has been dedicated to expanding and sharing knowledge, inspiring innovation, and preserving cultural and scientific information for future generations." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="canonical" href="https://www.yale.edu/" />
+<link rel="shortlink" href="https://www.yale.edu/" />
+<meta property="og:site_name" content="Yale University" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.yale.edu/" />
+<meta property="og:title" content="Yale University" />
+<meta property="og:description" content="Since its founding in 1701, Yale University has been dedicated to expanding and sharing knowledge, inspiring innovation, and preserving cultural and scientific information for future generations." />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://www.yale.edu/" />
+<meta name="twitter:title" content="Yale University" />
+    <link type="text/css" rel="stylesheet" href="https://www.yale.edu/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.yale.edu/sites/default/files/css/css_hTLrwzbU9bZhjvzx-j5entbJFEHkjJyd6RgHEla8FhA.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.yale.edu/sites/default/files/css/css_T_SjWcqksnGZeFcoyLf7XdAzHG7jR37wApfM7adK8LY.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.yale.edu/sites/default/files/css/css_nx2GoPz9tlVhJZlrhE0eSxF62DNmeN83Dh3F-qwY4eI.css" media="all" />
+<link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.yale.edu/sites/default/files/css/css_EKLCH3xLkbE2L9VzJwpRZiz5Qe18piR_wE9ZUdn3m14.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.yale.edu/sites/default/files/css/css_8R_0pUYRsUgcn_DqYThF9sN84SOtqZb5hkODYP6qLV8.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.yale.edu/sites/default/files/css_injector/css_injector_25.css?q3hw9h" media="all" />
+
+    <!-- Compiled CSS -->
+    <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="/sites/all/themes/yale_blue/css/site.css?t=202001281104">
+    <!--<![endif]-->
+    <!--[if IE 8]>
+      <link rel="stylesheet" href="/sites/all/themes/yale_blue/css/site-ie8.css?t=202001281104">
+    <![endif]-->
+      <!--[if IE 9]>
+      <link rel="stylesheet" href="/sites/all/themes/yale_blue/css/site-ie9.css?t=202001281104">
+    <![endif]-->
+
+    <!-- Compiled JS -->
+    <!--[if IE 8]>
+      <script>var IE8 = true;</script>
+      <script src="/sites/all/themes/yale_blue/js/site-ie8.js?t=202001281104"></script>
+    <![endif]-->
+    <!--[if IE 9]>
+      <script>var IE9 = true;</script>
+      <script src="/sites/all/themes/yale_blue/js/site-ie9.js?t=202001281104"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="https://www.yale.edu/sites/all/libraries/respondjs/respond.min.js?q3hw9h"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+document.cookie = 'adaptive_image=' + Math.max(screen.width, screen.height) + '; path=/';
+//--><!]]>
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/contrib/jquery_update/replace/jquery/1.10/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.yale.edu/sites/default/files/js/js_dWhBODswdXXk1M5Z5nyqNfGljmqwxUwAK9i6D0YSDNs.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery.ui || document.write("<script src='/sites/all/modules/contrib/jquery_update/replace/ui/ui/minified/jquery-ui.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.yale.edu/sites/default/files/js/js__7Mjvj_fIAGoauK0xklylKBUIHrCcijyT8yucEi2E0o.js"></script>
+<script type="text/javascript" src="https://www.yale.edu/sites/default/files/js/js_f_6-OzlFXjayKlsU5sJKLwjz7LFQvdIZDm-Mt6jKwyM.js"></script>
+<script type="text/javascript" src="https://www.yale.edu/sites/default/files/js/js_hR_X8IXy5ZRNgnOlcTRTymFDqIrWUzTq_Xq3oey1ugM.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.yale.edu/sites/default/files/googleanalytics/analytics.js?q3hw9h","ga");ga("create", "UA-991898-23", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.yale.edu/sites/default/files/js/js_Xp42x4IeuhdbL6uORzJ6WS2Q7LigXFqtOWo49t50sgc.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"yale_blue","theme_token":"nVjL1H9yVl-s-vbt5VeHDHBALxRKD8FOcQOCJMIa7hQ","jquery_version":"1.10","js":{"0":1,"sites\/all\/libraries\/respondjs\/respond.min.js":1,"1":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.10.2\/jquery.min.js":1,"2":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jqueryui\/1.10.2\/jquery-ui.min.js":1,"3":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery.form\/4\/jquery.form.min.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.js":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/contrib\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/contrib\/jscrollpane\/js\/jquery.jscrollpane.min.js":1,"sites\/all\/modules\/contrib\/jscrollpane\/js\/jquery.mousewheel.js":1,"sites\/all\/modules\/contrib\/jscrollpane\/js\/script.js":1,"sites\/all\/modules\/contrib\/custom_search\/js\/custom_search.js":1,"sites\/all\/modules\/contrib\/views\/js\/base.js":1,"misc\/progress.js":1,"sites\/all\/modules\/contrib\/views\/js\/ajax_view.js":1,"sites\/all\/modules\/contrib\/google_analytics\/googleanalytics.js":1,"4":1,"sites\/all\/themes\/yale_blue\/js\/modernizr.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"misc\/ui\/jquery.ui.core.css":1,"misc\/ui\/jquery.ui.theme.css":1,"misc\/ui\/jquery.ui.menu.css":1,"misc\/ui\/jquery.ui.autocomplete.css":1,"sites\/all\/modules\/contrib\/adaptive_image\/css\/adaptive-image.css":1,"sites\/all\/modules\/contrib\/calendar\/css\/calendar_multiday.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"sites\/all\/modules\/custom\/site_backup\/site_backup.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/libraries\/colorbox\/example4\/colorbox.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/jscrollpane\/css\/jquery.jscrollpane.css":1,"sites\/all\/modules\/contrib\/typogrify\/typogrify.css":1,"\/\/maxcdn.bootstrapcdn.com\/font-awesome\/4.7.0\/css\/font-awesome.min.css":1,"sites\/all\/themes\/yale_blue\/css\/a11y.css":1,"sites\/default\/files\/fontyourface\/font.css":1,"\/sites\/all\/libraries\/fontyourface\/YaleDesign-italic-bold\/stylesheet.css":1,"\/sites\/all\/libraries\/fontyourface\/YaleDesign-italic-normal\/stylesheet.css":1,"\/sites\/all\/libraries\/fontyourface\/YaleDesign-normal-bold\/stylesheet.css":1,"\/sites\/all\/libraries\/fontyourface\/YaleDesign-normal-normal\/stylesheet.css":1,"public:\/\/css_injector\/css_injector_25.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px","colorbox_original_image":null},"googleCSE":{"cx":"018347764319155434748:jsn72bd6xkq","language":"","resultsWidth":0,"domain":"www.google.com","showWaterMark":true},"jScrollPane":{"class":".scroll-pane"},"custom_search":{"form_target":"_self","solr":0},"urlIsAjaxTrusted":{"\/":true,"\/views\/ajax":true},"views":{"ajax_path":"\/views\/ajax","ajaxViews":{"views_dom_id:c5e1b6eb07caeca82c24b0db0a1f8242":{"view_name":"explore_yale","view_display_id":"block","view_args":"","view_path":"node\/52","view_base_path":null,"view_dom_id":"c5e1b6eb07caeca82c24b0db0a1f8242","pager_element":0}}},"googleanalytics":{"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":1}});
+//--><!]]>
+</script>
+
+  </head>
+  <body id="top" class="fs-grid html front not-logged-in no-sidebars page-node page-node- page-node-52 node-type-home-page home-page"  tabindex="-1">
+    <span role="navigation" aria-labelledby="skip_to_content"><a href="#page" id="skip_to_content">Skip to Main Content</a></span>
+
+        <!-- Body Wrapper -->
+<div class="body_wrapper ">
+  <section class="site_message bg_dusty color_black" aria-hidden="true">
+	<div class="site_message_row">
+		<div class="site_message_cell">
+			<div class="site_message_description heading_4">
+				<p>It looks like you're trying to zoom in on this page. For best results: use the most recent version of your browser, disable your browser's 'zoom text only' setting, and use your browser's default font size settings.</p>
+				<p>To zoom in, use [Ctrl] + [+] in Windows, and [Cmd] + [+] on a Mac. To zoom out, use the keyboard shortcut [Ctrl] + [-] in Windows and [Cmd] + [-] on a Mac.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+  <!-- Header -->
+  <header id="header" class="header js-toggle">
+
+    <!-- Header Row -->
+    <div class="header_row">
+
+      <!-- Header Cell -->
+      <div class="header_cell">
+
+        <!-- Site Logo -->
+        <a href="/" class="logo_main icon_only" itemscope itemtype="http://schema.org/CollegeOrUniversity">
+          <h1 class="offscreen" itemprop="name">Yale University</h1>
+          <img src="/sites/all/themes/yale_blue/images/logo-print.png" class="print" alt="">
+        </a>
+        <!-- END: Site Logo -->
+
+        <!-- Search, Gateway, Secondary Nav -->
+          <div class="region region-header">
+	<div class="deskHeader">
+		<nav class="secondary_nav" aria-labelledby="secondary_nav_label">
+  <h2 class="visually_hidden" id="secondary_nav_label">Secondary Navigation</h2>
+  <div class="secondary_nav_list menu-block-wrapper menu-block-2 menu-name-menu-secondary-navigation parent-mlid-0 menu-level-1">
+    <a class="secondary_nav_link" href="/calendars"><span class="secondary_nav_text">Calendars</span></a><a class="secondary_nav_link" href="https://giving.yale.edu/"><span class="secondary_nav_text">Giving</span></a><a class="secondary_nav_link" href="https://news.yale.edu/"><span class="secondary_nav_text">News</span></a><a class="secondary_nav_link" href="https://directory.yale.edu/"><span class="secondary_nav_text">Directories</span></a>  </div>
+</nav>
+<!-- Site Search --><a class="btn_site_seach js-toggle_handle" href="/search" role="button" aria-expanded="false"><span class="btn_site_seach_text">Search</span> </a> <!-- END: Site Search --><button class="mobile_nav_handle">Navigation</button><form class="gateway_form" action="" method="post">
+  <label class="visually_hidden" for="gateway_select">Info for...</label>
+  <select class="js-dropdown" id="gateway_select" data-dropdown-options='{"label":"Info for...","customClass":"dropdown_base dropdown_midnight gateway_select"}'>
+    <option value="http://studentlife.yale.edu">Students</option><option value="/faculty">Faculty</option><option value="http://your.yale.edu">Staff</option><option value="https://alumni.yale.edu">Alumni</option>  </select>
+  <button class="info_for_submit button_solid_charcoal color_white" type="submit">Go</button>
+</form>
+	</div>
+  </div>
+        <!-- END: Search, Gateway, Secondary Nav -->
+
+        <!-- Main Nav -->
+          <div class="region region-navbar">
+    <nav class="main_nav" aria-labelledby="main_nav_label">
+  <h2 class="visually_hidden" id="main_nav_label">Main Navigation</h2>
+  <div class="main_nav_list  menu-block-wrapper menu-block-1 menu-name-main-menu parent-mlid-0 menu-level-1">
+    <div class="main_nav_item"><a class="main_nav_link" href="/about-yale">About Yale</a><div class="main_nav_child"><a class="main_nav_child_link" href="/about-yale/leadership-organization">Leadership & Organization</a><a class="main_nav_child_link" href="/about-yale/yale-facts">Yale Facts</a><a class="main_nav_child_link" href="/about-yale/traditions-history">Traditions & History</a><a class="main_nav_child_link" href="http://world.yale.edu">Yale & the World</a><a class="main_nav_child_link" href="/about-yale/visiting">Visiting</a></div></div><div class="main_nav_item"><a class="main_nav_link" href="/academics">Academics</a><div class="main_nav_child"><a class="main_nav_child_link" href="/academics/undergraduate-study">Undergraduate Study</a><a class="main_nav_child_link" href="/academics/graduate-professional-study">Graduate & Professional Study</a><a class="main_nav_child_link" href="/academics/departments-programs">Departments & Programs</a><a class="main_nav_child_link" href="https://world.yale.edu/academics-research">Global Education</a><a class="main_nav_child_link" href="https://summer.yale.edu/">Summer Session</a><a class="main_nav_child_link" href="/academics/non-degree-offerings">Non-Degree Offerings</a><a class="main_nav_child_link" href="https://poorvucenter.yale.edu/online-courses">Online Learning</a></div></div><div class="main_nav_item"><a class="main_nav_link" href="/admissions">Admissions</a><div class="main_nav_child"><a class="main_nav_child_link" href="https://admissions.yale.edu/">Undergraduate</a><a class="main_nav_child_link" href="/admissions/graduate-professional-schools">Graduate & Professional Schools</a><a class="main_nav_child_link" href="/admissions/financial-aid">Financial Aid</a><a class="main_nav_child_link" href="https://world.yale.edu/admissions">International Students</a><a class="main_nav_child_link" href="https://summer.yale.edu/apply">Summer Session</a><a class="main_nav_child_link" href="/admissions/non-degree-seeking-students">Non-Degree Seeking Students</a><a class="main_nav_child_link" href="https://worldfellows.yale.edu/apply/application-information">World Fellows Program</a></div></div><div class="main_nav_item"><a class="main_nav_link" href="/research-collections">Research & Collections</a><div class="main_nav_child"><a class="main_nav_child_link" href="https://research.yale.edu/">Research at Yale</a><a class="main_nav_child_link" href="https://web.library.yale.edu/">Libraries</a><a class="main_nav_child_link" href="/research-collections/museums-galleries">Museums & Galleries</a><a class="main_nav_child_link" href="/research-collections/centers-institutes">Centers & Institutes</a><a class="main_nav_child_link" href="http://discover.odai.yale.edu/ydc/">Digital Collections & Open Resources</a></div></div><div class="main_nav_item"><a class="main_nav_link" href="/life-yale">Life at Yale</a><div class="main_nav_child"><a class="main_nav_child_link" href="/life-yale/arts-culture">Arts & Culture</a><a class="main_nav_child_link" href="/life-yale/athletics-recreation">Athletics & Recreation</a><a class="main_nav_child_link" href="https://belong.yale.edu">Belonging at Yale</a><a class="main_nav_child_link" href="/life-yale/health-wellness">Health & Wellness</a><a class="main_nav_child_link" href="/life-yale/new-haven">New Haven</a><a class="main_nav_child_link" href="https://housing.yale.edu/">Residential Life</a><a class="main_nav_child_link" href="/life-yale/service">Service</a><a class="main_nav_child_link" href="https://studentlife.yale.edu/student-groups-activities">Student Groups & Activities</a></div></div>  </div>
+</nav>
+  </div>
+        <!-- END: Main Nav -->
+
+      </div>
+      <!-- END: Header Cell -->
+
+
+    </div>
+    <!-- END: Header Row -->
+
+    <!-- Site Search -->
+    <form action="#" method="GET" class="site_search" role="search" aria-label="Search Site">
+      <div class="site_search_row">
+        <div class="site_search_cell">
+          <div class="site_search_fieldset border_dusty">
+            <input aria-label="search" class="site_search_input" type="text" name="query" placeholder="Search..." value="">
+            <button class="site_search_button" type="submit">
+              <span class="visually_hidden">Search</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- END: Site Search -->
+
+  </header>
+  <!-- END: Header -->
+
+  <!-- Main Content -->
+  <main id="page" class="page" tabindex="-1">
+
+
+    <!-- Page Feature -->
+    <div class="page_feature">
+
+      <div class="page_divider visually_hidden">
+        <div class="page_divider_cell"></div>
+      </div>
+
+      
+            </div>
+    <!-- END: Page Feature -->
+
+
+            <!-- Page Row -->
+        <div class="page_row">
+
+
+          <!-- Page Header -->
+          <div class="page_header">
+          
+                                          <div class="tabs"></div>
+                    
+          </div>
+          <!-- END: Page Header -->
+
+          <!-- Page Container -->
+          <div class="page_container">
+
+          <!-- Sidebar -->
+                    <!-- END: Sidebar -->
+
+
+          </div>
+          <!-- END: Page Container -->
+
+
+
+
+        </div>
+        <!-- END: Page Row -->
+
+                  <aside class="page_callouts">
+            <!-- Main Content -->
+              <div class="region region-content">
+    <div class="ds-1col node node-home-page node-promoted node-even view-mode-full clearfix">
+
+  
+    <!-- Single Image Flexible Feature -->
+<section class="single_flex_callout single_flex_feature">
+
+  <!-- Single Image Flexible Callout Row -->
+  <div class="single_flex_callout_row single_flex_feature_row">
+
+    <!-- Single Image Flexible Callout Cell -->
+    <div class="single_flex_callout_cell single_flex_feature_cell">
+
+      <!-- Single Image Flexible Callout Media -->
+      <div class="single_flex_callout_media single_flex_feature_media">
+
+        <figure class="single_flex_callout_figure single_flex_feature_figure  responsive_image bg_black">
+          <picture class="single_flex_callout_picture   single_flex_feature_picture">
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+                        <source media="(min-width: 980px)" srcset="https://www.yale.edu/sites/default/files/styles/homepage_feature_840x590/public/blended-yism.jpg?itok=acgoyrTZ">
+                        <source media="(min-width: 740px)" srcset="https://www.yale.edu/sites/default/files/styles/homepage_feature_980x688/public/blended-yism.jpg?itok=7LOHAVGr">
+            <source media="(min-width: 500px)" srcset="https://www.yale.edu/sites/default/files/styles/homepage_feature_740x417/public/blended-yism.jpg?itok=zNIPBpv3">
+            <source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/homepage_feature_500x282/public/blended-yism.jpg?itok=5oq36ZeC">
+            <!--[if IE 9]></video><![endif]-->
+            <img class="single_flex_callout_image single_flex_feature_image " src="https://www.yale.edu/sites/default/files/styles/homepage_feature_500x282/public/blended-yism.jpg?itok=5oq36ZeC" alt="">
+          </picture>
+        </figure>
+
+        <a class="button_solid_greige button_icon_right_arrow color_white single_flex_archive single_flex_archive_xl" href="/feature-archive">The Feature Archive</a>
+
+      </div>
+      <!-- END: Single Image Flexible Callout Media -->
+
+      <!-- Single Image Flexible Callout Content -->
+      <article class="single_flex_callout_content single_flex_feature_content   bg_gray_light">  <!--  remove single_flex_large_type_content if description -->
+
+        <div class="single_flex_callout_content_inner single_flex_feature_content_inner">
+          <div class="single_flex_callout_content_header single_flex_feature_content_header">
+            <h2 class="single_flex_callout_title single_flex_feature_title  color_midnight" id="single_flex_feature_title13001">Blurring the lines between the physical and digital</h2>
+            <h3 class="single_flex_callout_category single_flex_feature_category heading_5 text_divide context">Blended Reality</h3>
+          </div>
+                    <div class="single_flex_callout_description single_flex_feature_description body_text">
+            <p>Blended Reality is an arts research project that uses 3D design, augmented and virtual reality, and digital imaging to enable new ways of learning and communicating.</p>
+          </div>
+                    <footer class="single_flex_callout_footer single_flex_feature_footer">
+            <a class="single_flex_callout_button single_flex_feature_button button_bordered_dusty button_icon_right_arrow color_black" aria-label="Learn more Blurring the lines between the physical and digital" href="https://blendedreality.yale.edu">Learn more</a>
+            <a class="button_solid_greige button_icon_right_arrow color_white single_flex_archive single_flex_archive_sm" href="/feature-archive">The Feature Archive</a>
+          </footer>
+
+        </div>
+
+      </article>
+      <!-- END: Single Image Flexible Callout Content -->
+
+    </div>
+    <!-- END: Single Image Flexible Callout Cell -->
+
+  </div>
+  <!-- END: Single Image Flexible Callout Row -->
+
+  <a class="button_solid_greige button_icon_right_arrow color_white single_flex_archive single_flex_archive_lg" href="/feature-archive">The Feature Archive</a>
+
+
+</section>
+<!-- END: Single Image Flexible Feature -->
+<!-- Content Card Carousel -->
+<div class="card_carousel_wrapper">
+
+  <div class="card_carousel_row">
+
+    <div class="card_carousel_cell">
+
+      <div class="card_carousel_panel">
+
+        <div class="card_carousel_context bg_midnight heading_5 context color_white">
+          Explore recent projects        </div>
+
+        <div class="card_carousel_controls">
+          <button type="button" class="card_carousel_control card_carousel_control_previous">
+            <span class="visually_hidden">Previous</span>
+          </button>
+          <button type="button" class="card_carousel_control card_carousel_control_next">
+            <span class="visually_hidden">Next</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="carousel_wide_controls">
+        <button type="button" class="carousel_wide_control carousel_wide_controls_previous js-carousel_external_prev">
+          <span class="visually_hidden">Previous</span>
+        </button>
+        <button type="button" class="carousel_wide_control carousel_wide_controls_next js-carousel_external_next">
+          <span class="visually_hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="card_carousel js-carousel js-carousel-overflow" data-carousel-options='{"contained": false, "minWidth": "740px", "controls":{"next":".js-carousel_external_next", "previous":".js-carousel_external_prev"}, "show":{"1350px":2}}'>
+        <!-- Carousel Card - Background Image -->
+<article class="content_card carousel_card content_card_with_image bg_black">
+
+  <figure class="content_card_figure carousel_card_figure responsive_image">
+    <picture class="content_card_picture carousel_card_picture">
+      <!--[if IE 9]><video style="display: none;"><![endif]-->
+      <source media="(min-width: 980px)" srcset="https://www.yale.edu/sites/default/files/styles/carousel_image_575x404/public/peabody1.jpg?itok=nnPTgmlo">
+      <source media="(min-width: 740px)" srcset="https://www.yale.edu/sites/default/files/styles/carousel_image_563x395/public/peabody1.jpg?itok=_mAYQuda">
+      <!--[if IE 9]></video><![endif]-->
+      <img class="content_card_image carousel_card_image" src="https://www.yale.edu/sites/default/files/styles/carousel_image_575x404/public/peabody1.jpg?itok=nnPTgmlo" alt="">
+    </picture>
+  </figure>
+
+  <span class="overlay_bg"></span>
+
+  <div class="content_card_content carousel_card_content text_shadow">
+
+    <a class="content_card_link carousel_card_link color_white" href="https://blendedreality.yale.edu/2019/08/21/blended-reality-team-works-with-exhibit-preparator-micheal-anderson-to-digitally-capture-the-peabody-dioramas">
+
+      <header class="content_card_header carousel_card_header">
+        <h2 class="content_card_title carousel_card_title heading_3">Capturing the bighorns</h2>
+        <h3 class="content_card_subtitle carousel_card_subtitle heading_5 context text_divide">Yale Peabody Museum</h3>
+      </header>
+
+      <!-- Description is optional -->
+      <div class="content_card_description carousel_card_description body_text color_white">
+        <p>A Blended Reality team worked to capture the Peabody&rsquo;s dioramas digitally before the museum closed off exhibits for its renovation.</p>
+      </div>
+      <!-- END: Description is optional -->
+
+      <span class="content_card_link_icon carousel_card_link_icon"></span>
+
+    </a>
+
+  </div>
+
+</article>
+<!-- END: Content Card - Background Image -->
+<!-- Content Card - Text -->
+<article class="content_card carousel_card content_card_with_text bg_marine">
+
+  <div class="content_card_content carousel_card_content">
+
+    <a class="content_card_link carousel_card_link color_white" href="https://blendedreality.yale.edu/2019/08/20/preserving-soundscapes-before-they-are-lost-forever/">
+
+      <header class="content_card_header carousel_card_header">
+        <h2 class="content_card_title carousel_card_title heading_4">A project team led by researcher Dinny Aletheiani is recording sounds that have been lost as one-time villages in Indonesia explode into modern, growing cities.</h2>
+        <h3 class="content_card_subtitle carousel_card_subtitle heading_5 context text_divide">Saving the sounds of Indonesia</h3>
+      </header>
+
+      <span class="content_card_link_icon carousel_card_link_icon"></span>
+
+    </a>
+
+  </div>
+
+</article>
+<!-- END: Content Card - Text -->
+<!-- Carousel Card - Background Image -->
+<article class="content_card carousel_card content_card_with_image bg_black">
+
+  <figure class="content_card_figure carousel_card_figure responsive_image">
+    <picture class="content_card_picture carousel_card_picture">
+      <!--[if IE 9]><video style="display: none;"><![endif]-->
+      <source media="(min-width: 980px)" srcset="https://www.yale.edu/sites/default/files/styles/carousel_image_575x404/public/nursing.jpg?itok=h3WLXQE4">
+      <source media="(min-width: 740px)" srcset="https://www.yale.edu/sites/default/files/styles/carousel_image_563x395/public/nursing.jpg?itok=EdlKcHGT">
+      <!--[if IE 9]></video><![endif]-->
+      <img class="content_card_image carousel_card_image" src="https://www.yale.edu/sites/default/files/styles/carousel_image_575x404/public/nursing.jpg?itok=h3WLXQE4" alt="">
+    </picture>
+  </figure>
+
+  <span class="overlay_bg"></span>
+
+  <div class="content_card_content carousel_card_content text_shadow">
+
+    <a class="content_card_link carousel_card_link color_white" href="https://news.yale.edu/2020/01/06/producing-better-nurses-augmented-reality">
+
+      <header class="content_card_header carousel_card_header">
+        <h2 class="content_card_title carousel_card_title heading_3">Producing better nurses with augmented reality</h2>
+        <h3 class="content_card_subtitle carousel_card_subtitle heading_5 context text_divide">School of Nursing</h3>
+      </header>
+
+      <!-- Description is optional -->
+      <div class="content_card_description carousel_card_description body_text color_white">
+              </div>
+      <!-- END: Description is optional -->
+
+      <span class="content_card_link_icon carousel_card_link_icon"></span>
+
+    </a>
+
+  </div>
+
+</article>
+<!-- END: Content Card - Background Image -->
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- END: Content Card Carousel -->
+  <!-- News Explore -->
+<section class="news_explore margined_lg">
+
+  <div class="news_explore_row">
+
+    <header class="news_explore_header">
+      <h2 class="news_explore_title color_midnight">The latest from YaleNews</h2>
+    </header>
+
+
+    <div class="news_explore_feature">
+
+      <article class="news_explore_article news_explore_article_full">
+        <figure class="news_explore_figure_full responsive_image bg_black">
+          <picture class="news_explore_picture_full">
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 1220px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_news_575x384/public/china-divorce-ynews_v01.jpg?itok=RZhoDVYu">
+            <source media="(min-width: 980px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_news_460x308/public/china-divorce-ynews_v01.jpg?itok=RO9IMtzx">
+            <source media="(min-width: 740px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_news_345x230/public/china-divorce-ynews_v01.jpg?itok=xyckJUOO">
+            <source media="(min-width: 500px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_news_470x314/public/china-divorce-ynews_v01.jpg?itok=J1fdWSJF">
+            <source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_news_295x198/public/china-divorce-ynews_v01.jpg?itok=MpPBRoEY">
+            <!--[if IE 9]></video><![endif]-->
+            <img class="news_explore_image_full" src="https://www.yale.edu/sites/default/files/styles/explore_news_295x198/public/china-divorce-ynews_v01.jpg?itok=MpPBRoEY" alt="">
+          </picture>
+        </figure>
+        <h3 class="news_explore_article_title news_explore_article_title_full color_black">
+          <a class="news_explore_article_link news_explore_article_link_full" href="https://news.yale.edu/2020/01/24/study-shows-effects-chinese-divorce-law-womens-wellbeing">Study shows effects of Chinese divorce law on women’s wellbeing</a>
+        </h3>
+        <time class="news_explore_article_date news_explore_article_date_full label color_charcoal text_divide" datetime="2020-01-24">January 24, 2020</time>
+      </article>
+
+    </div>
+
+
+    <div class="news_explore_supporting">
+
+      <form class="news_explore_form" action="https://news.yale.edu" method="post">
+        <label class="news_explore_dropdown_label heading_5 color_greige" for="news_explore_dropdown">Explore More News</label>
+        <select class="news_explore_select js-dropdown" id="news_explore_dropdown" data-dropdown-options='{"label":"All News", "customClass":"dropdown_base dropdown_dusty news_explore_dropdown"}'>
+          <option value="topics/alumni">Alumni</option>
+          <option value="topics/arts-humanities">Arts &amp; Humanities</option>
+          <option value="topics/business">Business</option>
+          <option value="topics/campus-community">Campus &amp; Community</option>
+          <option value="topics/environment">Environment</option>
+          <option value="topics/health-medicine">Health &amp; Medicine</option>
+          <option value="topics/international">International</option>
+          <option value="topics/law">Law</option>
+          <option value="topics/science-technology">Science &amp; Technology</option>
+          <option value="topics/social-sciences">Social Sciences</option>
+          <option value="in-focus">In Focus</option>
+        </select>
+        <button class="news_explore_submit button_solid_midnight color_white" type="submit">Go</button>
+      </form>
+
+
+      <div class="news_explore_article_list">
+                                                                                      <article class="news_explore_article news_explore_article_compact">
+              <h3 class="news_explore_article_title news_explore_article_title_compact">
+                <a class="news_explore_article_link news_explore_article_link_compact" href="https://www.yalemedicine.org/stories/2019-novel-coronavirus/">5 things everyone should know about coronavirus</a>
+              </h3>
+              <time class="news_explore_article_date news_explore_article_date_compact label color_charcoal text_divide" datetime="2020-01-24">January 24, 2020</time>
+            </article>
+                                                                                                <article class="news_explore_article news_explore_article_compact">
+              <h3 class="news_explore_article_title news_explore_article_title_compact">
+                <a class="news_explore_article_link news_explore_article_link_compact" href="https://news.yale.edu/2020/01/23/no-dress-rehearsal-life-or-death-decision">No DRESS rehearsal for life-or-death decision</a>
+              </h3>
+              <time class="news_explore_article_date news_explore_article_date_compact label color_charcoal text_divide" datetime="2020-01-23">January 23, 2020</time>
+            </article>
+                                                                                                <article class="news_explore_article news_explore_article_compact">
+              <h3 class="news_explore_article_title news_explore_article_title_compact">
+                <a class="news_explore_article_link news_explore_article_link_compact" href="https://yalebulldogs.com/news/2020/1/16/womens-soccer-chavarin-drafted-by-nwsls-chicago-red-stars.aspx">Yale Women’s Soccer breakout Aerial Chavarin drafted by Chicago Red Stars</a>
+              </h3>
+              <time class="news_explore_article_date news_explore_article_date_compact label color_charcoal text_divide" datetime="2020-01-16">January 16, 2020</time>
+            </article>
+                                                                                                <article class="news_explore_article news_explore_article_compact">
+              <h3 class="news_explore_article_title news_explore_article_title_compact">
+                <a class="news_explore_article_link news_explore_article_link_compact" href="https://law.yale.edu/yls-today/news/power-people">The power of people: At YLS, students and alumni forge lasting bonds</a>
+              </h3>
+              <time class="news_explore_article_date news_explore_article_date_compact label color_charcoal text_divide" datetime="2020-01-13">January 13, 2020</time>
+            </article>
+                        </div>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+<!-- END: News Explore -->
+</div>
+
+  </div>
+            <!-- END: Main Content -->
+              <div class="region region-content-bottom">
+    	<!-- Explore Grid -->
+	<section class="explore_section explore_grided">
+
+		<!-- Explore Header -->
+		<div class="explore_header">
+
+			<div class="explore_header_row">
+
+				<div class="explore_header_cell">
+
+					<h2 class="explore_context heading_5 color_marine">The Parts That Make Yale Whole</h2>
+
+					<h3 class="explore_title heading_2 color_midnight">A closer look for the curious</h3>
+
+				</div>
+
+			</div>
+
+		</div>
+		<!-- END: Explore Header -->
+
+  	<!-- Explore Controls -->
+  	<div class="explore_controls_wrapper">
+
+  		<div class="explore_controls bg_marine explore_lg_pos_1_1">
+
+  			<div class="explore_controls_row">
+
+  				<div class="explore_controls_cell">
+
+  					<form class="explore_topics" action="/" id="views-exposed-form-explore-yale-block-1">
+  						<div class="explore_topics_label visually_hidden">Explore by topic</div>
+  						<select class="explore_topics_select js-dropdown" id="edit-field-topic-tid1" aria-label="Explore by Topic" name="field_topic_tid" data-dropdown-options='{"label":"Explore by Topic", "customClass":"dropdown_base dropdown_white explore_topics_dropdown"}'>
+  							<option value="All">Everything</option><option value="2">Academics</option><option value="3">Collections</option><option value="4">Discoveries</option><option value="5">Experiences</option><option value="6">Places</option>  						</select>
+						<span class="sr-only" id="carouselPagerMsg">Select a value to change the carousel content.</span>
+              <input type="submit" class="visually_hidden" />
+  					</form>
+
+  					<div class="explore_topics_divider color_white">or</div>
+
+  				</div>
+
+  				<div class="explore_controls_cell">
+  					<button class="button button_bordered_white_trans button_full color_white icon_before shuffle explore_shuffle_button explore_shuffle_button1" aria-describedby="carouselRandomMsg">Shuffle</button>
+					<span class="sr-only" id="carouselRandomMsg">Activate to randomize the carousel content.</span>
+  				</div>
+
+  			</div>
+
+  		</div>
+
+  	</div>
+  	<!-- END: Explore Controls -->
+
+  
+  		<!-- Explore Grid -->
+  		<div class="explore_grid bg_midnight">
+
+  			<div class="explore_grid_row">
+
+  				<div class="explore_grid_cell">
+
+  					<div class="explore_grid_wrapper explore_grid_active explore_grid_visible">
+
+  						<div class="explore_controls bg_marine explore_lg_pos_1_1">
+
+  							<div class="explore_controls_row">
+
+  								<div class="explore_controls_cell">
+
+  									<form class="explore_topics" action="/" id="views-exposed-form-explore-yale-block-2">
+  										<div class="explore_topics_label visually_hidden">Explore by topic</div>
+  										<select class="explore_topics_select js-dropdown" id="edit-field-topic-tid2" aria-label="Explore by Topic" name="field_topic_tid" data-dropdown-options='{"label":"Explore by Topic", "customClass":"dropdown_base dropdown_white explore_topics_dropdown"}'>
+  											<option value="All">Everything</option><option value="2">Academics</option><option value="3">Collections</option><option value="4">Discoveries</option><option value="5">Experiences</option><option value="6">Places</option>  										</select>
+  									</form>
+
+  									<div class="explore_topics_divider color_white">or</div>
+
+  								</div>
+
+  								<div class="explore_controls_cell">
+  									<button class="button button_bordered_white_trans button_full color_white icon_before shuffle explore_shuffle_button explore_shuffle_button2">Shuffle</button>
+  								</div>
+
+  							</div>
+
+  						</div>
+
+  						<!-- Explore Carousel -->
+  						<div class="explore_carousel js-carousel js-carousel-overflow" data-carousel-options='{"maxWidth": "739px", "controls": false, "show":{"500px":2}}'>
+
+
+  							<div class="explore_carousel_item">
+
+  								<article class="explore_story explore_md_pos_1_1 explore_lg_pos_2_1 bg_black">
+	<a data-title="Yale team discovers how Zika virus causes fetal brain damage" aria-label="Yale team discovers how Zika virus causes fetal brain damage" class="explore_story_link" href="https://news.yale.edu/2016/08/24/yale-team-discovers-how-zika-virus-causes-fetal-brain-damage">
+		<div class="explore_overlay explore_overlay_black_light">
+			<figure class="explore_story_figure responsive_image">
+				<picture class="explore_story_picture">
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source media="(min-width: 1220px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_294/public/dark-zika-main-general_1x1.jpg_0.jpg?itok=YPm-P_m0">
+					<source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/dark-zika-main-general_1x1.jpg_0.jpg?itok=5-2Ab3Ch">
+					<!--[if IE 9]></video><![endif]-->
+					<img class="explore_story_image" src="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/dark-zika-main-general_1x1.jpg_0.jpg?itok=5-2Ab3Ch" alt="">
+				</picture>
+			</figure>
+			<div class="explore_story_content explore_story_content_sm">
+				<h4 class="explore_story_title explore_story_title_sm">Yale team discovers how Zika virus causes fetal brain damage</h4>
+				<p class="heading_5 explore_story_explore explore_story_explore_sm">Learn more</p>
+			</div>
+			<span class="overlay_bg"></span>
+		</div>
+	</a>
+</article>
+<article class="explore_story explore_md_pos_3_3 explore_lg_pos_2_2 bg_black">
+	<a data-title="Yale School of Engineering & Applied Science" aria-label="Yale School of Engineering & Applied Science" class="explore_story_link" href="https://seas.yale.edu/">
+		<div class="explore_overlay explore_overlay_green">
+			<figure class="explore_story_figure responsive_image">
+				<picture class="explore_story_picture">
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source media="(min-width: 1220px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_294/public/seas.jpg?itok=bitMmuMk">
+					<source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/seas.jpg?itok=YLukZNe-">
+					<!--[if IE 9]></video><![endif]-->
+					<img class="explore_story_image" src="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/seas.jpg?itok=YLukZNe-" alt="">
+				</picture>
+			</figure>
+			<div class="explore_story_content explore_story_content_sm">
+				<h4 class="explore_story_title explore_story_title_sm">Yale School of Engineering & Applied Science</h4>
+				<p class="heading_5 explore_story_explore explore_story_explore_sm">Explore the school</p>
+			</div>
+			<span class="overlay_bg"></span>
+		</div>
+	</a>
+</article>
+
+
+  							</div>
+
+  							<div class="explore_carousel_item">
+	  							<article class="explore_story explore_md_pos_2_1 explore_lg_pos_1_3 explore_md_size_lg explore_lg_size_lg bg_black">
+	<div class="explore_overlay explore_overlay_orange">
+		<figure class="explore_story_figure responsive_image">
+			<picture class="explore_story_picture">
+				<!--[if IE 9]><video style="display: none;"><![endif]-->
+				<source media="(min-width: 1220px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_588/public/hieroglyphs-elkhawy-inscription-1x1.jpg?itok=Ul20C9WW">
+				<source media="(min-width: 980px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_470/public/hieroglyphs-elkhawy-inscription-1x1.jpg?itok=DQxGAAzx">
+				<source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/hieroglyphs-elkhawy-inscription-1x1.jpg?itok=LXge9o_B">
+				<!--[if IE 9]></video><![endif]-->
+				<img class="explore_story_image" src="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/hieroglyphs-elkhawy-inscription-1x1.jpg?itok=LXge9o_B" alt="">
+			</picture>
+		</figure>
+		<div class="explore_story_content explore_story_content_lg">
+			<div class="heading_5 context text_divide explore_story_context">Discoveries</div>
+			<h4 class="explore_story_title explore_story_title_lg">Discovering the earliest monumental Egyptian hieroglyphs</h4>
+			<p class="body_text explore_story_description">A joint Yale and Royal Museums of Art and History (Brussels) expedition uncovered previously unknown rock inscriptions, which include the earliest monumental hieroglyphs dating back around 5,200 years.</p>
+			<div class="explore_story_buttons">
+				<a data-title="Discovering the earliest monumental Egyptian hieroglyphs - Learn more" aria-label="Discovering the earliest monumental Egyptian hieroglyphs - Learn more" class="button color_white button_icon_right_arrow explore_story_button_explore explore_story_button_explore_white" href="https://news.yale.edu/2017/06/20/yale-archaeologists-discover-earliest-monumental-egyptian-hieroglyphs">Learn more</a>
+				<!-- Optional Button - defaults to arrow icon but can be photo or video -->
+								<!-- Optional Button -->
+			</div>
+		</div>
+		<a data-title="Discovering the earliest monumental Egyptian hieroglyphs" aria-label="Discovering the earliest monumental Egyptian hieroglyphs" class="explore_story_link explore_story_link_lg" href="https://news.yale.edu/2017/06/20/yale-archaeologists-discover-earliest-monumental-egyptian-hieroglyphs">
+			<div class="explore_story_content explore_story_content_sm">
+				<h4 class="explore_story_title explore_story_title_sm">Discovering the earliest monumental Egyptian hieroglyphs</h4>
+				<p class="heading_5 explore_story_explore explore_story_explore_sm">Learn more</p>
+			</div>
+		</a>
+		<span class="overlay_bg"></span>
+	</div>
+</article>
+<article class="bg_midnight explore_story explore_md_pos_1_2 explore_lg_pos_1_2">
+	<a data-title="Yale Poorvu Center for Teaching and Learning" aria-label="Yale Poorvu Center for Teaching and Learning" class="explore_story_link" href="https://poorvucenter.yale.edu">
+		<div class="explore_overlay ">
+			<div class="explore_story_content explore_story_content_sm">
+				<h4 class="explore_story_title explore_story_title_sm">Yale Poorvu Center for Teaching and Learning</h4>
+				<p class="color_malibu heading_5 explore_story_explore explore_story_explore_sm">Explore the Center</p>
+			</div>
+		</div>
+	</a>
+</article>
+
+
+  							</div>
+
+  							<div class="explore_carousel_item">
+
+  							<article class="explore_story explore_md_pos_1_3 explore_lg_pos_4_4 bg_black">
+	<a data-title="Asian American Cultural Center" aria-label="Asian American Cultural Center" class="explore_story_link" href="https://aacc.yalecollege.yale.edu/">
+		<div class="explore_overlay explore_overlay_greige">
+			<figure class="explore_story_figure responsive_image">
+				<picture class="explore_story_picture">
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source media="(min-width: 1220px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_294/public/asian_american_cultural_center_1x1.jpg?itok=jYQazksg">
+					<source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/asian_american_cultural_center_1x1.jpg?itok=cDnW1vr5">
+					<!--[if IE 9]></video><![endif]-->
+					<img class="explore_story_image" src="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/asian_american_cultural_center_1x1.jpg?itok=cDnW1vr5" alt="">
+				</picture>
+			</figure>
+			<div class="explore_story_content explore_story_content_sm">
+				<h4 class="explore_story_title explore_story_title_sm">Asian American Cultural Center</h4>
+				<p class="heading_5 explore_story_explore explore_story_explore_sm">Explore the Center</p>
+			</div>
+			<span class="overlay_bg"></span>
+		</div>
+	</a>
+</article>
+<article class="explore_story explore_md_pos_2_3 explore_lg_pos_4_3 bg_black">
+	<a data-title="Spotlight on the Classroom" aria-label="Spotlight on the Classroom" class="explore_story_link" href="https://teaching-spotlight.yale.edu/">
+		<div class="explore_overlay explore_overlay_black_light">
+			<figure class="explore_story_figure responsive_image">
+				<picture class="explore_story_picture">
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source media="(min-width: 1220px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_294/public/spotlight_on_the_classroom_sss_1x1.jpg?itok=_tZkUOCq">
+					<source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/spotlight_on_the_classroom_sss_1x1.jpg?itok=lwHpU--3">
+					<!--[if IE 9]></video><![endif]-->
+					<img class="explore_story_image" src="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/spotlight_on_the_classroom_sss_1x1.jpg?itok=lwHpU--3" alt="">
+				</picture>
+			</figure>
+			<div class="explore_story_content explore_story_content_sm">
+				<h4 class="explore_story_title explore_story_title_sm">Spotlight on the Classroom</h4>
+				<p class="heading_5 explore_story_explore explore_story_explore_sm">Learn more</p>
+			</div>
+			<span class="overlay_bg"></span>
+		</div>
+	</a>
+</article>
+
+  							</div>
+
+  						</div>
+  						<!-- END: Explore Carousel -->
+
+  						<div class="explore_grid_large_content">
+
+  						<article class="explore_story explore_lg_pos_3_4 bg_black">
+	<a data-title="Voynich Manuscript" aria-label="Voynich Manuscript" class="explore_story_link" href="https://beinecke.library.yale.edu/collections/highlights/voynich-manuscript">
+		<div class="explore_overlay explore_overlay_black_light">
+			<figure class="explore_story_figure responsive_image">
+				<picture class="explore_story_picture">
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source media="(min-width: 1220px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_294/public/voynich_manuscript.jpg?itok=7-mktgs6">
+					<source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/voynich_manuscript.jpg?itok=2JPJzY-8">
+					<!--[if IE 9]></video><![endif]-->
+					<img class="explore_story_image" src="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/voynich_manuscript.jpg?itok=2JPJzY-8" alt="">
+				</picture>
+			</figure>
+			<div class="explore_story_content explore_story_content_sm">
+				<h4 class="explore_story_title explore_story_title_sm">Voynich Manuscript</h4>
+				<p class="heading_5 explore_story_explore explore_story_explore_sm">Explore the manuscript</p>
+			</div>
+			<span class="overlay_bg"></span>
+		</div>
+	</a>
+</article>
+<article class="bg_midnight explore_story explore_lg_pos_3_3">
+	<a data-title="Jonathan Edwards College" aria-label="Jonathan Edwards College" class="explore_story_link" href="https://je.yalecollege.yale.edu/">
+		<div class="explore_overlay ">
+			<div class="explore_story_content explore_story_content_sm">
+				<h4 class="explore_story_title explore_story_title_sm">Jonathan Edwards College</h4>
+				<p class="color_malibu heading_5 explore_story_explore explore_story_explore_sm">Explore the college</p>
+			</div>
+		</div>
+	</a>
+</article>
+<article class="explore_story  explore_lg_pos_3_1 explore_lg_size_xl explore_lg_pull bg_black">
+	<div class="explore_overlay explore_overlay_black_dark">
+		<figure class="explore_story_figure responsive_image">
+			<picture class="explore_story_picture">
+				<!--[if IE 9]><video style="display: none;"><![endif]-->
+				<source media="(min-width: 1220px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_882/public/bulldog_days.jpg?itok=mkDB-kOh">
+				<source media="(min-width: 980px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_705/public/bulldog_days.jpg?itok=5INSz8gA">
+				<source media="(min-width: 740px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_470/public/bulldog_days.jpg?itok=Ch72HMsG">
+				<source media="(min-width: 0px)" srcset="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/bulldog_days.jpg?itok=0lp_SybO">
+				<!--[if IE 9]></video><![endif]-->
+				<img class="explore_story_image" src="https://www.yale.edu/sites/default/files/styles/explore_yale_235/public/bulldog_days.jpg?itok=0lp_SybO" alt="">
+			</picture>
+		</figure>
+		<div class="explore_story_content explore_story_content_xl">
+			<div class="heading_5 context text_divide explore_story_context">Experiences</div>
+			<h4 class="explore_story_title explore_story_title_lg">Bulldog Days</h4>
+			<p class="body_text explore_story_description">Each year we welcome admitted high school seniors and family members to campus for Bulldog Days, where they can sample hundreds of courses and learn about more than 300 extracurricular organizations.</p>
+			<div class="explore_story_buttons">
+				<a data-title="Bulldog Days - Learn more" aria-label="Bulldog Days - Learn more" class="button color_white button_icon_right_arrow explore_story_button_explore explore_story_button_explore_trans" href="http://catalog.yale.edu/first-year-student-handbook/getting-started/bulldog-days/">Learn more</a>
+							</div>
+		</div>
+		<span class="overlay_bg"></span>
+	</div>
+</article>
+
+  						</div>
+
+
+  					</div>
+
+  				</div>
+
+  			</div>
+
+  		</div>
+  		<!-- END: Explore Grid -->
+
+  	</section>
+  	<!-- END: Explore Grid -->
+    </div>
+          </aside>
+        
+
+      </main>
+      <!-- END: Main Content -->
+
+
+
+      <!-- Footer -->
+      <footer id="footer" class="footer">
+
+        <!-- Footer Row -->
+        <div class="footer_row">
+
+          <!-- Footer Cell -->
+          <div class="footer_cell">
+
+
+            <!-- Footer Nav Section -->
+            <div class="footer_nav_section">
+
+                                  <div class="region region-footer">
+    <form class="visitor_form">
+  <label class="visually_hidden" for="visitor_select">Info for Visiting Yale</label>
+  <select class="js-dropdown" id="visitor_select" data-dropdown-options='{"label":"Info for Visiting Yale","links":true,"customClass":"dropdown_base dropdown_charcoal_trans visitor_select"}'>
+    <option value="https://visitorcenter.yale.edu/tours">Campus Tours</option><option value="/about-yale/visiting">Maps & Directions</option><option value="https://visitorcenter.yale.edu/">Yale Visitor Center</option><option value="/research-collections/museums-galleries">Museums & Galleries</option><option value="/life-yale/new-haven">New Haven</option><option value="/about-yale/visiting">More Visit Resources</option>  </select>
+</form>
+<nav class="footer_nav help_nav" aria-labelledby="help_nav_label">
+  <h2 class="footer_nav_label help_nav_label" id="help_nav_label">Helpful Links</h2>
+  <div class="footer_nav_list help_nav_list  menu-block-wrapper menu-block-3 menu-name-menu-helpful-links parent-mlid-0 menu-level-1">
+    <a class="footer_nav_link help_nav_link" href="/contact-us">Contact Us</a><a class="footer_nav_link help_nav_link" href="https://westcampus.yale.edu/">Yale West Campus</a><a class="footer_nav_link help_nav_link" href="https://your.yale.edu/work-yale/careers">Employment Opportunities</a><a class="footer_nav_link help_nav_link" href="/privacy-policy">Privacy Policy</a><a class="footer_nav_link help_nav_link" href="https://emergency.yale.edu/">Emergency Info</a><a class="footer_nav_link help_nav_link" href="https://your.yale.edu/community/public-safety">Public Safety</a><a class="footer_nav_link help_nav_link" href="/nondiscrimination">Nondiscrimination & Title IX</a><a class="footer_nav_link help_nav_link" href="https://usability.yale.edu/web-accessibility/accessibility-yale">Accessibility at Yale</a><a class="footer_nav_link help_nav_link" href="https://communications.yale.edu/mobile">Yale Mobile</a>  </div>
+</nav>
+<nav class="footer_nav visitor_nav" aria-labelledby="visitor_nav_label">
+  <h2 class="footer_nav_label visitor_nav_label" id="visitor_nav_label">Visiting Yale</h2>
+  <div class="footer_nav_list visitor_nav_list">
+    <a class="footer_nav_link visitor_nav_link" href="https://visitorcenter.yale.edu/tours">Campus Tours</a><a class="footer_nav_link visitor_nav_link" href="/about-yale/visiting">Maps & Directions</a><a class="footer_nav_link visitor_nav_link" href="https://visitorcenter.yale.edu/">Yale Visitor Center</a><a class="footer_nav_link visitor_nav_link" href="/research-collections/museums-galleries">Museums & Galleries</a><a class="footer_nav_link visitor_nav_link" href="/life-yale/new-haven">New Haven</a><a class="footer_nav_link visitor_nav_link" href="/about-yale/visiting">More Visit Resources</a>  </div>
+</nav>
+  </div>
+              
+            </div>
+            <!-- END: Footer Nav Section -->
+
+
+            <hr class="footer_divider footer_divider_md" />
+
+
+            <!-- Instagram Teaser -->
+                              <div class="region region-footer-ig">
+    <!-- Instagram Teaser -->
+<a class="instagram_teaser" href="//instagram.com/yale/" target="_blank">
+
+  <figure class="instagram_teaser_figure responsive_image">
+
+    <span class="instagram_teaser_image"><img alt="Snowy view of divinity school quad with icicles on treees." src="/sites/default/files/images/instagram-jan7.jpg" />
+</span>
+
+    <figcaption class="instagram_teaser_caption button_text">Yale on Instagram</figcaption>
+
+  </figure>
+
+  <span class="overlay_bg"></span>
+
+</a>
+<!-- END: Instagram Teaser -->
+  </div>
+                        <!-- END: Instagram Teaser -->
+
+
+            <hr class="footer_divider footer_divider_lg" />
+
+
+            <!-- Social Properties -->
+                          <div class="social_properties">
+                  <div class="region region-footer-social">
+    <!-- Social Nav -->
+<nav class="social_nav" aria-labelledby="social_nav_label">
+  <h2 class="visually_hidden" id="social_nav_label">Social Links</h2>
+  <div class="social_nav_list">
+    <a class="social_nav_link facebook" href="https://www.facebook.com/YaleUniversity" target="_blank"><span class="social_nav_link_icon"></span><span class="social_nav_link_text">Facebook</span></a><a class="social_nav_link twitter" href="http://www.twitter.com/yale" target="_blank"><span class="social_nav_link_icon"></span><span class="social_nav_link_text">Twitter</span></a><a class="social_nav_link youtube" href="http://www.youtube.com/yale" target="_blank"><span class="social_nav_link_icon"></span><span class="social_nav_link_text">YouTube</span></a><a class="social_nav_link weibo" href="http://weibo.com/yaleuniversity" target="_blank"><span class="social_nav_link_icon"></span><span class="social_nav_link_text">Sina Weibo</span></a>  </div>
+</nav>
+<!-- END: Social Nav -->
+
+
+<a class="social_all_link button_text button_icon_right_arrow" href="/social-media">All Social Media</a>
+  </div>
+              </div>
+                        <!-- END: Social Properties -->
+
+
+            <!-- Legal -->
+            <small class="footer_legal block">
+              <span class="footer_legal_copy">Copyright &copy; 2020 Yale University</span>
+              <span class="footer_legal_rights">All Rights Reserved</span>
+              <a class="footer_legal_contact" href="/contact-us/contact-web-editor">Contact Web Editor</a>
+            </small>
+            <!-- END: Legal -->
+
+
+            <!-- Back to Top -->
+            <div class="footer_to_top">
+              <a class="js-scroll_to button_full button_bordered_charcoal button_icon_up_arrow" href="#top">Back to top</a>
+            </div>
+            <!-- END: Back to Top -->
+
+
+          </div>
+          <!-- END: Footer Cell -->
+
+        </div>
+        <!-- END: Footer Row -->
+
+      </footer>
+      <!-- END: Footer -->
+
+
+
+      <!-- Mobile Sidebar -->
+      <aside role="dialog" aria-label="Mobile Menu" class="mobile_sidebar js-navigation" data-navigation-handle=".mobile_nav_handle" data-navigation-content=".page_wrapper" data-navigation-options='{"type":"reveal","labels":{"closed":"Navigation","open":"Close"}}'>
+
+
+        <div class="mobile_sidebar_header">
+
+          <div class="header_row">
+
+            <div class="header_cell">
+
+              <!-- Site Logo -->
+              <a href="index.html" class="logo_main icon_only" itemscope itemtype="http://schema.org/CollegeOrUniversity">
+                <h1 class="offscreen" itemprop="name">Yale University</h1>
+                <img src="/sites/all/themes/yale_blue/images/logo-print.png" class="print" alt="">
+              </a>
+              <!-- END: Site Logo -->
+
+			  <div class="deskHeader">
+				<!-- Site Search -->
+				<a class="btn_site_seach" href="/search" role="button" aria-expanded="false">
+					<span class="btn_site_seach_text">Search</span>
+				</a>
+				<!-- END: Site Search -->
+				<button class="mobile_nav_handle">
+					Navigation
+					<span class="mobile_nav_handle_icon"></span>
+				</button>
+			  </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Mobile Sidebar Body -->
+        <div class="mobile_sidebar_body">
+
+
+          <!-- Main Nav -->
+                          <div class="region region-mobile-main">
+    <nav class="main_nav" aria-labelledby="main_nav_mobile_label">
+  <h2 class="visually_hidden" id="main_nav_mobile_label">Main Navigation</h2>
+  <div class="main_nav_list">
+    <div class="main_nav_item"><a class="main_nav_link" href="/about-yale"><span class="main_nav_text">About Yale</span></a></div><div class="main_nav_item"><a class="main_nav_link" href="/academics"><span class="main_nav_text">Academics</span></a></div><div class="main_nav_item"><a class="main_nav_link" href="/admissions"><span class="main_nav_text">Admissions</span></a></div><div class="main_nav_item"><a class="main_nav_link" href="/research-collections"><span class="main_nav_text">Research & Collections</span></a></div><div class="main_nav_item"><a class="main_nav_link" href="/life-yale"><span class="main_nav_text">Life at Yale</span></a></div>  </div>
+</nav>
+  </div>
+                    <!-- END: Main Nav -->
+
+
+          <!-- Mobile Sidebar Row -->
+          <div class="mobile_sidebar_row">
+
+
+            <!-- Mobile Sidebar Nav Container -->
+            <div class="mobile_sidebar_nav_container">
+
+
+              <!-- Secondary Nav -->
+                                  <div class="region region-mobile-secondary">
+    <nav class="secondary_nav" aria-labelledby="mobile_secondary_nav_label">
+  <h2 class="visually_hidden" id="mobile_secondary_nav_label">Secondary Navigation</h2>
+  <div class="secondary_nav_list menu-block-wrapper menu-block-9 menu-name-menu-secondary-navigation parent-mlid-0 menu-level-1">
+    <a class="secondary_nav_link" href="/calendars"><span class="secondary_nav_text">Calendars</span></a><a class="secondary_nav_link" href="https://giving.yale.edu/"><span class="secondary_nav_text">Giving</span></a><a class="secondary_nav_link" href="https://news.yale.edu/"><span class="secondary_nav_text">News</span></a><a class="secondary_nav_link" href="https://directory.yale.edu/"><span class="secondary_nav_text">Directories</span></a>  </div>
+</nav>
+  </div>
+                            <!-- END: Secondary Nav -->
+
+
+            </div>
+            <!-- END: Mobile Sidebar Nav Container -->
+
+
+            <!-- Mobile Sidebar Nav Container -->
+            <div class="mobile_sidebar_nav_container">
+
+
+              <!-- Gateway Nav -->
+                                  <div class="region region-mobile-gateway">
+    <nav class="gateway_nav" aria-labelledby="gateway_nav_label">
+  <h2 class="visually_hidden" id="gateway_nav_label">Gateway Navigation</h2>
+  <div class="gateway_nav_list">
+    <a class="gateway_nav_link" href="http://studentlife.yale.edu">Students</a><a class="gateway_nav_link" href="/faculty">Faculty</a><a class="gateway_nav_link" href="http://your.yale.edu">Staff</a><a class="gateway_nav_link" href="https://alumni.yale.edu">Alumni</a>  </div>
+</nav>
+  </div>
+                            <!-- END: Gateway Nav -->
+
+
+            </div>
+            <!-- END: Mobile Sidebar Nav Container -->
+
+
+          </div>
+          <!-- END: Mobile Sidebar Row -->
+
+
+        </div>
+        <!-- END: Mobile Sidebar Body -->
+
+
+      </aside>
+      <!-- END: Mobile Sidebar -->
+
+
+
+    </div>
+    <!-- END: Body Wrapper -->
+    <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+
+      (function() {
+      var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+      sz.src = '//siteimproveanalytics.com/js/siteanalyze_66356571.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+      })();
+      
+//--><!]]>
+</script>
+
+    <!-- Compiled JS -->
+    <script src="/sites/all/themes/yale_blue/js/site.js?t=202001281104"></script>
+	<!-- A11Y JS -->
+    <script src="/sites/all/themes/yale_blue/js/a11y.js?t=202001281104"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"edc4967dfd","applicationID":"70828766","transactionName":"ZVRWNxEACBZUAEFcW1weYREKTkkMWwdQTRpCWUQ=","queueTime":0,"applicationTime":24,"atts":"SRNVQVkaGxg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+<head>
+  <meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"d02f3ce21b",applicationID:"263541068"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+  <meta charset="utf-8" />
+<meta name="title" content="Point Loma Nazarene University" />
+<link rel="shortlink" href="https://www.pointloma.edu/" />
+<meta property="og:site_name" content="Point Loma Nazarene University" />
+<link rel="canonical" href="https://www.pointloma.edu/" />
+<meta name="description" content="At PLNU, we don’t only prepare you for a career after you graduate; we help you pursue your unique God-given vocation and progress toward becoming who you are fully called to be. We believe whole-person development is vital to making a difference in the world" />
+<meta property="og:url" content="https://www.pointloma.edu/homepage" />
+<meta name="keywords" content="University, College, Point Loma, San Diego, Higher Education, Graduate Program, MBA, Undergraduate Classes, Religious College" />
+<link rel="image_src" href="https://www.pointloma.edu/sites/default/files/styles/16_9_1600w/public/images/HomePageWhy1.jpg" />
+<meta property="og:title" content="Point Loma Nazarene University" />
+<meta property="og:description" content="At PLNU, we don’t only prepare you for a career after you graduate; we help you pursue your unique God-given vocation and progress toward becoming who you are fully called to be." />
+<meta property="og:image:url" content="https://www.pointloma.edu/sites/default/files/styles/16_9_1600w/public/images/HomePageWhy1.jpg" />
+<meta property="og:image:secure_url" content="https://www.pointloma.edu/sites/default/files/styles/16_9_1600w/public/images/HomePageWhy1.jpg" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/themes/plnu/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="revision" href="https://www.pointloma.edu/homepage" />
+
+  <title>Point Loma Nazarene University</title>
+
+  <!-- Load Youtube api before google tag manager for tracking of youtube embeds -->
+  <script src="https://youtube.com/iframe_api" async></script>
+  <!-- Google Tag Manager DataLayer -->
+  <script>
+    var programPage;
+    var pageType;
+    var siteSection;
+
+    var sitePath = window.location.pathname;
+        sitePath.indexOf(1);
+        sitePath.toLowerCase();
+        siteSection = sitePath.split('/')[1];
+
+    if (siteSection.match('graduate-studies')) {
+      siteSection = 'Graduate';
+    }
+    else if (siteSection.match('undergraduate')) {
+      siteSection = 'Undergrad';
+    }
+    else if (siteSection.match('adult-degree-completion')) {
+      siteSection = 'Adult Completion';
+    }
+    else {
+      siteSection = 'Non Program';
+    }
+
+    programPage = document.title;
+
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      'programPage': programPage,
+      'siteSection': siteSection,
+    });
+  </script>
+  <!-- End Google Tag Manager DataLayer -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.'+'js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PTJ3KS9');
+  </script>
+  <!-- End Google Tag Manager -->
+  <!-- Hotjar Tracking Code for https://www.pointloma.edu -->
+  <script>
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () {
+        (h.hj.q = h.hj.q || []).push(arguments)
+      };
+      h._hjSettings = {
+        hjid: 838304,
+        hjsv: 6
+      };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script');
+      r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script>
+  <!-- End Hotjar Tracking Code for https://www.pointloma.edu -->
+  <meta name="google-site-verification" content="ZMr2kil08eNq5fBtOBfowGxcqtaYRpBADKUjs_lXx2M" />
+  <meta name="msvalidate.01" content="CAD9FD37E349E3B3365A5929BDE7AF53" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/themes/plnu/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/themes/plnu/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/themes/plnu/favicon-16x16.png">
+  <link rel="manifest" href="/themes/plnu/manifest.json">
+  <link rel="mask-icon" href="/themes/plnu/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" media="all" href="/core/assets/vendor/normalize-css/normalize.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/misc/normalize-fixes.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/ajax-progress.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/align.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/autocomplete-loading.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/fieldgroup.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/container-inline.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/clearfix.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/details.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/hidden.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/item-list.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/js.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/nowrap.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/position-container.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/progress.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/reset-appearance.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/resize.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/sticky-header.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/system-status-counter.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/system-status-report-counters.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/system-status-report-general-info.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/tabledrag.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/tablesort.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/tree-child.module.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/assets/vendor/jquery.ui/themes/base/core.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/assets/vendor/jquery.ui/themes/base/menu.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/assets/vendor/jquery.ui/themes/base/autocomplete.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/modules/contrib/paragraphs/css/paragraphs.unpublished.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/modules/contrib/better_exposed_filters/css/better_exposed_filters.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/assets/vendor/jquery.ui/themes/base/theme.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/modules/contrib/search_api_autocomplete/css/search_api_autocomplete.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/tabs.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/ui-dialog.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/messages.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/node.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/progress.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/themes/plnu/libraries/fresco/fresco.css?q4a02f" />
+<link rel="stylesheet" media="all" href="/themes/plnu/dist/styles/style.css?q4a02f" />
+
+  <script src="/themes/plnu/dist/js/application-head.js?q4a02f"></script>
+
+</head>
+<body class="path-frontpage node-homepage">
+<!-- Google Tag Manager DataLayer -->
+<script>
+  var dataLayer = window.dataLayer || [];
+  var pageType;
+  var pageClasses = document.body.className;
+  var contentType = pageClasses.match(/node-[^]*/);
+  pageType = contentType[0].substring(5);
+
+  dataLayer.push({
+    'event':'pageTypeAvailable',
+    'pageType': pageType,
+  });
+</script>
+
+<div id="skip">
+    <a class="visually-hidden focusable skip-link" href="#block-plnu-main-menu">
+        Skip to main navigation
+    </a>
+  <a class="visually-hidden focusable skip-link" href="#content">
+    Skip to main content
+  </a>
+</div>
+
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+  
+<div class="l-content-wrapper node--id--5796">
+
+  
+<div class="top-bar">
+    <div class="region region-header-top-bar">
+    <nav role="navigation" aria-labelledby="block-secondarymenu-menu" id="block-secondarymenu" data-block-plugin-id="system_menu_block:secondary-menu" class="block block-menu navigation menu--secondary-menu">
+            
+  <h2 class="visually-hidden" id="block-secondarymenu-menu">Secondary Menu</h2>
+  
+
+        
+                    <ul class="menu">
+                    <li class="menu-item">
+        <a href="/news" data-drupal-link-system-path="news">News</a>
+              </li>
+                <li class="menu-item">
+        <a href="/events" data-drupal-link-system-path="events">Events</a>
+              </li>
+                <li class="menu-item">
+        <a href="http://www.plnusealions.com">Athletics</a>
+              </li>
+                <li class="menu-item">
+        <a href="/give" data-drupal-link-system-path="node/5811">Give</a>
+              </li>
+                <li class="menu-item">
+        <a href="/offices/alumni-association" data-drupal-link-system-path="node/4991">Alumni</a>
+              </li>
+        </ul>
+  
+
+
+
+  </nav>
+
+  </div>
+
+</div>
+
+<header id="header" class="header">
+  <div class="header__container">
+      <div class="region region-header">
+    <div id="block-plnu-branding" data-block-plugin-id="system_branding_block" class="block block-system block-system-branding-block">
+  
+    
+        <a href="/" title="Home" rel="home" class="site-logo">
+      <img src="/themes/plnu/logo.svg" alt="Home" />
+    </a>
+      </div>
+<nav role="navigation" aria-labelledby="block-plnu-main-menu-menu" id="block-plnu-main-menu" data-block-plugin-id="system_menu_block:main" class="block block-menu navigation menu--main">
+            
+  <h2 class="visually-hidden" id="block-plnu-main-menu-menu">Main navigation</h2>
+  
+
+        
+                    <ul class="menu">
+                    <li class="menu-item menu-item--expanded">
+        <a href="/undergraduate" data-drupal-link-system-path="node/6">Undergraduate</a>
+                                <ul class="menu">
+                    <li class="menu-item menu-item--collapsed">
+        <a href="/undergraduate/admissions" title="Undergraduate Admissions" aria-label="Undergraduate Admissions" data-drupal-link-system-path="node/76">Admissions</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/undergraduate/programs" title="Undergraduate Programs" aria-label="Undergraduate Programs" data-drupal-link-system-path="node/31">Programs</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/undergraduate/visit" title="Undergraduate Vists" aria-label="Undergraduate Vists" data-drupal-link-system-path="node/66">Visit</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/undergraduate/campus-life" data-drupal-link-system-path="node/81">Campus Life</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/undergraduate/cost-financial-aid" data-drupal-link-system-path="node/5396">Cost &amp; Financial Aid</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/undergraduate/student-support" title="Undergraduate Student Support" aria-label="Undergraduate Student Support" data-drupal-link-system-path="node/5411">Student Support</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/graduate-studies" data-drupal-link-system-path="node/91">Graduate Studies</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/graduate-studies/admissions" title="Graduate Admissions" aria-label="Graduate Admissions" data-drupal-link-system-path="node/6611">Admissions</a>
+              </li>
+                <li class="menu-item">
+        <a href="/graduate-studies/programs" title="Graduate Programs" aria-label="Graduate Programs" data-drupal-link-system-path="node/96">Programs</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/graduate-studies/financial-aid-student-support" title="Graduate Financial Aid and Student Support" aria-label="Graduate Financial Aid and Student Support" data-drupal-link-system-path="node/5721">Financial Aid &amp; Student Support</a>
+              </li>
+                <li class="menu-item">
+        <a href="/graduate-studies/locations" title="Graduate Studies Locations" aria-label="Graduate Studies Locations" data-drupal-link-system-path="node/6096">Locations</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/adult-degree-completion" data-drupal-link-system-path="node/16">Adult Degree Completion</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/adult-degree-completion/admissions" data-drupal-link-system-path="node/6616">Admissions</a>
+              </li>
+                <li class="menu-item">
+        <a href="/adult-degree-completion/programs" title="Adult Degree Completion Programs" aria-label="Adult Degree Completion Programs" data-drupal-link-system-path="node/5656">Programs</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/adult-degree-completion/financial-aid-student-support" title="Adult Degree Completion Financial Aid and Student Support" aria-label="Adult Degree Completion Financial Aid and Student Support" data-drupal-link-system-path="node/5661">Financial Aid &amp; Student Support</a>
+              </li>
+                <li class="menu-item">
+        <a href="/adult-degree-completion/locations" title="Adult Degree Completion Locations" aria-label="Adult Degree Completion Locations" data-drupal-link-system-path="node/3836">Locations</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/why-plnu" data-drupal-link-system-path="node/21">Why PLNU</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/why-plnu/academic-quality" data-drupal-link-system-path="node/4831">Academic Quality</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/why-plnu/university-overview" data-drupal-link-system-path="node/4731">University Overview</a>
+              </li>
+                <li class="menu-item">
+        <a href="/why-plnu/community" data-drupal-link-system-path="node/4851">Community</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/visit" data-drupal-link-system-path="node/26">Visit</a>
+              </li>
+        </ul>
+  
+
+
+
+  </nav>
+
+  </div>
+
+      <a href="#search" class="search__link js-search icon__link">
+      Search
+      <svg class="icon icon--search">
+        <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-search-icon" />
+      </svg>
+      <svg class="icon icon--close icon--alt">
+        <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-close" />
+      </svg>
+    </a>
+        <a href="#menu" class="drawer-menu__link js-drawer-open icon__link">
+    Menu
+    <svg class="icon icon--menu">
+      <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-menu" />
+    </svg>
+  </a>
+
+  </div>
+</header>
+
+<div class="search search__bar">
+    <a href="#search" class="search__close js-search-close icon__link">
+    Close
+    <svg class="icon icon--close">
+      <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-close" />
+    </svg>
+  </a>
+
+  <div class="search__container">
+      <div class="region region-search-bar">
+    <div class="views-exposed-form bef-exposed-form block block-views block-views-exposed-filter-blockplnu-search-page" data-drupal-selector="views-exposed-form-plnu-search-page" id="block-plnu-search-form" data-block-plugin-id="views_exposed_filter_block:plnu_search-page">
+  
+    
+      <form action="/search" method="get" id="views-exposed-form-plnu-search-page" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div class="js-form-item form-item js-form-type-search-api-autocomplete form-type-search-api-autocomplete js-form-item-k form-item-k">
+      <label for="edit-k">Keyword</label>
+        <input placeholder="Search: keywords, names, etc …" data-drupal-selector="edit-k" data-search-api-autocomplete-search="plnu_search" class="form-autocomplete form-text" data-autocomplete-path="/search_api_autocomplete/plnu_search?display=page&amp;&amp;filter=k" type="text" id="edit-k" name="k" value="" size="30" maxlength="128" />
+
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-plnu-search" type="submit" id="edit-submit-plnu-search" value="Search" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+  </div>
+<nav role="navigation" aria-labelledby="block-searchmenu-menu" id="block-searchmenu" data-block-plugin-id="system_menu_block:search-menu" class="block block-menu navigation menu--search-menu">
+      
+  <h2 id="block-searchmenu-menu">Find People &amp; Places</h2>
+  
+
+        
+                    <ul class="menu">
+                    <li class="menu-item menu-item--collapsed">
+        <a href="/schools-departments-colleges" data-drupal-link-system-path="node/2596">Schools, Departments &amp; Colleges</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/centers-institutes" data-drupal-link-system-path="node/2601">Centers &amp; Institutes</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/offices" data-drupal-link-system-path="node/2606">Offices</a>
+              </li>
+                <li class="menu-item">
+        <a href="/faculty" data-drupal-link-system-path="node/2611">Faculty</a>
+              </li>
+                <li class="menu-item">
+        <a href="http://libguides.pointloma.edu/ryanlibrary">Ryan Library</a>
+              </li>
+                <li class="menu-item">
+        <a href="/offices/human-resources" data-drupal-link-system-path="node/3931">Careers @ PLNU</a>
+              </li>
+                <li class="menu-item">
+        <a href="/offices-strengths-vocation" data-drupal-link-system-path="node/5821">Offices of Strengths &amp; Vocation</a>
+              </li>
+                <li class="menu-item">
+        <a href="/accreditation" data-drupal-link-system-path="node/6186">Accreditation</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/military-services" data-drupal-link-system-path="node/10703">Military Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/offices/student-financial-services" title="Office of Student Financial Services" aria-label="Office of Student Financial Services" data-drupal-link-system-path="node/4636">Student Financial Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="http://viewpoint.pointloma.edu/" title="Viewpoint Magazine" aria-label="Viewpoint Magazine">Viewpoint Magazine</a>
+              </li>
+        </ul>
+  
+
+
+
+  </nav>
+
+  </div>
+
+  </div>
+</div>
+
+  <div class="clearfix l-main " id="main">
+
+    <div class="l-container">
+
+      
+                      <section class="l-content-top ">
+                    
+
+                    
+        </section>
+      
+      <section class="content" id="content">
+
+      
+        <div id="content-area">
+              <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-plnu-content" data-block-plugin-id="system_main_block" class="block block-system block-system-main-block">
+  
+    
+      
+  <article role="article" about="/homepage" class="node node--type-homepage node--promoted node--view-mode-full">
+          <div class="fullwidth fullwidth--transparent hero-image hero-image--homepage">
+        <figure class="hero-image__figure js-cover-image">
+                <img srcset="/sites/default/files/styles/16_9_900w/public/images/LP1.jpg?h=2bd9908b&amp;itok=h6ENOyWG 900w, /sites/default/files/styles/16_9_1200w/public/images/LP1.jpg?itok=Qmv_zGyL 1200w, /sites/default/files/styles/16_9_1600w/public/images/LP1.jpg?itok=NRMLnzL1 1600w, /sites/default/files/styles/16_9_1920w/public/images/LP1.jpg?itok=cKTErmti 1920w" sizes="100vw" src="/sites/default/files/styles/16_9_1600w/public/images/LP1.jpg?itok=NRMLnzL1" alt="students " typeof="foaf:Image" />
+
+
+
+
+        </figure>
+        <div class="hero-image__wrapper">
+          <div class="hero-image__content">
+            <h1 class="hero-image__slogan">
+              <img src="/themes/plnu/images/homepage-slogan.png" alt="Who are you called to be?" />
+            </h1>
+                                      
+              <a class="js-fresco video-link video-link--right l-margin-top-2" href="https://www.youtube.com/watch?v=m1A7ujqR6Xc">Watch Video:<br/><em>A Practice of Excellence</em></a>
+                      </div>
+        </div>
+        <div class="hero-image__scroll-hint">
+          <span class="hero-image__scroll-hint-icon"></span>
+          <img src="/themes/plnu/images/scroll-hint-text.svg" class="hero-image__scroll-hint-text" alt="Scroll" />
+        </div>
+      </div>
+        <div class="fullwidth fullwidth--tan-light fullwidth--no-top">
+      <div class="fullwidth__container">
+        
+
+
+<div class="modular-content modular-content--fullwidth js-anchor__wrapper">
+  
+              <div class="modular-content__item"><div class="three-images-content l-margin-bottom-4">
+  <div class="three-images-content__images">
+    <figure class="three-images-content__featured-image">
+            <img srcset="/sites/default/files/styles/16_9_900w/public/images/B42T8070b.jpg?h=027f83ef&amp;itok=wxfiPSA0 900w, /sites/default/files/styles/16_9_1200w/public/images/B42T8070b.jpg?itok=3QLL0szt 1200w, /sites/default/files/styles/16_9_1600w/public/images/B42T8070b.jpg?itok=gBPE5kh_ 1600w" sizes="100vw" src="/sites/default/files/styles/16_9_1200w/public/images/B42T8070b.jpg?itok=3QLL0szt" alt="students by the cross" typeof="foaf:Image" />
+
+
+
+
+    </figure>
+          <div class="three-images-content__secondary-images">
+        <figure>      <img srcset="/sites/default/files/styles/16_9_900w/public/images/B42T6044_cropd.jpg?h=f34818dd&amp;itok=TGCmvClB 900w, /sites/default/files/styles/16_9_1200w/public/images/B42T6044_cropd.jpg?itok=BT3sO8lb 1200w, /sites/default/files/styles/16_9_1600w/public/images/B42T6044_cropd.jpg?itok=jsVV1mZk 1600w" sizes="100vw" src="/sites/default/files/styles/16_9_1200w/public/images/B42T6044_cropd.jpg?itok=BT3sO8lb" alt="graduation" typeof="foaf:Image" />
+
+
+
+</figure>
+        <figure>      <img srcset="/sites/default/files/styles/16_9_900w/public/images/MCE_9081.jpg?h=b1646d6a&amp;itok=0vvSwXqE 900w, /sites/default/files/styles/16_9_1200w/public/images/MCE_9081.jpg?itok=qHSaTxqu 1200w, /sites/default/files/styles/16_9_1600w/public/images/MCE_9081.jpg?itok=z32pL3CG 1600w" sizes="100vw" src="/sites/default/files/styles/16_9_1200w/public/images/MCE_9081.jpg?itok=qHSaTxqu" alt="MBA Students" typeof="foaf:Image" />
+
+
+
+</figure>
+      </div>
+      </div>
+  <div class="three-images-content__content">
+    <h2 class="overlined-title">Why PLNU?</h2>
+    <p>At PLNU, we don’t only prepare you for a career after you graduate; we help you pursue your unique God-given vocation and progress toward becoming who you are fully called to be. We believe whole-person development is vital to making a difference in the world. And at a faith-based liberal arts university, you’ll partake in an academic environment shaped by excellence and rooted in a Christian understanding of the world.</p>
+
+<p><a class="button button--gold" data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="00d999d8-2f5a-4e6b-a6b1-246876efc9ab" href="/why-plnu">Why PLNU</a></p>
+  </div>
+</div></div>
+    
+  
+              <div class="modular-content__item"><div class="fullwidth fullwidth--transparent">
+  <div class="feature-text fullwidth__container">
+    <div class="feature-text__content">
+      <h2 class="fullwidth__title overlined-title">PLNU Snapshot</h2>
+      <div class="fullwidth__content">
+        
+            <div class="clearfix text-formatted field field--name-field-intro-text field--type-text-with-summary field--label-hidden field__item"><p>At PLNU, you’ll partake in an academic environment shaped by excellence and rooted in a Christian understanding of the world.</p></div>
+      
+              </div>
+    </div>
+  </div>
+</div>
+</div>
+    
+  
+              <div class="modular-content__item"><div class="stat-images l-margin-2">
+  <ul class="stat-images__list">
+          <li class="stat-images__item">
+            <img src="/sites/default/files/styles/crop_thumbnail/public/images/Infographics_Undergraduate_Homepage_2-04_0_0.png?itok=reJdI-4v" width="400" height="314" alt="14:1 Student to Faculty Ratio" typeof="foaf:Image" class="image-style-crop-thumbnail" />
+
+
+
+
+      </li>
+          <li class="stat-images__item">
+            <img src="/sites/default/files/styles/crop_thumbnail/public/images/Infographics_Undergraduate_Homepage_2-02.png?itok=90zbTQQa" width="400" height="153" alt="40.6 Million in Grant and Scholarship Aid" typeof="foaf:Image" class="image-style-crop-thumbnail" />
+
+
+
+
+      </li>
+          <li class="stat-images__item">
+            <img src="/sites/default/files/styles/crop_thumbnail/public/images/Infographics_Undergraduate_Homepage_2-Top5_0.png?itok=o2eZYlCV" width="400" height="168" alt="Top 5 Ranked Most Selective Christian College in the U.S." typeof="foaf:Image" class="image-style-crop-thumbnail" />
+
+
+
+
+      </li>
+          <li class="stat-images__item">
+            <img src="/sites/default/files/styles/crop_thumbnail/public/images/90percent.png?itok=ARJl9dlW" width="400" height="237" alt="" typeof="foaf:Image" class="image-style-crop-thumbnail" />
+
+
+
+
+      </li>
+      </ul>
+</div>
+</div>
+    
+  </div>
+
+      </div>
+    </div>
+
+    <div class="modular-content modular-content--fullwidth js-anchor__wrapper">
+      <div class="modular-content__item"><div class="fullwidth fullwidth--transparent">
+  <div class="feature-text fullwidth__container">
+    <div class="feature-text__content">
+      <h2 class="fullwidth__title overlined-title">Start Your Journey</h2>
+      <div class="fullwidth__content">
+        
+            <div class="clearfix text-formatted field field--name-field-intro-text field--type-text-with-summary field--label-hidden field__item"><p>Whether you’re looking to begin your college career, explore graduate and professional opportunities, or complete a degree you’ve already started, take the next step in making life at PLNU a reality.</p></div>
+      
+              </div>
+    </div>
+  </div>
+</div>
+</div>
+      <div class="modular-content__item">  <div class="paragraph paragraph--type--block paragraph--view-mode--default">
+          
+            <div class="field field--name-field-block field--type-block-field field--label-hidden field__item"><div data-block-plugin-id="degree_events_block" class="block block-plnu-block block-degree-events-block">
+  
+    
+      
+<div class="cta-columns l-margin-2">
+  <div class="cta-columns__column">
+    <div class="cta-columns__content">
+      <p class="cta-columns__label">Looking to start a bachelor’s degree or transfer?</p>
+      <a class="button button--gold" href="/undergraduate/programs">Undergraduate Programs</a>
+    </div>
+      </div>
+  <div class="cta-columns__column">
+    <div class="cta-columns__content">
+      <p class="cta-columns__label">Building on top of your education or experience?</p>
+      <a class="button button--gold" href="/graduate-studies/programs">Graduate &amp; Professional Programs</a>
+    </div>
+            <div class="cta-columns__event">
+    <h3 class="cta-columns__event-title">Upcoming Graduate Event</h3>
+        <div class="cta-columns__event-link"><a href="/events/free-cbest-prep-course-1" hreflang="en">Free CBEST Prep Course</a></div>
+    <p class="cta-columns__event-date">
+      <strong>Tuesday, January 28 to Wednesday, January 29</strong>
+      <span>5:30 p.m. - 8 p.m.</span>
+      <span>Location: Bakersfield</span>
+      </p>
+  </div>
+
+      </div>
+  <div class="cta-columns__column">
+    <div class="cta-columns__content">
+      <p class="cta-columns__label">Wanting to finish a degree you started?</p>
+      <a class="button button--gold" href="/adult-degree-completion/programs">Adult Degree Completion Programs</a>
+    </div>
+            <div class="cta-columns__event">
+    <h3 class="cta-columns__event-title">Upcoming Adult Degree Completion Event</h3>
+        <div class="cta-columns__event-link"><a href="/events/organizational-management-information-event-cuyamaca-college" hreflang="en">Organizational Management Information Event at Cuyamaca College</a></div>
+    <p class="cta-columns__event-date">
+      <strong>Wednesday, March 18</strong>
+      <span>6 – 7:30 p.m.</span>
+      <span>Location: Cuyamaca College</span>
+      </p>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+</div>
+      
+      </div>
+</div>
+      <div class="modular-content__item">
+<div>
+      <div class="u-text-center">
+      <h2 class="overlined-title">PLNU News &amp; Events</h2>
+    </div>
+  
+  <div class="node-grid node-grid--department">
+    <ul class="node-grid__list">
+                              <li class="node-grid__item node-grid__item--featured">
+                
+<div class="node-tile node-tile--featured">
+  <a href="/events/25th-annual-writers-symposium-sea">
+          <div class="node-tile__image">
+            <img src="/sites/default/files/styles/16_9_900w/public/images/WS_ChairsRGB.jpg?h=346320dd&amp;itok=RyTJTX7w" width="900" height="506" alt="Writer&#039;s Symposium chairs on ocean" typeof="foaf:Image" class="image-style-_6-9-900w" />
+
+
+
+
+      </div>
+        <div class="node-tile__wrapper">
+      <p class="node-tile__type">EVENT</p>
+      <div class="node-tile__info">
+        <h3 class="node-tile__title"<span class="field field--name-title field--type-string field--label-hidden">25th Annual Writer&#039;s Symposium by the Sea</span>
+</h3>
+        <p class="node-tile__description">The 25th Annual Writer&#039;s Symposium by the Sea will be February 25-27, 2020! Join us as we discuss Writing That Liberates with Sonia Nazario, Pico Iyer, and Alice Walker. Also featuring Isabel Allende on January 31, 2020!</p>
+      </div>
+      <div class="node-tile__metadata">
+        <p class="node-tile__date"><time datetime="2020-02-25T12:00:00Z" class="datetime">February 25, 2020</time>
+ - <time datetime="2020-02-27T12:00:00Z" class="datetime">February 27, 2020</time>
+</p>
+        <p class="node-tile__time"></p>
+                  <p class="node-tile__location">Location: Main Campus</p>
+              </div>
+    </div>
+  </a>
+</div>
+
+        </li>
+                        <li class="node-grid__item">
+                
+<div class="node-tile">
+  <a href="/events/2020-wiley-lectures-dr-brent-strawn-plnu-92">
+    <div class="node-tile__wrapper">
+            <div class="node-tile__image">
+            <img src="/sites/default/files/styles/16_9_900w/public/images/Dr.%20Strawn_0.jpg?h=365cd573&amp;itok=15fnY6dT" width="900" height="506" alt="Dr. Strawn" typeof="foaf:Image" class="image-style-_6-9-900w" />
+
+
+
+
+      </div>
+            <p class="node-tile__type">EVENT</p>
+      <div class="node-tile__info">
+        <h3 class="node-tile__title"<span class="field field--name-title field--type-string field--label-hidden">2020 Wiley Lectures with Dr. Brent Strawn (PLNU &#039;92)</span>
+</h3>
+              </div>
+      <div class="node-tile__metadata">
+        <p class="node-tile__date"><time datetime="2020-02-12T12:00:00Z" class="datetime">February 12, 2020</time>
+ - <time datetime="2020-02-14T12:00:00Z" class="datetime">February 14, 2020</time>
+</p>
+        <p class="node-tile__time"></p>
+                <p class="node-tile__location">Location: Main Campus</p>
+              </div>
+    </div>
+  </a>
+</div>
+
+        </li>
+                        <li class="node-grid__item">
+                
+<div class="node-tile">
+  <a href="/news/robbie-maakestad-listed-best-american-essays-2019">
+    <div class="node-tile__wrapper">
+              <div class="node-tile__image">
+              <img src="/sites/default/files/styles/16_9_900w/public/images/Maakstad_Robbie0818_0.jpg?h=7265c25d&amp;itok=KaQoDCD2" width="900" height="506" alt="Robie Maakestad headshot" typeof="foaf:Image" class="image-style-_6-9-900w" />
+
+
+
+
+        </div>
+            <p class="node-tile__type">NEWS</p>
+      <div class="node-tile__info">
+        <h3 class="node-tile__title"<span class="field field--name-title field--type-string field--label-hidden">Robbie Maakestad listed in Best American Essays 2019</span>
+</h3>
+              </div>
+    </div>
+  </a>
+</div>
+
+        </li>
+          </ul>
+  </div>
+
+    <div class="u-text-center l-margin-top-1">
+    <a href="/events#content" class="button button--alt">More Events</a>
+    <a href="/news#content" class="button button--alt">More News</a>
+  </div>
+
+</div>
+
+
+
+</div>
+      <div class="modular-content__item">  <div class="paragraph paragraph--type--code paragraph--view-mode--default">
+          
+            <div class="field field--name-field-code field--type-string-long field--label-hidden field__item"><iframe src='https://www.juicer.io/api/feeds/plnu-3605d9d9-46f3-4af9-8615-f8c722e6d707/iframe' frameborder='0' width='1200' height='300' style='display:block;margin:0 auto;'></iframe></div>
+      
+      </div>
+</div>
+  </div>
+
+
+  </article>
+
+  </div>
+
+  </div>
+
+        </div>
+
+        
+
+      </section>
+      <!-- /content-inner /content -->
+
+      
+        
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /main -->
+
+  
+<footer id="footer" class="site-footer">
+  <div class="l-container">
+    <figure class="site-footer__logo">
+      <img src="/themes/plnu/images/logo-footer.svg" alt="PLNU" />
+    </figure>
+    <div class="site-footer__address">
+      <p>3900 Lomaland Drive<br/>San Diego, CA 92106<br/>(619) 849-2200</p>
+      <a href="/locations" title="Locations" class="button button--alt button--narrow footer-locations-button">Locations</a>
+    </div>
+    <nav class="social-nav">
+      <ul class="social-nav__list">
+        <li class="social-nav__item">
+            <a href="https://www.facebook.com/PointLomaNazareneUniversity/" class="social-nav__link icon__link">
+    Facebook
+    <svg class="icon icon--facebook">
+      <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-facebook" />
+    </svg>
+  </a>
+
+        </li>
+        <li class="social-nav__item">
+            <a href="https://www.instagram.com/plnu/" class="social-nav__link icon__link">
+    instagram
+    <svg class="icon icon--instagram">
+      <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-instagram" />
+    </svg>
+  </a>
+
+        </li>
+        <li class="social-nav__item">
+            <a href="https://twitter.com/plnu" class="social-nav__link icon__link">
+    Twitter
+    <svg class="icon icon--twitter">
+      <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-twitter" />
+    </svg>
+  </a>
+
+        </li>
+        <li class="social-nav__item">
+            <a href="https://www.youtube.com/channel/UCfc1gDudwYlVTQQocvhLeTg" class="social-nav__link icon__link">
+    Youtube
+    <svg class="icon icon--youtube">
+      <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-youtube" />
+    </svg>
+  </a>
+
+        </li>
+        <li class="social-nav__item">
+            <a href="http://www.flickr.com/photos/plnu/" class="social-nav__link icon__link">
+    Flickr
+    <svg class="icon icon--flickr">
+      <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-flickr" />
+    </svg>
+  </a>
+
+        </li>
+        <li class="social-nav__item">
+            <a href="https://www.linkedin.com/edu/point-loma-nazarene-university-17901" class="social-nav__link icon__link">
+    LinkedIn
+    <svg class="icon icon--linkedin">
+      <use xlink:href="/themes/plnu/images/svg-sprite.svg#icon-linkedin" />
+    </svg>
+  </a>
+
+        </li>
+      </ul>
+    </nav>
+            <div class="region region-footer">
+    <nav role="navigation" aria-labelledby="block-plnu-footer-menu" id="block-plnu-footer" data-block-plugin-id="system_menu_block:footer" class="block block-menu navigation menu--footer">
+            
+  <h2 class="visually-hidden" id="block-plnu-footer-menu">Footer menu</h2>
+  
+
+        
+                    <ul class="menu">
+                    <li class="menu-item">
+        <a href="/offices/human-resources" data-drupal-link-system-path="node/3931">Careers</a>
+              </li>
+                <li class="menu-item">
+        <a href="/media-press" data-drupal-link-system-path="node/4766">Media &amp; Press</a>
+              </li>
+                <li class="menu-item">
+        <a href="/parents-family" data-drupal-link-system-path="node/3991">Parents &amp; Family</a>
+              </li>
+                <li class="menu-item">
+        <a href="/faculty-staff" data-drupal-link-system-path="node/216">Faculty &amp; Staff</a>
+              </li>
+                <li class="menu-item">
+        <a href="/current-students" data-drupal-link-system-path="node/221">Current Students</a>
+              </li>
+                <li class="menu-item">
+        <a href="/title-ix" data-drupal-link-system-path="node/4291">Title IX</a>
+              </li>
+                <li class="menu-item">
+        <a href="/accreditation" data-drupal-link-system-path="node/6186">Accreditation</a>
+              </li>
+        </ul>
+  
+
+
+
+  </nav>
+
+  </div>
+
+        <div class="site-footer__bottom">
+      <p class="site-footer__copyright">&copy; 2020 Point Loma Nazarene University. All Rights Reserved.</p>
+      <nav class="menu-privacy">
+        <ul class="menu-privacy__list">
+          <li class="menu-privacy__item"><a href="/privacy-terms-use">Privacy and Terms of Use</a></li>
+          <li class="menu-privacy__item"><a href="https://drive.google.com/file/d/0B3hMXF5MXi6Ed3QtazBJOFhGV2s/view?usp=sharing">Student Consumer Complaint Process</a></li>
+          <li class="menu-privacy__item"><a href="/website-accessibility">Website Accessibility</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__emergency">
+        <a href="http://emergency.pointloma.edu/" class="button button--emergency">In Case of Emergency</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <div class="page-overlay"></div>
+
+</div>
+
+
+<!-- /page -->
+
+  </div>
+
+
+<script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5796","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","ajaxPageState":{"libraries":"better_exposed_filters\/general,classy\/base,classy\/messages,classy\/node,core\/html5shiv,core\/normalize,core\/picturefill,paragraphs\/drupal.paragraphs.unpublished,plnu\/base,plnu\/fresco,plnu\/header,search_api_autocomplete\/search_api_autocomplete,system\/base","theme":"plnu","theme_token":null},"ajaxTrustedUrl":{"\/search":true},"search_api_autocomplete":{"plnu_search":{"delay":300,"auto_submit":true,"min_length":2}},"ajax":[],"user":{"uid":0,"permissionsHash":"24dc39f3490bfb72e1076e7647b4dab8bbcd6f1a6a9abb79ee5af4393ce370cc"}}</script>
+<script src="/core/assets/vendor/domready/ready.min.js?v=1.0.8"></script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=3.2.1"></script>
+<script src="/core/assets/vendor/jquery/jquery-extend-3.4.0.js?v=3.2.1"></script>
+<script src="/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.0"></script>
+<script src="/core/misc/drupalSettingsLoader.js?v=8.7.10"></script>
+<script src="/core/misc/drupal.js?v=8.7.10"></script>
+<script src="/core/misc/drupal.init.js?v=8.7.10"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/data-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/disable-selection-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/form-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/labels-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/jquery-1-7-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/scroll-parent-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/tabbable-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/unique-id-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/version-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/focusable-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/ie-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/keycode-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/plugin-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/safe-active-element-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/safe-blur-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/picturefill/picturefill.min.js?v=3.0.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/widget-min.js?v=1.12.1"></script>
+<script src="/themes/plnu/dist/js/application.js?q4a02f"></script>
+<script src="/core/assets/vendor/matchMedia/matchMedia.min.js?v=0.2.0"></script>
+<script src="/themes/plnu/libraries/fresco/fresco.js?v=2.2.2"></script>
+<script src="/modules/contrib/better_exposed_filters/js/better_exposed_filters.js?v=3.x"></script>
+<script src="/core/misc/progress.js?v=8.7.10"></script>
+<script src="/core/modules/responsive_image/js/responsive_image.ajax.js?v=8.7.10"></script>
+<script src="/core/misc/ajax.js?v=8.7.10"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/position-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/widgets/menu-min.js?v=1.12.1"></script>
+<script src="/core/assets/vendor/jquery.ui/ui/widgets/autocomplete-min.js?v=1.12.1"></script>
+<script src="/modules/contrib/search_autocomplete/js/jquery.autocomplete.js?v=8.7.10"></script>
+<script src="/modules/contrib/search_api_autocomplete/js/search_api_autocomplete.js?q4a02f"></script>
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTJ3KS9"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script type="text/javascript">
+  /*<![CDATA[*/
+  (function() {
+    var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+    sz.src = '//siteimproveanalytics.com/js/siteanalyze_66358484.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+  })();
+  /*]]>*/
+</script>
+
+<!-- Google Code for Remarketing Tag -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 834862379;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+</script>
+
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+
+<noscript>
+  <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/834862379/?guid=ON&script=0"/>
+  </div>
+</noscript>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"d02f3ce21b","applicationID":"263541068","transactionName":"MVBVYEpQW0JSB0AMVggaYkZRHhpYXQBRHRcWXUc=","queueTime":0,"applicationTime":242,"atts":"HRdWFgJKSEw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

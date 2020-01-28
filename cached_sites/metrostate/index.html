@@ -1,0 +1,1113 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+	<head>
+		<meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"edcad50165",applicationID:"73174278"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="title" content="Metropolitan State University" />
+<meta name="geo.position" content="44.957552; -93.073746" />
+<meta name="geo.region" content="US-MN" />
+<meta name="icbm" content="44.957552, -93.073746" />
+<link rel="shortlink" href="https://www.metrostate.edu/" />
+<link rel="shortcut icon" href="https://www.metrostate.edu/themes/custom/metrostate/icons/favicons/16.png" />
+<link rel="canonical" href="https://www.metrostate.edu/" />
+<meta http-equiv="content-language" content="en-US" />
+<meta name="description" content="Metropolitan State University is a public university in Minnesota that offers high-quality, flexible and affordable options in undergraduate, graduate and continuing education. We’ve earned a national reputation for innovative programs that empower students to finish what they started with the flexibility to schedule courses around their busy lifestyles - offering evening, weekend, online and combination online/classroom courses." />
+<meta property="og:url" content="https://www.metrostate.edu/home" />
+<link rel="icon" sizes="16x16" href="https://www.metrostate.edu/themes/custom/metrostate/icons/favicons/16.png" />
+<meta property="og:title" content="Metropolitan State University" />
+<link rel="icon" sizes="32x32" href="https://www.metrostate.edu/themes/custom/metrostate/icons/favicons/32.png" />
+<link rel="icon" sizes="96x96" href="https://www.metrostate.edu/themes/custom/metrostate/icons/favicons/96.png" />
+<meta property="og:description" content="Metropolitan State University is a public university in Minnesota that offers high-quality, flexible and affordable options in undergraduate, graduate and continuing education. We’ve earned a national reputation for innovative programs that empower studen" />
+<meta property="og:image" content="https://www.metrostate.edu/themes/custom/metrostate/img/metropolitan-state.jpg" />
+<link rel="apple-touch-icon" sizes="120x120" href="https://www.metrostate.edu/themes/custom/metrostate/icons/favicons/120.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="https://www.metrostate.edu/themes/custom/metrostate/icons/favicons/152.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.metrostate.edu/themes/custom/metrostate/icons/favicons/180.png" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="og:image" content="/themes/custom/metrostate/img/metropolitan-state.jpg" />
+<link rel="revision" href="https://www.metrostate.edu/home" />
+<script src="/sites/default/files/google_tag/primary/google_tag.script.js?q4c7q7" defer="true"></script>
+
+		<title>Metropolitan State University</title>
+		<link rel="stylesheet" media="all" href="/sites/default/files/css/css_9m8-tA3IQf8ThlLQYTTZUyEweCvyR908Tg0XCbKYOfY.css?q4c7q7" />
+<link rel="stylesheet" media="all" href="https://use.typekit.net/wal0vkv.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_vze7rdu3WGSovZTZR6jTKig9-kLjR2AR_NMxuxfoyiw.css?q4c7q7" />
+
+		
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/sites/default/files/js/js_zmzS8WTxSFQKUChW4EiJYTPsM5WnrkDtD1XBuKjEEi4.js"></script>
+
+	</head>
+
+	
+	
+	<body class="metro--nid-146 metro--pg-nt-page metro--context-home">
+				<nav class="sr-only sr-only-focusable" role="navigation" aria-label="Screen reader navigation">
+			<a href="#main-content">Skip to main content</a>
+		</nav>
+		<noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N52TL6S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<div class="d-none d-print-block mb-5" aria-hidden="true" role="banner" aria-label="page heading for printable view"><div class="container">
+			<div class="row">
+				<div class="col-4">
+					<img src="/themes/custom/metrostate/img/logo-blue.svg" alt="Metropolitan State University" class="img-fluid">
+				</div>
+			</div>
+		</div></div>
+		  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <header id="metro--global-header">
+	  <div>
+    
+<div id="block-metromegamenublock" data-block-plugin-id="metro_mega_menu_block" class="metro--block">
+  
+    
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="metro--navbar" aria-label="main navigation">
+	<div class="container">
+		<a class="navbar-brand" href="/"><img src="/themes/custom/metrostate/img/logo-white.svg" id="metro--navbar-brand-img" alt="Metropolitan State University (Home)"></a>
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+									<li class="nav-item dropdown mega-dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Future students
+				</a>
+													<div class="mega-menu dropdown-menu" aria-labelledby="navbarDropdown-0">
+    <div class="container">
+        <div class="row justify-content-center mb-lg-2 mb-xl-3 text-left text-sm-center metro--navbar-row-icon-future metro--a-reversed">
+            <div class="col-12 mb-2 col-sm-4 col-md-3 col-lg mb-lg-0 col-xl">
+			<a href="/apply/get-started">
+			   <figure class="metro--navbar-icon metro--navbar-icon-future d-none d-sm-block">
+				  <img src="/themes/custom/metrostate/img/icon-apply-01.svg" alt="cap and gown icon" class="img-fluid" aria-hidden="true">
+			   </figure>
+			   What Metro State offers&nbsp;you
+			</a>
+            </div>
+            <div class="col-12 mb-2 col-sm-4 col-md-3 col-lg mb-lg-0 col-xl">
+			<a href="/apply/programs">
+			    <figure class="metro--navbar-icon metro--navbar-icon-future d-none d-sm-block">
+			    	<img src="/themes/custom/metrostate/img/icon-apply-04.svg" alt="open book icon" class="img-fluid" aria-hidden="true">
+			    </figure>
+			    Explore majors and&nbsp;degrees
+			</a>
+            </div>
+            <div class="col-12 mb-2 col-sm-4 col-md-3 col-lg mb-lg-0 col-xl">
+			 	<a href="/apply/tuition">
+                        <figure class="metro--navbar-icon metro--navbar-icon-future  d-none d-sm-block" aria-hidden="true">
+                        <img src="/themes/custom/metrostate/img/icon-apply-03.svg" alt="money icon" class="img-fluid">
+                        </figure>
+                        An affordable, quality&nbsp;education
+                    </a>
+            </div>
+            <div class="col-12 mb-2 col-sm-4 col-md-3 col-lg mb-lg-0 col-xl">
+			 	<a href="/apply/learn-more">
+                        <figure class="metro--navbar-icon metro--navbar-icon-future  d-none d-sm-block" aria-hidden="true">
+                        <img src="/themes/custom/metrostate/img/icon-apply-02.svg" alt="lightbulb icon" class="img-fluid">
+                        </figure>
+                        Learn more or visit&nbsp;campus
+                </a>
+            </div>
+            <div class="col-12 mb-2 col-sm-4 col-md-3 col-lg mb-lg-0 col-xl">
+			 	<a href="/apply">
+                        <figure class="metro--navbar-icon metro--navbar-icon-future  d-none d-sm-block" aria-hidden="true">
+                        <img src="/themes/custom/metrostate/img/icon-apply-05.svg" alt="apply icon" class="img-fluid">
+                        </figure>
+                        Get started
+                    </a>
+            </div>
+        </div>
+
+        <div class="row metro--navbar-future-listlinks-row">
+            <div class="col text-left text-md-center">
+                <ul class="list-unstyled metro--navbar-future-listlinks metro--navbar-current-listlinks">
+				<li><a href="/apply/get-started/transfer"><strong>Transfer students</strong></a></li>
+				<li><a href="/apply/get-started/freshmen"><strong>First-time students</strong></a></li>
+				<li><a href="/apply/get-started/graduate"><strong>Graduate students</strong></a></li>
+				<li><a href="/apply/get-started/international"><strong>International students</strong></a></li>
+				<li><a href="/apply">More ways to enroll <i class="fas fa-angle-right fa-sm" aria-label="arrow"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row metro--navbar-future-listlinks-row">
+            <div class="col text-left text-md-center">
+                <ul class="list-unstyled metro--navbar-future-listlinks">
+                                            <li>
+                            <a href="/apply/path/pathways" title="" >Transfer Pathways</a>
+                        </li>
+                                            <li>
+                            <a href="/apply/path/metroconnect" title="" >MetroConnect</a>
+                        </li>
+                                            <li>
+                            <a href="/apply/partners" title="Partner institutions" >Partner institutions</a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+											</li>
+									<li class="nav-item dropdown mega-dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Current students
+				</a>
+													<!--start current students-->
+<div class="mega-menu dropdown-menu" aria-labelledby="navbarDropdown-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 order-1 col-sm-12 order-sm-1 col-md-12 order-md-1 col-lg-2 order-lg-2 col-xl-2 order-xl-2 metro--nav-current-tools">
+                <ul class="list-unstyled">
+      <li class="mb-1">
+        <a href="https://metrostate.learn.minnstate.edu/" class="btn btn-block btn-metro-tool text-left" target="_blank">
+            <i class="far fa-lock fa-xs" data-fa-transform="up-2" aria-label="authentication required"></i>
+             D2L Brightspace
+        </a>
+    </li>
+      <li class="mb-1">
+        <a href="https://login.microsoftonline.com?whr=minnstate.edu" class="btn btn-block btn-metro-tool text-left" target="_blank">
+            <i class="far fa-lock fa-xs" data-fa-transform="up-2" aria-label="authentication required"></i>
+             Student email
+        </a>
+    </li>
+      <li class="mb-1">
+        <a href="https://eservices.minnstate.edu/eservices/login.html?campusid=076" class="btn btn-block btn-metro-tool text-left" target="_blank">
+            <i class="far fa-lock fa-xs" data-fa-transform="up-2" aria-label="authentication required"></i>
+             eServices
+        </a>
+    </li>
+      <li class="mb-1">
+        <a href="https://starid.minnstate.edu/" class="btn btn-block btn-metro-tool text-left" target="_blank">
+            <i class="far fa-lock fa-xs" data-fa-transform="up-2" aria-label="authentication required"></i>
+             StarID
+        </a>
+    </li>
+      <li class="mb-1">
+        <a href="/linkedin-learning" class="btn btn-block btn-metro-tool text-left" target="_blank">
+            <i class="far fa-lock fa-xs" data-fa-transform="up-2" aria-label="authentication required"></i>
+             LinkedIn Learning
+        </a>
+    </li>
+  </ul>
+
+                <!-- <div class="row">
+					<div class="col">
+						<div class="card border-warning card-compressed mt-3">
+							<div class="card-header bg-warning border-warning">
+								<h5 class="card-title"><i class="far fa-exclamation-circle" data-fa-transform="down-1"></i> Coming up…</h5>
+							</div>
+							<div class="card-body">
+								<p class="card-text">Summer + Fall ’18 registration opens <strong>Monday, March 19</strong></p>
+							</div>
+						</div>
+					</div>
+				</div> end alert row -->
+			</div><!--end right-hand side-->
+
+			<div class="col-12 order-2 col-sm-12 order-sm-2 col-md-12 order-md-2 col-lg-10 order-lg-1 col-xl-10 order-xl-1 text-left text-sm-center text-md-center text-lg-center text-xl-center mt-3 mt-lg-0">
+				<div class="row justify-content-center metro--navbar-row-icon-current">
+					<div class="col-12 col-sm-4 col-md col-lg col-xl">
+						<a href="/students">
+								<figure class="metro--navbar-icon metro--navbar-icon-current d-none d-sm-block">
+										<img src="/themes/custom/metrostate/img/icons/student-news2.svg" class="img-fluid" aria-hidden="true" alt="news icon">
+								</figure>
+								News and info
+								<p>Everything students need&nbsp;to&nbsp;know today</p>
+						</a>
+					</div>
+					<div class="col-12 col-sm-4 col-md col-lg col-xl">
+						<a href="/academics/success">
+								<figure class="metro--navbar-icon metro--navbar-icon-current d-none d-sm-block">
+										<img src="/themes/custom/metrostate/img/icons/student-success.svg" class="img-fluid" aria-hidden="true" alt="gear icon">
+								</figure>
+								Academic success
+								<p>Registration, tutoring, advising and more</p>
+						</a>
+					</div>
+					<div class="col-12 col-sm-4 col-md col-lg col-xl">
+						<a href="/students/support">
+								<figure class="metro--navbar-icon metro--navbar-icon-current d-none d-sm-block">
+										<img src="/themes/custom/metrostate/img/icons/student-service1.svg" class="img-fluid" aria-hidden="true" alt="service icon">
+								</figure>
+								Services + support
+								<p>Help and resources for students’ everyday lives</p>
+						</a>
+					</div>
+					<div class="col-12 col-sm-4 col-md col-lg col-xl">
+						<a href="/finances">
+								<figure class="metro--navbar-icon metro--navbar-icon-current d-none d-sm-block">
+										<img src="/themes/custom/metrostate/img/icons/student-finance.svg" class="img-fluid" aria-hidden="true" alt="finances icon">
+								</figure>
+								Finances
+								<p>Payment, tuition and options for financial aid</p>
+						</a>
+					</div>
+					<div class="col-12 col-sm-4 col-md col-lg col-xl">
+						<a href="/students/life">
+								<figure class="metro--navbar-icon metro--navbar-icon-current d-none d-sm-block">
+										<img src="/themes/custom/metrostate/img/icons/student-life.svg" class="img-fluid" aria-hidden="true" alt="student life icon">
+								</figure>
+								Student life
+								<p>Get involved in&nbsp;the campus community</p>
+						</a>
+					</div>
+				</div>
+
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <ul class="list-unstyled metro--navbar-current-listlinks text-left text-lg-center">
+                                                            <li class="mb-2 mb-lg-0">
+                                    <a href="/library" title="" >
+                                                                                    <i class="far fa-book" data-fa-transform="shrink-4" aria-label="book icon"></i> 
+                                                                                Library
+                                    </a>
+                                </li>
+                                                            <li class="mb-2 mb-lg-0">
+                                    <a href="https://www.bkstr.com/metropolitanstatestore" title=""  target="_blank" >
+                                                                                    <i class="far fa-shopping-cart fa-w-18" data-fa-transform="shrink-3" aria-label="shopping cart"></i> 
+                                                                                Bookstore
+                                    </a>
+                                </li>
+                                                            <li class="mb-2 mb-lg-0">
+                                    <a href="/academics/calendar" title="" >
+                                                                                    <i class="far fa-calendar-alt" data-fa-transform="shrink-3" aria-label="book icon"></i> 
+                                                                                Academic calendar
+                                    </a>
+                                </li>
+                                                            <li class="mb-2 mb-lg-0">
+                                    <a href="/about/locations" title="" >
+                                                                                    <i class="far fa-map-marker-alt fa-w-12" data-fa-transform="shrink-3" aria-label="map marker icon"></i> 
+                                                                                Locations
+                                    </a>
+                                </li>
+                                                            <li class="mb-2 mb-lg-0">
+                                    <a href="/students/support/gateway" title="" >
+                                                                                    <i class="far fa-question-circle fa-w-16" data-fa-transform="shrink-3" aria-label="question icon"></i> 
+                                                                                Gateway
+                                    </a>
+                                </li>
+                                                            <li class="mb-2 mb-lg-0">
+                                    <a href="/orientation" title="" >
+                                                                                Orientation
+                                    </a>
+                                </li>
+                                                            <li class="mb-2 mb-lg-0">
+                                    <a href="/academics/registration" title="Register for class" >
+                                                                                Registration
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <!--end left-hand side-->
+        </div>
+    </div>
+</div>
+											</li>
+									<li class="nav-item dropdown ">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Academics
+				</a>
+													<div class="dropdown-menu" aria-labelledby="navbarDropdown-2">
+																								<a href="/academics" class="dropdown-item" title="" >Colleges, schools and departments</a>
+																																<a href="/academics/programs" class="dropdown-item" title="" >Majors and programs</a>
+																																<a href="/academics/registration" class="dropdown-item" title="" >Registration and course catalog</a>
+																																<a href="/academics/credit-transfers" class="dropdown-item" title="" >Credit transfers</a>
+																																<div class="dropdown-divider"></div>
+																																<a href="/academics/calendar" class="dropdown-item" title="" >Academic calendar</a>
+																																<div class="dropdown-divider"></div>
+																																<a href="/academics/requirements" class="dropdown-item" title="" >Academic and graduation requirements</a>
+																						</div>
+											</li>
+									<li class="nav-item dropdown ">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				News + events
+				</a>
+													<div class="dropdown-menu" aria-labelledby="navbarDropdown-3">
+																								<a href="/news" class="dropdown-item" title="" >News@Metro</a>
+																																<a href="/calendar" class="dropdown-item" title="" >Events calendar</a>
+																																<a href="/arts" class="dropdown-item" title="" >Arts + literature</a>
+																																<div class="dropdown-divider"></div>
+																																<a href="http://themetropolitan.metrostate.edu/" class="dropdown-item" title=""  target="_blank" >The Metropolitan student newspaper</a>
+																																<a href="http://hautedish.metrostate.edu/" class="dropdown-item" title=""  target="_blank" >Haute Dish</a>
+																																<a href="https://services.metrostate.edu/TDClient/KB/ArticleDet?ID=86519" class="dropdown-item" title=""  target="_blank" >O365 Migration</a>
+																						</div>
+											</li>
+									<li class="nav-item dropdown ">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Get involved
+				</a>
+													<div class="dropdown-menu" aria-labelledby="navbarDropdown-4">
+																								<a href="/students/life" class="dropdown-item" title="" >Student Life and Leadership</a>
+																																<a href="/students/life/student-organizations" class="dropdown-item" title="" >Student organizations</a>
+																																<div class="dropdown-divider"></div>
+																																<a href="/community/civic-engagement" class="dropdown-item" title="" >Civic engagement</a>
+																																<a href="/community/partnerships-and-outreach" class="dropdown-item" title="" >Community partnerships and outreach</a>
+																																<a href="/community" class="dropdown-item" title="" >Institute for Community Engagement and Scholarship</a>
+																																<div class="dropdown-divider"></div>
+																																<a href="/alumni" class="dropdown-item" title="" >Alumni</a>
+																																<div class="dropdown-divider"></div>
+																																<a href="http://metrostateipd.org/" class="dropdown-item" title=""  target="_blank" >Institute for Professional Development</a>
+																						</div>
+											</li>
+									<li class="nav-item dropdown ">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				About
+				</a>
+													<div class="dropdown-menu" aria-labelledby="navbarDropdown-5">
+																								<a href="/about" class="dropdown-item" title="" >About the university</a>
+																																<a href="/about/locations" class="dropdown-item" title="" >Locations</a>
+																																<a href="/about/contact" class="dropdown-item" title="" >Contact us</a>
+																																<a href="/about/directory" class="dropdown-item" title="" >Faculty and staff directory</a>
+																																<ul class="list-unstyled list-inline text-center">
+            <li class="list-inline-item"><a href="https://www.facebook.com/ChooseMetroState" target="_blank"><i class="fab fa-facebook" aria-label="Facebook icon"></i><span class="sr-only">Metropolitan State on Facebook</span></a></li>
+                <li class="list-inline-item"><a href="https://www.instagram.com/metrostate/" target="_blank"><i class="fab fa-instagram" aria-label="Instagram icon"></i><span class="sr-only">Metropolitan State on Instagram</span></a></li>
+                <li class="list-inline-item"><a href="http://www.linkedin.com/school/metropolitan-state-university" target="_blank"><i class="fab fa-linkedin-in" aria-label="LinkedinIn icon"></i><span class="sr-only">Metropolitan State on LinkedIn</span></a></li>
+                <li class="list-inline-item"><a href="https://twitter.com/choose_metro" target="_blank"><i class="fab fa-twitter" aria-label="Twitter icon"></i><span class="sr-only">Metropolitan State on Twitter</span></a></li>
+                <li class="list-inline-item"><a href="https://www.youtube.com/channel/UCWqIRPMMnBeUe0tgJB9n1hg" target="_blank"><i class="fab fa-youtube" aria-label="Youtube icon"></i><span class="sr-only">Metropolitan State on YouTube</span></a></li>
+      </ul>
+
+																																<div class="dropdown-divider"></div>
+																																<a href="/about/president" class="dropdown-item" title="" >Office of the President</a>
+																																<a href="/about/president/leadership" class="dropdown-item" title="" >University leadership</a>
+																																<a href="/about/mission" class="dropdown-item" title="" >Mission, vision and values</a>
+																																<a href="/about/student-right-to-know" class="dropdown-item" title="" >Student Right-to-Know </a>
+																																<a href="/about/history" class="dropdown-item" title="" >History</a>
+																																<div class="dropdown-divider"></div>
+																																<a href="/about/accreditation" class="dropdown-item" title="" >Accreditation</a>
+																																<div class="dropdown-divider"></div>
+																																<a href="/about/employment" class="dropdown-item" title="" >Employment</a>
+																						</div>
+											</li>
+									<li class="nav-item dropdown ">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-6" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Give
+				</a>
+													<div class="dropdown-menu" aria-labelledby="navbarDropdown-6">
+																								<a href="/give/how-to-give" class="dropdown-item" title="" >How to give</a>
+																																<a href="/give/your-gift-helps" class="dropdown-item" title="" >Why give</a>
+																																<a href="/give/give-now" class="dropdown-item" title="" >Give now</a>
+																						</div>
+											</li>
+							</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a id="searchModalTrigger" href="#" style="background-color:transparent;color:#fff;" data-toggle="modal" data-target="#modalSearch" aria-label="search">
+						<i class="fas fa-search fa-lg" aria-label="search icon"></i>
+					</a>                    
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+  </div>
+
+<div id="block-metrosearchblock" data-block-plugin-id="metro_search_block" class="metro--block">
+  
+    
+      <!-- Modal -->
+<div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="searchModalTrigger" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="margin-top : 45px;border-top:0px;">
+            <!--search gunk-->
+            <div class="container">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-5">
+                            <h1>Search</h1>
+                        </div>
+                        <div class="col-7 text-right">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close search modal">
+          						<span aria-hidden="true">×</span>
+        					</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div id="custom-search-input">
+                                <form  class="metro-search-form" data-drupal-selector="metro-search-form" action="/" method="post" id="metro-search-form" accept-charset="UTF-8">
+  
+
+<div class="form-no-label form-group">
+            
+<input class="form-control form-control-lg form-text" placeholder="Search" aria-label="Search" data-drupal-selector="edit-search" type="text" id="edit-search" name="search" value="" size="60" maxlength="128" />
+          </div>
+<fieldset class="pt-1 form-group" data-drupal-selector="edit-wrap" id="edit-wrap">
+      <legend>
+    <span class="fieldset-legend"></span>
+  </legend>
+  <div class="fieldset-wrapper">
+            <div role="radiogroup" aria-label="Search Type Radio Buttons">
+
+<div class="form-group form-check form-check-inline">
+            
+<input data-drupal-selector="edit-search-options-all" type="radio" id="edit-search-options-all" name="search-options" value="All" checked="checked" class="form-radio form-check-input" />
+
+    <label class="form-check-label option" for="edit-search-options-all">metrostate.edu</label>
+          </div>
+
+
+<div class="form-group form-check form-check-inline">
+            
+<input data-drupal-selector="edit-search-options-profile" type="radio" id="edit-search-options-profile" name="search-options" value="profile" class="form-radio form-check-input" />
+
+    <label class="form-check-label option" for="edit-search-options-profile">Faculty and staff directory</label>
+          </div>
+
+
+<div class="form-group form-check form-check-inline">
+            
+<input data-drupal-selector="edit-search-options-library" type="radio" id="edit-search-options-library" name="search-options" value="library" class="form-radio form-check-input" />
+
+    <label class="form-check-label option" for="edit-search-options-library">Library OneSearch</label>
+          </div>
+
+
+<div class="form-group form-check form-check-inline">
+            
+<input data-drupal-selector="edit-search-options-courses" type="radio" id="edit-search-options-courses" name="search-options" value="courses" class="form-radio form-check-input" />
+
+    <label class="form-check-label option" for="edit-search-options-courses">Course Catalog</label>
+          </div>
+</div>
+          </div>
+</fieldset>
+<div class="text-right mt-4">
+<input class="btn btn-lg btn-block btn-primary button button--primary js-form-submit form-submit btn-outline-primary" data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Search" />
+</div>
+<input autocomplete="off" data-drupal-selector="form-ojeinmsz9ab4d-lrt2ojvdzl2gp8foqc5k6vmlqvxge" type="hidden" name="form_build_id" value="form-OJEINMsZ9aB4D-Lrt2ojvDZL2Gp8fOqc5K6vMLqVxgE" class="form-check-input" />
+
+<input data-drupal-selector="edit-metro-search-form" type="hidden" name="form_id" value="metro_search_form" class="form-check-input" />
+
+</form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-top : 30px;margin-top : 30px;border-top:1px solid #afb5b8;">
+                        <div class="col">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <h2 style="font-size:18px;font-weight:normal;">Campus resources</h2>
+                                    <div class="row">
+                                        <div class="col">
+                                            <ul class="list-unstyled">
+                                                                                                <li>
+                                                    <a href="/about/locations" title="Maps, parking and transit">
+                                                                                                                Maps, parking and transit
+                                                    </a>
+                                                </li>
+                                                                                                <li>
+                                                    <a href="/about/directory" title="">
+                                                                                                                Faculty and staff directory
+                                                    </a>
+                                                </li>
+                                                                                                <li>
+                                                    <a href="/accessibility" title="">
+                                                                                                                Accessibility
+                                                    </a>
+                                                </li>
+                                                                                                <li>
+                                                    <a href="/about/policies" title="">
+                                                                                                                Policies and procedures
+                                                    </a>
+                                                </li>
+                                                                                            </ul>
+                                        </div>
+                                        <div class="col">
+                                            <ul class="list-unstyled">
+                                                                                                <li>
+                                                    <a href="/library" title="">
+                                                                                                                Library
+                                                    </a>
+                                                </li>
+                                                                                                <li>
+                                                    <a href="/academics/success/tutoring" title="">
+                                                                                                                Tutoring
+                                                    </a>
+                                                </li>
+                                                                                                <li>
+                                                    <a href="/apply/learn-more" title="">
+                                                                                                                Admissions
+                                                    </a>
+                                                </li>
+                                                                                                <li>
+                                                    <a href="/finances/aid" title="">
+                                                                                                                Financial Aid
+                                                    </a>
+                                                </li>
+                                                                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <h2 style="font-size:18px;font-weight:normal;">Students’ online tools</h2>
+                                    <ul class="list-unstyled">
+                                                                                <li>
+                                            <a href="https://metrostate.learn.minnstate.edu/" title="">
+                                                                                                    <i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+                                                                                                D2L Brightspace
+                                            </a>
+                                        </li>
+                                                                                <li>
+                                            <a href="https://login.microsoftonline.com/" title="">
+                                                                                                    <i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+                                                                                                Student email
+                                            </a>
+                                        </li>
+                                                                                <li>
+                                            <a href="https://eservices.minnstate.edu/esession/authentication.do?campusId=076&amp;postAuthUrl=http%3A//eservices.minnstate.edu/student-portal/secure/dashboard.do%3Fcampusid%3D076%26_ga%3D2.17132665.1920114652.1529329354-1005329334.1500315380" title="">
+                                                                                                    <i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+                                                                                                eServices
+                                            </a>
+                                        </li>
+                                                                                <li>
+                                            <a href="https://starid.minnstate.edu/" title="">
+                                                                                                    <i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+                                                                                                StarID
+                                            </a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                                <div class="col-3">
+                                    <h2 style="font-size:18px;font-weight:normal;">Help</h2>
+                                    <ul class="list-unstyled">
+                                                                                 <li>
+                                            <a href="/students/support/gateway" title="">
+                                                                                                Gateway Student Services
+                                            </a>
+                                        </li>
+                                                                                <li>
+                                            <a href="https://libguides.metrostate.edu/ask" title="">
+                                                                                                Ask a librarian
+                                            </a>
+                                        </li>
+                                                                                <li>
+                                            <a href="/students/support/tech-help" title="">
+                                                                                                    <i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+                                                                                                Tech assistance
+                                            </a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end search gunk-->
+        </div>
+    </div>
+</div>
+
+  </div>
+
+  </div>
+
+</header>
+
+
+
+
+
+  <!--Carousel Wrapper-->
+<div id="metro-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox" style="max-height: 950px;">
+    		      		              <div class="carousel-item  active ">
+          <img class="d-block w-100" alt="male student smiling with theatre stage in the background" src="/sites/default/files/male-theatre.jpg">
+          <a href="/apply/programs" class="carousel-link" data-title="Find your degree">
+            <div class="carousel-caption">
+              <h2>Find your degree</h2>
+                              <div>Explore majors and programs
+</div>
+                          </div> <!-- end carousel-caption -->
+          </a>
+        </div>
+              		              <div class="carousel-item ">
+          <img class="d-block w-100" alt="smiling female graduate at Metro State commencement" src="/sites/default/files/homepage-v2_0.jpg">
+          <a href="/apply/get-started/graduate" class="carousel-link" data-title="It&#039;s within your reach">
+            <div class="carousel-caption">
+              <h2>It&#039;s within your reach</h2>
+                              <div>Master&#039;s, doctoral degrees, and graduate certificates
+</div>
+                          </div> <!-- end carousel-caption -->
+          </a>
+        </div>
+              		      		      		      		      		      		      		      		      		      		      		      		  </div>
+  <!--/.Slides-->
+  <a class="carousel-control-prev" href="#metro-carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#metro-carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!--Carousel Wrapper-->
+<section class="metro--home-btnrow" aria-label="admissions links">
+	<div class="container">
+		<div class="row">
+			<div class="col pt-3">
+				<a id="main-content" tabindex="-1"></a>				<ul class="list-unstyled list-inline text-center">
+					<li class="list-inline-item mb-2 mb-md-0"><a href="/apply/programs" class="btn btn-info  btn-lg btn-home-btnrow">Find your degree <i class="fas fa-angle-right fa-sm" aria-label="angle right icon" aria-hidden="true"></i></a></li>
+					<li class="list-inline-item mb-2 mb-md-0"><a href="/apply/visit" class="btn btn-info  btn-lg btn-home-btnrow">Visit campus <i class="fas fa-angle-right fa-sm" aria-label="angle right icon" aria-hidden="true"></i></a></li>
+					<li class="list-inline-item mb-2 mb-md-0"><a href="/apply/learn-more" class="btn btn-info  btn-lg btn-home-btnrow">Request information <i class="fas fa-angle-right fa-sm" aria-label="angle right icon" aria-hidden="true"></i></a></li>
+					<li class="list-inline-item"><a href="/apply/" class="btn btn-info  btn-lg btn-home-btnrow" aria-label="angle right icon">Apply now <i class="fas fa-angle-right fa-sm" aria-label="angle right icon" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+  <div>
+    
+<div id="block-metrocontextualbannerblock" data-block-plugin-id="metro_contextual_banner_block" class="metro--block">
+  
+    
+      
+<section class="metro--bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 pt-4 pb-4">
+				<div class="d-none d-lg-block">
+					<a href="https://www.metrostate.edu/calendar/gordon-parks-gallery-reception-when-the"><img src="/sites/default/files/banners/mists.desktop.jpg" class="img-fluid" alt="A detail from an impressionistic, blue-tinted painting that depicts four indigenous women dancing. It promotes the opening reception of the gallery show &#039;When the Mists Lift, the Many See,&#039; on Thursday, January 30, 5-7:30 p.m."></a>
+				</div>
+				<div class="d-block d-lg-none">
+					<a href="https://www.metrostate.edu/calendar/gordon-parks-gallery-reception-when-the"><img src="/sites/default/files/banners/mists.mobile.jpg" class="img-fluid" alt="A detail from an impressionistic, blue-tinted painting that depicts four indigenous women dancing. It promotes the opening reception of the gallery show &#039;When the Mists Lift, the Many See,&#039; on Thursday, January 30, 5-7:30 p.m."></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+  </div>
+
+  </div>
+
+
+  <div>
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-metrostate-content" data-block-plugin-id="system_main_block" class="metro--block">
+  
+    
+      
+
+                
+<div class="box-testimonial metro--testimonial">
+		<div class="quote-stripe">
+			<div class="container">
+				<div class="quote-text">
+					<p>“
+            Metro State's MS CODC program is exceptional. The professors are very knowledgeable and passionate. The courses are challenging but flexible enough for students to have a life outside of the classroom. I am very happy with the education I received and the career I've been able to build because of this program.
+      ”</p>
+					<p class="quote-attribute">—
+            Ally Adams, MS, LPC, LADC, graduate
+      </p>
+				</div>
+			</div>
+		</div>
+		<div class="quote-image">
+			<div class="container">
+				
+            	  <img src="/sites/default/files/styles/crop_metro_squareimg/public/2019-07/AllyAdams.jpg?h=48064a21&amp;itok=PrRdRPLE" width="400" height="400" alt="smiling headshot of Ally Adams, MS CODC graduate" typeof="foaf:Image" class="img-fluid" />
+
+
+
+
+
+      
+			</div>
+		</div>
+
+</div>
+
+
+        
+
+  </div>
+
+  </div>
+
+
+<section class="pt-5 pb-5 metro--home-pplnav" aria-label="Metropolitan State links by audience">
+	<div class="container metro--article-body">
+		<div class="row mb-5 pb-5">
+			<div class="col-12 col-lg-4 text-center text-lg-right">
+			<h2 class="mt-0"><a href="/apply/get-started"><i class="fas fa-angle-right fa-sm" aria-label="angle right icon"></i> Future students</a></h2>
+			</div>
+			<div class="col-12 col-lg-8 pt-lg-2 text-center text-lg-left">
+			<p>Learn how Metropolitan State fits your academic journey</p>
+			</div>
+		</div>
+
+		<div class="row mb-5 pb-5">
+			<div class="col-12 col-lg-4 text-center text-lg-right">
+			<h2 class="mt-0"><a href="/students"><i class="fas fa-angle-right fa-sm" aria-label="angle right icon"></i> Current students</a></h2>
+			</div>
+			<div class="col-12 col-lg-8 pt-lg-2 text-center text-lg-left">
+			<p>Find everything you need for this semester—and for ongoing academic success</p>
+			</div>
+		</div>
+
+
+		<div class="row mb-5 pb-5">
+			<div class="col-12 col-lg-4 text-center text-lg-right">
+			<h2 class="mt-0"><a href="/community"><i class="fas fa-angle-right fa-sm" aria-label="angle right icon"></i> Community</a></h2>
+			</div>
+			<div class="col-12 col-lg-8 pt-lg-2 text-center text-lg-left">
+			<p>How organizations, leaders and neighbors can connect with Metropolitan State</p>
+			</div>
+		</div>
+
+		<div class="row mb-5 pb-5">
+			<div class="col-12 col-lg-4 text-center text-lg-right">
+			<h2 class="mt-0"><a href="http://metrostateipd.org/" target="_blank"><i class="fas fa-angle-right fa-sm" aria-label="angle right icon"></i> Continuing ed</a></h2>
+			</div>
+			<div class="col-12 col-lg-8 pt-lg-2 text-center text-lg-left">
+			<p>Affordable, convenient, customizable training for businesses and professionals</p>
+			</div>
+		</div>
+
+		<div class="row mb-5 pb-5">
+			<div class="col-12 col-lg-4 text-center text-lg-right">
+			<h2 class="mt-0"><a href="/alumni"><i class="fas fa-angle-right fa-sm" aria-label="angle right icon"></i> Alumni</a></h2>
+			</div>
+			<div class="col-12 col-lg-8 pt-lg-2 text-center text-lg-left">
+			<p>Learn about benefits and opportunities for graduates of Metropolitan State</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12 col-lg-4 text-center text-lg-right">
+			<h2 class="mt-0"><a href="/faculty-staff"><i class="fas fa-angle-right fa-sm" aria-label="angle right icon"></i> Faculty + staff</a></h2>
+			</div>
+			<div class="col-12 col-lg-8 pt-lg-2 text-center text-lg-left">
+			<p>Resources, tools and news for university employees</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="metro--homescreen" id="metro--homev" aria-label="video section">
+	<div class="container"><div class="row"><div class="col-12">
+	<h2>Meet Metro</h2>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe title="Testimonial Video" width="560" height="315" src="https://www.youtube.com/embed/7bri1cV-5LM?rel=0&amp;showinfo=0" allowfullscreen="allowfullscreen"></iframe>
+		</div>
+		<p class="text-right mt-3"><a href="https://www.youtube.com/playlist?list=PLpW4wbYhK1oPcYk9GD7jua_OW4z8g6cjH" class="btn btn-outline-warning">More student and faculty testimonial videos <i class="far fa-angle-right fa-sm" aria-label="angle right icon"></i></a></p>
+</div></div></div>
+</section>
+
+
+
+	 
+	  <div class="d-print-none">
+    
+<div id="block-metrofooterblock" data-block-plugin-id="metro_footer_block" class="metro--block">
+  
+    
+      <footer id="metro--global-footer">
+	<section id="metro--global-footer-metro" aria-label="footer navigation section">
+		<div class="container">
+		
+			<div class="row justify-content-center metro--footer-id mb-sm-5">
+				<div class="col-7 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+					<a href="/"><img src="/themes/custom/metrostate/img/logo-white.svg" class="img-responsive" id="metro-footer-logo" alt="Metropolitan State University Logo"></a>
+				</div>					
+				<div class="col-12 mt-2 mb-3 text-center col-sm-6 col-md-8 mt-sm-0 mb-sm-0 text-sm-right col-lg-8 col-xl-9">
+					<ul class="list-unstyled list-inline metro-footer-social mt-3">
+            <li class="list-inline-item"><a href="https://www.facebook.com/ChooseMetroState" target="_blank"><i class="fab fa-facebook fa-2x" aria-label="Facebook icon"></i><span class="sr-only">Metropolitan State on Facebook</span></a></li>
+                <li class="list-inline-item"><a href="https://www.instagram.com/metrostate/" target="_blank"><i class="fab fa-instagram fa-2x" aria-label="Instagram icon"></i><span class="sr-only">Metropolitan State on Instagram</span></a></li>
+                <li class="list-inline-item"><a href="http://www.linkedin.com/school/metropolitan-state-university" target="_blank"><i class="fab fa-linkedin-in fa-2x" aria-label="LinkedinIn icon"></i><span class="sr-only">Metropolitan State on LinkedIn</span></a></li>
+                <li class="list-inline-item"><a href="https://twitter.com/choose_metro" target="_blank"><i class="fab fa-twitter fa-2x" aria-label="Twitter icon"></i><span class="sr-only">Metropolitan State on Twitter</span></a></li>
+                <li class="list-inline-item"><a href="https://www.youtube.com/channel/UCWqIRPMMnBeUe0tgJB9n1hg" target="_blank"><i class="fab fa-youtube fa-2x" aria-label="Youtube icon"></i><span class="sr-only">Metropolitan State on YouTube</span></a></li>
+      </ul>
+
+				</div>
+
+			</div>
+			<div class="row metro--footer-addresses">
+				<div class="col-12 col-sm-6 col-lg-3">
+
+					<ul class="list-unstyled">
+						<li>
+							<strong class="metro--footer-heading"><a href="/about/locations/saint-paul">Saint Paul Campus</a></strong>
+								<ul class="list-unstyled fa-ul">
+									<li>
+										<span class="fa-li"><i class="far fa-envelope" aria-label="envelope icon"></i></span> <address><a class="metro--mobilelink" href="https://goo.gl/maps/GzFJfNTgudT2" target="_blank">700 East Seventh Street<br>
+										Saint Paul, MN 55106-5000</a></address>
+									</li>
+									<li>
+										<span class="fa-li"><i class="far fa-phone-volume" aria-label="phone icon"></i></span> <a href="tel:1-651-793-1300">651-793-1300</a><br>
+										Admissions: <a href="tel:651-793-1302">651-793-1302</a>
+									</li>
+								</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3 mt-4 mt-sm-0">
+					<ul class="list-unstyled">
+						<li><strong class="metro--footer-heading"><a href="/about/locations/midway-center">Midway Center</a></strong>
+							<ul class="fa-ul">
+								<li><span class="fa-li"><i class="far fa-map-marker-alt" aria-label="map icon"></i></span> <address><a href="https://goo.gl/maps/FsEuRbMBsCy" target="_blank" class="metro--mobilelink">1450 Energy Park Drive<br>
+								Saint Paul</a></address></li>
+								<li><span class="fa-li"><i class="far fa-map-marker-alt" aria-label="map icon"></i></span> <address><a href="https://goo.gl/maps/A9mZGKJuN772" target="_blank" class="metro--mobilelink">1380 Energy Lane<br>
+								Saint Paul</a></address></li>
+							</ul>
+						</li>
+					</ul>				
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3 mt-4 mt-lg-0">
+					<ul class="list-unstyled">
+						<li><strong class="metro--footer-heading"><a href="/about/locations/minneapolis">Minneapolis</a></strong>
+							<ul class="fa-ul">
+								<li><span class="fa-li"><i class="far fa-map-marker-alt" aria-label="map icon"></i></span> <address><a href="https://goo.gl/maps/qfD5SN5FcE12" target="_blank" class="metro--mobilelink">1300 Harmon Place<br>
+								Minneapolis</a></address></li>
+								<li><span class="fa-li"><i class="far fa-envelope" aria-label="map icon"></i></span> <address><a href="https://goo.gl/maps/KzqNf9MmVPbyHyGE6" target="_blank" class="metro--mobilelink">1501 Hennepin Avenue<br>
+								Minneapolis, MN 55403-1897</a></address></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3 mt-4 mt-lg-0">
+					<ul class="list-unstyled">
+						<li><strong class="metro--footer-heading"><a href="/about/locations/law-enforcement-and-criminal">Law&nbsp;Enforcement&nbsp;and Criminal&nbsp;Justice&nbsp;Center</a></strong>
+							<ul class="fa-ul">
+								<li><span class="fa-li"><i class="far fa-map-marker-alt" aria-label="map icon"></i></span> <address><a href="https://goo.gl/maps/7MdgGc1MPMH2" target="_blank" class="metro--mobilelink">9110 Brooklyn Boulevard<br>
+								Brooklyn Park</a></address></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row metro--footer-links">
+													<div class="col-12 order-sm-3 col-md-6 order-md-3 col-lg-3 order-lg-1 col-xl-3 order-xl-1 mt-5 mt-lg-0">
+									<ul class="list-unstyled">
+																		<li class="acde-be-dd-a-abbcc">
+							<a href="/about/policies" title="Metropolitan State University Policies and Procedures" >
+																Policies and procedures
+							</a>
+						</li>
+												<li class="b-b-c-e-dada">
+							<a href="/academics/credit-transfers" title="Learn more about transfer agreements between Metropolitan State University and other member institutions of the Minnesota State system." >
+																Credit transfers
+							</a>
+						</li>
+												<li class="cdab-a-dc-bad-ccaec">
+							<a href="/academics/registration/policies/online" title="Metropolitan State University must comply with a state&#039;s regulations before any educational activity can occur within that state. Those regulations determine whether Metropolitan State can offer students a place in an online course or program. To meet eac" >
+																Online credit reciprocity (NC-SARA)
+							</a>
+						</li>
+												<li class="fe-da--a-acecfdb">
+							<a href="/students/support/safety" title="Metropolitan State University is to provide a safe, secure environment for all members of the community which enables students, faculty, staff and guests to pursue their educational or occupational goals." >
+																Security and preparedness
+							</a>
+						</li>
+												<li class="d-ae-d-bc-edb">
+							<a href="/academics/records/ferpa" title="Student records, including Metropolitan State University transcripts, graduation records and inactive student registration, as well as admission records are maintained and located in the Registrar&#039;s Office." >
+																Student information disclosures
+							</a>
+						</li>
+												<li class="cda-ed--d-bfb">
+							<a href="/students/rights-responsibilities" title="Metropolitan State University is committed to a policy of nondiscrimination in employment and education opportunity. " >
+																Student rights and responsibilities
+							</a>
+						</li>
+												<li class="efb-de-de-ee-ea">
+							<a href="/temp/behavioral-intervention-team-referral" title="" >
+																Concerned about a student?
+							</a>
+						</li>
+												<li class="e-acd-eb-a-ebca">
+							<a href="/students/support/student-concerns-complaints" title="Metropolitan State takes student complaints and grievances seriously. If you have a complaint about Metropolitan State, we encourage you to utilize the Institution’s Student Complaint and Grievance Process provided in Minnesota State Board Policy 3.8 and " >
+																Student concerns and complaints
+							</a>
+						</li>
+											</ul>
+				</div>
+													<div class="col-12 order-sm-4 col-md-6 order-md-4 col-lg-3 order-lg-2 col-xl-3 order-xl-2 mt-5 mt-lg-0">
+									<ul class="list-unstyled">
+																		<li class="d-b-e-ac-feb">
+							<a href="/accessibility" title="The Center for Accessibility Resources ensures that all programs, services, spaces and activities at Metropolitan State University are accessible. " >
+																Center for Accessibility Resources
+							</a>
+						</li>
+												<li class="aa-eff-dcd-bed-ddcaf">
+							<a href="/about/diversity" title="Committed to fostering a positive learning, working and living environment. Our role is to assist in the creation of an environment in which every member of the university community is valued and everyone has the opportunity to succeed." >
+																Equal Opportunity and Diversity Office
+							</a>
+						</li>
+												<li class="eafffb-cd-ba--bae">
+							<a href="/about/title-ix" title="Title IX forbids sex discrimination in all university student services and academic programs including, but not limited to, admissions, financial aid, academic advising, housing, athletics, recreational services, college residential life programs, health " >
+																Title IX: Sex discrimination and sexual violence
+							</a>
+						</li>
+												<li class="dfb-ff-afc-afb-fcfeeeb">
+							<a href="/about/diversity/nondiscrimination" title="1B.1 Equal Opportunity and Nondiscrimination in Employment and Education Policy and 1B.3 Procedure Training for all staff, faculty and student employees. " >
+																Notice of nondiscrimination
+							</a>
+						</li>
+												<li class="ecdfb-da-f-d-baa">
+							<a href="/about/employment" title="Metropolitan State University faculty and staff are employees of the State of Minnesota. Professional employment positions at Metropolitan State generally fall into two categories: unclassified and classified." >
+																Employment
+							</a>
+						</li>
+												<li class="db--db--add">
+							<a href="http://www.minnstate.edu/vendors/" title="Minnesota State is the fourth largest system of higher education in the United States, serving 375,000+ students and employing 15,600+ faculty and staff each year. "  target="_blank" >
+																Advertised bids or proposals
+							</a>
+						</li>
+												<li class="fbaf-e-d-ea-cae">
+							<a href="/about/press" title="Metropolitan State faculty and staff are available to provide knowledge, context and commentary on a wide range of issues." >
+																For the press
+							</a>
+						</li>
+											</ul>
+				</div>
+													<div class="col-12 mt-5 col-sm-12 order-sm-2 col-md-5 order-md-1 mt-md-0 col-lg-3 order-lg-3 col-xl-3 order-xl-3">
+									<ul class="list-unstyled">
+													<li><strong class="metro--footer-heading">For faculty and staff</strong></li>
+																		<li class="dc-c-aa-abab-faa">
+							<a href="http://outlook.com/owa/mnscu.onmicrosoft.com" title="Metropolitan State Faculty, Staff and Student Email (Outlook) connection."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																Employee email
+							</a>
+						</li>
+												<li class="eac--c--ffec">
+							<a href="https://metronet.metrostate.edu/portal/" title="Metropolitan State University Faculty, Staff and Student internal Portal information."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																Portal
+							</a>
+						</li>
+												<li class="ccdf--c-bfa-cfb">
+							<a href="https://eservices.minnstate.edu/employee/public/" title="Minnesota State employee dashboard (requires login with your starID)."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																Minnesota State employee dashboard
+							</a>
+						</li>
+												<li class="bdecc-eee-f-c-cbbfa">
+							<a href="https://hub.selfservice.systems.state.mn.us/psp/hubss/SELFSERVICE/?cmd=login&amp;languageCd=ENG&amp;foo=bar" title="Employee Self Service allows employees to access training, career opportunities, W2 and other benefit information."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																State of Minnesota employee self service
+							</a>
+						</li>
+												<li class="cebc-efe--a-eed">
+							<a href="https://starid.minnstate.edu/" title="The StarID is a username that replaces many login IDs with one ID, one password, everywhere."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																StarID
+							</a>
+						</li>
+												<li class="ba-c---caef">
+							<a href="https://services.metrostate.edu/TDClient/Home/" title="Metropolitan State University&#039;s Service portal allows for employees and staff the opportunity to request internal services."  target="_blank" >
+																Service portal
+							</a>
+						</li>
+												<li class="de-b-d--ffeace">
+							<a href="/faculty-development" title="The Center for Faculty Development provides resources and services to support Metropolitan State&#039;s Resident and Community Faculty and Staff in realizing the University&#039;s mission, vision, and values. " >
+																Center for Faculty Development
+							</a>
+						</li>
+												<li class="dec-c-b-e-efea">
+							<a href="/faculty-staff/employee-concerns-complaints" title="" >
+																Employee concerns and complaints
+							</a>
+						</li>
+											</ul>
+				</div>
+													<div class="col-12 col-sm-12 order-sm-1 col-md-7 order-md-2 col-lg-3 order-lg-4 col-xl-3 order-xl-4">
+									<ul class="list-unstyled">
+													<li><strong class="metro--footer-heading">Students’ online tools</strong></li>
+																		<li class="aac-fea--fdf-cdcbed">
+							<a href="https://metrostate.learn.minnstate.edu/" title="login to Metropolitan State University&#039;s D2L Brightspace to access your courses."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																D2L Brightspace
+							</a>
+						</li>
+												<li class="caaa-b--c-ebeeed">
+							<a href="https://login.microsoftonline.com/?whr=minnstate.edu" title="Metropolitan State University&#039;s student email access (Office 365)."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																Student email
+							</a>
+						</li>
+												<li class="dafb-df--b-afed">
+							<a href="https://eservices.minnstate.edu/esession/authentication.do?campusId=076&amp;postAuthUrl=http%3A//eservices.minnstate.edu/student-portal/secure/dashboard.do%3Fcampusid%3D076%26_ga%3D2.17132665.1920114652.1529329354-1005329334.1500315380" title="Institutions of the Minnesota State Colleges and Universities system maintain their own information systems. To perform some functions, you must identify which college or university&#039;s data you want to view or modify."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																eServices
+							</a>
+						</li>
+												<li class="cab-fc-ed-bb-deed">
+							<a href="https://starid.minnstate.edu/" title=""  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																StarID
+							</a>
+						</li>
+												<li class="bafca-f--bf-dfe">
+							<a href="https://engage.metrostate.edu/" title="Explore student life and leadership; search events, organizations and news articles"  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																Engage-Student Life
+							</a>
+						</li>
+												<li class="a-bebd---becda">
+							<a href="https://myapps.microsoft.com/signin/LinkedIn%20Learning/3f30d04f-22d6-45d9-ac52-93528466d453?tenantId=497daa61-9c4d-4290-87aa-2d4b5a099ef9" title="LinkedIn Learning is a leading online learning platform that helps anyone learn business, software, technology and creative skills to achieve personal and professional goals."  target="_blank" >
+																	<i class="far fa-lock fa-w-14 fa-xs" data-fa-transform="up-2" aria-label="lock icon"></i> 
+																LinkedIn Learning
+							</a>
+						</li>
+												<li class="eccf-ff-b-a-aebcdaeb">
+							<a href="/library" title="Library and Information Services exists to fulfill the information needs and foster the intellectual growth of the Metropolitan State community. " >
+																Library
+							</a>
+						</li>
+											</ul>
+				</div>
+							</div>
+		</div>
+	</section><!-- /#metro-global-footer-metro -->
+		
+	<section id="metro--global-footer-minnesotastate" aria-label="footer minnesota state section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center col-md-6 text-md-left">
+					<p>© 2020 Metropolitan State University<br>
+					<a href="/about/diversity">An equal opportunity educator and employer.</a><br>
+					<a href="http://www.minnstate.edu/privacy/index.html">Privacy statement</a></p>
+				</div>
+				<div class="col-12 col-md-6">
+					<div class="float-none float-md-right mx-auto" id="metro--minnstate-logo">
+						<a href="http://www.minnstate.edu/" target="_blank"><img src="/themes/custom/metrostate/img/minnesota-state.svg" alt="Metropolitan State Univeristy, a member of Minnesota State" class="img-fluid"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+</footer><!-- /#metro-global-footer" -->
+
+  </div>
+
+  </div>
+
+
+  </div>
+
+		
+		<script src="/sites/default/files/js/js_tcbHj7WlLl1v2l8XaVihAAzPhfTiP3x0rUf4LYquKuc.js"></script>
+
+	<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"edcad50165","applicationID":"73174278","transactionName":"YFUBN0QCC0FXARFdXlkfIgBCCgpcGSYXQUFWXD8gWREAbnANF1ltcV8RDnQWDF5SBxcZD0VVDQdTETVeVwEAXF5bVAYRcAwXX3cBEV1eWQ==","queueTime":0,"applicationTime":286,"atts":"TBICQQwYGE8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

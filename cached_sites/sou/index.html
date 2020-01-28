@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en-US" class="html_stretched responsive av-preloader-active av-preloader-enabled av-default-lightbox  html_header_top html_logo_left html_main_nav_header html_menu_right html_slim html_header_sticky html_header_shrinking_disabled html_header_topbar_active html_mobile_menu_tablet html_header_searchicon_disabled html_content_align_center html_header_unstick_top html_header_stretch_disabled html_elegant-blog html_av-submenu-hidden html_av-submenu-display-click html_av-overlay-side html_av-overlay-side-classic html_av-submenu-noclone html_entry_id_51 av-cookies-no-cookie-consent av-no-preview html_text_menu_active ">
+<head>
+<script type='text/javascript'>
+if (window.BEJSSDKObserver === undefined) {
+  (function(BEJSSDKObserver, $, undefined) {
+    var observer = void 0;
+    var listeners = [];
+    var readySet = [];
+    var doc = window.document;
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+    function checkSelector(selector, fn, indexList) {
+      var elements = doc.querySelectorAll(selector);
+  /**
+    issues on IE @see https://www.codesd.com/item/javascript-es6-not-a-function-error.html
+    elements = Array.from(elements);
+
+    */
+    for (var i = 0, len = elements.length; i < len; i++) {
+      /* -1 means all instances */
+      if (indexList != -1 && !(i in indexList)) {
+        continue;
+      }
+      var element = elements[i];
+      for (var j = 0; j < readySet.length; j++) {
+        if (readySet[j] == element.className || readySet[j] == element.id) {
+          return;
+        }
+      }
+      if (element.className) {
+        readySet.push(element.className);
+      }
+      if (element.id) {
+        readySet.push(element.id);
+      }
+
+      if (!element.ready || MutationObserver==null) {
+        element.ready = true;
+        fn.call(element, element);
+      }
+    }
+  }
+
+  function checkListeners() {
+    listeners.forEach(function (listener) {
+      return checkSelector(listener.selector, listener.fn, listener.indexList);
+    });
+  }
+
+  function removeListener(selector, fn) {
+    var i = listeners.length;
+    while (i--) {
+      var listener = listeners[i];
+      if (listener.selector === selector && listener.fn === fn) {
+        listeners.splice(i, 1);
+        if (!listeners.length && observer) {
+          observer.disconnect();
+          observer = null;
+        }
+      }
+    }
+  }
+
+/**
+ * Fire event on first js selector
+ * @param selector string to watch on
+ * @param fn       callback function
+ * @param index_list can be undefined which means only first one
+ *                   or -1 which means all
+ *                   or a list of allowable indexes
+ */
+ BEJSSDKObserver.jsElementReady = function(selector, fn, index_list) {
+  if (index_list === undefined) {
+    index_list = [];
+    index_list.push(0);
+  }
+
+  if (MutationObserver != null) {
+    if (!observer) {
+      observer = new MutationObserver(checkListeners);
+      observer.observe(doc.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    }
+    listeners.push({ selector: selector, fn: fn, indexList: index_list });
+  } else {
+    /* <= IE8 */
+    if (!document.addEventListener) {
+      /* log("<=IE8 attachEvent assignment"); */
+      document.addEventListener = document.attachEvent;
+    }
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var elements = doc.querySelectorAll(selector);
+      for (var i = 0, len = elements.length; i < len; i++) {
+        /* -1 means all instances */
+        if (index_list != -1 && !(i in index_list)) {
+          continue;
+        }
+        var element = elements[i];
+        element.ready = true;
+        fn.call(element, element);
+      }
+    });
+  }
+
+  checkSelector(selector, fn, index_list);
+  return function () {
+    return removeListener(selector, fn);
+  };
+};
+}(window.BEJSSDKObserver = window.BEJSSDKObserver || {}));
+}
+var jsElementReady = window.BEJSSDKObserver.jsElementReady;
+
+if (window.BELinkBlockGenerator === undefined) {
+  (function(BELinkBlockGenerator, $, undefined) {
+    BELinkBlockGenerator.MAXIMUM_HEADLINE_LENGTH = 100;
+    BELinkBlockGenerator.MAXIMUM_DESC_LENGTH = 200;
+
+    BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_URL_TYPE = 0;
+    BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_HEADLINE_TYPE = 1;
+    BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_DESCRIPTION_TYPE = 2;
+    BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_IMAGE_TYPE = 3;
+
+    BELinkBlockGenerator.REPLACEMENT_STRATEGY_OVERWRITE = 0;
+    BELinkBlockGenerator.REPLACEMENT_STRATEGY_POST_APPEND_ELEMENT = 1;
+    BELinkBlockGenerator.REPLACEMENT_STRATEGY_PRE_APPEND_ELEMENT = 2;
+    BELinkBlockGenerator.REPLACEMENT_STRATEGY_PRE_APPEND_PARENT = 3;
+
+    BELinkBlockGenerator.setMaximumHeadlineLength = function(length) {
+      BELinkBlockGenerator.MAXIMUM_HEADLINE_LENGTH = length;
+    };
+
+    BELinkBlockGenerator.setMaximumDescriptionLength = function(length) {
+      BELinkBlockGenerator.MAXIMUM_DESC_LENGTH = length;
+    };
+
+    BELinkBlockGenerator.generateIndividualLinks = function(parentElement, linkStructure, link) {
+      var link_level_element_tag = linkStructure[0];
+      var link_level_element = document.createElement(link_level_element_tag);
+      var link_attribute_dictionary = linkStructure[1];
+      var allowable_elements = linkStructure[2];
+      var children_link_structures = linkStructure[3];
+      for (var link_attribute_key in link_attribute_dictionary) {
+        link_level_element.setAttribute(link_attribute_key, link_attribute_dictionary[link_attribute_key]);
+      }
+
+      var added_something = false;
+      if (allowable_elements.indexOf(BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_URL_TYPE)>=0) {
+        link_level_element.setAttribute('href', link.url);
+        added_something = true;
+      }
+      if (allowable_elements.indexOf(BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_HEADLINE_TYPE)>=0 && link.h1) {
+        var headline_text = link.h1;
+        if (headline_text.length > BELinkBlockGenerator.MAXIMUM_HEADLINE_LENGTH) {
+          headline_text = headline_text.substring(0, BELinkBlockGenerator.MAXIMUM_HEADLINE_LENGTH) + '...';
+        }
+        var text_node = document.createTextNode(headline_text);
+        link_level_element.appendChild(text_node);
+        added_something = true;
+      }
+      if (allowable_elements.indexOf(BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_DESCRIPTION_TYPE)>=0 && link.desc) {
+        var desc_text = link.desc;
+        if (desc_text.length > BELinkBlockGenerator.MAXIMUM_DESC_LENGTH) {
+          desc_text = desc_text.substring(0, BELinkBlockGenerator.MAXIMUM_DESC_LENGTH) + '...';
+        }
+        var text_node = document.createTextNode(desc_text);
+        link_level_element.appendChild(text_node);
+        added_something = true;
+      }
+      if (allowable_elements.indexOf(BELinkBlockGenerator.IND_LINK_BLOCK_TYPE_IMAGE_TYPE)>=0 && link.image) {
+        link_level_element.setAttribute('src', link.image);
+        added_something = true;
+      }
+/**
+    don't emit for empty links, desc, headline, image
+    except for parent structures where allowable_length=0
+    */
+    if (!added_something && allowable_elements.length != 0) {
+
+      return;
+    }
+    /* go depth first */
+    for (var childrenIndex=0; childrenIndex<children_link_structures.length; childrenIndex++) {
+      var childLinkStructure = children_link_structures[childrenIndex];
+      BELinkBlockGenerator.generateIndividualLinks(link_level_element, childLinkStructure, link);
+    }
+    parentElement.appendChild(link_level_element);
+  };
+
+  BELinkBlockGenerator.insertLinkBlocks = function(targetElement, replacementStrategy, overallStructure, linkStructure, links,
+                                                   titleStructure) {
+    if (targetElement == null) {
+      return;
+    }
+
+    if (replacementStrategy == BELinkBlockGenerator.REPLACEMENT_STRATEGY_OVERWRITE) {
+      while (targetElement.firstChild) {
+        targetElement.removeChild(targetElement.firstChild);
+      }
+    }
+
+    var previousElement = targetElement;
+    for (var i=0;i<overallStructure.length;i++) {
+      var level_definition = overallStructure[i];
+      var level_element_tag = level_definition[0];
+      var level_element = document.createElement(level_element_tag);
+      var attribute_dictionary = level_definition[1];
+      for (var attribute_key in attribute_dictionary) {
+        level_element.setAttribute(attribute_key, attribute_dictionary[attribute_key]);
+      }
+
+      /* need to place title structure */
+      if (titleStructure && titleStructure[0] == i) {
+        var title_element_tag = titleStructure[1];
+        var title_element = document.createElement(title_element_tag);
+        var title_attribute_dictionary = titleStructure[2];
+        var title_text_content = titleStructure[3];
+        for (var title_attribute_key in title_attribute_dictionary) {
+          title_element.setAttribute(title_attribute_key, title_attribute_dictionary[title_attribute_key]);
+        }
+
+        var title_text_node = document.createTextNode(title_text_content);
+        title_element.appendChild(title_text_node);
+
+
+        level_element.appendChild(title_element);
+      }
+
+      /* last level place links */
+      if (i == overallStructure.length-1) {
+        for (var link_i=0; link_i < links.length; link_i++) {
+          var link = links[link_i];
+          for (var linkStructureIndex=0;linkStructureIndex < linkStructure.length; linkStructureIndex++) {
+            BELinkBlockGenerator.generateIndividualLinks(level_element, linkStructure[linkStructureIndex], link)
+          }
+        }
+      }
+
+      /* first level child we need to check placement */
+      if (previousElement == targetElement) {
+        if (replacementStrategy == BELinkBlockGenerator.REPLACEMENT_STRATEGY_PRE_APPEND_ELEMENT) {
+          /* 2 means insert right before */
+          previousElement.insertBefore(level_element, targetElement.firstChild);
+        } else if (replacementStrategy == BELinkBlockGenerator.REPLACEMENT_STRATEGY_PRE_APPEND_PARENT) {
+          /* 3 means insert right before at parent level */
+          var parentElement = previousElement.parentElement;
+          parentElement.insertBefore(level_element, previousElement);
+        } else {
+          previousElement.appendChild(level_element);
+        }
+      } else {
+        previousElement.appendChild(level_element);
+      }
+      previousElement = level_element;
+    }
+  };
+}(window.BELinkBlockGenerator = window.BELinkBlockGenerator || {}))
+};
+</script>
+
+<style>
+.be-ix-link-block .be-related-link-container{margin-top:30px}
+.be-ix-link-block .be-related-link-container .be-label{margin:0;font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:1.1em;padding:2px 0}
+.be-ix-link-block .be-related-link-container .be-list{display:inline-block;list-style:none;margin:0;padding:0;font-size:1.1em}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item{display:inline-block;margin-right:20px}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item:last-child{margin-right:0}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item a{font-size:12px;color:#231f20;padding:2px 0;display:block}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item a:hover{color:#b31d22}
+@media (max-width: 767px) {
+.be-ix-link-block .be-related-link-container .be-label{width:100%}
+.be-ix-link-block .be-related-link-container .be-list{display:block;width:100%}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item{display:block;margin-right:0}
+}
+@media (min-width: 768px) {
+.be-ix-link-block .be-related-link-container{display:flex}
+.be-ix-link-block .be-related-link-container .be-label{display:inline-block;margin-right:20px;flex-basis:170px;flex-grow:0;flex-shrink:0}
+.be-ix-link-block .be-related-link-container .be-list{width:auto}
+}
+</style>
+
+    <script>
+      (function() {
+      var bec = document.createElement('script');
+      bec.type = 'text/javascript';
+      bec.async = true;
+      bec.setAttribute("data-id", "bec");
+      bec.setAttribute("org-id", "f00000000151180");
+      bec.setAttribute("domain", ".sou.edu");
+      bec.setAttribute("session-timeout", 86400000);
+      bec.src = document.location.protocol + '//cdn.b0e8.com/conv_v3.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(bec, s);
+})();
+</script>
+<meta charset="UTF-8" />
+
+
+<!-- mobile setting -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- Scripts/CSS and wp_head hook -->
+<title>SOU Home - Southern Oregon University - Located in Ashland, Oregon</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v12.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Southern Oregon University, one of the top colleges in Oregon, has the most beautiful campus landscape of any of the Universities in Oregon."/>
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://sou.edu/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Southern Oregon University - You&#039;re Home" />
+<meta property="og:description" content="Southern Oregon University ranks among the top colleges in Oregon. Located in the City of Ashland, SOU has the most beautiful and diverse campus landscapes of any of the Universities in Oregon." />
+<meta property="og:url" content="https://sou.edu/" />
+<meta property="og:site_name" content="Southern Oregon University" />
+<meta property="og:image" content="https://sou.edu/wp-content/uploads/2016/08/Southern-Oregon-University-Welcome-Center-on-Facebook.jpg" />
+<meta property="og:image:secure_url" content="https://sou.edu/wp-content/uploads/2016/08/Southern-Oregon-University-Welcome-Center-on-Facebook.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Southern Oregon University ranks among the top colleges in Oregon. Located in the City of Ashland, SOU has the most beautiful and diverse campus landscapes of any of the Universities in Oregon." />
+<meta name="twitter:title" content="Southern Oregon University - You&#039;re Home" />
+<meta name="twitter:site" content="@souashland" />
+<meta name="twitter:image" content="https://sou.edu/wp-content/uploads/2016/08/Southern-Oregon-University-Welcome-Center-on-Twitter.jpg" />
+<meta name="twitter:creator" content="@souashland" />
+<meta name="google-site-verification" content="1Y0B2Y-m0cmPloqw-_BtZGHoKFksYxWqqVDvUd3ZMQs" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://sou.edu/#website","url":"https://sou.edu/","name":"Southern Oregon University","description":"You&#039;re Home","potentialAction":{"@type":"SearchAction","target":"https://sou.edu/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://sou.edu/#primaryimage","url":"https://sou.edu/wp-content/uploads/2016/07/ASSCU-SOU.png","width":340,"height":56,"caption":"ASSCU Logo - American Association of State Collages and Universities"},{"@type":"WebPage","@id":"https://sou.edu/#webpage","url":"https://sou.edu/","inLanguage":"en-US","name":"SOU Home - Southern Oregon University - Located in Ashland, Oregon","isPartOf":{"@id":"https://sou.edu/#website"},"primaryImageOfPage":{"@id":"https://sou.edu/#primaryimage"},"datePublished":"2016-04-12T22:12:30+00:00","dateModified":"2020-01-21T23:50:13+00:00","description":"Southern Oregon University, one of the top colleges in Oregon, has the most beautiful campus landscape of any of the Universities in Oregon."}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Southern Oregon University &raquo; Feed" href="https://sou.edu/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Southern Oregon University &raquo; Comments Feed" href="https://sou.edu/comments/feed/" />
+
+<!-- google webfont font replacement -->
+
+			<script type='text/javascript'>
+
+				(function() {
+					
+					/*	check if webfonts are disabled by user setting via cookie - or user must opt in.	*/
+					var html = document.getElementsByTagName('html')[0];
+					var cookie_check = html.className.indexOf('av-cookies-needs-opt-in') >= 0 || html.className.indexOf('av-cookies-can-opt-out') >= 0;
+					var allow_continue = true;
+					var silent_accept_cookie = html.className.indexOf('av-cookies-user-silent-accept') >= 0;
+
+					if( cookie_check && ! silent_accept_cookie )
+					{
+						if( ! document.cookie.match(/aviaCookieConsent/) || html.className.indexOf('av-cookies-session-refused') >= 0 )
+						{
+							allow_continue = false;
+						}
+						else
+						{
+							if( ! document.cookie.match(/aviaPrivacyRefuseCookiesHideBar/) )
+							{
+								allow_continue = false;
+							}
+							else if( ! document.cookie.match(/aviaPrivacyEssentialCookiesEnabled/) )
+							{
+								allow_continue = false;
+							}
+							else if( document.cookie.match(/aviaPrivacyGoogleWebfontsDisabled/) )
+							{
+								allow_continue = false;
+							}
+						}
+					}
+					
+					if( allow_continue )
+					{
+						var f = document.createElement('link');
+					
+						f.type 	= 'text/css';
+						f.rel 	= 'stylesheet';
+						f.href 	= '//fonts.googleapis.com/css?family=Open+Sans:400,600';
+						f.id 	= 'avia-google-webfont';
+
+						document.getElementsByTagName('head')[0].appendChild(f);
+					}
+				})();
+			
+			</script>
+					<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/sou.edu\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wgs2-css'  href='https://sou.edu/wp-content/plugins/wp-google-search/wgs2.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wgs3-css'  href='https://sou.edu/wp-content/plugins/wp-google-search/wgs3.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-grid-css'  href='https://sou.edu/wp-content/themes/enfold/css/grid.css?ver=4.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-base-css'  href='https://sou.edu/wp-content/themes/enfold/css/base.css?ver=4.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-layout-css'  href='https://sou.edu/wp-content/themes/enfold/css/layout.css?ver=4.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-audioplayer-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/audio-player/audio-player.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-blog-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/blog/blog.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-postslider-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/postslider/postslider.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-button-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/buttons/buttons.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-buttonrow-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/buttonrow/buttonrow.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-button-fullwidth-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/buttons_fullwidth/buttons_fullwidth.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-catalogue-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/catalogue/catalogue.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-comments-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/comments/comments.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-contact-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/contact/contact.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-slideshow-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow/slideshow.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-slideshow-contentpartner-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/contentslider/contentslider.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-countdown-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/countdown/countdown.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-gallery-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/gallery/gallery.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-gallery-hor-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/gallery_horizontal/gallery_horizontal.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-maps-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/google_maps/google_maps.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-gridrow-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/grid_row/grid_row.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-heading-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/heading/heading.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-rotator-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/headline_rotator/headline_rotator.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-hr-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/hr/hr.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-icon-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/icon/icon.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-iconbox-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/iconbox/iconbox.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-icongrid-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/icongrid/icongrid.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-iconlist-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/iconlist/iconlist.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-image-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/image/image.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-hotspot-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/image_hotspots/image_hotspots.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-magazine-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/magazine/magazine.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-masonry-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/masonry_entries/masonry_entries.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-siteloader-css'  href='https://sou.edu/wp-content/themes/enfold/css/avia-snippet-site-preloader.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-menu-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/menu/menu.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-modfule-notification-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/notification/notification.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-numbers-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/numbers/numbers.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-portfolio-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/portfolio/portfolio.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-progress-bar-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/progressbar/progressbar.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-promobox-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/promobox/promobox.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-sc-search-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/search/search.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-slideshow-accordion-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow_accordion/slideshow_accordion.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-slideshow-feature-image-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow_feature_image/slideshow_feature_image.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-slideshow-fullsize-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow_fullsize/slideshow_fullsize.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-slideshow-fullscreen-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow_fullscreen/slideshow_fullscreen.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-slideshow-ls-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow_layerslider/slideshow_layerslider.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-social-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/social_share/social_share.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-tabsection-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/tab_section/tab_section.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-table-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/table/table.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-tabs-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/tabs/tabs.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-team-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/team/team.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-testimonials-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/testimonials/testimonials.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-timeline-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/timeline/timeline.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-toggles-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/toggles/toggles.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-module-video-css'  href='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/video/video.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://sou.edu/wp-includes/css/dist/block-library/style.min.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wpa-style-css'  href='https://sou.edu/wp-content/plugins/wp-accessibility/css/wpa-style.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-scs-css'  href='https://sou.edu/wp-content/themes/enfold/css/shortcodes.css?ver=4.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-popup-css-css'  href='https://sou.edu/wp-content/themes/enfold/js/aviapopup/magnific-popup.css?ver=4.7.1' type='text/css' media='screen' />
+<link rel='stylesheet' id='avia-lightbox-css'  href='https://sou.edu/wp-content/themes/enfold/css/avia-snippet-lightbox.css?ver=4.7.1' type='text/css' media='screen' />
+<link rel='stylesheet' id='avia-widget-css-css'  href='https://sou.edu/wp-content/themes/enfold/css/avia-snippet-widget.css?ver=4.7.1' type='text/css' media='screen' />
+<link rel='stylesheet' id='mediaelement-css'  href='https://sou.edu/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.13-9993131' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css'  href='https://sou.edu/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-dynamic-css'  href='https://sou.edu/wp-content/uploads/dynamic_avia/enfold_child.css?ver=5e29f4222fef3' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-custom-css'  href='https://sou.edu/wp-content/themes/enfold/css/custom.css?ver=4.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='avia-style-css'  href='https://sou.edu/wp-content/themes/enfold-child/style.css?ver=4.7.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://sou.edu/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://sou.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/js/avia-compat.js?ver=4.7.1'></script>
+<link rel='https://api.w.org/' href='https://sou.edu/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://sou.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://sou.edu/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel='shortlink' href='https://sou.edu/' />
+<link rel="alternate" type="application/json+oembed" href="https://sou.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsou.edu%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://sou.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsou.edu%2F&#038;format=xml" />
+
+<style type='text/css'>
+	
+		.wpa-hide-ltr#skiplinks a, .wpa-hide-ltr#skiplinks a:hover, .wpa-hide-ltr#skiplinks a:visited {  }
+		.wpa-hide-ltr#skiplinks a:active,  .wpa-hide-ltr#skiplinks a:focus { background-color: #f1f1f1; box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6); clip: auto; color: #0073aa; display: block; font-weight: 600; height: auto; line-height: normal; padding: 15px 23px 14px; position: absolute; left: 6px; top: 7px; text-decoration: none; text-transform: none; width: auto; z-index: 100000;  }
+		
+</style><link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="alternate" type="application/rss+xml" title="Southern Oregon University RSS2 Feed" href="https://sou.edu/feed/" />
+<link rel="pingback" href="https://sou.edu/xmlrpc.php" />
+<!--[if lt IE 9]><script src="https://sou.edu/wp-content/themes/enfold/js/html5shiv.js"></script><![endif]-->
+<link rel="icon" href="/wp-content/uploads/2016/06/SOU-Shield-Favicon.png" type="image/png">
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type='text/css'>
+@font-face {font-family: 'entypo-fontello'; font-weight: normal; font-style: normal; font-display: auto;
+src: url('https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-template-builder/assets/fonts/entypo-fontello.eot');
+src: url('https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-template-builder/assets/fonts/entypo-fontello.eot?#iefix') format('embedded-opentype'), 
+url('https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-template-builder/assets/fonts/entypo-fontello.woff') format('woff'),
+url('https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-template-builder/assets/fonts/entypo-fontello.woff2') format('woff2'),
+url('https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-template-builder/assets/fonts/entypo-fontello.ttf') format('truetype'), 
+url('https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-template-builder/assets/fonts/entypo-fontello.svg#entypo-fontello') format('svg');
+} #top .avia-font-entypo-fontello, body .avia-font-entypo-fontello, html body [data-av_iconfont='entypo-fontello']:before{ font-family: 'entypo-fontello'; }
+
+@font-face {font-family: 'fontello'; font-weight: normal; font-style: normal; font-display: auto;
+src: url('https://sou.edu/wp-content/uploads/avia_fonts/fontello/fontello.eot');
+src: url('https://sou.edu/wp-content/uploads/avia_fonts/fontello/fontello.eot?#iefix') format('embedded-opentype'), 
+url('https://sou.edu/wp-content/uploads/avia_fonts/fontello/fontello.woff') format('woff'),
+url('https://sou.edu/wp-content/uploads/avia_fonts/fontello/fontello.woff2') format('woff2'),
+url('https://sou.edu/wp-content/uploads/avia_fonts/fontello/fontello.ttf') format('truetype'), 
+url('https://sou.edu/wp-content/uploads/avia_fonts/fontello/fontello.svg#fontello') format('svg');
+} #top .avia-font-fontello, body .avia-font-fontello, html body [data-av_iconfont='fontello']:before{ font-family: 'fontello'; }
+</style>
+
+<!--
+Debugging Info for Theme support: 
+
+Theme: Enfold
+Version: 4.7.1
+Installed: enfold
+AviaFramework Version: 5.0
+AviaBuilder Version: 4.6.3
+aviaElementManager Version: 1.0.1
+- - - - - - - - - - -
+ChildTheme: Enfold Child
+ChildTheme Version: 1.0
+ChildTheme Installed: enfold
+
+ML:384-PU:40-PLA:8
+WP:5.3.2
+Compress: CSS:disabled - JS:disabled
+Updates: enabled - token has changed and not verified
+PLAu:8
+-->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TBPXK6F');</script>
+<!-- End Google Tag Manager -->
+<script type="text/javascript">jQuery(window).load(function() { jQuery("#soualert").load("/wp-content/themes/enfold-child/alert.php"); });</script>
+</head>
+
+
+
+
+<body id="top" class="home page-template-default page page-id-51  rtl_columns stretched open_sans no_sidebar_border" itemscope="itemscope" itemtype="https://schema.org/WebPage" >
+
+	<div class='av-siteloader-wrap av-transition-enabled'><div class='av-siteloader-inner'><div class='av-siteloader-cell'><div class='av-siteloader'><div class='av-siteloader-extra'></div></div></div></div></div><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBPXK6F"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	<div id='wrap_all'>
+
+	
+<header id='header' class='all_colors header_color light_bg_color  av_header_top av_logo_left av_main_nav_header av_menu_right av_slim av_header_sticky av_header_shrinking_disabled av_header_stretch_disabled av_mobile_menu_tablet av_header_searchicon_disabled av_header_unstick_top av_bottom_nav_disabled  av_alternate_logo_active av_header_border_disabled'  role="banner" itemscope="itemscope" itemtype="https://schema.org/WPHeader" >
+
+		<div id='header_meta' class='container_wrap container_wrap_meta  av_secondary_right av_extra_header_active av_phone_active_right av_entry_id_51'>
+		
+			      <div class='container'>
+			      <nav class='sub_menu'  role="navigation" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" ><ul id="avia2-menu" class="menu"><li id="menu-item-14217" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14217"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/">Inside SOU</a></li>
+<li id="menu-item-13119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13119"><a target="_blank" rel="noopener noreferrer" href="https://news.sou.edu/">News</a></li>
+<li id="menu-item-13123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13123"><a target="_blank" rel="noopener noreferrer" href="https://oca.sou.edu/">Arts</a></li>
+<li id="menu-item-13129" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13129"><a target="_blank" rel="noopener noreferrer" href="https://souraiders.com/">Athletics</a></li>
+<li id="menu-item-13132" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13132"><a target="_blank" rel="noopener noreferrer" href="https://alumni.sou.edu/">Alumni</a></li>
+<li id="menu-item-13137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13137"><a target="_blank" rel="noopener noreferrer" href="https://giving.sou.edu/">Give</a></li>
+<li id="menu-item-13140" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13140"><a target="_blank" rel="noopener noreferrer" href="https://events.sou.edu/">Events</a></li>
+</ul></nav><div class='phone-info with_nav'><span><a href="https://search.sou.edu/s/search.html?collection=sou-search" itemprop="url">     <span class="av-icon-char lighthouse" aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello"></span>&nbsp;&nbsp;Search</a></span></div>			      </div>
+		</div>
+
+		<div  id='header_main' class='container_wrap container_wrap_logo'>
+	
+        <div class='container av-logo-container'><div class='inner-container'><span class='logo'><a href='https://sou.edu'><img height='100' width='300' src='/wp-content/uploads/2016/06/Southern-Oregon-University.png' alt='Southern Oregon University' title='' /></a></span><nav class='main_menu' data-selectname='Select a page'  role="navigation" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" ><div class="avia-menu av-main-nav-wrap"><ul id="avia-menu" class="menu av-main-nav"><li id="menu-item-13150" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-1"><a href="https://sou.edu/prospective-students/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Prospective Students</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+<li id="menu-item-13147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-2"><a href="https://sou.edu/current-students/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Current Students</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+<li id="menu-item-13144" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-3"><a href="https://sou.edu/graduate-students/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Grad Students</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+<li id="menu-item-13155" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-top-level menu-item-top-level-4"><a href="/admissions/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Admissions</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+<li id="menu-item-13158" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-top-level menu-item-top-level-5"><a href="/academics/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Academics</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+<li id="menu-item-13162" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-top-level menu-item-top-level-6"><a href="/admissions/visit/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Visit</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+<li id="menu-item-13165" class="menu-item menu-item-type-custom menu-item-object-custom av-menu-button av-menu-button-colored menu-item-top-level menu-item-top-level-7"><a href="/admissions/apply/" itemprop="url"><span class="avia-bullet"></span><span class="avia-menu-text">Apply</span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+<li class="av-burger-menu-main menu-item-avia-special ">
+	        			<a href="#">
+							<span class="av-hamburger av-hamburger--spin av-js-hamburger">
+					        <span class="av-hamburger-box">
+						          <span class="av-hamburger-inner"></span>
+						          <strong>Menu</strong>
+					        </span>
+							</span>
+						</a>
+	        		   </li></ul></div></nav></div> </div> 
+		<!-- end container_wrap-->
+		</div>
+		<div class='header_bg'></div>
+
+<!-- end header -->
+</header>
+		
+	<div id='main' class='all_colors' data-scroll-offset='88'>
+
+		<div id="soualert"></div>
+<script type='text/javascript'>
+    function positionLinkBlock(targetContainer) {
+        if (targetContainer != null) {
+            var strLinkBlock = '<div class="be-related-link-container"><div class="be-label">Also of Interest</div><ul class="be-list"><li class="be-list-item"><a class="be-related-link" href="https://sou.edu/academics/">ACADEMIC PROGRAMS</a></li><li class="be-list-item"><a class="be-related-link" href="https://sou.edu/admissions/">ADMISSIONS</a></li><li class="be-list-item"><a class="be-related-link" href="https://sou.edu/academics/biology/">Biology</a></li></ul></div>';
+            targetContainer.insertAdjacentHTML('afterbegin', strLinkBlock);
+        }
+    }
+
+    jsElementReady('.be-ix-link-block', positionLinkBlock)
+
+</script>
+
+<ul id="be_sdkms_capsule_open" style="display:none!important">
+    <li class="be_sdkms_sdk_version">be_ixf; php_sdk; php_sdk_1.4.18</li>
+    <li id="be_sdkms_capsule_connect_timer">59 ms</li>
+    <li id="be_sdkms_capsule_index_time">iy_2020; im_01; id_28; ih_10; imh_46; i_epoch:1580237170559</li>
+    <li id="be_sdkms_capsule_pub">ixf-compiler; ixf-compiler_1.0.0.0</li>
+    <li id="be_sdkms_capsule_date_modified">py_2020; pm_01; pd_05; ph_19; pmh_10; p_epoch:1578280202751</li>
+</ul>
+<ul class="be_sdkms_node" style="display:none!important">
+   <li class="be_sdkms_pub">link-block-publisher; link-block-publisher_link-block-publisher; bodystr</li>
+   <li class="be_sdkms_date_modified">pn_tstr:Sun Jan 05 19:10:02 PST 2020; pn_epoch:1578280202751</li>
+   <li class="be_sdkms_timer">0 ms</li>
+</ul>
+
+<ul id="be_sdkms_capsule" style="display:none!important">
+    <li class="be_sdkms_sdk_version">be_ixf; php_sdk; php_sdk_1.4.18</li>
+    <li id="be_sdkms_original_url">https://sou.edu/</li>
+    <li id="be_sdkms_normalized_url">https://sou.edu/</li>
+</ul>
+<div id='home-section-id'  class='avia-section main_color avia-section-huge avia-no-border-styling  avia-full-stretch avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  home-box  av-minimum-height av-minimum-height-custom  av-section-with-video-bg av-section-mobile-video-disabled container_wrap fullsize' style='background-repeat: no-repeat; background-image: url(https://sou.edu/wp-content/uploads/2018/06/SOU-Southern-Oregon-University-Visit-Ashland-Apply-Enroll.jpg);background-attachment: scroll; background-position: center center;  '  data-section-bg-repeat='stretch' data-section-video-ratio='16:9'><div   data-size='featured'  data-lightbox_size='large'  data-animation='slide'  data-conditional_play=''  data-ids=''  data-video_counter='1'  data-autoplay='false'  data-bg_slider='false'  data-slide_height=''  data-handle=''  data-interval='5'  data-class=' av-section-video-bg'  data-el_id=''  data-css_id=''  data-scroll_down=''  data-control_layout=''  data-custom_markup=''  data-perma_caption=''  data-autoplay_stopper=''  data-image_attachment=''  data-min_height='0px'  data-default-height='28.666666666667'  class='avia-slideshow avia-slideshow-1  av-default-height-applied avia-slideshow-featured   av-section-video-bg avia-slide-slider '  itemprop="image" itemscope="itemscope" itemtype="https://schema.org/ImageObject" ><ul class='avia-slideshow-inner ' style='padding-bottom: 28.666666666667%;' ><li  data-controls='disabled' data-mute='aviaTBaviaTBvideo_mute' data-loop='1' data-disable-autoplay=''  data-video-ratio='3.4883720930233' class=' av-video-slide  av-video-service-youtube  av-hide-video-controls av-mute-video av-loop-video av-single-slide slide-1 ' ><div data-rel='slideshow-1' class='avia-slide-wrap '   ><div class='av-click-overlay'></div><div class='mejs-mediaelement'><div height='1600' width='900' class='av_youtube_frame' id='player_51_248661203_727728448'  data-autoplay='0'  data-videoid='w3pY4T7GJE8'  data-hd='1'  data-rel='0'  data-wmode='opaque'  data-playlist='player_51_248661203_727728448'  data-loop='0'  data-version='3'  data-autohide='1'  data-color='white'  data-controls='0'  data-showinfo='0'  data-iv_load_policy='3'  data-original_url='https://youtu.be/w3pY4T7GJE8' ></div></div><div class='av-click-to-play-overlay'><div class="avia_playpause_icon"></div></div></div></li></ul></div><div class='container' style='height:500px'><main  role="main" itemprop="mainContentOfPage"  class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div class="flex_column av_one_full  flex_column_div av-zero-column-padding first  avia-builder-el-1  avia-builder-el-no-sibling  dog-house " style='border-radius:0px; '><div  style='padding-bottom:4px; color:#ffffff;font-size:48px;' class='av-special-heading av-special-heading-h2 custom-color-heading blockquote modern-quote modern-centered  avia-builder-el-2  el_before_av_button  avia-builder-el-first  spaced-out-2 small-kind-head large-kind-head av-inherit-size '><h2 class='av-special-heading-tag '  itemprop="headline"  ><span class="heavy-man">SOU 360°</span></h2><div class='special-heading-border'><div class='special-heading-inner-border' style='border-color:#ffffff'></div></div></div>
+<div  class='avia-button-wrap avia-button-center  avia-builder-el-3  el_after_av_heading  avia-builder-el-last  pop-8' ><a href='https://sou.edu/#/vte/?data-platform=v&data-inst=63157&'  class='avia-button   avia-icon_select-no avia-color-light avia-size-x-large avia-position-center '   ><span class='avia_iconbox_title' >TAKE THE VIRTUAL CAMPUS TOUR</span></a></div></div></div></div></main><!-- close content main element --></div></div><div id='home-masthead'  class='avia-section main_color avia-section-small avia-no-border-styling  avia-full-stretch avia-bg-style-scroll  avia-builder-el-4  el_after_av_section  el_before_av_section   container_wrap fullsize' style='background-repeat: no-repeat; background-image: url(https://sou.edu/wp-content/uploads/2019/09/SOU-Candy-Cane-1.png);background-attachment: scroll; background-position: center center;  '  data-section-bg-repeat='stretch'><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div  style='padding-bottom:0px; color:#ffffff;font-size:69px;' class='av-special-heading av-special-heading-h1 custom-color-heading blockquote modern-quote modern-centered  avia-builder-el-5  avia-builder-el-no-sibling  av-inherit-size '><h1 class='av-special-heading-tag '  itemprop="headline"  >challenge accepted</h1><div class='special-heading-border'><div class='special-heading-inner-border' style='border-color:#ffffff'></div></div></div>
+</p>
+</div></div></div><!-- close content main div --></div></div><div id='av_section_3'  class='avia-section main_color avia-section-default avia-no-border-styling  avia-bg-style-scroll  avia-builder-el-6  el_after_av_section  el_before_av_section   container_wrap fullsize' style='background-color: #f3f3f3;  '  ><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div class="flex_column av_one_half  flex_column_div av-zero-column-padding first  avia-builder-el-7  el_before_av_one_half  avia-builder-el-first  " style='border-radius:0px; '><div  class='avia-image-container  av-styling-no-styling    avia-builder-el-8  avia-builder-el-no-sibling  avia-align- '  itemprop="image" itemscope="itemscope" itemtype="https://schema.org/ImageObject"  ><div class='avia-image-container-inner'><div class='avia-image-overlay-wrap'><a href='https://news.sou.edu/2020/01/raiders-rising-a-product-of-heritage-passions-curiosity-and-sou/' class='avia_image'   target="_blank" ><img class='avia_image ' src='https://sou.edu/wp-content/uploads/2020/01/Southern-Oregon-University-Raiders-Rising-A-product-of-heritage-passions-curiosity-and-SOU-Cover.jpg' alt='Southern Oregon University Raiders Rising A product of heritage and SOU Cover' title=''  itemprop="thumbnailUrl"  /></a></div></div></div></div><div class="flex_column av_one_half  flex_column_div av-zero-column-padding   avia-builder-el-9  el_after_av_one_half  avia-builder-el-last  " style='border-radius:0px; '><div  style='padding-bottom:0px; font-size:22px;' class='av-special-heading av-special-heading-h2  blockquote modern-quote  avia-builder-el-10  el_before_av_textblock  avia-builder-el-first  av-inherit-size '><div class ='av-subheading av-subheading_above  ' style='font-size:21px;'><p>Raiders Rising:</p>
+</div><h2 class='av-special-heading-tag '  itemprop="headline"  >A product of heritage, passions, curiosity and SOU</h2><div class='special-heading-border'><div class='special-heading-inner-border' ></div></div></div>
+<section class="av_textblock_section "  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><div class='avia_textblock  '  style='font-size:16px; '  itemprop="text" ><p><span class="heavy-man">Connect these dots:</span> Fidel Castro and the Mariel boatlift. The Miami Dolphins and that city&#8217;s Little Havana neighborhood. The Everglades, alligators, pythons and a fossilized tooth. Intellectual curiosity. Southern Oregon University. Those are waypoints on the road map of Frank Rodriguez&#8217;s life. He is anchored to and guided by them even as he takes a giant step toward the career that, until recently, he would have lacked the audacity to so much as dream about – paleontologist and research scientist.</p>
+<div class="avia-button-wrap avia-button-left"><a class="avia-button avia-color-theme-color avia-size-large avia-position-left " href="https://news.sou.edu/2020/01/raiders-rising-a-product-of-heritage-passions-curiosity-and-sou/" target="_blank" rel="noopener">READ FEATURE STORY</a></div>
+</div></section></div>
+
+</div></div></div><!-- close content main div --></div></div><div id='av_section_4'  class='avia-section main_color avia-section-default avia-shadow  avia-bg-style-scroll  avia-builder-el-12  el_after_av_section  el_before_av_section   container_wrap fullsize' style=' '  ><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div class="flex_column av_one_third  flex_column_div av-zero-column-padding first  avia-builder-el-13  el_before_av_one_third  avia-builder-el-first  " style='border-radius:0px; '><div  class='avia-image-container  av-styling-no-styling    avia-builder-el-14  el_before_av_heading  avia-builder-el-first  avia-align- '  itemprop="image" itemscope="itemscope" itemtype="https://schema.org/ImageObject"  ><div class='avia-image-container-inner'><div class='avia-image-overlay-wrap'><a href='https://sou.edu/about-ashland/' class='avia_image'  ><img class='avia_image ' src='https://sou.edu/wp-content/uploads/2019/01/Southern-Oregon-University-Ashland-Oregon-Snow-Mountain-Fall.jpg' alt='Southern Oregon University Ashland Oregon Snow Mountain Fall' title=''  itemprop="thumbnailUrl"  /></a></div></div></div>
+<div  style='padding-bottom:0px; font-size:20px;' class='av-special-heading av-special-heading-h3  blockquote modern-quote  avia-builder-el-15  el_after_av_image  el_before_av_textblock  av-inherit-size '><h3 class='av-special-heading-tag '  itemprop="headline"  >Ashland and the Rogue Valley</h3><div class='special-heading-border'><div class='special-heading-inner-border' ></div></div></div>
+<section class="av_textblock_section "  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><div class='avia_textblock  '   itemprop="text" ><p>Selected as a top 10 finalist in Outside magazine’s search for the “Best Town in America”, the vibrant and welcoming City of Ashland dazzles as a culturally rich mecca for tourism, entertainment, entrepreneurship, and breathtaking outdoor experiences. Our beautiful location provides ready access to an array of resplendent natural wonders, including Mt. Ashland, the Rogue River, and Crater Lake National Park. Ashland is a small city with big connections — and that’s why our graduates are so successful.</p>
+</div></section>
+<div  class='avia-button-wrap avia-button-left  avia-builder-el-17  el_after_av_textblock  avia-builder-el-last ' ><a href='https://sou.edu/about-ashland/'  class='avia-button   avia-icon_select-no avia-color-dark avia-size-large avia-position-left '   ><span class='avia_iconbox_title' >ABOUT ASHLAND</span></a></div></div><div class="flex_column av_one_third  flex_column_div av-zero-column-padding   avia-builder-el-18  el_after_av_one_third  el_before_av_one_third  " style='border-radius:0px; '><div  class='avia-image-container  av-styling-no-styling    avia-builder-el-19  el_before_av_heading  avia-builder-el-first  avia-align- '  itemprop="image" itemscope="itemscope" itemtype="https://schema.org/ImageObject"  ><div class='avia-image-container-inner'><div class='avia-image-overlay-wrap'><a href='https://sou.edu/about/' class='avia_image'  ><img class='avia_image ' src='https://sou.edu/wp-content/uploads/2019/01/About-Southern-Oregon-University-Community-Degrees.jpg' alt='Learn More About Southern Oregon University' title=''  itemprop="thumbnailUrl"  /></a></div></div></div>
+<div  style='padding-bottom:0px; font-size:20px;' class='av-special-heading av-special-heading-h3  blockquote modern-quote  avia-builder-el-20  el_after_av_image  el_before_av_textblock  av-inherit-size '><h3 class='av-special-heading-tag '  itemprop="headline"  >Southern Oregon University</h3><div class='special-heading-border'><div class='special-heading-inner-border' ></div></div></div>
+<section class="av_textblock_section "  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><div class='avia_textblock  '   itemprop="text" ><p>SOU provides career-focused, comprehensive educational experiences to over 6,200 students. Along with an emphasis on student success and intellectual growth, SOU is committed to diversity, inclusion and sustainability. Theoretical and experiential learning programs provide quality, innovative experiences for students. At SOU, students build strong community connections through internships, mentorships, field studies, capstone projects, volunteer opportunities and civic engagement.</p>
+</div></section>
+<div  class='avia-button-wrap avia-button-left  avia-builder-el-22  el_after_av_textblock  avia-builder-el-last ' ><a href='https://sou.edu/about/'  class='avia-button   avia-icon_select-no avia-color-dark avia-size-large avia-position-left '   ><span class='avia_iconbox_title' >ABOUT SOU</span></a></div></div><div class="flex_column av_one_third  flex_column_div   avia-builder-el-23  el_after_av_one_third  el_before_av_hr  " style='padding:0 0px 0px 0px ; border-radius:0px; '><div  class='avia-image-container  av-styling-no-styling    avia-builder-el-24  el_before_av_heading  avia-builder-el-first  avia-align- '  itemprop="image" itemscope="itemscope" itemtype="https://schema.org/ImageObject"  ><div class='avia-image-container-inner'><div class='avia-image-overlay-wrap'><a href='https://sou.edu/visitors-and-community/' class='avia_image'  ><img class='avia_image ' src='https://sou.edu/wp-content/uploads/2019/01/SOU-Visitors-and-Community-Learn-More.jpg' alt='SOU Visitors and Community - Friends of SOU' title=''  itemprop="thumbnailUrl"  /></a></div></div></div>
+<div  style='padding-bottom:0px; font-size:20px;' class='av-special-heading av-special-heading-h3  blockquote modern-quote  avia-builder-el-25  el_after_av_image  el_before_av_textblock  av-inherit-size '><h3 class='av-special-heading-tag '  itemprop="headline"  >Visitors and Community</h3><div class='special-heading-border'><div class='special-heading-inner-border' ></div></div></div>
+<section class="av_textblock_section "  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><div class='avia_textblock  '   itemprop="text" ><p><span style="font-weight: 400;">Southern Oregon University is a proud member of the Rogue Valley Community and the City of Ashland, Oregon. Our treasured partnerships with neighbors, local businesses, and organizations help our beautiful campus thrive. We are proud to offer a host of programs and events open to the public, fostering community engagement and encouraging cultural diversity in the Southern Oregon region. Visit our &#8220;Friends of SOU&#8221; page and check out our list of affiliated partners and programs.</span></p>
+</div></section>
+<div  class='avia-button-wrap avia-button-left  avia-builder-el-27  el_after_av_textblock  avia-builder-el-last ' ><a href='https://sou.edu/visitors-and-community/'  class='avia-button   avia-icon_select-no avia-color-dark avia-size-large avia-position-left '   ><span class='avia_iconbox_title' >SEE PARTNERSHIPS</span></a></div></div><div  style='height:20px' class='hr hr-invisible   avia-builder-el-28  el_after_av_one_third  avia-builder-el-last '><span class='hr-inner ' ><span class='hr-inner-style'></span></span></div>
+
+</div></div></div><!-- close content main div --></div></div><div id='av_section_5'  class='avia-section main_color avia-section-default avia-no-border-styling  avia-full-stretch av-parallax-section av-section-color-overlay-active avia-bg-style-parallax  avia-builder-el-29  el_after_av_section  el_before_av_section  punk-band  av-minimum-height av-minimum-height-custom  container_wrap fullsize' style=' '  data-section-bg-repeat='stretch'><div class='av-parallax' data-avia-parallax-ratio='0.3' ><div class='av-parallax-inner main_color  avia-full-stretch' style = 'background-repeat: no-repeat; background-image: url(https://sou.edu/wp-content/uploads/2018/06/See-SOU-Online-Programs-at-Southern-Oregon-University.jpg);background-attachment: scroll; background-position: bottom right; ' ></div></div><div class='av-section-color-overlay-wrap'><div class='av-section-color-overlay' style='opacity: 0.8; background-color: #ffffff; '></div><div class='container' style='height:320px'><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div  style='padding-bottom:12px; color:#231f20;font-size:28px;' class='av-special-heading av-special-heading-h2 custom-color-heading blockquote modern-quote modern-centered  avia-builder-el-30  el_before_av_button  avia-builder-el-first  av-inherit-size '><h2 class='av-special-heading-tag '  itemprop="headline"  >SOU Online Programs</h2><div class ='av-subheading av-subheading_below av_custom_color ' style='font-size:18px;'><p>Southern Oregon University offers online courses from a number of academic programs.</p>
+</div><div class='special-heading-border'><div class='special-heading-inner-border' style='border-color:#231f20'></div></div></div>
+<div  class='avia-button-wrap avia-button-center  avia-builder-el-31  el_after_av_heading  avia-builder-el-last ' ><a href='/academics/online-degrees/'  class='avia-button   avia-icon_select-no avia-color-dark avia-size-large avia-position-center '   ><span class='avia_iconbox_title' >SEE ONLINE PROGRAMS</span></a></div>
+
+</div></div></div><!-- close content main div --></div></div></div><div id='by-the-numbers'  class='avia-section alternate_color avia-section-default avia-no-border-styling  avia-bg-style-scroll  avia-builder-el-32  el_after_av_section  el_before_av_layout_row   av-minimum-height av-minimum-height-custom  container_wrap fullsize' style=' '  ><div class='container' style='height:75px'><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div  style='padding-bottom:0px; color:#ffffff;font-size:34px;' class='av-special-heading av-special-heading-h2 custom-color-heading blockquote modern-quote modern-centered  avia-builder-el-33  avia-builder-el-no-sibling  av-thin-font av-inherit-size '><h2 class='av-special-heading-tag '  itemprop="headline"  >SOU by the <strong>Numbers</strong></h2><div class='special-heading-border'><div class='special-heading-inner-border' style='border-color:#ffffff'></div></div></div>
+
+</div></div></div><!-- close content main div --></div></div><div id='av-layout-grid-1'  class='av-layout-grid-container entry-content-wrapper alternate_color av-fixed-cells   av-border-cells  avia-builder-el-34  el_after_av_section  el_before_av_layout_row  submenu-not-first container_wrap fullsize' style=' '  >
+<div class="flex_cell no_margin av_one_third  avia-builder-el-35  el_before_av_cell_one_third  avia-builder-el-first   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-36  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="26" data-start_from="0">26</span><span class="avia-no-number">/</span><span class="avia-single-number __av-single-number" data-number_format="" data-number="1" data-start_from="0">1</span></strong><div class='avia-animated-number-content' ><p>student:<br />
+faculty ratio</p>
+</div></div>
+</div></div><div class="flex_cell no_margin av_one_third  avia-builder-el-37  el_after_av_cell_one_third  el_before_av_cell_one_third   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-38  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="648" data-start_from="0">648</span></strong><div class='avia-animated-number-content' ><p>incoming<br />
+freshmen</p>
+</div></div>
+</div></div><div class="flex_cell no_margin av_one_third  avia-builder-el-39  el_after_av_cell_one_third  avia-builder-el-last   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-40  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="640" data-start_from="0">640</span></strong><div class='avia-animated-number-content' ><p>incoming<br />
+transfer</p>
+</div></div>
+</div></div>
+</div>
+<div id='av-layout-grid-2'  class='av-layout-grid-container entry-content-wrapper alternate_color av-fixed-cells   av-border-cells  avia-builder-el-41  el_after_av_layout_row  el_before_av_layout_row  submenu-not-first container_wrap fullsize' style=' '  >
+<div class="flex_cell no_margin av_one_third  avia-builder-el-42  el_before_av_cell_one_third  avia-builder-el-first   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-43  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="6114" data-start_from="0">6114</span></strong><div class='avia-animated-number-content' ><p>total<br />
+enrollment</p>
+</div></div>
+</div></div><div class="flex_cell no_margin av_one_third  avia-builder-el-44  el_after_av_cell_one_third  el_before_av_cell_one_third   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-45  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="1020" data-start_from="0">1020</span></strong><div class='avia-animated-number-content' ><p>avg SAT score<br />
+(ERW+M)</p>
+</div></div>
+</div></div><div class="flex_cell no_margin av_one_third  avia-builder-el-46  el_after_av_cell_one_third  avia-builder-el-last   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-47  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="22" data-start_from="0">22</span></strong><div class='avia-animated-number-content' ><p>avg ACT<br />
+score</p>
+</div></div>
+</div></div>
+</div>
+<div id='av-layout-grid-3'  class='av-layout-grid-container entry-content-wrapper alternate_color av-fixed-cells   av-border-cells  avia-builder-el-48  el_after_av_layout_row  el_before_av_section  submenu-not-first container_wrap fullsize' style=' '  >
+<div class="flex_cell no_margin av_one_third  avia-builder-el-49  el_before_av_cell_one_third  avia-builder-el-first   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-50  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="37" data-start_from="0">37</span></strong><div class='avia-animated-number-content' ><p>degree<br />
+programs</p>
+</div></div>
+</div></div><div class="flex_cell no_margin av_one_third  avia-builder-el-51  el_after_av_cell_one_third  el_before_av_cell_one_third   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-52  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="221" data-start_from="0">221</span></strong><div class='avia-animated-number-content' ><p># of students<br />
+who are veterans</p>
+</div></div>
+</div></div><div class="flex_cell no_margin av_one_third  avia-builder-el-53  el_after_av_cell_one_third  avia-builder-el-last   " style='vertical-align:top; padding:20px; '><div class='flex_cell_inner' >
+<div  class="avia-animated-number av-force-default-color  avia-color-  avia-builder-el-54  avia-builder-el-no-sibling  avia_animate_when_visible"  data-timer="3000"><strong class="heading avia-animated-number-title" ><span class="avia-single-number __av-single-number" data-number_format="" data-number="175" data-start_from="0">175</span></strong><div class='avia-animated-number-content' ><p>campus size<br />
+in acres</p>
+</div></div>
+</div></div>
+</div>
+<div id='av_section_7'  class='avia-section main_color avia-section-default avia-no-border-styling  avia-bg-style-scroll  avia-builder-el-55  el_after_av_layout_row  el_before_av_layout_row   container_wrap fullsize' style='background-color: #404040;  '  ><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div class="flex_column av_one_fourth  flex_column_div av-zero-column-padding first  avia-builder-el-56  el_before_av_one_fourth  avia-builder-el-first  " style='border-radius:0px; '><div  class='avia-button-wrap avia-button-center  avia-builder-el-57  avia-builder-el-no-sibling ' ><a href='/admissions/apply/' class='avia-button avia-button-fullwidth   avia-icon_select-no avia-color-theme-color '  style='color:#ffffff; ' ><span class='avia_iconbox_title' >APPLY</span><span class='avia_button_background avia-button avia-button-fullwidth avia-color-theme-color' ></span></a></div></div><div class="flex_column av_one_fourth  flex_column_div av-zero-column-padding   avia-builder-el-58  el_after_av_one_fourth  el_before_av_one_fourth  " style='border-radius:0px; '><div  class='avia-button-wrap avia-button-center  avia-builder-el-59  avia-builder-el-no-sibling ' ><a href='/admissions/visit/' class='avia-button avia-button-fullwidth   avia-icon_select-no avia-color-theme-color '  style='color:#ffffff; ' ><span class='avia_iconbox_title' >VISIT CAMPUS</span><span class='avia_button_background avia-button avia-button-fullwidth avia-color-theme-color' ></span></a></div></div><div class="flex_column av_one_fourth  flex_column_div av-zero-column-padding   avia-builder-el-60  el_after_av_one_fourth  el_before_av_one_fourth  " style='border-radius:0px; '><div  class='avia-button-wrap avia-button-center  avia-builder-el-61  avia-builder-el-no-sibling ' ><a href='/admissions/afford/' class='avia-button avia-button-fullwidth   avia-icon_select-no avia-color-theme-color '  style='color:#ffffff; ' ><span class='avia_iconbox_title' >FINANCIAL AID</span><span class='avia_button_background avia-button avia-button-fullwidth avia-color-theme-color' ></span></a></div></div><div class="flex_column av_one_fourth  flex_column_div av-zero-column-padding   avia-builder-el-62  el_after_av_one_fourth  avia-builder-el-last  " style='border-radius:0px; '><div  class='avia-button-wrap avia-button-center  avia-builder-el-63  avia-builder-el-no-sibling ' ><a href='/admissions/discover/request-info/' class='avia-button avia-button-fullwidth   avia-icon_select-no avia-color-theme-color '  style='color:#ffffff; ' ><span class='avia_iconbox_title' >REQUEST INFO</span><span class='avia_button_background avia-button avia-button-fullwidth avia-color-theme-color' ></span></a></div></div>
+
+</div></div></div><!-- close content main div --></div></div><div id='home-president'  class='av-layout-grid-container entry-content-wrapper main_color av-flex-cells     avia-builder-el-64  el_after_av_section  el_before_av_section  submenu-not-first container_wrap fullsize' style=' '  >
+<div class="flex_cell no_margin av_one_third  avia-builder-el-65  el_before_av_cell_two_third  avia-builder-el-first   avia-full-stretch av-zero-padding " style='height:300px; min-height:300px;background:url(https://sou.edu/wp-content/uploads/2016/04/Southern-Oregon-University-President-Dr-Linda-Schott.jpg) center center no-repeat scroll; vertical-align:middle; padding:0; '><div class='flex_cell_inner' >
+</div></div><div class="flex_cell no_margin av_two_third  avia-builder-el-66  el_after_av_cell_one_third  avia-builder-el-last   " style='height:300px; min-height:300px;vertical-align:top; padding:50px; background-color:#e4e4e4; '><div class='flex_cell_inner' >
+<div  style='padding-bottom:0px; color:#231f20;font-size:28px;' class='av-special-heading av-special-heading-h2 custom-color-heading blockquote modern-quote  avia-builder-el-67  el_before_av_textblock  avia-builder-el-first  av-inherit-size '><h2 class='av-special-heading-tag '  itemprop="headline"  >Message from the President</h2><div class='special-heading-border'><div class='special-heading-inner-border' style='border-color:#231f20'></div></div></div>
+<section class="av_textblock_section "  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><div class='avia_textblock right-pillow-18 letter-space-02 no-bar-bro dig-30 '  style='font-size:16px; '  itemprop="text" ><blockquote class="dig-0">
+<p>&#8220;We welcome you to participate in the abundant opportunities at Southern Oregon University, joining talented scholars, scientists, artists, writers and others who have been drawn from all over the globe to learn, perform, create, and study in a place where everyone belongs.&#8221;</p>
+</blockquote>
+<p><em>Dr. Linda Schott, President of SOU</em></p>
+</div></section>
+<div  class='avia-button-wrap avia-button-left  avia-builder-el-69  el_after_av_textblock  el_before_av_textblock ' ><a href='https://sou.edu/president/'  class='avia-button   avia-icon_select-no avia-color-dark avia-size-large avia-position-left '   ><span class='avia_iconbox_title' >OFFICE OF THE PRESIDENT</span></a></div>
+<section class="av_textblock_section "  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><div class='avia_textblock pop-20 '  style='font-size:16px; '  itemprop="text" ><p><a href="/strategic-planning/the-sou-plan/">Learn about SOU&#8217;s Strategic Planning Process</a></p>
+</div></section>
+</div></div>
+</div>
+<div id='home-testimonials'  class='avia-section main_color avia-section-default avia-no-border-styling  avia-bg-style-scroll  avia-builder-el-71  el_after_av_layout_row  el_before_av_section   container_wrap fullsize' style=' '  ><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div  style='padding-bottom:0px; color:#231f20;font-size:28px;' class='av-special-heading av-special-heading-h2 custom-color-heading blockquote modern-quote modern-centered  avia-builder-el-72  el_before_av_testimonials  avia-builder-el-first  av-inherit-size '><h2 class='av-special-heading-tag '  itemprop="headline"  >What SOU Students are Saying</h2><div class='special-heading-border'><div class='special-heading-inner-border' style='border-color:#231f20'></div></div></div>
+<div   data-autoplay='1'  data-interval='9'  data-animation='fade'  data-hoverpause='1'  class='avia-testimonial-wrapper avia-slider-testimonials avia-slider-2-testimonials avia_animate_when_almost_visible  av-large-testimonial-slider  '>
+<section class ='avia-testimonial-row'><div class='avia-testimonial av_one_half flex_column no_margin avia-testimonial-row-1 avia-first-testimonial'  itemscope="itemscope" itemtype="https://schema.org/Person" ><div class='avia-testimonial_inner'><div class='avia-testimonial-content '    itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><blockquote>
+<p>One of the main deciding factors in choosing to enroll at SOU would be the Western Undergraduate Exchange (WUE). This scholarship gives Westerly state residents like Hawai&#8217;i an opportunity to venture out to other western state schools with cheaper tuition rates.</p>
+</blockquote>
+</div><div class='avia-testimonial-meta'><div class='avia-testimonial-arrow-wrap'><div class='avia-arrow'></div></div><div class='avia-testimonial-image'  itemprop="image"  style='background-image:url(https://sou.edu/wp-content/uploads/2016/04/Melissa-Bantilan-Southern-Oregon-University-Nursing-Student.png);'></div><div class='avia-testimonial-meta-mini'><strong  class='avia-testimonial-name'    itemprop="name" >Melissa Bantilan</strong><span  class='avia-testimonial-subtitle '    itemprop="jobTitle" >Pre-Nursing and Health & Physical Education – 2018</span></div></div></div></div>
+<div class='avia-testimonial av_one_half flex_column no_margin avia-testimonial-row-1 '  itemscope="itemscope" itemtype="https://schema.org/Person" ><div class='avia-testimonial_inner'><div class='avia-testimonial-content '    itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><blockquote>
+<p>My favorite thing about SOU is the environment that it offers. It fosters a learning, developing, changing and growing environment that will only help you succeed during your time here at SOU and as a Raider.</p>
+</blockquote>
+</div><div class='avia-testimonial-meta'><div class='avia-testimonial-arrow-wrap'><div class='avia-arrow'></div></div><div class='avia-testimonial-image'  itemprop="image"  style='background-image:url(https://sou.edu/wp-content/uploads/2016/04/Darius-Kila-Southern-Oregon-University-Communication-Student.png);'></div><div class='avia-testimonial-meta-mini'><strong  class='avia-testimonial-name'    itemprop="name" >Darius Kila</strong><span  class='avia-testimonial-subtitle '    itemprop="jobTitle" >Communication Studies – 2019</span></div></div></div></div>
+<div class='avia-testimonial av_one_half flex_column no_margin avia-testimonial-row-1 '  itemscope="itemscope" itemtype="https://schema.org/Person" ><div class='avia-testimonial_inner'><div class='avia-testimonial-content '    itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><blockquote>
+<p>I am an outdoorsy person. I like walking around Lithia Park, hiking the local trails, shredding the slopes on Mt. Ashland, and exploring new places. I also enjoy strolling through downtown Ashland and going into the wide range of shops.</p>
+</blockquote>
+</div><div class='avia-testimonial-meta'><div class='avia-testimonial-arrow-wrap'><div class='avia-arrow'></div></div><div class='avia-testimonial-image'  itemprop="image"  style='background-image:url(https://sou.edu/wp-content/uploads/2016/04/Erica-Detrick-Southern-Oregon-University-Environmental-Science-Student.png);'></div><div class='avia-testimonial-meta-mini'><strong  class='avia-testimonial-name'    itemprop="name" >Erika Detrick</strong><span  class='avia-testimonial-subtitle '    itemprop="jobTitle" >Environmental Science & Policy – 2018</span></div></div></div></div>
+</section><div class='avia-slideshow-arrows avia-slideshow-controls' ><a href='#prev' class='prev-slide' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'>Previous</a><a href='#next' class='next-slide' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'>Next</a></div></div>
+
+</div></div></div><!-- close content main div --></div></div><div id='events'  class='avia-section main_color avia-section-default avia-no-border-styling  avia-bg-style-scroll  avia-builder-el-74  el_after_av_section  el_before_av_section   container_wrap fullsize' style='background-color: #f3f3f3;  '  ><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div  style='padding-bottom:24px; font-size:28px;' class='av-special-heading av-special-heading-h2 custom-color-heading blockquote modern-quote modern-centered  avia-builder-el-75  el_before_av_codeblock  avia-builder-el-first  av-inherit-size '><h2 class='av-special-heading-tag '  itemprop="headline"  >Campus Events</h2><div class='special-heading-border'><div class='special-heading-inner-border' ></div></div></div>
+<section class="avia_codeblock_section  avia_code_block_0"  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><div class='avia_codeblock '  itemprop="text" ><script type="text/javascript"
+src="https://events.sou.edu/widget/view?schools=sou&days=90&num=4&picks=1&template=sou-home-2-0"></script></div></section>
+<div  class='avia-button-wrap avia-button-center  avia-builder-el-77  el_after_av_codeblock  avia-builder-el-last ' ><a href='https://events.sou.edu/'  class='avia-button   avia-icon_select-no avia-color-theme-color avia-size-large avia-position-center '  target="_blank"   ><span class='avia_iconbox_title' >SEE ALL EVENTS</span></a></div>
+
+</div></div></div><!-- close content main div --></div></div><div id='av_section_10'  class='avia-section main_color avia-section-default avia-shadow  avia-bg-style-scroll  avia-builder-el-78  el_after_av_section  el_before_av_masonry_gallery   container_wrap fullsize' style=' '  ><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div  style='padding-bottom:20px; font-size:28px;' class='av-special-heading av-special-heading-h2  blockquote modern-quote modern-centered  avia-builder-el-79  el_before_av_button  avia-builder-el-first  av-inherit-size '><h2 class='av-special-heading-tag '  itemprop="headline"  >Request More Information</h2><div class ='av-subheading av-subheading_below  ' style='font-size:15px;'><p>Receive personalized information about Southern Oregon University</p>
+</div><div class='special-heading-border'><div class='special-heading-inner-border' ></div></div></div>
+<div  class='avia-button-wrap avia-button-center  avia-builder-el-80  el_after_av_heading  el_before_av_heading ' ><a href='/admissions/discover/request-info/'  class='avia-button   avia-icon_select-no avia-color-dark avia-size-large avia-position-center '   ><span class='avia_iconbox_title' >INQUIRE</span></a></div>
+<div  style='padding-bottom:20px; font-size:28px;' class='av-special-heading av-special-heading-h2  blockquote modern-quote modern-centered  avia-builder-el-81  el_after_av_button  el_before_av_button  av-inherit-size '><h2 class='av-special-heading-tag '  itemprop="headline"  >Ready to be an SOU Student?</h2><div class ='av-subheading av-subheading_below  ' style='font-size:15px;'><p>Start your online application now!</p>
+</div><div class='special-heading-border'><div class='special-heading-inner-border' ></div></div></div>
+<div  class='avia-button-wrap avia-button-center  avia-builder-el-82  el_after_av_heading  avia-builder-el-last ' ><a href='/admissions/apply/'  class='avia-button   avia-icon_select-no avia-color-theme-color avia-size-large avia-position-center '   ><span class='avia_iconbox_title' >APPLY TO SOU</span></a></div>
+
+</div></div></div><!-- close content main div --></div></div><div id='tile-run'  class='main_color   avia-builder-el-83  el_after_av_section  el_before_av_section  masonry-not-first avia-no-border-styling container_wrap fullsize' style=' '  ><div id='av-masonry-1' class='av-masonry  noHover av-flex-size av-no-gap av-hover-overlay-active av-masonry-animation-active av-masonry-col-6 av-caption-always av-caption-style-overlay av-masonry-gallery      av-medium-columns-overwrite av-medium-columns-4 av-small-columns-overwrite av-small-columns-3 av-mini-columns-overwrite av-mini-columns-2'  ><div class='av-masonry-container isotope av-js-disabled ' ><div class='av-masonry-entry isotope-item av-masonry-item-no-image '></div><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Number-1-K12-College-Southern-Oregon-University.jpg" id='av-masonry-1-item-14177' data-av-masonry-item='14177' class='av-masonry-entry isotope-item post-14177 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="#1 College for K-12 Education Programs &#8211; schools.com"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Number-1-K12-College-Southern-Oregon-University-705x705.jpg" title="#1 College for K-12 Education Programs &#8211; schools.com" alt="#1 College for K-12 Education Programs" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >#1 College for K-12 Education Programs - schools.com</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Tree-Campus-Southern-Oregon-University.jpg" id='av-masonry-1-item-14180' data-av-masonry-item='14180' class='av-masonry-entry isotope-item post-14180 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="Designated Tree Campus &#8211; Arbor Day Foundation, 1st Certified Bee Campus in the Nation"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Tree-Campus-Southern-Oregon-University-705x705.jpg" title="Designated Tree Campus &#8211; Arbor Day Foundation, 1st Certified Bee Campus in the Nation" alt="Southern Oregon University Designated Tree Campus" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >Designated Tree Campus - Arbor Day Foundation, 1st Certified Bee Campus in the Nation</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Pollinator-Friendly-Southern-Oregon-University.jpg" id='av-masonry-1-item-14181' data-av-masonry-item='14181' class='av-masonry-entry isotope-item post-14181 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="#1 Pollinator Friendly Campus in the Nation &#8211; Sierra Magazine"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Pollinator-Friendly-Southern-Oregon-University-705x705.jpg" title="#1 Pollinator Friendly Campus in the Nation &#8211; Sierra Magazine" alt="SOU #1 Pollinator Friendly Campus in the Nation" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >#1 Pollinator Friendly Campus in the Nation - Sierra Magazine</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Queer-Friendly-Southern-Oregon-University.jpg" id='av-masonry-1-item-14178' data-av-masonry-item='14178' class='av-masonry-entry isotope-item post-14178 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="Ranked 6 years Queer Friendly &#8211; Campus Pride"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Queer-Friendly-Southern-Oregon-University-705x705.jpg" title="Ranked 6 years Queer Friendly &#8211; Campus Pride" alt="Ranked 6 years Queer Friendly" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >Ranked 6 years Queer Friendly - Campus Pride</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Nations-First-Bee-Campus-Southern-Oregon-University.jpg" id='av-masonry-1-item-14198' data-av-masonry-item='14198' class='av-masonry-entry isotope-item post-14198 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="Best Online Degrees &#8211; Early Childhood Education Degrees"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Nations-First-Bee-Campus-Southern-Oregon-University-705x705.jpg" title="Best Online Degrees &#8211; Early Childhood Education Degrees" alt="Southern Oregon University Best Online Degrees" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >Best Online Degrees - Early Childhood Education Degrees</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Bike-Friendly-Southern-Oregon-University.jpg" id='av-masonry-1-item-14172' data-av-masonry-item='14172' class='av-masonry-entry isotope-item post-14172 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="Silver-Certified Bike Friendly University &#8211; League of American Bicyclists"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Bike-Friendly-Southern-Oregon-University-705x705.jpg" title="Silver-Certified Bike Friendly University &#8211; League of American Bicyclists" alt="Silver-Certified Bike Friendly University" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >Silver-Certified Bike Friendly University - League of American Bicyclists</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Hike-Friendly-Southern-Oregon-University.jpg" id='av-masonry-1-item-14176' data-av-masonry-item='14176' class='av-masonry-entry isotope-item post-14176 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="One of the Best Hiking Colleges in America &#8211; Backpacker Magazine"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Hike-Friendly-Southern-Oregon-University-705x705.jpg" title="One of the Best Hiking Colleges in America &#8211; Backpacker Magazine" alt="One of the Best Hiking Colleges in America" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >One of the Best Hiking Colleges in America - Backpacker Magazine</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Affordable-Online-Southern-Oregon-University.jpg" id='av-masonry-1-item-14171' data-av-masonry-item='14171' class='av-masonry-entry isotope-item post-14171 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="3rd Most Affordable Online Bachelor’s in Early Childhood Education &#8211; Best Education Degrees, Great Value Colleges"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Affordable-Online-Southern-Oregon-University-705x705.jpg" title="3rd Most Affordable Online Bachelor’s in Early Childhood Education &#8211; Best Education Degrees, Great Value Colleges" alt="3rd Most Affordable Online Bachelor’s in Early Childhood Education - Best Education Degrees" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >3rd Most Affordable Online Bachelor’s in Early Childhood Education - Best Education Degrees, Great Value Colleges</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Climate-Leadership-Southern-Oregon-University.jpg" id='av-masonry-1-item-14173' data-av-masonry-item='14173' class='av-masonry-entry isotope-item post-14173 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="Honorable Mention &#8211; Nature Climate Leadership Award Summit"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Climate-Leadership-Southern-Oregon-University-705x705.jpg" title="Honorable Mention &#8211; Nature Climate Leadership Award Summit" alt="Nature Climate Leadership Honorable Mention" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >Honorable Mention - Nature Climate Leadership Award Summit</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Disability-Friendly-Southern-Oregon-University.jpg" id='av-masonry-1-item-14174' data-av-masonry-item='14174' class='av-masonry-entry isotope-item post-14174 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="One of the Best Disability Friendly Colleges &#038; Universities &#8211; College Choice"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Disability-Friendly-Southern-Oregon-University-705x705.jpg" title="One of the Best Disability Friendly Colleges &#038; Universities &#8211; College Choice" alt="Best Disability Friendly Colleges and Universities" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >One of the Best Disability Friendly Colleges & Universities - College Choice</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-Envronmentally-Responsible-Southern-Oregon-University.jpg" id='av-masonry-1-item-14175' data-av-masonry-item='14175' class='av-masonry-entry isotope-item post-14175 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="Among Most Environmentally Responsible Colleges in US &#038; Canada &#8211; Princeton Review"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-Envronmentally-Responsible-Southern-Oregon-University-705x705.jpg" title="Among Most Environmentally Responsible Colleges in US &#038; Canada &#8211; Princeton Review" alt="Among Most Environmentally Responsible Colleges in US &amp; Canada" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >Among Most Environmentally Responsible Colleges in US & Canada - Princeton Review</div></div></div></figcaption></figure></a><!--end av-masonry entry--><a href="https://sou.edu/wp-content/uploads/2018/09/SOU-SRC-Leeds-Southern-Oregon-University.jpg" id='av-masonry-1-item-14179' data-av-masonry-item='14179' class='av-masonry-entry isotope-item post-14179 attachment type-attachment status-inherit hentry  av-masonry-item-with-image' title="New Student Recreation Center &#038; Lithia Motors Pavilion &#8211; LEED Certified"  itemprop="thumbnailUrl" ><div class='av-inner-masonry-sizer'></div><figure class='av-inner-masonry main_color'><div class="av-masonry-outerimage-container"><div class="av-masonry-image-container" ><img src="https://sou.edu/wp-content/uploads/2018/09/SOU-SRC-Leeds-Southern-Oregon-University-705x705.jpg" title="New Student Recreation Center &#038; Lithia Motors Pavilion &#8211; LEED Certified" alt="Southern Oregon University New Student Recreation Center" /></div></div><figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div><div class='av-masonry-entry-content entry-content'  itemprop="text" >New Student Recreation Center & Lithia Motors Pavilion - LEED Certified</div></div></div></figcaption></figure></a><!--end av-masonry entry--></div></div></div><!-- close section -->
+<div id='av_section_11'  class='avia-section main_color avia-section-default avia-no-border-styling  avia-bg-style-scroll  avia-builder-el-84  el_after_av_masonry_gallery  el_before_av_section   container_wrap fullsize' style='background-color: #e4e4e4;  '  ><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<article  class="iconbox iconbox_top main_color    avia-builder-el-85  avia-builder-el-no-sibling  "  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><div class="iconbox_content"><header class="entry-content-header"><div class="iconbox_icon heading-color " aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'  style='background-color:#669900; border:1px solid #669900; color:#ffffff; ' ></div><h3 class='iconbox_content_title  '  itemprop="headline"  ><strong>Excellence and Innovation Award for Sustainability and Sustainable Development</strong></h3></header><div class='iconbox_content_container  '  itemprop="text"  ><p>2019 American Association of State Colleges and Universities Award Winner<br />
+<img class="alignnone size-full wp-image-6278 top-30" src="https://sou.edu/wp-content/uploads/2016/07/ASSCU-SOU.png" alt="ASSCU Logo - American Association of State Collages and Universities" width="340" height="56" srcset="https://sou.edu/wp-content/uploads/2016/07/ASSCU-SOU.png 340w, https://sou.edu/wp-content/uploads/2016/07/ASSCU-SOU-300x49.png 300w" sizes="(max-width: 340px) 100vw, 340px" /></p>
+<p class="micro-text"><em>American Association of State Colleges has selected SOU to be part of the Re-Imagining the First Year of College project</em></p>
+<p><script async="async" defer="defer" src="https://www.youvisit.com/tour/Embed/js3"></script></p>
+</div></div><footer class="entry-footer"></footer></article>
+
+</div></div></div><!-- close content main div --></div></div><div id='av_section_12'  class='avia-section main_color avia-section-default avia-no-border-styling  avia-bg-style-scroll  avia-builder-el-86  el_after_av_section  avia-builder-el-last   container_wrap fullsize' style='background-color: #404040;  '  ><div class='container' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-51'><div class='entry-content-wrapper clearfix'>
+<div  class='avia-button-wrap avia-button-center  avia-builder-el-87  el_before_av_hr  avia-builder-el-first ' ><a href='https://sou.edu/directory/'  class='avia-button   avia-icon_select-no avia-color-light avia-size-large avia-position-center '   ><span class='avia_iconbox_title' >CONTACT US</span></a></div>
+<div  style='height:40px' class='hr hr-invisible   avia-builder-el-88  el_after_av_button  el_before_av_image '><span class='hr-inner ' ><span class='hr-inner-style'></span></span></div>
+<div  class='avia-image-container  av-styling-no-styling    avia-builder-el-89  el_after_av_hr  avia-builder-el-last  avia-align-center '  itemprop="image" itemscope="itemscope" itemtype="https://schema.org/ImageObject"  ><div class='avia-image-container-inner'><div class='avia-image-overlay-wrap'><img class='avia_image' src='https://sou.edu/wp-content/uploads/2016/04/SOU-Raider-Hawk-Footer-01-300x104.png' alt='Southern Oregon University - Raider Hawk' title='' height="104" width="300"  itemprop="thumbnailUrl"  /></div></div></div>
+
+</div></div></div><!-- close content main div --> <!-- section close by builder template -->		</div><!--end builder template--></div><!-- close default .container_wrap element -->						<div class='container_wrap footer_color' id='footer'>
+
+					<div class='container'>
+                      <div class="be-ix-link-block"><!--Link Equity Target Div--></div>
+						<div class='flex_column av_one_fifth  first el_before_av_one_fifth'><section id="nav_menu-2" class="widget clearfix widget_nav_menu"><div class="widgettitle">Student Services</div><div class="menu-footer-1-container"><ul id="menu-footer-1" class="menu"><li id="menu-item-1414" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1414"><a href="https://sou.edu/admissions/">Admissions</a></li>
+<li id="menu-item-1420" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1420"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/assou/index.html">ASSOU</a></li>
+<li id="menu-item-1423" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1423"><a target="_blank" rel="noopener noreferrer" href="https://sou.bncollege.com/webapp/wcs/stores/servlet/BNCBHomePage?storeId=82737&#038;catalogId=10001&#038;langId=-1">Bookstore</a></li>
+<li id="menu-item-1426" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1426"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/security/index.html">Campus Public Safety</a></li>
+<li id="menu-item-1429" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1429"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/careers/index.html">Career Preparation</a></li>
+<li id="menu-item-1432" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1432"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/dr/index.html">Disability Resources</a></li>
+<li id="menu-item-1435" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1435"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/diversity/index.html">Diversity &#038; Inclusion</a></li>
+<li id="menu-item-1438" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1438"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/enrollment/index.html">Enrollment Services</a></li>
+<li id="menu-item-1441" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1441"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/enrollment/financial-aid/index.html">Financial Aid Office</a></li>
+<li id="menu-item-13449" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13449"><a target="_blank" rel="noopener noreferrer" href="https://hanlib.sou.edu/">Hannon Library</a></li>
+</ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth  el_before_av_one_fifth '><section id="nav_menu-3" class="widget clearfix widget_nav_menu"><div class="widgettitle">&nbsp;</div><div class="menu-footer-2-container"><ul id="menu-footer-2" class="menu"><li id="menu-item-14701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14701"><a href="https://sou.edu/housing/">Housing</a></li>
+<li id="menu-item-1450" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1450"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/health/index.html">Health &#038; Wellness Center</a></li>
+<li id="menu-item-13443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13443"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/international/index.html">International Programs</a></li>
+<li id="menu-item-1453" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1453"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/outdoorprogram/index.html">Outdoor Program</a></li>
+<li id="menu-item-13656" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13656"><a target="_blank" rel="noopener noreferrer" href="https://mail.google.com/a/sou.edu">SOU Email Services</a></li>
+<li id="menu-item-5337" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5337"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/studentlife/index.html">Student Life</a></li>
+<li id="menu-item-1462" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1462"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/success/index.html">Success at Southern</a></li>
+<li id="menu-item-1465" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1465"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/ssi/index.html">Support and Intervention</a></li>
+<li id="menu-item-1468" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1468"><a target="_blank" rel="noopener noreferrer" href="https://sustainability.sou.edu/">Sustainability at SOU</a></li>
+<li id="menu-item-1471" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1471"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/crc/veterans/index.html">Veterans Resources</a></li>
+</ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth  el_before_av_one_fifth '><section id="nav_menu-4" class="widget clearfix widget_nav_menu"><div class="widgettitle">Academics</div><div class="menu-footer-3-container"><ul id="menu-footer-3" class="menu"><li id="menu-item-13455" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13455"><a href="https://inside.sou.edu/advising/index.html">Academic Advising</a></li>
+<li id="menu-item-1477" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1477"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/enrollment/calendar.html">Academic Calendar</a></li>
+<li id="menu-item-1480" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1480"><a href="https://sou.edu/academics/">Academic Programs</a></li>
+<li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1474"><a href="https://sou.edu/admissions/discover/specialized-programs/accelerated-baccalaureate/">Accelerated Baccalaureate</a></li>
+<li id="menu-item-1483" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1483"><a target="_blank" rel="noopener noreferrer" href="https://catalog.sou.edu/">Catalog</a></li>
+<li id="menu-item-1486" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1486"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/schedule/schedule.html">Class Schedule</a></li>
+<li id="menu-item-1489" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1489"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/dce/index.html">Continuing Education</a></li>
+<li id="menu-item-1492" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1492"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/degreecompletion/index.html">Degree Completion</a></li>
+<li id="menu-item-1495" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1495"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/distanceeducation/index.html">Distance Education</a></li>
+<li id="menu-item-1498" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1498"><a href="https://sou.edu/academics/honors-college/">Honors College</a></li>
+</ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth  el_before_av_one_fifth '><section id="nav_menu-5" class="widget clearfix widget_nav_menu"><div class="widgettitle">&nbsp;</div><div class="menu-footer-4a-container"><ul id="menu-footer-4a" class="menu"><li id="menu-item-1510" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1510"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/olli/index.html">OLLI</a></li>
+<li id="menu-item-5297" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5297"><a target="_blank" rel="noopener noreferrer" href="https://oca.sou.edu">Oregon Center for the Arts</a></li>
+<li id="menu-item-1522" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1522"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/youth/index.html">Youth Programs</a></li>
+</ul></div><span class="seperator extralight-border"></span></section><section id="nav_menu-6" class="widget clearfix widget_nav_menu"><div class="widgettitle">Resources</div><div class="menu-footer-4b-container"><ul id="menu-footer-4b" class="menu"><li id="menu-item-1525" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1525"><a target="_blank" rel="noopener noreferrer" href="https://map.concept3d.com/?id=707">Campus Map</a></li>
+<li id="menu-item-1528" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1528"><a target="_blank" rel="noopener noreferrer" href="https://collegecost.ed.gov/">College Affordability</a></li>
+<li id="menu-item-5328" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5328"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/commencement/index.html">Commencement</a></li>
+<li id="menu-item-13728" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13728"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/hrs/job-opportunities.html">SOU Careers</a></li>
+<li id="menu-item-14360" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14360"><a href="https://sou.edu/virtual-tour/">Virtual Campus Tour</a></li>
+</ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth  el_before_av_one_fifth '><section id="nav_menu-7" class="widget clearfix widget_nav_menu"><div class="widgettitle">University</div><div class="menu-footer-5-container"><ul id="menu-footer-5" class="menu"><li id="menu-item-1531" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1531"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/bus-serv/index.html">Business Services</a></li>
+<li id="menu-item-1537" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1537"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/hrs/index.html">Human Resources</a></li>
+<li id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/ir/index.html">Institutional Research</a></li>
+<li id="menu-item-1546" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1546"><a href="https://sou.edu/president/">President&#8217;s Office</a></li>
+<li id="menu-item-1549" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1549"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/provost/index.html">Provost&#8217;s Office</a></li>
+<li id="menu-item-1552" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1552"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/sc/index.html">Service Center</a></li>
+<li id="menu-item-13660" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13660"><a href="/strategic-planning/">Strategic Planning</a></li>
+<li id="menu-item-1558" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1558"><a target="_blank" rel="noopener noreferrer" href="https://giving.sou.edu/">Support SOU</a></li>
+<li id="menu-item-1561" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1561"><a target="_blank" rel="noopener noreferrer" href="https://inside.sou.edu/policies/index.html">University Policies</a></li>
+<li id="menu-item-13733" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13733"><a href="/president/vision-mission-values/">Vision, Mission &#038; Values</a></li>
+</ul></div><span class="seperator extralight-border"></span></section></div>
+
+					</div>
+
+
+				<!-- ####### END FOOTER CONTAINER ####### -->
+				</div>
+
+	
+
+
+			
+
+			
+				<footer class='container_wrap socket_color' id='socket'  role="contentinfo" itemscope="itemscope" itemtype="https://schema.org/WPFooter" >
+                    <div class='container'>
+                        <div id="foot-logo"><img src="/wp-content/uploads/2016/06/Southern-Oregon-University.png" alt="Southern Oregon University - Footer Navigation Logo" /></div>
+                        <div class="avia-button-wrap avia-button-left foot-inquire"><a href="/admissions/discover/request-info/" class="avia-button avia-color-theme-color avia-size-large avia-position-left " aria-label="Request For Information"><span class="avia_iconbox_title">REQUEST INFO</span></a></div>
+                        <div id="foot-phone"><span class="heavy-man">Questions?</span> <a href="/directory/">Contact SOU</a> – Call:&nbsp;<a href="tel:5415527672">541.552.7672</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/">SOU&nbsp;Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://inside.sou.edu/" target="_blank">Inside SOU</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/admissions/visit/">Visit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://giving.sou.edu/" target="_blank">Donate</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/admissions/apply/">Apply</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://inside.sou.edu/accessibility/index.html" target="_blank">Accessibility</a></div>
+                        <hr />
+                        <ul class='noLightbox social_bookmarks icon_count_4'><li class='social_bookmarks_instagram av-social-link-instagram social_icon_1'><a target="_blank" aria-label="Link to Instagram" href='https://www.instagram.com/souashland/' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello' title='Instagram' rel="noopener noreferrer"><span class='avia_hidden_link_text'>Instagram</span></a></li><li class='social_bookmarks_facebook av-social-link-facebook social_icon_2'><a target="_blank" aria-label="Link to Facebook" href='https://www.facebook.com/SOUAshland/' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello' title='Facebook' rel="noopener noreferrer"><span class='avia_hidden_link_text'>Facebook</span></a></li><li class='social_bookmarks_youtube av-social-link-youtube social_icon_3'><a target="_blank" aria-label="Link to Youtube" href='https://www.youtube.com/user/SouthernOregonUniv' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello' title='Youtube' rel="noopener noreferrer"><span class='avia_hidden_link_text'>Youtube</span></a></li><li class='social_bookmarks_twitter av-social-link-twitter social_icon_4'><a target="_blank" aria-label="Link to Twitter" href='https://twitter.com/@souashland/' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello' title='Twitter' rel="noopener noreferrer"><span class='avia_hidden_link_text'>Twitter</span></a></li></ul>
+                        <span class='copyright'>All Content © 2019 Southern Oregon University – 1250&nbsp;Siskiyou&nbsp;Boulevard&nbsp;Ashland,&nbsp;OR&nbsp;97520</span>
+
+                    </div>
+
+	            <!-- ####### END SOCKET CONTAINER ####### -->
+				</footer>
+
+
+					<!-- end main -->
+		</div>
+		
+		<!-- end wrap_all --></div>
+
+<script>
+(function($){
+		function a() {
+			$('.see-major-1 a').attr('aria-label', 'See Details About this Major Degree 1');
+			$('.see-major-2 a').attr('aria-label', 'See Details About this Major Degree 2');
+			$('.see-major-3 a').attr('aria-label', 'See Details About this Major Degree 3');
+			$('.see-major-4 a').attr('aria-label', 'See Details About this Major Degree 4');
+			$('.see-major-5 a').attr('aria-label', 'See Details About this Major Degree 5');
+			$('.see-major-6 a').attr('aria-label', 'See Details About this Major Degree 6');
+			$('.see-minor-1 a').attr('aria-label', 'See Details About this Minor Degree 1');
+			$('.see-minor-2 a').attr('aria-label', 'See Details About this Minor Degree 2');
+			$('.see-minor-3 a').attr('aria-label', 'See Details About this Minor Degree 3');
+			$('.see-minor-4 a').attr('aria-label', 'See Details About this Minor Degree 4');
+			$('.see-minor-5 a').attr('aria-label', 'See Details About this Minor Degree 5');
+			$('.see-minor-6 a').attr('aria-label', 'See Details About this Minor Degree 6');
+			$('.see-cert-1 a').attr('aria-label', 'See Details About this Certificate 1');
+			$('.see-cert-2 a').attr('aria-label', 'See Details About this Certificate 2');
+			$('.see-cert-3 a').attr('aria-label', 'See Details About this Certificate 3');
+			$('.see-cert-4 a').attr('aria-label', 'See Details About this Certificate 4');
+			$('.see-cert-5 a').attr('aria-label', 'See Details About this Certificate 5');
+			$('.see-cert-6 a').attr('aria-label', 'See Details About this Certificate 6');
+			$('.see-cert-7 a').attr('aria-label', 'See Details About this Certificate 7');
+			$('.see-graduate-1 a').attr('aria-label', 'See Details About this Graduate Degree 1');
+			$('.see-graduate-2 a').attr('aria-label', 'See Details About this Graduate Degree 2');
+			$('.see-graduate-3 a').attr('aria-label', 'See Details About this Graduate Degree 3');
+			$('.see-graduate-4 a').attr('aria-label', 'See Details About this Graduate Degree 4');
+			$('.see-graduate-5 a').attr('aria-label', 'See Details About this Graduate Degree 5');
+			$('.see-graduate-6 a').attr('aria-label', 'See Details About this Graduate Degree 6');
+			$('.apply-graduate-1 a').attr('aria-label', 'Apply to this Graduate Degree 1');
+			$('.apply-graduate-2 a').attr('aria-label', 'Apply to this Graduate Degree 2');
+			$('.apply-graduate-3 a').attr('aria-label', 'Apply to this Graduate Degree 3');
+			$('.apply-graduate-4 a').attr('aria-label', 'Apply to this Graduate Degree 4');
+			$('.apply-graduate-5 a').attr('aria-label', 'Apply to this Graduate Degree 5');
+			$('.apply-graduate-6 a').attr('aria-label', 'Apply to this Graduate Degree 6');
+			$('.see-pre-pro-1 a').attr('aria-label', 'See Details About this Pre Professional Program 1');
+			$('.see-pre-pro-2 a').attr('aria-label', 'See Details About this Pre Professional Program 2');
+			$('.see-pre-pro-3 a').attr('aria-label', 'See Details About this Pre Professional Program 3');
+			$('.see-pre-pro-4 a').attr('aria-label', 'See Details About this Pre Professional Program 4');
+			$('.see-pre-pro-5 a').attr('aria-label', 'See Details About this Pre Professional Program 5');
+			$('.see-pre-pro-6 a').attr('aria-label', 'See Details About this Pre Professional Program 6');
+			$('.apply-pre-pro-1 a').attr('aria-label', 'See Details About this Pre Professional Program 1');
+			$('.apply-pre-pro-2 a').attr('aria-label', 'See Details About this Pre Professional Program 2');
+			$('.apply-pre-pro-3 a').attr('aria-label', 'See Details About this Pre Professional Program 3');
+			$('.apply-pre-pro-4 a').attr('aria-label', 'See Details About this Pre Professional Program 4');
+			$('.apply-pre-pro-5 a').attr('aria-label', 'See Details About this Pre Professional Program 5');
+			$('.apply-pre-pro-6 a').attr('aria-label', 'See Details About this Pre Professional Program 6');
+			$('.learn-more-pro a').attr('aria-label', 'Learn More About this Academic Program');
+		}
+
+		a();
+})(jQuery);
+</script>
+
+ <script type='text/javascript'>
+ /* <![CDATA[ */  
+var avia_framework_globals = avia_framework_globals || {};
+    avia_framework_globals.frameworkUrl = 'https://sou.edu/wp-content/themes/enfold/framework/';
+    avia_framework_globals.installedAt = 'https://sou.edu/wp-content/themes/enfold/';
+    avia_framework_globals.ajaxurl = 'https://sou.edu/wp-admin/admin-ajax.php';
+/* ]]> */ 
+</script>
+ 
+ <script type='text/javascript'>
+/* <![CDATA[ */
+var scriptParams = {"google_search_engine_id":"000757261388093140880:hlohpmbfww4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sou.edu/wp-content/plugins/wp-google-search/assets/js/google_cse_v2.js?ver=1'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/js/avia.js?ver=4.7.1'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/js/shortcodes.js?ver=4.7.1'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/audio-player/audio-player.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/contact/contact.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow/slideshow.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/countdown/countdown.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/gallery/gallery.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/gallery_horizontal/gallery_horizontal.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/headline_rotator/headline_rotator.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/icongrid/icongrid.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/iconlist/iconlist.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/image_hotspots/image_hotspots.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/magazine/magazine.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/portfolio/isotope.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/masonry_entries/masonry_entries.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/menu/menu.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/notification/notification.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/numbers/numbers.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/portfolio/portfolio.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/progressbar/progressbar.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow/slideshow-video.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow_accordion/slideshow_accordion.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow_fullscreen/slideshow_fullscreen.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/slideshow_layerslider/slideshow_layerslider.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/tab_section/tab_section.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/tabs/tabs.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/testimonials/testimonials.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/timeline/timeline.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/toggles/toggles.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/video/video.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/plugins/wp-accessibility/js/longdesc.button.js?ver=1.0'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/plugins/wp-accessibility/js/current-menu-item.js?ver=1.0'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/js/aviapopup/jquery.magnific-popup.min.js?ver=4.7.1'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/js/avia-snippet-lightbox.js?ver=4.7.1'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/js/avia-snippet-sticky-header.js?ver=4.7.1'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/js/avia-snippet-site-preloader.js?ver=4.7.1'></script>
+<script type='text/javascript' src='https://sou.edu/wp-content/themes/enfold/js/avia-snippet-widget.js?ver=4.7.1'></script>
+<script type='text/javascript'>
+var mejsL10n = {"language":"en","strings":{"mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen-off":"Turn off Fullscreen","mejs.fullscreen-on":"Go Fullscreen","mejs.download-video":"Download Video","mejs.fullscreen":"Fullscreen","mejs.time-jump-forward":["Jump forward 1 second","Jump forward %1 seconds"],"mejs.loop":"Toggle Loop","mejs.play":"Play","mejs.pause":"Pause","mejs.close":"Close","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.time-skip-back":["Skip back 1 second","Skip back %1 seconds"],"mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.mute-toggle":"Mute Toggle","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.ad-skip":"Skip ad","mejs.ad-skip-info":["Skip in 1 second","Skip in %1 seconds"],"mejs.source-chooser":"Source Chooser","mejs.stop":"Stop","mejs.speed-rate":"Speed Rate","mejs.live-broadcast":"Live Broadcast","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+</script>
+<script type='text/javascript' src='https://sou.edu/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.13-9993131'></script>
+<script type='text/javascript' src='https://sou.edu/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=5.3.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sou.edu/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://sou.edu/wp-includes/js/wp-embed.min.js?ver=5.3.2'></script>
+
+<script type='text/javascript'>
+//<![CDATA[
+(function( $ ) { 'use strict';
+	$('body').prepend('<div class="wpa-hide-ltr" id="skiplinks" role="navigation" aria-label="Skip links"><a href="#main">Skip to content</a> </div>'); $('#main').attr('tabindex','-1');
+	
+	
+	$('input,a,select,textarea,button').removeAttr('tabindex');
+	
+}(jQuery));
+//]]>
+</script><a href='#top' title='Scroll to top' id='scroll-top-link' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'><span class="avia_hidden_link_text">Scroll to top</span></a>
+
+<div id="fb-root"></div>
+</body>
+</html>
+

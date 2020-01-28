@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"bde49a486b",applicationID:"56253090"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="twitter:card" content="summary" />
+<meta name="robots" content="index, follow" />
+<link rel="shortlink" href="https://oregonstate.edu/" />
+<link rel="canonical" href="https://oregonstate.edu/" />
+<meta name="twitter:title" content="Oregon State University" />
+<meta name="twitter:site" content="@oregonstate" />
+<meta name="twitter:description" content="Oregon State University continues to advance its 150-year mission to provide access to a high-quality education by enrolling a record number of students for fall term 2019." />
+<meta name="description" content="Oregon State University continues to advance its 150-year mission to provide access to a high-quality education by enrolling a record number of students for fall term 2019." />
+<link rel="image_src" href="https://oregonstate.edu/sites/default/files/paragraphs/linc-quad_0.jpg" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/themes/osu/drupal8-osuhomepage/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="revision" href="https://oregonstate.edu/numbers" />
+<script src="/sites/default/files/google_tag/main_osu_container/google_tag.script.js?q4sgsx" defer></script>
+
+    <title>Oregon State University</title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_3bN77ZRCVkuKG_d8zd1yo3oXBFJ-OpMu1BLQolbWAQ4.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_k_uYPOa5PrRwrvZUMVZxndf3N-t6CPoeIvfehUICmco.css" />
+<link rel="stylesheet" media="all" href="https://s3.amazonaws.com/icomoon.io/155267/OregonStateBrandIcons/style.css?hsbwya" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_b0PnTI4TznLRy_5liUtmNfj_E3x3_oh6qOhg5iFn5TE.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/asset_injector/css/enrollment_special_issue-d4fd5888139af025c273b6de923a156b.css?q4sgsx" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_x2RSrYfXwD7V_QWaRGiCIbtklaeCfdmI_Btksx87YNg.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/sites/default/files/js/js_EcAFmuIK8kkyl2NGyJHpd1gJCAwgaj9_on9fXNMuIdE.js"></script>
+<script src="/sites/default/files/asset_injector/js/photo_modal-bf543babd3e6516ee68f9d283253b3f0.js?q4sgsx"></script>
+
+  </head>
+  <body>
+        <a href="#main-content" class="visually-hidden focusable">
+      Skip to main content
+    </a>
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54WQT99" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<header role="banner" class="osu-top-hat">
+            <h1 class="sr-only">Oregon State University</h1>
+        
+
+    
+      <a href="/" title="Home" rel="home" class="logo">
+      <img src="/themes/osu/drupal8-osuhomepage/logo.svg" alt="Oregon State University" />
+    </a>
+  <nav role="navigation" aria-labelledby="block-homepage-main-menu-menu" id="block-homepage-main-menu" data-block-plugin-id="system_menu_block:main" class="d-none d-lg-block">
+            
+  <h2 class="visually-hidden" id="block-homepage-main-menu-menu">Front Page - Main navigation</h2>
+  
+
+        
+
+              <ul class="main-menu nav nav-pills">
+              <li class="nav-item">
+        <a href="/about" class="nav-link" data-drupal-link-system-path="node/46">About</a>
+              </li>
+          <li class="nav-item">
+        <a href="/academics" class="nav-link" data-drupal-link-system-path="node/51">Academics</a>
+              </li>
+          <li class="nav-item">
+        <a href="/osuresearch" class="nav-link" data-drupal-link-system-path="node/61">Research</a>
+              </li>
+          <li class="nav-item">
+        <a href="https://outreach.oregonstate.edu/" class="nav-link">Outreach</a>
+              </li>
+          <li class="nav-item">
+        <a href="http://www.osubeavers.com/" class="nav-link">Athletics</a>
+              </li>
+        </ul>
+  
+<nav class="d-block d-sm-none mobile-menu-main">
+              <ul>
+              <li>
+        <a href="/current" data-drupal-link-system-path="node/11">Current Students</a>
+              </li>
+          <li>
+        <a href="http://ecampus.oregonstate.edu/">Online Students</a>
+              </li>
+          <li>
+        <a href="/future" data-drupal-link-system-path="node/26">Future Students</a>
+              </li>
+          <li>
+        <a href="http://www.osualum.com/s/359/16/home.aspx?gid=1001&amp;pgid=312">Alumni</a>
+              </li>
+          <li>
+        <a href="/faculty" data-drupal-link-system-path="node/36">Faculty and Staff</a>
+              </li>
+          <li>
+        <a href="http://families.oregonstate.edu">Parents and Family</a>
+              </li>
+        </ul>
+  
+
+</nav>
+
+  </nav>
+
+    <div class="icon-wrapper">
+        <a class="toggle-mobile-menu d-lg-none" href="#">
+            <i class="sr-only sr-only-focusable">Open Menu</i>
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
+        <a class="toggle-search" href="https://search.oregonstate.edu">
+            <i class="sr-only sr-only-focusable">Open Search</i>
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </a>
+    </div>
+
+</header>
+
+<div>
+
+    <div id="search">
+        <form action="https://search.oregonstate.edu" class="searchform" method="get">
+            <label for="search-input" class="sr-only">search for people and pages</label>
+            <input type="text" value="" maxlength="255" size="26" id="search-input" name="q" class="searchbox"
+                   placeholder="Search OSU">
+            <button onclick="ga('send', 'event', 'header', 'Execute Search Button');" type="submit">
+                <span class="sr-only">Search OSU</span><i class="fa fa-search"></i>
+            </button>
+
+            <input type="hidden" value="default_frontend" name="close">
+            <p>Looking for a person? <a onclick="ga('send', 'event', 'header', 'Search Directory');"
+                                        href="http://directory.oregonstate.edu/?type=advanced">Try the campus
+                    directory</a>.</p>
+            <button onclick="ga('send', 'event', 'header', 'Exit Search');" class="close-search" type="button">Exit
+                Search
+            </button>
+        </form>
+    </div>
+
+
+    
+
+    
+
+              <div>
+    <div id="block-frontpagemobileapp" data-block-plugin-id="block_content:e3924f2c-a255-42f0-8b08-79a421e17ddf">
+  
+    
+      
+            <div><style>
+#toolsnservices {
+width:100%;
+background-color:#000;
+padding:12px;
+font-weight:600;
+text-align:center;
+}
+
+@media (min-width:576px) {
+#toolsnservices {
+display:none;
+}
+}
+</style>
+
+
+<button class="btn btn-black" id="toolsnservices"><i class="fas fa-cogs" aria-hidden="true" style="font-size:25px;margin-right:20px"></i>Tools&nbsp;and&nbsp;Services</button>
+</div>
+      
+  </div>
+<div id="block-toolsandservicescollapsible" data-block-plugin-id="block_content:e9790b77-fa65-4953-ba14-5fc664396209">
+  
+    
+      
+            <div><!-- The Modal -->
+<div id="myModal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <figure class="figure">
+            <img src="/sites/default/files/MU_evening 1600x1200.jpg" alt="Memorial Union at sunset" class="figure-img img-fluid rounded">
+            <figcaption class="figure-caption">Photo Taken By: Nachuan Zhang</figcaption>
+            <a class="btn btn-primary" href="http://oregonstate.qualtrics.com/jfe/form/SV_0GMhPMuouZaYv6R">Submit your
+                photo</a>
+        </figure>
+    </div>
+</div>
+
+<div class="container-fluid tns-collapse">
+    <div class="row">
+        <div class="col-lg-5" id="left-col">
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <p>
+                        <a href="http://myosu.oregonstate.edu/" id="myosu"><img src="/sites/default/files/myosu-profile_0.png" alt="">
+                            <br>
+                            My OSU</a>
+                    </p>
+                </div>
+
+                <div class="col-xs-4">
+                    <p>
+                        <a href="https://oregonstate.instructure.com/ "><img src="/sites/default/files/canvas-logo_0.png" alt="">
+                            <br>Canvas</a>
+                    </p>
+                </div>
+
+                <div class="col-xs-4">
+                    <p>
+                        <a href="http://is.oregonstate.edu/google"><img src="/sites/default/files/thegoogs.png" alt="">
+                            <br>
+                            G Suite</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr id="hr1">
+
+        <div class="col-md-6 col-lg-4" id="middle-col">
+            <div class="row">
+
+                <div class="col-xs-6">
+                    <ul>
+                        <li><a href="http://registrar.oregonstate.edu/osu-academic-calendar">Academic Calendar</a></li>
+                        <li><a href="https://catalog.oregonstate.edu/ ">Catalog</a></li>
+                        <li><a href="https://map.oregonstate.edu/">Campus Map</a></li>
+                        <li><a href="http://library.oregonstate.edu ">OSU Libraries</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6">
+                    <ul>
+                        <li><a href="https://exmail.oregonstate.edu/ ">Exmail</a></li>
+                        <li><a href="https://mail.google.com/a/oregonstate.edu ">Gmail</a></li>
+                        <li><a href="https://events.oregonstate.edu/">Events</a></li>
+                        <li><a href="https://box.oregonstate.edu/">Box</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr id="hr2">
+
+        <div class="col-md-6 col-lg-3" id="right-col">
+            <div class="row">
+                <img id="myImg" src="/sites/default/files/styles/medium/public/MU_evening 1600x1200.jpg" alt="Memorial Union at sunset">
+            </div>
+            <div style="text-align:center; padding-top: 20px;">
+
+                <a class="btn btn-primary" href="http://oregonstate.qualtrics.com/jfe/form/SV_0GMhPMuouZaYv6R">Submit your
+                    photo</a>
+            </div>
+        </div>
+    </div>
+    <div id="closeTNS" aria-label="Close">&times;</div>
+</div>
+</div>
+      
+  </div>
+
+  </div>
+
+    
+    <main role="main" class="row no-gutters">
+        <a id="main-content" tabindex="-1"></a>                                    <div class="layout-content col-sm-8 col-md-8 col-lg-9 col-xs-12">
+            
+                              <div>
+    <div id="block-frontpagesecondaryalert" data-block-plugin-id="block_content:e7c00d49-64aa-4b8b-a0b9-b5f7fdd93370">
+  
+    
+      
+  </div>
+
+  </div>
+
+            
+            
+    <div data-drupal-messages-fallback class="hidden"></div><div id="block-homepage-content" data-block-plugin-id="system_main_block">
+  
+    
+      <article role="article" about="/numbers">
+
+  
+    
+
+  
+  <div>
+    
+      <div>
+              <div>  <div class="paragraph paragraph--type--full-width-plain paragraph--view-mode--default">
+          
+            <div><div class="videowrapper">
+
+<!--<p id="covertext">#1 in the<br />Northwest<br />for Innovation<br/><a href="https://today.oregonstate.edu/news/oregon-state-university-ranked-33rd-nation-tops-northwest-innovation"><span class="white icon-osu-info fa-3x" style="font-size:40px;"></span></a></p>-->
+
+<div id="overlay">
+<a href="https://admissions.oregonstate.edu/apply-choose-application?utm_source=URM%202020&utm_medium=OSU%20Home%20Page&utm_campaign=Cover-Students-Walking"><p>Fall 2020 - Priority Application Deadline for First-Year and Transfers - February 1st, 2020</p></a>
+</div>
+
+<video id="coverVideo" autoplay="autoplay" muted="muted" loop="loop">
+<source src="https://communications.oregonstate.edu/sites/communications.oregonstate.edu/files/campus_walk-22.mp4">
+</video>
+
+</div>
+
+<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/155267/OregonStateBrandIcons/style.css?2mvmir"></div>
+      
+      </div>
+</div>
+              <div>  <div class="paragraph paragraph--type--full-width-plain paragraph--view-mode--default">
+          
+            <div><div class="intro">
+<h3>32,774 Students</h3>
+<p>Oregon's largest university draws people from all 50 states and more than 100 countries. As the best public research university in the state we go wherever the challenges are, push ourselves to the very edge of what’s known and keep going.</p>
+</div>
+
+<div class="sectionhead">
+<h3 class="striped">Beaver<br />Nation</h3>
+</div>
+
+<div class="stats">
+<div class="row">
+
+<div class="col-md-6 col-lg-4">
+<span style="color:#232323;" class="osu-icon icon-osu-oregon"></span>
+<p class="number"><span class="count">17,419</span><br />
+students from Oregon</p>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<span  style="color:#232323;" class="osu-icon icon-osu-nation"></span>
+<p class="number"><span class="count">10,808</span><br />
+students from other U.S. states</p>
+</div>
+
+<div class="col-lg-4">
+<span  style="color:#232323;" class="osu-icon icon-osu-world"></span>
+<p class="number"><span class="count">3,492</span><br />
+students from around the world</p>
+</div>
+
+</div>
+</div></div>
+      
+      </div>
+</div>
+              <div>  <div class="paragraph paragraph--type--paragraph-icon-menu paragraph--view-mode--default">
+          
+      <div>
+              <div>
+<div class="paragraph paragraph--type--paragraph-icon-menu-item paragraph--view-mode--default">
+    <div class="">
+
+       <a href="https://admissions.oregonstate.edu/apply-choose-application">
+           <i class="fas fa-fw "></i>
+           <span class="center-block">Apply</span>
+       </a>
+    </div>
+</div>
+</div>
+              <div>
+<div class="paragraph paragraph--type--paragraph-icon-menu-item paragraph--view-mode--default">
+    <div class="">
+
+       <a href="https://admissions.oregonstate.edu/find-your-major">
+           <i class="fas fa-fw "></i>
+           <span class="center-block">Find Your Major</span>
+       </a>
+    </div>
+</div>
+</div>
+              <div>
+<div class="paragraph paragraph--type--paragraph-icon-menu-item paragraph--view-mode--default">
+    <div class="">
+
+       <a href="https://admissions.oregonstate.edu/send-me-info">
+           <i class="fas fa-fw "></i>
+           <span class="center-block">Send Me Info</span>
+       </a>
+    </div>
+</div>
+</div>
+          </div>
+  
+      </div>
+</div>
+              <div>    
+<div class="right-text paragraph paragraph--type--paragraph-1-column paragraph--view-mode--default row no-gutters">
+    <div class="col-md-12" style=background-image:url(/sites/default/files/paragraphs/esther%20vega.jpg)>
+        
+            <div><p><strong>Esther Vega</strong><br /><span style="font-size:16px;font-style:italic;">Honors College - Industrial Engineering</span></p>
+
+<p><a href="http://blogs.oregonstate.edu/honorslink/2019/11/04/bienvenidos-al-honors-college/">Student ambassador Esther Vega</a> has a simple, yet powerful way to connect with some of the parents she meets on campus tours and at college fairs: she speaks to them in Spanish.</p>
+</div>
+      
+    </div>
+</div>
+</div>
+              <div>  <div class="paragraph paragraph--type--full-width-plain paragraph--view-mode--default">
+          
+            <div><div class="stats">
+<h3>The Right Path for You</h3>
+<p style="max-width:700px;margin:0 auto;">With campuses in Corvallis and Bend, centers in Newport and Portland, extension offices in every county and the 3rd best online program in the country Oregon State University has more pathways to education than any other university in the state.</p> 
+
+
+<div class="row" style="margin-top:50px;">
+
+<div class="col-md-6  col-lg-4">
+<span style="color:#232323;" class="osu-icon icon-osu-courthouse"></span>
+<p class="number"><span>24,203</span><br />
+<a href="https://admissions.oregonstate.edu/">students in Corvallis</a></p>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<span  style="color:#232323;" class="osu-icon icon-osu-mouse"></span>
+<p class="number"><span>7,467</span><br />
+<a href="https://ecampus.oregonstate.edu/">online students</a></p>
+</div>
+
+<div class="col-lg-4">
+<span  style="color:#232323;" class="osu-icon icon-osu-mountains"></span>
+<p class="number"><span>1,311</span><br />
+<a href="https://osucascades.edu/">students in Bend</a></p>
+</div>
+
+</div>
+</div></div>
+      
+      </div>
+</div>
+              <div>        
+<div class="black_bg_right bg_padding light_text paragraph paragraph--type--paragraph-2-column paragraph--view-mode--default row no-gutters">
+    <div class="col-md-6 light_text" style=background-image:url(/sites/default/files/2019-10/students-in-classroom.jpg)>
+        
+    </div>
+    <div class="col-md-6 " >
+        
+            <div><p class="number"><span>3.61</span><br />
+average GPA<br />
+of entering students</p>
+
+<h3 style="margin-top:40px;">Oregon State continues to attract top students</h3>
+
+<p><strong>In the 2019 incoming class:</strong></p>
+
+<ul><li>10 are National Merit award winners.</li>
+	<li>158 were ranked first in their high school graduating class.</li>
+	<li>35 are Presidential Scholars.</li>
+	<li>480 students entered the Honors College.</li>
+</ul></div>
+      
+    </div>
+</div>
+</div>
+              <div>  <div class="paragraph paragraph--type--full-width-plain paragraph--view-mode--default">
+          
+            <div><div class="stats">
+
+<h3>Oregon's Best Research University</h3>
+<p style="max-width:700px;margin:0 auto;">With over 200+ academic degree programs Oregon State has a path to the career you always wanted. <a href="https://admissions.oregonstate.edu/find-your-major">Find your major</a>.</p>
+
+<div class="row" style="margin-top:50px;">
+
+<div class="col-md-6 col-lg-3">
+<span class="osu-icon icon-osu-pine-tree"></span>
+<p>#2 Forestry Program<br />in the World</p>
+</div>
+
+<div class="col-md-6 col-lg-3">
+<span class="osu-icon icon-osu-octopus"></span>
+<p>#3 Oceanography Program<br />in the World</p>
+</div>
+
+<div class="col-md-6 col-lg-3">
+<span class="osu-icon icon-osu-desktop-alt"></span>
+<p>#3 Best Online Programs<br />in the U.S.</p>
+</div>
+
+<div class="col-md-6 col-lg-3">
+<span class="osu-icon icon-osu-robot"></span>
+<p>#4 Robotics Engineering School<br />in the U.S.</p>
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="col-md-6 col-lg-3">
+<span class="osu-icon icon-osu-brain"></span>
+<p>#10 Best Big Data Degree<br />in the U.S.</p>
+</div>
+
+<div class="col-md-6 col-lg-3">
+<span class="osu-icon icon-osu-handshake"></span>
+<p>#2 Friendliest College Town<br />in America</p>
+</div>
+
+<div class="col-md-6 col-lg-3">
+<span class="osu-icon icon-osu-lightbulb"></span>
+<p>#4 Most Innovative<br />U.S. City</p>
+</div>
+
+<div class="col-md-6 col-lg-3">
+<span class="osu-icon icon-osu-bicycle"></span>
+<p>Gold Rating for<br />Bike Friendliness</p>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+      
+      </div>
+</div>
+          </div>
+  
+  </div>
+
+</article>
+
+  </div>
+<div class="views-element-container" id="block-views-block-news-and-stories-block-1" data-block-plugin-id="views_block:news_and_stories-block_1">
+  
+    
+      <div><div class="js-view-dom-id-a13c730babddd23d687436148353b893ea005f4b01685a14d229bce4abbc9644">
+  
+  
+  
+
+  
+  
+  
+
+  <div class="views-view-grid horizontal cols-2 clearfix">
+            <div class="row justify-content-around">
+                  <div class="col-10 col-lg-5 col-xl-4 gridstyle newsColumns"><a href="http://terra.oregonstate.edu/2019/10/when-illness-first-appears/"><div>
+  
+  
+            <div>  <img src="/sites/default/files/styles/800x530_scale_crop/public/Nembhard-W-Student-1500x800.jpg?itok=FOC1YmIG" width="650" height="430" alt="professor meeting with students" typeof="Image" />
+
+
+</div>
+      
+</div>
+</a> 
+<div class="caption">
+<a href="http://terra.oregonstate.edu/2019/10/when-illness-first-appears/">When Illness First Appears</a>
+<p>Engineers are detecting the early signs of Parkinson’s disease</p>
+ 
+</div></div>
+                  <div class="col-10 col-lg-5 col-xl-4 gridstyle newsColumns"><a href="http://synergies.oregonstate.edu/2019/enlace-program/"><div>
+  
+  
+            <div>  <img src="/sites/default/files/styles/800x530_scale_crop/public/outside-the-frame-header.jpg?itok=2ZnyFO63" width="650" height="430" alt="people standing in front a cinema screen" typeof="Image" />
+
+
+</div>
+      
+</div>
+</a> 
+<div class="caption">
+<a href="http://synergies.oregonstate.edu/2019/enlace-program/">Lights, camera – take action!</a>
+<p>A telenovela intervention for LGBTQ youth turns isolation into change</p>
+ 
+</div></div>
+              </div>
+      </div>
+
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+
+  </div>
+
+
+
+                    </div>
+                    <aside class="layout-sidebar-first col-lg-3 col-md-4 col-sm-4 col-xs-12" role="complementary">
+                
+                  <div>
+    <div id="block-toolsandservices" data-block-plugin-id="block_content:60f96cb2-bd7a-4ddc-b9b8-4a81029f4a2d">
+  
+    
+      
+            <div><button class="btn btn-black" aria-expanded="false" id="tns"><i class="fas fa-cogs" aria-hidden="true" style="font-size:25px;margin-right:20px"></i>Tools and Services</a>
+
+</div>
+      
+  </div>
+<nav role="navigation" aria-labelledby="block-audience-menu" id="block-audience" data-block-plugin-id="system_menu_block:audience-">
+            
+  <h2 class="visually-hidden" id="block-audience-menu">Front Page - Audience Menu</h2>
+  
+
+        
+              <ul>
+              <li>
+        <a href="/future" data-drupal-link-system-path="node/26">Future Students</a>
+              </li>
+          <li>
+        <a href="/current" data-drupal-link-system-path="node/11">Current Students</a>
+              </li>
+          <li>
+        <a href="http://ecampus.oregonstate.edu/">Online Students</a>
+              </li>
+          <li>
+        <a href="/faculty" data-drupal-link-system-path="node/36">Faculty and Staff</a>
+              </li>
+          <li>
+        <a href="http://families.oregonstate.edu">Parents and Family</a>
+              </li>
+          <li>
+        <a href="http://www.osualum.com/s/359/16/home.aspx?gid=1001&amp;pgid=312">Alumni</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<div id="block-frontpagesidebaralert" data-block-plugin-id="block_content:b6af405d-e721-47ac-b182-fc72ee94fade">
+  
+    
+      
+  </div>
+<nav role="navigation" aria-labelledby="block-callstoaction-menu" id="block-callstoaction" data-block-plugin-id="system_menu_block:apply-give-maps-libraries">
+            
+  <h2 class="visually-hidden" id="block-callstoaction-menu">Front Page - Calls to Action</h2>
+  
+
+        
+              <ul>
+              <li>
+        <a href="http://admissions.oregonstate.edu/apply-choose-application">Apply</a>
+              </li>
+          <li>
+        <a href="https://visitosu.oregonstate.edu/">Visit</a>
+              </li>
+          <li>
+        <a href="https://securelb.imodules.com/s/359/foundation/index.aspx?sid=359&amp;gid=34&amp;pgid=1982&amp;cid=3007">Make a Gift</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<div id="block-footersocial" data-block-plugin-id="block_content:f95da6a8-fbcb-4577-acd1-1523cf40dd99">
+  
+    
+      
+            <div><div class="socialblock">
+<a class="icon" href="https://instagram.com/oregonstate"><span class="sr-only">OSU's Instagram</span><i class="fab fa-instagram" style="font-size:25px;margin-right:20px"></i></a>
+<a class="icon" href="https://twitter.com/oregonstate"><span class="sr-only">OSU's Twitter</span><i class="fab fa-twitter" style="font-size:25px;margin-right:20px"></i></a>
+<a class="icon" href="https://www.facebook.com/osubeavers"><span class="sr-only">OSU's Facebook</span><i class="fab fa-facebook-f" style="font-size:25px;margin-right:20px"></i></a>
+<a class="icon" href="https://www.youtube.com/user/OregonStateUniv"><span class="sr-only">OSU's Youtube</span><i class="fab fa-youtube" style="font-size:25px;margin-right:20px"></i></a>
+
+
+<!--
+<a class="icon" href="https://www.snapchat.com/add/oregonstate"><span class="sr-only">OSU's Snapchat</span><i class="fab fa-snapchat-square" style="font-size:25px;margin-right:20px"></i></a>
+<a class="icon" href="https://open.spotify.com/user/clcmse6ojy8etzcatn9fvb5m0?si=ufW8IGPoQ3CgyhwQHmWhlQ"><span class="sr-only">Spotify</span><i class="fab fa-spotify" style="font-size:25px;margin-right:20px"></i></a>
+-->
+</div>
+</div>
+      
+  </div>
+<div id="block-branchcampuses" data-block-plugin-id="block_content:375b2c0e-0b24-4670-a69f-ffb200fe943c">
+  
+    
+      
+            <div><h3 style="color:#fff;margin:20px 2.2rem;">Our Locations</h3>
+<a class="btn-black" href="https://osucascades.edu" style="border:none;margin:0 1.5rem;"><i class="fas fa-map-marker-alt" aria-hidden="true" style="font-size:25px;margin-right:20px"></i>OSU Cascades</a>
+<a class="btn-black" href="https://portland.oregonstate.edu" style="border:none;margin:0 1.5rem;"><i class="fas fa-map-marker-alt" aria-hidden="true" style="font-size:25px;margin-right:20px"></i>OSU in Portland</a>
+<a class="btn-black" href="https://hmsc.oregonstate.edu/" style="border:none;margin:0 1.5rem;"><i class="fas fa-map-marker-alt" aria-hidden="true" style="font-size:25px;margin-right:20px"></i>Hatfield Marine Science Center</a>
+<a class="btn-black" href="https://extension.oregonstate.edu/" style="border:none;margin:0 1.5rem;"><i class="fas fa-map-marker-alt" aria-hidden="true" style="font-size:25px;margin-right:20px"></i>Extension Service</a>
+
+<!--
+<a class="btn-black" href="https://events.oregonstate.edu/"><i class="far fa-calendar" aria-hidden="true" style="font-size:25px;margin-right:20px"></i>Event Calendar</a>
+<a class="btn-black" href="https://today.oregonstate.edu/news"><i class="fas fa-star" aria-hidden="true" style="font-size:25px;margin-right:20px"></i>Latest News</a>
+-->
+</div>
+      
+  </div>
+
+  </div>
+
+            </aside>
+            </main>
+</div>
+
+<footer role="contentinfo" class="no-gutters">
+                    <div class="row no-gutters">
+                    <div class="col-md-12">
+                  <div>
+    <div id="block-contactinformation" data-block-plugin-id="block_content:49cc766b-85df-43c6-b563-bc8566966bcf">
+  
+    
+      
+            <div><p>Oregon State University<br />
+1500 SW Jefferson Way<br />
+Corvallis, OR 97331<br />
+541-737-1000</p>
+
+<ul><li><a href="https://map.oregonstate.edu/">Campus Map</a></li>
+	<li><a href="http://oregonstate.edu/accessibility/" onclick="ga('send', 'event', 'footer', 'Accessibility');">Accessibility Information</a></li>
+	<li><a href="http://fa.oregonstate.edu/publicsafety">Campus Safety</a></li>
+	<li><a href="http://osubeaverstore.com/" onclick="ga('send', 'event', 'footer', 'Beaver Store');">OSU Beaver Store</a></li>
+	<li><a href="http://communications.oregonstate.edu/webform/contact-osu">Contact OSU</a></li>
+</ul><p><a href="https://oregonstate.edu/copyright">Copyright</a> ©2020 Oregon State University<br /><a href="https://oregonstate.edu/official-web-disclaimer">Disclaimer</a></p>
+
+<p> </p>
+</div>
+      
+  </div>
+<div id="block-dancingbenny" data-block-plugin-id="block_content:48cbb72c-e406-4ec3-829f-2152723b1f7a">
+  
+    
+      
+            <div><p style="position: absolute;bottom: 0px;margin:0px;cursor:crosshair"><img alt="Benny Beaver" onclick="this.src=this.src" src="/sites/default/files/inline-images/benny-beaver.gif" /></p>
+</div>
+      
+  </div>
+
+  </div>
+
+            </div>
+                            </div>
+    
+</footer>
+
+  </div>
+
+    
+    <script src="/sites/default/files/js/js_bx2_DveOS7slidxGNJ8hTGolFEFSQYF09bfsrbw7ySE.js"></script>
+<script src="/sites/default/files/asset_injector/js/waypoint_js-d094be6ac0edb01220fe536185bffd4b.js?q4sgsx"></script>
+<script src="/sites/default/files/js/js_hxO4wG29O0WRY9Ee7wPvJV4JAT2LS_ibhApepBGlJ1M.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script src="/sites/default/files/js/js_qYKsjYygVrQudmDX0QixzlZHxAjDuXmo69Tfy_5hGto.js"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bde49a486b","applicationID":"56253090","transactionName":"M1cBZ0VXXUBTABVeWgodIlBDX1xdHScTQkUFXj9wWERWb38GD0JpIFcFUkJaR35XDRR7XApZN0FSU35SXAoRQlkFRgxBRBsNVFcNBEVUEFcqXVNTS3JcBzJYRxA=","queueTime":0,"applicationTime":601,"atts":"HxACEQ1NTk4=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

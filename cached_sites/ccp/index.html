@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns# content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UAQGVFBbGwAAUVVVBgA=",licenseKey:"a5a8a73090",applicationID:"3054711"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(17),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(18),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(6),t(5),"addEventListener"in window&&t(3),c.xhrWrappable&&t(7),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],4:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(18),a=t(17);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],5:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],6:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],7:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(3);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,g="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(g,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],8:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(15),s=t(10);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],9:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return v(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=f(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(10),u=t(8).generateTracePayload,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(13),v=t(12),g=window.XMLHttpRequest;s.features.xhr=!0,t(7),t(4),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=u(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=v(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof g&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof g&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof g&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)}),d.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=f(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=u(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],10:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],11:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(17),s=t(18),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],12:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],13:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],14:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?a("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&a("timing",["fcp",Math.floor(t.startTime)])})}function o(t){if(t instanceof c&&!u){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:s.now()-e,u=!0,a("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var i,a=t("handle"),s=t("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){i=new PerformanceObserver(r);try{i.observe({entryTypes:["paint"]})}catch(f){}}if("addEventListener"in document){var u=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(t){document.addEventListener(t,o,!1)})}}},{}],15:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],16:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],17:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],18:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],19:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){w[t]=m(t).concat(n)}function h(t,n){var e=w[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return w[t]||[]}function v(t){return d[t]=d[t]||o(e)}function g(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var w={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:v,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(17),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(17),u=t("ee"),d=t(16),l=window,p=l.document,h="addEventListener",m="attachEvent",v=l.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:v,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},x=v&&g&&g[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:w,features:{},xhrWrappable:x,userAgent:d};t(11),t(14),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(19)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(18),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,9]);</script>
+<link rel="alternate" type="application/rss+xml" title="Latest News" href="https://ccp.edu/news/feed/%2A" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="canonical" href="https://ccp.edu/" />
+<link rel="shortlink" href="https://ccp.edu/" />
+<meta property="og:site_name" content="Community College of Philadelphia" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ccp.edu/" />
+<meta property="og:title" content="Community College of Philadelphia" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://ccp.edu/" />
+<meta name="twitter:title" content="Community College of Philadelphia" />
+<link rel="shortcut icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/android-icon-36x36.png" sizes="16x16" />
+<link rel="icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/android-icon-36x36.png" sizes="32x32" />
+<link rel="icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/android-icon-96x96.png" sizes="96x96" />
+<link rel="icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/android-icon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/apple-icon-60x60.png" />
+<link rel="apple-touch-icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/apple-icon-72x72.png" sizes="72x72" />
+<link rel="apple-touch-icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/apple-icon-76x76.png" sizes="76x76" />
+<link rel="apple-touch-icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/apple-icon-114x114.png" sizes="114x114" />
+<link rel="apple-touch-icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/apple-icon-120x120.png" sizes="120x120" />
+<link rel="apple-touch-icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/apple-icon-144x144.png" sizes="144x144" />
+<link rel="apple-touch-icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/apple-icon-152x152.png" sizes="152x152" />
+<link rel="apple-touch-icon" href="https://www.ccp.edu/sites/all/themes/ccp2020/images/apple-icon-180x180.png" sizes="180x180" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KJ5VW5S');</script>
+  <!-- End Google Tag Manager -->
+  <title>Community College of Philadelphia |</title>
+  <link type="text/css" rel="stylesheet" href="https://ccp.edu/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://ccp.edu/sites/default/files/css/css__rScA6E5NxR9mMWtuuCY8gc6KyxSkHWvuQKBFTjUytg.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://ccp.edu/sites/default/files/css/css_oA_Xl6K-1RwNNfEVih4IbW_e2_oVwkK6EJ0B4LpnjEw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://ccp.edu/sites/default/files/css/css_jmCpFSr7MKz-zmSqkHQG6rsiRqGNjRRQS6pKmTVg8wc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://ccp.edu/sites/default/files/css/css_HYjU2MmJjfS-hr8o2LbGFwU4YpYAfI4nnR1g2UH_cxU.css" media="print" />
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.google_analytics_uacct = "UA-8067474-1";
+//--><!]]>
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/3.3/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.migrateMute=true;jQuery.migrateTrace=false;
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://ccp.edu/sites/default/files/js/js_QoBFgCHXHXUMP5gXqrgIr1KDSjbaDa6x6Fh6dbK_iLI.js"></script>
+<script type="text/javascript" src="https://ccp.edu/sites/default/files/js/js__7Mjvj_fIAGoauK0xklylKBUIHrCcijyT8yucEi2E0o.js"></script>
+<script type="text/javascript" src="https://ccp.edu/sites/default/files/js/js_ptR1ZjZnexk8gj2Q9mIgM2M_6ztR4ckK-i_6gzFmlNM.js"></script>
+<script type="text/javascript" src="https://ccp.edu/sites/default/files/js/js_b8FmUuZ62qiMe13ws1swESOhtyzbEzc80dJDIw8lWnQ.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+
+            (function($) {
+                $(document).ready(function() {
+                    $("#md-megamenu-1").aweMenu({
+            trigger : "hover",
+            style : "md-custom",
+            type : "standard",
+            enableAnimation : 1,
+            defaultDesktopAnimation : "fade",
+            defaultDesktopAnimationDuration : "100",
+            showArrow : 0,
+            hoverDelay: 100,
+            responsiveWidth : 640,
+            mobileTrigger : "click",
+            mobileStyle : "md-mobile-custom",
+            mobileAnimationDuration : 300,
+            mobileType : "standard",
+            showMobileArrow : 1,
+            sticky : 0,
+            stickyOffset : ".region-page-top|#admin-menu",
+            initialize : function(menu){
+                if (menu.options.sticky) {
+                    $("#toolbar a.toggle").click(function(event) {
+                        event.preventDefault();
+                        if (menu.stickyActivated) {
+                            var select = this.options.stickyOffset.split("|");
+                            $.each(select, function(index, value){
+                               if ($(value).length) {
+                                   selectOffset = value;
+                                  return  selectOffset;
+                               }
+                            });
+
+                            menu.$el.css("top", $(selectOffset).offset().top + $(selectOffset).height());
+                        }
+                    });
+                }
+            }
+        });
+                    var current_location = location.href,
+                        hostname_arr = current_location.split("/"),
+                        hostname = "",
+                        preSelecttor = ".awemenu-item-level-1 > a[href='",
+                        list_filter = [];
+                    hostname = [hostname_arr[0], hostname_arr[1], hostname_arr[2]].join("/");
+                    if(hostname_arr.length > 4){
+                      for(i = hostname_arr.length - 1; i<hostname_arr.length && i>=4 ; i--){
+                        hostname_arr.splice(i, 1);
+                        list_filter.push(preSelecttor + hostname_arr.join("/") + "'");
+                      }
+                   
+                      var selector_menu_active = [];
+                      $.each(list_filter, function(key, value){
+                        selector_menu_active.push(value);
+                        value = value.replace(hostname + "/","",value);
+                        selector_menu_active.push(value);
+                        value = value.replace("='","='/",value);
+                        selector_menu_active.push(value);
+                      });
+                      selector_menu_active = selector_menu_active.join("], ");
+                      selector_menu_active += "]";
+                      $(selector_menu_active).parent().addClass("awemenu-active-trail");
+                    }
+                });
+            })(jQuery);
+        
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://ccp.edu/sites/default/files/js/js_4ZGpn1FKa_xvO93WLCaFwDsk_hn4Q2WPwDthV_50SxY.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-8067474-1", {"cookieDomain":"auto"});ga("require", "linkid", "linkid.js");ga("set", "anonymizeIp", true);ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+
+            (function($) {
+                $(document).ready(function() {
+                    $("#md-megamenu-1").aweMenu({
+            trigger : "hover",
+            style : "md-custom",
+            type : "standard",
+            enableAnimation : 1,
+            defaultDesktopAnimation : "fade",
+            defaultDesktopAnimationDuration : "100",
+            showArrow : 0,
+            hoverDelay: 100,
+            responsiveWidth : 640,
+            mobileTrigger : "click",
+            mobileStyle : "md-mobile-custom",
+            mobileAnimationDuration : 300,
+            mobileType : "standard",
+            showMobileArrow : 1,
+            sticky : 0,
+            stickyOffset : ".region-page-top|#admin-menu",
+            initialize : function(menu){
+                if (menu.options.sticky) {
+                    $("#toolbar a.toggle").click(function(event) {
+                        event.preventDefault();
+                        if (menu.stickyActivated) {
+                            var select = this.options.stickyOffset.split("|");
+                            $.each(select, function(index, value){
+                               if ($(value).length) {
+                                   selectOffset = value;
+                                  return  selectOffset;
+                               }
+                            });
+
+                            menu.$el.css("top", $(selectOffset).offset().top + $(selectOffset).height());
+                        }
+                    });
+                }
+            }
+        });
+                    var current_location = location.href,
+                        hostname_arr = current_location.split("/"),
+                        hostname = "",
+                        preSelecttor = ".awemenu-item-level-1 > a[href='",
+                        list_filter = [];
+                    hostname = [hostname_arr[0], hostname_arr[1], hostname_arr[2]].join("/");
+                    if(hostname_arr.length > 4){
+                      for(i = hostname_arr.length - 1; i<hostname_arr.length && i>=4 ; i--){
+                        hostname_arr.splice(i, 1);
+                        list_filter.push(preSelecttor + hostname_arr.join("/") + "'");
+                      }
+                   
+                      var selector_menu_active = [];
+                      $.each(list_filter, function(key, value){
+                        selector_menu_active.push(value);
+                        value = value.replace(hostname + "/","",value);
+                        selector_menu_active.push(value);
+                        value = value.replace("='","='/",value);
+                        selector_menu_active.push(value);
+                      });
+                      selector_menu_active = selector_menu_active.join("], ");
+                      selector_menu_active += "]";
+                      $(selector_menu_active).parent().addClass("awemenu-active-trail");
+                    }
+                });
+            })(jQuery);
+        
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://ccp.edu/sites/default/files/js/js_0E4AfX68b0ZCNMGacnn83z1lWncNE1fEFypAnsNO4rY.js"></script>
+<script type="text/javascript" src="https://ccp.edu/sites/default/files/js/js_R679QPUoCdffd8SDiCkAj6Db37k1Y7ccGpVCoMM24MY.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"ccp2020","theme_token":"ULXw5NK6rCa-d6KtE7dN2niFFyN_csg74Amicx1IGSw","jquery_version":"3.3","js":{"0":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.3.1\/jquery.min.js":1,"1":1,"2":1,"sites\/all\/modules\/jquery_update\/replace\/jquery-migrate\/3\/jquery-migrate.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/fitvids\/jquery.fitvids.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/jquery_update\/replace\/jquery.form\/4\/jquery.form.min.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/jquery_update\/js\/jquery_update.js":1,"sites\/all\/modules\/fitvids\/fitvids.js":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox_load.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox_inline.js":1,"3":1,"sites\/all\/modules\/better_exposed_filters\/better_exposed_filters.js":1,"sites\/all\/modules\/mefibs\/js\/mefibs.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"4":1,"5":1,"sites\/all\/modules\/md_megamenu\/js\/awemenu.min.js":1,"sites\/all\/modules\/md_megamenu\/js\/jquery.hoverIntent.min.js":1,"misc\/progress.js":1,"sites\/all\/modules\/views\/js\/base.js":1,"sites\/all\/modules\/views\/js\/ajax_view.js":1,"sites\/all\/modules\/colorbox_node\/colorbox_node.js":1,"sites\/all\/themes\/ccp2020\/..\/..\/libraries\/footable\/footable.min.js":1,"sites\/all\/themes\/ccp2020\/js\/build\/scripts-min.js":1,"sites\/all\/themes\/ccp2020\/js\/build\/modernizr.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/aggregator\/aggregator.css":1,"sites\/all\/modules\/calendar\/css\/calendar_multiday.css":1,"sites\/all\/modules\/colorbox_node\/colorbox_node.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/fitvids\/fitvids.css":1,"modules\/node\/node.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/youtube\/css\/youtube.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/media\/modules\/media_wysiwyg\/css\/media_wysiwyg.base.css":1,"sites\/all\/themes\/ccp2020\/css\/tabs.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/md_megamenu\/css\/awemenu\/css\/lib\/bootstrap-grid.css":1,"sites\/all\/modules\/md_megamenu\/css\/awemenu\/css\/lib\/font-awesome.min.css":1,"sites\/all\/modules\/md_megamenu\/css\/awemenu\/css\/awemenu.css":1,"sites\/all\/modules\/md_megamenu\/css\/awemenu\/css\/themes.css":1,"sites\/all\/modules\/md_megamenu\/css\/awemenu\/css\/md-megamenu-style.css":1,"public:\/\/megamenu-1-custom.css":1,"sites\/all\/themes\/ccp2020\/node_modules\/bootstrap\/dist\/css\/bootstrap.css":1,"sites\/all\/themes\/ccp2020\/css\/normalize.css":1,"sites\/all\/themes\/ccp2020\/css\/default.css":1,"sites\/all\/themes\/ccp2020\/css\/layout.css":1,"sites\/all\/themes\/ccp2020\/css\/style.css":1,"sites\/all\/themes\/ccp2020\/node_modules\/a11y_accordions\/assets\/css\/aria.accordion.css":1,"sites\/all\/themes\/ccp2020\/..\/..\/libraries\/a11y-toolbar\/css\/a11y-toolbar.css":1,"sites\/all\/themes\/ccp2020\/css\/print.css":1}},"colorbox":{"transition":"elastic","speed":"350","opacity":"0.85","slideshow":false,"slideshowAuto":true,"slideshowSpeed":"2500","slideshowStart":"start slideshow","slideshowStop":"stop slideshow","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","overlayClose":true,"returnFocus":true,"maxWidth":"640px","maxHeight":"98%","initialWidth":"300","initialHeight":"250","fixed":true,"scrolling":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"better_exposed_filters":{"views":{"mini_slider_content_page":{"displays":{"fp_minislider":{"filters":[]}}},"latest_news":{"displays":{"block":{"filters":[]}}}},"datepicker":false,"slider":false,"settings":[],"autosubmit":true},"mefibs":{"forms":{"gp_search_text":{"view_name":"guided_pathways_all_offerings_search","view_display_id":"page","form_prefix":"mefibs-form-gp-search-text","elements":["combine","combine_op"]},"gp_path_select":{"view_name":"guided_pathways_all_offerings_search","view_display_id":"page","form_prefix":"mefibs-form-gp-path-select","elements":["field_acprg_gudpath_grp_tid","field_acprg_gudpath_grp_tid_op"]}}},"views":{"ajax_path":"\/views\/ajax","ajaxViews":{"views_dom_id:f2ca4bd1864784540055fb61a7b636a2":{"view_name":"latest_news","view_display_id":"block","view_args":"","view_path":"node\/1","view_base_path":"news\/feed\/%","view_dom_id":"f2ca4bd1864784540055fb61a7b636a2","pager_element":0}}},"urlIsAjaxTrusted":{"\/views\/ajax":true},"fitvids":{"custom_domains":[],"selectors":["body"],"simplifymarkup":true},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":1},"colorbox_node":{"width":"600px","height":"600px"}});
+//--><!]]>
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon-precomposed" href="/sites/all/themes/ccp2020/images/apple-touch-icon-precomposed.png">
+</head>
+<body class="html front not-logged-in no-sidebars page-node page-node- page-node-1 node-type-front-page role-anonymous-user" >
+
+ 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+
+<!-- Template: page--front.tpl.php -->
+<style>
+/*Page Specific Css Styles */
+.field-hp-featured-article a {color: #262626; font-weight: 600; border-bottom: 2px solid #ffc82e; text-decoration: none;}
+
+.field-hero-callout{
+    display: flex;
+    align-items: center;
+
+    }
+.fp-img-container{position: absolute; right: 0;  }
+
+
+.field-hero-callout img{max-height:100%; padding:1em;}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width : 100px) and (max-width : 768px) {
+/* Styles */
+ .field-hero-callout img{height:160px;}
+}
+
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+
+/* Styles */
+ .field-hero-callout img{height:250px; }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1024px) {
+/* Styles */
+ .field-hero-callout img{height:100%; }
+}
+</style>
+
+
+<div id="page--front" class="page view-modes-default with-navigation"  >
+
+<!--  ______________________ EMERGENCY ______________________ -->
+    <!-- END EMERGENCY -->  
+  <!-- ______________________ HEADER _______________________ -->
+
+  <!-- ______________________ HEADER _______________________ -->
+
+<header id="header" role="banner" class="header styleContainer headerBackgroundContainer ">
+    <!-- topmost bar -->
+    <div class="topmost-outerbar">
+      <div class="topmost container">
+        <div class="topmost-row ">
+           <div id="TopNavigation" class="topnavigation row ">
+            
+<!-- Template: region.tpl.php -->
+
+<!-- Template: block.tpl.php -->
+<div class="block block-menu menu-left align-self-center block-odd first block" data-bid="708">
+        <ul class="menu"><li class="first leaf locations mid-2919"><a href="/locations" class="before-locations">Locations</a></li>
+<li class="leaf college-catalog mid-1126"><a href="/college-catalog/college-catalog" title="Catalog of available courses offered by the Community College of Philadelphia." class="before-catalog">College Catalog</a></li>
+<li class="leaf events mid-1127"><a href="/calendars" title="Event Calendar" class="before-events">Events</a></li>
+<li class="leaf canvas-login mid-6620"><a href="https://ccp.instructure.com/" class="before-canvas">Canvas Login</a></li>
+<li class="last leaf workforce-development mid-9136"><a href="/academic-offerings/professional-development" class="before-workforce">Workforce Development</a></li>
+</ul></div><!-- /block -->
+<!-- Template: block.tpl.php -->
+<div class="block block-menu menu-right menu-block-yellow block-even last block" data-bid="709">
+        <ul class="menu"><li class="first leaf apply mid-9354"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" target="_blank" onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;Page Header&#039;);">Apply</a></li>
+<li class="leaf jobs mid-3595"><a href="/about-us/career-opportunities">Jobs</a></li>
+<li class="leaf give mid-3936"><a href="/alumni-friends/why-support-college">Give</a></li>
+<li class="last leaf myccp mid-1134"><a href="http://myccp.online/" title="My CCP access" onclick="_gaq.push([&#039;_trackEvent&#039;, &#039;My CCP&#039;, &#039;Click&#039;, &#039;Top Page Menu&#039;,, false]);">MyCCP</a></li>
+</ul></div><!-- /block -->
+           </div>
+        </div>
+      </div>
+    </div>
+    <!-- /topmost -->
+
+    <!-- Branding bar -->
+    <div id="Branding-Region" class="container">
+      <div class="branding-row row">
+         <div id="Branding-Logo" class=" ">
+                         <a href="/" title="Home" class="" rel="home" id="logo"><img itemprop="logo" src="https://ccp.edu/sites/default/files/ccp1line.svg" class="" alt="Community College of Philadelphia" /></a>
+                                      <hgroup id="name-and-slogan" class="invisible sr-only">
+                                <h1 id="site-name"> <a href="/" title="Home" rel="home"><span>Community College of Philadelphia</span></a> </h1>
+                              </hgroup>
+              <!-- /#name-and-slogan -->
+                         
+          </div>
+          <div id="Branding-Right" class="header-search text-right ">
+            
+<!-- Template: region.tpl.php -->
+
+<!-- Template: block.tpl.php -->
+<div class="block block-block block-odd first last block" data-bid="687">
+        <!-- <form action="/search" method="get" id="views-exposed-form-search-all-nodes-search-ap-view-page" accept-charset="UTF-8"><div><div class="views-exposed-form">
+  <div class="views-exposed-widgets clearfix">
+          <div id="edit-s-wrapper-top" class="">
+                        <div class="views-widget">
+          <div class="form-item form-type-textfield form-item-s -top">
+ <input placeholder="Search Terms" type="text" id="edit-s-top" name="s" value="" size="15" maxlength="50" class="form-text">
+</div>
+        </div>
+              </div>
+                    <div class="views-exposed-widget views-submit-button">
+       <input id="edit-submit-search-all-nodes" name="" value="Search" alt="Search ccp.edu website" class="form-submit" src="/sites/all/themes/communitycollegeofphiladelphia/images/search_button.png" type="image">     </div>
+      </div>
+</div>
+</div></form> -->
+
+
+
+<form action="/search" method="get" id="NOAUTO" accept-charset="UTF-8" role="search" >
+<div style="background:#fff; text-align:right"  >
+	<input placeholder="Search" type="text" id="edit-s-top" name="s" value=""  class="form-text" aria-label="search text"  style="border:none; display:inline-block; border-bottom:#000 solid 3px;">
+	 <input id="edit-submit-search-all-nodes" name="" value="Search" class="form-submit" src="/sites/all/themes/communitycollegeofphiladelphia/images/search_button.png" type="image" style="padding:3px;" alt="Search the ccp.edu website">  
+</div>
+</form></div><!-- /block -->
+          </div>
+      </div>
+    </div>
+    <!-- /branding -->
+
+    <!-- navigation bar -->
+    <div class="navigation container">
+      <div id="navigation" class="mainNav row" >
+        <nav id="main-menu" aria-labelledby="md-megamenu-1"  class="col-12"> 
+                    <!-- Main Menu -->
+                    
+<!-- Template: region.tpl.php -->
+
+<!-- Template: block.tpl.php -->
+<div class="block block-md-megamenu block-odd first last block" data-bid="703">
+        <div id="md-megamenu-1" class="md-megamenu awemenu-standard md-custom md-mobile-custom md-megamenu-1 md-megamenu-mgm-5181213ec0c6d awemenu-nav md-horizontal-menu">
+	<div class="awemenu-container">
+				<ul class="awemenu">
+			<li class="awemenu-item awemenu-item-level-1 awemenu-item-1-1 ">
+	<a href="/why-choose-us" class="awemenu-item-link">
+		<span class="awemenu-item-title">Why Choose Us</span>	</a>
+		<ul class="awemenu-submenu awemenu-megamenu" data-width="535">
+		<li class="awemenu-item">
+	<div class="awemenu-megamenu-wrapper">
+				<div class="row">
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu-block block-odd first block" data-bid="135">
+        <div class="menu-block-wrapper menu-block-2 menu-name-menu-mm-why-choose-us parent-mlid-1451 menu-level-1">
+  <ul class="menu"><li class="first leaf has-children menu-mlid-1452 paths-to-possibilities mid-1452"><a href="/why-choose-us/paths-possibilities">Paths to Possibilities</a></li>
+<li class="leaf has-children menu-mlid-1460 programs-of-excellence mid-1460"><a href="/why-choose-us/programs-excellence">Programs of Excellence</a></li>
+<li class="last leaf menu-mlid-1464 featured-faculty mid-1464"><a href="/why-choose-us/our-faculty-and-you">Featured Faculty</a></li>
+</ul></div>
+</div><!-- /block -->
+			</div>
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu block-even block" data-bid="177">
+        <h3 class="title">Mega Menu Right - Why Choose Us</h3>
+      <ul class="menu"><li class="first leaf admission-process mid-3258"><a href="/getting-started/admission-process" title="Our admission process is designed with your ease in mind">Admission Process</a></li>
+<li class="leaf apply-now mid-3259"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;Why Choose Us - Right Menu&#039;);">Apply Now</a></li>
+<li class="last leaf contact-us mid-3260"><a href="/forms/contact-admissions" title="Contact our Admissions department.">Contact Us</a></li>
+</ul></div><!-- /block -->
+			</div>
+					</div>
+			</div>
+</li>	</ul>
+	</li><li class="awemenu-item awemenu-item-level-1 awemenu-item-1-2 ">
+	<a href="/getting-started" class="awemenu-item-link">
+		<span class="awemenu-item-title">Getting Started</span>	</a>
+		<ul class="awemenu-submenu awemenu-megamenu" data-width="535">
+		<li class="awemenu-item">
+	<div class="awemenu-megamenu-wrapper">
+				<div class="row">
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu-block block-odd block" data-bid="174">
+        <div class="menu-block-wrapper menu-block-4 menu-name-menu-main-2-getting-started parent-mlid-2051 menu-level-1">
+  <ul class="menu"><li class="first leaf menu-mlid-2052 choosing-a-program mid-2052"><a href="/getting-started/choosing-program">Choosing a Program</a></li>
+<li class="leaf menu-mlid-2117 admission-process mid-2117"><a href="/getting-started/admission-process">Admission Process</a></li>
+<li class="leaf menu-mlid-4567 request-admission-information mid-4567"><a href="/getting-started/create-your-personal-vip-page">Request Admission Information</a></li>
+<li class="leaf has-children menu-mlid-2119 placement-tests mid-2119"><a href="/getting-started/what-are-placement-tests" title="What Are Placement Tests">Placement Tests</a></li>
+<li class="leaf has-children menu-mlid-2121 international-students mid-2121"><a href="/getting-started/international-students" title="Community College of Philadelphia welcomes international students">International Students</a></li>
+<li class="leaf menu-mlid-2437 veterans mid-2437"><a href="/getting-started/veterans" title="Veterans student services">Veterans</a></li>
+<li class="leaf has-children menu-mlid-2321 prior-learning-assessment mid-2321"><a href="/getting-started/prior-learning-assessment">Prior Learning Assessment</a></li>
+<li class="leaf menu-mlid-2322 admission-events mid-2322"><a href="/getting-started/admission-events">Admission Events</a></li>
+<li class="last leaf menu-mlid-2123 webcasts mid-2123"><a href="/getting-started/webcasts">Webcasts</a></li>
+</ul></div>
+</div><!-- /block -->
+			</div>
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu block-even block" data-bid="178">
+        <h3 class="title">Mega Menu Right - Getting Started</h3>
+      <ul class="menu"><li class="first leaf steps-to-enrollment mid-2392"><a href="/getting-started/admission-process" title="">Steps to Enrollment</a></li>
+<li class="leaf view-the-academic-calendar mid-2393"><a href="/college-catalog/academic-calendar" title="">View the Academic Calendar</a></li>
+<li class="leaf tuition-and-fees mid-2394"><a href="/paying-college/tuition-and-fees" title="">Tuition and Fees</a></li>
+<li class="leaf payment-options mid-3594"><a href="/paying-college/payment-options" title="">Payment Options</a></li>
+<li class="leaf apply-now mid-2395"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" title="Get started on your Path to Possibilities " onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;Getting Started - Right Menu&#039;);">Apply Now</a></li>
+<li class="last leaf contact-admissions mid-2396"><a href="/forms/contact-admissions" title="">Contact Admissions</a></li>
+</ul></div><!-- /block -->
+			</div>
+					</div>
+			</div>
+</li>	</ul>
+	</li><li class="awemenu-item awemenu-item-level-1 awemenu-item-1-3 ">
+	<a href="/paying-college" class="awemenu-item-link">
+		<span class="awemenu-item-title">Paying for College</span>	</a>
+		<ul class="awemenu-submenu awemenu-megamenu" data-width="535">
+		<li class="awemenu-item">
+	<div class="awemenu-megamenu-wrapper">
+				<div class="row">
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu-block block-odd block" data-bid="198">
+        <div class="menu-block-wrapper menu-block-5 menu-name-menu-main-3-paying-for-college-f parent-mlid-2951 menu-level-1">
+  <ul class="menu"><li class="first leaf menu-mlid-2978 tuition-and-fees mid-2978"><a href="/paying-college/tuition-and-fees">Tuition and Fees</a></li>
+<li class="leaf menu-mlid-2979 payment-options mid-2979"><a href="/paying-college/payment-options">Payment Options</a></li>
+<li class="leaf has-children menu-mlid-2980 financial-aid mid-2980"><a href="/paying-college/financial-aid">Financial Aid</a></li>
+<li class="leaf menu-mlid-2995 scholarships mid-2995"><a href="/paying-college/scholarships">Scholarships</a></li>
+<li class="leaf has-children menu-mlid-2997 tuition-assistance-programs mid-2997"><a href="/paying-college/tuition-assistance-programs">Tuition Assistance Programs</a></li>
+<li class="last leaf menu-mlid-2998 tax-incentives mid-2998"><a href="/paying-college/tax-incentives">Tax Incentives</a></li>
+</ul></div>
+</div><!-- /block -->
+			</div>
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu block-even block" data-bid="184">
+        <h3 class="title">Mega Menu Right - Paying for College</h3>
+      <ul class="menu"><li class="first leaf financial-aid-options mid-2398"><a href="/paying-college/financial-aid/financial-aid-options">Financial Aid Options</a></li>
+<li class="leaf get-an-estimate-of-my-college-costs mid-3622"><a href="/paying-college/financial-aid/net-price-calculator">Get an Estimate of My College Costs</a></li>
+<li class="leaf does-the-college-offer-a-payment-plan- mid-3623"><a href="/paying-college/payment-options">Does the College Offer a Payment Plan?</a></li>
+<li class="leaf apply-now mid-2400"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;Paying for College - Right Menu&#039;);">Apply Now</a></li>
+<li class="last leaf contact-financial-aid mid-2399"><a href="/forms/contact-financial-aid" title="Contact the Financial Aid department">Contact Financial Aid</a></li>
+</ul></div><!-- /block -->
+			</div>
+					</div>
+			</div>
+</li>	</ul>
+	</li><li class="awemenu-item awemenu-item-level-1 awemenu-item-1-4 ">
+	<a href="/academic-offerings" class="awemenu-item-link">
+		<span class="awemenu-item-title">Academic Offerings</span>	</a>
+		<ul class="awemenu-submenu awemenu-megamenu" data-width="535">
+		<li class="awemenu-item">
+	<div class="awemenu-megamenu-wrapper">
+				<div class="row">
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu-block block-odd block" data-bid="234">
+        <div class="menu-block-wrapper menu-block-9 menu-name-menu-main-4-academic-offerings parent-mlid-2843 menu-level-1">
+  <ul class="menu"><li class="first leaf has-children menu-mlid-7623 all-offerings mid-7623"><a href="/academic-offerings/all-offerings" title="All offerings for guided pathways">All Offerings</a></li>
+<li class="leaf has-children menu-mlid-2969 online-learning mid-2969"><a href="/academic-offerings/online-learning">Online Learning</a></li>
+<li class="leaf has-children menu-mlid-2973 honors-opportunities mid-2973"><a href="/academic-offerings/honors-opportunities">Honors Opportunities</a></li>
+<li class="leaf has-children menu-mlid-3272 transfer-opportunities mid-3272"><a href="/academic-offerings/transfer-opportunities">Transfer Opportunities</a></li>
+<li class="leaf has-children menu-mlid-3043 professional-development mid-3043"><a href="/academic-offerings/professional-development">Professional Development</a></li>
+<li class="leaf has-children menu-mlid-3053 adult-and-community-education mid-3053"><a href="/academic-offerings/adult-basic-education">Adult and Community Education</a></li>
+<li class="leaf has-children menu-mlid-3057 high-school-student-programs mid-3057"><a href="/academic-offerings/high-school-student-programs">High School Student Programs</a></li>
+<li class="leaf menu-mlid-5070 course-finder mid-5070"><a href="https://oasis.ccp.edu:4051/pls/prod/bwwsksear.PW_SEARCH" title="Find your next course with our Course Finder" onclick="_gaq.push([&#039;_trackEvent&#039;, &#039;Course Finder&#039;, &#039;Click&#039;, &#039;Academic Offerings Side Menu&#039;,, false]);&quot;">Course Finder</a></li>
+<li class="last leaf menu-mlid-5072 college-catalog mid-5072"><a href="/college-catalog/college-catalog">College Catalog</a></li>
+</ul></div>
+</div><!-- /block -->
+			</div>
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu block-even block" data-bid="183">
+        <h3 class="title">Mega Menu Right - Academic Offerings</h3>
+      <ul class="menu"><li class="first leaf view-the-academic-calendar mid-2405"><a href="/college-catalog/academic-calendar">View the Academic Calendar</a></li>
+<li class="leaf continuing-professional-education mid-3636"><a href="/academic-offerings/professional-development" title="">Continuing Professional Education</a></li>
+<li class="leaf apply-now mid-2408"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;Academic Offerings - Right Menu&#039;);">Apply Now</a></li>
+<li class="last leaf search-class-schedule mid-2404"><a href="https://oasis.ccp.edu:4051/pls/prod/bwwsksear.PW_SEARCH" onclick="_gaq.push([&#039;_trackEvent&#039;, &#039;Course Finder&#039;, &#039;Click&#039;, &#039;Academic Offerings - Main Menu Right&#039;,, false]);">Search Class Schedule</a></li>
+</ul></div><!-- /block -->
+			</div>
+					</div>
+			</div>
+</li>	</ul>
+	</li><li class="awemenu-item awemenu-item-level-1 awemenu-item-1-5 menuClass_StudentSupport">
+	<a href="/student-support" class="awemenu-item-link">
+		<span class="awemenu-item-title">Student Support</span>	</a>
+		<ul class="awemenu-submenu awemenu-megamenu" data-width="750">
+		<li class="awemenu-item">
+	<div class="awemenu-megamenu-wrapper">
+				<div class="row">
+						<div class="col-md-8 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu-block block-odd block" data-bid="201">
+        <div class="menu-block-wrapper menu-block-6 menu-name-menu-main-5-student-support parent-mlid-2050 menu-level-1">
+  <ul class="menu"><li class="first leaf menu-mlid-2467 academic-advising mid-2467"><a href="/student-support/academic-advising">Academic Advising</a></li>
+<li class="leaf menu-mlid-2468 career-services mid-2468"><a href="/student-support/career-connections">Career Services</a></li>
+<li class="leaf menu-mlid-2470 center-for-male-engagement mid-2470"><a href="/student-support/center-male-engagement">Center for Male Engagement</a></li>
+<li class="leaf has-children menu-mlid-2473 center-on-disability mid-2473"><a href="/student-support/center-disability">Center on Disability</a></li>
+<li class="leaf menu-mlid-2469 child-development-center mid-2469"><a href="/student-support/child-development-center">Child Development Center</a></li>
+<li class="leaf menu-mlid-2466 counseling mid-2466"><a href="/student-support/counseling">Counseling</a></li>
+<li class="leaf menu-mlid-3004 keys mid-3004"><a href="/student-support/keys">KEYS</a></li>
+<li class="leaf menu-mlid-2443 learning-labs mid-2443"><a href="/student-support/learning-labs">Learning Labs</a></li>
+<li class="leaf menu-mlid-2480 library-services mid-2480"><a href="/student-support/library-services">Library Services</a></li>
+<li class="leaf menu-mlid-7151 office-of-collegiate-recovery mid-7151"><a href="/student-support/office-collegiate-recovery">Office of Collegiate Recovery</a></li>
+<li class="leaf menu-mlid-3945 single-stop mid-3945"><a href="/student-support/single-stop">Single Stop</a></li>
+<li class="leaf menu-mlid-2479 student-academic-computer-center mid-2479"><a href="/student-support/student-academic-computer-center">Student Academic Computer Center</a></li>
+<li class="leaf menu-mlid-3170 student-success-initiatives mid-3170"><a href="/student-support/student-success-initiatives">Student Success Initiatives</a></li>
+<li class="leaf menu-mlid-2472 veterans-resource-center mid-2472"><a href="/student-support/veterans-resource-center">Veterans Resource Center</a></li>
+<li class="last leaf has-children menu-mlid-2471 women-s-outreach-advocacy-center mid-2471"><a href="/student-support/women%E2%80%99s-outreach-and-advocacy-center">Women’s Outreach &amp; Advocacy Center</a></li>
+</ul></div>
+</div><!-- /block -->
+			</div>
+						<div class="col-md-4 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu block-even block" data-bid="191">
+        <h3 class="title">Mega Menu Right - Student Support</h3>
+      <ul class="menu"><li class="first leaf admission-process mid-2411"><a href="/getting-started/admission-process" title="Steps to Enrollment">Admission Process</a></li>
+<li class="leaf tuition-and-fees mid-2412"><a href="/paying-college/tuition-and-fees" title="College Costs">Tuition and Fees</a></li>
+<li class="leaf financial-aid mid-3625"><a href="/paying-college/financial-aid">Financial Aid</a></li>
+<li class="leaf apply-now mid-3626"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;Student Support - Right Menu&#039;);">Apply Now</a></li>
+<li class="last leaf request-my-transcripts mid-4463"><a href="/alumni/alumni-association/transcripts">Request My Transcripts</a></li>
+</ul></div><!-- /block -->
+			</div>
+					</div>
+			</div>
+</li>	</ul>
+	</li><li class="awemenu-item awemenu-item-level-1 awemenu-item-1-6 ">
+	<a href="/campus-life" class="awemenu-item-link">
+		<span class="awemenu-item-title">Campus Life</span>	</a>
+		<ul class="awemenu-submenu awemenu-megamenu" data-width="535">
+		<li class="awemenu-item">
+	<div class="awemenu-megamenu-wrapper">
+				<div class="row">
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu-block block-odd block" data-bid="204">
+        <div class="menu-block-wrapper menu-block-7 menu-name-menu-main-5-campus-life parent-mlid-2440 menu-level-1">
+  <ul class="menu"><li class="first leaf menu-mlid-2442 college-events mid-2442"><a href="/upcoming-college-events" title="College events and calendars.">College Events</a></li>
+<li class="leaf has-children menu-mlid-2449 athletics mid-2449"><a href="/campus-life/athletics" title="Community College of Philadelphia Athletics">Athletics</a></li>
+<li class="leaf has-children menu-mlid-2454 student-leadership-and-involvement mid-2454"><a href="/campus-life/student-leadership-and-involvement">Student Leadership and Involvement</a></li>
+<li class="leaf has-children menu-mlid-2463 art-around-the-college mid-2463"><a href="/campus-life/art-around-college">Art Around the College</a></li>
+<li class="leaf menu-mlid-2464 bookstore mid-2464"><a href="/campus-life/bookstore" title="CCP Bookstore">Bookstore</a></li>
+<li class="leaf menu-mlid-3271 food-services mid-3271"><a href="/campus-life/food-services">Food Services</a></li>
+<li class="leaf menu-mlid-2445 campus-security mid-2445"><a href="https://www.myccp.online/department-public-safety">Campus Security</a></li>
+<li class="leaf menu-mlid-2446 parking mid-2446"><a href="/campus-life/parking">Parking</a></li>
+<li class="leaf has-children menu-mlid-2447 study-abroad mid-2447"><a href="/campus-life/study-abroad">Study Abroad</a></li>
+<li class="last leaf menu-mlid-2831 events-on-campus mid-2831"><a href="/campus-life/event-calendar">Events on Campus</a></li>
+</ul></div>
+</div><!-- /block -->
+			</div>
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu block-even block" data-bid="190">
+        <h3 class="title">Mega Menu Right - Campus Life</h3>
+      <ul class="menu"><li class="first leaf sign-up-for-a-webcast mid-2414"><a href="/getting-started/webcasts">Sign Up for a Webcast</a></li>
+<li class="leaf admission-process mid-2416"><a href="/getting-started/admission-process">Admission Process</a></li>
+<li class="leaf tuition-and-fees mid-3270"><a href="/paying-college/tuition-and-fees">Tuition and Fees</a></li>
+<li class="leaf financial-aid mid-3637"><a href="/paying-college/financial-aid" title="">Financial Aid</a></li>
+<li class="last leaf apply-now mid-2415"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;Campus Life - Right Menu&#039;);">Apply Now</a></li>
+</ul></div><!-- /block -->
+			</div>
+					</div>
+			</div>
+</li>	</ul>
+	</li><li class="awemenu-item awemenu-item-level-1 awemenu-item-1-7 ">
+	<a href="/about-us" class="awemenu-item-link">
+		<span class="awemenu-item-title">About Us</span>	</a>
+		<ul class="awemenu-submenu awemenu-megamenu" data-width="535">
+		<li class="awemenu-item">
+	<div class="awemenu-megamenu-wrapper">
+				<div class="row">
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu-block block-odd block" data-bid="219">
+        <div class="menu-block-wrapper menu-block-8 menu-name-menu-main-7-about-us parent-mlid-2842 menu-level-1">
+  <ul class="menu"><li class="first leaf menu-mlid-8577 id2017-2025-strategic-plan mid-8577"><a href="https://www.myccp.online/strategic-planning/2017-2025-strategic-plan">2017-2025 Strategic Plan</a></li>
+<li class="leaf has-children menu-mlid-8806 dr-donald-generals mid-8806"><a href="/about-us/dr-donald-generals">Dr. Donald Generals</a></li>
+<li class="leaf menu-mlid-7384 institute-for-community-engagement-and-civic-leadership mid-7384"><a href="/about-us/institute-community-engagement-and-civic-leadership">Institute for Community Engagement and Civic Leadership</a></li>
+<li class="leaf menu-mlid-4359 key-facts mid-4359"><a href="/about-us/key-facts">Key Facts</a></li>
+<li class="leaf menu-mlid-2845 mission-and-goals mid-2845"><a href="/about-us/mission-and-goals">Mission and Goals</a></li>
+<li class="leaf has-children menu-mlid-2846 institutional-impact mid-2846"><a href="/about-us/institutional-impact">Institutional Impact</a></li>
+<li class="leaf has-children menu-mlid-2850 college-leadership mid-2850"><a href="/about-us/college-leadership">College Leadership</a></li>
+<li class="leaf menu-mlid-2860 offices-departments mid-2860"><a href="/about-us/offices-and-departments">Offices &amp; Departments</a></li>
+<li class="leaf menu-mlid-2863 college-directory mid-2863"><a href="/about-us/college-directory">College Directory</a></li>
+<li class="leaf has-children menu-mlid-2864 centers-of-excellence mid-2864"><a href="/about-us/centers-excellence">Centers of Excellence</a></li>
+<li class="leaf menu-mlid-2876 career-opportunities mid-2876"><a href="/about-us/career-opportunities">Career Opportunities</a></li>
+<li class="leaf has-children menu-mlid-2742 locations mid-2742"><a href="/locations">Locations</a></li>
+<li class="leaf has-children menu-mlid-3179 college-tv-station mid-3179"><a href="/about-us/welcome-ccptv" title="CCPTV is Community College of Philadelphia’s cable channel viewable throughout the city of Philadelphia via the Comcast cable network on Channel 53 or on FiOS channel 21.">College TV Station</a></li>
+<li class="leaf menu-mlid-3211 community-services mid-3211"><a href="/about-us/community-services" title="Serving as a resource to the community is an important part of the mission of Community College of Philadelphia.">Community Services</a></li>
+<li class="last leaf menu-mlid-3137 newsroom mid-3137"><a href="/newsroom" title="Latest news and press releases from Community College of Philadelphia">Newsroom</a></li>
+</ul></div>
+</div><!-- /block -->
+			</div>
+						<div class="col-md-6 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu block-even block" data-bid="189">
+        <h3 class="title">Mega Menu Right - About Us</h3>
+      <ul class="menu"><li class="first leaf contact-information mid-2419"><a href="/about-us/college-directory">Contact Information</a></li>
+<li class="leaf college-president mid-5154"><a href="/about-us/college-leadership/meet-president">College President</a></li>
+<li class="leaf board-of-trustees mid-3627"><a href="/about-us/college-leadership">Board of Trustees</a></li>
+<li class="leaf job-openings-at-the-college mid-3628"><a href="/about-us/career-opportunities">Job Openings at the College</a></li>
+<li class="leaf college-news mid-3629"><a href="/newsroom">College News</a></li>
+<li class="leaf apply-now mid-3630"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;About Us - Right Menu&#039;);">Apply Now</a></li>
+<li class="last leaf alumni-association mid-6586"><a href="/alumni-association">Alumni Association</a></li>
+</ul></div><!-- /block -->
+			</div>
+					</div>
+			</div>
+</li>	</ul>
+	</li><li class="awemenu-item awemenu-item-level-1 awemenu-item-1-8 ">
+	<a href="" class="awemenu-item-link">
+		<span class="awemenu-item-title">Quick Links</span>	</a>
+		<ul class="awemenu-submenu awemenu-megamenu" data-width="100%">
+		<li class="awemenu-item">
+	<div class="awemenu-megamenu-wrapper">
+				<div class="row">
+						<div class="col-md-12 col-xs-12">
+			<!-- Template: block.tpl.php -->
+<div class="block block-menu menu-left align-self-center block-odd block" data-bid="46">
+        <ul class="menu"><li class="first leaf locations mid-2919"><a href="/locations" class="before-locations">Locations</a></li>
+<li class="leaf college-catalog mid-1126"><a href="/college-catalog/college-catalog" title="Catalog of available courses offered by the Community College of Philadelphia." class="before-catalog">College Catalog</a></li>
+<li class="leaf events mid-1127"><a href="/calendars" title="Event Calendar" class="before-events">Events</a></li>
+<li class="leaf canvas-login mid-6620"><a href="https://ccp.instructure.com/" class="before-canvas">Canvas Login</a></li>
+<li class="last leaf workforce-development mid-9136"><a href="/academic-offerings/professional-development" class="before-workforce">Workforce Development</a></li>
+</ul></div><!-- /block -->
+<!-- Template: block.tpl.php -->
+<div class="block block-menu menu-right menu-block-yellow block-even block" data-bid="82">
+        <ul class="menu"><li class="first leaf apply mid-9354"><a href="https://ccp.elluciancrmrecruit.com/Apply/Account/Login" target="_blank" onclick="ga(&#039;send&#039;, &#039;event&#039;, &#039;Apply Now&#039;, &#039;Click&#039;, &#039;Page Header&#039;);">Apply</a></li>
+<li class="leaf jobs mid-3595"><a href="/about-us/career-opportunities">Jobs</a></li>
+<li class="leaf give mid-3936"><a href="/alumni-friends/why-support-college">Give</a></li>
+<li class="last leaf myccp mid-1134"><a href="http://myccp.online/" title="My CCP access" onclick="_gaq.push([&#039;_trackEvent&#039;, &#039;My CCP&#039;, &#039;Click&#039;, &#039;Top Page Menu&#039;,, false]);">MyCCP</a></li>
+</ul></div><!-- /block -->
+			</div>
+					</div>
+			</div>
+</li>	</ul>
+	</li>		</ul>
+	</div>
+</div></div><!-- /block -->
+ 
+        </nav>
+      </div>
+    </div>
+    <!-- /navigation -->
+
+
+
+    
+      
+    <!-- End Row --> 
+  <div class="spacer" style="clear: both;"></div>
+  </header><!-- /header -->
+
+
+
+
+
+
+<div id="FrontPage-Hero-Image-Container">
+  
+  <div id="FrontPage-Hero-Image-Background-Aspect" class="field-fp-hero-aspect" style="background: url(https://ccp.edu/sites/default/files/images/Hero_FrontPage/commencement_0.jpg); background-size: 100% auto;
+  background-position: top;
+  background-repeat: none;"></div>        <div class="field-hero-callout">
+        <div class="fp-img-container"><a href="academic-offerings/all-offerings" alt"find your path here"><img src="/sites/default/files/images/Hero_FrontPage/ccp-search-callout.png" alt="find your path here">
+</a></div>      </div>
+
+</div>
+
+
+
+
+
+  <!-- ______________________ MAIN _______________________ -->
+
+  <div id="main" class="page--front">
+    <div class="page--front-container">
+      <div class="page--front-row">
+      <!-- Skip Link Anchor -->
+      <section id="content" class="" role="main">
+
+       
+     
+
+
+                  <!-- <div id="content-header"> -->
+
+
+            
+            
+
+                        
+            
+            
+          <!-- </div> /#content-header -->
+        
+        <div id="content-area" class="">
+          
+<!-- Template: region.tpl.php -->
+
+
+<div  about="/welcome-community-college-philadelphia" typeof="sioc:Item foaf:Document" class="ds-1col node node-front-page node-odd view-mode-full clearfix">
+
+  
+  
+  <div class="field-front-page-mini-slider">
+    <div class="view view-mini-slider-content-page view-id-mini_slider_content_page view-display-id-fp_minislider view-fp-mini-slider view-dom-id-a9cb551ef2b8677c6b05097e56a5f41b">
+        
+  
+  
+  
+	
+    <div class="view-content">
+      <div class="swiper-container row">    <ul class="swiper-wrapper">          <li class="views-row views-row-1 views-row-odd views-row-first swiper-slide">  
+  <div class="views-field views-field-field-mini-slider-icon">        <div class="field-content mini-slider-icon"><img typeof="foaf:Image" src="https://ccp.edu/sites/default/files/images/FrontPage/MiniSlider/your-success-story.jpg" width="410" height="410" alt="Graduate celebrating with arm up" /></div>  </div>  
+          
+  <div class="field-mini-slider-text">
+    <h4>Your Success Story Starts in 2020</h4>
+<p>Don't put your future career on hold. There is still time to enroll in our accelerated 10-week term. Classes start Feb. 11, 2020.</p>
+<p style="margin: 0px; font-weight: normal; text-align: left;"><strong><a href="/getting-started/admission-process">Apply Now for Spring Classes &gt;&gt;</a><a href="/getting-started/admission-events"><br /></a></strong></p>
+  </div>
+  </li>
+          <li class="views-row views-row-2 views-row-even swiper-slide">  
+  <div class="views-field views-field-field-mini-slider-icon">        <div class="field-content mini-slider-icon"><img typeof="foaf:Image" src="https://ccp.edu/sites/default/files/images/FrontPage/MiniSlider/find-your-career.jpg" width="410" height="410" alt="Nursing student looking at camera next to medical equipment" /></div>  </div>  
+          
+  <div class="field-mini-slider-text">
+    <h4>Find Your Career</h4>
+<p>Explore the careers, salaries and job demand linked to your program of interest.</p>
+<p><strong><a href="/academic-offerings/all-offerings/black-studies">Explore Our Degree and Certificate Programs &gt;&gt;</a></strong></p>
+  </div>
+  </li>
+          <li class="views-row views-row-3 views-row-odd swiper-slide">  
+  <div class="views-field views-field-field-mini-slider-icon">        <div class="field-content mini-slider-icon"><img typeof="foaf:Image" src="https://ccp.edu/sites/default/files/images/FrontPage/MiniSlider/admission-events.jpg" width="554" height="554" alt="College mascot, Roary, using computer to register for classes" /></div>  </div>  
+          
+  <div class="field-mini-slider-text">
+    <h4>Join Us for an Admission Event</h4>
+<p>Are you ready to get started, but not sure where to begin? Join us for an admission event and we'll walk you through the steps to enrollment.</p>
+<p><strong><a href="/getting-started/admission-events">RSVP for an Admission Event &gt;&gt;</a></strong></p>
+  </div>
+  </li>
+          <li class="views-row views-row-4 views-row-even views-row-last swiper-slide">  
+  <div class="views-field views-field-field-mini-slider-icon">        <div class="field-content mini-slider-icon"><img typeof="foaf:Image" src="https://ccp.edu/sites/default/files/images/FrontPage/MiniSlider/power-up.jpg" width="410" height="410" alt="Business owner in store looking at camera" /></div>  </div>  
+          
+  <div class="field-mini-slider-text">
+    <h4>Power Up Your Business<strong><br /></strong></h4>
+<p>A neighborhood-based approach to support small business owners in Philadelphia—like you—Power Up gives you the tools you need to grow your business and help your community thrive. New workshops at our Main Campus starting in February.</p>
+<p><a href="/business-and-industry/power-your-business">Power Up Your Business &gt;&gt;</a></p>
+  </div>
+  </li>
+      </ul></div>    </div>
+		
+  
+  
+  
+  
+      <div class="view-footer">
+      <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>    </div>
+  
+  
+</div>  </div>
+
+  <section class="field-hp-quick-facts">
+    <div class="hp-stats">
+<div class="row row-flex">
+<div class="grid-columns-3"><span class="hp-stat-size-2 hp-stat-weight-400">Between 2006 and 2016,</span><br /><span class="hp-stat-size-4 hp-stat-weight-800">564</span><br /><span class="hp-stat-size-3 hp-stat-weight-800">graduates</span><br /><span class="hp-stat-size-2 hp-stat-weight-400">have gone on to enroll<br />at an Ivy League college.</span></div>
+<div class="grid-columns-3 center"><span class="hp-stat-size-4 hp-stat-weight-800">80%</span><br /><span class="hp-stat-size-3 hp-stat-weight-800">of our 2018<br />graduates</span><br /><span class="hp-stat-size-2 hp-stat-weight-400">rated their career preparation<br />as “good” or “excellent.”.</span></div>
+<div class="grid-columns-3"><span class="hp-stat-size-1 hp-stat-weight-400">Since 2007, graduates have earned more than</span><br /><div class="hp-stat-size-4-div hp-stat-weight-800">8,490</div>
+<p><span class="hp-stat-size-3 hp-stat-weight-800">degrees</span><br /><span class="hp-stat-size-1 hp-stat-weight-400">at the bachelor’s level or higher, including<br />1,302 graduate or professional degrees.</span></p></div>
+</div>
+</div>
+  </section>
+
+  <section class="field-hp-featured-article">
+    <div class="col-xs-12 col-md-6"><img class="img" src="/sites/default/files/images/FrontPage/anyssa-elmanfaa.jpg" alt="Anyssa El manfaa holding  flowers after recieving award" width="600" height="400" /></div>
+<div class="col-xs-12 col-md-6" style="padding: 8px;">
+<h2><strong>Alumni Spotlight:</strong><br />Anyssa El manfaa</h2>
+<p>Honors graduate Anyssa El-Manfaa was awarded the prestigious Jack Kent Cooke scholarship in April and will receive up to $40k per year to attend Swarthmore College. The Jack Kent Cooke Scholarship provides high-achieving students with the financial resources to transfer to and graduate from a four-year college.</p>
+<p>El Manfaa said she enrolled at CCP to try to rewrite a narrative about herself; one that said she is not a scholar, not destined for college. Her time in CCP’s Honors program changed her thinking. “I am supposed to be here (in College), she said with a grin. “I belong here.”</p>
+<p><strong><a href="https://www.ccp.edu/about-us/institutional-impact/student-success">Student Success &gt;&gt;</a></strong></p>
+</div>
+  </section>
+
+  <div class="field-title">
+    <h2>Welcome to the Community College of Philadelphia</h2>  </div>
+
+  <div class="field-body">
+    <p style="clear: both;"> <img title="Moving Philadelphia Forward" src="/sites/default/files/images/FrontPage/hp-roary.jpg" alt="The mint Building with banners celebrating 50 years of Community College of Philadelphia" width="400" height="225" /></p>
+<p>Your path to success starts at Community College of Philadelphia. Our programs provide a foundation for the most sought after careers in health care; science and technology; design, construction and transportation; business, entrepreneurship and law; liberal arts and communications; and education and human services. Affordable tuition and opportunities for financial assistance make it easy for you to pursue your goals. Community College of Philadelphia is committed to student success. While some of our students transfer to the top colleges and universities in the nation, others find employment opportunities in some of the most lucrative careers. Start your success story here.</p>
+<p> </p>
+<p> </p>
+  </div>
+</div>
+
+        </div>
+
+        
+      </section><!-- /content -->
+
+      <!-- /sidebar-first -->
+
+      <!-- /sidebar-second -->
+      </div><!-- /row -->
+    </div>
+  </div><!-- /main -->
+
+
+
+
+
+
+
+
+
+<!--   // Region for livechat and other page overlays or content to be placed above the footer.    -->
+
+  <!-- ______________________ FOOTER _______________________ -->
+
+  
+<footer id="footer" class="page view-modes-default with-navigation ">
+  <div id="Footer-Container" class="container">
+  <div id="FooterWidth" class="">     <div id="Footer_Left" class="footerleft">  
+      <!-- Address Information -->
+      <div itemscope itemtype="http://schema.org/EducationalOrganization"> <a itemprop="url" href="http://www.ccp.edu"><span itemprop="name" class="footerBoldYellow"><strong>Community College of Philadelphia</strong></span></a>
+        <div  class="footerDescription" itemprop="description">Community College of Philadelphia with more than 70 associate's degree, certificate and continuing education programs is your path to possibilities.</div>
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"> <span class="footerAddress" itemprop="streetAddress">1700 Spring Garden Street</span>, <span class="footerAddress" itemprop="addressLocality">Philadelphia</span>, <span class="footerAddress"itemprop="addressRegion">PA</span> <span class="footerAddress" itemprop="postalCode">19130</span> &nbsp; &nbsp; <span class="footerAddress footerphone" itemprop="telephone"><strong>215-751-8000</strong></span> </div>
+      </div>
+    </div>
+    <div id="Footer_Right" class="footerright"> 
+      <!-- Block to hold Footer Navigation -->
+      <div class="footerRightBlock"> 
+<!-- Template: region.tpl.php -->
+
+<!-- Template: block.tpl.php -->
+<div class="block block-block block-odd first block" data-bid="654">
+        <ul class="socialMediaIconList">
+  <li> <a href="http://www.facebook.com/CCPedu" target="_blank" class="fab fa-facebook-square" title="Visit our Facebook Page">Facebook Page </a> </li>
+  <li> <a href="http://www.twitter.com/CCPedu" target="_blank" class="fab fa-twitter" title="View our Twitter Feed">Twitter Feed </a> </li>
+  <li> <a href="http://www.linkedin.com/edu/school?id=20181&trk=edu-ca-head-logo" target="_blank" class="fab fa-linkedin" title="Join our Linkedin">Linked In </a> </li>
+  <li> <a href="http://www.youtube.com/user/ComCollegePhila" target="_blank" class="fab fa-youtube" title="View our Videos on YouTube">YouTube Channel </a> </li>
+  <li> <a href="http://instagram.com/ccpedu" target="_blank" class="fab fa-instagram" title="Check Out our Instagram">Instagram Feed </a> </li>
+</ul>
+</div><!-- /block -->
+<!-- Template: block.tpl.php -->
+<div class="block block-menu block-even last block" data-bid="712">
+        <ul class="menu"><li class="first leaf site-map mid-3604"><a href="/site-map">Site Map</a></li>
+<li class="leaf consumer-info mid-3008"><a href="/consumer-information" title="Consumer information">Consumer Info</a></li>
+<li class="leaf privacy-statement mid-3966"><a href="/privacy-statement" title="">Privacy Statement</a></li>
+<li class="leaf right-to-know mid-3939"><a href="/right-know">Right to Know</a></li>
+<li class="leaf directory mid-3010"><a href="/about-us/college-directory" title="The College Directory">Directory</a></li>
+<li class="last leaf news mid-3011"><a href="/newsroom" title="Latest News and Press Releases about the College">News</a></li>
+</ul></div><!-- /block -->
+ </div>
+    </div>
+  </div>
+</div>
+</footer>
+
+
+</div><!-- /page -->
+
+
+<!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+     
+     resizeReInit: true,
+      spaceBetween: 30,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      autoplay: {
+        delay: 4500,
+        disableOnInteraction: false,
+      },
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      // responsive
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        960: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      }
+
+
+
+
+    });
+
+
+
+
+  </script>
+
+
+<!--  Write out Javascript Tracking Tag -->
+  
+<!-- Template: region.tpl.php -->
+
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <!-- A11y toolbar-->
+    <!--  <script type="text/javascript" src="https://www.ccp.edu/sites/all/libraries/a11y-toolbar/js/a11y-toolbar.js"></script>  -->
+    <script type="text/javascript" src=" https://ccp.edu/sites/all/libraries/a11y-toolbar/js/a11y-toolbar.js"></script> 
+   
+
+
+    
+ 
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"a5a8a73090","applicationID":"3054711","transactionName":"ZVZbYEUCXUUFVUANW1wcbEZeTBxfClJRHBpCW0k=","queueTime":0,"applicationTime":4,"atts":"SRFYFg0YTks=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

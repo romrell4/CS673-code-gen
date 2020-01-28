@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"9e4ffb6128",applicationID:"39680854"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="title" content="| Northland Pioneer College, Arizona" />
+<link rel="shortlink" href="https://www.npc.edu/" />
+<link rel="canonical" href="https://www.npc.edu/" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700,regular,300|Roboto+Slab:700,regular,100,300|Roboto:100,300,500,700,900,regular&amp;subset=latin" media="all" />
+<link rel="shortcut icon" href="/sites/default/files/npc-favico-256.ico" type="image/vnd.microsoft.icon" />
+<script src="/sites/default/files/google_tag/google_tag.script.js?q4mlao"></script>
+<script>window.a2a_config=window.a2a_config||{};a2a_config.callbacks=a2a_config.callbacks||[];a2a_config.templates=a2a_config.templates||{};a2a_config.icon_color = "#d3d3d3";</script>
+
+    <title>   Northland Pioneer College, Arizona | Expanding Minds • Transforming Lives </title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_jC4o_v3l8nc7LQ6FKZWaxo8yuJTH-M7dCwwRH5_Ax-w.css?q4mlao" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_R7809SiKkQgdVOzTJeJR6PJ3aCm2E7LGBgYlH9YQMUg.css?q4mlao" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    <meta name="google-site-verification" content="Piyc9e33RqNsQKG2RTSMnujWjGlKuAYuqz7x6r5CBMw" />  
+  </head>
+  <body class="fontyourface path-frontpage">
+    <a href="#main-content" class="visually-hidden focusable">
+      Skip to main content
+    </a>
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TL255S4" height="0" width="0" title="Google Tag Manager">Google Tag Manager</iframe></noscript>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="page-wrapper" class="clearfix">
+  <div id="page" class="clearfix with--header without--menus with--preface-first with--preface-second with--preface-third with--preface-fourth with--highlighted with--content without--sidebar-first without--sidebar-second with--postscript-first without--postscript-second without--postscript-third with--postscript-fourth without--footer">
+
+    <button class="c-nav-button">
+      <div class="c-nav-button_wrap">
+        <div class="c-nav-button_icon">
+          <span class="c-nav-button_line"></span>
+          <span class="c-nav-button_line"></span>
+          <span class="c-nav-button_line"></span>
+        </div>
+      </div>
+    </button>
+    
+    <div id="sidebar-menu" class="sidebar-menu outer-wrapper clearfix">
+                <div class="region--sidebar-menu region region-sidebar-menu">
+    <nav role="navigation" aria-labelledby="block-sidebar-menu-menu" class="block block-menu navigation menu--sidebar-menu" id="block-sidebar-menu">
+            
+  <h2 class="visually-hidden" id="block-sidebar-menu-menu">Sidebar Menu<span class="mobile-expand"></span></h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/" target="" rel="" class="menu is-active" data-drupal-link-system-path="&lt;front&gt;">Menu</a>
+              </li>
+                <li class="menu-item">
+        <a href="/search" target="" rel="" class="search" data-drupal-link-system-path="search">Search</a>
+              </li>
+                <li class="menu-item">
+        <a href="/advising" target="" rel="" class="contact-advisor" data-drupal-link-system-path="node/137096">Contact Adviser</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://mynpc.npc.edu/ICS/Welcome.jnz?portlet=AddDrop_Courses&amp;screen=Advanced%20Course%20Search&amp;screenType=next" target="_blank" rel="" class="class-search">Class Search</a>
+              </li>
+                <li class="menu-item">
+        <a href="/Application" target="_blank" rel="" class="apply-now" data-drupal-link-system-path="node/908">Apply Now</a>
+              </li>
+                <li class="menu-item">
+        <a href="/college-catalog" target="" rel="" class="college-catalog" data-drupal-link-system-path="node/137366">College Catalog</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<nav role="navigation" aria-labelledby="block-social-media-menu" class="block block-menu navigation menu--social-media" id="block-social-media">
+            
+  <h2 class="visually-hidden" id="block-social-media-menu">Social Media<span class="mobile-expand"></span></h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="https://www.facebook.com/NorthlandPioneerCollege/" target="_blank" rel="" class="fab fa-facebook-f">Facebook</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.instagram.com/northlandpioneercollege/" target="_blank" rel="" class="fab fa-instagram">Instagram</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://twitter.com/NPCedu" target="_blank" rel="" class="fab fa-twitter">Twitter</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.youtube.com/user/NorthlandPioneerCol" target="_blank" rel="" class="fab fa-youtube">YouTube</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.linkedin.com/school/northland-pioneer-college/" target="_blank" rel="" class="fab fa-linkedin-in">LinkedIn</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.flickr.com/photos/npcedu/albums" target="_blank" rel="" class="fab fa-flickr">Flickr</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+  
+       
+    </div>
+    
+          <div id="alert-outer-wrapper" class="outer-wrapper clearfix">
+        <div class="alert-layout">
+            <div class="region--alert region region-alert">
+    <div class="block block-views block-" id="block-npc-alerts-block-1">
+  
+    
+
+  <div class="block-content">
+          <div class="views-element-container"><div class="view view-npc-alerts view-id-npc_alerts view-display-id-block_1 js-view-dom-id-c4411a45c7bb54e4183fb37bae81240ab7a8e77cb28b51614a1b618394906d06">
+  
+    
+        
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+        </div>
+      </div>
+        
+    <header id="header-outer-wrapper" class="outer-wrapper clearfix without-secondary-menu" role="banner">
+      <div id="mobile-header-layout" class="mobile-header-layout clearfix">
+          <div class="region--mobile-header region region-mobile-header">
+    <div class="block block-simple-block block-header-logo" id="block-header-logo">
+  
+    
+
+  <div class="block-content">
+          <div class="site-logo"><a href="/"><img alt="" src="/themes/custom/npc_omega/images/npc-logo-main.png" /></a></div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+      </div>  
+      <div id="header-layout" class="header-layout with--header without--menus inner-wrapper clearfix">
+          <div class="region--header region region-header">
+    <div class="block block-simple-block block-transform-your-life" id="block-transform-your-life">
+  
+    
+
+  <div class="block-content">
+          <div class="tyl-1">Transform <span class="tyl-2">Your</span> Life</div>
+
+      </div>
+</div>
+
+
+
+
+
+<div class="block block-simple-block block-header-logo" id="block-header-logo--2">
+  
+    
+
+  <div class="block-content">
+          <div class="site-logo"><a href="/"><img alt="" src="/themes/custom/npc_omega/images/npc-logo-main.png" /></a></div>
+
+      </div>
+</div>
+
+
+
+
+
+<nav role="navigation" aria-labelledby="block-header-menu-menu" class="block block-menu navigation menu--header-menu" id="block-header-menu">
+            
+  <h2 class="visually-hidden" id="block-header-menu-menu">Header Menu<span class="mobile-expand"></span></h2>
+  
+
+          <ul class="menu">
+          <li class="menu-item">
+      <a href="/areas-of-interest">
+        <span class="button-icon">
+          <img class="svg" src="/themes/custom/npc_omega/images/circle-button.svg" />
+          <i class="fas fa-book-reader"></i>
+        </span>
+        Find Your Program
+      </a>
+    </li>
+          <li class="menu-item">
+      <a href="/financial-aid-scholarships">
+        <span class="button-icon">
+          <img class="svg" src="/themes/custom/npc_omega/images/circle-button.svg" />
+          <i class="fas fa-dollar-sign"></i>
+        </span>
+        Financial Aid
+      </a>
+    </li>
+          <li class="menu-item">
+      <a href="/locations">
+        <span class="button-icon">
+          <img class="svg" src="/themes/custom/npc_omega/images/circle-button.svg" />
+          <i class="fas fa-map-marker-alt"></i>
+        </span>
+        Our Locations
+      </a>
+    </li>
+          <li class="menu-item">
+      <a href="/scholarships">
+        <span class="button-icon">
+          <img class="svg" src="/themes/custom/npc_omega/images/circle-button.svg" />
+          <i class="fas fa-search-dollar"></i>
+        </span>
+        Search Scholarships
+      </a>
+    </li>
+          <li class="menu-item">
+      <a href="/Application">
+        <span class="button-icon">
+          <img class="svg" src="/themes/custom/npc_omega/images/circle-button.svg" />
+          <i class="fas fa-clipboard-check"></i>
+        </span>
+        Apply
+      </a>
+    </li>
+    </ul>
+
+  </nav>
+
+  </div>
+
+      </div>
+    </header> <!-- /.section, /#header-->
+    
+    <section id="hero-outer-wrapper" class="outer-wrapper hide-mobile clearfix">
+      <div id="hero-layout" class=" inner-wrapper clearfix">
+              </div>
+    </section>
+    
+        
+          <section id="core-outer-wrapper" class="outer-wrapper clearfix">
+        <div id="core-layout" class="core-layout with--highlighted inner-wrapper hide-mobile clearfix">
+            <div class="region--highlighted region region-highlighted">
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+  </div>
+
+        </div>
+      </section>
+              <section id="preface-first-outer-wrapper" class="preface-outer-wrapper hide-mobile clearfix">
+        <div id="preface-first-layout" class="preface-layout with--preface-first with--preface-second with--preface-third with--preface-fourth preface-layout inner-wrapper clearfix">
+            <div class="region--preface-first region region-preface-first">
+    <div class="block block-views block-" id="block-npc-featured-items-front-page">
+  
+    
+
+  <div class="block-content">
+          <div class="views-element-container"><div class="view view-npc-featured-items view-id-npc_featured_items view-display-id-front_page js-view-dom-id-1c2ab06893838ba28dc7f3c60668684c513dad73986ad9404123b306830a1fbb">
+  
+    
+            <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-feature-image"><div class="field-content"><a href="/event/20200221/scholarship-workshop-scholarship-essay"><div class="image">  <img src="/sites/default/files/styles/feature_item/public/feature/Scholarship-Workshop-WEB-Top.jpg?itok=KDIy76XT" width="304" height="171" alt="2020 Scholarship Workshop" typeof="Image" class="image-style-feature-item" />
+
+
+</div></a></div></div><div class="views-field views-field-field-feature-text"><div class="field-content"><a href="/event/20200221/scholarship-workshop-scholarship-essay">FREE Scholarship Workshop - The Scholarship Essay - Learn more &gt;</a></div></div></div>
+    <div class="views-row"><div class="views-field views-field-field-feature-image"><div class="field-content"><a href="/event/20200218/talent-contest-auditions-2020"><div class="image">  <img src="/sites/default/files/styles/feature_item/public/feature/Feature_TalentContest_Auditions%26amp%3BShow-20%5B1%5D.jpg?itok=FH65dNpZ" width="304" height="171" alt="Talent Contest" typeof="Image" class="image-style-feature-item" />
+
+
+</div></a></div></div><div class="views-field views-field-field-feature-text"><div class="field-content"><a href="/event/20200218/talent-contest-auditions-2020">Audition for Student Government Talent Contest, top prize $500! Learn more &gt;</a></div></div></div>
+    <div class="views-row"><div class="views-field views-field-field-feature-image"><div class="field-content"><a href="https://prezi.com/view/LgqtuQBl5ctVNNYQ0yAB/" target="_blank"><div class="image">  <img src="/sites/default/files/styles/feature_item/public/feature/FPfeature_RegTutorial.jpg?itok=vES1Ds-c" width="304" height="171" alt="Person on laptop watching video" typeof="Image" class="image-style-feature-item" />
+
+
+</div></a></div></div><div class="views-field views-field-field-feature-text"><div class="field-content"><a href="https://prezi.com/view/LgqtuQBl5ctVNNYQ0yAB/" target="_blank">Registration help for NEW students. This tutorial will help you get started!</a></div></div></div>
+    <div class="views-row"><div class="views-field views-field-field-feature-image"><div class="field-content"><a href="/ecashier"><div class="image">  <img src="/sites/default/files/styles/feature_item/public/feature/FPfeature_eCashier.jpg?itok=8qtR6ugp" width="304" height="171" alt="girl looking at laptop holding credit card" typeof="Image" class="image-style-feature-item" />
+
+
+</div></a></div></div><div class="views-field views-field-field-feature-text"><div class="field-content"><a href="/ecashier">Budget your tuition, fees and book costs over one semester with eCashier!</a></div></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+        </div>
+      </section>
+              <section id="preface-second-outer-wrapper" class="preface-outer-wrapper hide-mobile clearfix">
+        <div id="preface-second-layout" class="preface-layout with--preface-first with--preface-second with--preface-third with--preface-fourth preface-layout inner-wrapper clearfix">
+            <div class="region--preface-second region region-preface-second">
+    <div class="block block-views block-" id="block-npc-student-profiles-front-page">
+  
+    
+
+  <div class="block-content">
+          <div class="views-element-container"><div class="view view-npc-student-profiles view-id-npc_student_profiles view-display-id-front_page js-view-dom-id-461f5bf8aa5eded69defc9ccc276c8aeccba32a7ffd1e7d20e64fb85f8c3e873">
+  
+    
+        <div class="view-header">
+      <div class="section-type">Student Spotlight</div>
+<hr class="hero-stroke" /><div class="profile-slider-background"></div>
+    </div>
+          <div class="view-content">
+      
+
+<div id="slick-views-npc-student-profiles-front-page-1" data-content-gallery class="slick slick--view--npc-student-profiles slick--view--npc-student-profiles--front-page slick--optionset--student-profile slick--content"><div id="slick-views-npc-student-profiles-front-page-1-slider" data-slick="{&quot;mobileFirst&quot;:true,&quot;autoplay&quot;:true,&quot;autoplaySpeed&quot;:7000,&quot;fade&quot;:true}" class="slick__slider"><div class="slick__slide slide slide--0"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/westin-lee"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="Westin Lee" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/stuspotwlee2.jpg?itok=wp90Gs62" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/westin-lee" class="name">Westin Lee <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>I love the NPC/NAVIT program. It's giving me a great head start while I'm still in high school.</p></div><div class="major"><a href="/welding">Welding <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div><div class="slick__slide slide slide--1"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/jessica-austin"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="Jessica Austin" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/stu-spot-jaustin2.jpg?itok=xKHnGPCG" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/jessica-austin" class="name">Jessica Austin <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>NPC has a flexible class schedule and I am able to take classes that fit my hectic life.</p></div><div class="major"><a href="/university-transfer-degrees">University Transfer Degrees <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div><div class="slick__slide slide slide--2"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/robert-cavazos"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="Robert Cavazos" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/stuprofile-jortega.jpg?itok=Dzos4Wyz" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/robert-cavazos" class="name">Robert Cavazos <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>After meeting and talking to many CNAs and Nurses that worked at the hospital with my wife, they all said the same thing: “Go to NPC, it’s the greatest nursing college in Arizona."</p></div><div class="major"><a href="/registered-nursing-rn">Registered Nursing (RN) <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div><div class="slick__slide slide slide--3"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/john-mcgaughey"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="John McGaughey" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/stu-spot-jmcgaughey.jpg?itok=B50Wo4yo" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/john-mcgaughey" class="name">John McGaughey <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>NPC showed me that I can go back to school and succeed, even as an older student.</p></div><div class="major"><a href="/business-transfer-degree">Business Transfer Degree <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div><div class="slick__slide slide slide--4"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/cindy-owen"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="Cindy Owen" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/stu-profile-cowen.jpg?itok=GtU4LjZ9" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/cindy-owen" class="name">Cindy Owen <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>NPC was the perfect place for me to step back into education.</p></div><div class="major"><a href="/university-transfer-degrees">University Transfer Degrees <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div><div class="slick__slide slide slide--5"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/ashley-attakai"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="Ashley Attakai" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/ashley-attakai-pdc-student-spotlight-2019-img0056.jpg?itok=PyLfK27O" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/ashley-attakai" class="name">Ashley Attakai <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>NPC has helped me envision a better future for myself and my daughter.</p></div><div class="major"><a href="/registered-nursing-rn">Registered Nursing (RN) <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div><div class="slick__slide slide slide--6"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/jayde-lucero"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="Jayde Lucero" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/spotlightjaydelucero.jpg?itok=VmchgYHi" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/jayde-lucero" class="name">Jayde Lucero <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>I love NPC because of the opportunities it offers while getting a good education.</p></div><div class="major"><a href="/cosmetology">Cosmetology <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div><div class="slick__slide slide slide--7"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/jamie-ortega"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="Jamie Ortega" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/student-profile-jortega-3.jpg?itok=dUu-1sYC" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/jamie-ortega" class="name">Jamie Ortega <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>The staff and faculty at NPC really <em>care</em> about your success.<br />
+ </p><p> </p></div><div class="major"><a href="/registered-nursing-rn">Registered Nursing (RN) <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div><div class="slick__slide slide slide--8"><div class="slide__content"><div class="slide__media"><a href="/student-profiles/kalynn-adams"><div class="media media--slick media--switch media--switch--content media--image"><img height="600" width="480" alt="Kalynn Adams" class="media__image media__element" src="/sites/default/files/styles/student_profile_slider/public/profile/stuspotkadams.jpg?itok=Y4zPPqZ4" typeof="foaf:Image" /></div></a></div><div class="slide__caption"><div class="main-panel"><a href="/student-profiles/kalynn-adams" class="name">Kalynn Adams <i class="fas fa-chevron-circle-right"></i></a><hr class="hero-stroke" /><div class="bio"><p>I didn’t have to leave home to get a quality education.</p></div><div class="major"><a href="/entrepreneurship">Entrepreneurship <i class="fas fa-chevron-circle-right"></i></a></div></div></div></div></div></div><nav class="slick__arrow"><button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button><button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button></nav></div>
+    </div>
+  
+            <div class="view-footer">
+      <div class="slider-nav-buttons"><div class="slider-nav-inner"><a href="#prev" class="slider-nav slider-nav-prev"><span class="button-icon"><img class="svg" src="/themes/custom/npc_omega/images/circle-button.svg" /><i class="fas fa-chevron-left"></i></span></a> <a href="#next" class="slider-nav slider-nav-next"><span class="button-icon"><img class="svg" src="/themes/custom/npc_omega/images/circle-button.svg" /><i class="fas fa-chevron-right"></i></span></a></div></div>
+    </div>
+    </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+        </div>
+      </section>
+              <section id="preface-third-outer-wrapper" class="preface-outer-wrapper hide-mobile clearfix">
+        <div id="preface-third-layout" class="preface-layout with--preface-first with--preface-second with--preface-third with--preface-fourth preface-layout inner-wrapper clearfix">
+            <div class="region--preface-third region region-preface-third">
+    <div class="block block-views block-" id="block-npc-aggregator-spotlight-items-front-page">
+  
+    
+
+  <div class="block-content">
+          <div class="views-element-container"><div class="view view-npc-aggregator-spotlight-items view-id-npc_aggregator_spotlight_items view-display-id-front_page js-view-dom-id-4c9df2fa0af442450d5c1a39691cdee49968f983df6e0e41d84411ccd5ee52e4">
+  
+    
+        <div class="view-header">
+      <div class="section-type">Student Achievements</div>
+<hr class="hero-stroke" /><p class="show-mobile"><img src="/themes/custom/npc_omega/images/student-achievement-merit-badge.png" /></p>
+    </div>
+          <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-description"><span class="field-content"><img alt="President&#39;s List Badge" title="President&#39;s List Badge" class="merit_badge" src="https://s3.amazonaws.com/rm3.badges.prod.readmedia.com/11530/medium/353.png?1400028325" /></span></div><div class="views-field views-field-title"><span class="field-content"><a href="https://npc.meritpages.com/achievements/NPC-Recognizes-Fall-2019-President-s-List-Honorees/117139" target="_blank">NPC Recognizes Fall 2019 President&#039;s List Honorees</a></span></div><div class="views-field views-field-description-1"><span class="field-content">
+        
+    
+  <p class="merit_description"><p>Northland Pioneer College is proud to recognize the Fall 2019 semester students who distinguished themselves academically by making the President's List.</p> </p>
+
+
+      </span></div></div>
+    <div class="views-row"><div class="views-field views-field-description"><span class="field-content"><img alt="All Arizona Academic Team Scholarship Badge" title="All Arizona Academic Team Scholarship Badge" class="merit_badge" src="https://s3.amazonaws.com/rm3.badges.prod.readmedia.com/12265/medium/AllAZteam.png?1421096144" /></span></div><div class="views-field views-field-title"><span class="field-content"><a href="https://npc.meritpages.com/achievements/NPC-Recognizes-2020-All-Arizona-Academic-Team-Members/117091" target="_blank">NPC Recognizes 2020 All-Arizona Academic Team Members</a></span></div><div class="views-field views-field-description-1"><span class="field-content">
+        
+    
+  <p class="merit_description"><p>Northland Pioneer College has selected 11 distinguished students to represent NPC on the 2020 statewide All-Arizona Academic Team. Each student will receive a tuition waver scholarship valued at over $36,000 to be used at any of the three Arizona state universities.</p> </p>
+    
+
+
+      </span></div></div>
+    <div class="views-row"><div class="views-field views-field-description"><span class="field-content"><img alt="Dean&#39;s List Badge" title="Dean&#39;s List Badge" class="merit_badge" src="https://s3.amazonaws.com/rm3.badges.prod.readmedia.com/11547/medium/9.png?1400028399" /></span></div><div class="views-field views-field-title"><span class="field-content"><a href="https://npc.meritpages.com/achievements/NPC-Recognizes-Fall-2019-Dean-s-List-Honorees/117130" target="_blank">NPC Recognizes Fall 2019 Dean&#039;s List Honorees</a></span></div><div class="views-field views-field-description-1"><span class="field-content">
+        
+    
+  <p class="merit_description"><p>Northland Pioneer College is proud to recognize the Fall 2019 semester students who distinguished themselves academically by making the Dean's List.</p> </p>
+
+
+      </span></div></div>
+    <div class="views-row"><div class="views-field views-field-description"><span class="field-content"><img alt="DSUClass.jpg" title="DSUClass.jpg" class="merit_attachment_thumbnail" src="https://s3.amazonaws.com/rm3.attachments.prod.readmedia.com/files/70542/medium/DSUClass.jpg?1578681873" /></span></div><div class="views-field views-field-title"><span class="field-content"><a href="https://dixie.meritpages.com/achievements/Fall-2019-Honor-Roll-Recognition/116281" target="_blank">2 NPC students who transferred to Dixie State University make the honor roll!</a></span></div><div class="views-field views-field-description-1"><span class="field-content">
+        
+  <p class="merit_description"><p>In a display of academic achievement, 18 percent of Dixie State University students earned President's and Dean's List recognition for the Fall 2019 semester. Specifically, 1,978 students were included on the university's honor rolls, with 816 students on the President's List and 1,162 on the Dean's List. Inclusion indicates students' strong commitment to their academic pursuits, as they must achieve a semester GPA of 3.9 or higher to be included on the President's List and a GPA of 3.5 to 3.89 for the Dean's List. Both lists require students to complete a minimum of 15 credits.</p> </p>
+    
+
+
+      </span></div></div>
+
+    </div>
+  
+            <div class="view-footer">
+      <a href="https://npc.meritpages.com/updates" class="stroke blue medium button" target="_blank"><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">View All Achievements</span></span><span class="button-outline-bottom"></span></span></a>
+    </div>
+    </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+        </div>
+      </section>
+              <section id="preface-fourth-outer-wrapper" class="preface-outer-wrapper hide-mobile clearfix">
+        <div id="preface-fourth-layout" class="preface-layout with--preface-first with--preface-second with--preface-third with--preface-fourth preface-layout inner-wrapper clearfix">
+            <div class="region--preface-fourth region region-preface-fourth">
+    <div class="block block-simple-block block-why-npc" id="block-why-npc">
+  
+    
+
+  <div class="block-content">
+          <div class="why-type">Quick Facts</div>
+
+<hr class="hero-stroke" /><div class="why-title"><span class="why-why">Why</span><span class="why-npc">NPC</span></div>
+
+<div class="why-3">OUR MISSION: Northland Pioneer College provides, supports and promotes lifelong learning.</div>
+
+      </div>
+</div>
+
+
+
+
+
+<div class="block block-views block-" id="block-npc-pride-points-front-page">
+  
+    
+
+  <div class="block-content">
+          <div class="views-element-container"><div class="view view-npc-pride-points view-id-npc_pride_points view-display-id-front_page js-view-dom-id-ef29770025c757c391ec885d9d04ad5ee2a633644272d4b3a7e5d0a849a55ca6">
+  
+    
+            <div class="view-content">
+          <div class="views-row"><span class="hover-lines"></span><div class="views-field-box-content"><div class="pride-point">
+<span class="pp-prefix">#</span>
+<span class="pp-value">108</span>
+<span class="pp-suffix"></span>
+</div>
+<div class="pp-body"><p>degrees, certificates and areas of study to choose from for university transfer or direct-to-work.</p></div>
+<div class="pp-cite"></div></div></div>
+    <div class="views-row"><span class="hover-lines"></span><div class="views-field-box-content"><div class="pride-point">
+<span class="pp-prefix"></span>
+<span class="pp-value">9</span>
+<span class="pp-suffix">+</span>
+</div>
+<div class="pp-body"><p>Campus, center and training locations in northeastern Arizona to help you transform your life!</p></div>
+<div class="pp-cite"></div></div></div>
+    <div class="views-row"><span class="hover-lines"></span><div class="views-field-box-content"><div class="pride-point">
+<span class="pp-prefix"></span>
+<span class="pp-value">84</span>
+<span class="pp-suffix">%</span>
+</div>
+<div class="pp-body"><p>Cheaper to complete general education credits at NPC instead of at a state university</p></div>
+<div class="pp-cite"></div></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+        </div>
+      </section>
+    
+    <section id="content-outer-wrapper" class="outer-wrapper hide-mobile clearfix">
+      <div id="main-layout" class="main-layout with--content without--sidebar-first without--sidebar-second inner-wrapper clearfix">
+        
+                    <div class="region--content region region-content">
+    <div class="block block-views block-" id="block-npc-news-front-page">
+  
+    
+
+  <div class="block-content">
+          <div class="views-element-container"><div class="view view-npc-news view-id-npc_news view-display-id-front_page js-view-dom-id-a16450c79617927f3827527b9160fb34e50c917a5b2ed6e06a286d276f7898ee">
+  
+    
+        <div class="view-header">
+      <div class="section-type">Latest News</div>
+<hr class="hero-stroke" />
+    </div>
+          <div class="view-content">
+      
+
+<div id="slick-views-npc-news-front-page-2" class="slick slick--view--npc-news slick--view--npc-news--front-page slick--optionset--news"><div id="slick-views-npc-news-front-page-2-slider" data-slick="{&quot;mobileFirst&quot;:true,&quot;infinite&quot;:false,&quot;responsive&quot;:[{&quot;breakpoint&quot;:670,&quot;settings&quot;:{&quot;infinite&quot;:false,&quot;slidesToShow&quot;:2,&quot;slidesToScroll&quot;:2,&quot;swipe&quot;:false,&quot;touchMove&quot;:false}},{&quot;breakpoint&quot;:1260,&quot;settings&quot;:{&quot;infinite&quot;:false,&quot;slidesPerRow&quot;:3,&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3,&quot;swipe&quot;:false,&quot;touchMove&quot;:false}}]}" class="slick__slider"><div class="slick__slide slide slide--0 slide--text"><div class="slide__content"><div class="slide__caption"><div class="news-item-media"><div class="news-item-media-inner"><img src="/sites/default/files/styles/news_slider/public/news/mainttech.jpg?itok=etwNf5vX" width="400" height="225" alt="Show Low Campus Tower" typeof="Image" class="image-style-news-slider" /></div><div class="news-item-overlay"></div><div class="news-center-holder"><div class="news-center-inner"><a href="/news/20200114/npc-maintenance-tech-did-you-know">Read More</a></div></div></div><div class="views-field-title"><a href="/news/20200114/npc-maintenance-tech-did-you-know" hreflang="en">NPC Maintenance &amp; Tech - Did You Know?</a></div><div class="views-field-summary"><p>Operating behind the scenes and without fanfare, Northland Pioneer College’s technology and maintenance departments work ....</p></div><div class="views-field-read-more"><a href="/news/20200114/npc-maintenance-tech-did-you-know" class="button xsmall stroke blue"><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">Read More</span></span><span class="button-outline-bottom"></span></span></a></div></div></div></div><div class="slick__slide slide slide--1 slide--text"><div class="slide__content"><div class="slide__caption"><div class="news-item-media"><div class="news-item-media-inner"><img src="/sites/default/files/styles/news_slider/public/news/allazweb.jpg?itok=lkok6juX" width="400" height="225" alt="All AZ Team 2020" typeof="Image" class="image-style-news-slider" /></div><div class="news-item-overlay"></div><div class="news-center-holder"><div class="news-center-inner"><a href="/news/20200115/11-npc-students-receive-all-az-academic-team-tuition-waivers">Read More</a></div></div></div><div class="views-field-title"><a href="/news/20200115/11-npc-students-receive-all-az-academic-team-tuition-waivers" hreflang="en">11 NPC students receive All-AZ Academic Team tuition waivers </a></div><div class="views-field-summary"><p>Tuition waivers, valued at over $36,600, will be awarded to 11 All-Arizona Academic Team students from Northland Pioneer ....</p></div><div class="views-field-read-more"><a href="/news/20200115/11-npc-students-receive-all-az-academic-team-tuition-waivers" class="button xsmall stroke blue"><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">Read More</span></span><span class="button-outline-bottom"></span></span></a></div></div></div></div><div class="slick__slide slide slide--2 slide--text"><div class="slide__content"><div class="slide__caption"><div class="news-item-media"><div class="news-item-media-inner"><img src="/sites/default/files/styles/news_slider/public/news/top-scholars-2019.jpg?itok=u15fkrek" width="400" height="225" alt="Fall 2019 Top Scholars" typeof="Image" class="image-style-news-slider" /></div><div class="news-item-overlay"></div><div class="news-center-holder"><div class="news-center-inner"><a href="/news/20200127/npc-honors-top-scholars-fall-2019-semester">Read More</a></div></div></div><div class="views-field-title"><a href="/news/20200127/npc-honors-top-scholars-fall-2019-semester" hreflang="en">NPC honors top scholars for Fall 2019 Semester</a></div><div class="views-field-summary"><p>Each semester, Northland Pioneer College recognizes students who academically excel by naming them to the college’s ....</p></div><div class="views-field-read-more"><a href="/news/20200127/npc-honors-top-scholars-fall-2019-semester" class="button xsmall stroke blue"><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">Read More</span></span><span class="button-outline-bottom"></span></span></a></div></div></div></div></div><nav class="slick__arrow"><button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button><button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button></nav></div>
+    </div>
+  
+            <div class="view-footer">
+      <a href="/news" class="stroke blue medium button" target=""><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">View All News</span></span><span class="button-outline-bottom"></span></span></a> <a href="https://www.flickr.com/photos/npcedu/albums" class="stroke blue medium button" target="_blank"><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">Photo Gallery</span></span><span class="button-outline-bottom"></span></span></a>
+    </div>
+    </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+<div class="block block-views block-" id="block-npc-events-front-page">
+  
+    
+
+  <div class="block-content">
+          <div class="views-element-container"><div class="view view-npc-events view-id-npc_events view-display-id-front_page js-view-dom-id-77c55989afdcfc39f573185860b389ebd9b78e1473cf1ecf3357bd4b99422d31">
+  
+    
+        <div class="view-header">
+      <div class="section-type">Upcoming Events</div>
+<hr class="hero-stroke" /><div class="view view-npc-events view-id-npc_events view-display-id-featured js-view-dom-id-99cae1e41cd35c0b82060c60a4da19cc8b4701bc3cdc48e3797a70291253e333">
+  
+    
+            <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-event-image" style="background-image: url(/sites/default/files/styles/featured_event/public/events/Event--Teaser-SGA-Road-trip-deadline.jpg?itok=3BuHAjet)"></div><div class="views-field views-field-field-event-date">January</div><div class="views-field views-field-field-event-date-1"><div class="field-content">31</div></div><div class="views-field views-field-title"><span class="field-content"><a href="/event/20200131/nau-transfer-roadtrip-application-deadline" hreflang="en">NAU Transfer Roadtrip Application Deadline</a></span></div><div class="views-field views-field-field-event-date-2"><div class="field-content"><time datetime="2020-01-31T07:30:00Z" class="datetime">7:30am</time>
+ - <time datetime="2020-01-31T23:00:00Z" class="datetime">4:00pm</time>
+</div></div><div class="views-field views-field-field-event-location"><div class="field-content">Register on this website.</div></div></div>
+    <div class="views-row"><div class="views-field views-field-field-event-image" style="background-image: url(/sites/default/files/styles/featured_event/public/events/Event-Teaser-Transfer_Fair.jpg?itok=D951alik)"></div><div class="views-field views-field-field-event-date">February</div><div class="views-field views-field-field-event-date-1"><div class="field-content">12</div></div><div class="views-field views-field-title"><span class="field-content"><a href="/event/20200212/university-transfer-fair-winslow" hreflang="en">University Transfer Fair - Winslow</a></span></div><div class="views-field views-field-field-event-date-2"><div class="field-content"><time datetime="2020-02-12T13:00:00Z" class="datetime">1:00pm</time>
+ - <time datetime="2020-02-13T01:00:00Z" class="datetime">6:00pm</time>
+</div></div><div class="views-field views-field-field-event-location"><div class="field-content">Winslow Campus Learning Center</div></div></div>
+
+    </div>
+  
+          </div>
+
+    </div>
+          <div class="view-content">
+          <div class="views-row"><div class="date">
+<div class="month">Jan</div>
+<div class="day">31</div>
+</div><div class="views-field views-field-title"><span class="field-content"><a href="/event/20200131/quiz-nite" hreflang="en">Quiz Nite!</a></span></div><div class="views-field views-field-field-event-date-2"><div class="field-content"><time datetime="2020-01-31T17:00:00Z" class="datetime">5:00pm</time>
+ -  <time datetime="2020-02-01T02:00:00Z" class="datetime">7:00pm</time>
+</div></div><div class="views-field views-field-field-event-location"><div class="field-content">Hulet Elementary School, Holbrook</div></div><div class="views-field views-field-edit-entity-subqueue-1"><span class="field-content"></span></div></div>
+    <div class="views-row"><div class="date">
+<div class="month">Feb</div>
+<div class="day">03</div>
+</div><div class="views-field views-field-title"><span class="field-content"><a href="/event/20200203/last-day-50-refund-spring-20" hreflang="en">Last Day for 50% Refund Spring &#039;20</a></span></div><div class="views-field views-field-field-event-date-2"><div class="field-content"><time datetime="2020-02-03T08:00:00Z" class="datetime">8:00am</time>
+ -  <time datetime="2020-02-04T00:00:00Z" class="datetime">5:00pm</time>
+</div></div><div class="views-field views-field-field-event-location"><div class="field-content">All NPC locations and online</div></div><div class="views-field views-field-edit-entity-subqueue-1"><span class="field-content"></span></div></div>
+    <div class="views-row"><div class="date">
+<div class="month">Feb</div>
+<div class="day">17</div>
+</div><div class="views-field views-field-title"><span class="field-content"><a href="/event/20200217/presidents-day-2020-college-open" hreflang="en">Presidents&#039; Day 2020 - College open </a></span></div><div class="views-field views-field-field-event-date-2"><div class="field-content"><time datetime="2020-02-17T07:30:00Z" class="datetime">7:30am</time>
+ -  <time datetime="2020-02-18T02:30:00Z" class="datetime">7:30pm</time>
+</div></div><div class="views-field views-field-field-event-location"><div class="field-content">All locations</div></div><div class="views-field views-field-edit-entity-subqueue-1"><span class="field-content"></span></div></div>
+    <div class="views-row"><div class="date">
+<div class="month">Feb</div>
+<div class="day">18</div>
+</div><div class="views-field views-field-title"><span class="field-content"><a href="/event/20200218/graduation-application-deadline-spring-2020" hreflang="en">Graduation Application Deadline - Spring 2020</a></span></div><div class="views-field views-field-field-event-date-2"><div class="field-content"><time datetime="2020-02-18T08:00:00Z" class="datetime">8:00am</time>
+ -  <time datetime="2020-02-19T00:00:00Z" class="datetime">5:00pm</time>
+</div></div><div class="views-field views-field-field-event-location"><div class="field-content">All NPC locations</div></div><div class="views-field views-field-edit-entity-subqueue-1"><span class="field-content"></span></div></div>
+
+    </div>
+  
+            <div class="view-footer">
+      <a href="/calendar" class="stroke dark-blue button" target=""><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">Events Calendar</span></span><span class="button-outline-bottom"></span></span></a> <a href="/academic-calendar" class="stroke blue button" target=""><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">Academic Calendar</span></span><span class="button-outline-bottom"></span></span></a>
+    </div>
+    </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+          
+    
+            
+            
+      </div><!-- /#main -->
+    </section><!-- /#main-outer-wrapper -->
+  
+          <section id="postscript-first-outer-wrapper" class="postscript-outer-wrapper hide-mobile clearfix">
+        <div id="postscript-first-layout" class="postscript-layout with--postscript-first without--postscript-second without--postscript-third with--postscript-fourth inner-wrapper clearfix">
+            <div class="region--postscript-first region region-postscript-first">
+    <div class="block block-views block-" id="block-npc-interest-areas-front-page">
+  
+    
+
+  <div class="block-content">
+          <div class="views-element-container"><div class="view view-npc-interest-areas view-id-npc_interest_areas view-display-id-front_page js-view-dom-id-deb56bc6979be84144c0b40a2f85b5a02f4ab3f8ab8bbdcb8291d9b12dd68398">
+  
+    
+        <div class="view-header">
+      <div class="section-type">Featured Programs</div>
+<hr class="hero-stroke" /><div class="field--name-field-subtitle">Learn more about the featured programs below or browse all of our programs.</div>
+<div><a href="/areas-of-interest" class="stroke dark-blue medium button" target=""><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">View All Programs</span></span><span class="button-outline-bottom"></span></span></a></div>
+    </div>
+          <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-area-thumbnail"><div class="field-content"><a href="/interest/film-digital-video"><div class="image">  <img src="/sites/default/files/styles/interest_area_grid/public/interestarea/interestfilmvideothumb.jpg?itok=VK39mOIM" width="600" height="500" alt="Film &amp; Digital Video" typeof="Image" class="image-style-interest-area-grid" />
+
+
+</div></a></div></div><div class="views-field views-field-name"><span class="field-content"><hr>
+<a href="/interest/film-digital-video" hreflang="en">Film &amp; Digital Video</a></span></div></div>
+    <div class="views-row"><div class="views-field views-field-field-area-thumbnail"><div class="field-content"><a href="/interest/science"><div class="image">  <img src="/sites/default/files/styles/interest_area_grid/public/interestarea/thumb-sci-01.jpg?itok=fHad9FrN" width="600" height="500" alt="science" typeof="Image" class="image-style-interest-area-grid" />
+
+
+</div></a></div></div><div class="views-field views-field-name"><span class="field-content"><hr>
+<a href="/interest/science" hreflang="en">Science</a></span></div></div>
+    <div class="views-row"><div class="views-field views-field-field-area-thumbnail"><div class="field-content"><a href="/interest/fire-science"><div class="image">  <img src="/sites/default/files/styles/interest_area_grid/public/interestarea/interestfiresciencethumb.jpg?itok=QVSZ-6Nf" width="600" height="500" alt="Fire Science" typeof="Image" class="image-style-interest-area-grid" />
+
+
+</div></a></div></div><div class="views-field views-field-name"><span class="field-content"><hr>
+<a href="/interest/fire-science" hreflang="en">Fire Science</a></span></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+        </div>
+      </section>
+                      <section id="postscript-fourth-outer-wrapper" class="postscript-outer-wrapper hide-mobile clearfix">
+        <div id="postscript-fourth-layout" class="postscript-layout with--postscript-first without--postscript-second without--postscript-third with--postscript-fourth postscript-layout inner-wrapper clearfix">
+                        <div class="region--postscript-fourth region region-postscript-fourth">
+    <div class="block block-simple-block block-footer-menus" id="block-footer-menus">
+  
+    
+
+  <div class="block-content">
+          <div class="foot-menu-1"><img alt="" src="/themes/custom/npc_omega/images/npc-eagle-head-med.png" /></div>
+
+<div class="foot-menu-2">4 Campuses &amp; 5 Centers Throughout Navajo &amp; Apache Counties in Northeastern Arizona</div>
+
+<div class="foot-menu-3"><a href="/locations" class="stroke yellow medium button" target=""><span class="button-outline"><span class="button-outline-top"><span class="button-text-wrapper">All Locations</span></span><span class="button-outline-bottom"></span></span></a></div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+                    <div class="postscript-fourth-columns">
+                            <div class="region--postscript-fourth-col-1 region region-postscript-fourth-col-1">
+    <nav role="navigation" aria-labelledby="block-learn-menu" class="block block-menu navigation menu--learn" id="block-learn">
+      
+  <h2 id="block-learn-menu">Learn<span class="mobile-expand"></span></h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/interest/college-credit-high-school" target="" rel="" data-drupal-link-system-path="taxonomy/term/423">College Credit In High School</a>
+              </li>
+                <li class="menu-item">
+        <a href="/corporate-training" target="" rel="" data-drupal-link-system-path="node/91435">Corporate Training</a>
+              </li>
+                <li class="menu-item">
+        <a href="/interest/direct-work-programs" target="" rel="" title="list of all direct-to-work programs" data-drupal-link-system-path="taxonomy/term/496">Direct to Work Programs</a>
+              </li>
+                <li class="menu-item">
+        <a href="/college-preparation-adult-basic-education" target="" rel="" data-drupal-link-system-path="node/137864">GED/College Prep</a>
+              </li>
+                <li class="menu-item">
+        <a href="/kids-college" target="" rel="" data-drupal-link-system-path="node/136529">Kids College</a>
+              </li>
+                <li class="menu-item">
+        <a href="/interest/noncredit-classes" target="" rel="" data-drupal-link-system-path="taxonomy/term/422">Noncredit Classes</a>
+              </li>
+                <li class="menu-item">
+        <a href="/online-classes" target="" rel="" data-drupal-link-system-path="node/137120">Online Classes</a>
+              </li>
+                <li class="menu-item">
+        <a href="/sbdc" target="" rel="" title="NPC Small Business Development Center" data-drupal-link-system-path="node/137108">Small Business Development Center</a>
+              </li>
+                <li class="menu-item">
+        <a href="/online-classes/online-classes-teachers" target="" rel="" data-drupal-link-system-path="node/1042">Teacher Certification Classes</a>
+              </li>
+                <li class="menu-item">
+        <a href="/university-transfer-degrees" target="_blank" rel="" data-drupal-link-system-path="node/137315">University Transfer</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                                        <div class="region--postscript-fourth-col-2 region region-postscript-fourth-col-2">
+    <nav role="navigation" aria-labelledby="block-transform-menu" class="block block-menu navigation menu--transform" id="block-transform">
+      
+  <h2 id="block-transform-menu">Transform<span class="mobile-expand"></span></h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/schedule-campus-visit" target="" rel="" data-drupal-link-system-path="node/953">Campus Tour</a>
+              </li>
+                <li class="menu-item">
+        <a href="http://npc.mycareerfocus.org" target="_blank" rel="" title="Stories about NPC programs and students.">Career Focus Magazine</a>
+              </li>
+                <li class="menu-item">
+        <a href="/scholarships/college-bound-scholarship" target="" rel="" title="Scholarship for high school students" data-drupal-link-system-path="node/135208">College Bound Scholarship</a>
+              </li>
+                <li class="menu-item">
+        <a href="/future-students" target="" rel="" title="future student landing page" data-drupal-link-system-path="node/138456">Future Students</a>
+              </li>
+                <li class="menu-item">
+        <a href="/records-registration/new-student-registration" target="" rel="" data-drupal-link-system-path="node/1056">How to Register</a>
+              </li>
+                <li class="menu-item">
+        <a href="/records-registration/new-student-enrollment-steps" target="" rel="" title="Fill this out before you register." data-drupal-link-system-path="node/65">New Student Application</a>
+              </li>
+                <li class="menu-item">
+        <a href="/apparel" target="" rel="" title="NPC T-shirts, sweatshirts and more!" data-drupal-link-system-path="node/138359">NPC Apparel</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.npcfriendsfamily.org/" target="_blank" rel="" title="NPC&#039;s Foundation">NPC Friends &amp; Family</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact-us" target="" rel="" data-drupal-link-system-path="node/2">Request Information</a>
+              </li>
+                <li class="menu-item">
+        <a href="/scholarships" target="" rel="" data-drupal-link-system-path="scholarships">Scholarships</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                                        <div class="region--postscript-fourth-col-3 region region-postscript-fourth-col-3">
+    <nav role="navigation" aria-labelledby="block-about-menu" class="block block-menu navigation menu--about" id="block-about">
+      
+  <h2 id="block-about-menu">About<span class="mobile-expand"></span></h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/about-npc" target="" rel="" data-drupal-link-system-path="node/5">About NPC</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://ask.npc.edu" target="_blank" rel="" title="Chatbot for common questions about NPC">AskNPC - 24/7!</a>
+              </li>
+                <li class="menu-item">
+        <a href="/calendar" target="" rel="" data-drupal-link-system-path="calendar/month">Calendars</a>
+              </li>
+                <li class="menu-item">
+        <a href="/human-resources" target="" rel="" title="Job openings at NPC" data-drupal-link-system-path="node/137106">Employment</a>
+              </li>
+                <li class="menu-item">
+        <a href="/library" target="" rel="" data-drupal-link-system-path="node/137117">Library</a>
+              </li>
+                <li class="menu-item">
+        <a href="/alumni" target="" rel="" title="NPC alumni" data-drupal-link-system-path="node/137110">NPC Alumni</a>
+              </li>
+                <li class="menu-item">
+        <a href="/news" target="" rel="" data-drupal-link-system-path="news">NPC News</a>
+              </li>
+                <li class="menu-item">
+        <a href="/tuition-fees/payment-due-dates" target="" rel="" title="For tuition and fees" data-drupal-link-system-path="node/7868">Payment Deadlines</a>
+              </li>
+                <li class="menu-item">
+        <a href="/administration/presidents-biography" target="" rel="" data-drupal-link-system-path="node/79161">President</a>
+              </li>
+                <li class="menu-item">
+        <a href="/request-proposals-bids" target="" rel="" data-drupal-link-system-path="node/882">Purchasing/RFP/Bids</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                                         <div class="region--postscript-fourth-col-4 region region-postscript-fourth-col-4">
+    <nav role="navigation" aria-labelledby="block-services-menu" class="block block-menu navigation menu--services" id="block-services">
+      
+  <h2 id="block-services-menu">Services<span class="mobile-expand"></span></h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/advising" target="" rel="" data-drupal-link-system-path="node/137096">Academic Advising</a>
+              </li>
+                <li class="menu-item">
+        <a href="/business-office" target="" rel="" data-drupal-link-system-path="node/137103">Business Office</a>
+              </li>
+                <li class="menu-item">
+        <a href="/career-services" target="" rel="" data-drupal-link-system-path="node/137095">Career Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/dra" target="" rel="" data-drupal-link-system-path="node/137367">Disability Resource &amp; Access</a>
+              </li>
+                <li class="menu-item">
+        <a href="/financial-aid-scholarships" target="" rel="" data-drupal-link-system-path="node/137105">Financial Aid</a>
+              </li>
+                <li class="menu-item">
+        <a href="/records-registration" target="" rel="" data-drupal-link-system-path="node/137099">Records &amp; Registration</a>
+              </li>
+                <li class="menu-item">
+        <a href="/recruitment" target="" rel="" data-drupal-link-system-path="node/137104">Recruitment/Admissions</a>
+              </li>
+                <li class="menu-item">
+        <a href="/textbooks" target="" rel="" data-drupal-link-system-path="node/137098">Textbooks/Bookstore</a>
+              </li>
+                <li class="menu-item">
+        <a href="/transcripts" target="" rel="" title="How to order &amp; send to NPC" data-drupal-link-system-path="node/138073">Transcripts</a>
+              </li>
+                <li class="menu-item">
+        <a href="/veteran-services" target="" rel="" title="Educational benefits availble at NPC" data-drupal-link-system-path="node/137100">Veteran Services</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+             
+          </div>
+        </div>
+      </section>
+        
+        <footer id="footer-outer-wrapper" class="footer-outer-wrapper hide-mobile clearfix">
+      <div id="footer-layout" role="contentinfo" class="footer-layout without--footer inner-wrapper clearfix">
+        <div class="footer-tagline">Transform <span class="ft-your">your</span> Life</div> 
+                    <div class="region--footer-first region region-footer-first">
+    <div class="block block-simple-block block-hubspot-tracking-code" id="block-hubspot-tracking">
+  
+    
+
+  <div class="block-content">
+          <!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async="" defer="defer" src="//js.hs-scripts.com/4239828.js"></script><!-- End of HubSpot Embed Code -->
+      </div>
+</div>
+
+
+
+
+
+<div class="block block-simple-block block-contact" id="block-contact">
+  
+      <h2>Contact</h2>
+    
+
+  <div class="block-content">
+          <div>1-800-266-7845</div>
+
+<div><a href="/directory">Employee Directory</a></div>
+
+<div><a href="/contact-us">Email Us</a></div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+                            <div class="region--footer-second region region-footer-second">
+    <div class="block block-simple-block block-mailing-address" id="block-mailing-address">
+  
+      <h2>Mailing Address</h2>
+    
+
+  <div class="block-content">
+          <div>P.O. Box 610<br />
+Holbrook, AZ 86025-0610<br /><a href="/locations">Map &amp; Directions</a></div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+                            <div class="region--footer-third region region-footer-third">
+    <div class="block block-npc-blocks block-copyright-block">
+  
+    
+
+  <div class="block-content">
+          <div class="copyright">&copy; 2020 Northland Pioneer College. All rights reserved.</div>
+      </div>
+</div>
+
+
+
+
+
+<div class="block block-simple-block block-non-discrimination-statement" id="block-non-discrimination">
+  
+    
+
+  <div class="block-content">
+          <div class="non-dis-title" for="toggle"><a href="/aboutgeneral/legal-notices">Non-Discrimination Statement</a></div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+                      </div> <!-- /#footer -->
+    </footer> <!-- /#footer-outer-wrapper -->
+  </div></div> <!-- /#page, /#page-wrapper -->
+<div id="menu-overlay" class="overlay"></div>
+<div class="menu-overlay overlay-wrapper">
+  <div class="overlay-inner">
+    <div class="overlay-layout">
+                <div class="region--main-menu region region-main-menu">
+    <div class="block block-simple-block block-header-logo" id="block-header-logo--2">
+  
+    
+
+  <div class="block-content">
+          <div class="site-logo"><a href="/"><img alt="" src="/themes/custom/npc_omega/images/npc-logo-main.png" /></a></div>
+
+      </div>
+</div>
+
+
+
+
+
+<nav role="navigation" aria-labelledby="block-main-menu" class="block block-menu navigation menu--main" id="block-main">
+            
+  <h2 class="visually-hidden" id="block-main-menu">Hamburger Menu<span class="mobile-expand"></span></h2>
+  
+
+        
+        <ul class="menu">
+                          <li class="menu-item menu-item-1 menu-item--expanded">
+        <hr class = "menu-stroke" />
+        <span>Future Students</span>
+                           <ul class="menu">
+                          <li class="menu-item menu-item-1">
+        <a href="/future-students" target="" rel="" data-drupal-link-system-path="node/138456">Why NPC?</a>
+      </li>
+                      <li class="menu-item menu-item-2">
+        <a href="/areas-of-interest" target="" rel="" data-drupal-link-system-path="areas-of-interest">Find Your Program</a>
+      </li>
+                      <li class="menu-item menu-item-3">
+        <a href="/financial-aid-scholarships" target="" rel="" data-drupal-link-system-path="node/137105">Funding for College</a>
+      </li>
+                      <li class="menu-item menu-item-4">
+        <a href="/advising" target="" rel="" data-drupal-link-system-path="node/137096">Academic Advising</a>
+      </li>
+                      <li class="menu-item menu-item-5">
+        <a href="/locations" target="" rel="" data-drupal-link-system-path="locations">Visit Our Locations</a>
+      </li>
+                      <li class="menu-item menu-item-6">
+        <a href="/contact-us" target="" rel="" title="to Contact Us form" data-drupal-link-system-path="node/2">Request Information</a>
+      </li>
+                      <li class="menu-item menu-item-7">
+        <a href="/records-registration/new-student-enrollment-steps" target="" rel="" title="to new student application process" data-drupal-link-system-path="node/65">Enrollment Steps</a>
+      </li>
+                      <li class="menu-item menu-item-8">
+        <a href="/student-clubs" target="" rel="" data-drupal-link-system-path="node/137828">Campus Life</a>
+      </li>
+                      <li class="menu-item menu-item-9">
+        <a href="/college-credit-high-school" target="" rel="" data-drupal-link-system-path="node/137119">College Credit in High School</a>
+      </li>
+                      <li class="menu-item menu-item-10">
+        <a href="http://npc.mycareerfocus.org/" target="_blank" rel="">Career Focus Magazine</a>
+      </li>
+                      <li class="menu-item menu-item-11">
+        <a href="/menu/future-students" target="" rel="" class="more-arrow-icon" data-drupal-link-system-path="menu/future-students">More</a>
+      </li>
+        </ul>
+  
+              </li>
+                      <li class="menu-item menu-item-2 menu-item--expanded">
+        <hr class = "menu-stroke" />
+        <span>What We Offer</span>
+                           <ul class="menu">
+                          <li class="menu-item menu-item-1">
+        <a href="/university-transfer-degrees" target="" rel="" data-drupal-link-system-path="node/137315">University Transfer Degrees</a>
+      </li>
+                      <li class="menu-item menu-item-2">
+        <a href="/interest/direct-work-programs" target="" rel="" data-drupal-link-system-path="taxonomy/term/496">Direct to Work Degrees/Certificates</a>
+      </li>
+                      <li class="menu-item menu-item-3">
+        <a href="/college-credit-high-school" target="" rel="" data-drupal-link-system-path="node/137119">College Credit In High School</a>
+      </li>
+                      <li class="menu-item menu-item-4">
+        <a href="/college-preparation-adult-basic-education" target="" rel="" data-drupal-link-system-path="node/137864">Adult College Prep/GED</a>
+      </li>
+                      <li class="menu-item menu-item-5">
+        <a href="/online-classes" target="" rel="" data-drupal-link-system-path="node/137120">Online Classes</a>
+      </li>
+                      <li class="menu-item menu-item-6">
+        <a href="/online-classes/online-classes-teachers" target="" rel="" data-drupal-link-system-path="node/1042">Teacher Certification Courses</a>
+      </li>
+                      <li class="menu-item menu-item-7">
+        <a href="/interest/noncredit-classes" target="" rel="" data-drupal-link-system-path="taxonomy/term/422">Noncredit Classes</a>
+      </li>
+                      <li class="menu-item menu-item-8">
+        <a href="/kids-college" target="" rel="" data-drupal-link-system-path="node/136529">Kids College</a>
+      </li>
+                      <li class="menu-item menu-item-9">
+        <a href="/corporate-training" target="" rel="" data-drupal-link-system-path="node/91435">Corporate Training</a>
+      </li>
+                      <li class="menu-item menu-item-10">
+        <a href="/sbdc" target="" rel="" data-drupal-link-system-path="node/137108">Start, Grow Your Business (SBDC)</a>
+      </li>
+        </ul>
+  
+              </li>
+                      <li class="menu-item menu-item-3 menu-item--expanded">
+        <hr class = "menu-stroke" />
+        <span>About NPC</span>
+                           <ul class="menu">
+                          <li class="menu-item menu-item-1">
+        <a href="/northland-pioneer-college" target="" rel="" title="Information about NPC" data-drupal-link-system-path="node/138381">About Us</a>
+      </li>
+                      <li class="menu-item menu-item-2">
+        <a href="/tuition-fees" target="" rel="" data-drupal-link-system-path="node/137369">Tuition &amp; Fees</a>
+      </li>
+                      <li class="menu-item menu-item-3">
+        <a href="/locations" target="" rel="" data-drupal-link-system-path="locations">Locations, Office Hours</a>
+      </li>
+                      <li class="menu-item menu-item-4">
+        <a href="/news" target="" rel="" data-drupal-link-system-path="news">College News</a>
+      </li>
+                      <li class="menu-item menu-item-5">
+        <a href="/calendar" target="" rel="" data-drupal-link-system-path="calendar/month">Events Calendar</a>
+      </li>
+                      <li class="menu-item menu-item-6">
+        <a href="/district-governing-board" target="" rel="" data-drupal-link-system-path="node/137322">District Governing Board</a>
+      </li>
+                      <li class="menu-item menu-item-7">
+        <a href="/request-proposals-bids" target="" rel="" data-drupal-link-system-path="node/882">Proposals (RFP) &amp; Bids</a>
+      </li>
+                      <li class="menu-item menu-item-8">
+        <a href="/human-resources" target="" rel="" data-drupal-link-system-path="node/137106">Employment</a>
+      </li>
+                      <li class="menu-item menu-item-9">
+        <a href="/academics/accreditation" target="" rel="" data-drupal-link-system-path="node/48">Accreditation</a>
+      </li>
+                      <li class="menu-item menu-item-10">
+        <a href="https://www.npcfriendsfamily.org/" target="_blank" rel="">Support NPC</a>
+      </li>
+                      <li class="menu-item menu-item-11">
+        <a href="/menu/about-npc" target="" rel="" class="more-arrow-icon" data-drupal-link-system-path="menu/about-npc">More</a>
+      </li>
+        </ul>
+  
+              </li>
+                      <li class="menu-item menu-item-4 menu-item--expanded">
+        <hr class = "menu-stroke" />
+        <span>Current Students</span>
+                           <ul class="menu">
+                          <li class="menu-item menu-item-1">
+        <a href="/advising" target="" rel="" data-drupal-link-system-path="node/137096">Contact an Adviser</a>
+      </li>
+                      <li class="menu-item menu-item-2">
+        <a href="/financial-aid-scholarships" target="" rel="" data-drupal-link-system-path="node/137105">Financial Aid</a>
+      </li>
+                      <li class="menu-item menu-item-3">
+        <a href="/scholarships" target="" rel="" data-drupal-link-system-path="scholarships">Scholarship Search</a>
+      </li>
+                      <li class="menu-item menu-item-4">
+        <a href="/online-classes" target="" rel="" data-drupal-link-system-path="node/137120">Online Courses</a>
+      </li>
+                      <li class="menu-item menu-item-5">
+        <a href="/textbooks" target="" rel="" data-drupal-link-system-path="node/137098">Textbooks/Bookstore</a>
+      </li>
+                      <li class="menu-item menu-item-6">
+        <a href="/dra" target="" rel="" data-drupal-link-system-path="node/137367">Disability Resource &amp; Access</a>
+      </li>
+                      <li class="menu-item menu-item-7">
+        <a href="/veteran-services" target="" rel="" data-drupal-link-system-path="node/137100">Veteran/Military Services</a>
+      </li>
+                      <li class="menu-item menu-item-8">
+        <a href="https://npc.starfishsolutions.com/starfish-ops" target="_blank" rel="" title="to Starfish log-in page">Starfish</a>
+      </li>
+                      <li class="menu-item menu-item-9">
+        <a href="/transcripts" target="" rel="" title="to how to order transcripts" data-drupal-link-system-path="node/138073">Transcripts</a>
+      </li>
+                      <li class="menu-item menu-item-10">
+        <a href="/tutoring" target="" rel="" data-drupal-link-system-path="node/137368">Tutoring</a>
+      </li>
+                      <li class="menu-item menu-item-11">
+        <a href="/menu/current-students" target="" rel="" class="more-arrow-icon" data-drupal-link-system-path="menu/current-students">More</a>
+      </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<nav role="navigation" aria-labelledby="block-overlay-footer-menu" class="block block-menu navigation menu--overlay-footer" id="block-overlay-footer">
+            
+  <h2 class="visually-hidden" id="block-overlay-footer-menu">Overlay Footer<span class="mobile-expand"></span></h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/academic-calendar" target="" rel="" class="menu-item-calendar" data-drupal-link-system-path="node/13176">Academic Calendar</a>
+              </li>
+                <li class="menu-item">
+        <a href="/directory" target="" rel="" class="menu-item-directory" data-drupal-link-system-path="directory">Directory</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.google.com/a/mail.npc.edu/ServiceLogin?service=CPanel&amp;amp%3Bpassive=1209600&amp;amp%3Bcpbps=1&amp;amp%3Bcontinue=https%3A//www.google.com/a/cpanel/mail.npc.edu/Dashboard" target="_blank" rel="" class="menu-item-email" title="link to access NPC student email">Student Email</a>
+              </li>
+                <li class="menu-item">
+        <a href="/library" target="" rel="" class="menu-item-library" data-drupal-link-system-path="node/137117">Library</a>
+              </li>
+                <li class="menu-item">
+        <a href="http://moodle.npc.edu/" target="_blank" rel="" class="menu-item-moodle">Moodle</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://mynpc.npc.edu/ics" target="_blank" rel="" title="to the MyNPC portal">MyNPC</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<div class="block block-simple-block block-mission-statement" id="block-mission-statement">
+  
+    
+
+  <div class="block-content">
+          <div><span class="our-mission">OUR MISSION</span>: Northland Pioneer College provides, supports and promotes lifelong learning.</div>
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+          </div>
+  </div>    
+</div>
+<div id="search-overlay" class="overlay"></div>
+<div class="search-overlay overlay-wrapper">
+  <div class="overlay-inner">
+    <div class="overlay-layout">
+                <div class="region--search region region-search">
+    <div class="block block-views block-" id="block-npc-search-content-content">
+  
+    
+
+  <div class="block-content">
+          <form class="views-exposed-form" data-drupal-selector="views-exposed-form-npc-search-content-content" action="/search" method="get" id="views-exposed-form-npc-search-content-content" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-text form-item-text form-no-label">
+        <input placeholder="What are you looking for?" data-drupal-selector="edit-text" type="text" id="edit-text" name="text" size="30" maxlength="128" class="form-text" />
+
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-npc-search-content" type="submit" id="edit-submit-npc-search-content" value="Search" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+          </div>
+  </div>    
+</div>
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"home","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","fitvids":{"selectors":".node","custom_vendors":"","ignore_selectors":""},"omega_breakpoints":[],"omega":{"activeLayout":""},"ajaxTrustedUrl":{"\/search":true},"slick":{"accessibility":true,"adaptiveHeight":false,"autoplay":false,"autoplaySpeed":3000,"pauseOnHover":true,"pauseOnDotsHover":false,"arrows":true,"downArrow":false,"downArrowTarget":"","downArrowOffset":0,"centerMode":false,"centerPadding":"50px","dots":false,"dotsClass":"slick-dots","draggable":true,"fade":false,"focusOnSelect":false,"infinite":true,"initialSlide":0,"lazyLoad":"ondemand","mouseWheel":false,"randomize":false,"rtl":false,"rows":1,"slidesPerRow":1,"slide":"","slidesToShow":1,"slidesToScroll":1,"speed":500,"swipe":true,"swipeToSlide":false,"edgeFriction":0.35,"touchMove":true,"touchThreshold":5,"useCSS":true,"cssEase":"ease","cssEaseBezier":"","cssEaseOverride":"","useTransform":true,"easing":"linear","variableWidth":false,"vertical":false,"verticalSwiping":false,"waitForAnimate":true},"user":{"uid":0,"permissionsHash":"4c695821bee83f33fce6c19600be2699fdf9d7942c466a711a3497a4259872f0"}}</script>
+<script src="/sites/default/files/js/js_IEkGAvJBpUfY8fG9hx3_3nYi2qBG2QmJ0t6bIOlXTgw.js"></script>
+<script src="https://static.addtoany.com/menu/page.js" async></script>
+<script src="/sites/default/files/js/js_Gaq7B0nP8OBexLj5mOI6bSMIMxaRRPUK6PfB0WVfQ98.js"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"9e4ffb6128","applicationID":"39680854","transactionName":"ZVAAMEcDWRZUV0UKC1waIwdBC1gLGkRQBAFtVgMHXQc=","queueTime":0,"applicationTime":33,"atts":"SRcDRg8ZShg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"bc1f7ab0ca",applicationID:"165422549"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="title" content="Widener University | Widener University" />
+<link rel="shortlink" href="https://www.widener.edu/" />
+<link rel="canonical" href="https://www.widener.edu/" />
+<meta name="description" content="Fast starts. Rapid advancement. Lasting success. Your path to a rewarding future starts here." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>function euCookieComplianceLoadScripts() {}</script>
+<style>div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-withdraw-tab {background: #0779bf} div#sliding-popup.eu-cookie-withdraw-wrapper { background: transparent; } #sliding-popup h1, #sliding-popup h2, #sliding-popup h3, #sliding-popup p, .eu-cookie-compliance-more-button, .eu-cookie-compliance-secondary-button, .eu-cookie-withdraw-tab { color: #ffffff;} .eu-cookie-withdraw-tab { border-color: #ffffff;}</style>
+<link rel="shortcut icon" href="/themes/widener/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="revision" href="https://www.widener.edu/widener-university" />
+
+    <title>Widener University | Widener University</title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_3-a6LwhsVUAHbFWtCDbsY4OiDH4D2RUs6OsQ1o5zp6U.css?q2bj1x" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Arvo:400,400i,700,700i|Barlow+Condensed:400,500,600|Barlow:400,400i,600,600i,700,700i" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_0Rkkd9mNWPkg-CBK9MK92OSwwlSPxna1fSgtZYU4J74.css?q2bj1x" />
+<link rel="stylesheet" media="all" href="//catalog.widener.edu/widget-api/widget-api.min.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/themes/widener/assets/js/vendor/modernizr-3.5-custom.js?v=3.3.1"></script>
+
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WS64F3M');</script>
+    <!-- End Google Tag Manager -->
+
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c6439ff1ef90f001147a93e&product=inline-share-buttons' async='async'></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/themes/widener/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/themes/widener/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/themes/widener/favicon-16x16.png">
+    <link rel="manifest" href="/themes/widener/site.webmanifest">
+
+    <script>
+(function() {
+  var cx = '014018589744589796226:gsnype1xve8';
+  var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+})();
+</script>
+
+
+                <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://www.widener.edu/",
+        "potentialAction": [{
+          "@type": "SearchAction",
+          "target": "https://www.widener.edu/search?as_q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }]
+      }
+      </script>
+      </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WS64F3M"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+        <a href="#main-content" class="visually-hidden focusable">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="alert-wrapper"></div>
+
+
+<div class="page page--home ">
+  <div class="skip-link">
+    <a href="#main-menu" class="element-invisible element-focusable">Skip to main site navigation</a>
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+
+  <header data-directional-scroll-reveal="true" data-sticky-container class="site-header">
+    <div data-sticky-item class="header-main sticky-header-item">
+      <div class="row percent-row main-nav-region">
+        <div class="header__logo">
+          <a href="/" title="">
+            <svg viewBox="0 0 300 34.38">
+  <title>Widener-University-Logo</title>
+  <g class="logo__name">
+    <path d="M189.1,8.87V17.5c0,4.68-3,8.5-9,8.5-5.07,0-9.28-3.2-9.28-8.75V9.12c0-5.3-.12-5.3-3.21-5.67-.13,0-.13-.37,0-.37,1.48.12,3,.25,4.94.25a39.4,39.4,0,0,0,4.21-.25c.25,0,.12.37,0,.37-3.22.25-3.22.49-3.22,5.67v7.39c0,5.67,3.84,8,7.42,8,4.7,0,7-2.59,7-7.39V8.75c0-4.56-.37-5-3.46-5.3-.12,0-.12-.37,0-.37a41.91,41.91,0,0,0,4.33.25,25.63,25.63,0,0,0,3.46-.25c.25,0,.13.37,0,.37-3,.37-3.21,1.11-3.21,5.42"/>
+    <path d="M204.56,25.38a25.59,25.59,0,0,0-3.34.13c-.13,0-.13-.37,0-.37,1.85-.13,2.22-.37,2.22-3.08V16.88c0-3.08-.49-4.31-2.59-4.31-1.12,0-2,.25-4.58,1.85v7.64c0,2.46.37,2.83,2.23,3.08.12,0,.12.49,0,.37a24.75,24.75,0,0,0-3.22-.13,36.68,36.68,0,0,0-4,.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.27c0-2.35-.37-2.72-2.23-2.1a.24.24,0,0,1-.12-.37,25.33,25.33,0,0,0,4.2-3s.25.13.25.25a19.77,19.77,0,0,1,.13,2.83c2.84-2.09,4.45-2.71,6.06-2.71,2.47,0,3.33,1.61,3.33,4.19v6.78c0,2.46.13,2.83,2.6,3.08.13,0,.13.49,0,.37a27.65,27.65,0,0,0-3.58-.25"/>
+    <path d="M212.72,8.26a1.48,1.48,0,0,1-1.36-1.48,1.5,1.5,0,0,1,1.48-1.48,1.6,1.6,0,0,1,1.49,1.48,1.73,1.73,0,0,1-1.61,1.48m-.37,17.12a34.4,34.4,0,0,0-3.84.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.14c0-2.34-.37-2.71-2.23-2.09-.12,0-.12-.25-.12-.37a29.2,29.2,0,0,0,4.58-3l.37.12c-.13.74-.25,3.82-.25,5.06v6c0,2.71.25,2.84,2.6,3.08.12,0,.12.37,0,.37h-3.71"/>
+    <path d="M228.42,14.79l-4.32,11a.37.37,0,0,1-.5,0l-4.33-11c-1-2.34-1.61-3-3.46-3.08-.12,0-.12-.37,0-.37a32.2,32.2,0,0,0,3.46.12,30.11,30.11,0,0,0,3.47-.12c.12,0,.12.37,0,.37-1.86.24-2.23.61-1.24,3.08l3,7.64,3-7.64c.87-2.34.62-2.84-1.23-3.08-.13,0-.13-.37,0-.37a18.82,18.82,0,0,0,2.72.12,16.34,16.34,0,0,0,2.6-.12c.12,0,.12.37,0,.37-1.61.24-2.35,1-3.1,3.08"/>
+    <path d="M237.33,12c-1.86,0-3.34,1.6-3.71,4.19l7.3-.12c0-1.85-1.24-4.07-3.59-4.07m5.93,4.56-9.77.25c0,.37-.12.74-.12,1.23,0,4.68,2.6,6.53,5.2,6.53A8,8,0,0,0,243,23s.24.25.12.37A8,8,0,0,1,237.45,26c-3.83,0-6.55-2.83-6.55-6.9s3.71-7.89,7.29-7.89a4.75,4.75,0,0,1,5.07,4.56.75.75,0,0,1,0,.74"/>
+    <path d="M254.77,14.17c-.5,0-1.36-1-2.35-1-.75,0-1.49.37-2.72,1.85v7c0,2.46.37,3,3.46,3.08,0,0,.12.37,0,.37-.74-.13-3.46-.13-4.45-.13a36.68,36.68,0,0,0-4,.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.14c0-2.34-.37-2.71-2.23-2.09a1.3,1.3,0,0,1-.12-.37,20.35,20.35,0,0,0,4.2-3.08,1.3,1.3,0,0,0,.37.12,23.67,23.67,0,0,1,.13,3.33c2.1-2.59,3.58-3.58,4.45-3.58s1.73,1.24,1.73,1.61a2.76,2.76,0,0,1-1.11,2.09"/>
+    <path d="M260.46,25.88a7.79,7.79,0,0,1-4-1,25.73,25.73,0,0,1-.13-3.82c0-.12.38-.12.38,0,.86,3.08,2.59,4.31,4.32,4.31s2.48-1,2.48-2.58c0-3.33-6.68-3.7-6.68-7.64,0-2.1,1.73-3.95,4.7-3.95a5.61,5.61,0,0,1,3,.62,14.9,14.9,0,0,1,.37,3.45c0,.12-.37.12-.37,0-.62-2.1-2.11-3.45-3.71-3.45-1.24,0-2,.86-2,2.34,0,3.2,6.55,3.2,6.55,7.39.13,2.22-1.85,4.32-4.94,4.32"/>
+    <path d="M271.71,8.26a1.48,1.48,0,0,1-1.36-1.48,1.5,1.5,0,0,1,1.48-1.48,1.59,1.59,0,0,1,1.49,1.48,1.72,1.72,0,0,1-1.61,1.48m-.49,17.12a34.31,34.31,0,0,0-3.84.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.14c0-2.34-.37-2.71-2.23-2.09-.12,0-.12-.25-.12-.37a28.64,28.64,0,0,0,4.57-3l.38.12c-.13.74-.25,3.82-.25,5.06v6c0,2.71.25,2.84,2.6,3.08.12,0,.12.37,0,.37h-3.71"/>
+    <path d="M280.37,25.88c-2.11,0-3.09-1-3-3.33l.12-9.49H275.3c-.13,0-.13-.37-.13-.37a21.71,21.71,0,0,0,4.58-4.31l.25.12a28.72,28.72,0,0,0-.25,3.21h1.85a15.21,15.21,0,0,0,3-.13c.25-.12.13,1.6-.25,1.48s-1-.12-2.35-.12h-2.22l-.13,8.75c0,2.09,1,2.83,2.48,2.83a9.08,9.08,0,0,0,2.47-.37,1.24,1.24,0,0,1,.13.37,10.22,10.22,0,0,1-4.33,1.36"/>
+    <path d="M296.57,14.79C295.7,17,290.88,27.36,290,34.13h-2.35a5.72,5.72,0,0,0-2.1.25c-.12,0-.12-.37,0-.37a4.68,4.68,0,0,0,2.1-1c.87-.61,1.86-2.21,2.85-4.8l.86-2.47-3.83-11c-1-2.34-1.61-3-3.46-3.08-.13,0-.13-.37,0-.37a31,31,0,0,0,3.46.12,27.79,27.79,0,0,0,3.34-.12c.12,0,0,.37,0,.37-1.86.24-2.23.61-1.24,3.08l2.72,8.13,3.22-8.13c.86-2.34.62-2.84-1.24-3.08-.12,0-.12-.37,0-.37a19.86,19.86,0,0,0,2.85.12,18.82,18.82,0,0,0,2.72-.12c.12,0,.12.37,0,.37-1.86.24-2.48,1-3.34,3.08"/>
+    <path d="M79.52,9.24,72.72,26c0,.12-.37.12-.37,0l-5.2-15L60.72,26c0,.12-.37.12-.37,0L53.8,9.24c-1.61-4.19-2.23-5.42-4.95-5.67-.12,0-.12-.37,0-.37a29.31,29.31,0,0,0,3.59.25c1.85,0,4.08-.12,5.44-.25.12,0,.12.37,0,.37-1.61.13-2.6.37-2.6,1.36a19.3,19.3,0,0,0,1.24,4.31l4.95,12.57L66.54,9.73l-.13-.49c-1.48-4.31-2.1-5.42-4.7-5.67-.12,0-.12-.37,0-.37a29.31,29.31,0,0,0,3.59.25c1.85,0,4.45-.12,5.69-.25.12,0,.12.37,0,.37-2,.13-2.72.5-2.72,1.48a17.74,17.74,0,0,0,1,4.07l4.2,12.57,5-12.82c.74-2.09,1.24-3.2,1.24-4.06S79,3.57,77.3,3.33c-.13,0-.13-.37,0-.37a25.26,25.26,0,0,0,3.33.24A21.9,21.9,0,0,0,83.85,3c.12,0,.12.37,0,.37-2,.37-2.72,1.85-4.33,5.91"/>
+    <path d="M84.59,8.26a1.48,1.48,0,0,1-1.36-1.48A1.5,1.5,0,0,1,84.72,5.3,1.59,1.59,0,0,1,86.2,6.78a1.53,1.53,0,0,1-1.61,1.48m-.37,17.12a34.21,34.21,0,0,0-3.83.13c-.13,0-.13-.37,0-.37,2.35-.25,2.59-.37,2.59-3.08V16.14c0-2.34-.37-2.71-2.22-2.09-.13,0-.13-.25-.13-.37a28.3,28.3,0,0,0,4.58-3l.37.12c-.12.74-.25,3.82-.25,5.06v6c0,2.71.25,2.84,2.6,3.08.13,0,.13.37,0,.37H84.22"/>
+    <path d="M100.05,14.54a6,6,0,0,0-4.45-2c-2.47,0-4.21,1.85-4.21,5.54,0,4.19,2.73,6.29,5.2,6.29a5.88,5.88,0,0,0,3.46-1.48ZM101,26c-.62,0-.86-1.36-1-2.22A8.3,8.3,0,0,1,95,25.88C91.89,25.88,89,23,89,19.35a8.07,8.07,0,0,1,8-7.89,10.67,10.67,0,0,1,3,.37V5.3c0-2.34-.37-2.71-2.22-2.1a1.13,1.13,0,0,1-.13-.37A28.58,28.58,0,0,0,102.28,0l.37.12c-.12.62-.25,3.7-.25,5.06V22.55c0,1.73.62,2,2.85,1.36l.12.37A18.77,18.77,0,0,1,101,26Z"/>
+    <path d="M112.42,12c-1.86,0-3.34,1.6-3.71,4.19L116,16c0-1.85-1.24-4.07-3.59-4.07m5.94,4.56-9.78.25c0,.37-.12.74-.12,1.23,0,4.68,2.6,6.53,5.2,6.53A8,8,0,0,0,118.11,23s.25.25.12.37A8,8,0,0,1,112.54,26c-3.83,0-6.55-2.83-6.55-6.9s3.71-7.89,7.29-7.89a4.76,4.76,0,0,1,5.08,4.56.81.81,0,0,1,0,.74"/>
+    <path d="M133.32,25.38a25.66,25.66,0,0,0-3.34.13c-.12,0-.12-.37,0-.37,1.86-.13,2.23-.37,2.23-3.08V16.88c0-3.08-.5-4.31-2.6-4.31-1.11,0-2,.25-4.58,1.85v7.64c0,2.46.37,2.83,2.23,3.08.12,0,.12.49,0,.37a24.68,24.68,0,0,0-3.22-.13,36.49,36.49,0,0,0-4,.13c-.13,0-.13-.37,0-.37,2.35-.25,2.59-.37,2.59-3.08V16.27c0-2.35-.37-2.72-2.22-2.1a.24.24,0,0,1-.13-.37,25.41,25.41,0,0,0,4.21-3s.25.13.25.25a21.4,21.4,0,0,1,.12,2.83c2.84-2.09,4.45-2.71,6.06-2.71,2.47,0,3.34,1.61,3.34,4.19v6.78c0,2.46.12,2.83,2.6,3.08.12,0,.12.49,0,.37a27.83,27.83,0,0,0-3.59-.25"/>
+    <path d="M144.2,12c-1.85,0-3.34,1.6-3.71,4.19l7.3-.12c0-1.85-1.36-4.07-3.59-4.07m5.94,4.56-9.77.25c0,.37-.12.74-.12,1.23,0,4.68,2.59,6.53,5.19,6.53A7.93,7.93,0,0,0,149.89,23s.25.25.13.37A8,8,0,0,1,144.33,26c-3.84,0-6.56-2.83-6.56-6.9s3.71-7.89,7.3-7.89a4.76,4.76,0,0,1,5.07,4.56c.12.25,0,.5,0,.74"/>
+    <path d="M161.89,14.17c-.5,0-1.36-1-2.35-1-.74,0-1.49.37-2.72,1.85v7c0,2.46.37,3,3.46,3.08,0,0,.12.37,0,.37-.74-.13-3.46-.13-4.45-.13a36.68,36.68,0,0,0-4,.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.14c0-2.34-.37-2.71-2.23-2.09a1.3,1.3,0,0,1-.12-.37,20.35,20.35,0,0,0,4.2-3.08,1.3,1.3,0,0,0,.37.12,23.67,23.67,0,0,1,.13,3.33c2.1-2.59,3.58-3.58,4.45-3.58S163,11.71,163,12.08c0,1-.74,2.09-1.11,2.09"/>
+  </g>
+  <g class="logo__mark">
+    <path class="logo__shield-outter" d="M12.12,32.78c5.81-3.33,12.24-7.27,12.24-13.06V3.45H0V19.72c0,5.79,6.43,9.61,12.12,13.06"/>
+    <path class="logo__shield-inner" d="M12.12,30.68c5.07-2.95,10.64-6.28,10.64-11.33V4.93H1.61V19.35c0,5,5.56,8.38,10.51,11.33"/>
+    <g class="logo__date"><rect x="5.94" y="10.23" width="12.37" height="1.6"/>
+      <path d="M5.07,20.46H3.71v-.25c.62-.12.87-.12.87-.86V16.88c0-.86-.25-.86-.87-.86V15.9H6.18V16c-.61,0-.86.12-.86.86v2.47c0,.74.25.86.86.86v.25a3.44,3.44,0,0,1-1.11,0"/>
+      <path d="M8.66,15.9c0,.74.62,1.1,1.23,1.47A1.65,1.65,0,0,0,10.76,16a1.14,1.14,0,0,0-1.11-1.23,1,1,0,0,0-1,1.11m-.25,3.69A1.27,1.27,0,0,0,9.65,21a1.07,1.07,0,0,0,1.23-1.11c0-.86-.74-1.23-1.48-1.73a1.49,1.49,0,0,0-1,1.48m-.74,0a2.08,2.08,0,0,1,1.48-1.72A1.9,1.9,0,0,1,8,16.27a1.79,1.79,0,0,1,1.85-1.73A1.53,1.53,0,0,1,11.5,16c0,.74-.37,1.11-1.24,1.6.75.49,1.37.86,1.37,1.85a1.9,1.9,0,0,1-2.11,1.85,1.88,1.88,0,0,1-1.85-1.73"/>
+      <path d="M16.57,20.58H12.86l-.12-.25c1.73-.86,2.6-1.72,2.6-2.83a1,1,0,0,0-1-1.11,1.61,1.61,0,0,0-1.12.49l-.12-.12a2.1,2.1,0,0,1,1.61-1,1.43,1.43,0,0,1,1.48,1.48c0,1-1.11,2-2.1,2.59h1.36c1,0,1.11-.12,1.11-.62h.13a3.67,3.67,0,0,1-.13,1.24c.13,0,.13.12,0,.12"/>
+      <path d="M19.29,20.46H17.93v-.25c.62-.12.87-.12.87-.86V16.88c0-.86-.25-.86-.87-.86V15.9h2.48V16c-.62,0-.87.12-.87.86v2.47c0,.74.25.86.87.86v.25c-.13.12-.75,0-1.12,0"/>
+    </g>
+  </g>
+</svg>
+          </a>
+        </div>
+
+        <div class="header__mobile-menu">
+          <button type="button"><span class="show-for-sr">Menu</span></button>
+        </div>
+
+        <div class="main-menu-container">
+          <nav id="main-menu" class="navigation" role="navigation">
+            <!--Search Trigger-->
+            <div class="header__search-trigger">
+              <div onclick="openSearch()" onKeyDown="openSearch()" tabindex="0">
+                <div class="header__search-trigger__label">Search</div>
+                <div class="header__search-trigger__icon"><i class="far fa-search"></i></div>
+              </div>
+            </div>
+            <!--END Search Trigger-->
+
+            
+              <ul class="menu">
+              <li class="menu-item--expanded li--level-one">
+        <a href="/widener-advantage" data-drupal-link-system-path="node/26">The Widener Advantage</a>
+                                <ul class="menu">
+              <li class="li--level-two">
+        <a href="/widener-advantage/career-inside-track" data-drupal-link-system-path="node/121">Career Inside Track</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/widener-advantage/faculty-mentorship" data-drupal-link-system-path="node/126">Faculty Mentorship</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/widener-advantage/research-innovation" data-drupal-link-system-path="node/131">Research &amp; Innovation</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/widener-advantage/leadership-development" data-drupal-link-system-path="node/136">Leadership Development</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/widener-advantage/location-matters" data-drupal-link-system-path="node/141">Location Matters</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/widener-advantage/pride-perspectives" data-drupal-link-system-path="node/716">Pride Perspectives</a>
+              </li>
+        </ul>
+  
+              </li>
+          <li class="menu-item--expanded li--level-one">
+        <a href="/academics" data-drupal-link-system-path="node/31">Academics</a>
+                                <ul class="menu">
+              <li class="li--level-two">
+        <a href="/academics/explore-programs" data-drupal-link-system-path="node/1621">Explore All Programs</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/academics/undergraduate-programs" data-drupal-link-system-path="node/146">Undergraduate Programs</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/academics/graduate-studies" data-drupal-link-system-path="node/161">Graduate Studies</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/academics/online-education" data-drupal-link-system-path="node/166">Online Education</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/academics/adult-professional-studies" data-drupal-link-system-path="node/171">Adult &amp; Professional Studies</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/academics/colleges-schools" data-drupal-link-system-path="node/176">Colleges &amp; Schools</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/academics/academic-calendar" data-drupal-link-system-path="node/2451">Academic Calendar</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/academics/academic-catalogs" data-drupal-link-system-path="node/2516">Catalogs</a>
+              </li>
+        </ul>
+  
+              </li>
+          <li class="menu-item--expanded li--level-one">
+        <a href="/admissions-aid" data-drupal-link-system-path="node/36">Admissions &amp; Aid</a>
+                                <ul class="menu">
+              <li class="li--level-two">
+        <a href="/admissions-aid/value-affordability" data-drupal-link-system-path="node/1976">Value &amp; Affordability</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/admissions-aid/undergraduate-admissions" data-drupal-link-system-path="node/101">Undergraduate Admissions</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/admissions-aid/graduate-admissions" data-drupal-link-system-path="node/186">Graduate Admissions</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/admissions-aid/transfer-admissions" data-drupal-link-system-path="node/191">Transfer Admissions</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/admissions-aid/international-admissions" data-drupal-link-system-path="node/2066">International Admissions</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/admissions-aid/adult-professional-studies-admissions" data-drupal-link-system-path="node/201">Adult &amp; Professional Studies Admissions</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/admissions-aid/military-veterans-admissions" data-drupal-link-system-path="node/206">Military &amp; Veteran&#039;s Admissions</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/admissions-aid/tuition-fees" data-drupal-link-system-path="node/211">Tuition &amp; Fees</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/admissions-aid/financial-aid" data-drupal-link-system-path="node/216">Financial Aid</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/admissions-aid/visit-us" data-drupal-link-system-path="node/221">Visit Us</a>
+              </li>
+        </ul>
+  
+              </li>
+          <li class="menu-item--expanded li--level-one">
+        <a href="/student-experience" data-drupal-link-system-path="node/41">Student Experience</a>
+                                <ul class="menu">
+              <li class="menu-item--collapsed li--level-two">
+        <a href="/student-experience/vibrant-community" data-drupal-link-system-path="node/226">Vibrant Community</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/student-experience/our-campus" data-drupal-link-system-path="node/231">Our Campus</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/student-experience/housing-dining" data-drupal-link-system-path="node/236">Housing &amp; Dining</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/student-experience/get-involved" data-drupal-link-system-path="node/241">Get Involved</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/student-experience/athletics-recreation" data-drupal-link-system-path="node/2126">Athletics &amp; Recreation</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/student-experience/student-success-support" data-drupal-link-system-path="node/251">Student Success &amp; Support</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/student-experience/study-abroad" data-drupal-link-system-path="node/256">Study Abroad</a>
+              </li>
+        </ul>
+  
+              </li>
+          <li class="menu-item--expanded li--level-one">
+        <a href="/about" data-drupal-link-system-path="node/46">About</a>
+                                <ul class="menu">
+              <li class="menu-item--collapsed li--level-two">
+        <a href="/about/points-pride" data-drupal-link-system-path="node/261">Points of Pride</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/about/widener-glance" data-drupal-link-system-path="node/266">Widener at a Glance</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/about/vision-history" data-drupal-link-system-path="node/271">Vision &amp; History</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/about/our-leadership" data-drupal-link-system-path="node/276">Our Leadership</a>
+              </li>
+          <li class="menu-item--collapsed li--level-two">
+        <a href="/about/campus-community-resources" data-drupal-link-system-path="node/281">Campus &amp; Community Resources</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/about/faculty-directory" data-drupal-link-system-path="node/1586">Faculty Directory</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/about/department-office-directory" data-drupal-link-system-path="node/976">Department &amp; Office Directory</a>
+              </li>
+          <li class="li--level-two">
+        <a href="/about/maps-directions" data-drupal-link-system-path="node/286">Maps &amp; Directions</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+
+
+
+
+
+            <div class="eyebrow-nav">
+              <div class="row percent-row">
+                <div class="eyebrow-nav__general">
+                  
+              <ul class="menu">
+              <li class="menu-item--collapsed li--level-one">
+        <a href="/news" data-drupal-link-system-path="node/51">News</a>
+              </li>
+          <li class="li--level-one">
+        <a href="/events" data-drupal-link-system-path="node/56">Events</a>
+              </li>
+          <li class="li--level-one">
+        <a href="https://www.widenerpride.com/" target="_blank" title="Widener Pride Athletics">Athletics</a>
+              </li>
+          <li class="li--level-one">
+        <a href="https://give.widener.edu/" target="_blank" title="Give to Widener">Give</a>
+              </li>
+        </ul>
+  
+
+
+<div class="c-dropdown js-dropdown">
+  <span class="c-button c-button--dropdown js-dropdown__current" tabindex="0">
+          Information For
+      </span>
+  
+              <ul class="menu">
+              <li class="menu-item--collapsed li--level-one">
+        <a href="/accepted-students" data-drupal-link-system-path="node/2256">Accepted Students</a>
+              </li>
+          <li class="menu-item--collapsed li--level-one">
+        <a href="/current-students" data-drupal-link-system-path="node/2261">Current Students</a>
+              </li>
+          <li class="menu-item--collapsed li--level-one">
+        <a href="/faculty-staff" data-drupal-link-system-path="node/2266">Faculty &amp; Staff</a>
+              </li>
+          <li class="li--level-one">
+        <a href="/parents-families" data-drupal-link-system-path="node/2271">Parents &amp; Families</a>
+              </li>
+          <li class="menu-item--collapsed li--level-one">
+        <a href="/alumni" data-drupal-link-system-path="node/2276">Alumni</a>
+              </li>
+          <li class="menu-item--collapsed li--level-one">
+        <a href="/community-partners" data-drupal-link-system-path="node/2281">Community &amp; Partners</a>
+              </li>
+        </ul>
+  
+
+
+</div>
+<div class="c-dropdown js-dropdown">
+  <span class="c-button c-button--dropdown js-dropdown__current" tabindex="0">
+      WU Links
+  </span>
+  
+              <ul class="menu">
+              <li class="li--level-one">
+        <a href="https://my.widener.edu/" target="_blank">myWidener</a>
+              </li>
+          <li class="li--level-one">
+        <a href="https://www.office.com/?auth=2" target="_blank" title="Office 365 ">Office 365</a>
+              </li>
+          <li class="li--level-one">
+        <a href="http://canvas.widener.edu/" target="_blank">Canvas</a>
+              </li>
+          <li class="li--level-one">
+        <a href="/about/campus-community-resources/wolfgram-memorial-library" title="Library" data-drupal-link-system-path="node/2121">Wolfgram Library</a>
+              </li>
+        </ul>
+  
+
+
+</div>
+
+
+                </div>
+
+                <div class="eyebrow-nav__cta">
+                  <div class="eyebrow-nav__cta">
+  
+              <ul class="menu">
+              <li class="li--level-one">
+        <a href="/admissions-aid/visit-us" data-drupal-link-system-path="node/221">Visit</a>
+              </li>
+          <li class="li--level-one">
+        <a href="/admissions-aid/request-info" data-drupal-link-system-path="node/2376">Request Info</a>
+              </li>
+          <li class="li--level-one">
+        <a href="/admissions-aid" data-drupal-link-system-path="node/36">Apply</a>
+              </li>
+        </ul>
+  
+
+
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header><!-- /header -->
+
+      <div class="system-region">
+      <div class="padded-row">
+        <div data-drupal-messages-fallback class="hidden"></div>
+
+
+      </div>
+    </div>
+  
+  <main class="main-content">
+    <div class="">
+      <div id="main-content" class="content ">
+        
+<article class="hero section--global-spacing hero--parallax hero--img hero--home">
+      <div class="hero__media">
+      
+          <img srcset="/sites/default/files/styles/width_1200/public/2019-10/widener-homepage-hero-2400x1500-robotics2019_2.jpg?itok=sqiThrCG 1200w, /sites/default/files/styles/width_2400/public/2019-10/widener-homepage-hero-2400x1500-robotics2019_2.jpg?itok=hGk0eqIo 2400w" sizes="100vw" src="/sites/default/files/styles/width_768/public/2019-10/widener-homepage-hero-2400x1500-robotics2019_2.jpg?itok=iKBdhyaa" alt="Widener Homepage Hero - Robotics" typeof="foaf:Image" />
+
+
+
+    </div>
+          <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__content">
+    <div class="hero__content__container">
+      <div class="hero__content__wrapper">
+                <h1>Ready. Set.</h1>
+                  <p>Fast starts. Rapid advancement. Lasting success.</p>
+                        <a href="/widener-advantage" target="" class="btn btn--reverse--alt">The Widener Advantage</a>
+      </div>
+    </div>
+        
+  </div>
+</article>
+
+
+<div class="parallax-mask">
+  <section class="story--promos section--banded">
+    <div class="row percent-row story--promos__title">
+      <div class="anim-item story--promos__anim-trigger" aria-hidden="true"></div>
+      <h2><div class="h2__inner">Stories from the Pride</div></h2>
+
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      	 viewBox="0 0 510 215" style="enable-background:new 0 0 510 215;" xml:space="preserve">
+        <style type="text/css">
+        	.st0{fill:none;stroke:#EFE906;stroke-width:1.7975;}
+        </style>
+        <g>
+          	<g transform="translate(-197.000000, -658.000000)">
+          		<path class="st0" d="M707.3,659h-70.1c-2.5,0-4.5,2-4.5,4.5v204c0,2.5-2,4.5-4.5,4.5H197.7"/>
+          	</g>
+        </g>
+      </svg>
+    </div>
+
+
+    <div class="story--promos__wrapper sequence-anim-parent">
+      <a href="/news/news-archive/turning-co-op-career" class="story--promos__ind-story sequence-anim-item fade-in">
+  <article>
+        <div class="story--promos__ind-story__media">
+      <figure>
+          <img src="/sites/default/files/styles/width_840/public/2020-01/coop_fulltime_960_640.jpg?itok=PNJ9as0B" width="840" height="560" alt="Highway engineer on worksite" typeof="foaf:Image" />
+
+
+
+      </figure>
+    </div>
+        <div class="story--promos__ind-story__title">
+      <h3><span>Turning Co-Op into Career</span>
+</h3>
+    </div>
+
+    <div class="story--promos__ind-story__media__caption">
+      <div class="story--promos__ind-story__media__caption__wrapper">
+        <p>Each year Widener students field full-time job offers from their co-op employers - in many cases months ahead of graduation.</p>
+        <div tabindex="0" class="btn btn--reverse--alt">Read More <span class="show-for-sr">About <span>Turning Co-Op into Career</span>
+</span></div>
+      </div>
+    </div>
+
+  </article>
+</a><a href="/news/news-archive/mapping-future-robotics-engineering" class="story--promos__ind-story sequence-anim-item fade-in">
+  <article>
+        <div class="story--promos__ind-story__media">
+      <figure>
+          <img src="/sites/default/files/styles/width_840/public/2019-11/robotics_co-op_exyn_technologies_960_x_640.jpg?itok=5BFjeDmc" width="840" height="560" alt="Sophomore Taylor Kohnow visits an off-site location to test run autonomous drones during her co-op at Exyn Technologies" typeof="foaf:Image" />
+
+
+
+      </figure>
+    </div>
+        <div class="story--promos__ind-story__title">
+      <h3><span>Mapping the Future of Robotics Engineering</span>
+</h3>
+    </div>
+
+    <div class="story--promos__ind-story__media__caption">
+      <div class="story--promos__ind-story__media__caption__wrapper">
+        <p>Robotics engineering students are gaining an early introduction to the cutting-edge and diverse robotics industry through co-ops that offer hands-on, real-world experience.</p>
+        <div tabindex="0" class="btn btn--reverse--alt">Read More <span class="show-for-sr">About <span>Mapping the Future of Robotics Engineering</span>
+</span></div>
+      </div>
+    </div>
+
+  </article>
+</a><a href="/news/news-archive/campus-campaign-trail" class="story--promos__ind-story sequence-anim-item fade-in">
+  <article>
+        <div class="story--promos__ind-story__media">
+      <figure>
+          <img src="/sites/default/files/styles/width_840/public/2019-10/politicalconnections-newsdetail-960x640.jpg?itok=hg-U-lhh" width="840" height="560" alt="Master of Public Administration student Malcolm Yates speaking with an individual" typeof="foaf:Image" />
+
+
+
+      </figure>
+    </div>
+        <div class="story--promos__ind-story__title">
+      <h3><span>From Campus to the Campaign Trail</span>
+</h3>
+    </div>
+
+    <div class="story--promos__ind-story__media__caption">
+      <div class="story--promos__ind-story__media__caption__wrapper">
+        <p>Numerous Widener students and alumni have carved out successful careers in government and politics, working both behind the scenes and in elected positions.</p>
+        <div tabindex="0" class="btn btn--reverse--alt">Read More <span class="show-for-sr">About <span>From Campus to the Campaign Trail</span>
+</span></div>
+      </div>
+    </div>
+
+  </article>
+</a>
+    </div>
+  </section>
+
+  <section class="programs--featured section--banded">
+    <div class="row percent-row programs--featured__title">
+      <h2>Powerhouse. Programs.</h2>
+              <div class="intro-text">
+          <p>Your path to a rewarding future starts here. Uncover a personal, powerful program that meets your learning goals.</p>
+        </div>
+          </div>
+    <div class="row percent-row sequence-anim-parent">
+      <div class="columns small-12 medium-6 large-4 program-ctas sequence-anim-item fade-left-in">
+  <div class="program-ctas__wrapper">
+    <figure>
+        <img src="/sites/default/files/styles/width_400/public/2019-06/students-in-science-lab-400x500.jpg?itok=WMdvMNuP" width="400" height="500" alt="Students in Lab Undergraduate Academics" typeof="foaf:Image" />
+
+
+
+    </figure>
+    <div class="program-ctas__btn">
+                          <a href="/academics/undergraduate-programs" class="btn">Undergraduate Majors</a>
+
+      
+    </div>
+  </div>
+</div>
+<div class="columns small-12 medium-6 large-4 program-ctas sequence-anim-item fade-left-in">
+  <div class="program-ctas__wrapper">
+    <figure>
+        <img src="/sites/default/files/styles/width_400/public/2019-06/graduate-students-studying-in-library-400x500.jpg?itok=obJ-hsfH" width="400" height="500" alt="Gradute Students Studying in the Library" typeof="foaf:Image" />
+
+
+
+    </figure>
+    <div class="program-ctas__btn">
+                          <a href="/academics/graduate-studies" class="btn">Graduate Studies</a>
+
+      
+    </div>
+  </div>
+</div>
+
+
+      <div class="columns small-12 medium-12 large-4 program-links sequence-anim-item fade-left-in">
+        <h3>Law Schools</h3>
+<p>Our two law schools, located in Harrisburg, Pennsylvania, and Wilmington, Delaware, offer unique, rigorous approaches to legal education.</p>
+<a href="https://delawarelaw.widener.edu/" target="_blank" aria-label="opens in new window">Delaware Law School</a><a href="https://commonwealthlaw.widener.edu/" target="_blank" aria-label="opens in new window">Commonwealth Law School</a>
+<h3>Adult &amp; Professional Studies</h3>
+<p>No matter your age or where you are in life, Widener can help you advance in your career.</p>
+<a href="/academics/adult-professional-studies">Adult &amp; Professional Studies</a>
+
+      </div>
+    </div>
+    <div class="dotted-bar"></div>
+  </section>
+
+  
+
+  <section class="promo-grid section--banded section--dots--blue">
+      <div class="percent-row">
+              <h2 class="h4"><span>Proven. Results.</span></h2>
+                    <div class="intro-text">
+          <p>Our points of pride not only designate us as a top tier university, they also demonstrate the resources and connections we offer that lead students to successful, rewarding careers.</p>
+        </div>
+          </div>
+    <div data-delay="250" class="sequence-anim-parent promo-grided__slick row">
+    <div class="promo-grided__ind-slide">
+  <div class="promo-grided__ind-slide__wrapper">
+    <div class="promo-grided__ind-slide__card  promo-grided__ind-slide__card--extended">
+  <div class="promo-grided__ind-slide__card--wrapper">
+          <div class="promo-grided__ind-slide__card__image">
+        <figure>  <img src="/sites/default/files/styles/width_600/public/2019-06/grad-generic0600.600.jpg?itok=TCxvnWDc" width="600" height="600" alt="Student receiving diploma at graduation" typeof="foaf:Image" />
+
+
+</figure>
+      </div>
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>94% of Grads Achieve Career Goals</h3>
+            <p>Within 6 months of graduation, 94% of Class of 2019 was employed, in grad school, or in military/other service, according to survey data.</p>
+      <div class="promo-grided__ind-slide__card__link"></div>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="promo-grided__ind-slide__card">
+  <div class="promo-grided__ind-slide__card--wrapper">
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>13:1 Student-Faculty Ratio</h3>
+            <p>Small class sizes allow faculty to make you the priority.</p>
+      <div class="promo-grided__ind-slide__card__link"><a href="/widener-advantage/faculty-mentorship">More about faculty mentorship</a></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="promo-grided__ind-slide__card">
+  <div class="promo-grided__ind-slide__card--wrapper">
+          <div class="promo-grided__ind-slide__card__image">
+        <figure>  <img src="/sites/default/files/styles/width_600/public/2019-05/international-proof-600x600_1.jpg?itok=rAbdwJz2" width="600" height="600" alt="international students in philadelphia" typeof="foaf:Image" />
+
+
+</figure>
+      </div>
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>A Diverse Campus</h3>
+            <p>You'll be welcomed into a community that hails from 49 states and 22 countries.</p>
+      <div class="promo-grided__ind-slide__card__link"><a href="/student-experience/vibrant-community">More about our community </a></div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+<div class="promo-grided__ind-slide">
+  <div class="promo-grided__ind-slide__wrapper">
+    <div class="promo-grided__ind-slide__card  promo-grided__ind-slide__card--extended">
+  <div class="promo-grided__ind-slide__card--wrapper">
+          <div class="promo-grided__ind-slide__card__image">
+        <figure>  <img src="/sites/default/files/styles/width_600/public/2019-05/ncaa-sports-proof-600x600.jpg?itok=u2ze0USb" width="600" height="600" alt="widener soccer player" typeof="foaf:Image" />
+
+
+</figure>
+      </div>
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>24 Varsity Sports Teams </h3>
+            <p>From soccer and volleyball to rugby and track, there are plenty of varsity sports to enjoy at Widener.</p>
+      <div class="promo-grided__ind-slide__card__link"><a href="/student-experience/athletics-recreation">More about athletics</a></div>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="promo-grided__ind-slide__card">
+  <div class="promo-grided__ind-slide__card--wrapper">
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3 class="stat-title">85% </h3>
+            <p>of Full-time Grad Students Receive Aid</p>
+      <div class="promo-grided__ind-slide__card__link"><a href="/admissions-aid/graduate-admissions/financial-aid">More about financial aid</a></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="promo-grided__ind-slide__card">
+  <div class="promo-grided__ind-slide__card--wrapper">
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3 class="stat-title">$105,000 </h3>
+            <p>The average undergraduate academic scholarship amounts to $105,000 over 4 years. </p>
+      <div class="promo-grided__ind-slide__card__link"><a href="/admissions-aid/undergraduate-admissions/financial-aid/scholarships">More about scholarships</a></div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+<div class="promo-grided__ind-slide">
+  <div class="promo-grided__ind-slide__wrapper">
+    <div class="promo-grided__ind-slide__card  promo-grided__ind-slide__card--extended">
+  <div class="promo-grided__ind-slide__card--wrapper">
+          <div class="promo-grided__ind-slide__card__image">
+        <figure>  <img src="/sites/default/files/styles/width_600/public/2019-06/best-salaries-career-600x600.jpg?itok=z2GX3EVU" width="600" height="600" alt="Students networking during on-campus event" typeof="foaf:Image" />
+
+
+</figure>
+      </div>
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>Top 18%</h3>
+            <p>Payscale ranks Widener in the top 18% nationwide with an alumni mid-career salary of $101,100. </p>
+      <div class="promo-grided__ind-slide__card__link"><a href="https://www.payscale.com/research/US/School=Widener_University_-_Main_Campus/Salary" target="_blank" aria-label="opens in new window">Source: PayScale</a></div>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="promo-grided__ind-slide__card">
+  <div class="promo-grided__ind-slide__card--wrapper">
+          <div class="promo-grided__ind-slide__card__image">
+        <figure>  <img src="/sites/default/files/styles/width_600/public/2019-06/best-midatlantic-colleges-600x600.jpg?itok=IPgUcLRZ" width="600" height="600" alt="Aerial view of Old Main" typeof="foaf:Image" />
+
+
+</figure>
+      </div>
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>Best Value College</h3>
+            <p>Named a best value college in Greater Philadelphia by Niche.com</p>
+      <div class="promo-grided__ind-slide__card__link"><a href="https://www.niche.com/colleges/widener-university/" target="_blank" aria-label="opens in new window">Source: Niche.com</a></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="promo-grided__ind-slide__card">
+  <div class="promo-grided__ind-slide__card--wrapper">
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>Top 25%</h3>
+            <p> of universities and liberal arts institutions nationwide.</p>
+      <div class="promo-grided__ind-slide__card__link"><a href="https://www.timeshighereducation.com/rankings/united-states/2018#!/page/0/length/25/name/widener%20university/sort_by/rank/sort_order/asc/cols/stats" target="_blank" aria-label="opens in new window">Source: Wall Street Journal</a></div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+<div class="promo-grided__ind-slide">
+  <div class="promo-grided__ind-slide__wrapper">
+    <div class="promo-grided__ind-slide__card  promo-grided__ind-slide__card--extended">
+  <div class="promo-grided__ind-slide__card--wrapper">
+          <div class="promo-grided__ind-slide__card__image">
+        <figure>  <img src="/sites/default/files/styles/width_600/public/2019-05/live-campus-proof-600x600.jpg?itok=7rYHKumu" width="600" height="600" alt="students walking around quads" typeof="foaf:Image" />
+
+
+</figure>
+      </div>
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>87% Live on Campus Their First Year</h3>
+            <p>Before long, our campus will feel like your second home.</p>
+      <div class="promo-grided__ind-slide__card__link"><a href="/student-experience/housing-dining">More about living on campus</a></div>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="promo-grided__ind-slide__card">
+  <div class="promo-grided__ind-slide__card--wrapper">
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3>National Diversity Award</h3>
+            <p>Widener was awarded a 2018 Higher Education Excellence in Diversity Award from <em>INSIGHT Into Diversity</em> magazine.</p>
+      <div class="promo-grided__ind-slide__card__link"><a href="/news/news-archive/university-honored-heed-diversity-award">More about award</a></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="promo-grided__ind-slide__card">
+  <div class="promo-grided__ind-slide__card--wrapper">
+    
+    <div class="promo-grided__ind-slide__card__content">
+              <h3 class="stat-title">80+ </h3>
+            <p>With 80+ clubs, you'll find ways to get involved, make invaluable connections, and pursue your interests.     </p>
+      <div class="promo-grided__ind-slide__card__link"><a href="/student-experience/get-involved/clubs-organizations">View clubs &amp; organizations</a></div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+
+  </div>
+</section>
+
+  
+
+      <section class="section--news--recommended section--news--recommended__btns--home section--banded">
+      <div class="percent-row">
+        <h2 class="h4 h4-exception">
+          <span>Recent News</span>
+        </h2>
+      </div>
+      <div class="row percent-row">
+        <div class="views-element-container"><div class="row padded-row js-view-dom-id-7ad8ed3b30ff6068f8491d5a3914d19d8f83701c7da008d83cc996bf0b23262d">
+  
+  
+  
+
+  
+  
+  
+
+            <div class="news-card">
+  <article class="news__teaser">
+          <div class="news__media">  <img src="/sites/default/files/styles/width_450/public/2020-01/untitled_design_3.jpg?itok=i8bzSwuo" width="450" height="300" alt="Student looks at MLK Day poster" typeof="foaf:Image" />
+
+
+</div>
+        <div class="news__text">
+      <h3><a href="/news/news-archive/widener-celebrates-dr-martin-luther-king-jr-day-service"><span>Widener Celebrates Dr. Martin Luther King Jr. Day of Service</span>
+</a></h3>
+      <div class="news__summary">
+        <p>The Widener University community celebrated and continued the legacy of Dr. Martin Luther King Jr. with community service and commemorative events. Events included:</p>
+      </div>
+    </div>
+  </article>
+</div>
+
+            <div class="news-card">
+  <article class="news__teaser">
+          <div class="news__media">  <img src="/sites/default/files/styles/width_450/public/2020-01/untitled_design_0.jpg?itok=eYaJ3jzw" width="450" height="300" alt="Sunrise over Old Main building" typeof="foaf:Image" />
+
+
+</div>
+        <div class="news__text">
+      <h3><a href="/news/news-archive/presidents-message-spring-2020"><span>President&#039;s Message: Spring 2020</span>
+</a></h3>
+      <div class="news__summary">
+        <p>President Julie Wollman welcomes faculty, staff and students to the start of the spring semester.</p>
+      </div>
+    </div>
+  </article>
+</div>
+
+            <div class="news-card">
+  <article class="news__teaser">
+          <div class="news__media">  <img src="/sites/default/files/styles/width_450/public/2020-01/untitled_design.jpg?itok=s4UsKl7V" width="450" height="300" alt="Students walk on campus past We&#039;re All Widener banners" typeof="foaf:Image" />
+
+
+</div>
+        <div class="news__text">
+      <h3><a href="/news/news-archive/international-scholarship-recipient-finds-home-widener"><span>International Scholarship Recipient Finds Home at Widener</span>
+</a></h3>
+      <div class="news__summary">
+        <p>Nigerian student Chiamaka Oduah is the university's first recipient of the #YouAreWelcomeHere scholarship for international students.</p>
+      </div>
+    </div>
+  </article>
+</div>
+
+  
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+
+      </div>
+
+      <div class="section--news--recommended__btns percent-row">
+        <a href="/news" class="btn">View all news</a>
+      </div>
+    </section>
+  
+      <section class="section--events--recommended section--banded section--dots">
+              <div class="padded-row">
+          <h2 class="h4 h4-exception"><span>Upcoming Events</span></h2>
+        </div>
+      
+      <div class="views-element-container"><section class="row js-view-dom-id-598d1f391a68da0192de75eb2ae49c6e582e48e2c575bdbdc2198ec41d928721">
+  
+  
+  
+
+  
+  
+  
+
+  <section class="event--listing">
+    <div class="padded-row event--listing__slick sequence-anim-parent">
+                <div class="columns small-12 medium-6 large-3 sequence-anim-item">
+  <article class="event--listing__item row align-middle">
+    <div class="columns shrink">
+      <div class="date-block">
+  <div class="date-block__day">29</div>
+  <div class="date-block__month">Jan</div>
+</div>
+
+    </div>
+    <div class="columns">
+      <h3 class="h4 h4-exception">
+                  <a href="/events/lis-open-house"><span>Library and Information Services (LIS) Open House</span>
+</a>
+              </h3>
+    </div>
+  </article>
+</div>
+
+            <div class="columns small-12 medium-6 large-3 sequence-anim-item">
+  <article class="event--listing__item row align-middle">
+    <div class="columns shrink">
+      <div class="date-block">
+  <div class="date-block__day">30</div>
+  <div class="date-block__month">Jan</div>
+</div>
+
+    </div>
+    <div class="columns">
+      <h3 class="h4 h4-exception">
+                  <a href="/events/book-discussion-honor-periodic-tables-150th-anniversary"><span>Book Discussion in Honor of the Periodic Table’s 150th Anniversary</span>
+</a>
+              </h3>
+    </div>
+  </article>
+</div>
+
+            <div class="columns small-12 medium-6 large-3 sequence-anim-item">
+  <article class="event--listing__item row align-middle">
+    <div class="columns shrink">
+      <div class="date-block">
+  <div class="date-block__day">04</div>
+  <div class="date-block__month">Feb</div>
+</div>
+
+    </div>
+    <div class="columns">
+      <h3 class="h4 h4-exception">
+                  <a href="https://chat.widener.edu/" target="_blank" aria-label="opens in new window">Live Online Chat with Current Undergraduate Students</a>
+              </h3>
+    </div>
+  </article>
+</div>
+
+            <div class="columns small-12 medium-6 large-3 sequence-anim-item">
+  <article class="event--listing__item row align-middle">
+    <div class="columns shrink">
+      <div class="date-block">
+  <div class="date-block__day">07</div>
+  <div class="date-block__month">Feb</div>
+</div>
+
+    </div>
+    <div class="columns">
+      <h3 class="h4 h4-exception">
+                  <a href="https://ugadmissions.widener.edu/register/?id=773117d9-e3f9-4516-b46f-efcc783f0b9e" target="_blank" aria-label="opens in new window">Transfer Instant Decision Day</a>
+              </h3>
+    </div>
+  </article>
+</div>
+
+  
+      
+    </div>
+  </section>
+
+  
+
+  
+  
+
+  
+  
+</section>
+</div>
+
+
+      <div class="padded-row">
+        <a href="/events?topic=701" class="btn">
+          All Admissions Events
+        </a>
+        <a href="/events" class="btn">
+          All Events
+        </a>
+      </div>
+    </section>
+  
+  <article class="hero hero--campus-feature section--global-spacing hero--video  hero--img">
+  <div class="hero__media">
+          <div class="video-feature">
+        <video  loop="" muted="" poster="" autoplay="autoplay">
+          <source src="https://player.vimeo.com/external/333622532.hd.mp4?s=ccd0c58b503bc441d4665127e51e1c2cc1239b62&amp;amp;profile_id=175">
+        </video>
+      </div>
+            <img srcset="/sites/default/files/styles/width_720/public/2019-06/old-main-color-correct-1440x900.jpg?itok=yzuAKMSa 720w, /sites/default/files/styles/width_1440/public/2019-06/old-main-color-correct-1440x900.jpg?itok=ebTqEIe7 1440w" sizes="100vw" src="/sites/default/files/styles/width_720/public/2019-06/old-main-color-correct-1440x900.jpg?itok=yzuAKMSa" alt="widener university campus" typeof="foaf:Image" />
+
+
+
+  </div>
+
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <div class="hero__content__wrapper">
+      <h2>A Setting That Inspires</h2>
+              <p>Whether you&#039;re studying on the quad or exploring cultural treasures in nearby Philadelphia, you&#039;ll discover a vibrant second home at Widener.</p>
+      
+              <div class="hero__content__btn-container">
+                              <a href="/student-experience/our-campus" class="btn btn--reverse">Our Campus</a>
+
+              <a href="/admissions-aid/visit-us#tour" class="btn btn--reverse">Virtual Tour</a>
+
+              <a href="/admissions-aid/visit-us" class="btn btn--reverse">Visit Us</a>
+
+      
+        </div>
+          </div>
+  </div>
+</article>
+
+
+  <section class="inside-track">
+    <div class="inside-track__title">
+      <h2>On the Inside Track</h2>
+    </div>
+    <div class="inside-track__wrapper">
+      <div class="inside-track__ind-element">
+  <div class="inside-track__ind-element__wrapper">
+    <div class="inside-track__ind-element__col-image">
+      <figure>
+        <div class="inside-track__ind-element__col-image__overlay"></div>
+          <img src="/sites/default/files/styles/width_1000/public/2019-06/kaylee-pp-hp_800.900.jpg?itok=kbSJqvd1" width="800" height="900" alt="Kaylee Horchak Nursing" typeof="foaf:Image" />
+
+
+
+      </figure>
+
+      <div class="inside-track__ind-element__title">
+        <div class="inside-track__ind-element__title__wrapper">
+          <h3><span>
+            Kaylee Horchak
+          </span></h3>
+          <div class="inside-track__ind-element__title__wrapper__meta">
+            Class of 2019
+          </div>
+          <div class="inside-track__ind-element__title__wrapper__meta">
+            Nursing Major
+          </div>
+        </div>
+      </div>
+
+      <div class="inside-track__ind-element__video">
+        <a href="/widener-advantage/pride-perspectives/ready-anything">
+                      Watch Kaylee&#039;s Story
+            <i class="far fa-play-circle"></i>
+                  </a>
+      </div>
+    </div>
+
+    <div class="inside-track__ind-element__col-content">
+              <div class="inside-track__ind-element__col-content__wrapper">
+          <div class="line-joint"></div>
+          <div class="line-joint line-joint--secondary"></div>
+          <div class="inside-track__ind-element__col-content__grid">
+            <div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Clinical Experiences</h3>
+  <p>Clinical rotations taught Kaylee how to interact with patients and handle real-world scenarios.</p>
+</div>
+<div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Hub of Healthcare</h3>
+  <p>Our proximity to Philadelphia provided Kaylee with access to world-class medical facilities.</p>
+</div>
+<div class="inside-track__ind-element__col-content__grid__object">
+  <h3>On the Field</h3>
+  <p>Our flexible nursing program meant Kaylee could pursue nursing and play lacrosse.</p>
+</div>
+
+          </div>
+        </div>
+      
+              <div class="inside-track__ind-element__col-content__career">
+          <div class="inside-track__ind-element__col-content__career__wrapper">
+                          <h3>Career Plan</h3>
+                        <p>Pediatric Nurse</p>
+          </div>
+        </div>
+          </div>
+  </div>
+</div>
+<div class="inside-track__ind-element">
+  <div class="inside-track__ind-element__wrapper">
+    <div class="inside-track__ind-element__col-image">
+      <figure>
+        <div class="inside-track__ind-element__col-image__overlay"></div>
+          <img src="/sites/default/files/styles/width_1000/public/2019-06/deshawn_pp_hp_image_800.900.jpg?itok=P6AIEEci" width="800" height="900" alt="DeShawn Ivey Finance Lab" typeof="foaf:Image" />
+
+
+
+      </figure>
+
+      <div class="inside-track__ind-element__title">
+        <div class="inside-track__ind-element__title__wrapper">
+          <h3><span>
+            DeShawn Ivey
+          </span></h3>
+          <div class="inside-track__ind-element__title__wrapper__meta">
+            Class of 2019
+          </div>
+          <div class="inside-track__ind-element__title__wrapper__meta">
+            Finance Major
+          </div>
+        </div>
+      </div>
+
+      <div class="inside-track__ind-element__video">
+        <a href="/widener-advantage/pride-perspectives/wealth-experience">
+                      Watch DeShawn&#039;s Story
+            <i class="far fa-play-circle"></i>
+                  </a>
+      </div>
+    </div>
+
+    <div class="inside-track__ind-element__col-content">
+              <div class="inside-track__ind-element__col-content__wrapper">
+          <div class="line-joint"></div>
+          <div class="line-joint line-joint--secondary"></div>
+          <div class="inside-track__ind-element__col-content__grid">
+            <div class="inside-track__ind-element__col-content__grid__object">
+  <h3>At His Fingertips</h3>
+  <p>In the finance lab, DeShawn managed an investment fund using the same technology found on Wall Street.</p>
+</div>
+<div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Leadership Development</h3>
+  <p>Student Government Association representative and president of Black Men United, DeShawn was a campus leader.</p>
+</div>
+<div class="inside-track__ind-element__col-content__grid__object">
+  <h3>One-on-One Relationships</h3>
+  <p>Deshawn developed relationships with industry-connected professors and received valuable professional advice.</p>
+</div>
+
+          </div>
+        </div>
+      
+              <div class="inside-track__ind-element__col-content__career">
+          <div class="inside-track__ind-element__col-content__career__wrapper">
+                          <h3>Career Plan</h3>
+                        <p>Financial Analyst</p>
+          </div>
+        </div>
+          </div>
+  </div>
+</div>
+<div class="inside-track__ind-element">
+  <div class="inside-track__ind-element__wrapper">
+    <div class="inside-track__ind-element__col-image">
+      <figure>
+        <div class="inside-track__ind-element__col-image__overlay"></div>
+          <img src="/sites/default/files/styles/width_1000/public/2019-06/luis-image-pp_800.900.jpg?itok=PGhAdYAf" width="800" height="900" alt="Luis Aguilar Biomedical Engineering" typeof="foaf:Image" />
+
+
+
+      </figure>
+
+      <div class="inside-track__ind-element__title">
+        <div class="inside-track__ind-element__title__wrapper">
+          <h3><span>
+            Luis Aguilar
+          </span></h3>
+          <div class="inside-track__ind-element__title__wrapper__meta">
+            Class of 2017 and 2018
+          </div>
+          <div class="inside-track__ind-element__title__wrapper__meta">
+            Biomedical Engineering Major, Biomedical Engineering Master&#039;s
+          </div>
+        </div>
+      </div>
+
+      <div class="inside-track__ind-element__video">
+        <a href="/widener-advantage/pride-perspectives/brain-power">
+                      Watch Luis&#039;s Story
+            <i class="far fa-play-circle"></i>
+                  </a>
+      </div>
+    </div>
+
+    <div class="inside-track__ind-element__col-content">
+              <div class="inside-track__ind-element__col-content__wrapper">
+          <div class="line-joint"></div>
+          <div class="line-joint line-joint--secondary"></div>
+          <div class="inside-track__ind-element__col-content__grid">
+            <div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Small Campus, Big Opportunities</h3>
+  <p>Small classes allowed for one-on-one interactions with professors, helping Luis develop an interest in neuroscience.</p>
+</div>
+<div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Home Away from Home</h3>
+  <p>An international student, Luis was far from home, but he found a welcoming community.</p>
+</div>
+<div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Fast Track to Success</h3>
+  <p>Through the 4+1 engineering program, Luis earned his degrees in less time, jumpstarting his career.</p>
+</div>
+
+          </div>
+        </div>
+      
+              <div class="inside-track__ind-element__col-content__career">
+          <div class="inside-track__ind-element__col-content__career__wrapper">
+                          <h3>Career Plan</h3>
+                        <p>Technology Mentor Promoting STEM Fields</p>
+          </div>
+        </div>
+          </div>
+  </div>
+</div>
+<div class="inside-track__ind-element">
+  <div class="inside-track__ind-element__wrapper">
+    <div class="inside-track__ind-element__col-image">
+      <figure>
+        <div class="inside-track__ind-element__col-image__overlay"></div>
+          <img src="/sites/default/files/styles/width_1000/public/2019-06/danielle-pp-image_800.900.jpg?itok=5B_g4GuS" width="800" height="900" alt="Danielle Cardona Communications Studies Student" typeof="foaf:Image" />
+
+
+
+      </figure>
+
+      <div class="inside-track__ind-element__title">
+        <div class="inside-track__ind-element__title__wrapper">
+          <h3><span>
+            Danielle Cardona
+          </span></h3>
+          <div class="inside-track__ind-element__title__wrapper__meta">
+            Class of 2018
+          </div>
+          <div class="inside-track__ind-element__title__wrapper__meta">
+            Communication Studies Major
+          </div>
+        </div>
+      </div>
+
+      <div class="inside-track__ind-element__video">
+        <a href="/widener-advantage/pride-perspectives/fielding-opportunities">
+                      Watch Danielle&#039;s Story
+            <i class="far fa-play-circle"></i>
+                  </a>
+      </div>
+    </div>
+
+    <div class="inside-track__ind-element__col-content">
+              <div class="inside-track__ind-element__col-content__wrapper">
+          <div class="line-joint"></div>
+          <div class="line-joint line-joint--secondary"></div>
+          <div class="inside-track__ind-element__col-content__grid">
+            <div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Camera Ready</h3>
+  <p>Multiple internships prepared Danielle for a job with the Philadelphia Eagles.</p>
+</div>
+<div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Industry Standard</h3>
+  <p>In Widener’s state-of-the-art broadcasting studio, Danielle gained experience with industry-standard equipment.</p>
+</div>
+<div class="inside-track__ind-element__col-content__grid__object">
+  <h3>Faculty Connections</h3>
+  <p>Her professor's strong industry connections opened the door for Danielle.</p>
+</div>
+
+          </div>
+        </div>
+      
+              <div class="inside-track__ind-element__col-content__career">
+          <div class="inside-track__ind-element__col-content__career__wrapper">
+                          <h3>Career Plan</h3>
+                        <p>Broadcaster</p>
+          </div>
+        </div>
+          </div>
+  </div>
+</div>
+
+    </div>
+    <div class="slick-thumbs">
+      <ul>
+                  <li>
+            <div class="slick-thumbs__ind-element">
+              <div class="slick-thumbs__ind-element__img">
+                  <img src="/sites/default/files/styles/width_100/public/2019-06/kaylee-pp-headshot_640.640.jpg?itok=nwiqvSpZ" width="100" height="100" alt="Kaylee Horchak Nursing Headshot " typeof="foaf:Image" />
+
+
+
+              </div>
+              <div class="show-for-sr">#1</div>
+            </div>
+          </li>
+                  <li>
+            <div class="slick-thumbs__ind-element">
+              <div class="slick-thumbs__ind-element__img">
+                  <img src="/sites/default/files/styles/width_100/public/2019-06/deshawn_pp_headshot_640.640.jpg?itok=BBD_4_17" width="100" height="100" alt="DeShawn Ivey Finance Lab Headshot" typeof="foaf:Image" />
+
+
+
+              </div>
+              <div class="show-for-sr">#2</div>
+            </div>
+          </li>
+                  <li>
+            <div class="slick-thumbs__ind-element">
+              <div class="slick-thumbs__ind-element__img">
+                  <img src="/sites/default/files/styles/width_100/public/2019-06/luis-headshot-pp_640.640.jpg?itok=3t4eK64U" width="100" height="100" alt="Luis Aguilar Biomedical Engineering Headshot" typeof="foaf:Image" />
+
+
+
+              </div>
+              <div class="show-for-sr">#3</div>
+            </div>
+          </li>
+                  <li>
+            <div class="slick-thumbs__ind-element">
+              <div class="slick-thumbs__ind-element__img">
+                  <img src="/sites/default/files/styles/width_100/public/2019-06/danielle-headshot-pp_640.640.jpg?itok=itcCq1Bv" width="100" height="100" alt="Danielle Cardona Communications Studies Headshot" typeof="foaf:Image" />
+
+
+
+              </div>
+              <div class="show-for-sr">#4</div>
+            </div>
+          </li>
+              </ul>
+    </div>
+  </section>
+</div>
+
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="l-footer">
+    <div class="footer-readyset">
+  <div class="row percent-row">
+    <div class="columns small-12 medium-12 large-6">
+      <h2>READY. SET.</h2>
+    </div>
+    <div class="columns small-12 medium-12 large-6 footer-readyset__cta-container">
+                          <a href="/admissions-aid" class="btn btn--yellow">Apply</a>
+
+              <a href="/admissions-aid/visit-us" class="btn btn--yellow">Visit</a>
+
+              <a href="/admissions-aid/request-info" class="btn btn--yellow">Request Info</a>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="footer-main">
+  <div class="row percent-row">
+    <div class="small-12 medium-12 large-4 columns">
+      <div class="footer-main__logo">
+        <a href="/">
+          <svg viewBox="0 0 300 34.38">
+  <title>Widener-University-Logo</title>
+  <g class="logo__name">
+    <path d="M189.1,8.87V17.5c0,4.68-3,8.5-9,8.5-5.07,0-9.28-3.2-9.28-8.75V9.12c0-5.3-.12-5.3-3.21-5.67-.13,0-.13-.37,0-.37,1.48.12,3,.25,4.94.25a39.4,39.4,0,0,0,4.21-.25c.25,0,.12.37,0,.37-3.22.25-3.22.49-3.22,5.67v7.39c0,5.67,3.84,8,7.42,8,4.7,0,7-2.59,7-7.39V8.75c0-4.56-.37-5-3.46-5.3-.12,0-.12-.37,0-.37a41.91,41.91,0,0,0,4.33.25,25.63,25.63,0,0,0,3.46-.25c.25,0,.13.37,0,.37-3,.37-3.21,1.11-3.21,5.42"/>
+    <path d="M204.56,25.38a25.59,25.59,0,0,0-3.34.13c-.13,0-.13-.37,0-.37,1.85-.13,2.22-.37,2.22-3.08V16.88c0-3.08-.49-4.31-2.59-4.31-1.12,0-2,.25-4.58,1.85v7.64c0,2.46.37,2.83,2.23,3.08.12,0,.12.49,0,.37a24.75,24.75,0,0,0-3.22-.13,36.68,36.68,0,0,0-4,.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.27c0-2.35-.37-2.72-2.23-2.1a.24.24,0,0,1-.12-.37,25.33,25.33,0,0,0,4.2-3s.25.13.25.25a19.77,19.77,0,0,1,.13,2.83c2.84-2.09,4.45-2.71,6.06-2.71,2.47,0,3.33,1.61,3.33,4.19v6.78c0,2.46.13,2.83,2.6,3.08.13,0,.13.49,0,.37a27.65,27.65,0,0,0-3.58-.25"/>
+    <path d="M212.72,8.26a1.48,1.48,0,0,1-1.36-1.48,1.5,1.5,0,0,1,1.48-1.48,1.6,1.6,0,0,1,1.49,1.48,1.73,1.73,0,0,1-1.61,1.48m-.37,17.12a34.4,34.4,0,0,0-3.84.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.14c0-2.34-.37-2.71-2.23-2.09-.12,0-.12-.25-.12-.37a29.2,29.2,0,0,0,4.58-3l.37.12c-.13.74-.25,3.82-.25,5.06v6c0,2.71.25,2.84,2.6,3.08.12,0,.12.37,0,.37h-3.71"/>
+    <path d="M228.42,14.79l-4.32,11a.37.37,0,0,1-.5,0l-4.33-11c-1-2.34-1.61-3-3.46-3.08-.12,0-.12-.37,0-.37a32.2,32.2,0,0,0,3.46.12,30.11,30.11,0,0,0,3.47-.12c.12,0,.12.37,0,.37-1.86.24-2.23.61-1.24,3.08l3,7.64,3-7.64c.87-2.34.62-2.84-1.23-3.08-.13,0-.13-.37,0-.37a18.82,18.82,0,0,0,2.72.12,16.34,16.34,0,0,0,2.6-.12c.12,0,.12.37,0,.37-1.61.24-2.35,1-3.1,3.08"/>
+    <path d="M237.33,12c-1.86,0-3.34,1.6-3.71,4.19l7.3-.12c0-1.85-1.24-4.07-3.59-4.07m5.93,4.56-9.77.25c0,.37-.12.74-.12,1.23,0,4.68,2.6,6.53,5.2,6.53A8,8,0,0,0,243,23s.24.25.12.37A8,8,0,0,1,237.45,26c-3.83,0-6.55-2.83-6.55-6.9s3.71-7.89,7.29-7.89a4.75,4.75,0,0,1,5.07,4.56.75.75,0,0,1,0,.74"/>
+    <path d="M254.77,14.17c-.5,0-1.36-1-2.35-1-.75,0-1.49.37-2.72,1.85v7c0,2.46.37,3,3.46,3.08,0,0,.12.37,0,.37-.74-.13-3.46-.13-4.45-.13a36.68,36.68,0,0,0-4,.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.14c0-2.34-.37-2.71-2.23-2.09a1.3,1.3,0,0,1-.12-.37,20.35,20.35,0,0,0,4.2-3.08,1.3,1.3,0,0,0,.37.12,23.67,23.67,0,0,1,.13,3.33c2.1-2.59,3.58-3.58,4.45-3.58s1.73,1.24,1.73,1.61a2.76,2.76,0,0,1-1.11,2.09"/>
+    <path d="M260.46,25.88a7.79,7.79,0,0,1-4-1,25.73,25.73,0,0,1-.13-3.82c0-.12.38-.12.38,0,.86,3.08,2.59,4.31,4.32,4.31s2.48-1,2.48-2.58c0-3.33-6.68-3.7-6.68-7.64,0-2.1,1.73-3.95,4.7-3.95a5.61,5.61,0,0,1,3,.62,14.9,14.9,0,0,1,.37,3.45c0,.12-.37.12-.37,0-.62-2.1-2.11-3.45-3.71-3.45-1.24,0-2,.86-2,2.34,0,3.2,6.55,3.2,6.55,7.39.13,2.22-1.85,4.32-4.94,4.32"/>
+    <path d="M271.71,8.26a1.48,1.48,0,0,1-1.36-1.48,1.5,1.5,0,0,1,1.48-1.48,1.59,1.59,0,0,1,1.49,1.48,1.72,1.72,0,0,1-1.61,1.48m-.49,17.12a34.31,34.31,0,0,0-3.84.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.14c0-2.34-.37-2.71-2.23-2.09-.12,0-.12-.25-.12-.37a28.64,28.64,0,0,0,4.57-3l.38.12c-.13.74-.25,3.82-.25,5.06v6c0,2.71.25,2.84,2.6,3.08.12,0,.12.37,0,.37h-3.71"/>
+    <path d="M280.37,25.88c-2.11,0-3.09-1-3-3.33l.12-9.49H275.3c-.13,0-.13-.37-.13-.37a21.71,21.71,0,0,0,4.58-4.31l.25.12a28.72,28.72,0,0,0-.25,3.21h1.85a15.21,15.21,0,0,0,3-.13c.25-.12.13,1.6-.25,1.48s-1-.12-2.35-.12h-2.22l-.13,8.75c0,2.09,1,2.83,2.48,2.83a9.08,9.08,0,0,0,2.47-.37,1.24,1.24,0,0,1,.13.37,10.22,10.22,0,0,1-4.33,1.36"/>
+    <path d="M296.57,14.79C295.7,17,290.88,27.36,290,34.13h-2.35a5.72,5.72,0,0,0-2.1.25c-.12,0-.12-.37,0-.37a4.68,4.68,0,0,0,2.1-1c.87-.61,1.86-2.21,2.85-4.8l.86-2.47-3.83-11c-1-2.34-1.61-3-3.46-3.08-.13,0-.13-.37,0-.37a31,31,0,0,0,3.46.12,27.79,27.79,0,0,0,3.34-.12c.12,0,0,.37,0,.37-1.86.24-2.23.61-1.24,3.08l2.72,8.13,3.22-8.13c.86-2.34.62-2.84-1.24-3.08-.12,0-.12-.37,0-.37a19.86,19.86,0,0,0,2.85.12,18.82,18.82,0,0,0,2.72-.12c.12,0,.12.37,0,.37-1.86.24-2.48,1-3.34,3.08"/>
+    <path d="M79.52,9.24,72.72,26c0,.12-.37.12-.37,0l-5.2-15L60.72,26c0,.12-.37.12-.37,0L53.8,9.24c-1.61-4.19-2.23-5.42-4.95-5.67-.12,0-.12-.37,0-.37a29.31,29.31,0,0,0,3.59.25c1.85,0,4.08-.12,5.44-.25.12,0,.12.37,0,.37-1.61.13-2.6.37-2.6,1.36a19.3,19.3,0,0,0,1.24,4.31l4.95,12.57L66.54,9.73l-.13-.49c-1.48-4.31-2.1-5.42-4.7-5.67-.12,0-.12-.37,0-.37a29.31,29.31,0,0,0,3.59.25c1.85,0,4.45-.12,5.69-.25.12,0,.12.37,0,.37-2,.13-2.72.5-2.72,1.48a17.74,17.74,0,0,0,1,4.07l4.2,12.57,5-12.82c.74-2.09,1.24-3.2,1.24-4.06S79,3.57,77.3,3.33c-.13,0-.13-.37,0-.37a25.26,25.26,0,0,0,3.33.24A21.9,21.9,0,0,0,83.85,3c.12,0,.12.37,0,.37-2,.37-2.72,1.85-4.33,5.91"/>
+    <path d="M84.59,8.26a1.48,1.48,0,0,1-1.36-1.48A1.5,1.5,0,0,1,84.72,5.3,1.59,1.59,0,0,1,86.2,6.78a1.53,1.53,0,0,1-1.61,1.48m-.37,17.12a34.21,34.21,0,0,0-3.83.13c-.13,0-.13-.37,0-.37,2.35-.25,2.59-.37,2.59-3.08V16.14c0-2.34-.37-2.71-2.22-2.09-.13,0-.13-.25-.13-.37a28.3,28.3,0,0,0,4.58-3l.37.12c-.12.74-.25,3.82-.25,5.06v6c0,2.71.25,2.84,2.6,3.08.13,0,.13.37,0,.37H84.22"/>
+    <path d="M100.05,14.54a6,6,0,0,0-4.45-2c-2.47,0-4.21,1.85-4.21,5.54,0,4.19,2.73,6.29,5.2,6.29a5.88,5.88,0,0,0,3.46-1.48ZM101,26c-.62,0-.86-1.36-1-2.22A8.3,8.3,0,0,1,95,25.88C91.89,25.88,89,23,89,19.35a8.07,8.07,0,0,1,8-7.89,10.67,10.67,0,0,1,3,.37V5.3c0-2.34-.37-2.71-2.22-2.1a1.13,1.13,0,0,1-.13-.37A28.58,28.58,0,0,0,102.28,0l.37.12c-.12.62-.25,3.7-.25,5.06V22.55c0,1.73.62,2,2.85,1.36l.12.37A18.77,18.77,0,0,1,101,26Z"/>
+    <path d="M112.42,12c-1.86,0-3.34,1.6-3.71,4.19L116,16c0-1.85-1.24-4.07-3.59-4.07m5.94,4.56-9.78.25c0,.37-.12.74-.12,1.23,0,4.68,2.6,6.53,5.2,6.53A8,8,0,0,0,118.11,23s.25.25.12.37A8,8,0,0,1,112.54,26c-3.83,0-6.55-2.83-6.55-6.9s3.71-7.89,7.29-7.89a4.76,4.76,0,0,1,5.08,4.56.81.81,0,0,1,0,.74"/>
+    <path d="M133.32,25.38a25.66,25.66,0,0,0-3.34.13c-.12,0-.12-.37,0-.37,1.86-.13,2.23-.37,2.23-3.08V16.88c0-3.08-.5-4.31-2.6-4.31-1.11,0-2,.25-4.58,1.85v7.64c0,2.46.37,2.83,2.23,3.08.12,0,.12.49,0,.37a24.68,24.68,0,0,0-3.22-.13,36.49,36.49,0,0,0-4,.13c-.13,0-.13-.37,0-.37,2.35-.25,2.59-.37,2.59-3.08V16.27c0-2.35-.37-2.72-2.22-2.1a.24.24,0,0,1-.13-.37,25.41,25.41,0,0,0,4.21-3s.25.13.25.25a21.4,21.4,0,0,1,.12,2.83c2.84-2.09,4.45-2.71,6.06-2.71,2.47,0,3.34,1.61,3.34,4.19v6.78c0,2.46.12,2.83,2.6,3.08.12,0,.12.49,0,.37a27.83,27.83,0,0,0-3.59-.25"/>
+    <path d="M144.2,12c-1.85,0-3.34,1.6-3.71,4.19l7.3-.12c0-1.85-1.36-4.07-3.59-4.07m5.94,4.56-9.77.25c0,.37-.12.74-.12,1.23,0,4.68,2.59,6.53,5.19,6.53A7.93,7.93,0,0,0,149.89,23s.25.25.13.37A8,8,0,0,1,144.33,26c-3.84,0-6.56-2.83-6.56-6.9s3.71-7.89,7.3-7.89a4.76,4.76,0,0,1,5.07,4.56c.12.25,0,.5,0,.74"/>
+    <path d="M161.89,14.17c-.5,0-1.36-1-2.35-1-.74,0-1.49.37-2.72,1.85v7c0,2.46.37,3,3.46,3.08,0,0,.12.37,0,.37-.74-.13-3.46-.13-4.45-.13a36.68,36.68,0,0,0-4,.13c-.12,0-.12-.37,0-.37,2.35-.25,2.6-.37,2.6-3.08V16.14c0-2.34-.37-2.71-2.23-2.09a1.3,1.3,0,0,1-.12-.37,20.35,20.35,0,0,0,4.2-3.08,1.3,1.3,0,0,0,.37.12,23.67,23.67,0,0,1,.13,3.33c2.1-2.59,3.58-3.58,4.45-3.58S163,11.71,163,12.08c0,1-.74,2.09-1.11,2.09"/>
+  </g>
+  <g class="logo__mark">
+    <path class="logo__shield-outter" d="M12.12,32.78c5.81-3.33,12.24-7.27,12.24-13.06V3.45H0V19.72c0,5.79,6.43,9.61,12.12,13.06"/>
+    <path class="logo__shield-inner" d="M12.12,30.68c5.07-2.95,10.64-6.28,10.64-11.33V4.93H1.61V19.35c0,5,5.56,8.38,10.51,11.33"/>
+    <g class="logo__date"><rect x="5.94" y="10.23" width="12.37" height="1.6"/>
+      <path d="M5.07,20.46H3.71v-.25c.62-.12.87-.12.87-.86V16.88c0-.86-.25-.86-.87-.86V15.9H6.18V16c-.61,0-.86.12-.86.86v2.47c0,.74.25.86.86.86v.25a3.44,3.44,0,0,1-1.11,0"/>
+      <path d="M8.66,15.9c0,.74.62,1.1,1.23,1.47A1.65,1.65,0,0,0,10.76,16a1.14,1.14,0,0,0-1.11-1.23,1,1,0,0,0-1,1.11m-.25,3.69A1.27,1.27,0,0,0,9.65,21a1.07,1.07,0,0,0,1.23-1.11c0-.86-.74-1.23-1.48-1.73a1.49,1.49,0,0,0-1,1.48m-.74,0a2.08,2.08,0,0,1,1.48-1.72A1.9,1.9,0,0,1,8,16.27a1.79,1.79,0,0,1,1.85-1.73A1.53,1.53,0,0,1,11.5,16c0,.74-.37,1.11-1.24,1.6.75.49,1.37.86,1.37,1.85a1.9,1.9,0,0,1-2.11,1.85,1.88,1.88,0,0,1-1.85-1.73"/>
+      <path d="M16.57,20.58H12.86l-.12-.25c1.73-.86,2.6-1.72,2.6-2.83a1,1,0,0,0-1-1.11,1.61,1.61,0,0,0-1.12.49l-.12-.12a2.1,2.1,0,0,1,1.61-1,1.43,1.43,0,0,1,1.48,1.48c0,1-1.11,2-2.1,2.59h1.36c1,0,1.11-.12,1.11-.62h.13a3.67,3.67,0,0,1-.13,1.24c.13,0,.13.12,0,.12"/>
+      <path d="M19.29,20.46H17.93v-.25c.62-.12.87-.12.87-.86V16.88c0-.86-.25-.86-.87-.86V15.9h2.48V16c-.62,0-.87.12-.87.86v2.47c0,.74.25.86.87.86v.25c-.13.12-.75,0-1.12,0"/>
+    </g>
+  </g>
+</svg>
+        </a>
+      </div>
+
+      <div class="footer-main__meta">
+        <div class="footer-main__meta__address">
+          <p>One University Place</p>
+
+<p>Chester PA 19013</p>
+          <p><a href="tel:1-888-WIDENER">1-888-WIDENER</a></p>
+        </div>
+                  <ul>
+              <li><a href="/about/maps-directions" target="">Maps &amp; Directions</a></li>
+              <li><a href="/admissions-aid/visit-us#tour" target="">Virtual Tour</a></li>
+          </ul>
+  
+
+      </div>
+    </div>
+
+    <div class="small-12 medium-6 large-5 columns">
+      <div class="footer-main__nav-col">
+        <div class="footer-main__main-nav">
+          <h2 class="show-for-sr">Quick Links</h2>
+                    <ul>
+              <li><a href="/academics/explore-programs" target="">Explore All Programs</a></li>
+              <li><a href="/about/campus-community-resources/wolfgram-memorial-library" target="">Library</a></li>
+              <li><a href="https://www.bkstr.com/widenerestore/home" target="_blank">Bookstore</a></li>
+              <li><a href="/student-experience/student-success-support/safety" target="">Campus Safety</a></li>
+          </ul>
+  
+
+                              <a href="/employment" target="" class="btn btn--reverse">Work At Widener</a>
+
+      
+        </div>
+
+        <div class="footer-main__secondary-nav">
+          <h2>Information For</h2>
+          <nav>
+  
+  
+              <ul class="menu">
+              <li class="menu-item--collapsed li--level-one">
+        <a href="/accepted-students" data-drupal-link-system-path="node/2256">Accepted Students</a>
+              </li>
+          <li class="menu-item--collapsed li--level-one">
+        <a href="/current-students" data-drupal-link-system-path="node/2261">Current Students</a>
+              </li>
+          <li class="menu-item--collapsed li--level-one">
+        <a href="/faculty-staff" data-drupal-link-system-path="node/2266">Faculty &amp; Staff</a>
+              </li>
+          <li class="li--level-one">
+        <a href="/parents-families" data-drupal-link-system-path="node/2271">Parents &amp; Families</a>
+              </li>
+          <li class="menu-item--collapsed li--level-one">
+        <a href="/alumni" data-drupal-link-system-path="node/2276">Alumni</a>
+              </li>
+          <li class="menu-item--collapsed li--level-one">
+        <a href="/community-partners" data-drupal-link-system-path="node/2281">Community &amp; Partners</a>
+              </li>
+        </ul>
+  
+
+
+</nav>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="small-12 medium-6 large-3 columns">
+      <div class="footer-main__social-media">
+        <h2 class="show-for-sr">Widener University Social Channels</h2>
+        <div class="footer-main__social-media__container">
+          <a href="https://www.instagram.com/wideneruniversity/" title="Instagram" class="footer-main__social-media__container__featured" target="_blank">
+            <i class="fab fa-instagram"><span>Instagram</span></i>
+              <img src="/sites/default/files/styles/width_500/public/2019-08/pride-banner-500x500.jpg?itok=WwWZ8eSc" width="500" height="500" alt="Widener University new Pride flags in front of Old Main historic building" typeof="foaf:Image" />
+
+
+
+          </a>
+
+                    <ul class="footer-main__social-media__container__channels">
+              <li><a href="https://www.facebook.com/wideneruniversity" target="_blank">
+  <span class="show-for-sr">Facebook</span>
+  <i class="fab fa-facebook-square"></i>
+
+
+</a>
+</li>
+              <li><a href="https://www.youtube.com/user/WidenerUniv" target="_blank">
+  <span class="show-for-sr">Youtube</span>
+  <i class="fab fa-youtube-square"></i>
+
+
+</a>
+</li>
+              <li><a href="https://twitter.com/wideneruniv" target="_blank">
+  <span class="show-for-sr">Twitter</span>
+  <i class="fab fa-twitter-square"></i>
+
+
+</a>
+</li>
+              <li><a href="https://www.linkedin.com/school/16988/" target="_blank">
+  <span class="show-for-sr">LinkedIn</span>
+  <i class="fab fa-linkedin"></i>
+
+
+</a>
+</li>
+              <li><a href="https://www.flickr.com/photos/widener" target="_blank">
+  <span class="show-for-sr">Flickr</span>
+  <i class="fab fa-flickr"></i>
+
+
+</a>
+</li>
+          </ul>
+  
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  <div class="row percent-row">
+    <div class="footer-bottom__wrapper">
+      <div class="footer-bottom__copyright">
+        2020 Widener University
+      </div>
+                <ul>
+              <li><a href="/report-it" target="">Report It</a></li>
+              <li><a href="/privacy" target="">Privacy</a></li>
+              <li><a href="/consumer-information" target="">Consumer Information</a></li>
+          </ul>
+  
+
+    </div>
+  </div>
+</div>
+
+
+  </footer>
+
+  <!--Search Box Overlay-->
+  <div id="myOverlay" class="overlay">
+    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">
+      <i class="fas fa-window-close"></i>
+    </span>
+    <div class="overlay-content">
+      <gcse:searchbox-only resultsUrl="/search" queryParameterName="as_q"></gcse:searchbox-only>
+
+    </div>
+  </div>
+  <!--END Search Box Overlay-->
+</div>
+
+  </div>
+
+    
+    <script type="text/javascript">
+      /*<![CDATA[*/
+      (function() {
+        var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+        sz.src = '//siteimproveanalytics.com/js/siteanalyze_67861501.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+      })();
+      /*]]>*/
+    </script>
+    <script async="async" src="https://ugadmissions.widener.edu/ping">/* */</script>
+    <script async="async" src="https://go.widener.edu/ping">/**/</script>
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/16","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","eu_cookie_compliance":{"popup_enabled":true,"popup_agreed_enabled":false,"popup_hide_agreed":false,"popup_clicking_confirmation":false,"popup_scrolling_confirmation":false,"popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info\u0022\u003E\n    \u003Cdiv class =\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n        \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022\u003E\n            \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\n        \u003C\/div\u003E\n        \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n            \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-agree-button\u0022\u003EDismiss\u003C\/button\u003E\n                            \u003Cbutton type=\u0022button\u0022 class=\u0022disagree-button find-more-button eu-cookie-compliance-more-button\u0022\u003EReview privacy policy\u003C\/button\u003E\n                    \u003C\/div\u003E\n    \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info\u0022\u003E\n    \u003Cdiv class =\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n        \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022\u003E\n            \n        \u003C\/div\u003E\n        \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n            \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-agree-button\u0022\u003EDismiss\u003C\/button\u003E\n                            \u003Cbutton type=\u0022button\u0022 class=\u0022disagree-button find-more-button eu-cookie-compliance-more-button\u0022\u003EReview privacy policy\u003C\/button\u003E\n                    \u003C\/div\u003E\n    \u003C\/div\u003E\n\u003C\/div\u003E","mobile_breakpoint":768,"popup_html_agreed":false,"popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/privacy","popup_link_new_window":true,"popup_position":false,"popup_language":"en","store_consent":false,"better_support_for_screen_readers":false,"cookie_name":"","reload_page":false,"domain":"","popup_eu_only_js":false,"cookie_lifetime":100,"cookie_session":0,"disagree_do_not_show_popup":false,"method":"default","whitelisted_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EYou have given your consent for us to set cookies.\u003C\/p\u003E\n\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","withdraw_enabled":false},"user":{"uid":0,"permissionsHash":"6eb88a4e305648713a1316083aefb3afe9e9ba6323356b81a417fd1a42a868ad"}}</script>
+<script src="/sites/default/files/js/js_4eOhZkIF5Ubdwh2tZbpfmDUHaORGvjOr7bTucF8DVi4.js"></script>
+<script src="//catalog.widener.edu/widget-api/widget-api.min.js"></script>
+<script src="/sites/default/files/js/js_s7OixwSP_Znw9ua-935cEdiUN4cptfaZtdwvtBtopCg.js"></script>
+<script src="//unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+<script src="/sites/default/files/js/js_UYT5MHZVUg3kNz05C6xMAE7wkyQRNyohClJcyPij_6g.js"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bc1f7ab0ca","applicationID":"165422549","transactionName":"MgBQNUBYDEpTAUFQCQtKcwJGUA1XHSZHTBYECW4iXUsHZX8HW0w6IQBUAEdVFnRXDEB1DwsOZhNXXC9YXAtFTAoEEV0TQRRcXlcMUEsHEQB7D1ZcGnhcBmZWFBE=","queueTime":0,"applicationTime":1770,"atts":"HkdTQwhCH0Q=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

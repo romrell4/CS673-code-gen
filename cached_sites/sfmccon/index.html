@@ -1,0 +1,799 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="sfmccon-theme">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KHGKWQN');</script>
+    <!-- End Google Tag Manager -->
+
+    
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"66aa4de5f5",applicationID:"11582725"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"66aa4de5f5","agent":"","transactionName":"NAcGYEtXWhIHABVbWw1NIkFXVUAICQ1OUVkQTBJdXEFHWwIGFVNdDxE=","applicationID":"11582725","errorBeacon":"bam.nr-data.net","applicationTime":1050}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="fb:app_id" content="203983110028583" /> 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.osfhealthcare.org/static/icn/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.osfhealthcare.org/static/icn/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.osfhealthcare.org/static/icn/favicon-16x16.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://www.osfhealthcare.org/static/css/391aeb2f5744.css" type="text/css" />
+
+
+    
+
+    
+    
+    <meta property="og:image" content="https://www.osfhealthcare.org/static/img/FBshare.png" />
+    
+    
+
+    
+    
+
+    
+	<meta name="description" content="For more than 100 years, Saint Francis Medical Center College of Nursing has graduated some of the nation&#39;s most compassionate and skilled nurses.">
+	
+	
+		<meta property="og:title" content="Saint Francis Medical Center College of Nursing">
+		<meta property="og:url" content="https://www.osfhealthcare.org/sfmccon/">
+		<meta property="og:description" content="For more than 100 years, Saint Francis Medical Center College of Nursing has graduated some of the nation&#39;s most compassionate and skilled nurses.">
+		
+		<meta property="og:type" content="Article">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	
+		<meta name="twitter:domain" content="www.osfhealthcare.org">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:title" content="Saint Francis Medical Center College of Nursing">
+		<meta name="twitter:url" content="https://www.osfhealthcare.org/sfmccon/">
+		<meta name="twitter:description" content="For more than 100 years, Saint Francis Medical Center College of Nursing has graduated some of the nation&#39;s most compassionate and skilled nurses.">
+		
+		
+		
+	
+	
+    
+    
+
+
+    
+
+    
+    
+
+    
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="https://www.osfhealthcare.org/static/css/7a41ebf98762.css" type="text/css" />
+    
+
+
+    
+    <!-- Page CSS -->
+    
+    
+
+
+    
+    <link rel="canonical" href="https://www.osfhealthcare.org/sfmccon/">
+    
+
+    <title>Saint Francis Medical Center College of Nursing | Saint Francis Medical Center College of Nursing</title>
+
+    
+
+
+    
+<style>
+#search_by_date .dropdown {
+  display: none;
+}
+</style>
+
+
+    <script src="https://www.osfhealthcare.org/static/js/jquery-3.4.1.min.js"></script>
+    <script src="https://www.osfhealthcare.org/static/js/jquery-migrate-3.1.0.min.js"></script>
+
+    
+  </head>
+
+  <body  class="default-theme homepage">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHGKWQN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a id="skip-navigation" class="sr-only sr-only-focusable" href="#main">Skip to Content</a>
+
+    
+
+    
+    <header id="site-header">
+      <div id="main-nav-row">
+        <nav id="main-nav" class="nav container" role="navigation" aria-label="Primary">
+          <div id="search-container"><div id="search-toggle">
+            <a href="/sfmccon/search/"><span>Search</span></a>
+            
+          </div></div>
+          
+          <a class="toggle nav-toggle" href="#" id="main-nav-toggle"><span>Toggle</span> Saint Francis Medical Center College of Nursing</a>
+          
+          <div class="menu-container">
+            <ul>
+	<li id="home-link">
+<a aria-label="Saint Francis Medical Center College of Nursing" class="  " style="" href="/sfmccon/"  >Home</a>
+
+</li>
+	<li><a href="#" style="">Academics</a>
+	<ul>
+		<li><a>Undergraduate</a>
+		<ul>
+			<li>
+<a aria-label="Early High School Admissions" class="  " style="" href="/sfmccon/academics/undergraduate/high-school/"  >Early High School Admissions</a>
+
+</li>
+			<li>
+<a aria-label="Bachelor of Science in Nursing (BSN)" class="  " style="" href="/sfmccon/academics/undergraduate/bsn/"  >Bachelor of Science in Nursing (BSN)</a>
+
+</li>
+			<li>
+<a aria-label="RN to BSN" class="  " style="" href="/sfmccon/academics/undergraduate/rn-bsn/"  >Registered Nurse to Bachelor&#39;s (RN to BSN)</a>
+
+</li>
+		</ul>
+		</li>
+		<li><a>Graduate</a>
+		<ul>
+			<li>
+<a aria-label="Accelerated Pathway to MSN" class="  " style="" href="/sfmccon/academics/graduate/accelerated-pathway/"  >Accelerated Pathway to MSN</a>
+
+</li>
+			<li>
+<a aria-label="BSN to DNP" class="  " style="" href="/sfmccon/academics/graduate/bsn-dnp/"  >BSN to DNP</a>
+
+</li>
+			<li>
+<a aria-label="Master of Science in Nursing (MSN) " class="  " style="" href="/sfmccon/academics/graduate/msn/"  >Master of Science in Nursing (MSN)</a>
+
+</li>
+			<li>
+<a aria-label="Post-Graduate Certificates" class="  " style="" href="/sfmccon/academics/graduate/certificates/"  >Post-Graduate Certificates</a>
+
+</li>
+			<li>
+<a aria-label="Post-Master&#39;s Doctor of Nursing Practice" class="  " style="" href="/sfmccon/academics/graduate/dnp/"  >Post-Master&#39;s DNP</a>
+
+</li>
+		</ul>
+		</li>
+		<li><a>Resources</a>
+		<ul>
+			<li>
+<a aria-label="Academic Calendar" class="  " style="" href="/sfmccon/academics/calendar/"  >Academic Calendar</a>
+
+</li>
+			<li>
+<a  class="  " style="" href="/media/filer_public/c1/c8/c1c8b7bf-ecdf-42f2-87db-4adc75d4f679/sfmccon_2018-2020_catalog_final.pdf"  >Course Catalog</a>
+
+</li>
+			<li>
+<a aria-label="Online Education" class="  " style="" href="https://www.osfhealthcare.org/sfmccon/academics/distance-learning/"  >Online Education</a>
+
+</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li class="no-menu-hierarchy"><a href="#" style="">Admissions</a>
+	<ul>
+		<li><a href="https://www.osfhealthcare.org/sfmccon/admissions/apply/">Apply</a></li>
+		<li>
+<a aria-label="Financial Aid" class="  " style="" href="/sfmccon/students/financial-aid/"  >Financial Aid</a>
+
+<span style="display: none;"> </span></li>
+		<li><a href="https://www.osfhealthcare.org/sfmccon/forms/">Forms</a></li>
+		<li>
+<a aria-label="Schedule a Visit" class="  " style="" href="/sfmccon/forms/visit-us/"  >Schedule Visit</a>
+
+</li>
+		<li>
+<a aria-label="Transfer Guide" class="  " style="" href="/sfmccon/admissions/transfer-guide/"  >Transfer Guide</a>
+
+</li>
+		<li>
+<a aria-label="Tuition &amp; Fees" class="  " style="" href="/sfmccon/admissions/tuition/"  >Tuition &amp; Fees</a>
+
+</li>
+	</ul>
+	</li>
+	<li class="no-menu-hierarchy"><a href="#" style="">Students</a>
+	<ul>
+		<li>
+<a aria-label="Academic Calendar" class="  " style="" href="/sfmccon/academics/calendar/"  >Academic Calendar</a>
+
+</li>
+		<li>
+<a aria-label="Academic Development Center" class="  " style="" href="/sfmccon/students/academic-development-center/"  >Academic Development Center</a>
+
+</li>
+		<li>
+<a  class="  " style="" href="https://www.osfhealthcare.org/sfmccon/students/student-complaint-process/"  >Complaint Process</a>
+
+</li>
+		<li>
+<a  class="  " style="" href="/media/filer_public/c1/c8/c1c8b7bf-ecdf-42f2-87db-4adc75d4f679/sfmccon_2018-2020_catalog_final.pdf"  >Course Catalog</a>
+
+</li>
+		<li>
+<a aria-label="eTools" class="  " style="" href="/sfmccon/students/etools/"  >eTools</a>
+
+</li>
+		<li>
+<a aria-label="Faith &amp; Service" class="  " style="" href="/sfmccon/students/faith/"  >Faith &amp; Service</a>
+
+</li>
+		<li>
+<a aria-label="Financial Aid" class="  " style="" href="/sfmccon/students/financial-aid/"  >Financial Aid</a>
+
+</li>
+		<li>
+<a aria-label="Forms &amp; Documents" class="  " style="" href="/sfmccon/forms/"  >Forms &amp; Documents</a>
+
+</li>
+		<li>
+<a aria-label="Health Services" class="  " style="" href="/sfmccon/students/health/"  >Health Services</a>
+
+</li>
+		<li>
+<a aria-label="Housing" class="  " style="" href="/sfmccon/students/housing/"  >Housing</a>
+
+</li>
+		<li>
+<a aria-label="Library" class="  " style="" href="/sfmccon/students/library/"  >Library</a>
+
+</li>
+		<li>
+<a aria-label="Publications" class="  " style="" href="/sfmccon/students/publications/"  >Publications</a>
+
+</li>
+		<li>
+<a aria-label="Organizations" class="  " style="" href="/sfmccon/students/organizations/"  >Organizations</a>
+
+</li>
+		<li>
+<a aria-label="Student Life" class="  " style="" href="/sfmccon/students/student-life/"  >Student Life</a>
+
+</li>
+	</ul>
+	</li>
+	<li class="no-menu-hierarchy"><a href="#" style="">Faculty &amp; Staff</a>
+	<ul>
+		<li>
+<a aria-label="Academic Calendar" class="  " style="" href="/sfmccon/academics/calendar/"  >Academic Calendar</a>
+
+</li>
+		<li>
+<a  class="  " style="" href="/media/filer_public/c1/c8/c1c8b7bf-ecdf-42f2-87db-4adc75d4f679/sfmccon_2018-2020_catalog_final.pdf"  >Course Catalog</a>
+
+</li>
+		<li>
+<a aria-label="Library" class="  " style="" href="/sfmccon/students/library/"  >Library</a>
+
+</li>
+		<li>
+<a aria-label="Publications" class="  " style="" href="/sfmccon/students/publications/"  >Publications</a>
+
+</li>
+		<li>
+<a aria-label="Staff Directory" class="  " style="" href="/sfmccon/directory/"  >Staff Directory</a>
+
+</li>
+	</ul>
+	</li>
+	<li class="no-menu-hierarchy"><a href="#" style="">Alumni</a>
+	<ul>
+		<li>
+<a aria-label="Get Involved" class="  " style="" href="/sfmccon/alumni/association/"  >Get Involved</a>
+
+</li>
+		<li>
+<a aria-label="Giving Back" class="  " style="" href="/sfmccon/alumni/giving-back/"  >Giving Back</a>
+
+</li>
+		<li>
+<a aria-label="Request Transcripts" class="  " style="" href="/sfmccon/alumni/transcripts/"  >Request Transcripts</a>
+
+</li>
+		<li>
+<a aria-label="Publications" class="  " style="" href="/sfmccon/students/publications/"  >Publications</a>
+
+</li>
+	</ul>
+	</li>
+	<li class="button-link"><a href="https://www.osfhealthcare.org/sfmccon/admissions/apply/">Apply</a></li>
+</ul>
+          </div>
+        </nav>
+      </div>
+      <div id="mast" class="container">
+        <h1 id="logo">OSF HealthCare</h1>
+        <img id="print-logo" style="display:none" src="https://www.osfhealthcare.org/static/img/osfhealthcare-logo-print.png" alt="OSF HealthCare" />
+        <div id="phone-social">
+          <div class="phone-number">
+            
+            <p>(309) 655-2201</p>
+
+            
+          </div>
+          <nav id="social" aria-label="Social">
+            
+            
+<a  class=" fb" style="" href="https://www.facebook.com/sfmccon/"  >Facebook</a>
+
+
+            
+            <a class="addthis_button_compact" href="#" id="at"><span>AddThis</span></a>
+          </nav>
+        </div><!-- end #phone-social -->
+        <span id="specialty-logo"></span>
+        
+
+      </div><!-- end #mast -->
+      
+    </header><!-- end #site-header -->
+    
+
+    <div id="main" role="main">
+      
+      <div id="wrapper" class="container">
+      
+
+        
+
+        
+
+        
+
+        
+
+
+<section id="slideshow-wrapper" class="container" aria-labelledby="slideshow">
+  <div id="slideshow" role="marquee" aria-label="slideshow">
+
+
+  
+    
+
+
+  <span class="slide-focus-right" role="banner" aria-labelledyby="banner-226510-header">
+  
+  
+    
+      
+      <img alt="Early Admission Program" src="/media/filer_public_thumbnails/filer_public/bb/32/bb3241c9-da97-44d8-819f-3d31deb71d3d/sfmc-con-high-school-early-admission_web-banner_004.jpg__1040x250_q100_crop_subject_location-520%2C124_subsampling-2_upscale.jpg" width="1040" height="250"  title="Early Admission Program" />
+    
+  
+
+    
+    <span class="slide-overlay">
+      <span id="banner-226510-header" class="title">Early Admission Program</span>
+      <span class="desc">If you’ve completed your junior year of high school and meet academic requirements, you’re eligible to apply. Deadline is September 10.</span>
+      <a href="https://www.osfhealthcare.org/sfmccon/academics/undergraduate/high-school/" class="callout-button callout-button-small" role="button" aria-label="Learn More about Early Admission Program">Learn More</a>
+      
+    </span>
+    
+    
+  </span>
+
+
+  
+    
+
+
+  <span class="slide-focus-left" role="banner" aria-labelledyby="banner-226511-header">
+  
+  
+    
+      
+      <img alt="Accelerated RN to BSN" src="/media/filer_public_thumbnails/filer_public/01/60/016010c2-5c6f-475c-b42f-e4afec10f418/sfmc-con-rn-to-bsn-accelerated-pathways_web-banner_proof_004.jpg__1040x250_q100_crop_subject_location-520%2C124_subsampling-2_upscale.jpg" width="1040" height="250"  title="Accelerated RN to BSN" />
+    
+  
+
+    
+    <span class="slide-overlay">
+      <span id="banner-226511-header" class="title">Accelerated RN to BSN</span>
+      <span class="desc">With credit for nursing experience and other educational courses, you can earn a Bachelor of Science in Nursing degree in 14 months.</span>
+      <a href="https://www.osfhealthcare.org/sfmccon/academics/undergraduate/rn-bsn/" class="callout-button callout-button-small" role="button" aria-label="Learn More about Accelerated RN to BSN">Learn More</a>
+      
+    </span>
+    
+    
+  </span>
+
+
+  
+    
+
+
+  <span role="banner" aria-labelledyby="banner-226508-header">
+  
+  
+    
+      
+      <img alt="Financial Aid Resources" src="/media/filer_public_thumbnails/filer_public/b7/48/b748d3ec-c00f-48e3-8f4c-1b08d6a504b6/financial-aid_FpayqBN.jpg__1040x250_q100_crop_subsampling-2_upscale.jpg" width="1040" height="250"  title="Financial Aid Resources" />
+    
+  
+
+    
+    <span class="slide-overlay">
+      <span id="banner-226508-header" class="title">Financial Aid Resources</span>
+      <span class="desc">Our Student Finance Office is not like any other. We don't just help you fill out forms; we connect you to valuable resources and provide individual attention to the needs of each student. </span>
+      <a href="/sfmccon/students/financial-aid/" class="callout-button callout-button-small" role="button" aria-label="Learn More about Financial Aid Resources">Learn More</a>
+      
+    </span>
+    
+    
+  </span>
+
+
+  
+    
+
+
+  <span class="slide-focus-left" role="banner" aria-labelledyby="banner-226509-header">
+  
+  
+    
+      
+      <img alt="Academic Development Center " src="/media/filer_public_thumbnails/filer_public/99/65/9965ab79-532f-4f65-996c-e6b01e12898c/academic-development-center.jpg__1040x250_q100_crop_subsampling-2_upscale.jpg" width="1040" height="250"  title="Academic Development Center" />
+    
+  
+
+    
+    <span class="slide-overlay">
+      <span id="banner-226509-header" class="title">Academic Development Center</span>
+      <span class="desc">From test-taking strategies to stress and time management, our Academic Development Center was created to assist students in achieving academic success.</span>
+      <a href="https://www.osfhealthcare.org/sfmccon/students/academic-development-center/" class="callout-button callout-button-small" role="button" aria-label="Learn More about Academic Development Center">Learn More</a>
+      
+    </span>
+    
+    
+  </span>
+
+
+  
+    
+
+
+  <span role="banner" aria-labelledyby="banner-226507-header">
+  
+  
+    
+      
+      <img alt="Learning Resource Center" src="/media/filer_public_thumbnails/filer_public/cb/03/cb033972-11c7-4dbd-9425-dc769cda989d/library_2OTrZvi.jpg__1040x250_q100_crop_subject_location-519%2C126_subsampling-2_upscale.jpg" width="1040" height="250"  title="Learning Resource Center" />
+    
+  
+
+    
+    <span class="slide-overlay">
+      <span id="banner-226507-header" class="title">Learning Resource Center</span>
+      <span class="desc">Located on the second floor of the College, our Learning Resource Center provides students and staff with access to a wide variety of physical and digital research materials.</span>
+      <a href="/sfmccon/students/library/" class="callout-button callout-button-small" role="button" aria-label="Learn More about Learning Resource Center">Learn More</a>
+      
+    </span>
+    
+    
+  </span>
+
+
+  
+ 
+</div>
+</section>
+
+
+
+<div id="home-content">
+
+<section id="callout-section" class="home-section home-section-right" aria-labelledby="home-help-links-header">
+  <nav id="home-help-links" role="navigation" aria-labelledby="home-help-links-header">
+    <h2 id="home-help-links-header">How Can We Help You?</h2>
+    
+<a  class="callout-button  " style="" href="https://www.osfhealthcare.org/sfmccon/admissions/apply/"  >Apply</a>
+
+
+<a aria-label="Schedule a Visit" class="callout-button  " style="" href="/sfmccon/forms/visit-us/"  >Schedule a Visit</a>
+
+
+<a aria-label="Contact Us" class="callout-button  " style="" href="/sfmccon/forms/contact-us/"  >Request Information</a>
+
+
+<a aria-label="Contact Us" class="callout-button  " style="" href="/sfmccon/forms/contact-us/"  >Ask a Question</a>
+
+
+<a  class="callout-button  " style="" href="https://www.osfhealthcarefoundation.org/saint-francis-medical-center-college-of-nursing-form/"  >Make a Donation</a>
+
+
+  </nav>
+</section>
+
+
+  <section class="home-section hide-mobile" aria-labelledby="about-osf">
+  <h2><span style="letter-spacing: 0.1px;">About the College</span></h2>
+
+<p>For more than 100 years, Saint Francis Medical Center College of Nursing has graduated some of the nation's most compassionate and skilled nurse professionals. <br>
+<br>
+Offering BSN, MSN, and DNP degree programs, the College provides opportunities for traditional and online nursing courses. </p>
+
+<p>Located on the campus of OSF HealthCare Saint Francis Medical Center in Peoria, Illinois, the College achieves high graduation rates and low student-to-faculty ratios; places a priority on student financial aid and provides quality clinical experiences in one of the nation's largest Catholic health care facilities.</p>
+  </section>
+
+  <section id="news-section" class="home-section" aria-labelledby="recent-news">
+  <h2>An Experience Like No Other</h2>
+
+<p>When you enroll at Saint Francis Medical Center College of Nursing, you join a family that cares about you and works with you to achieve your goals.</p>
+
+<p>Whether you are an undergraduate or pursuing advanced nursing degrees, you will experience:</p>
+
+<ul class="disc">
+	<li>The Mission-driven culture of OSF HealthCare</li>
+	<li>Limited travel for BSN students – priority access to rich clinical experience in 600-bed major medical center on campus</li>
+	<li>Personalized financial aid assistance</li>
+	<li>Teachers who value each student</li>
+	<li>Online degree programs for RN-to-BSN and graduate students </li>
+	<li>Early admission program for high school juniors</li>
+</ul>
+  </section>
+
+
+
+</div>
+
+      
+      </div><!-- end of #wrapper -->
+      
+    </div><!-- end of #main -->
+
+    
+    <footer id="site-footer" class="container">
+      <div class="footer-col" id="footer-info">
+<address><strong>Saint Francis Medical Center<br>
+College of Nursing</strong><br>
+511 NE Greenleaf Street<br>
+Peoria, Illinois 61603<br>
+
+<a  class="  " style="" href="https://www.google.com/maps/dir/&#39;&#39;/OSF+Saint+Francis+Medical+Center:+College+of+Nursing+511+Northeast+Greenleaf+Street++++++Peoria+IL+61603-3744/@40.7012396,-89.6602382,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x880a5976f57b3067:0x5328d8f9a44a17e4!2m2!1d-89.5901983!2d40.7012608"  >Map &amp; Directions</a>
+
+</address>
+
+<h4>Our HealthCare Mission</h4>
+
+<p><em>In the spirit of Christ and the example of Francis of Assisi, the Mission of OSF HealthCare is to serve persons with the greatest care and love in a community that celebrates the Gift of Life.</em></p>
+</div>
+
+<nav class="footer-col">
+<h4>About</h4>
+
+<ul>
+	<li>
+<a aria-label="Accreditation" class="  " style="" href="/sfmccon/about/accreditation/"  >Accreditation</a>
+
+</li>
+	<li>
+<a aria-label="Consumer Information" class="  " style="" href="/sfmccon/about/consumer-information/"  >Consumer Information</a>
+
+</li>
+	<li>
+<a aria-label="Frequently Asked Questions" class="  " style="" href="/sfmccon/about/faq/"  >Frequently Asked Questions</a>
+
+</li>
+	<li>
+<a aria-label="History" class="  " style="" href="/sfmccon/about/history/"  >History</a>
+
+</li>
+	<li>
+<a aria-label="Mission &amp; Philosophy" class="  " style="" href="/sfmccon/about/mission/"  >Mission &amp; Philosophy</a>
+
+</li>
+</ul>
+</nav>
+
+<nav class="footer-col">
+<h4>Resources</h4>
+
+<ul>
+	<li>
+<a aria-label="Academic Calendar" class="  " style="" href="/sfmccon/academics/calendar/"  >Academic Calendar</a>
+
+</li>
+	<li>
+<a  class="  " style="" href="/media/filer_public/c1/c8/c1c8b7bf-ecdf-42f2-87db-4adc75d4f679/sfmccon_2018-2020_catalog_final.pdf"  >Course Catalog</a>
+
+</li>
+	<li>
+<a  class="  " style="" href="https://www.ibhe.org/"  >IBHE</a>
+
+</li>
+	<li>
+<a aria-label="Library" class="  " style="" href="/sfmccon/students/library/"  >Library</a>
+
+</li>
+	<li>
+<a aria-label="Publications" class="  " style="" href="/sfmccon/students/publications/"  >Publications</a>
+
+</li>
+	<li>
+<a aria-label="Online Education" class="  " style="" href="/sfmccon/academics/distance-learning/"  >Technology</a>
+
+</li>
+</ul>
+</nav>
+
+<nav class="footer-col">
+<h4>Contact</h4>
+
+<ul>
+	<li>
+<a  class="  " style="" href=""  >Apply</a>
+
+</li>
+	<li>
+<a aria-label="Contact Us" class="  " style="" href="/sfmccon/forms/contact-us/"  >Ask a Question</a>
+
+</li>
+	<li>
+<a aria-label="Contact Us" class="  " style="" href="/sfmccon/forms/contact-us/"  >Request Information</a>
+
+</li>
+	<li>
+<a aria-label="Schedule a Visit" class="  " style="" href="/sfmccon/forms/visit-us/"  >Schedule a Visit</a>
+
+</li>
+	<li>
+<a aria-label="Staff Directory" class="  " style="" href="/sfmccon/directory/"  >Staff Directory</a>
+
+</li>
+</ul>
+</nav>
+
+    </footer>
+    <div id="footer-legal" role="contentinfo">
+      Copyright &copy; 2020 OSF Healthcare System<ul>
+
+
+<li class="child">
+	<a href="/terms/">Terms &amp; Conditions</a>
+	
+</li>
+
+<li class="child">
+	<a href="/compliance/">Compliance </a>
+	
+</li>
+</ul>
+    </div>
+
+    <div id="please-wait" style="display: none">
+      <figure>
+        <figcaption>Please Wait</figcaption>
+        <svg xml:space="preserve" enable-background="new 0 0 40 40" viewBox="0 0 40 40" height="100px" width="100px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="loader-1" version="1.1">
+          <path d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+          s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+          c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" fill="#fff" opacity="0.2"/>
+          <path d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+          C22.32,8.481,24.301,9.057,26.013,10.047z" fill="#fff">
+          <animateTransform repeatCount="indefinite" dur="1.5s" to="360 20 20" from="0 20 20" type="rotate" attributeName="transform" attributeType="xml"/>
+          </path>
+        </svg>
+      </figure>
+    </div>
+    
+
+    
+
+    
+
+
+    
+
+    <!--[if lte IE 9]>
+    <script src="https://www.osfhealthcare.org/static/js/jquery.columnizer.js"></script>
+    <script>
+        $('.columns > ul').columnize({ buildOnce: true, columns: 2 });
+        $('.secondary-nav > li > ul.triple').columnize({ buildOnce: true, columns: 3 });
+        $('.secondary-nav > li > ul.double').columnize({ buildOnce: true, columns: 2 });
+    </script>
+    <![endif]-->
+
+    
+    <script>var cms_edit_mode = false;</script>
+    
+
+    <script type="text/javascript" src="https://www.osfhealthcare.org/static/js/6dc7069821a9.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- Eruptr Phone Number Swap -->
+    <script src="//cdn.calltrk.com/companies/147636277/f23158faa69a3893205b/12/swap.js"></script>
+    <!-- End Code -->
+
+    <!-- AddThis Button BEGIN -->
+    <script>// <![CDATA[
+        var addthis_config = {
+            "data_track_addressbar":false,
+            "services_compact": "facebook,twitter,linkedin,print,email,pinterest_share,gmail,more"
+        };
+    // ]]></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4ed411912546587f" async="async"></script>
+    <!-- AddThis Button END -->
+
+
+    
+    <!-- Global JS -->
+    <script type="text/javascript" src="https://www.osfhealthcare.org/static/js/2c35d999f3a0.js"></script>
+    
+
+
+    
+    <!-- Page JS -->
+    
+    
+
+
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

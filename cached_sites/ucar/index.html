@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"74278d0a21",applicationID:"177009430"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-332815-87", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+<link rel="canonical" href="https://www.ucar.edu/" />
+<link rel="shortcut icon" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/favicon.ico" />
+<link rel="shortlink" href="https://www.ucar.edu/" />
+<link rel="icon" sizes="16x16" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/favicon-16x16.png" />
+<link rel="icon" sizes="32x32" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/favicon-32x32.png" />
+<meta name="google-site-verification" content="WColASQtXu3yj2gC2cnYfJDtrcyBW3Cyl5YtO6_7DZs" />
+<link rel="icon" sizes="96x96" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/favicon-96x96.png" />
+<link rel="apple-touch-icon" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/apple-icon-60x60.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/apple-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/apple-icon-76x76.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/apple-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/apple-icon-120x120.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/apple-icon-144x144.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/apple-icon-152x152.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/apple-icon-180x180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="UCAR" />
+<link rel="manifest" href="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/manifest.json" />
+<meta name="application-name" content="UCAR" />
+<meta name="msapplication-square150x150logo" content="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/ms-icon-150x150.png" />
+<meta name="msapplication-square310x310logo" content="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/ms-icon-310x310.png" />
+<meta name="msapplication-square70x70logo" content="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/app-favicons/ucar/ms-icon-70x70.png" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-withdraw-tab {background: #0779bf} div#sliding-popup.eu-cookie-withdraw-wrapper { background: transparent; } #sliding-popup h1, #sliding-popup h2, #sliding-popup h3, #sliding-popup p, #sliding-popup label, #sliding-popup div, .eu-cookie-compliance-more-button, .eu-cookie-compliance-secondary-button, .eu-cookie-withdraw-tab { color: #ffffff;} .eu-cookie-withdraw-tab { border-color: #ffffff;}</style>
+
+    <title>University Corporation for Atmospheric Research | University Corporation for Atmospheric Research</title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_6EJMiK0QItXoKjBb6aNUBTuu2_W4e_UnEwjnGeNF-7I.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_ejOizPsvHLwb9g9pWeOVH0e44i4EU4IUH25FZwF2120.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Poppins:400,600,700" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_ht0jXpLrivqwAkRrBoNE4zujK_Ky6bFBjihVuwoExtw.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="//script.crazyegg.com/pages/scripts/0078/5653.js" async></script>
+
+  </head>
+  <body id="body" data-toggler="nav-open" class="page-node-117 no-banner ucar path-frontpage page-node-type-front-page">
+        <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="content-wrapper">
+  <header>
+    <div data-sticky-container>
+      <div data-sticky data-options="marginTop:0;stickyOn:small;" data-top-anchor="main-content">
+          <div class="region region-header">
+    <div id="block-ucar-headerblock" class="block block-koru-blocks block-header-block">
+  
+    
+      
+<div class="title-bar hide-for-mlarge">
+  <div class="grid-container mobile-logo">
+    <div class="grid-x grid-padding-x grid-margin-y align-middle">
+      <h1 class="cell small-3 medium-2 acronym">
+          <img src="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/logo-ucar-active.png" alt="University Corporation for Atmospheric Research"/>
+        <span class="show-for-sr">UCAR</span>
+      </h1>
+      <h1 class="cell small-8 medium-8 description">
+        <a href="https://www.ucar.edu/" title="University Corporation for Atmospheric Research">
+          University Corporation for Atmospheric Research
+        </a>
+      </h1>
+    </div>
+  </div>
+  <button class="fa fa-bars hide-for-print" type="button" id="menu-button" data-toggler="fa-minus-circle fa-bars" data-toggle="body main-menu menu-button top-bar" aria-label="Mobile Menu"></button>
+</div>
+
+<div class="top-bar align-top" id="top-bar">
+  <div class="grid-x align-bottom">
+    <div class="cell mlarge-4 show-for-mlarge top-bar-title logo-wrapper">
+      <div class="grid-x align-middle">
+        <div class="cell mlarge-4 xlarge-3 acronym-wrapper">
+            <p>
+    <a href="https://ncar.ucar.edu" title="NCAR Home">
+      <img src="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/logo-ncar-inactive-large.png" alt="NCAR"/>
+      <span class="show-for-sr">NCAR</span>
+    </a>
+  </p>
+  <h1>
+    <a href="https://www.ucar.edu/" title="UCAR Home">
+      <img src="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/logo-ucar-active-large.png" alt="UCAR"/>
+      <span class="show-for-sr">UCAR</span>
+    </a>
+  </h1>
+        </div>
+        <div class="cell mlarge-8 xlarge-9 acronym-definition">
+          <h1><a href="/">University Corporation for Atmospheric Research</a></h1>
+        </div>
+      </div>
+    </div>
+    <div class="cell mlarge-8 show-for-mlarge top-bar-menus hide-for-print" id="main-menu" data-toggler="show-for-mlarge">
+      <div class="grid-y">
+        <nav class="cell mlarge-order-2 main-nav">
+          <ul class="menu icons icon-left" data-responsive-menu="accordion mlarge-dropdown">
+                          <li >
+                <a href="/who-we-are"><i class="fa fa-chevron-down"></i>Who we are</a>
+                                  <ul class="menu">
+                    <li>
+                      <a href="/who-we-are">Overview</a>
+                      <p>UCAR is a hub for the Earth system sciences and a gateway to cutting-edge resources and services.</p>
+                    </li>
+                                          <li><a href="/who-we-are/leadership">Leadership</a></li>
+                                          <li><a href="/community-programs">Community programs</a></li>
+                                          <li><a href="/who-we-are/membership">Membership + governance</a></li>
+                                          <li><a href="/who-we-are/diversity-inclusion">Diversity + inclusion</a></li>
+                                          <li><a href="/who-we-are/ethics">Ethics + integrity</a></li>
+                                          <li><a href="/who-we-are/partners-funders">Partners + funders</a></li>
+                                          <li><a href="/who-we-are/history">History</a></li>
+                                          <li><a href="/who-we-are/staff">Staff</a></li>
+                                          <li><a href="/who-we-are/strategic-plan-2019-2028">Strategic Plan 2019-2028</a></li>
+                                          <li><a href="/who-we-are/contact-us">Contact us</a></li>
+                                      </ul>
+                              </li>
+                          <li >
+                <a href="/what-we-do"><i class="fa fa-chevron-down"></i>What we do</a>
+                                  <ul class="menu">
+                    <li>
+                      <a href="/what-we-do">Overview</a>
+                      <p>We accelerate scientific discoveries at NCAR and our member institutions and then amplify their impact.</p>
+                    </li>
+                                          <li><a href="/what-we-do/university-collaboration">University collaboration</a></li>
+                                          <li><a href="/what-we-do/advocacy">Advocacy</a></li>
+                                          <li><a href="/what-we-do/tech-transfer-engagement">Tech transfer + engagement</a></li>
+                                          <li><a href="/what-we-do/management-administration">Operations</a></li>
+                                      </ul>
+                              </li>
+                          <li >
+                <a href="/what-we-offer"><i class="fa fa-chevron-down"></i>What we offer</a>
+                                  <ul class="menu">
+                    <li>
+                      <a href="/what-we-offer">Overview</a>
+                      <p>Our community programs offer essential resources and services to support the Earth system sciences.</p>
+                    </li>
+                                          <li><a href="/what-we-offer/education-training">Education + training</a></li>
+                                          <li><a href="/what-we-offer/data-software-services">Data + software services</a></li>
+                                          <li><a href="/what-we-offer/scientific-program-support">Scientific program support</a></li>
+                                      </ul>
+                              </li>
+                          <li >
+                <a href="/opportunities"><i class="fa fa-chevron-down"></i>Opportunities</a>
+                                  <ul class="menu">
+                    <li>
+                      <a href="/opportunities">Overview</a>
+                      <p>We offer opportunities for students, early career scientists, and established professionals to continue to grow.</p>
+                    </li>
+                                          <li><a href="/opportunities/scientific-professional-visits">Scientific + professional visits</a></li>
+                                          <li><a href="/opportunities/internships">Internships</a></li>
+                                          <li><a href="/opportunities/fellowships">Fellowships</a></li>
+                                          <li><a href="/opportunities/workshops-conferences">Workshops + conferences</a></li>
+                                          <li><a href="/opportunities/careers">Careers</a></li>
+                                      </ul>
+                              </li>
+                          <li >
+                <a href="https://news.ucar.edu"><i class="fa fa-chevron-down"></i>News</a>
+                              </li>
+                      </ul>
+        </nav>
+        <div class="cell mlarge-order-1 utility-wrapper">
+          <div class="utility-menu">
+            <div class="utility-menu-primary grid-x">
+              <ul>
+                                  <li><a href="/our-structure">Our Structure</a></li>
+                                <li><a href="https://staff.ucar.edu/for-staff" target="_blank">For Staff</a></li>
+                <li ><a href="https://www.ucar.edu/alerts">Alerts</a></li>
+              </ul>
+              <div class="input-group header-default-search">
+                <form class="search-form" role="search" method="get" action="/search">
+                  <input class="input-group-field" type="text" name="q" placeholder="SEARCH ..." value="" aria-label="Enter Search Text">
+                  <div class="input-group-button">
+                    <button type="submit" class="button-search" value="Submit" aria-label="Submit Search"><i class="fa fa-search"></i></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="utility-mobile-wrapper">
+            <div class="header-default-search-mobile">
+              <form class="searchbox" role="search" method="get" action="/search">
+                <input type="text" placeholder="Search..." name="q" class="searchbox-input" value="" aria-label="Enter Search Text">
+                <button type="submit" class="searchbox-submit" value="GO" aria-label="Go"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <ul class="utility-parents">
+              <li><a href="https://ncar.ucar.edu">NCAR Home</a></li>
+              <li><a href="https://www.ucar.edu">UCAR Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+
+  </div>
+
+      </div>
+    </div>
+
+          </header>
+  <div class="body-content" id="main-content">
+
+    <div class="banner with-image home-hero" style="background:linear-gradient(0deg ,rgba(38, 37, 38, .2),rgba(38, 37, 38, .2)), url(https://www.ucar.edu/sites/default/files/front/2019-12/Winter%20weather%20banner.jpg) no-repeat center center; background-size: cover" data-banner-image="true">
+      <div class="grid-x align-center-middle">
+        <div class="cell text-center">
+          <div class="grid-y banner-content">
+            <h1 class="cell">University Corporation for Atmospheric Research</h1>
+                          <h2 class="cell">Serving the Earth system science community</h2>
+                                      <div class="cell inner">
+                <p>Our COMET program offers 46 online lessons related to winter weather, including 12 that make up the Winter Weather Distance Learning Course, which provides information on the scientific and forecasting aspects of winter weather.   <a href="https://www.meted.ucar.edu/training_detail.php?topicSorting=13&amp;languageSorting=1&amp;module_sorting=publishDateDesc&amp;utm_source=UCAR%20Updates&amp;utm_campaign=6a4618de1d-Currents_COPY_01&amp;utm_medium=email&amp;utm_term=0_10797fec53-6a4618de1d-">Find lessons</a> </p>
+              </div>
+              <div class="cell more">
+                <div class="grid-x align-stretch align-center">
+                  <div class="cell small-6 medium-3 text-right description">
+                    <span>Learn to forecast winter weather better</span>
+                  </div>
+                  <div class="cell small-1 expand">
+                    <a href="javascript:void(0)" aria-label="Expand banner" title="Learn to forecast winter weather better" class="plus"><i class="fa fa-plus"></i></a>
+                  </div>
+                </div>
+              </div>
+                      </div>
+        </div>
+      </div>
+    </div>
+
+          <div class="home-primary-cta">
+          <div class="field__item"><div class="panel featured-sections">
+  <div class="grid-x align-center text-center">
+    <div class="cell small-12 panel-title">
+      <h3>Quicklinks</h3>
+    </div>
+    <div class="cell small-11 mlarge-10 large-9 xlarge-6">
+      <div class="grid-x grid-margin-x grid-padding-x grid-margin-y grid-padding-y small-up-2 medium-up-3">
+        
+  <div class="cell align-middle featured-section">
+  <a href="/what-we-do">
+    <div class="inner cell middle">
+      <i class="icon-what-we-do"></i>
+      <h4>What we do</h4>
+    </div>
+  </a>
+</div>
+  <div class="cell align-middle featured-section">
+  <a href="/what-we-offer">
+    <div class="inner cell middle">
+      <i class="icon-what-we-offer"></i>
+      <h4>What we offer</h4>
+    </div>
+  </a>
+</div>
+  <div class="cell align-middle featured-section">
+  <a href="/opportunities">
+    <div class="inner cell middle">
+      <i class="icon-opportunities"></i>
+      <h4>Opportunities</h4>
+    </div>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+      </div>
+    
+        <section class="panel">
+      <div class="grid-x grid-padding-x align-center text-center">
+        <div class="cell medium-10 mlarge-8 xlarge-6">
+          <article class="content">
+            <blockquote>
+<p><strong>UCAR manages the National Center for Atmospheric Research on behalf of the National Science Foundation.</strong>&nbsp;</p>
+</blockquote>
+
+<p><a class="cta-link large white-on-color" href="/who-we-are">Learn more about UCAR</a></p>
+
+          </article>
+        </div>
+      </div>
+    </section>
+    
+          <div class="panel home-happenings">
+        <div class="grid-x align-bottom">
+
+                      <div class="cell mlarge-8 featured-story">
+              <div class="grid-x panel related-page-section" data-equalizer>
+  <div class="cell mlarge-6 large-7 figure" data-equalizer-watch>
+    <a href="https://www.ucar.edu/opportunities/fellowships/ucar-next-generation-fellowships">
+        <img src="/sites/default/files/big-picture-box/2019-03/modis_wonderglobe_hero1.jpg" width="775" height="280" alt="MODIS image of Earth" typeof="foaf:Image" />
+
+
+    </a>
+  </div>
+  <div class="cell mlarge-6 large-5 details" data-equalizer-watch>
+    <h3>UCAR Next Generation Fellowships</h3>
+    <div class="excerpt">
+      <p>Offering graduate students from diverse backgrounds the opportunity to learn about research, diversity and inclusion, or science policy of the Earth system alongside leaders in their fields.</p>
+    </div>
+    <a class="cta-link small white-on-color" href="https://www.ucar.edu/opportunities/fellowships/ucar-next-generation-fellowships">Read article</a>
+  </div>
+</div>
+            </div>
+          
+                      <div class="cell mlarge-4 news">
+              <div class="grid-y align-middle related-links">
+                <h3 class="cell text-center">News</h3>
+                <div class="view view-front-view-1 view-id-front_view_1 view-display-id-default">
+  
+    
+      
+      <div class="view-content">
+      <div>
+  
+  <ul class="cell vertical menu icons icon-left">
+
+          <li><div class="views-field views-field-timestamp"><span class="field-content"><a href="https://news.ucar.edu/132710/newly-released-satellite-data-poised-significantly-improve-weather-forecasts" class="align-middle" target="_blank"><i class="fa fa-external-link"></i><span class="inner excerpt"><span>Newly released satellite data poised to significantly improve weather forecasts </span><cite class="heading-xsmall-normal">January 2020</cite></span></a></span></div></li>
+          <li><div class="views-field views-field-timestamp"><span class="field-content"><a href="https://news.ucar.edu/132709/washington-update-january-8-2020" class="align-middle" target="_blank"><i class="fa fa-external-link"></i><span class="inner excerpt"><span>Washington Update: January 8, 2020</span><cite class="heading-xsmall-normal">January 2020</cite></span></a></span></div></li>
+          <li><div class="views-field views-field-timestamp"><span class="field-content"><a href="https://news.ucar.edu/132708/ucar-statement-nomination-neil-jacobs-head-noaa" class="align-middle" target="_blank"><i class="fa fa-external-link"></i><span class="inner excerpt"><span>UCAR statement on nomination of Neil Jacobs to head NOAA</span><cite class="heading-xsmall-normal">December 2019</cite></span></a></span></div></li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+            <div class="view-footer">
+      <p class="text-center"><a class="cta-link small lime-green-on-gray" href="https://news.ucar.edu" target="_blank">See all News</a></p>
+    </div>
+    </div>
+
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="grid-x align-stretch">
+
+                      <div class="cell mlarge-8 mlarge-order-2 spotlight-wrapper">
+              <a href="https://www.ucar.edu/opportunities/workshops-conferences/ncar-ucar-exhibits/ams-2020" class="grid-x align-middle text-center spotlight" style="background-image: url('/sites/default/files/2020-01/AMS%202020%20banner%20NOAA.jpg');">
+    <div class="cell inner">
+        <h4>Click for our booth events schedule</h4>
+        <h5>See you at AMS!</h5>
+    </div>
+</a>
+            </div>
+          
+                      <div class="cell mlarge-4 mlarge-order-1 publications">
+              <div class="grid-y align-middle related-links">
+                <h3 class="cell text-center">Opportunities for the Community</h3>
+                <div class="view view-front-view-2 view-id-front_view_2 view-display-id-default">
+  
+    
+      
+      <div class="view-content">
+      <div>
+  
+  <ul class="cell vertical menu icons icon-left">
+
+          <li><div class="views-field views-field-timestamp"><span class="field-content"><a href="https://mailchi.mp/ucar.edu/ucar-community-news-september-817269" class="align-middle" target="_blank"><i class="fa fa-external-link"></i><span class="inner excerpt"><span>UCAR Currents: Community News - January 2020</span><cite class="heading-xsmall-normal">January 2020</cite></span></a></span></div></li>
+          <li><div class="views-field views-field-timestamp"><span class="field-content"><a href="https://mailchi.mp/ucar.edu/ucar-community-news-september-817261" class="align-middle" target="_blank"><i class="fa fa-external-link"></i><span class="inner excerpt"><span>UCAR Currents: Community News - December 2019</span><cite class="heading-xsmall-normal">December 2019</cite></span></a></span></div></li>
+          <li><div class="views-field views-field-timestamp"><span class="field-content"><a href="https://mailchi.mp/ucar.edu/the-importance-of-diverse-panels-new-ucar-members-a-visit-from-sen-whitehouse" class="align-middle" target="_blank"><i class="fa fa-external-link"></i><span class="inner excerpt"><span>The importance of diverse panels, new UCAR Members, a visit from Sen. Whitehouse</span><cite class="heading-xsmall-normal">November 2019</cite></span></a></span></div></li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+            <div class="view-footer">
+      <p class="text-center"><a class="cta-link small lime-green-on-gray" href="https://us4.campaign-archive.com/home/?u=289033ba2718c3aa3d2b2e76f&amp;id=10797fec53" target="_blank">See all UCAR Updates</a></p>
+    </div>
+    </div>
+
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="field__item"><div class="panel basic-component">
+  <div class="grid-container content">
+    <div class="grid-x align-center">
+      <div class="cell medium-10">
+        
+            <div class="clearfix text-formatted field field--name-field-text-box-body field--type-text-long field--label-hidden field__item"><p><img alt="NSF, NCAR and UCAR logos" data-entity-type="file" data-entity-uuid="c41dc67a-33f5-45b7-978e-1ab5607539c8" src="/sites/default/files/inline-images/%20logo%20banner%203.png" class="align-center" /></p>
+</div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+  </div>
+  <footer>
+      <div class="region region-footer">
+    <div id="block-ucar-footerblock" class="block block-koru-blocks block-footer-block">
+  
+    
+      <div class="panel">
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="cell small-6 medium-12 large-2">
+        <ul class="footer-menu-secondary">
+          <li><a href="https://ucar.wd5.myworkdayjobs.com/UCAR_Careers"><i class="fa fa-circle-o"></i>Careers</a></li>
+          <li><a href="https://staff.ucar.edu/"><i class="fa fa-circle-o"></i>Staff Directory</a></li>
+          <li><a href="/sitemap"><i class="fa fa-circle-o"></i>Sitemap</a></li>
+                          <li><a href="/who-we-are/contact-us"><i class="fa fa-circle-o"></i>Contact</a></li>
+                      <li><a href="https://www.ucar.edu/who-we-are/ethics"><i class="fa fa-circle-o"></i>Reporting a concern</a></li>
+          <li><a href="https://staff.ucar.edu/for-staff"><i class="fa fa-circle-o"></i>For Staff</a></li>
+        </ul>
+      </div>
+      <div class="cell small-6 medium-12 large-7">
+        <div class="grid-x grid-padding-x footer-addresses">
+          <div class="cell medium-4 large-4 footer-address-postal">
+            <h4>Postal Address</h4>
+            <p>PO Box 3000<br>
+              Boulder, CO 80307-3000
+            </p>
+          </div>
+          <div class="cell medium-4 large-5 footer-address-shipping">
+            <h4>Shipping Address</h4>
+            <p>3090 Center Green Dr.<br>
+              Boulder, CO 80301
+            </p>
+          </div>
+          <div class="cell medium-4 large-3 footer-address-social">
+            <h4>Follow Us</h4>
+            <div class="grid-x small-up-4 social">
+              <div class="cell"><a href="https://www.facebook.com/ncar.ucar" aria-label="Follow us on Facebook" title="Facebook Icon"><i class="fa fa-facebook-square"></i></a></div>
+                    <div class="cell"><a href="https://twitter.com/UCAR_News" title="Twitter Icon"><i class="fa fa-twitter-square"></i></a></div>
+              <div class="cell"><a href="https://youtube.com/ncarucar" aria-label="Follow us on YouTube" title="YouTube"><i class="fa fa-youtube"></i></a></div>
+              <div class="cell"><a href="https://instagram.com/ncar_ucar" aria-label="Follow us on Instagram" title="Instagram"><i class="fa fa-instagram"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cell large-3 footer-subscribe">
+        <h4>Subscribe to News</h4>
+        <div class="newsletter-signup">
+          <!-- Begin MailChimp Signup Form -->
+          <div id="mc_embed_signup">
+            <form action="https://ucar.us4.list-manage.com/subscribe/post?u=289033ba2718c3aa3d2b2e76f&amp;id=80502e816e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll">
+
+                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required aria-label="Enter your email address to subscribe to the newsletter">
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_289033ba2718c3aa3d2b2e76f_80502e816e" tabindex="-1" value=""></div>
+                <div class="clear"><input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="button" aria-label="Subscribe to news"></div>
+              </div>
+            </form>
+          </div>
+          <!--End mc_embed_signup-->
+        </div>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x footer-menu-tertiary">
+      <div class="cell">
+        <small>&copy; 2020 UCAR</small>
+        <ul class="menu vertical">
+          <li><a href="https://www.ucar.edu/privacy-notice">Privacy</a></li>
+          <li><a href="https://www.ucar.edu/cookie-other-tracking-technologies-notice">Cookies</a></li>
+          <li><a href="https://www.ucar.edu/terms-of-use">Terms of Use</a></li>
+          <li><a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act">Copyright Issues</a></li>
+          <li><a href="https://nsf.gov">Sponsored by NSF</a></li>
+          <li><a href="https://ncar.ucar.edu">NCAR Home</a></li>
+          <li><a href="https://www.ucar.edu">UCAR Home</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-x grid-padding-y footer-sponsor">
+  <div class="cell">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell small-auto medium-10 description">
+          <p>This material is based upon work supported by the National Center for Atmospheric Research, a major facility sponsored by the National Science Foundation and managed by the University Corporation for Atmospheric Research. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the National Science Foundation.</p>
+        </div>
+        <div class="cell small-3 medium-2 mlarge-1 logo">
+          <a href="https://www.nsf.gov/" target="_blank"><img
+                    src="/profiles/custom/ncar_ucar_umbrella/themes/custom/koru/libraries/koru-base/img/footer-logo-nsf.png" alt="National Science Foundation"/></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+  </footer>
+</div>
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/117","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"eu_cookie_compliance":{"popup_enabled":true,"popup_agreed_enabled":false,"popup_hide_agreed":false,"popup_clicking_confirmation":false,"popup_scrolling_confirmation":false,"popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022\u003E\n      \u003Cp\u003EUCAR uses cookies to make our website function; however, UCAR cookies do not collect personal information about you. When using our website, you may encounter embedded content, such as YouTube videos and other social media links, that use their own cookies. To learn more about third-party cookies on this website, and to set your cookie preferences, click\u003C\/p\u003E\n\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003Ehere.\u003C\/button\u003E\n          \u003C\/div\u003E\n\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EAcknowledge\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022\u003E\n      \u003Cp\u003E\u0026lt;h2\u0026gt;We use cookies on this site to enhance your user experience\u0026lt;\/h2\u0026gt;\u0026lt;p\u0026gt;By tapping any link on this page you are giving your consent for us to set cookies.\u0026lt;\/p\u0026gt;\u003C\/p\u003E\n\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003Ehere.\u003C\/button\u003E\n          \u003C\/div\u003E\n\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EAcknowledge\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","mobile_breakpoint":768,"popup_html_agreed":false,"popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"https:\/\/www.ucar.edu\/cookie-other-tracking-technologies-notice","popup_link_new_window":true,"popup_position":false,"fixed_top_position":true,"popup_language":"en","store_consent":false,"better_support_for_screen_readers":false,"cookie_name":"gdpr_acknowledged_1","reload_page":false,"domain":"","domain_all_sites":false,"popup_eu_only_js":false,"cookie_lifetime":365,"cookie_session":null,"disagree_do_not_show_popup":false,"method":"default","whitelisted_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EYou have given your consent for us to set cookies.\u003C\/p\u003E\n\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","withdraw_enabled":false,"withdraw_button_on_info_popup":false,"cookie_categories":[],"enable_save_preferences_button":true,"fix_first_cookie_category":true,"select_all_categories_by_default":false},"user":{"uid":0,"permissionsHash":"1a02dfa500bf8daef28f93ff4176b23f45c89ab271f233a0bc73f6e4bf33a214"}}</script>
+<script src="/sites/default/files/js/js_FcyqOPCDFMpPgDMa7T287uG3NruaXlO6Nb2QM8Q21So.js"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"74278d0a21","applicationID":"177009430","transactionName":"M11QZUNXXkIAWhBdCQoXc1JFX19fTkkFUwM7W1NSWVM=","queueTime":0,"applicationTime":24,"atts":"HxpTEwtNTUw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

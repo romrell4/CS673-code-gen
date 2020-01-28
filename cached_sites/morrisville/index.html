@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"be3caac6d3",applicationID:"82839996"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-18283846-10", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+<link rel="shortlink" href="https://www.morrisville.edu/" />
+<meta property="og:site_name" content="SUNY Morrisville" />
+<link rel="canonical" href="https://www.morrisville.edu/" />
+<meta property="og:type" content="website" />
+<meta name="description" content="SUNY Morrisville is a model of innovative applied education — a place where students begin crafting exciting careers through real-world experiences. Our action-oriented learning labs allow students to “get their hands dirty” and engage in ways that go beyond the traditional classroom environment." />
+<meta property="og:url" content="https://www.morrisville.edu/" />
+<meta name="abstract" content="SUNY Morrisville is a model of innovative applied education — a place where students begin crafting exciting careers through real-world experiences. Our action-oriented learning labs allow students to “get their hands dirty” and engage in ways that go beyond the traditional classroom environment." />
+<meta property="og:title" content="SUNY Morrisville" />
+<meta name="keywords" content="Program, Degree, College, University, Agriculture, Automotive, Business, Communications, Computer Science, Construction and Building, Engineering Technology, Equine, Health, Hospitality, Natural Resources, Nursing, Horticulture, College, University, Trans" />
+<meta property="og:description" content="SUNY Morrisville is a model of innovative applied education — a place where students begin crafting exciting careers through real-world experiences. Our action-oriented learning labs allow students to “get their hands dirty” and engage in ways that go bey" />
+<meta property="og:image" content="http://documents.morrisville.edu/images/logo_new.png" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/core/misc/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="revision" href="https://www.morrisville.edu/home" />
+<script>window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};a2a_config.icon_color = "#00502F,#ffffff";
+a2a_config.menu_type = "mail";</script>
+
+    <title>SUNY Morrisville</title>
+
+    <link href="https://use.typekit.net/cup5lij.css" rel="stylesheet">
+
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_btUIHqbj2qMHtGOAWyK6p0EYm583sshgkhEQ4XpdNzc.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_HT7J9fx00V4emLXCrbUgFsBpSo3bxIJj0W93FZ_0Aws.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/themes/de_theme/dist/scripts/js/vendor/modernizr.min.js?v=3.3.1"></script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/themes/de_theme/src/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/themes/de_theme/src/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/themes/de_theme/src/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="/themes/de_theme/src/img/favicons/site.webmanifest">
+<link rel="mask-icon" href="/themes/de_theme/src/img/favicons/safari-pinned-tab.svg" color="#00502f">
+<link rel="shortcut icon" href="/themes/de_theme/src/img/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/themes/de_theme/src/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+  </head>
+  <body class="context-global one_sidebar sidebar_second path-frontpage node--type-page">
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+    <div class="responsive-menu-page-wrapper">
+  
+  <header id="header">
+    <div class="layout-header">
+
+      <div id="masthead" class="masthead">
+            <div class="region region--masthead-actions clearfix" id="masthead-actions">
+    <div class="layout-container">
+      <div class="region-inner clearfix">
+        <div id="block-header-social-media" class="block block-block-content block-block-content5a07f6ba-9185-4d77-9df8-4fe381dc193b">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><ul><li><a aria-label="Visit our Facebook page" href="https://www.facebook.com/sunymorrisville" target="_blank"><span aria-hidden="true" class="fab fa-facebook-f"><span class="hidden">Facebook</span></span></a></li>
+	<li><a aria-label="Visit our Twitter page" href="https://twitter.com/SUNYmorrisville" target="_blank"><span aria-hidden="true" class="fab fa-twitter"><span class="hidden">Twitter</span></span></a></li>
+	<li><a aria-label="Visit our YoutTube page" href="https://www.youtube.com/user/morrisvillestate" target="_blank"><span aria-hidden="true" class="fab fa-youtube"><span class="hidden">YouTube</span></span></a></li>
+	<li><a aria-label="Visit our Instagram page" href="https://instagram.com/sunymorrisville/" target="_blank"><span aria-hidden="true" class="fab fa-instagram"><span class="hidden">Instagram</span></span></a></li>
+	<li><a aria-label="Visit our LinkedIn page" href="https://www.linkedin.com/school/state-university-of-new-york-college-of-agriculture-and-technology-at-morrisville/" target="_blank"><span aria-hidden="true" class="fab fa-linkedin-in"><span class="hidden">LinkedIn</span></span></a></li>
+</ul></div>
+      
+  </div>
+<nav role="navigation" aria-labelledby="block-secondary-navigation-menu" id="block-secondary-navigation" class="block block-menu navigation menu--secondary-navigation">
+            
+  <h2 class="visually-hidden" id="block-secondary-navigation-menu">Secondary Navigation</h2>
+  
+
+        
+              <ul data-block="block-secondary-navigation" class="menu">
+                    <li class="menu-item menu-item--expanded">
+        <a href="/about" data-drupal-link-system-path="node/601">About</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/campus-maps" data-drupal-link-system-path="node/1306">Campus Maps</a>
+              </li>
+                <li class="menu-item">
+        <a href="/facilities" data-drupal-link-system-path="facilities">Facilities</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/admissions-0" data-drupal-link-system-path="node/54331">Admissions</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/life-on-campus/athletics" data-drupal-link-system-path="node/276">Athletics</a>
+              </li>
+                <li class="menu-item">
+        <a href="/give" data-drupal-link-system-path="give-me">Make a Gift</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact" data-drupal-link-system-path="node/616">Contact</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/directory" data-drupal-link-system-path="faculty-staff-directory">Directory</a>
+              </li>
+                <li class="menu-item menu-item--collapsed">
+        <a href="/offices" data-drupal-link-system-path="node/626">Offices</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+      </div>
+    </div>
+  </div>
+
+        <div class="layout-container">
+              <div class="region region--masthead-primary clearfix" id="masthead-primary">
+    <div class="region-inner clearfix">
+      <div id="block-de-theme-branding" class="block block-system block-system-branding-block">
+  
+    
+        <a href="/" rel="home" class="site-logo">
+      <img src="/themes/de_theme/logo.svg" alt="Home" />
+    </a>
+        <div class="site-name">
+      <a href="/" title="Home" rel="home">SUNY Morrisville</a>
+    </div>
+    </div>
+<div class="responsive-menu-toggle-wrapper responsive-menu-toggle block block-responsive-menu block-responsive-menu-toggle">
+  
+    
+      <a id="toggle-icon" class="toggle responsive-menu-toggle-icon" title="Menu" href="#off-canvas">
+  <span class="icon"></span><span class="label">Menu</span>
+</a>
+  </div>
+<div class="block block-responsive-menu block-responsive-menu-horizontal-menu">
+  
+    
+      <nav class="responsive-menu-block-wrapper">
+  
+                                                        <ul id="horizontal-menu" class="horizontal-menu">
+                                  <li class="menu-item menu-item--expanded">
+          <a href="/areas-of-study" data-drupal-link-system-path="node/196">Areas of Study</a>
+                                        <ul class="menu sub-nav">
+                                  <li class="menu-item">
+          <a href="/areas-of-study/agriculture" data-drupal-link-system-path="node/691">Agriculture</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/automotive" data-drupal-link-system-path="node/681">Automotive</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/business" data-drupal-link-system-path="node/7441">Business</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/computing-informatics" data-drupal-link-system-path="node/7446">Computing &amp; Informatics</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/design-engineering" data-drupal-link-system-path="node/7451">Design &amp; Engineering</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/environmental-conservation-renewable-energy" data-drupal-link-system-path="node/7456">Environmental Conservation &amp; Renewable Energy</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/equine" data-drupal-link-system-path="node/7461">Equine</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/health-human-development" data-drupal-link-system-path="node/7466">Health  &amp; Human Development</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/hospitality" data-drupal-link-system-path="node/7471">Hospitality</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study/professional-studies" data-drupal-link-system-path="node/7476">Professional Studies</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/areas-of-study#block-views-block-programs-block-areas-of-study" data-drupal-link-system-path="node/196">All Programs</a>
+                  </li>
+                    </ul>
+      
+                  </li>
+                              <li class="menu-item menu-item--expanded">
+          <a href="/costs-aid" data-drupal-link-system-path="node/211">Costs + Aid</a>
+                                        <ul class="menu sub-nav">
+                                  <li class="menu-item">
+          <a href="/costs-aid/financial-aid" data-drupal-link-system-path="node/216">Financial Aid</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/costs-aid/housing-costs-rates" data-drupal-link-system-path="node/221">Housing Costs/Rates</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/costs-aid/meal-plans" data-drupal-link-system-path="node/226">Meal Plans</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/scholarships" data-drupal-link-system-path="node/1761">Scholarships</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/costs-aid/college-costs" data-drupal-link-system-path="node/2076">Tuition and Fees</a>
+                  </li>
+                    </ul>
+      
+                  </li>
+                              <li class="menu-item menu-item--expanded">
+          <a href="/life-on-campus" data-drupal-link-system-path="node/241">Life on Campus</a>
+                                        <ul class="menu sub-nav">
+                                  <li class="menu-item">
+          <a href="/dining" data-drupal-link-system-path="node/64596">Dining</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/life-on-campus/health-center" data-drupal-link-system-path="node/1391">Health Center</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/life-on-campus/residence-life" data-drupal-link-system-path="node/3151">Residence Life</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/life-on-campus/student-support" data-drupal-link-system-path="node/311">Student Support &amp; Services</a>
+                  </li>
+                    </ul>
+      
+                  </li>
+                              <li class="menu-item menu-item--expanded">
+          <a href="/i-am-a" data-drupal-link-system-path="node/246">I am a...</a>
+                                        <ul class="menu sub-nav">
+                                  <li class="menu-item">
+          <a href="/i-am-a/alumni-donor" data-drupal-link-system-path="node/251">Alumni</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/i-am-a/community-member" data-drupal-link-system-path="node/261">Community Member</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/i-am-a/current-student" data-drupal-link-system-path="node/256">Current Student</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/i-am-a/faculty-staff" data-drupal-link-system-path="node/266">Faculty/Staff</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="https://www.morrisville.edu/admissions">Future Student</a>
+                  </li>
+                              <li class="menu-item">
+          <a href="/i-am-a/parent" data-drupal-link-system-path="node/271">Parent</a>
+                  </li>
+                    </ul>
+      
+                  </li>
+                    </ul>
+      
+
+</nav>
+  </div>
+<div class="views-exposed-form block block-views block-views-exposed-filter-blockacquia-search-page" data-drupal-selector="views-exposed-form-acquia-search-page" id="block-exposedformacquia-searchpage">
+  
+    
+      <form data-block="block-exposedformacquia-searchpage" action="/search" method="get" id="views-exposed-form-acquia-search-page" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-search form-item-search">
+      <label for="edit-search">Search</label>
+        <input data-drupal-selector="edit-search" type="text" id="edit-search" name="search" value="" size="30" maxlength="128" class="form-text" />
+
+        </div>
+<div id="edit-submit-link" class="js-form-item form-item js-form-type-item form-type-item js-form-item-submit-link form-item-submit-link form-no-label">
+        <a href="#" class="submit-link">Search Now</a>
+        </div>
+<div class="element-invisible"><div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-acquia-search" type="submit" id="edit-submit-acquia-search" value="Search" class="button js-form-submit form-submit" />
+</div>
+</div>
+</div>
+
+</form>
+
+  </div>
+
+    </div>
+  </div>
+
+          
+        </div>
+      </div>
+          </div>
+  </header>
+
+          
+
+<div class="section-content">
+      <div class="region region--content-prefix clearfix" id="page-content-prefix">
+          <div data-drupal-messages-fallback class="hidden"></div>
+
+      </div>
+
+
+
+  <div class="layout-container">
+
+  <main id="main" class="column">
+    <a id="main-content" tabindex="-1"></a>    <div class="layout-content">
+            <div class="region region--content clearfix" id="content">
+    <div class="views-element-container block block-views block-views-blockhome-page-block-home-page-cta" id="block-views-block-home-page-cta">
+  
+    
+       <style>
+      @media all and (min-width:992px) {
+        .webp .top-banner {
+          background-image:url('/sites/default/files/styles/max_2600x2600/public/custom-block-banner/006-winter-campus-new.webp?itok=AN1HrNkF');
+        }
+        .no-webp .top-banner {
+          background-image:url('/sites/default/files/styles/max_2600x2600/public/custom-block-banner/006-winter-campus-new.jpg?itok=AN1HrNkF');
+        }
+      }
+
+      @media all and (min-width:608px) and (max-width:991px) {
+        .webp .top-banner {
+          background-image:url('/sites/default/files/styles/large_banner_1150_by_390_/public/custom-block-banner/006-winter-campus-new.webp?itok=a7Jicp49');
+        }
+        .no-webp .top-banner {
+          background-image:url('/sites/default/files/styles/large_banner_1150_by_390_/public/custom-block-banner/006-winter-campus-new.jpg?itok=a7Jicp49');
+        }
+      }
+
+      @media all and (max-width:607px) {
+        .webp .top-banner {
+          background-image:url('/sites/default/files/styles/max_650x650/public/custom-block-banner/006-winter-campus-new.webp?itok=vXCh0OpF');
+        }
+        .no-webp .top-banner {
+          background-image:url('/sites/default/files/styles/max_650x650/public/custom-block-banner/006-winter-campus-new.jpg?itok=vXCh0OpF');
+        }
+      }
+    </style>
+
+    <div title="suny morrisville campus winter sunset" class="cta-banner-field top-banner full-width header-banner">
+            <div data-block="block-views-block-home-page-cta"><div class="view view-home-page view-id-home_page view-display-id-block_home_page_cta js-view-dom-id-f35f71c6785c63c74e88e7f1c89f0e90572601ad8eb471f8518e77751141e868">
+  
+    
+      
+      <div class="view-content">
+          <div class="outer-wrapper-yellow-bars">
+    <div class="inner-yellow-bars">
+      <div class="views-row">
+        <div class="views-field views-field-field-heading"><div class="field-content">A Hands-On Education is Just the Beginning</div></div><div class="views-field views-field-body"><div class="field-content"><p>Located in scenic Central New York, SUNY Morrisville is a model of innovative applied education—a place where students begin crafting exciting careers through real-world experiences. Choose from more than 80 associate and bachelor's degree programs that embrace agriculture, technology, business, social sciences and the liberal arts.</p>
+</div></div><div class="views-field views-field-field-action-button"><span class="field-content btn-secondary"><a href="/apply">Apply Today</a></span></div>
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+  
+          </div>
+</div>
+
+          </div>
+  </div>
+<div class="views-element-container block block-views block-views-blockhome-page-block-home-page-quick-menu" id="block-views-block-home-page-quick-menu">
+  
+    
+      <div data-block="block-views-block-home-page-quick-menu"><div class="view view-home-page view-id-home_page view-display-id-block_home_page_quick_menu js-view-dom-id-eb6807f8aa19fe16df7e5b440f805a60d3ca838d087bbe132cf5684a716ea654">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row">
+            <div class="field field--name-field-image field--type-image field--label-hidden field__item">    <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/see-campus.webp?itok=clYXBa5y 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/custom-block-image/see-campus.webp?itok=Di-0utbi 200w, /sites/default/files/styles/max_650x650/public/custom-block-image/see-campus.jpg?itok=pIWgksRA 303w, /sites/default/files/styles/large/public/custom-block-image/see-campus.jpg?itok=H5bdAJru 480w" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/see-campus.webp?itok=clYXBa5y 303w, /sites/default/files/styles/large/public/custom-block-image/see-campus.jpg?itok=H5bdAJru 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/see-campus.jpg?itok=clYXBa5y 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/custom-block-image/see-campus.jpg?itok=Di-0utbi 200w, /sites/default/files/styles/max_650x650/public/custom-block-image/see-campus.jpg?itok=pIWgksRA 303w, /sites/default/files/styles/large/public/custom-block-image/see-campus.jpg?itok=H5bdAJru 480w" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/see-campus.jpg?itok=clYXBa5y 303w, /sites/default/files/styles/large/public/custom-block-image/see-campus.jpg?itok=H5bdAJru 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/custom-block-image/see-campus.jpg" alt="Overhead view of campus" typeof="foaf:Image" />
+
+
+  </picture>
+
+</div>
+      
+<div  class="link-wrapper">
+      
+            <div class="field field--name-field-action-button field--type-link field--label-hidden field__item"><a href="/contact/offices/admissions/visit-us">Visit Campus</a></div>
+      
+  </div>
+</div>
+    <div class="views-row">
+            <div class="field field--name-field-image field--type-image field--label-hidden field__item">    <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/macot.webp?h=3aef581a&amp;itok=V-KCDy39 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/custom-block-image/macot.webp?h=3aef581a&amp;itok=dL2xEzQ4 200w, /sites/default/files/styles/max_650x650/public/custom-block-image/macot.jpg?itok=U6RQXVjM 303w, /sites/default/files/styles/large/public/custom-block-image/macot.jpg?itok=54XKZyqB 480w" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/macot.webp?h=3aef581a&amp;itok=V-KCDy39 303w, /sites/default/files/styles/large/public/custom-block-image/macot.jpg?itok=54XKZyqB 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/macot.jpg?h=3aef581a&amp;itok=V-KCDy39 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/custom-block-image/macot.jpg?h=3aef581a&amp;itok=dL2xEzQ4 200w, /sites/default/files/styles/max_650x650/public/custom-block-image/macot.jpg?itok=U6RQXVjM 303w, /sites/default/files/styles/large/public/custom-block-image/macot.jpg?itok=54XKZyqB 480w" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/macot.jpg?h=3aef581a&amp;itok=V-KCDy39 303w, /sites/default/files/styles/large/public/custom-block-image/macot.jpg?itok=54XKZyqB 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/custom-block-image/macot.jpg" alt="cheering mustang mascot" typeof="foaf:Image" />
+
+
+  </picture>
+
+</div>
+      
+<div  class="link-wrapper">
+      
+            <div class="field field--name-field-action-button field--type-link field--label-hidden field__item"><a href="https://admissions.morrisville.edu/register/request-information">Request Info</a></div>
+      
+  </div>
+</div>
+    <div class="views-row">
+            <div class="field field--name-field-image field--type-image field--label-hidden field__item">    <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/apply.webp?itok=cZHYCkHm 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/custom-block-image/apply.webp?itok=sabuo9vx 200w, /sites/default/files/styles/max_650x650/public/custom-block-image/apply.jpg?itok=HbHsRDTf 303w, /sites/default/files/styles/large/public/custom-block-image/apply.jpg?itok=PjSJMczu 480w" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/apply.webp?itok=cZHYCkHm 303w, /sites/default/files/styles/large/public/custom-block-image/apply.jpg?itok=PjSJMczu 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/apply.jpg?itok=cZHYCkHm 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/custom-block-image/apply.jpg?itok=sabuo9vx 200w, /sites/default/files/styles/max_650x650/public/custom-block-image/apply.jpg?itok=HbHsRDTf 303w, /sites/default/files/styles/large/public/custom-block-image/apply.jpg?itok=PjSJMczu 480w" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/custom-block-image/apply.jpg?itok=cZHYCkHm 303w, /sites/default/files/styles/large/public/custom-block-image/apply.jpg?itok=PjSJMczu 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/custom-block-image/apply.jpg" alt="students in graduation regalia" typeof="foaf:Image" />
+
+
+  </picture>
+
+</div>
+      
+<div  class="link-wrapper">
+      
+            <div class="field field--name-field-action-button field--type-link field--label-hidden field__item"><a href="/apply">Apply</a></div>
+      
+  </div>
+</div>
+
+    </div>
+  
+          </div>
+</div>
+
+  </div>
+<div class="views-element-container block block-views block-views-blocknews-block-news-featured-main" id="block-views-block-news-featured-main">
+  
+      <div class="layout-container">
+      <div class="coloured-label-style full">
+        <h2>News</h2>
+      </div>
+    </div>
+    
+      <style>
+      @media all and (min-width:992px) {
+        .webp .featured-news-bg {
+          background-image:url('/sites/default/files/styles/max_2600x2600/public/news/background-banners/Norwich-2.webp?itok=yUCyNKQU');
+        }
+        .no-webp .featured-news-bg {
+          background-image:url('/sites/default/files/styles/max_2600x2600/public/news/background-banners/Norwich-2.jpg?itok=yUCyNKQU');
+        }
+      }
+
+      @media all and (min-width:608px) and (max-width:991px) {
+        .webp .featured-news-bg {
+          background-image:url('/sites/default/files/styles/large_banner_1150_by_390_/public/news/background-banners/Norwich-2.webp?itok=3QDoiq4q');
+        }
+        .no-webp .featured-news-bg {
+          background-image:url('/sites/default/files/styles/large_banner_1150_by_390_/public/news/background-banners/Norwich-2.jpg?itok=3QDoiq4q');
+        }
+      }
+
+      @media all and (max-width:607px) {
+        .webp .featured-news-bg {
+          background-image:url('/sites/default/files/styles/max_650x650/public/news/background-banners/Norwich-2.webp?itok=kQxVdPHx');
+        }
+        .no-webp .featured-news-bg {
+          background-image:url('/sites/default/files/styles/max_650x650/public/news/background-banners/Norwich-2.jpg?itok=kQxVdPHx');
+        }
+      }
+    </style>
+
+    <div title="solar panels at norwich" class="featured-news-bg full-width header-banner">
+        <div data-block="block-views-block-news-featured-main"><div class="featured-main-view view view-news view-id-news view-display-id-block_news_featured_main js-view-dom-id-685fceed308172a892f88ae210a29fa2c3813067c09b3fa272a293183d845d66">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-title"><span class="field-content"><a href="/news/building-a-solar-empire">Building a Solar Empire</a></span></div><div class="views-field views-field-body"><div class="field-content">Alumni and students play a role in harnessing community solar energy<br />
+In Tompkins County, 6,804 solar panels sit on a 13-acre plot of farmland in the town of Endfield. The 2.3…</div></div><div class="views-field views-field-view-node"><span class="field-content btn-primary"><a href="/news/building-a-solar-empire" hreflang="en">Read the Article</a></span></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+        </div>
+  </div>
+<div class="views-element-container block block-views block-views-blocknews-block-news-featured" id="block-views-block-news-featured">
+  
+    
+      <div data-block="block-views-block-news-featured"><div class="featured-listings view view-news view-id-news view-display-id-block_news_featured js-view-dom-id-abfbfdd439136af4a33a1abef65142e6febca0b1e0754eaddde5aef8da6883b4">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-promotional"><div class="field-content">  <a href="/news/suny-morrisville-norwich-students-take-aim-against-poverty-their-community">  <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.webp?h=0d27ee61&amp;itok=v6iGkY5p 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.webp?h=0d27ee61&amp;itok=v6iGkY5p 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.webp?h=0d27ee61&amp;itok=3vybtFqG 303w, /sites/default/files/styles/large/public/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.jpg?itok=jidWJ26P 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.jpg?h=0d27ee61&amp;itok=v6iGkY5p 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.jpg?h=0d27ee61&amp;itok=v6iGkY5p 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.jpg?h=0d27ee61&amp;itok=3vybtFqG 303w, /sites/default/files/styles/large/public/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.jpg?itok=jidWJ26P 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/news/promotional-images/Norwich%20Students%2030%20Days%20of%20Giving.jpg" alt="Assistant Professor Julanne Burton with students from her Human Services class." typeof="foaf:Image" />
+
+
+  </picture>
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="/news/suny-morrisville-norwich-students-take-aim-against-poverty-their-community" hreflang="en">SUNY Morrisville Norwich students take aim  against poverty in their community </a></span></div><div class="views-field views-field-body"><div class="field-content"><p>NORWICH, N.Y. — For some, it was their first look at…</p></div></div></div>
+    <div class="views-row"><div class="views-field views-field-field-promotional"><div class="field-content">  <a href="/news/driven-automotive-technology-alumnus-named-2019-ase-technician-of-future">  <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.webp?h=9c07584a&amp;itok=1ZbsGM45 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.webp?h=9c07584a&amp;itok=1ZbsGM45 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.webp?h=9c07584a&amp;itok=AF493Eot 303w, /sites/default/files/styles/large/public/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.jpg?itok=vnIBhbIS 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.jpg?h=9c07584a&amp;itok=1ZbsGM45 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.jpg?h=9c07584a&amp;itok=1ZbsGM45 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.jpg?h=9c07584a&amp;itok=AF493Eot 303w, /sites/default/files/styles/large/public/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.jpg?itok=vnIBhbIS 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/news/promotional-images/Zachery%20Ward_Technician%20of%20the%20Future_resized.jpg" alt="Automotive technology alumnus Zachery Ward receives the 2019 ASE Technician of the Future award." typeof="foaf:Image" />
+
+
+  </picture>
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="/news/driven-automotive-technology-alumnus-named-2019-ase-technician-of-future" hreflang="en">Driven automotive technology alumnus named 2019 ASE Technician of the Future </a></span></div><div class="views-field views-field-body"><div class="field-content"><p>As a SUNY Morrisville automotive technology A.A.S.…</p></div></div></div>
+    <div class="views-row"><div class="views-field views-field-field-promotional"><div class="field-content">  <a href="/news/50-years-of-equine-excellence">  <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/IMG_6563.webp?h=0fa79da3&amp;itok=zQbpO8BL 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/IMG_6563.webp?h=0fa79da3&amp;itok=zQbpO8BL 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/news/promotional-images/IMG_6563.webp?h=0fa79da3&amp;itok=q7Wp1vkM 303w, /sites/default/files/styles/large/public/news/promotional-images/IMG_6563.jpg?itok=SUVTjX0A 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/IMG_6563.jpg?h=0fa79da3&amp;itok=zQbpO8BL 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/news/promotional-images/IMG_6563.jpg?h=0fa79da3&amp;itok=zQbpO8BL 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/news/promotional-images/IMG_6563.jpg?h=0fa79da3&amp;itok=q7Wp1vkM 303w, /sites/default/files/styles/large/public/news/promotional-images/IMG_6563.jpg?itok=SUVTjX0A 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/news/promotional-images/IMG_6563.jpg" alt="girl with horse, photo by Allisa Coomey" typeof="foaf:Image" />
+
+
+  </picture>
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="/news/50-years-of-equine-excellence" hreflang="en">50 Years of Equine Excellence</a></span></div><div class="views-field views-field-body"><div class="field-content"><p>Monday morning, the second week of classes, and in the…</p></div></div></div>
+
+    </div>
+  
+          <div class="more-link"><a href="/news">View all News</a></div>
+
+      </div>
+</div>
+
+  </div>
+
+<article data-history-node-id="86" role="article" about="/home" typeof="schema:WebPage" class="node node--type-page node--view-mode-full">
+
+  
+      <span property="schema:name" content="Home" class="rdf-meta hidden"></span>
+
+
+  
+  <div class="node__content">
+    
+  </div>
+
+</article>
+<div class="views-element-container block block-views block-views-blockevents-block-events-featured-main" id="block-views-block-events-featured-main">
+  
+      <div class="layout-container">
+      <div class="coloured-label-style full">
+        <h2>Events</h2>
+      </div>
+    </div>
+    
+      <style>
+    	@media all and (min-width:992px) {
+        .webp .featured-event-bg {
+          background-image:url('/sites/default/files/styles/max_2600x2600/public/events/promotional-images/Global%20Game%20Jam%20Image.png?itok=yOwumehK');
+        }
+        .no-webp .featured-event-bg {
+          background-image:url('/sites/default/files/styles/max_2600x2600/public/events/promotional-images/Global%20Game%20Jam%20Image.png?itok=yOwumehK');
+        }
+      }
+
+      @media all and (min-width:608px) and (max-width:991px) {
+        .webp .featured-event-bg {
+          background-image:url('/sites/default/files/styles/large_banner_1150_by_390_/public/events/promotional-images/Global%20Game%20Jam%20Image.png?itok=LEZWh7S6');
+        }
+        .no-webp .featured-event-bg {
+          background-image:url('/sites/default/files/styles/large_banner_1150_by_390_/public/events/promotional-images/Global%20Game%20Jam%20Image.png?itok=LEZWh7S6');
+        }
+      }
+
+      @media all and (max-width:607px) {
+        .webp .featured-event-bg {
+          background-image:url('/sites/default/files/styles/max_650x650/public/events/promotional-images/Global%20Game%20Jam%20Image.png?itok=ns3KZzNj');
+        }
+        .no-webp .featured-event-bg {
+          background-image:url('/sites/default/files/styles/max_650x650/public/events/promotional-images/Global%20Game%20Jam%20Image.png?itok=ns3KZzNj');
+        }
+      }
+    </style>
+
+    <div title="Four people at their computers." class="featured-event-bg full-width header-banner">
+        <div data-block="block-views-block-events-featured-main"><div class="featured-main-view view view-events view-id-events view-display-id-block_events_featured_main js-view-dom-id-41e4f27b3587bce0f114506a60259b0083fd061bc136d26bda05b63c752b1e36">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-event-dates-1"><div class="field-content"><div class="date-box-display">
+<div class="inner">
+<div class="day">
+<time datetime="00Z" class="datetime">Jan</time>
+
+</div>
+<div class="month">
+<time datetime="00Z" class="datetime">31</time>
+
+</div>
+</div>
+</div></div></div><div class="views-field views-field-title"><span class="field-content"><a href="/events/globalgamejam2020">Global Game Jam 2020</a></span></div><div class="views-field views-field-body"><span class="field-content">The Global Game Jam at SUNY Morrisville is part of the Global Game Jam, the world’s largest game jam event. Students, alumni and staff from SUNY Morrisville and the local…</span></div><div class="views-field views-field-view-node"><span class="field-content btn-primary"><a href="/events/globalgamejam2020" hreflang="en">View the Event</a></span></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+        </div>
+  </div>
+<div class="views-element-container block block-views block-views-blockevents-block-events-featured" id="block-views-block-events-featured">
+  
+    
+      <div data-block="block-views-block-events-featured"><div class="featured-listings view view-events view-id-events view-display-id-block_events_featured js-view-dom-id-dcd159239c8c3629cb9b6d76386609ff64126dd0a442e4b8050e5ad6cc37f577">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-promotional"><div class="field-content">  <a href="/events/regional-applied-learning-student-showcase">  <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/IMG_4840-thumb.webp?h=6c83441f&amp;itok=cjTULNrF 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/IMG_4840-thumb.webp?h=6c83441f&amp;itok=cjTULNrF 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/events/promotional-images/IMG_4840-thumb.webp?h=6c83441f&amp;itok=StQjQaJ0 303w, /sites/default/files/styles/large/public/events/promotional-images/IMG_4840-thumb.jpg?itok=mkpVQWQc 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/IMG_4840-thumb.jpg?h=6c83441f&amp;itok=cjTULNrF 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/IMG_4840-thumb.jpg?h=6c83441f&amp;itok=cjTULNrF 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/events/promotional-images/IMG_4840-thumb.jpg?h=6c83441f&amp;itok=StQjQaJ0 303w, /sites/default/files/styles/large/public/events/promotional-images/IMG_4840-thumb.jpg?itok=mkpVQWQc 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/events/promotional-images/IMG_4840-thumb.jpg" alt="Students and faculty gather at the Regional Applied Learning Conference" typeof="foaf:Image" />
+
+
+  </picture>
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="/events/regional-applied-learning-student-showcase" hreflang="en">Regional Applied Learning Student Showcase</a></span></div><div class="views-field views-field-field-event-dates"><div class="field-content">Mar 26, 2020</div></div><div class="views-field views-field-body"><div class="field-content"><p>We are pleased to announce the 2020 Regional Applied…</p></div></div></div>
+    <div class="views-row"><div class="views-field views-field-field-promotional"><div class="field-content">  <a href="/events/open-house-0">  <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/see-campus.webp?h=3aef581a&amp;itok=SHo0zMQF 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/see-campus.webp?h=3aef581a&amp;itok=SHo0zMQF 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/events/promotional-images/see-campus.webp?h=3aef581a&amp;itok=2pb55zkR 303w, /sites/default/files/styles/large/public/events/promotional-images/see-campus.jpg?itok=6KBqhQOW 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/see-campus.jpg?h=3aef581a&amp;itok=SHo0zMQF 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/see-campus.jpg?h=3aef581a&amp;itok=SHo0zMQF 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/events/promotional-images/see-campus.jpg?h=3aef581a&amp;itok=2pb55zkR 303w, /sites/default/files/styles/large/public/events/promotional-images/see-campus.jpg?itok=6KBqhQOW 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/events/promotional-images/see-campus.jpg" alt="campus" typeof="foaf:Image" />
+
+
+  </picture>
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="/events/open-house-0" hreflang="en">Open House</a></span></div><div class="views-field views-field-field-event-dates"><div class="field-content">Mar 07, 2020</div></div><div class="views-field views-field-body"><div class="field-content"><p>Build your own productive day and focus on the things…</p></div></div></div>
+    <div class="views-row"><div class="views-field views-field-field-promotional"><div class="field-content">  <a href="/events/open-house-0">  <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/see-campus.webp?h=3aef581a&amp;itok=SHo0zMQF 1x" media="all and (min-width: 992px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/see-campus.webp?h=3aef581a&amp;itok=SHo0zMQF 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/webp"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/events/promotional-images/see-campus.webp?h=3aef581a&amp;itok=2pb55zkR 303w, /sites/default/files/styles/large/public/events/promotional-images/see-campus.jpg?itok=6KBqhQOW 480w" media="(max-width: 607px)" type="image/webp" sizes="100vw"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/see-campus.jpg?h=3aef581a&amp;itok=SHo0zMQF 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_200_by_200_sc/public/events/promotional-images/see-campus.jpg?h=3aef581a&amp;itok=SHo0zMQF 1x" media="all and (min-width: 608px) and (max-width: 991px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/medium_square_303_by_303_sc/public/events/promotional-images/see-campus.jpg?h=3aef581a&amp;itok=2pb55zkR 303w, /sites/default/files/styles/large/public/events/promotional-images/see-campus.jpg?itok=6KBqhQOW 480w" media="(max-width: 607px)" type="image/jpeg" sizes="100vw"/>
+            <!--[if IE 9]></video><![endif]-->
+            
+
+  <img src="/sites/default/files/events/promotional-images/see-campus.jpg" alt="campus" typeof="foaf:Image" />
+
+
+  </picture>
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="/events/open-house-0" hreflang="en">Open House</a></span></div><div class="views-field views-field-field-event-dates"><div class="field-content">Mar 28, 2020</div></div><div class="views-field views-field-body"><div class="field-content"><p>Build your own productive day and focus on the things…</p></div></div></div>
+
+    </div>
+  
+          <div class="more-link"><a href="/events">View all Events</a></div>
+
+      </div>
+</div>
+
+  </div>
+<div class="views-element-container block block-views block-views-blockhome-page-block-home-page-request-information" id="block-views-block-home-page-request-information">
+  
+    
+      <style>
+      @media all and (min-width:992px) {
+        .webp .request-info {
+          background-image:url('/sites/default/files/styles/max_2600x2600/public/custom-block-banner/outdoors-june_0.webp?itok=Hrq1zUYl');
+        }
+        .no-webp .request-info {
+          background-image:url('/sites/default/files/styles/max_2600x2600/public/custom-block-banner/outdoors-june_0.jpg?itok=Hrq1zUYl');
+        }
+      }
+
+      @media all and (min-width:608px) and (max-width:991px) {
+        .webp .request-info {
+          background-image:url('/sites/default/files/styles/large_banner_1150_by_390_/public/custom-block-banner/outdoors-june_0.webp?itok=URD7mt0N');
+        }
+        .no-webp .request-info {
+          background-image:url('/sites/default/files/styles/large_banner_1150_by_390_/public/custom-block-banner/outdoors-june_0.jpg?itok=URD7mt0N');
+        }
+      }
+
+      @media all and (max-width:607px) {
+        .webp .request-info {
+          background-image:url('/sites/default/files/styles/max_650x650/public/custom-block-banner/outdoors-june_0.webp?itok=TbfbkIVZ');
+        }
+        .no-webp .request-info {
+          background-image:url('/sites/default/files/styles/max_650x650/public/custom-block-banner/outdoors-june_0.jpg?itok=TbfbkIVZ');
+        }
+      }
+    </style>
+
+    <div title="helyar pond" class="cta-banner-field request-info full-width header-banner">
+            <div class="bottom-ctas">
+        <div class="outer-wrapper-yellow-bars">
+          <div class="inner-yellow-bars">
+            <div class="cta-1">
+              <div data-block="block-views-block-home-page-request-information"><div class="view view-home-page view-id-home_page view-display-id-block_home_page_request_information js-view-dom-id-19be6099ace85f9a51ff6ccc357dd42ca28fb5c178285e3aff5fa3c009912def">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-heading"><div class="field-content">Request Information</div></div><div class="views-field views-field-body"><div class="field-content"></div></div><div class="views-field views-field-field-action-button"><span class="field-content btn-secondary"><a href="https://admissions.morrisville.edu/register/request-information">Go Now</a></span></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+            </div>
+            <div id="block-virtualtour" class="block block-suny-virtual-tour block-virtual-tour-block">
+  
+    
+      <script async="true" defer="defer" src="https://www.youvisit.com/tour/Embed/js2"></script><a href="https://www.youvisit.com" class="virtualtour_embed" title="Virtual Tour" data-inst="62388" data-link-type="image" data-platform="vhost" data-image-width="290" data-image-height="190">Virtual Tour</a>
+  </div>
+
+          </div>
+        </div>
+      </div>
+          </div>
+  </div>
+
+  </div>
+
+    </div>  </main>
+  
+      <aside class="column sidebar layout-sidebar-second" role="complementary">
+      
+    </aside>
+  </div>
+  
+</div>
+
+
+<footer id="footer">
+  <div class="inner-wrapper">
+    <div class="region region--footer-first clearfix">
+      <div class="layout-container">
+      <div id="block-footerbrandingandcontact" class="block block-block-content block-block-content15f32afa-e580-4857-99c7-07156d87e70b">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div><img alt="Footer Logo Suny Morrisville" title="Footer Logo Suny Morrisville" src="/sites/default/files/entity-browser-files/footer-logo-2.png" /></div>
+
+<p class="bolded">SUNY Morrisville</p>
+
+<p>P.O. Box 901</p>
+
+<p>80 Eaton St.</p>
+
+<p>Morrisville, NY 13408</p>
+
+<p class="margin-footer">1.315.684.6000</p>
+
+<div><img alt="Footer Logo The State University of New York" title="Footer Logo The State University of New York" src="/sites/default/files/entity-browser-files/main-footer-logo.png" /></div>
+</div>
+      
+  </div>
+<nav role="navigation" aria-labelledby="block-de-theme-footer-menu" id="block-de-theme-footer" class="block block-menu navigation menu--footer">
+      
+  <h2 id="block-de-theme-footer-menu">Quick links</h2>
+  
+
+        
+              <ul data-block="block-de-theme-footer" class="menu">
+                    <li class="menu-item">
+        <a href="/apply" data-drupal-link-system-path="node/1491">Apply</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/technology-services/blackboard" data-drupal-link-system-path="node/2131">Blackboard</a>
+              </li>
+                <li class="menu-item">
+        <a href="/campus-maps" data-drupal-link-system-path="node/1306">Campus Maps</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/campus-store" data-drupal-link-system-path="node/6091">Campus Store</a>
+              </li>
+                <li class="menu-item">
+        <a href="/cancellations" data-drupal-link-system-path="node/56456">Cancellations</a>
+              </li>
+                <li class="menu-item">
+        <a href="/emergency-information" data-drupal-link-system-path="node/2211">Emergency Information</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/employment-opportunities" data-drupal-link-system-path="node/1831">Employment Opportunities</a>
+              </li>
+                <li class="menu-item">
+        <a href="/events-list">Events</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.morrisville.edu/library">Library</a>
+              </li>
+                <li class="menu-item">
+        <a href="/norwich" data-drupal-link-system-path="node/6">Norwich Campus</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/related-safety-information" data-drupal-link-system-path="node/2241">Safety Information</a>
+              </li>
+                <li class="menu-item">
+        <a href="/web-faculty" data-drupal-link-system-path="node/8346">Web for Faculty</a>
+              </li>
+                <li class="menu-item">
+        <a href="/web-students" data-drupal-link-system-path="node/8341">Web for Students</a>
+              </li>
+                <li class="menu-item">
+        <a href="http://webmail.morrisville.edu">Webmail</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+    </div>
+  </div>
+
+    <div class="region region--footer-second clearfix">
+      <div class="layout-container">
+      <div id="block-footer-social-media" class="block block-block-content block-block-contentcc896f36-6592-4616-b1c1-1b20db0ccb81">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><ul><li><a aria-label="Visit our Facebook page" href="https://www.facebook.com/sunymorrisville" target="_blank"><span aria-hidden="true" class="fab fa-facebook-f"><span class="hidden">Facebook</span></span></a></li>
+	<li><a aria-label="Visit our Twitter page" href="https://twitter.com/SUNYmorrisville" target="_blank"><span aria-hidden="true" class="fab fa-twitter"><span class="hidden">Twitter</span></span></a></li>
+	<li><a aria-label="Visit our YoutTube page" href="https://www.youtube.com/user/morrisvillestate" target="_blank"><span aria-hidden="true" class="fab fa-youtube"><span class="hidden">YouTube</span></span></a></li>
+	<li><a aria-label="Visit our Instagram page" href="https://instagram.com/sunymorrisville/" target="_blank"><span aria-hidden="true" class="fab fa-instagram"><span class="hidden">Instagram</span></span></a></li>
+	<li><a aria-label="Visit our LinkedIn page" href="https://www.linkedin.com/school/state-university-of-new-york-college-of-agriculture-and-technology-at-morrisville/" target="_blank"><span aria-hidden="true" class="fab fa-linkedin-in"><span class="hidden">LinkedIn</span></span></a></li>
+</ul></div>
+      
+  </div>
+<div id="block-footer-copyright" class="block block-block-content block-block-content3338ee58-bc7e-4426-9d1e-902d74d61a7b">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>© 2020 SUNY Morrisville. All Rights Reserved. <a href="/privacy-policy/">Privacy Policy</a>. <a href="/accessibility-policy/">Accessibility</a>.</p>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+</footer>
+
+
+</div>
+    <div class="off-canvas-wrapper"><div id="off-canvas">
+              <ul class="menu">
+                    <li class="menu-item menu-item--expanded">
+        <a href="/about" data-drupal-link-system-path="node/601">About</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/campus-maps" data-drupal-link-system-path="node/1306">Campus Maps</a>
+              </li>
+                <li class="menu-item">
+        <a href="/facilities" data-drupal-link-system-path="facilities">Facilities</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/admissions-0" data-drupal-link-system-path="node/54331">Admissions</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/life-on-campus/athletics" data-drupal-link-system-path="node/276">Athletics</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/athletics/events" data-drupal-link-system-path="node/55011">Athletics Events</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/give" data-drupal-link-system-path="give-me">Make a Gift</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact" data-drupal-link-system-path="node/616">Contact</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/directory" data-drupal-link-system-path="faculty-staff-directory">Directory</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/offices" data-drupal-link-system-path="node/626">Offices</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/enrollment-management" data-drupal-link-system-path="node/69406">Enrollment Management</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/facilities-design-construction" data-drupal-link-system-path="node/54106">Facilities Design &amp; Construction</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/facilities-design-construction/2019-campus-construction-schedule" data-drupal-link-system-path="node/64896">Campus Construction Schedule</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1W9gNb9iVOos5EI96Ybw3lTwdLC9FPSIq&amp;ll=42.89556298285682%2C-75.64026064263919&amp;z=16" title="Map of construction on campus">Construction Map</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/accessibility-services" data-drupal-link-system-path="node/6201">Accessibility Services</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/accessibility-services/disability-documentation" data-drupal-link-system-path="node/8331">Disability Documentation</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/accessibility-services/syllabus-statement" data-drupal-link-system-path="node/8336">Syllabus Statement</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/admissions-0" data-drupal-link-system-path="node/54331">Admissions</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/apply" data-drupal-link-system-path="node/1491">Apply</a>
+              </li>
+                <li class="menu-item">
+        <a href="/visit" data-drupal-link-system-path="node/8351">Visit Us</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/admissions/i-am-a" data-drupal-link-system-path="node/54661">I am a...</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/admissions/i-am-a/freshman-admissions" data-drupal-link-system-path="node/2246">Freshman</a>
+              </li>
+                <li class="menu-item">
+        <a href="/transfer" data-drupal-link-system-path="node/8541">Transfer Student</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/admissions/i-am-a/readmission" data-drupal-link-system-path="node/52906">Readmit</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/admissions/i-am-a/international-admissions" data-drupal-link-system-path="node/1506">International Student</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/admissions/i-am-a/international-student/international-student-costs" data-drupal-link-system-path="node/1516">International Student Costs</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/next-steps" data-drupal-link-system-path="node/1531">Accepted Student</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/admissions/i-am-a/accepted-student/accepted-student-days" data-drupal-link-system-path="node/1481">Accepted Student Days</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/admissions/i-am-a/accepted-student/math-placement" data-drupal-link-system-path="node/2136">Math Placement</a>
+              </li>
+                <li class="menu-item">
+        <a href="/registrationdays" data-drupal-link-system-path="node/66416">Registration Days</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/admissions/what-to-bring" data-drupal-link-system-path="node/53021">What to Bring to College</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/admissions/meet-admissions-team" data-drupal-link-system-path="node/1496">Meet Our Counselors</a>
+              </li>
+                <li class="menu-item">
+        <a href="/regional-visits" data-drupal-link-system-path="node/54561">Find Us In Your Area</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/admissions/admissions" data-drupal-link-system-path="node/1341">Contact Admissions</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/campuswide-advising" data-drupal-link-system-path="node/1346">Advising</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/advising/starfish" data-drupal-link-system-path="node/56791">Starfish</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/advising/first-year-information" data-drupal-link-system-path="node/1551">First Year Information</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/advising/advising-faq" data-drupal-link-system-path="node/1556">FAQ</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/athletics" data-drupal-link-system-path="node/5771">Athletics</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/business-office" data-drupal-link-system-path="node/1351">Business Office</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/business-office/mail-service" data-drupal-link-system-path="node/1561">Mail Service</a>
+              </li>
+                <li class="menu-item">
+        <a href="/prevent-fraud" data-drupal-link-system-path="node/8506">Prevent Fraud</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/business-office/purchasing" data-drupal-link-system-path="node/1571">Purchasing</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/business-office/internal-control" data-drupal-link-system-path="node/1581">Internal Control</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/business-office/internal-control/internal-control-training" data-drupal-link-system-path="node/1586">IC Training</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/business-office/internal-control/internal-control-committee" data-drupal-link-system-path="node/1591">IC Committee</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/campus-store" data-drupal-link-system-path="node/6091">Campus Store</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/career-services" data-drupal-link-system-path="node/1356">Career Services</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/career-services/alumni-success" data-drupal-link-system-path="node/54131">Alumni Success</a>
+              </li>
+                <li class="menu-item">
+        <a href="/classroom-presentation-request" data-drupal-link-system-path="node/8516">Classroom Presentation Request</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/career-services/exploring-your-career-options" data-drupal-link-system-path="node/1596">Exploring Your Career Options</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/career-services/guides-handouts-and-workshops" data-drupal-link-system-path="node/1601">Guides, Handouts and Workshops</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/career-services/job-and-internship-fair" data-drupal-link-system-path="node/1606">Job and Internship Fair</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/career-services/working-on-campus" data-drupal-link-system-path="node/1611">Working on Campus</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/career-services/post-your-jobs-and-internships" data-drupal-link-system-path="node/1616">Post Your Jobs and Internships</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/career-services/resources-your-job-and-internship-search" data-drupal-link-system-path="node/1621">Resources for Your Job and Internship Search</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/childrens-center" data-drupal-link-system-path="node/6146">Children&#039;s Center</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/childrens-center/forms" data-drupal-link-system-path="node/52571">Forms and Documents</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/communications-marketing" data-drupal-link-system-path="node/741">Communications &amp; Marketing</a>
+                                <ul class="menu">
+                    <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/communications-marketing/accessibility-standards" data-drupal-link-system-path="node/1626">Accessibility Standards</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/communications-marketing/accessibility-standards/creating-accessible-documents" data-drupal-link-system-path="node/70426">Creating Accessible Documents</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/communications-marketing/writing-style-guide" data-drupal-link-system-path="node/68561">Writing Style Guide</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/communications-marketing/email-templates-and-signatures" data-drupal-link-system-path="node/7576">Email Templates and Signatures</a>
+              </li>
+                <li class="menu-item">
+        <a href="http://commmark.morrisville.edu">Request Portal</a>
+              </li>
+                <li class="menu-item">
+        <a href="/style-guide" data-drupal-link-system-path="node/1631">Graphic Standards</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/copper-turret" data-drupal-link-system-path="node/53131">Copper Turret Restaurant &amp; Brewhouse</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/cstep-step" data-drupal-link-system-path="node/6166">CSTEP/STEP</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/cstep-step/cstep" data-drupal-link-system-path="node/54601">CSTEP</a>
+              </li>
+                <li class="menu-item">
+        <a href="/step" data-drupal-link-system-path="node/54606">STEP</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/dean-of-students-office" data-drupal-link-system-path="node/6191">Dean of Students Office</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/dean-of-students-office/student-resources" data-drupal-link-system-path="node/52566">Student Resources</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/dean-of-students-office/voter-education-registration" data-drupal-link-system-path="node/72491">Voter Education &amp; Registration</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/dairy-plant-incubator" data-drupal-link-system-path="node/53466">Dairy Plant/Incubator</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/dining" data-drupal-link-system-path="node/64596">Dining</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/dining-services" data-drupal-link-system-path="node/7281">Contact Dining Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/dining/events" data-drupal-link-system-path="node/55016">Dining Events</a>
+              </li>
+                <li class="menu-item">
+        <a href="/dining/conference-and-catering" data-drupal-link-system-path="node/64601">Conference and Catering</a>
+              </li>
+                <li class="menu-item">
+        <a href="/dining/special-services" data-drupal-link-system-path="node/64606">Special Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/dining/dining-terms-and-agreement" data-drupal-link-system-path="node/64611">Dining Terms and Agreement</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/diversity-equity-inclusivity" data-drupal-link-system-path="node/1366">Diversity, Equity &amp; Inclusivity</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/diversity-equity-inclusivity/diversity-statement" data-drupal-link-system-path="node/8086">Diversity Statement</a>
+              </li>
+                <li class="menu-item">
+        <a href="/report-a-bias-incident" data-drupal-link-system-path="node/8526">Report a Bias Incident</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/diversity-equity-inclusivity/all-gender-restrooms" data-drupal-link-system-path="node/1641">All-Gender Restrooms</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/diversity-equity-inclusivity/bias-response" data-drupal-link-system-path="node/1646">Bias Response</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/educational-opportunity-program" data-drupal-link-system-path="node/6231">Educational Opportunity Program</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/educational-opportunity-program/eop-student-expectations" data-drupal-link-system-path="node/63106">EOP Student Expectations</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/educational-opportunity-program/income-eligibility" data-drupal-link-system-path="node/1681">Income Eligibility</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/educational-opportunity-program/pre-college-summer-institute" data-drupal-link-system-path="node/64306">Pre-College Summer Institute</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/educational-opportunity-program/pre-college-summer-institute/checklist" data-drupal-link-system-path="node/64736">Checklist</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/educational-opportunity-program/pre-college-summer-institute/daily-schedule" data-drupal-link-system-path="node/64731">Daily Schedule</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/educational-opportunity-program/pre-college-summer-institute/eop-pre-college-summer" data-drupal-link-system-path="node/64726">Frequently Asked Questions</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/educational-opportunity-program/pre-college-summer-institute/what-pack" data-drupal-link-system-path="node/64721">What to Pack</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/educational-opportunity-program/services-resources" data-drupal-link-system-path="node/63096">Services &amp; Resources</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/educational-opportunity-program/what-eop" data-drupal-link-system-path="node/1676">What is EOP?</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/educational-opportunity-center" data-drupal-link-system-path="node/7001">Educational Opportunity Center</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/eap" data-drupal-link-system-path="node/1376">Employee Assistance Program</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/employee-assistance-program/newsletter" data-drupal-link-system-path="node/1716">Newsletter</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/environmental-training-center" data-drupal-link-system-path="node/6286">Environmental Training Center</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/financial-aid-office" data-drupal-link-system-path="node/1386">Financial Aid</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/financial-aid/bill-estimator" data-drupal-link-system-path="node/68596">Bill Estimator</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/financial-aid-calendar" data-drupal-link-system-path="node/56471">Financial Aid Calendar</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/types-of-aid" data-drupal-link-system-path="node/1726">Types of Aid</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/excelsior-scholarship" data-drupal-link-system-path="node/1731">Excelsior Scholarship</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/how-apply-aid" data-drupal-link-system-path="node/1736">How to Apply for Aid</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/financial-aid-forms" data-drupal-link-system-path="node/1741">Forms</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/accept-your-award" data-drupal-link-system-path="node/1746">Accept Your Award</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/verification" data-drupal-link-system-path="node/1751">Verification</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/summer-financial-aid" data-drupal-link-system-path="node/1756">Summer Financial Aid</a>
+              </li>
+                <li class="menu-item">
+        <a href="/scholarships" data-drupal-link-system-path="node/1761">Scholarships</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/financial-aid-faq" data-drupal-link-system-path="node/1766">FAQ</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/entrance-and-exit-counseling" data-drupal-link-system-path="node/1776">Entrance and Exit Counseling</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/financial-aid-glossary" data-drupal-link-system-path="node/1781">Glossary</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/financial-aid-policies" data-drupal-link-system-path="node/1786">Policies</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/financial-aid/financial-aid-information-parents" data-drupal-link-system-path="node/1791">Parent Information</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/life-on-campus/health-center" data-drupal-link-system-path="node/1391">Health Center</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/health-center/counseling-services" data-drupal-link-system-path="node/1796">Counseling Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/health-center/new-york-state-immunization-law" data-drupal-link-system-path="node/8316">Immunizations</a>
+              </li>
+                <li class="menu-item">
+        <a href="/required-medical-forms" data-drupal-link-system-path="node/1801">Required Medical Forms</a>
+              </li>
+                <li class="menu-item">
+        <a href="/student-health-insurance-policy" data-drupal-link-system-path="node/66436">Student Health Insurance Policy</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/help-desk" data-drupal-link-system-path="node/1396">Help Desk</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/help-desk/downloads" data-drupal-link-system-path="node/53271">Downloads</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/help-desk/laptop-facilities" data-drupal-link-system-path="node/53276">Facilities</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/help-desk/laptop-specs" data-drupal-link-system-path="node/1806">Laptop Specs</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/help-desk/online-help" data-drupal-link-system-path="node/1826">Online Help</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/help-desk/online-help/faq" data-drupal-link-system-path="node/2251">FAQ</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/help-desk/online-help/network-drive-paths" data-drupal-link-system-path="node/2261">Network Drive Paths</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/help-desk/online-help/printer-paths" data-drupal-link-system-path="node/2266">Printer Paths</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/human-resources" data-drupal-link-system-path="node/1401">Human Resources</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/careers" data-drupal-link-system-path="node/1831">Employment Opportunities</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/civil-service" data-drupal-link-system-path="node/1836">Civil Service</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/affirmative-action-and-equal-employment-opportunity" data-drupal-link-system-path="node/1841">AA-EEO</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/hr-forms" data-drupal-link-system-path="node/1846">HR Forms</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/awards" data-drupal-link-system-path="node/1851">Awards</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/bargaining-agreements-and-negotiating-units" data-drupal-link-system-path="node/1856">Bargaining Agreements</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/employee-benefits-and-grant-opportunities" data-drupal-link-system-path="node/1861">Employee Benefits and Grant Opportunities</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/payroll" data-drupal-link-system-path="node/1866">Payroll</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/holiday-schedule" data-drupal-link-system-path="node/1871">Holiday Schedule</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/human-resources/policies" data-drupal-link-system-path="node/1876">Policies</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/iceplex" data-drupal-link-system-path="node/1406">IcePlex</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/iceplex/events">IcePlex Events</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/international-student-services" data-drupal-link-system-path="node/6401">International Student Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/institutional-advancement" data-drupal-link-system-path="node/5736">Institutional Advancement</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/office-of-institutional-research-effectiveness" data-drupal-link-system-path="node/6391">Institutional Research &amp; Effectiveness</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/data-request-form" data-drupal-link-system-path="node/8481">Data Request</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/institutional-research-effectiveness/freedom-of-information-law" data-drupal-link-system-path="node/7846">Freedom of Information Law</a>
+              </li>
+                <li class="menu-item">
+        <a href="/freedom-of-information-law-request" data-drupal-link-system-path="node/8486">Freedom of Information Law Request</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/institutional-research-effectiveness/consumer-information" data-drupal-link-system-path="node/1981">Consumer Information</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/liberty-partnerships-program" data-drupal-link-system-path="node/6421">Liberty Partnerships Program</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/library" data-drupal-link-system-path="node/1416">Library</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/mac" data-drupal-link-system-path="node/70156">Morrisville Auxiliary Corporation (MAC)</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/mac/partnerships" data-drupal-link-system-path="node/70146">Business and Community Partnerships</a>
+              </li>
+                <li class="menu-item">
+        <a href="/mac/student-services" data-drupal-link-system-path="node/70141">Student Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/morrisville-auxiliary-corporation/mac-student-application" data-drupal-link-system-path="node/8521">MAC Student Application</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/morrisville-auxiliary-corporation" data-drupal-link-system-path="node/1421">Contact MAC</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/mac-business-office" data-drupal-link-system-path="node/6536">MAC Business Office</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/mac-computer-services" data-drupal-link-system-path="node/53156">MAC Computer Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/equine-institute-operations" data-drupal-link-system-path="node/53121">MAC Equine Institute Operations (EIO)</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/tech-center" data-drupal-link-system-path="node/6591">Tech Center and College ID Services</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/tech-center-and-college-id-services/tech-center-and-warranty-shop" data-drupal-link-system-path="node/1926">Tech Center and Warranty Shop</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/tech-center-and-college-id-services/thinkpad-university-laptops" data-drupal-link-system-path="node/1931">ThinkPad University Laptop Program</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/tech-center-and-college-id-services/college-id-services" data-drupal-link-system-path="node/1956">College ID Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/tech-center-and-college-id-services/mustang-money" data-drupal-link-system-path="node/1961">Mustang Money</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/transportation-office" data-drupal-link-system-path="node/6841">Transportation Office</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/transportation-office/max-morrisville-area-xpress" data-drupal-link-system-path="node/8546">MAX Shuttle</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/nelson-farms" data-drupal-link-system-path="node/53126">Nelson Farms</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/president" data-drupal-link-system-path="node/6621">Office Of The President</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/president/message/2019" data-drupal-link-system-path="node/69351">A Message from the President</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/a-mustang-call-action" data-drupal-link-system-path="node/7896">A Mustang Call to Action</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/campus-diversity-and-inclusion-plan" data-drupal-link-system-path="node/7901">Campus Diversity and Inclusion Plan</a>
+              </li>
+                <li class="menu-item">
+        <a href="/message" data-drupal-link-system-path="node/66141">Contact the President</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/faculty-staff-meetings" data-drupal-link-system-path="node/7926">Faculty/Staff Meetings</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/mission-and-vision" data-drupal-link-system-path="node/7841">Mission and Vision</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/presidents-advisory-council" data-drupal-link-system-path="node/7916">President&#039;s Advisory Council</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/presidents-cabinet" data-drupal-link-system-path="node/7906">President&#039;s Cabinet</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/presidents-council" data-drupal-link-system-path="node/7911">President&#039;s Council</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/presidential-inauguration" data-drupal-link-system-path="node/7891">Presidential Inauguration</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/senior-council" data-drupal-link-system-path="node/7921">Senior Council</a>
+              </li>
+                <li class="menu-item">
+        <a href="/office-of-president/2019-address" data-drupal-link-system-path="node/62426">State of the College Address 2019</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/office-of-president/strategic-plan" data-drupal-link-system-path="node/72521">Strategic Plan</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/physical-plant" data-drupal-link-system-path="node/3116">Physical Plant</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/printing-services" data-drupal-link-system-path="node/6676">Printing Services</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="http://printshop.morrisville.edu/" title="Submit a Print Request">Submit a Print Request</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/provost-office" data-drupal-link-system-path="node/6686">Provost Office</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/provost-office/deans-group" data-drupal-link-system-path="node/7936">Dean&#039;s Group</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/provost-office/distance-education" data-drupal-link-system-path="node/72481">Distance Education</a>
+              </li>
+                <li class="menu-item">
+        <a href="/provost-office/documents" data-drupal-link-system-path="node/53141">Documents</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/provost-office/grants" data-drupal-link-system-path="node/7946">Grants</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/office-of-registrar" data-drupal-link-system-path="node/1426">Registrar</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/registrar/assignment-of-credit-hours" data-drupal-link-system-path="node/7866">Assignment of Credit Hours</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/registrar/center-lifelong-learning" data-drupal-link-system-path="node/52921">Center for Lifelong Learning</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/registrar/replacement-diploma" data-drupal-link-system-path="node/63292">Replacement Diploma</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/registrar/veterans-educational-benefits" data-drupal-link-system-path="node/7856">Veteran&#039;s Educational Benefits</a>
+              </li>
+                <li class="menu-item">
+        <a href="/ferpa" data-drupal-link-system-path="node/7851">FERPA</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/registrar/request-official-transcripts" data-drupal-link-system-path="node/1966">Request a Transcript</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/registrar/schedules-and-calendars" data-drupal-link-system-path="node/7886">Schedules and Calendars</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/registrar/registration" data-drupal-link-system-path="node/1971">Registration</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/renewable-energy-training-center" data-drupal-link-system-path="node/6986">Renewable Energy Training Center</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/life-on-campus/residence-life" data-drupal-link-system-path="node/3151">Residence Life</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/residence-life/housing-application" data-drupal-link-system-path="node/2096">Housing Application</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/residence-life/residence-halls" data-drupal-link-system-path="node/65006">Residence Halls</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/residence-life/forms-and-documents" data-drupal-link-system-path="node/2101">Forms and Documents</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/residence-life/important-dates" data-drupal-link-system-path="node/2106">Important Dates</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/residence-life/housing-services" data-drupal-link-system-path="node/2111">Housing Services</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/residence-life/washalert" data-drupal-link-system-path="node/2121">WashAlert</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/student-accounts" data-drupal-link-system-path="node/1431">Student Accounts</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/student-accounts/check-your-account-balance" data-drupal-link-system-path="node/1991">Check Your Account Balance</a>
+              </li>
+                <li class="menu-item">
+        <a href="/student-health-insurance-policy" data-drupal-link-system-path="node/66436">Student Health Insurance Policy</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/cancellations-and-withdrawals" data-drupal-link-system-path="node/1996">Cancellations and Withdrawals</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/electronic-billing-and-making-payments-online" data-drupal-link-system-path="node/2006">Electronic Billing and Making Payments Online</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/fee-policy-information" data-drupal-link-system-path="node/2011">Fee Policy Information</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/deferment-procedure" data-drupal-link-system-path="node/2021">Deferments</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/net-price-calculator" data-drupal-link-system-path="node/2031">Net Price Calculator</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/establishing-new-york-state-residency" data-drupal-link-system-path="node/2036">Establishing New York State Residency</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/payment-instructions" data-drupal-link-system-path="node/2041">Payment Instructions</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/payment-policy-information" data-drupal-link-system-path="node/2046">Payment Policy Information</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/enroll-a-payment-plan" data-drupal-link-system-path="node/2051">Enroll In A Payment Plan</a>
+              </li>
+                <li class="menu-item">
+        <a href="/semesterpayment" data-drupal-link-system-path="node/2071">Semester Payment Procedures</a>
+              </li>
+                <li class="menu-item">
+        <a href="/costs-aid/college-costs" data-drupal-link-system-path="node/2076">College Costs</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/tuition-refunds" data-drupal-link-system-path="node/2086">Tuition Refunds</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/student-accounts/book-voucher-policy" data-drupal-link-system-path="node/2091">Book Voucher</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/student-activities" data-drupal-link-system-path="node/1436">Student Activities</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/student-activities/events" data-drupal-link-system-path="node/55026">Student Activities Events</a>
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/sgo" data-drupal-link-system-path="node/54896">Student Government Organization</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/student-activities/student-government-organization/campus-housing" data-drupal-link-system-path="node/66411">Off-Campus Housing</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/technology-services" data-drupal-link-system-path="node/1446">Technology Services</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/technology-services/shoretel-faq" data-drupal-link-system-path="node/54066">ShoreTel FAQ</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/technology-services/submitting-a-technology-services-ticket" data-drupal-link-system-path="node/62416">Submitting a Ticket</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/technology-services/blackboard" data-drupal-link-system-path="node/2131">Blackboard</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/technology-services/networking-morrisville" data-drupal-link-system-path="node/2141">Networking</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/tutoring-center" data-drupal-link-system-path="node/1451">Tutoring Center</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/tutoring-center/grammarly-office-add" data-drupal-link-system-path="node/69236">Grammarly Office Add-In</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/tutoring-center/policies-and-procedures" data-drupal-link-system-path="node/2146">Policies and Procedures</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.morrisville.edu/cancellations/tutor">Tutoring Cancellations</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/tutoring-center/tutoring-schedule" data-drupal-link-system-path="node/2151">Tutoring Schedule</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/tutoring-center/online-tutoring" data-drupal-link-system-path="node/2161">Online Tutoring</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/contact/offices/university-police" data-drupal-link-system-path="node/1456">University Police</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/contact/offices/university-police/campusshield-app" data-drupal-link-system-path="node/68601">CampusShield App</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/k9" data-drupal-link-system-path="node/62461">K9</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/silent-witness" data-drupal-link-system-path="node/8476">Silent Witness</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/parking-permits" data-drupal-link-system-path="node/2186">Parking Permits</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/parking-appeal-form" data-drupal-link-system-path="node/7386">Parking Appeals</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/missing-person-student-policy-and-procedures" data-drupal-link-system-path="node/2196">Missing Person</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/blue-light-phones" data-drupal-link-system-path="node/2201">Blue Light Phones</a>
+              </li>
+                <li class="menu-item">
+        <a href="/emergency-information" data-drupal-link-system-path="node/2211">Emergency Information</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/types-of-emergency-response" data-drupal-link-system-path="node/2221">Types of Response</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/active-shooter" data-drupal-link-system-path="node/2226">Active Shooter</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/weather-emergencies" data-drupal-link-system-path="node/2231">Weather Emergencies</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/ny-alert" data-drupal-link-system-path="node/2236">NY Alert</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/title-ix" data-drupal-link-system-path="node/1881">Title IX</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/nys-sex-offender-registry" data-drupal-link-system-path="node/65866">NYS Sex Offender Registry</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/related-safety-information" data-drupal-link-system-path="node/2241">Related Information</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact/offices/university-police/clery-act" data-drupal-link-system-path="node/66441">Clery Act</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/areas-of-study" data-drupal-link-system-path="node/196">Areas of Study</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/areas-of-study/agriculture" data-drupal-link-system-path="node/691">Agriculture</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/automotive" data-drupal-link-system-path="node/681">Automotive</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/business" data-drupal-link-system-path="node/7441">Business</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/computing-informatics" data-drupal-link-system-path="node/7446">Computing &amp; Informatics</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/design-engineering" data-drupal-link-system-path="node/7451">Design &amp; Engineering</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/environmental-conservation-renewable-energy" data-drupal-link-system-path="node/7456">Environmental Conservation &amp; Renewable Energy</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/equine" data-drupal-link-system-path="node/7461">Equine</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/health-human-development" data-drupal-link-system-path="node/7466">Health  &amp; Human Development</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/hospitality" data-drupal-link-system-path="node/7471">Hospitality</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study/professional-studies" data-drupal-link-system-path="node/7476">Professional Studies</a>
+              </li>
+                <li class="menu-item">
+        <a href="/areas-of-study#block-views-block-programs-block-areas-of-study" data-drupal-link-system-path="node/196">All Programs</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/costs-aid" data-drupal-link-system-path="node/211">Costs + Aid</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/costs-aid/financial-aid" data-drupal-link-system-path="node/216">Financial Aid</a>
+              </li>
+                <li class="menu-item">
+        <a href="/costs-aid/housing-costs-rates" data-drupal-link-system-path="node/221">Housing Costs/Rates</a>
+              </li>
+                <li class="menu-item">
+        <a href="/costs-aid/meal-plans" data-drupal-link-system-path="node/226">Meal Plans</a>
+              </li>
+                <li class="menu-item">
+        <a href="/scholarships" data-drupal-link-system-path="node/1761">Scholarships</a>
+              </li>
+                <li class="menu-item">
+        <a href="/costs-aid/college-costs" data-drupal-link-system-path="node/2076">Tuition and Fees</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/life-on-campus" data-drupal-link-system-path="node/241">Life on Campus</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/dining" data-drupal-link-system-path="node/64596">Dining</a>
+              </li>
+                <li class="menu-item">
+        <a href="/life-on-campus/health-center" data-drupal-link-system-path="node/1391">Health Center</a>
+              </li>
+                <li class="menu-item">
+        <a href="/life-on-campus/residence-life" data-drupal-link-system-path="node/3151">Residence Life</a>
+              </li>
+                <li class="menu-item">
+        <a href="/life-on-campus/student-support" data-drupal-link-system-path="node/311">Student Support &amp; Services</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded">
+        <a href="/i-am-a" data-drupal-link-system-path="node/246">I am a...</a>
+                                <ul class="menu">
+                    <li class="menu-item">
+        <a href="/i-am-a/alumni-donor" data-drupal-link-system-path="node/251">Alumni</a>
+              </li>
+                <li class="menu-item">
+        <a href="/i-am-a/community-member" data-drupal-link-system-path="node/261">Community Member</a>
+              </li>
+                <li class="menu-item">
+        <a href="/i-am-a/current-student" data-drupal-link-system-path="node/256">Current Student</a>
+              </li>
+                <li class="menu-item">
+        <a href="/i-am-a/faculty-staff" data-drupal-link-system-path="node/266">Faculty/Staff</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.morrisville.edu/admissions">Future Student</a>
+              </li>
+                <li class="menu-item">
+        <a href="/i-am-a/parent" data-drupal-link-system-path="node/271">Parent</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+
+</div></div>
+     
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/86","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"addtoany\/addtoany,calendar\/calendar.theme,classy\/base,classy\/messages,classy\/node,core\/html5shiv,core\/normalize,core\/picturefill,de_theme\/base,google_analytics\/google_analytics,responsive_menu\/responsive_menu.breakpoint,responsive_menu\/responsive_menu.config,responsive_menu\/responsive_menu.styling,suny_menu\/suny_menu_script,suny_menu\/suny_menu_script_off_canvas,suny_search\/suny_search,system\/base,views\/views.ajax,views\/views.module","theme":"de_theme","theme_token":null},"ajaxTrustedUrl":{"\/search":true},"responsive_menu":{"position":"left","theme":"theme-white","pagedim":"pagedim","breakpoint":"all and (min-width: 992px)","extension_keyboard":true,"superfish":{"active":false,"delay":300,"speed":100,"speedOut":100},"mediaQuery":"all and (min-width: 992px)"},"context":"Global","google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":true,"trackDomainMode":1},"views":{"ajax_path":"\/views\/ajax","ajaxViews":{"views_dom_id:dcd159239c8c3629cb9b6d76386609ff64126dd0a442e4b8050e5ad6cc37f577":{"view_name":"events","view_display_id":"block_events_featured","view_args":"","view_path":"\/node\/86","view_base_path":"events\/events-archive","view_dom_id":"dcd159239c8c3629cb9b6d76386609ff64126dd0a442e4b8050e5ad6cc37f577","pager_element":0},"views_dom_id:41e4f27b3587bce0f114506a60259b0083fd061bc136d26bda05b63c752b1e36":{"view_name":"events","view_display_id":"block_events_featured_main","view_args":"","view_path":"\/node\/86","view_base_path":"events\/events-archive","view_dom_id":"41e4f27b3587bce0f114506a60259b0083fd061bc136d26bda05b63c752b1e36","pager_element":0}}},"field_group":{"html_element":{"mode":"default","context":"view","settings":{"id":"","classes":"link-wrapper","element":"div","show_label":false,"label_element":"h3","attributes":"","effect":"none","speed":"fast"}}},"user":{"uid":0,"permissionsHash":"6b4bf8575736123cd15a364b6366d6be466463b95a8c5252e7ee33d4bf26a12a"}}</script>
+<script src="/sites/default/files/js/js_168xXl5nxLdylnGqDrR4RE1HYbN803EnNv8oZcunbnY.js"></script>
+<script src="https://static.addtoany.com/menu/page.js" async></script>
+<script src="/sites/default/files/js/js_vK3WPCUoma1g9-gbSQT2RS-ZrkWj_zlu7r05H2XiI8s.js"></script>
+
+    <script>
+      iFrameResize({ log: true }, '.resize' )
+    </script>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PV57QJ2');</script>
+<!-- End Google Tag Manager -->
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"be3caac6d3","applicationID":"82839996","transactionName":"bwZXMUNTWEtSABBdXVZMdAZFW1lWHCcWQUJZD2kmXkBTZH4GCkFufAZTBEReQnVWDRF4W1YIYRdUV3tZXQoUQV5ZF1oXQh8IX1YNAUZTTAZ8C1VXTnldBzdbQEw=","queueTime":0,"applicationTime":1201,"atts":"Q0FURwtJS0U=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

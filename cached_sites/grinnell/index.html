@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"4162ae370e",applicationID:"65780410"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="title" content="Grinnell College | Grinnell College" />
+<link rel="shortlink" href="https://www.grinnell.edu/" />
+<link rel="canonical" href="https://www.grinnell.edu/" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style media="all">.bg-feature--14971 {background-color: #FFFFFF !important;background-image:  url('https://www.grinnell.edu/sites/default/files/styles/ifde_bg_feature/public/bg-image/bike.jpg?h=c37d5ac2&itok=j6ptKeOq') !important;background-repeat: no-repeat !important;background-position: left top !important;z-index: auto;}</style>
+<link rel="revision" href="https://www.grinnell.edu/grinnell-college" />
+<script src="/sites/default/files/google_tag/google_tag.script.js?q47k5t"></script>
+
+    <title>Grinnell College | Grinnell College</title>
+    <link rel="apple-touch-icon" sizes="76x76" href="/themes/custom/grinnell_theme/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/themes/custom/grinnell_theme/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/themes/custom/grinnell_theme/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/themes/custom/grinnell_theme/assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/themes/custom/grinnell_theme/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/themes/custom/grinnell_theme/assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="/themes/custom/grinnell_theme/assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_rG0xYgi4KBZh42O-ZxPDDz4ckxmC2k0wqS6HSjZzapo.css?q47k5t" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_lLB5eaXFtcg2KFR7K2Jz1Q3LZ4yMGiE-OSk9H81DPnQ.css?q47k5t" />
+<link rel="stylesheet" media="all" href="//use.typekit.net/ajn2ivk.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_4TSIpAKQfGNG89sx14w45pi8BTP82bTmdvjl1Kw7V5c.css?q47k5t" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+
+  </head>
+  <body class="path-frontpage page-node-type-page">
+ 
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPG83X" height="0" width="0" title="Google Tag Manager">Google Tag Manager</iframe></noscript>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="overlay"></div>
+<div class="layout-container">
+      <div class="layout-top-bar">
+        <div class="region region-top-bar">
+    <nav role="navigation" aria-labelledby="block-topnavaudiencenav-menu" id="block-topnavaudiencenav" class="block block-menu navigation menu--infofor">
+            
+  <h2 class="visually-hidden" id="block-topnavaudiencenav-menu">Top Nav - Audience Nav</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item menu-item--expanded menu-item--level-1">
+        <a href="/students" data-drupal-link-system-path="node/3590">Students</a>
+                                <ul class="menu menu--level-2">
+                    <li class="menu-item menu-item--expanded menu-item--level-2">
+        <a href="/congratulations-grinnellian" data-drupal-link-system-path="node/6371">Admitted Students</a>
+                                <ul class="menu menu--level-3">
+                    <li class="menu-item menu-item--level-3">
+        <a href="/new-students/checklist" data-drupal-link-system-path="node/3616">Incoming Student Checklist</a>
+              </li>
+                <li class="menu-item menu-item--collapsed menu-item--level-3">
+        <a href="/new-students/nso" data-drupal-link-system-path="node/3629">New Student Orientation</a>
+              </li>
+                <li class="menu-item menu-item--collapsed menu-item--level-3">
+        <a href="/new-students/housing" data-drupal-link-system-path="node/5011">Housing Information</a>
+              </li>
+                <li class="menu-item menu-item--level-3">
+        <a href="/new-students/pre-orientation" data-drupal-link-system-path="node/3615">Early Arrival</a>
+              </li>
+                <li class="menu-item menu-item--collapsed menu-item--level-3">
+        <a href="/new-students/move-in" data-drupal-link-system-path="node/3619">Move-In Information</a>
+              </li>
+                <li class="menu-item menu-item--level-3">
+        <a href="/new-students/advisers" data-drupal-link-system-path="node/3626">Your Advisers</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded menu-item--level-2">
+        <a href="/students" data-drupal-link-system-path="node/3590">Current Students</a>
+                                <ul class="menu menu--level-3">
+                    <li class="menu-item menu-item--level-3">
+        <a href="https://grinco.sharepoint.com/SitePages/Landing.aspx">GrinnellShare</a>
+              </li>
+                <li class="menu-item menu-item--level-3">
+        <a href="http://catalog.grinnell.edu">Academic Catalog</a>
+              </li>
+                <li class="menu-item menu-item--level-3">
+        <a href="https://webadv-prod.ec.grinnell.edu/WAPROD/WAPROD?type=P&amp;pid=ST-X3WSEI">Schedule of Courses</a>
+              </li>
+                <li class="menu-item menu-item--level-3">
+        <a href="https://grinnell.joinhandshake.com/login">Handshake</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded menu-item--level-1">
+        <a href="/families" data-drupal-link-system-path="node/3589">Families</a>
+                                <ul class="menu menu--level-2">
+                    <li class="menu-item menu-item--collapsed menu-item--level-2">
+        <a href="/families/resource-guide" data-drupal-link-system-path="node/9101">Family Resource Guide</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="/about/offices-services/registrar/calendars/5-year" data-drupal-link-system-path="node/3741">Academic Calendar</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="http://catalog.grinnell.edu">Academic Catalog</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="/commencement">Commencement</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="/transportation">Transportation</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded menu-item--level-1">
+        <a href="/faculty-staff" data-drupal-link-system-path="node/3591">Faculty and Staff</a>
+                                <ul class="menu menu--level-2">
+                    <li class="menu-item menu-item--level-2">
+        <a href="https://grinco.sharepoint.com/SitePages/Landing.aspx">GrinnellShare</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="http://catalog.grinnell.edu">Academic Catalog</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="/academics/dean">Dean&#039;s Office</a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded menu-item--level-1">
+        <a href="https://alumni.grinnell.edu">Alumni</a>
+                                <ul class="menu menu--level-2">
+                    <li class="menu-item menu-item--level-2">
+        <a href="https://alumni.grinnell.edu/alumni-community">Alumni Community</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="https://alumni.grinnell.edu/giving-to-grinnell">Giving to Grinnell</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="https://alumni.grinnell.edu/volunteering">Volunteering</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="https://alumni.grinnell.edu/news-awards">News and Awards</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="https://alumni.grinnell.edu/events">Events</a>
+              </li>
+                <li class="menu-item menu-item--level-2">
+        <a href="https://alumni.grinnell.edu/college-resources">College Resources</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<div id="block-topbarthecampaignforgrinnell" class="block block-block-content block-block-contentad489cbe-1f9c-4ae8-8754-9bc2269e6e6f campaign-for-grinnell">
+      <a href="https://campaign.grinnell.edu">
+            <div class="field field--name-field-simpleimgblock-img field--type-image field--label-hidden field__item">  <img src="/sites/default/files/2019-10/campaignheader.png" width="179" height="30" alt="The Campaign for Grinnell" typeof="foaf:Image" />
+
+</div>
+      </a>
+  </div>
+<nav role="navigation" aria-labelledby="block-topbarutilitylinksleft-menu" id="block-topbarutilitylinksleft" class="block block-menu navigation menu--utility-links-left">
+            
+  <h2 class="visually-hidden" id="block-topbarutilitylinksleft-menu">Top Bar - Utility Links - Left</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/admission/visit" data-drupal-link-system-path="node/3651">Visit</a>
+              </li>
+                <li class="menu-item">
+        <a href="/admission/apply" data-drupal-link-system-path="node/5377">Apply</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://alumni.grinnell.edu/giving-to-grinnell">Give</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<nav role="navigation" aria-labelledby="block-topbarutilitylinksright-menu" id="block-topbarutilitylinksright" class="block block-menu navigation menu--utility-links-right">
+            
+  <h2 class="visually-hidden" id="block-topbarutilitylinksright-menu">Top Bar - Utility Links - Right</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/news" data-drupal-link-system-path="node/206">News</a>
+              </li>
+                <li class="menu-item">
+        <a href="/calendar" data-drupal-link-system-path="node/457">Calendar</a>
+              </li>
+                <li class="menu-item">
+        <a href="/people" data-drupal-link-system-path="node/7586">People</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+    </div>
+  
+  <header role="banner" class="header">
+         <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+            <div class="region region-header">
+    <div id="block-grinnell-theme-ifde-site-header" class="block block-ifde-wrapper block-ifde-header-block">
+  
+    
+      <div class="config-pages config-pages--type-ifde-site-wrapper config-pages--view-mode-header ifde-standard">
+    
+
+    <div class="ifde-standard__inner">
+
+                <div class="ifde-standard__content">
+                  <div  class="header__site-logo">
+        
+                    <a href="https://www.grinnell.edu/"><img src="/sites/default/files/site-logo/logo_0.png" width="790" height="166" alt="Grinnell College logo" typeof="Image" /></a>
+      
+  
+    </div>
+
+<div class="search-button" tabindex="0" aria-expanded="false"><span class="visually-hidden">Search Button</span></div>      <div  class="header__search" aria-hidden="true">
+        
+                  <form class="ifde-search-form" data-drupal-selector="ifde-search-form" action="/" method="post" id="ifde-search-form" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-main-keys form-item-main-keys">
+      
+        <input placeholder="Search the Site" class="ifde-search-form__search-box-main form-text" data-drupal-selector="edit-main-keys" type="text" id="edit-main-keys" name="main_keys" value="" size="60" maxlength="128" />
+
+        </div>
+<input data-drupal-selector="edit-main-submit" type="submit" id="edit-main-submit" name="op" value="Search Site" class="button js-form-submit form-submit" />
+<input autocomplete="off" data-drupal-selector="form-mx0cyzxrywcqe1-vj0oy7tsfonccz9dlewgtcacp5e4" type="hidden" name="form_build_id" value="form-Mx0CyZxryWcqe1_vJ0oy7TSfONcCZ9DLEWGtCAcp5e4" />
+<input data-drupal-selector="edit-ifde-search-form" type="hidden" name="form_id" value="ifde_search_form" />
+
+</form>
+
+      
+  
+    </div>
+
+    
+                  <button class="header__menu-toggle" aria-expanded="false">
+          <span></span><span></span><span></span><span></span>
+          <span class="visually-hidden">Expand/Collpase Menu</span></button>
+      
+  
+
+
+<div  class="header__nav-panel">
+            <div  class="header__nav-main">
+        
+                  
+<nav class="menu menu--main menu--main-nav ifde-main-nav" aria-label="Main">
+                    <ul>
+                            <li>
+                    <a href="/about-grinnell" >About Grinnell</a>
+                                            <button class="menu__toggle" aria-expanded="false"><span class="visually-hidden">Expand</span></button>
+                        <div class="menu__drop">
+                            <div class="menu__drop-inner">
+                                                <ul class="menu__submenu">
+                            <li>
+                    <a href="/about-grinnell/grinnell-glance" >Grinnell at a Glance</a>
+                                    </li>
+                            <li>
+                    <a href="/about/leadership" >Leadership and Administration</a>
+                                    </li>
+                            <li>
+                    <a href="/about/grinnell-prize" >Grinnell Prize</a>
+                                    </li>
+                            <li>
+                    <a href="/poll" >Grinnell College National Poll</a>
+                                    </li>
+                    </ul>
+    
+                            </div>
+                        </div>
+                                    </li>
+                            <li>
+                    <a href="/admission" >Admission and Aid</a>
+                                            <button class="menu__toggle" aria-expanded="false"><span class="visually-hidden">Expand</span></button>
+                        <div class="menu__drop">
+                            <div class="menu__drop-inner">
+                                                <ul class="menu__submenu">
+                            <li>
+                    <a href="/admission/why-grinnell" >Why Grinnell</a>
+                                    </li>
+                            <li>
+                    <a href="/admission/financial-aid" >Tuition and Financial Aid</a>
+                                    </li>
+                            <li>
+                    <a href="/admission/visit" >Visit Grinnell</a>
+                                    </li>
+                            <li>
+                    <a href="/admission/apply" >Apply to Grinnell</a>
+                                    </li>
+                    </ul>
+    
+                            </div>
+                        </div>
+                                    </li>
+                            <li>
+                    <a href="/academics" >Academics</a>
+                                            <button class="menu__toggle" aria-expanded="false"><span class="visually-hidden">Expand</span></button>
+                        <div class="menu__drop">
+                            <div class="menu__drop-inner">
+                                                <ul class="menu__submenu">
+                            <li>
+                    <a href="/academics/majors-concentrations" >Majors and Concentrations</a>
+                                    </li>
+                            <li>
+                    <a href="/academics/experience" >The Academic Experience</a>
+                                    </li>
+                            <li>
+                    <a href="/academics/global" >Global</a>
+                                    </li>
+                            <li>
+                    <a href="/academics/resources" >Centers, Programs, and Resources</a>
+                                    </li>
+                            <li>
+                    <a href="/academics/libraries" >Libraries</a>
+                                    </li>
+                    </ul>
+    
+                            </div>
+                        </div>
+                                    </li>
+                            <li>
+                    <a href="/life" >Life at Grinnell</a>
+                                            <button class="menu__toggle" aria-expanded="false"><span class="visually-hidden">Expand</span></button>
+                        <div class="menu__drop">
+                            <div class="menu__drop-inner">
+                                                <ul class="menu__submenu">
+                            <li>
+                    <a href="/campus-life/grinnell" >Grinnell, Iowa</a>
+                                    </li>
+                            <li>
+                    <a href="http://pioneers.grinnell.edu" >Athletics</a>
+                                    </li>
+                            <li>
+                    <a href="/campus-life/organizations" >Student Organizations</a>
+                                    </li>
+                            <li>
+                    <a href="/campus-life/arts-culture" >Arts &amp; Culture</a>
+                                    </li>
+                            <li>
+                    <a href="/campus-life/campus-living" >Campus Living</a>
+                                    </li>
+                            <li>
+                    <a href="/campus-life/transportation" >Transportation</a>
+                                    </li>
+                    </ul>
+    
+                            </div>
+                        </div>
+                                    </li>
+                            <li>
+                    <a href="/after" >After Grinnell</a>
+                                            <button class="menu__toggle" aria-expanded="false"><span class="visually-hidden">Expand</span></button>
+                        <div class="menu__drop">
+                            <div class="menu__drop-inner">
+                                                <ul class="menu__submenu">
+                            <li>
+                    <a href="/after-grinnell/cls" >Center for Careers, Life, and Service</a>
+                                    </li>
+                            <li>
+                    <a href="/after-grinnell/experiential-learning" >Experiential Learning</a>
+                                    </li>
+                            <li>
+                    <a href="/after-grinnell/graduate-outcomes-all-majors" >Graduate Outcomes</a>
+                                    </li>
+                            <li>
+                    <a href="https://alumni.grinnell.edu" >Alumni</a>
+                                    </li>
+                    </ul>
+    
+                            </div>
+                        </div>
+                                    </li>
+                    </ul>
+    
+</nav>
+
+
+
+      
+  
+    </div>
+
+
+  </div>
+        </div>
+        
+    </div>
+
+</div>
+
+  </div>
+
+  </div>
+
+      </header>
+
+    <div class="region region-help">
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+  </div>
+
+
+  <main>
+    <a id="main-content" tabindex="-1"></a>
+          <div class="layout-content-top">
+            <div class="region region-content-top">
+    <div id="block-entityviewcontent" class="block block-ctools block-entity-viewnode">
+  
+    
+      
+
+<div  class="ifde-page__hero">
+          
+                  <div class="paragraph paragraph--type-video-ambient paragraph--view-mode-hero ifde-onecol clearfix">
+    
+
+    <div class="ifde-onecol__inner">
+
+                <div class="ifde-onecol__header">
+                
+                  <div class="media media-ambient-video view-mode-hero media--type- media--unpublished">
+  <button class="ambient-video__pause"><span class="visually-hidden">Pause Video</span></button>
+  
+      
+            <div class="field field--name-field-ambient-video-fallback-img field--type-image field--label-hidden field__item">  <img src="/sites/default/files/styles/ambient_video_hero_fallback/public/ambient-videos/20181029.campus.fall_.color_.087-Pano_0_0.jpg?h=df1e0a51&amp;itok=Sy32qBm7" width="1440" height="500" alt="North Campus with trees in fall color" typeof="foaf:Image" class="image-style-ambient-video-hero-fallback" />
+
+
+</div>
+      
+  </div>
+
+      
+  
+
+
+<div  class="ambient-video__title-cta">
+          
+                          <h1  class="page-title" >
+      Grinnellians Ask Hard Questions and Question Easy Answers.</h1>
+      
+  
+
+
+            <div class="has-cta-video field field--name-field-video-ambient-cta field--type-link field--label-hidden field__item"><a href="/">See Why</a></div>
+      
+  </div>    
+                  <div class="video-embed-field-responsive-video"><iframe width="854" height="480" frameborder="0" allowfullscreen="allowfullscreen" src="https://www.youtube-nocookie.com/embed/crKN_u_lcHA?autoplay=0&amp;start=0&amp;rel=0"></iframe>
+</div>
+
+      
+  
+
+
+        </div>
+        
+        
+        
+    </div>
+
+</div>
+
+      
+  
+
+
+  </div>
+
+
+  </div>
+
+  </div>
+
+      </div>
+    
+          <div class="layout-content-main no-sidebar">
+    
+      <div class="layout-content">
+          <div class="region region-content">
+    <div id="block-grinnell-theme-content" class="block block-system block-system-main-block">
+  
+    
+      <div class="ifde-page clearfix">
+    
+
+    <div class="ifde-page__inner">
+
+        
+        
+                <div class="ifde-page__content">
+                  <div  class="ifde-page__paragraphs">
+        
+                  <div class="section intro-text paragraph paragraph--type-intro-text paragraph--view-mode-default bg-dark intro-text--dispmode-center ifde-onecol clearfix">
+    
+
+    <div class="ifde-onecol__inner">
+
+                <div class="section__header ifde-onecol__header">
+                  <h2  class="intro-text__section-header">
+        
+                  Curiosity can take you anywhere.
+      
+  
+    </h2>
+
+
+        </div>
+        
+                    <div class="section__content ifde-onecol__content">
+                  <div  class="intro-text__intro">
+        
+                  <p>This is more than a place, and much bigger than an idea. Grinnell is a way of being and seeing. It’s an unwavering commitment to the journey of discovery, both in everything we want to do and everything we want to become.</p>
+      
+  
+    </div>
+
+
+            </div>
+        
+        
+    </div>
+
+</div>
+
+                <div class="gen-block-threecol paragraph paragraph--type-gen-block-3-column paragraph--view-mode-default bg-default ifde-threecol clearfix">
+
+    
+    <div class="ifde-threecol__inner">
+                <div class="ifde-threecol__header">
+                
+                          <h2  class="section__title gen-block-threecol__title header-style--small" >
+      No two journeys are the same. In fact, we&#039;ve designed it that way.</h2>
+      
+  
+
+      <div  class="section__intro gen-block-threecol__intro">
+        
+                  <p>Welcome to the world of intellectual freedom. Here, you&#039;re in charge of how your studies take shape and where you want them to take you.</p>
+
+      
+  
+    </div>
+
+
+        </div>
+        
+        <div class="gen-block-threecol__columns ifde-threecol__content">
+                  <div  class="featured-ctas">
+        
+                  <div class="gen-block gen-block--left">
+    
+
+        <div class="gen-block__media media">
+            
+                  <div class="image">
+  
+      
+                    <img src="/sites/default/files/styles/gen_block/public/images/2019-01/Academics.jpg?h=c66d06c9&amp;itok=HpFHzcnS" width="572" height="320" alt="student laughs at blackboard" typeof="foaf:Image" class="image-style-gen-block" />
+
+
+
+      
+  
+
+
+</div>
+
+
+      
+  
+
+
+    </div>
+    
+    <div class="gen-block__caption caption">
+              <h3  class="gen-block__title">
+        
+                  How We Learn
+      
+  
+    </h3>
+
+      <div  class="gen-block__body">
+        
+                  <p>Free inquiry is no easy feat. You'll think critically and creatively about the world around you. You'll dive deep into theoretical and scientific research. You'll work alongside world-class experts, advisers, and mentors who are dedicated to your success.</p>
+      
+  
+    </div>
+
+      <div  class="cta--link">
+        
+                  <a href="/admission/why-grinnell/academics">Define your direction.</a>
+      
+  
+    </div>
+
+
+    </div>
+
+</div>
+
+      
+  
+    </div>
+
+      <div  class="featured-ctas">
+        
+                  <div class="gen-block gen-block--left">
+    
+
+        <div class="gen-block__media media">
+            
+                  <div class="image">
+  
+      
+                    <img src="/sites/default/files/styles/gen_block/public/images/2019-01/walking.jpg?h=ea22e8d8&amp;itok=Dkjcc2X5" width="572" height="320" alt="two students walk near Goodnow Hall" typeof="foaf:Image" class="image-style-gen-block" />
+
+
+
+      
+  
+
+
+</div>
+
+
+      
+  
+
+
+    </div>
+    
+    <div class="gen-block__caption caption">
+              <h3  class="gen-block__title">
+        
+                  Why We&#039;re Here
+      
+  
+    </h3>
+
+      <div  class="gen-block__body">
+        
+                  <p>This is bigger than a degree. You’re at Grinnell to discover what you want to do and what you can do for this world. To move issues of purpose, responsibility, and social justice beyond conversation and into tangible action. To build a career that matters, before even leaving campus.</p>
+      
+  
+    </div>
+
+      <div  class="cta--link">
+        
+                  <a href="/admission/why-grinnell/commitment">Make your mark.</a>
+      
+  
+    </div>
+
+
+    </div>
+
+</div>
+
+      
+  
+    </div>
+
+      <div  class="featured-ctas">
+        
+                  <div class="gen-block gen-block--left">
+    
+
+        <div class="gen-block__media media">
+            
+                  <div class="image">
+  
+      
+                    <img src="/sites/default/files/styles/gen_block/public/images/2019-01/loggia.jpg?h=1f38fdba&amp;itok=XcDT3JRK" width="572" height="320" alt="two students walking in the loggia" typeof="foaf:Image" class="image-style-gen-block" />
+
+
+
+      
+  
+
+
+</div>
+
+
+      
+  
+
+
+    </div>
+    
+    <div class="gen-block__caption caption">
+              <h3  class="gen-block__title">
+        
+                  Who We Are
+      
+  
+    </h3>
+
+      <div  class="gen-block__body">
+        
+                  <p>We come from all over. We study all sides. Across our open community, you’ll find we’re not afraid to step into unfamiliar conversations, challenging perspectives, or countries far away from home.</p>
+      
+  
+    </div>
+
+      <div  class="cta--link">
+        
+                  <a href="/admission/why-grinnell/community">Grow to know us.</a>
+      
+  
+    </div>
+
+
+    </div>
+
+</div>
+
+      
+  
+    </div>
+
+
+        </div>
+
+            </div>
+
+</div>
+
+
+                <div class="section paragraph paragraph--type-carousel-story paragraph--view-mode-default bg-dark ifde-onecol clearfix">
+    
+
+    <div class="ifde-onecol__inner">
+
+                <div class="section__header ifde-onecol__header">
+                  <h2  class="section__title carousel_story__section-title header-style--small">
+        
+                  Grinnellian Stories
+      
+  
+    </h2>
+
+
+        </div>
+        
+                    <div class="section__content ifde-onecol__content">
+                  <div  class="section__stories">
+        
+                  <div class="story node node--type-story node--view-mode-carousel story--with-hanging-quotes">
+    
+
+        <div class="story__media media">
+            
+                  <div class="media media-image view-mode-story-carousel media--type- media--unpublished">
+  
+      
+            <div class="field field--name-field-image field--type-image field--label-hidden field__item">  <img src="/sites/default/files/styles/story_carousel/public/images/2018-10/mithila%202.jpg?h=f9f5fb59&amp;itok=j4grz7FE" width="200" height="200" alt="Mithila Iyer" typeof="foaf:Image" class="image-style-story-carousel" />
+
+
+</div>
+      
+  </div>
+
+      
+  
+
+
+    </div>
+    
+    <div class="story__caption caption">
+              <blockquote  class="story__quote">
+        
+                  <p>Grinnell was really the first place where I actually had the chance, or the self-awareness, to pursue something that was a little bit out of my comfort zone.</p>
+      
+  
+    </blockquote>
+
+      <div  class="story__attribution">
+        
+                  Mithila Iyer ’19
+      
+  
+    </div>
+
+      <div  class="story__cta">
+        
+                  <a href="/stories/mithila-iyer-19">Meet Mithila</a>
+      
+  
+    </div>
+
+
+    </div>
+
+</div>
+
+                <div class="story node node--type-story node--view-mode-carousel story--with-hanging-quotes">
+    
+
+        <div class="story__media media">
+            
+                  <div class="media media-image view-mode-story-carousel media--type- media--unpublished">
+  
+      
+            <div class="field field--name-field-image field--type-image field--label-hidden field__item">  <img src="/sites/default/files/styles/story_carousel/public/20180509.Nathan.Calvin019.jpg?h=7c95096a&amp;itok=Rtbcnyu9" width="200" height="200" alt="Nathan Calvin" typeof="foaf:Image" class="image-style-story-carousel" />
+
+
+</div>
+      
+  </div>
+
+      
+  
+
+
+    </div>
+    
+    <div class="story__caption caption">
+              <blockquote  class="story__quote">
+        
+                  <p>I would definitely credit that experience with helping me to have a persuasive application and making me want to do this type of work.</p>
+      
+  
+    </blockquote>
+
+      <div  class="story__attribution">
+        
+                  Nathan Calvin ’18
+      
+  
+    </div>
+
+      <div  class="story__cta">
+        
+                  <a href="/stories/nathan-calvin">Meet Nathan</a>
+      
+  
+    </div>
+
+
+    </div>
+
+</div>
+
+                <div class="story node node--type-story node--view-mode-carousel story--with-hanging-quotes">
+    
+
+        <div class="story__media media">
+            
+                  <div class="media media-image view-mode-story-carousel media--type- media--unpublished">
+  
+      
+            <div class="field field--name-field-image field--type-image field--label-hidden field__item">  <img src="/sites/default/files/styles/story_carousel/public/images/2019-01/Kaydi-Ann3%20WEB.jpg?h=c37d5ac2&amp;itok=q8ui_w40" width="200" height="200" alt="Kaydi-Ann Newsome &#039;14" typeof="foaf:Image" class="image-style-story-carousel" />
+
+
+</div>
+      
+  </div>
+
+      
+  
+
+
+    </div>
+    
+    <div class="story__caption caption">
+              <blockquote  class="story__quote">
+        
+                  <p>We went through the fire, went through the ice, and I learned how to come out stronger. I’m a resilient Grinnellian.</p>
+      
+  
+    </blockquote>
+
+      <div  class="story__attribution">
+        
+                  Kaydi-Ann Newsome ’14
+      
+  
+    </div>
+
+      <div  class="story__cta">
+        
+                  <a href="/stories/kaydi-ann-newsome-14">Meet Kaydi-Ann</a>
+      
+  
+    </div>
+
+
+    </div>
+
+</div>
+
+      
+  
+    </div>
+
+
+            </div>
+        
+        
+    </div>
+
+</div>
+
+                <div class="section statistics-threecol paragraph paragraph--type-statistic-3-column paragraph--view-mode-default bg-default ifde-threecol ifde-threecol--mobile-slider clearfix">
+
+    
+    <div class="ifde-threecol__inner">
+                <div class="section__header statistics-threecol__header ifde-threecol__header">
+                  <h2  class="section__title header-style--small">
+        
+                  Grinnell at a Glance
+      
+  
+    </h2>
+
+
+        </div>
+        
+        <div class="section__content statistics-threecol__content ifde-threecol__content">
+            
+<div  class="stat">
+      
+<div  class="stat__inner">
+          
+                  
+      <div  class="stat__number">
+        
+                  <span>3,000+</span>
+      
+  
+    </div>
+
+      <div  class="stat__caption">
+        
+                  Internship Opportunities in the U.S. and Abroad
+      
+  
+    </div>
+
+
+
+
+      
+  
+
+      <div  class="stat__cta cta--link">
+        
+                  <a href="/after-grinnell/cls">Get Connected</a>
+      
+  
+    </div>
+
+
+  </div>
+  </div>
+<div  class="stat">
+      
+<div  class="stat__inner">
+          
+                  
+      <div  class="stat__number">
+        
+                  <span>9:1</span>
+      
+  
+    </div>
+
+      <div  class="stat__caption">
+        
+                  Student-Faculty Ratio
+      
+  
+    </div>
+
+
+
+
+      
+  
+
+      <div  class="stat__cta cta--link">
+        
+                  <a href="/admission/why-grinnell/community/advisers">Meet our Faculty</a>
+      
+  
+    </div>
+
+
+  </div>
+  </div>
+<div  class="stat">
+      
+<div  class="stat__inner">
+          
+                  
+      <div  class="stat__number">
+        
+                  <span>500+</span> 
+      
+  
+    </div>
+
+      <div  class="stat__caption">
+        
+                  Free Events, Lectures, Performances, and Symposia Each Year
+      
+  
+    </div>
+
+
+
+
+      
+  
+
+      <div  class="stat__cta cta--link">
+        
+                  <a href="/campus-life">Grab a Ticket</a>
+      
+  
+    </div>
+
+
+  </div>
+  </div>
+        </div>
+
+        <!-- @TODO: Replace me with slider html stuff -->
+
+            </div>
+
+</div>
+
+
+                <div class="section bg-feature paragraph paragraph--type-bg-feature paragraph--view-mode-default bg-feature--image bg-feature--14971 section--has-bg-image ifde-standard">
+    
+
+    <div class="ifde-standard__inner">
+
+                <div class="section__content bg-feature__content ifde-standard__content">
+            
+            <div class="field field--name-field-bg-image field--type-image field--label-hidden field__item">
+                  <span class="visually-hidden">Photo of Students bike and walk near Steiner Hall</span>
+                
+      </div>
+            <h2  class="section_title bg-feature__title">
+        
+                  Explore the Campus
+      
+  
+    </h2>
+
+      <div  class="bg-feature__cta bg-feature__cta--one">
+        
+                  <a href="/admission/visit">Plan Your Visit</a>
+      
+  
+    </div>
+
+      <div  class="bg-feature__cta bg-feature__cta--two">
+        
+                  <a href="https://www.youvisit.com/tour/grinnell?pl=v">Take the Virtual Tour</a>
+      
+  
+    </div>
+
+
+        </div>
+        
+    </div>
+
+</div>
+
+                <div class="paragraph paragraph--type-carousel-content paragraph--view-mode-default bg-light ifde-onecol clearfix">
+    
+
+    <div class="ifde-onecol__inner">
+
+        
+                    <div class="ifde-onecol__content">
+            
+      <div class="field field--name-field-carousel-content-slides field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field__item"><div class="paragraph paragraph--type-carousel-content-slide paragraph--view-mode-default">
+    
+
+        <div class="media">
+            
+                  <div class="media media--type-image media--view-mode-carousel-content">
+  
+      
+                    <img src="/sites/default/files/styles/carousel_content/public/images/2020-01/embossedlaurelleaves_sq_0.jpg?h=1e66e246&amp;itok=hRQQrcAK" width="454" height="454" alt="Grinnell College seal embossed in gold ink" typeof="foaf:Image" class="image-style-carousel-content" />
+
+
+
+      
+  
+
+
+</div>
+
+
+      
+  
+
+
+    </div>
+    
+    <div class="caption">
+        
+            <div class="clearfix text-formatted field field--name-field-carousel-content-slide-tx1 field--type-text field--label-hidden field__item"><p>Presidential Search</p>
+</div>
+      
+            <div class="clearfix text-formatted field field--name-field-carousel-content-slide-tx3 field--type-text-long field--label-hidden field__item"><span><span><span>Grinnell College is engaged in the search process for its 14th president. After nearly a decade as president, Raynard S. Kington, M.D., Ph.D. will be leaving the College at the end of the academic year.</span></span></span></div>
+      
+            <div class="field field--name-field-carousel-content-slide-cta field--type-link field--label-hidden field__item"><a href="/about/leadership/trustees/presidential-search">More Information</a></div>
+      
+    </div>
+
+</div>
+</div>
+          </div>
+  
+            </div>
+        
+        
+    </div>
+
+</div>
+
+                <div class="section featnewsevts paragraph paragraph--type-featnewsevts paragraph--view-mode-default bg-default ifde-onecol clearfix">
+    
+
+    <div class="ifde-onecol__inner">
+
+        
+                    <div class="section__content ifde-onecol__content">
+            
+            <div class="field field--name-grinnell-featnewsevts-items field--type-ds field--label-hidden field__item">      <div class="item item--1">
+        <div class="news-item">
+          <div class="news-item__img">
+        <img src="https://www.grinnell.edu/sites/default/files/styles/featured_news_and_events/public/images/2020-01/20191022.campaign.DC_.049%20%28cropped%29.jpg?h=ca9f5586&amp;itok=Py4jA9ry" alt="The Campaign for Grinnell College"/>
+      </div>
+        <div class="news-item__category">
+      News    </div>
+    <div class="news-item__body">
+      <a href="/news/trustees-gift-will-provide-students-greater-access-mental-health-services">Trustee’s Gift Will Provide Students With Greater Access to Mental Health Services</a>
+    </div>
+  </div>
+
+    </div>
+      <div class="item item--2">
+        <div class="calendar-item">
+    <div class="calendar-item__weekday">
+      Tue.
+    </div>
+    <div class="calendar-item__monthday">
+      Jan. 28
+    </div>
+    <div class="calendar-item__body">
+      <a href="https://www.grinnell.edu/calendars/frontpage-hotevents?trumbaEmbed=view%3devent%26eventid%3d376090789">Public Events Concert: Manual Cinema</a>
+    </div>
+  </div>
+
+    </div>
+      <div class="item item--3">
+        <div class="athletics-item">
+          <div class="athletics-item__img">
+        <img src="https://pioneers.grinnell.edu/common/controls/image_handler.aspx?thumb_prefix=rp_primary&amp;image_path=/images/2020/1/17/Jeff_Pedersen_Graphic.png" alt="Jeff Pedersen"/>
+      </div>
+        <div class="athletics-item__category">
+      Athletics    </div>
+    <div class="athletics-item__body">
+      <a href="https://pioneers.grinnell.edu/news/2020/1/27/football-jeff-pedersen-02-selected-to-lead-grinnell-college-track-and-field-programs-starting-in-2020-21.aspx">Jeff Pedersen &#039;02 selected to lead Grinnell College track and field programs starting in 2020-21</a>
+    </div>
+  </div>
+
+    </div>
+      <div class="item item--4">
+        <div class="news-item">
+          <div class="news-item__img">
+        <img src="https://www.grinnell.edu/sites/default/files/styles/featured_news_and_events/public/images/2020-01/farmhouse3.jpg?h=65d38554&amp;itok=XoKa4D77" alt="Tommy Hexter trimming crops in the Farm House garden"/>
+      </div>
+        <div class="news-item__category">
+      News    </div>
+    <div class="news-item__body">
+      <a href="/news/growin-green-2018">Growin&#039; Green Since 2018</a>
+    </div>
+  </div>
+
+    </div>
+      <div class="item item--5">
+        <div class="calendar-item">
+    <div class="calendar-item__weekday">
+      Wed.
+    </div>
+    <div class="calendar-item__monthday">
+      Jan. 29
+    </div>
+    <div class="calendar-item__body">
+      <a href="https://www.grinnell.edu/calendars/frontpage-hotevents?trumbaEmbed=view%3devent%26eventid%3d359389219">Gates Lecturer</a>
+    </div>
+  </div>
+
+    </div>
+      <div class="item item--6">
+        <div class="athletics-item">
+          <div class="athletics-item__img">
+        <img src="https://pioneers.grinnell.edu/common/controls/image_handler.aspx?thumb_prefix=rp_primary&amp;image_path=/images/2020/1/21/VY.png" alt="Enrique Valero Ying"/>
+      </div>
+        <div class="athletics-item__category">
+      Athletics    </div>
+    <div class="athletics-item__body">
+      <a href="https://pioneers.grinnell.edu/news/2020/1/21/general-valero-ying-is-mwc-swimming-and-diving-performer-of-the-week-for-2nd-time-this-season.aspx">Valero Ying is MWC Swimming and Diving Performer of the Week for 2nd time this season</a>
+    </div>
+  </div>
+
+    </div>
+  </div>
+      
+            </div>
+        
+        
+    </div>
+
+</div>
+
+      
+  
+    </div>
+
+
+        </div>
+        
+        
+    </div>
+
+</div>
+
+  </div>
+
+  </div>
+
+      </div>
+    </div>
+          <div class="layout-content-bottom">
+            <div class="region region-content-bottom">
+    <div id="block-entityviewcontent-2" class="block block-ctools block-entity-viewnode">
+  
+    
+      
+
+      <div class="field field--name-field-paras-below field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field__item"><div class="paragraph paragraph--type-carousel-content paragraph--view-mode-default bg-light ifde-onecol clearfix">
+    
+
+    <div class="ifde-onecol__inner">
+
+        
+        
+        
+    </div>
+
+</div>
+</div>
+              <div class="field__item"><div class="section instagram-feed paragraph paragraph--type-instagram paragraph--view-mode-default bg-light ifde-threecol ifde-threecol--mobile-slider clearfix">
+
+    
+    <div class="ifde-threecol__inner">
+                <div class="section__header instagram-feed__header ifde-threecol__header">
+                
+                          <h2  class="section__title instagram-feed__title header-style--small" >
+      On the Ground</h2>
+      
+  
+
+      <div  class="instagram-feed__intro">
+        
+                  <p>Catch what's new on campus and connect with Grinnellians around the world.</p>
+      
+  
+    </div>
+
+
+        </div>
+        
+        <div class="section__content instagram-feed__grams ifde-threecol__content">
+                
+                  <div class="ifde-instagram-post gram">
+    <a class="gram__link" target="_blank" href="https://www.instagram.com/p/B7tHi1cIrrl/">
+        <img class="gram__image image-style-ifde-instagram-image" src="/sites/default/files/styles/ifde_instagram_image/public/externals/144a2b14b81bbae565f8e4b23e2441a5.jpg?itok=BDgeqMJO" width="320" height="320" alt="There&#039;s snow place like #GrinnellIowa! ⛄🧤" typeof="foaf:Image" />
+
+
+    </a>
+</div><div class="ifde-instagram-post gram">
+    <a class="gram__link" target="_blank" href="https://www.instagram.com/p/B7o4TehoB2T/">
+        <img class="gram__image image-style-ifde-instagram-image" src="/sites/default/files/styles/ifde_instagram_image/public/externals/f64ad9fb78412c4119c782348c5b2283.jpg?itok=KPWkA-qn" width="320" height="320" alt="Snow never stops Grinnellians or the @cspanbus! ❄️🚌#MiddleofEverywhere #GrinnellIowa #SoGrinnellian #cspan" typeof="foaf:Image" />
+
+
+    </a>
+</div><div class="ifde-instagram-post gram">
+    <a class="gram__link" target="_blank" href="https://www.instagram.com/p/B7WShS4ndt_/">
+        <img class="gram__image image-style-ifde-instagram-image" src="/sites/default/files/styles/ifde_instagram_image/public/externals/057dfd0c66e74bd9a5122df6c12db35d.jpg?itok=ygzWA2rG" width="320" height="320" alt="&quot;As a Grinnellian, I was accustomed to welcoming diverse perspectives and this really enhanced my time abroad.&quot;—Devansh Chandgothia ’21
+
+Devansh loved the culture and people (including meeting Erno Rubik!) during his off-campus study in Budapest, Hungary and traveling across Europe.
+•
+•
+•
+@devansh_2105 @aitbudapest #studyabroad #LiveGrinnellian #globalgrinnell" typeof="foaf:Image" />
+
+
+    </a>
+</div>
+      
+  
+
+
+        </div>
+
+        <!-- @TODO: Replace me with slider html stuff -->
+
+                    <div class="section__footer instagram-feed__footer ifde-threecol__footer">
+                
+            <div class="field field--name-field-cta field--type-link field--label-hidden field__item"><a href="http://www.instagram.com/grinnellcollege">Follow Along</a></div>
+      
+            </div>
+            </div>
+
+</div>
+
+</div>
+          </div>
+  
+
+
+  </div>
+
+  </div>
+
+      </div>
+      </main>
+
+      <footer class="footer">
+        <div class="region region-footer">
+    <div id="block-grinnell-theme-ifde-site-footer" class="block block-ifde-wrapper block-ifde-footer-block">
+  
+    
+      <div  class="config-pages config-pages--type-ifde-site-wrapper config-pages--view-mode-footer site-footer">
+    <div class="site-footer__top">
+                    
+            <div class="field field--name-field-footer-ctabar field--type-entity-reference-revisions field--label-hidden field__item"><div class="paragraph paragraph--type-cta-bar paragraph--view-mode-default ifde-onecol clearfix">
+    
+
+    <div class="ifde-onecol__inner">
+
+                <div class="ifde-onecol__header">
+                  <div  class="cta-bar cta-bar--normal">
+        
+                          <div  class="cta-bar__link" >
+      <a href="https://admission.grinnell.edu/register/requestinformation">Request Info</a></div>
+                        <div  class="cta-bar__link" >
+      <a href="https://admission.grinnell.edu/portal/campus-visit">Visit</a></div>
+                        <div  class="cta-bar__link" >
+      <a href="/admission/apply">Apply</a></div>
+      
+  
+    </div>
+
+
+        </div>
+        
+        
+        
+    </div>
+
+</div>
+</div>
+      
+            </div>
+
+    <div class="site-footer__inner">
+                    <a  class="site-footer__logo" href="/">
+                    
+                    <img src="/sites/default/files/site-logo/logo_0.png" width="790" height="166" alt="Grinnell College logo" typeof="foaf:Image" />
+
+
+      
+  
+
+
+            </a>
+        
+        <div class="site-footer__large-container">
+            <div class="site-footer__contact-info-wrapper">
+                                    <div  class="site-footer__contact-info-left">
+                        
+<div  class="site-footer__address">
+      
+            <div class="field field--name-field-org-address-1 field--type-string field--label-hidden field__item">1115 8th Avenue</div>
+      
+            <div class="field field--name-field-org-address-2 field--type-string field--label-hidden field__item">Grinnell, IA 50112</div>
+            <div  class="site-footer__phone">
+        
+                  <a href="tel:6412694000">641-269-4000</a>
+      
+  
+    </div>
+
+
+      <div class="field field--name-field-org-links field--type-link field--label-hidden field__items">
+              <div class="field__item"><a href="/about/community/maps">Directions and Map</a></div>
+          </div>
+  
+  </div>
+                    </div>
+                
+                                    <div  class="site-footer__contact-info-middle">
+                          <div  class="site-footer__utility-links">
+        
+            <ul >
+                                <li  class="site-footer__utility-link" >
+      <a href="/campus-life/arts-culture/museum">Museum of Art</a></li>
+                        <li  class="site-footer__utility-link" >
+      <a href="https://pioneers.grinnell.edu">Athletics</a></li>
+                        <li  class="site-footer__utility-link" >
+      <a href="https://bookstore.grinnell.edu">Bookstore</a></li>
+                        <li  class="site-footer__utility-link" >
+      <a href="http://jobs.grinnell.edu">Careers</a></li>
+      
+      </ul>
+  
+    </div>
+
+
+      <div class="field field--name-field-footer-utility-links-right field--type-link field--label-hidden field__items">
+              <div class="field__item"><a href="/policies">Policies</a></div>
+              <div class="field__item"><a href="/privacy">PRIVACY STATEMENT</a></div>
+              <div class="field__item"><a href="/admission/financial-aid/understanding-your-award/consumer-info">Consumer Information</a></div>
+              <div class="field__item"><a href="/life-grinnell/campus-living/sexual-respect">Sexual Respect</a></div>
+              <div class="field__item"><a href="/web-accessibility">Web Accessibility Statement</a></div>
+          </div>
+  
+                    </div>
+                            </div>
+
+            <div class="site-footer__icon-wrapper">
+                                    <div  class="site-footer__social">
+                              <div  class="site-footer__social-links">
+        
+                  
+    
+                  <a target="_blank" class="social-icon social-icon--facebook" href="https://www.facebook.com/grinnellcollege">
+    <span></span>
+</a>
+      
+  
+
+
+
+
+                
+    
+                  <a target="_blank" class="social-icon social-icon--twitter" href="https://www.twitter.com/grinnellcollege">
+    <span></span>
+</a>
+      
+  
+
+
+
+
+                
+    
+                  <a target="_blank" class="social-icon social-icon--youtube" href="https://www.youtube.com/grinnellcollege">
+    <span></span>
+</a>
+      
+  
+
+
+
+
+                
+    
+                  <a target="_blank" class="social-icon social-icon--linkedin" href="https://www.linkedin.com/edu/grinnell-college-20050">
+    <span></span>
+</a>
+      
+  
+
+
+
+
+      
+  
+    </div>
+
+
+                    </div>
+                            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+
+  </div>
+
+    </footer>
+  
+</div>
+
+  </div>
+
+    <div id="gdpr-popup" class="bottom" style="background:rgba(0, 0, 0, 0.9);">
+  <div class="gdpr-popup-content">
+    <div class="gdpr-popup-text white">
+      <p class="gdpr-popup-cookies">We use cookies to enable essential services and functionality on our site, enhance your user experience, provide a better service through personalized content, collect data on how visitors interact with our site, and enable advertising services.</p>
+      <p class="gdpr-popup-analytics">To accept the use of cookies and continue on to the site, click &quot;I Agree.&quot; For more information about our use of cookies and to opt-out of cookies at any time, please refer to our website Privacy Policy.</p>
+    </div>
+    <div class="gdpr-popup-buttons black">
+      <button type="button" id="gdpr-agree" style=background:#fde143;>
+        I Agree
+      </button>
+      <button type="button" id="gdpr-find-more" data-morelink="/gdpr-compliance/policy" style=background:#fde143;>
+        More Info
+      </button>
+    </div>
+  </div>
+</div>
+
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/7026","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","field_group":{"html_element":{"mode":"header","context":"view","settings":{"id":"","classes":"header__nav-panel","element":"div","show_label":false,"label_element":"h3","attributes":"","effect":"none","speed":"fast"}}},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"bea77a388a7d4dbd77dda6cb2c8a56a69709952a9e559c271f92d1916b155722"}}</script>
+<script src="/sites/default/files/js/js_Y-4esEl9rjJY6KgbhRuWlJBXf6FnmuekMlqo5rURGag.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="//unpkg.com/micromodal@0.3.2/dist/micromodal.min.js"></script>
+<script src="/sites/default/files/js/js_etx6yrC9xZ4zYp7OkxeGFpwkPK4rBCiy0AFzCk7sf5M.js"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"4162ae370e","applicationID":"65780410","transactionName":"MQZRYEJZC0VRVxBYWghMcldEUQpYH0QFVlA5AFJXWF0=","queueTime":0,"applicationTime":26,"atts":"HUFSFgpDGEs=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

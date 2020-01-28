@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"5d7ccad875",applicationID:"168209945"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="https://www.warnerpacific.edu/wp-content/themes/wpc/images/favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="https://www.warnerpacific.edu/wp-content/themes/wpc/images/favicon.ico" type="image/x-icon"/>
+	<base href="/">
+  	<title>Warner Pacific University - Located in Portland Oregon</title>
+  	
+<!-- This site is optimized with the Yoast SEO plugin v11.9 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="https://www.warnerpacific.edu/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Warner Pacific University - Located in Portland Oregon" />
+<meta property="og:description" content="Warner Pacific Launches Nursing Program READ NEWSVIEW MAJOR" />
+<meta property="og:url" content="https://www.warnerpacific.edu/" />
+<meta property="og:site_name" content="Warner Pacific University" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Warner Pacific Launches Nursing Program READ NEWSVIEW MAJOR" />
+<meta name="twitter:title" content="Warner Pacific University - Located in Portland Oregon" />
+<meta name="twitter:image" content="http://localhost/clients/wpcnew/wp-content/uploads/2017/09/home-logo.png" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.warnerpacific.edu/#website","url":"https://www.warnerpacific.edu/","name":"Warner Pacific University","potentialAction":{"@type":"SearchAction","target":"https://www.warnerpacific.edu/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://www.warnerpacific.edu/#primaryimage","url":"http://localhost/clients/wpcnew/wp-content/uploads/2017/09/home-logo.png"},{"@type":"WebPage","@id":"https://www.warnerpacific.edu/#webpage","url":"https://www.warnerpacific.edu/","inLanguage":"en-US","name":"Warner Pacific University - Located in Portland Oregon","isPartOf":{"@id":"https://www.warnerpacific.edu/#website"},"primaryImageOfPage":{"@id":"https://www.warnerpacific.edu/#primaryimage"},"datePublished":"2017-09-29T22:31:25+00:00","dateModified":"2020-01-09T23:23:48+00:00"}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//www.warnerpacific.edu' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Warner Pacific University &raquo; The Home Page Comments Feed" href="https://www.warnerpacific.edu/the-home-page/feed/" />
+<link rel='stylesheet' id='tribe-reset-style-css'  href='https://www.warnerpacific.edu/wp-content/plugins/the-events-calendar/common/src/resources/css/reset.min.css?ver=4.9.16' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-common-style-css'  href='https://www.warnerpacific.edu/wp-content/plugins/the-events-calendar/common/src/resources/css/common.min.css?ver=4.9.16' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-tooltip-css-css'  href='https://www.warnerpacific.edu/wp-content/plugins/the-events-calendar/common/src/resources/css/tooltip.min.css?ver=4.9.16' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://www.warnerpacific.edu/wp-includes/css/dist/block-library/style.min.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://www.warnerpacific.edu/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='https://www.warnerpacific.edu/wp-content/themes/wpc/css/stylesheets/master.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='master-css-css'  href='https://www.warnerpacific.edu/wp-content/themes/wpc-child/css/stylesheets/master.css' type='text/css' media='all' />
+<link rel='stylesheet' id='malinky-ajax-pagination-css'  href='https://www.warnerpacific.edu/wp-content/plugins/malinky-ajax-pagination/css/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/themes/wpc/js/jquery.js?ver=5.3'></script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/themes/wpc/js/form-validation.js?ver=5.3'></script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/themes/wpc/js/slider.js?ver=5.3'></script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/themes/wpc/js/eb-search.js?ver=5.3'></script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/themes/wpc/js/cookie.js?ver=5.3'></script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/themes/wpc/js/ceeb.js?ver=5.3'></script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/themes/wpc/js/site.js'></script>
+<link rel='https://api.w.org/' href='https://www.warnerpacific.edu/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.warnerpacific.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.warnerpacific.edu/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3" />
+<link rel='shortlink' href='https://www.warnerpacific.edu/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.warnerpacific.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.warnerpacific.edu%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.warnerpacific.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.warnerpacific.edu%2F&#038;format=xml" />
+<meta name="tec-api-version" content="v1"><meta name="tec-api-origin" content="https://www.warnerpacific.edu"><link rel="https://theeventscalendar.com/" href="https://www.warnerpacific.edu/wp-json/tribe/events/v1/" />		<style type="text/css" id="wp-custom-css">
+			.gfield_label { display: inline-block !important; }		</style>
+		  	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T3P89NG');</script>
+<!-- End Google Tag Manager -->
+<script type="text/javascript">
+/*<![CDATA[*/
+(function() {
+var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+sz.src = '//siteimproveanalytics.com/js/siteanalyze_4133.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+})();
+/*]]>*/
+</script>
+</head>
+<body>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-5795385-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-5795385-1');
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3P89NG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<style>.home-hero-link-single{margin:0px auto; float:none}</style>
+<div id="mobile-menu-wrap">
+	<div class="mobile-menu-logo images"></div>
+	<div class="mobile-ctas container">
+    <!-- <a href="/" class="info">INFO</a><a href="/" class="visit">VISIT</a><a href="/" class="apply">APPLY</a> -->
+		<div class="menu-header-ctas-container"><ul id="menu-header-ctas" class="menu"><li id="menu-item-29" class="ga-apply menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="https://www.warnerpacific.edu/apply-now/">Apply</a></li>
+<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="https://www.warnerpacific.edu/admission/visit/">Visit</a></li>
+<li id="menu-item-28" class="ga-request menu-item menu-item-type-post_type menu-item-object-page menu-item-28"><a href="https://www.warnerpacific.edu/request-info/">Inquire</a></li>
+<li id="menu-item-29968" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29968"><a href="https://www.warnerpacific.edu/give/">Give</a></li>
+</ul></div>	</div>
+  <div class="header-top-nav container"><div class="menu-header-top-menu-container"><ul id="menu-header-top-menu" class="menu"><li id="menu-item-29966" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29966"><a href="http://mywp.warnerpacific.edu/#_ga=2.261567310.2138881932.1564416083-1255847741.1564416083">Current Students</a></li>
+<li id="menu-item-29967" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29967"><a href="https://www.warnerpacific.edu/facultystaff-dashboard/">Faculty &#038; Staff</a></li>
+</ul></div></div>
+	<nav class="main-mobile-nav-container">
+		<div class="menu-header-main-navigation-container"><ul id="menu-header-main-navigation" class="menu"><li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-35"><a href="https://www.warnerpacific.edu/admission/">Admission</a>
+<ul class="sub-menu">
+	<li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a href="https://www.warnerpacific.edu/admission/undergraduate/">Undergraduate</a></li>
+	<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="https://www.warnerpacific.edu/admission/adult-degrees/">Adult Degrees</a></li>
+	<li id="menu-item-91" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="https://www.warnerpacific.edu/admission/graduate/">Graduate</a></li>
+</ul>
+</li>
+<li id="menu-item-34" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-34"><a href="https://www.warnerpacific.edu/academics/">Academics</a>
+<ul class="sub-menu">
+	<li id="menu-item-172" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-172"><a href="https://www.warnerpacific.edu/academics/majors-and-programs/">Majors and Programs</a></li>
+	<li id="menu-item-452" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-452"><a href="https://www.warnerpacific.edu/academics/learning-communities/">Learning Communities</a></li>
+	<li id="menu-item-30138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30138"><a href="https://www.warnerpacific.edu/deans-list/">Dean&#8217;s list</a></li>
+	<li id="menu-item-453" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-453"><a href="https://www.warnerpacific.edu/academics/support-services/">Support Services</a></li>
+	<li id="menu-item-29807" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29807"><a href="https://library.warnerpacific.edu/">Library</a></li>
+	<li id="menu-item-451" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-451"><a href="https://www.warnerpacific.edu/academics/faculty/">Our Faculty</a></li>
+</ul>
+</li>
+<li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33"><a href="https://www.warnerpacific.edu/student-life/">Student Life</a>
+<ul class="sub-menu">
+	<li id="menu-item-455" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-455"><a href="https://www.warnerpacific.edu/student-life/clubs-activities/">Clubs &#038; Activities</a></li>
+	<li id="menu-item-458" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-458"><a href="https://www.warnerpacific.edu/student-life/residence-life/">Residence Life</a></li>
+	<li id="menu-item-22472" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22472"><a href="https://www.warnerpacific.edu/student-life/service/">Service</a></li>
+	<li id="menu-item-460" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-460"><a href="https://www.warnerpacific.edu/student-life/safety/">Safety</a></li>
+	<li id="menu-item-30739" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30739"><a href="https://www.warnerpacific.edu/counseling-services/">Counseling Services</a></li>
+</ul>
+</li>
+<li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32"><a href="https://www.warnerpacific.edu/resources/">Resources</a>
+<ul class="sub-menu">
+	<li id="menu-item-22471" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22471"><a href="https://www.warnerpacific.edu/about/alumni/">Alumni</a></li>
+	<li id="menu-item-29921" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29921"><a href="https://www.warnerpacific.edu/academics/registrar/transcript-request/">Transcript Request</a></li>
+	<li id="menu-item-462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-462"><a href="https://www.warnerpacific.edu/resources/host-your-event/">Host Your Event</a></li>
+</ul>
+</li>
+<li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-31"><a href="https://www.warnerpacific.edu/about/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-464" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-464"><a href="https://www.warnerpacific.edu/about/presidents-message/">President&#8217;s Message</a></li>
+	<li id="menu-item-465" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-465"><a href="https://www.warnerpacific.edu/about/mission/">Mission</a></li>
+	<li id="menu-item-467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-467"><a href="https://www.warnerpacific.edu/about/quick-facts/">Quick Facts</a></li>
+	<li id="menu-item-468" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-468"><a href="https://www.warnerpacific.edu/about/locations/">Locations</a></li>
+	<li id="menu-item-24919" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24919"><a href="https://www.warnerpacific.edu/about/governance/">Governance</a></li>
+	<li id="menu-item-28742" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28742"><a href="https://www.warnerpacific.edu/about/faculty-lectures/">Faculty Lectures</a></li>
+</ul>
+</li>
+<li id="menu-item-24448" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24448"><a target="_blank" rel="noopener noreferrer" href="http://www.wpuknights.com/">Athletics</a></li>
+</ul></div>	</nav>
+</div>
+<div id="main-container" class="container">
+		<!--<div id="mobile-cover"></div>-->
+		<header class="">
+		<div id="header-main" class="header-wrapper container">
+			<div class="logo-container">
+				<a href="https://www.warnerpacific.edu">
+					<img class="logo" title="Warner Pacific University" src="https://new-header-warner-pacific-edu.pantheonsite.io/wp-content/themes/wpc-child/images/wpu-logo-stacked.svg" alt="Warner Pacific University" />
+					<img class="mobile-logo" title="Warner Pacific University" src="https://new-header-warner-pacific-edu.pantheonsite.io/wp-content/themes/wpc-child/images/wpu-logo.svg" alt="Warner Pacific University" />
+				</a>
+			</div>
+			<div class="header-right">
+				<nav class="header-top-nav container">
+					<div class="menu-header-top-menu-container"><ul id="menu-header-top-menu-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29966"><a href="http://mywp.warnerpacific.edu/#_ga=2.261567310.2138881932.1564416083-1255847741.1564416083">Current Students</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29967"><a href="https://www.warnerpacific.edu/facultystaff-dashboard/">Faculty &#038; Staff</a></li>
+</ul></div>				</nav>
+				<nav class="header-nav">
+					<div class="menu-header-ctas-container"><ul id="menu-header-ctas-1" class="menu"><li class="ga-apply menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="https://www.warnerpacific.edu/apply-now/">Apply</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="https://www.warnerpacific.edu/admission/visit/">Visit</a></li>
+<li class="ga-request menu-item menu-item-type-post_type menu-item-object-page menu-item-28"><a href="https://www.warnerpacific.edu/request-info/">Inquire</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29968"><a href="https://www.warnerpacific.edu/give/">Give</a></li>
+</ul></div>          <div  class="main-search-container">
+    				<form action="https://www.warnerpacific.edu" method="get">
+    					<div class="search-icon images"></div>
+    					<input type="text" name="s" id="search" class="search-box" placeholder="Search WPU" value="" />
+    					<input type="submit" class="submit">
+    				</form>
+    			</div>
+				</nav>
+				<div id="mobile-nav-icon">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div id="mobile-search-icon" class="images">
+				</div>
+			</div>
+		</div>
+		<div id="main-nav-wrap" class="header-wrapper container">
+			<nav class="main-nav-container">
+				<div class="menu-header-main-navigation-container"><ul id="menu-header-main-navigation-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-35"><a href="https://www.warnerpacific.edu/admission/">Admission</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a href="https://www.warnerpacific.edu/admission/undergraduate/">Undergraduate</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="https://www.warnerpacific.edu/admission/adult-degrees/">Adult Degrees</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="https://www.warnerpacific.edu/admission/graduate/">Graduate</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-34"><a href="https://www.warnerpacific.edu/academics/">Academics</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-172"><a href="https://www.warnerpacific.edu/academics/majors-and-programs/">Majors and Programs</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-452"><a href="https://www.warnerpacific.edu/academics/learning-communities/">Learning Communities</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30138"><a href="https://www.warnerpacific.edu/deans-list/">Dean&#8217;s list</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-453"><a href="https://www.warnerpacific.edu/academics/support-services/">Support Services</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29807"><a href="https://library.warnerpacific.edu/">Library</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-451"><a href="https://www.warnerpacific.edu/academics/faculty/">Our Faculty</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33"><a href="https://www.warnerpacific.edu/student-life/">Student Life</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-455"><a href="https://www.warnerpacific.edu/student-life/clubs-activities/">Clubs &#038; Activities</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-458"><a href="https://www.warnerpacific.edu/student-life/residence-life/">Residence Life</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22472"><a href="https://www.warnerpacific.edu/student-life/service/">Service</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-460"><a href="https://www.warnerpacific.edu/student-life/safety/">Safety</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30739"><a href="https://www.warnerpacific.edu/counseling-services/">Counseling Services</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32"><a href="https://www.warnerpacific.edu/resources/">Resources</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22471"><a href="https://www.warnerpacific.edu/about/alumni/">Alumni</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29921"><a href="https://www.warnerpacific.edu/academics/registrar/transcript-request/">Transcript Request</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-462"><a href="https://www.warnerpacific.edu/resources/host-your-event/">Host Your Event</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-31"><a href="https://www.warnerpacific.edu/about/">About</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-464"><a href="https://www.warnerpacific.edu/about/presidents-message/">President&#8217;s Message</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-465"><a href="https://www.warnerpacific.edu/about/mission/">Mission</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-467"><a href="https://www.warnerpacific.edu/about/quick-facts/">Quick Facts</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-468"><a href="https://www.warnerpacific.edu/about/locations/">Locations</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24919"><a href="https://www.warnerpacific.edu/about/governance/">Governance</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28742"><a href="https://www.warnerpacific.edu/about/faculty-lectures/">Faculty Lectures</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24448"><a target="_blank" rel="noopener noreferrer" href="http://www.wpuknights.com/">Athletics</a></li>
+</ul></div>			</nav>
+    			<!--<div  class="main-search-container">
+    				<form action="https://www.warnerpacific.edu" method="get">
+    					<div class="search-icon images"></div>
+    					<input type="text" name="s" id="search" class="search-box" placeholder="Search WPU" value="" />
+    					<input type="submit" class="submit">
+    				</form>
+    			</div>-->
+		</div>
+	</header>
+<div id="mobile-search-area">
+	<div class="mobile-search-container">
+		<form action="https://www.warnerpacific.edu" method="get">
+			<div class="search-icon images"></div>
+			<input type="text" name="s" id="mobile-search" class="search-box" placeholder="Search WPU" value="" />
+			<input type="submit" class="submit">
+		</form>
+	</div>
+</div>
+
+<div id="home">
+	<section><style>#home .home-hero-container{height:auto;}</style>
+				<div class="home-hero-container home-slideshow-container">
+			<!-- if video or image selected -->
+			
+			<!-- if slideshowselected -->
+							<style>#home .bx-wrapper .bx-pager {bottom:5px;}</style>
+										<ul class="rslides">
+																<li>
+										<div class="home-hero-cover">
+											<div class="home-main-content">
+												<h1>
+													<h1>Join us for a Night of Knights:<br />
+Honoring Coaches Past and Present<br />
+February 13</h1>
+<div class="container home-main-links"><a style="margin: 0px auto; float: none;" href="https://www.warnerpacific.edu/night-of-knights/">Learn more</a></div>
+												</h1>
+											</div>
+										</div>
+																				<img src="https://www.warnerpacific.edu/wp-content/uploads/2020/01/WPU_NOK_Invite_v2.png')" class="home-slide-image" />
+									</li>
+																<li>
+										<div class="home-hero-cover">
+											<div class="home-main-content">
+												<h1>
+													<h1>Dr. Cook Announces Yearlong Transition</h1>
+<div class="container home-main-links"><a style="margin: 0px auto; float: none;" href="https://www.warnerpacific.edu/news/dr-andrea-cook-announces-yearlong-transition/">Learn More</a></div>
+												</h1>
+											</div>
+										</div>
+																				<img src="https://www.warnerpacific.edu/wp-content/uploads/2019/08/Andrea-Cook-20171109_JT_233638-1.jpg')" class="home-slide-image" />
+									</li>
+																<li>
+										<div class="home-hero-cover">
+											<div class="home-main-content">
+												<h1>
+													<h1>Invest in the Future<br />
+Help us reach our Annual Fund Goal to Support Students</h1>
+<div class="container home-main-links"><a href="https://www.warnerpacific.edu/give/"> Learn More</a><a href="https://warnerpacific.givingfuel.com/wp-giving">Give Now</a></div>
+												</h1>
+											</div>
+										</div>
+																				<img src="https://www.warnerpacific.edu/wp-content/uploads/2019/04/2019-April-Appeal-Slider.png')" class="home-slide-image" />
+									</li>
+																<li>
+										<div class="home-hero-cover">
+											<div class="home-main-content">
+												<h1>
+													<h1>Portland Monthly Announces Dr. Cook as One of The Women Who Move the City 2019</h1>
+<div class="container home-main-links"><a style="margin: 0px auto; float: none;" href="https://www.pdxmonthly.com/articles/2019/4/18/dr-andrea-p-cook">Learn More</a></div>
+												</h1>
+											</div>
+										</div>
+																				<img src="https://www.warnerpacific.edu/wp-content/uploads/2019/04/women-who-move-the-city-slider.png')" class="home-slide-image" />
+									</li>
+																<li>
+										<div class="home-hero-cover">
+											<div class="home-main-content">
+												<h1>
+													<h1>La única Universidad certificada como “Institución de Servicios para Hispanos” en Oregon</h1>
+<div class="container home-main-links"><a href="https://www.warnerpacific.edu/admission/undergraduate/espanol/">Admisiones </a><a href="https://www.warnerpacific.edu/news/la-unica-institucion-certificada-como-institucion-de-servicios-para-hispanos-en-oregon/">Las Noticias</a></div>
+												</h1>
+											</div>
+										</div>
+																				<img src="https://www.warnerpacific.edu/wp-content/uploads/2019/03/Hispanic-Student-Slider-v3.png')" class="home-slide-image" />
+									</li>
+													</ul>
+									</div>
+	</section>
+	<section>
+		<div class="pathways-wrap container">
+						<section>
+				<div class="pathway-container" style="background-image:url('https://www.warnerpacific.edu/wp-content/uploads/2018/02/undergraduate_students_home.jpeg'); ">
+					<div class="pathways-container-cover">
+						<div class="pathways-container-cover-container">
+							<h2>UNDERGRADUATE</h2>
+							<a href="admission/undergraduate">Majors & Programs</a>
+<a href="admission/undergraduate/tuition-aid/">Tuition & Aid</a>
+<a href="admission/undergraduate/virtual-tour/">Virtual Tour</a>
+<a href="admission/undergraduate/admission-requirements">Admission Requirements</a>
+<a href="admission/undergraduate" class="learn-more">Learn More</a>						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="pathway-container" style="background-image:url('https://www.warnerpacific.edu/wp-content/uploads/2017/09/adult_degrees_student_home.jpeg'); ">
+					<div class="pathways-container-cover">
+						<div class="pathways-container-cover-container">
+							<h2>ADULT DEGREES</h2>
+							<a href="admission/adult-degrees">Programs</a>
+<a href="admission/adult-degrees/tuition-aid/">Tuition & Aid</a>
+<a href="https://next.warnerpacific.edu/online/inquiryform">Online Programs</a>
+<a href="admission/adult-degrees/admission-requirements">Admission Requirements</a>
+<a href="admission/adult-degrees" class="learn-more">Learn More</a>						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="pathway-container" style="background-image:url('https://www.warnerpacific.edu/wp-content/uploads/2017/09/graduate_student_wpc_home.jpeg'); ">
+					<div class="pathways-container-cover">
+						<div class="pathways-container-cover-container">
+							<h2>GRADUATE</h2>
+							<a href="admission/graduate">Programs</a>
+<a href="admission/graduate/tuition-aid/">Tuition & Aid</a>
+<a href="https://next.warnerpacific.edu/online/inquiryform">Online Programs</a>
+<a href="admission/graduate/admission-requirements">Admission Requirements</a>
+<a href="admission/graduate" class="learn-more">Learn More</a>						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</section>
+	<section class="container">
+				<div class="home-main-content-container" style="background-image:url('https://www.warnerpacific.edu/wp-content/uploads/2017/09/student_in_classroom_wpc.jpeg'); ">
+			<div class="home-main-content-cover">
+				<div class="home-main-inner-container">
+					<h2 class="home-content-container">We understand the challenge of walking the college journey alone, which is why at Warner Pacific, we are leaders in relational learning. We believe that you matter and you deserve an educational experience where you feel loved and safe.</h2>
+					<div class="home-main-content-sections-container container">
+						<div class="home-main-content-section-container">
+							<div class="home-main-content-section">
+								<img src="https://www.warnerpacific.edu/wp-content/uploads/2018/02/WP_Web_Icons_Serving-1.png" class="home-content-icon" />
+								<h2>Serving You Personally</h2>
+								<div class="home-content">
+									From the moment we meet until you walk across the stage at graduation, our staff and faculty are ready to answer your questions and connect you to the resources you need to reach your goals.								</div>
+							</div>
+						</div>
+						<div class="home-main-content-section-container">
+							<div class="home-main-content-section">
+								<img src="https://www.warnerpacific.edu/wp-content/uploads/2018/02/WP_Web_Icons_Connecting-1.png" class="home-content-icon" />
+								<h2>Connecting You Relationally</h2>
+								<div class="home-content">
+									College is so much more than classes. Through clubs, activities, coursework, internships, mentors, and more, we’ll connect you to people who will cheer you on throughout your college journey and beyond. 								</div>
+							</div>
+						</div>
+						<div class="home-main-content-section-container">
+							<div class="home-main-content-section">
+								<img src="https://www.warnerpacific.edu/wp-content/uploads/2018/02/WP_Web_Icons_Educating-2.png" class="home-content-icon" />
+								<h2>Educating You Holistically</h2>
+								<div class="home-content">
+									Education isn’t limited to the classroom. Our diverse student body and faculty regularly explore Portland, using the city as a classroom and providing hands-on learning experiences to prepare you for life after graduation.								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="home-facts-wrap container" style="background-image:url('https://www.warnerpacific.edu/wp-content/uploads/2017/09/graduate_student_wpc_home.jpeg')">
+			<div class="home-facts-cover">
+				<a class="bx-next"></a>
+				<div class="home-facts-cover-container">
+					<ul class="bxslider trivia-content">
+
+												 							        <li class="home-fact-container">
+						        	<div class="home-fact">
+						        									        			<h4><h1><b>14</b></h1></h4>
+							        			<div class="home-fact-content">
+								        			Average Class Size								        		</div>
+						        									        	</div>
+						        </li>
+							
+						        						        <li class="home-fact-container">
+						        	<div class="home-fact">
+						        									        			<h4><h1><b>57%</b></h1></h4>
+							        			<div class="home-fact-content">
+								        			First-Generation Students								        		</div>
+						        									        	</div>
+						        </li>
+							
+						        						        <li class="home-fact-container">
+						        	<div class="home-fact">
+						        									        			<h4><h1><b>63%</b></h1></h4>
+							        			<div class="home-fact-content">
+								        			Racially & Ethnically Diverse Students								        		</div>
+						        									        	</div>
+						        </li>
+							
+						        						        <li class="home-fact-container">
+						        	<div class="home-fact">
+						        									        		<div class="home-fact-content">
+							        			<b>Best Value School</b><br/>-U.S. News & World Report							        		</div>
+						        								        	</div>
+						        </li>
+							
+						        						        <li class="home-fact-container">
+						        	<div class="home-fact">
+						        									        		<div class="home-fact-content">
+							        			<b>Best in the West</b><br/> –U.S. News & World Report							        		</div>
+						        								        	</div>
+						        </li>
+							
+						        						        <li class="home-fact-container">
+						        	<div class="home-fact">
+						        									        		<div class="home-fact-content">
+							        			Only 4-Year University in Oregon Named a Hispanic-Serving Institution							        		</div>
+						        								        	</div>
+						        </li>
+							
+						        											</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="giving">
+				<div class="giving-background" style="background-image:url('https://www.warnerpacific.edu/wp-content/uploads/2018/02/city_of_portland_oregon_skyline.jpeg');"></div>
+		<div class="giving-wrap">
+			<div class="giving-container">
+				<h2>Giving</h2>
+				Serve the City. TOGETHER.
+Want to see the faces of Portland’s future? Look around our campus! Together we can change the lives of students, equipping and empowering them to become leaders and innovators. 
+<div>
+<div style="text-align:center; margin-top:15px;">
+<a href="/give" style="display:inline-block; padding:10px; border:1px solid #fff; border-radius:8px; color:#fff;">GIVE NOW</a>
+</div>
+</div>			</div>
+		</div>
+	</section>
+	<section>
+		<div class="home-news-events-wrap">
+			<div class="home-news-events-container container">
+				<div class="home-news-events-col">
+					<h3><a href="news">NEWS</a></h3>
+																					 <a class="home-news-event" href="https://www.warnerpacific.edu/news/experience-magazine-winter-2020-edition/">
+						    			<div class="container">
+						    										    					<div class="image-container news-image" style="background-image:url('https://www.warnerpacific.edu/wp-content/uploads/2020/01/experience.jpg');" />
+						    					</div>
+						    										    				<div class="content">
+						    					<h4>Experience Magazine Winter 2020 Edition</h4>
+						    					January 17, 2020						    				</div>
+						    			</div>
+						    		</a>
+																	 <a class="home-news-event" href="https://www.warnerpacific.edu/news/2019-fall-pgs-deans-list/">
+						    			<div class="container">
+						    										    				<div class="content">
+						    					<h4>2019 Fall PGS Dean&#8217;s List</h4>
+						    					January 13, 2020						    				</div>
+						    			</div>
+						    		</a>
+																	 <a class="home-news-event" href="https://www.warnerpacific.edu/news/2019-fall-traditional-program-deans-list/">
+						    			<div class="container">
+						    										    				<div class="content">
+						    					<h4>2019 Fall Traditional Program Dean&#8217;s List</h4>
+						    											    				</div>
+						    			</div>
+						    		</a>
+															</ul>
+					   					</div>
+				<div class="home-news-events-col right">
+					<h3><a href="events">EVENTS</a></h3>
+				    						    <a class="home-news-event" href="https://www.warnerpacific.edu/event/pushout-the-criminalization-of-black-girls-in-schools-documentary-film-screening/">
+						    	<div class="container">
+						    		<div class="image-container">
+						    									    			<div class="calendar-month">
+						    				2						    			</div>
+						    			<div class="calendar-day">
+						    				3						    			</div>
+						    		</div>
+						    		<div class="content">
+						    			<h4>PUSHOUT: The Criminalization of Black Girls in Schools - Documentary Film Screening</h4>
+						    									    		</div>
+						    	</div>
+						    </a>
+												    <a class="home-news-event" href="https://www.warnerpacific.edu/event/a-night-of-knights-honoring-wpu-coaches-past-and-present/">
+						    	<div class="container">
+						    		<div class="image-container">
+						    									    			<div class="calendar-month">
+						    				2						    			</div>
+						    			<div class="calendar-day">
+						    				13						    			</div>
+						    		</div>
+						    		<div class="content">
+						    			<h4>A Night of Knights - Honoring WPU Coaches Past and Present</h4>
+						    									    		</div>
+						    	</div>
+						    </a>
+												    <a class="home-news-event" href="https://www.warnerpacific.edu/event/presidents-day-holiday/">
+						    	<div class="container">
+						    		<div class="image-container">
+						    									    			<div class="calendar-month">
+						    				2						    			</div>
+						    			<div class="calendar-day">
+						    				17						    			</div>
+						    		</div>
+						    		<div class="content">
+						    			<h4>President’s Day Holiday</h4>
+						    									    		</div>
+						    	</div>
+						    </a>
+										</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+
+	<footer>
+		<div class="footer-wrap container">
+			<div class="footer-links-wrap container">
+				<div class="footer-links-container">
+					<div class="footer-col-trigger">
+						<h4>Quick Links</h4>
+						<div class="arrow images"></div>
+					</div>
+					<nav class="footer-col-area">
+						<div class="menu-footer-quick-links-container"><ul id="menu-footer-quick-links" class="menu"><li id="menu-item-29811" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29811"><a href="https://library.warnerpacific.edu">Library</a></li>
+<li id="menu-item-24507" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24507"><a href="http://wpuknights.com/">Athletics</a></li>
+<li id="menu-item-519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-519"><a href="https://www.warnerpacific.edu/about/locations/">Locations</a></li>
+<li id="menu-item-24506" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24506"><a href="https://sideline.bsnsports.com/schools/oregon/portland/warner-pacific-university">Store</a></li>
+<li id="menu-item-521" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-521"><a href="https://www.warnerpacific.edu/give/">Give</a></li>
+<li id="menu-item-24627" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24627"><a href="https://www.warnerpacific.edu/////events/">Calendar</a></li>
+</ul></div>					</nav>
+				</div>
+				<div class="footer-links-container">
+					<div class="footer-col-trigger">
+						<h4>Info</h4>
+						<div class="arrow images"></div>
+					</div>
+					<nav class="footer-col-area">
+						<div class="menu-footer-info-container"><ul id="menu-footer-info" class="menu"><li id="menu-item-509" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-509"><a href="https://www.warnerpacific.edu/news/">News</a></li>
+<li id="menu-item-514" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-514"><a href="https://www.warnerpacific.edu/about/publications/">Publications</a></li>
+<li id="menu-item-512" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-512"><a href="https://www.warnerpacific.edu/about/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-22935" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22935"><a target="_blank" rel="noopener noreferrer" href="https://warnerpacific.catsone.com/careers/">Employment</a></li>
+<li id="menu-item-511" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-511"><a href="https://www.warnerpacific.edu/about/consumer-info/">Consumer Info</a></li>
+<li id="menu-item-515" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-515"><a href="https://www.warnerpacific.edu/about/directory/">Directory</a></li>
+<li id="menu-item-24767" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24767"><a href="https://email1.warnerpacific.edu/owa/auth/logon.aspx?replaceCurrent=1&#038;url=https%3a%2f%2femail1.warnerpacific.edu%2fowa%2f">WebMail</a></li>
+</ul></div>					</nav>
+				</div>
+				<div class="footer-links-container">
+					<div class="footer-col-trigger">
+						<h4>Dashboards</h4>
+						<div class="arrow images"></div>
+					</div>
+					<nav class="footer-col-area">
+						<div class="menu-footer-dashboards-container"><ul id="menu-footer-dashboards" class="menu"><li id="menu-item-23228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23228"><a href="https://www.warnerpacific.edu/student-dashboard/">Undergraduate</a></li>
+<li id="menu-item-507" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-507"><a href="https://www.warnerpacific.edu/pgs-students/">Adult/Graduate</a></li>
+<li id="menu-item-506" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-506"><a href="https://www.warnerpacific.edu/facultystaff-dashboard/">Faculty/Staff</a></li>
+<li id="menu-item-24625" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24625"><a href="https://www.warnerpacific.edu/about/alumni/">Alumni</a></li>
+<li id="menu-item-24626" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24626"><a href="http://mywp.warnerpacific.edu/">MyWP</a></li>
+<li id="menu-item-24698" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24698"><a href="https://helpdesk.warnerpacific.edu">HelpDesk</a></li>
+</ul></div>					</nav>
+				</div>
+			</div>
+			<div class="footer-contact-container">
+				<div class="footer-contact-card">
+					<h5 itemprop="name">Warner Pacific University</h5>
+					<address>
+						<span itemprop="streetAddress">2219 SE 68th Ave</span> <br/>
+						<span itemprop="addressLocality">Portland</span>, <span itemprop="addressRegion">Oregon</span> <span itemprop="postalCode">97215</span>
+					</address>
+					<span itemprop="telephone">503-517-1020</span> <br/>
+					<span itemprop="800telephone">1-800-804-1510</span>
+					<div class="social-container container">
+						<a itemprop="sameAs" href="https://twitter.com/WarnerPacificU" target="_blank"><div class="social-icon twitter images"></div></a>
+						<a itemprop="sameAs" href="https://www.facebook.com/WarnerPacific" target="_blank"><div class="social-icon facebook images"></div></a>
+						<a itemprop="sameAs" href="https://www.instagram.com/warnerpacificu/" target="_blank"><div class="social-icon instagram images"></div></a>
+						<a itemprop="sameAs" href="https://www.youtube.com/WarnerPacificUniversity" target="_blank"><div class="social-icon youtube images"></div></a>
+						<a itemprop="sameAs" href="https://www.linkedin.com/school/50525/" target="_blank"><div class="social-icon linkedin images"></div></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div id="footer-bottom-bar">
+		<div class="footer-wrap container">
+			<nobr>© 2019 Warner Pacific University.</nobr> <nobr>All Rights Reserved</nobr> | <nobr><a href="about/privacy-policy/ ">Privacy Policy</a> |</nobr> <nobr><a href="https://www.google.com/maps/place/2219+SE+68th+Ave,+Portland,+OR+97215/@45.5066262,-122.593724,3a,75y,296.09h,90t/data=!3m6!1e1!3m4!1sHn_EpfdOe2KiD_dIeyUdmw!2e0!7i13312!8i6656!4m5!3m4!1s0x5495a057556e5b05:0x51e9c7049750fd2e!8m2!3d45.5069273!4d-122.5945672" target="_blank">Portland, Oregon Campus</a></nobr>
+		</div>
+	</div>
+</div>
+		<script>
+		( function ( body ) {
+			'use strict';
+			body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+		} )( document.body );
+		</script>
+		<script> /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": activate to sort column ascending","sort_descending":": activate to sort column descending"},"length_menu":"Show _MENU_ entries","empty_table":"No data available in table","info":"Showing _START_ to _END_ of _TOTAL_ entries","info_empty":"Showing 0 to 0 of 0 entries","info_filtered":"(filtered from _MAX_ total entries)","zero_records":"No matching records found","search":"Search:","all_selected_text":"All items on this page were selected. ","select_all_link":"Select all pages","clear_selection":"Clear Selection.","pagination":{"all":"All","next":"Next","previous":"Previous"},"select":{"rows":{"0":"","_":": Selected %d rows","1":": Selected 1 row"}},"datepicker":{"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesMin":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Prev","currentText":"Today","closeText":"Done","today":"Today","clear":"Clear"}};/* ]]> */ </script><script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/plugins/the-events-calendar/common/src/resources/js/tribe-common.min.js?ver=4.9.16'></script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/plugins/the-events-calendar/common/src/resources/js/tooltip.min.js?ver=4.9.16'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/www.warnerpacific.edu\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.3'></script>
+<script type='text/javascript' src='https://www.warnerpacific.edu/wp-includes/js/wp-embed.min.js?ver=5.3'></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"5d7ccad875","applicationID":"168209945","transactionName":"ZwBaZERVDEtWVEYNXl5KeVNCXQ1WGENaARxYClVVG0QDX1I=","queueTime":0,"applicationTime":914,"atts":"S0dZEgxPH0U=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

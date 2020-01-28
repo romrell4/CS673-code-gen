@@ -1,0 +1,501 @@
+<!DOCTYPE html><html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"e2e07c1469",applicationID:"10000082"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+      <title>Home | Fashion Institute of Technology</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <!-- Use for immediate redirect
+<META http-equiv="refresh" content="0;URL=https://www.fitnyc.edu/emergency/notification/index.php" /> 
+-->
+      <!-- Use for 5 sec delay redirect
+<META http-equiv="refresh" content="5;URL=https://www.fitnyc.edu/emergency/notification/index.php" /> 
+-->
+      <meta name="Description" content="FIT is an internationally recognized college for design, fashion, art, communications, and business. ">
+      <meta name="Keywords" content="">
+      <meta name="Language" content="en">
+      <meta name="Site" content="FIT">
+<link rel="icon" href="/images/display/buttons/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="https://www.fitnyc.edu/images/display/buttons/favicon.ico" type="image/x-icon" />
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic" rel="stylesheet">
+<link href="/_resources/css/rwdGlobal.css" rel="stylesheet">
+<link href="/_resources/css/magnific.css" rel="stylesheet">
+
+<link href="/_resources/css/ou-styles.css" rel="stylesheet">
+
+<!--[if lte IE 8]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <noscript></noscript>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+    <noscript></noscript>
+<![endif]-->
+<script src="/_resources/js/analytics.js" async></script>
+<script src="/_resources/js/tableFilter.js"></script>
+<noscript></noscript>
+
+<!-- ****BEGIN Crazy Egg Tracking Code for www.fitnyc.edu**** -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0057/4962.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<noscript></noscript>
+<!-- ****END Crazy Egg Tracking Code for www.fitnyc.edu**** -->
+
+<script type="text/javascript">
+			var OUC = OUC || {};
+			OUC.Parameters = OUC.Parameters || {};
+			OUC.Parameters.dirName = "/";
+			OUC.Parameters.pageName = "/index.php";
+			OUC.Parameters.httpRoot = "https://www.fitnyc.edu/";
+
+			var page_id = "https://www.fitnyc.edu/index.php";
+		</script></head>
+   <body class="homepage">
+      <section class="home">
+         <div class="home-slideshow">
+            <div class="slide slideCenterCenter" style="background-image: url('/images/homepage/hp-neady-illustrators.png');"><img src="/images/homepage/hp-neady-illustrators.png" alt="FASHION VISIONARIES"></div>
+            <div class="slide slideCenterCenter" style="background-image: url('/images/hp-topten-newsroom-orange.jpg');"><img src="/images/hp-topten-newsroom-orange.jpg" alt="THE TOP TEN"></div>
+            <div class="slide " style="background-image: url('/images/hp-powermode-v3.jpg');"><img src="/images/hp-powermode-v3.jpg" alt="CURRENT EXHIBITION "></div>
+            <div class="slide slideCenterCenter" style="background-image: url('/images/homepage/hp-fitde-class2019-v2.jpg');"><img src="/images/homepage/hp-fitde-class2019-v2.jpg" alt="DESIGN ENTREPRENEURS 2020"></div>
+         </div><a class="sr-only" href="#content-start" title="skip to content">Skip to Con tent tabb to skip to navigation</a>&nbsp;&nbsp;<a class="sr-only" href="#navigation-start" title="skip to navigation">Skip to Navigation</a><a class="captions-toggle" href="#">caption</a><div class="home-content">
+            <div class="logo"><img src="/_resources/images/logo.png" alt="FIT"></div>
+            <h1 class="sr-only">Home</h1>
+            <div class="whats-new"><span id="content-start"></span><a class="button button-flyout2" href="//news.fitnyc.edu/">See What's New</a><div class="flyout">
+                  <div class="wrap"><a class="close" href="#"><span class="fa fa-angle-right"></span><span class="fa fa-angle-left"></span><span class="sr-only">Close Menu</span></a><div class="widget feed">
+                        <h3>News</h3>
+                        <section class="clean"><span class="noShow">What's New News Feed</span><div class="inlineCode">
+                              <div id="rssincl-box-container-956980"></div>
+                              <!-- news feed a:95605 (or a:64915) used to be here -->
+                           </div>
+                        </section>
+                        <ul class="feed"></ul>
+                        <p><a class="button" href="//news.fitnyc.edu/">View all news</a></p>
+                     </div>
+                     <div class="widget feed">
+                        <h3>Events</h3>
+                        <section class="clean"><span class="noShow">Homepage Events Feed Inline Code 22499</span><div class="inlineCode" style="height:700px">
+                              <!-- events feed a:95600 used to be here <br></br> -->
+                              <p><a class="button" href="http://news.fitnyc.edu/events/">View All Events</a></p>
+                           </div>
+                        </section>
+                     </div>
+                     <div class="flexibleTextArea">
+                        <table>
+                           <tbody>
+                              <tr>
+                                 <td></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="find-program"><a class="button button-flyout" href="#">Find a Program</a><div class="flyout">
+                  <div class="wrap"><a class="close" href="#"><span class="fa fa-angle-right"></span><span class="fa fa-angle-left"></span><span class="sr-only">Close Menu</span></a><div class="widget widget-full">
+                        <h2>Undergraduate Majors</h2>
+                        <p><span style="font-size: 13pt;">With a high school diploma or a General Equivalency Diploma (GED), you can apply to
+                              any of FIT’s associate degree programs. Some students with credits or a degree from
+                              another college may be eligible to apply directly to a bachelor's degree program.&nbsp;</span></p>
+                        <ul class="studies-list half-left">
+                           <li><a href="/accessories-design/index.php">Accessories Design</a></li>
+                           <li><a href="/amc/index.php">Advertising and Marketing Communications</a></li>
+                           <li><a href="/advertising-design/index.php">Advertising and Digital Design</a></li>
+                           <li><a href="/art-history/index.php">Art History and Museum Professions</a></li>
+                           <li><a href="/communication-design/index.php">Communication Design Foundation</a></li>
+                           <li><a href="/computer-animation/index.php">Computer Animation and Interactive Media</a></li>
+                           <li><a href="/cfm/index.php">Cosmetics and Fragrance Marketing</a></li>
+                           <li><a href="/direct-marketing/index.php">Direct and Interactive Marketing</a></li>
+                           <li><a href="/entrepreneurship/index.php">Entrepreneurship</a></li>
+                           <li><a href="/fabric-styling/index.php">Fabric Styling</a></li>
+                           <li><a href="/fashion-design/index.php">Fashion Design</a></li>
+                           <li><a href="/fbm/index.php">Fashion Business&nbsp;Management</a></li>
+                           <li><a href="/film-and-media/index.php">Film and Media</a></li>
+                           <li><a href="/fine-arts/index.php">Fine Arts</a></li>
+                           <li><a href="/graphic-design/index.php">Graphic Design</a></li>
+                           <li><a href="/home-products/index.php">Home Products Development</a></li>
+                        </ul>
+                        <ul class="studies-list half-right">
+                           <li><a href="/illustration/index.php">Illustration</a></li>
+                           <li><a href="/interior-design/index.php">Interior Design</a></li>
+                           <li><a href="/itm/">International Trade and Marketing for the Fashion Industries</a></li>
+                           <li><a href="/jewelry-design/index.php">Jewelry Design</a></li>
+                           <li><a href="/menswear/index.php">Menswear</a></li>
+                           <li><a href="/packaging-design/index.php">Packaging Design</a></li>
+                           <li><a href="/photography/index.php">Photography</a></li>
+                           <li><a href="/production-management/index.php">Production Management: Fashion and Related Industries</a></li>
+                           <li><a href="/technical-design/index.php">Technical Design</a></li>
+                           <li><a href="/tdm/index.php">Textile Development and Marketing</a></li>
+                           <li><a href="/textile-surface-design/index.php">Textile/Surface Design</a></li>
+                           <li><a href="/toy-design/index.php">Toy Design</a></li>
+                           <li><a href="/vped/index.php">Visual Presentation and Exhibition Design</a></li>
+                        </ul>
+                     </div>
+                     <div class="widget widget-half">
+                        <h2>Graduate Programs</h2>
+                        <p><span style="font-size: 13pt;">Our graduate curricula and NYC location offer exceptional opportunities for you to
+                              develop your professional network, providing numerous and valuable interactions with
+                              leaders in your field.</span></p>
+                        <h3>Master of Arts</h3>
+                        <ul class="studies-list">
+                           <li><a href="/art-market/index.php">Art Market Studies</a></li>
+                           <li><a href="/exhibition-design/index.php">Exhibition and Experience Design</a></li>
+                           <li><a href="/fashion-textile-history/index.php">Fashion and Textile Studies: History, Theory, Museum Practice</a></li>
+                        </ul>
+                        <h3>Master of Fine Arts</h3>
+                        <ul class="studies-list">
+                           <li><a href="/fashion-design-mfa/index.php" aria-label="Graduate Fashion Design">Fashion Design</a></li>
+                           <li><a href="/illustration-mfa/index.php" aria-label="Graduate Illustration">Illustration</a></li>
+                        </ul>
+                        <h3>Master of Professional Studies</h3>
+                        <ul class="studies-list">
+                           <li><a href="/cfmm/index.php">Cosmetics and Fragrance Marketing and Management</a></li>
+                           <li><a href="/gfm/index.php">Global Fashion Management</a></li>
+                        </ul>
+                     </div>
+                     <div class="widget widget-half">
+                        <h2>Continuing and Professional Studies</h2>
+                        <p><span style="font-size: 13pt;">Whether you are a beginner or professional, our programs provide vital skills for
+                              career changers, executives, entrepreneurs, and small-business owners, and industry
+                              groups, and serious hobbyists, in areas such as fashion business, design, computer
+                              technology, and marketing.</span></p>
+                        <ul class="studies-list">
+                           <li><a href="/ccps/courses/index.php">Take a Course</a></li>
+                           <li><a href="/ccps/certificate-programs/index.php">Certificate Programs</a></li>
+                           <li><a href="/ccps/english-language-study/index.php">English Language Study</a></li>
+                           <li><a href="/precollege/index.php">Precollege Programs: High School and Middle School Classes</a></li>
+                           <li><a href="/ccps/professional-studies/index.php">Professional Studies</a></li>
+                           <li><a href="/ccps/enterprise-studies/index.php">Enterprise Studies and Digital Design</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="home-slideshow-controls-wrap">
+               <div class="home-slideshow-controls">
+                  <div class="prev"></div>
+                  <div class="next"></div>
+                  <div class="pager"></div>
+               </div>
+               <div class="home-slideshow-captions">
+                  <div class="caption">
+                     <h6>FASHION VISIONARIES</h6>
+                     <p>Select images from the Frances Neady Collection, housed in FIT's Special Collections
+                        and College Archives, are <a href="https://news.fitnyc.edu/2020/01/08/the-evolution-of-fashion-through-illustration/" target="_blank">currently on view at the Society of Illustrators</a>.
+                     </p>
+                  </div>
+                  <div class="caption">
+                     <h6>THE TOP TEN</h6>
+                     <p>To look back on the past year, we compiled the <a href="https://news.fitnyc.edu/2020/01/06/top-10-stories-from-2019/">top ten stories </a>most widely read on Newsroom in 2019.
+                     </p>
+                  </div>
+                  <div class="caption">
+                     <h6>CURRENT EXHIBITION </h6>
+                     <p><a href="http://www.fitnyc.edu/museum/exhibitions/power-mode.php"><em>Power Mode: The Force of Fashion</em></a><span>, explores the roles fashion plays in establishing, reinforcing, and challenging power
+                           dynamics within society.&nbsp;</span></p>
+                  </div>
+                  <div class="caption">
+                     <h6>DESIGN ENTREPRENEURS 2020</h6>
+                     <p><a href="https://www.designentrepreneursnyc.com/">FIT DE</a> is an industry-sponsored, intensive program that gives designers access to top executives,
+                        guidance for a business plan, and the skills to expand their brands.&nbsp;<a href="https://news.fitnyc.edu/2020/01/10/fit-kicks-off-design-entrepreneurs-2020/">The program</a> culminates with $150,000 in prizes.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <div class="header-footer-home">
+<header class="header header-home">
+	<div class="wrap"> 
+		<span id="navigation-start"></span>  		
+		<a class="logo" href="/index.php"> 
+<img class="logo-image" src="/_resources/images/logo.png" alt="FIT" /> 
+<span class="logo-text"> 
+<img src="/_resources/images/header-logo-suny.png" alt="Fashion Institute of Technology - State University of New York" />
+<!-- <img src="http://display.fitnyc.edu/_resources/images/logo-text.png" alt="Fashion Institute of Technology - State University of New York" /> -->
+</span> 
+</a>
+		<a class="menu-toggle" href="#"><span class="fa fa-bars" aria-hidden="true"><span class="sr-only">Menu</span></span></a>
+		<div class="menu">
+			<div class="menu-wrap">
+				<nav class="nav">
+					<ul>
+						<li><a href="/about/index.php" title="About">About</a> </li>
+						<li><a href="/academics/index.php" title="Academics">Academics</a>
+							<div class="nav-sub"> 
+								<a class="close" href="#">
+									<span class="fa fa-angle-right"></span><span class="fa fa-angle-left"></span>
+									<span class="sr-only">Close Menu</span>
+								</a>
+								<!-- <h4>&nbsp;&nbsp;&nbsp; Academic Divisions</h4> -->
+								<ul>
+									<li><strong><a href="/art-and-design/index.php">School of Art and Design</a></strong> </li>
+									<li><strong><a href="/business-and-technology/index.php">Jay and Patty Baker School of Business and Technology</a></strong> </li>
+									<li><strong><a href="/liberal-arts/index.php">School of Liberal Arts</a></strong> </li>
+									<li><strong><a href="/graduate-studies/index.php">School of Graduate Studies</a></strong> </li>
+									<li><strong><a href="/ccps/index.php">Center for Continuing and Professional Studies</a></strong> </li>
+								</ul>
+								<ul>
+									<li><a href="/academics/undergraduate-programs.php">Undergraduate Programs</a> </li>
+									<li><a href="/academics/undergraduate-catalog/index.php">Undergraduate Catalog</a> </li>
+									<li><a href="/academics/graduate-programs.php">Graduate Programs</a> </li>
+									<li><a href="/ccps/certificate-programs/index.php">Certificate Programs</a> </li>
+									<li><a href="/honors/index.php">Presidential Scholars (Honors Program)</a> </li>
+									<li><a href="/study-abroad/index.php">Study Abroad</a> </li>
+									<li><a href="/registrar/index.php">Registrar</a> </li>
+									<li><a href="/academic-advisement/index.php">Academic Advisement Center</a> </li>
+								</ul>
+								<ul>
+									<li><a href="/library/index.php">Library</a> </li>
+									<li><a href="/tutoring-center/index.php">Academic Skills Tutoring Center</a> </li>
+									<li><a href="/academics/cic/index.php">Career and Internship Center</a> </li>
+									<li><a href="/writing-studio/index.php">Writing &amp; Speaking Studio</a> </li>
+									<li><a href="/faculty/index.php">Faculty</a> </li>
+									<li><a href="/cet/index.php">Center for Excellence in Teaching</a> </li>
+									<li><a href="/online-learning/index.php">Online Learning</a> </li>
+									<li><a href="/academics/resources.php">All Academic Resources</a> </li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="/admissions/index.php" title="Admissions">Admissions</a>
+							<div class="nav-sub"> 
+								<a class="close" href="#">
+									<span class="fa fa-angle-right"></span><span class="fa fa-angle-left"></span>
+									<span class="sr-only">Close Menu</span>
+								</a>
+								<ul>
+									<li><strong><a href="/admissions/index.php">Undergraduate Admissions</a></strong> </li>
+									<li><a href="/admissions/apply/international-students/index.php">Undergraduate International Admissions</a> </li>
+									<li><a href="/graduate-studies/graduate-admissions/index.php">Graduate Admissions Requirements</a> </li>
+									<li><a href="/admissions/evening-weekend/index.php">Evening/Weekend Degree Programs</a> </li>
+									<li><a href="/precollege/index.php">Middle School and High School Classes</a></li>
+								</ul>
+								<ul>
+									<li><a href="/admissions/costs/index.php">Tuition Costs</a> </li>
+									<li><a href="/financial-aid/index.php">Financial Aid Services</a> </li>
+									<li><a href="/bursar/index.php">Bursar's Office</a> </li>
+									<li><a href="/eop/index.php">Educational Opportunity Programs (EOP)</a> </li>
+									<li><a href="/honors/index.php">Presidential Scholars (Honors Program)</a> </li>
+								</ul>
+								<ul>
+									<li><a href="/veteran-services/index.php">Veterans Services</a> </li>
+									<li><a href="/online-learning/index.php">Online Learning</a> </li>
+									<li><a href="http://fit.hostexp.com/">Virtual Tour</a> </li>
+									<li><a href="/visit/index.php">Visit FIT</a> </li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="/student-life/index.php" title="Campus Life">Campus Life</a>
+							<div class="nav-sub"> 
+								<a class="close" href="#">
+									<span class="fa fa-angle-right"></span><span class="fa fa-angle-left"></span>
+									<span class="sr-only">Close Menu</span>
+								</a>
+								<ul>
+									<li><strong><a href="/student-life/index.php">Student Life at FIT</a></strong> </li>
+									<li><a href="/residential-life/index.php">Residential Life</a> </li>
+									<li><a href="/safety/index.php">Safety &amp; Security</a> </li>
+									<li><a href="/health-services/index.php">Health Services</a> </li>
+									<li><a href="/counseling-services/index.php">Counseling Services</a> </li>
+								</ul>
+								<ul>
+									<li><a href="/fitable/index.php">Disability Support Services (FIT-ABLE)</a> </li>
+									<li><a href="/iss/index.php">International Student Services</a> </li>
+									<li><a href="/veteran-services/index.php">Veteran Services</a> </li>
+									<li><a href="http://it.fitnyc.edu/">Computing and Technology at FIT</a> </li>
+									<li><a href="/diversity-equity-inclusion/index.php">Diversity, Equity, and Inclusion</a> </li>
+								</ul>
+								<ul>
+									<li><a href="/student-clubs/index.php">Student Clubs and Activities</a> </li>
+									<li><a href="/athletics/index.php">Athletics and Recreation</a> </li>
+									<li><a href="https://fit.campusdish.com/" target="_blank">Dining Services</a> </li>
+									<li><a href="http://fashion.bncollege.com/webapp/wcs/stores/servlet/BNCBHomePage?storeId=16557&amp;catalogId=10001" target="_blank">Barnes &amp; Noble at FIT</a> 
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="/development/index.php" title="Give to FIT">Give to FIT</a> </li>
+						<li><a href="http://news.fitnyc.edu/" title="News">News</a> </li>
+					</ul>
+				</nav>
+				<ul class="nav-secondary">
+					<li class="myFITLink"><a href="https://myfit.fitnyc.edu/">MyFIT</a></li>
+					<li class="search"> 
+						<a href="#" title="Search"><span class="sr-only">Search</span>
+							<span class="fa fa-search" aria-hidden="true"></span> 
+						</a>
+						<form class="search-form" action="https://ousearch.omniupdate.com/texis/search/">
+							<div class="noShow">&nbsp;
+								<input name="site" id="site" value="default_collection" type="hidden">
+								<label for="q">Site Search</label>
+							</div>
+							<div class="wrap">				  
+								<input name="pr" value="fit-main" type="hidden">
+								<input placeholder="Enter Keywords" type="search" name="query" id="q">
+								<button type="submit"><span class="fa fa-search"><span class="sr-only">Submit</span></span></button>
+								<a class="close" href="#"><span class="sr-only">Close the Search Box</span>
+									<span class="fa fa-angle-right"></span><span class="fa fa-angle-left"></span> 
+								</a>
+							</div>
+						</form>
+					</li>
+					<li class="museum">
+						<a href="/museum/index.php">
+							<img src="/_resources/images/logo-museum2.png" alt="The Museum at FIT" /> 							
+						</a>
+					</li>
+					<li class="audience"> 
+						<a href="#" title="Information"><span class="sr-only">Audience Gateway Pages</span> 
+							<span class="fa fa-info-circle" aria-hidden="true"></span> 
+						</a>
+						<div class="audience-nav"> 
+							<a class="close" href="#"> 
+								<span class="fa fa-angle-right"></span><span class="fa fa-angle-left"></span> 
+								<span class="sr-only">Close Menu</span> 
+							</a>
+							<p class="rc-header6" aria-hidden="true">Information For:</p>
+							<ul>
+								<li><a href="/current-students/index.php"><span class="sr-only">Information for</span>Current Students</a></li>
+								<li><a href="/employees/index.php"><span class="sr-only">Information for</span>Faculty &amp; Staff</a></li>
+								<li><a href="/alumni/index.php"><span class="sr-only">Information for</span>Alumni</a></li>
+								<li><a href="/recently-accepted-students/index.php"><span class="sr-only">Information for</span>Recently Admitted Students</a></li>
+								<li><a href="/parents/index.php"><span class="sr-only">Information for</span>Parents</a></li>
+								<li><a href="/employers-industry/index.php"><span class="sr-only">Information for</span>Employers &amp; Industry</a></li>
+								<li><a href="/adult-professional/index.php"><span class="sr-only">Information for</span>Adult Learners &amp; Career Professionals</a></li>
+							</ul>
+						</div> 
+					</li>
+					<li class="footer-toggle"> 
+						<a href="#">
+							<span class="sr-only">Toggle Footer</span>
+						</a> 
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<footer class="footer">
+    <div class="wrap">
+      <div class="info">
+        <p>227 West 27th Street<br />
+          New York City 10001-5992<br />
+          (212) 217-7999</p>
+       <ul class="hp-footer-smaller-links">
+			<li><a href="/about/right-to-know/index.php">Right to Know</a></li>
+			<li><a href="/about/contact/index.php">Contact Us</a></li>
+			<li><a href="/visit/index.php">Visit FIT</a></li>
+         	<li><a href="/about/unsubscribe.php">Unsubscribe</a></li>			
+         	<li><a href="//sites.fitnyc.edu/depts/campus-directory/">People Search</a></li>
+			<li><a href="/cer/service-areas/web/publishing/accessibility/issue-report.php">Report an Accessibility Issue</a></li>
+			<li><a href="/cer/service-areas/web/publishing/privacy/index.php">Privacy</a></li>
+        </ul>
+        <p class="copyright">©2020 Fashion Institute of Technology</p>
+      </div>
+      <ul class="social">
+			<li><a href="/cer/service-areas/branding/index.php"><img class="hp-footer-social-smaller"  src="/images/branding/uncm-suny-footer-black.png" alt="FIT Unconventional Minds"/></a></li>	
+			<br>  		  
+			<li><a target="_blank" href="https://goo.gl/u8tiV6"><span class="sr-only">F I T on Instagram</span><span class="fa fa-instagram" aria-hidden="true"></span></a></li>
+			<li><a target="_blank" href="https://goo.gl/Li3ayf"><span class="sr-only">F I T on Facebook</span><span class="fa fa-facebook" aria-hidden="true"></span></a></li>
+			<li><a target="_blank" href="https://goo.gl/rysefX"><span class="sr-only">F I T on Twitter</span><span class="fa fa-twitter" aria-hidden="true"></span></a></li>
+			<li><a target="_blank" href="https://goo.gl/DtXzgi"><span class="sr-only">F I T Calendar of Events</span><span class="fa fa-calendar" aria-hidden="true"></span></a></li>
+		</ul>
+    </div>
+  </footer>
+</div>
+<a class="scroll-top" href="#"><span class="fa fa-angle-double-up"></span></a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<noscript></noscript>
+<script src="//code.jquery.com/jquery-migrate-3.0.0.js"></script>
+<noscript></noscript>
+
+<!-- Replaced with newer jquery 4-12-2017
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<noscript></noscript>
+-->
+
+<script src="/_resources/js/magnific.js"></script>
+<noscript></noscript>
+<script src="/_resources/js/rwdGlobal.js"></script>
+<noscript></noscript>
+
+<!--[if lte IE 9]>
+            <script src="assets/js/jquery.placeholder-enhanced.min.js"></script><noscript></noscript>
+        <![endif]-->
+
+<div class="noShow">
+	<a href="/adult-professional/index.php">Adult Learners &amp; Career Professionals</a>
+	<a href="/employers-industry/index.php">Employers &amp; Industry</a>
+	<a href="/alumni/index.php">Alumni: The Power of Connection</a>
+	<a href="/employees/index.php">Faculty &amp; Staff</a>
+	<a href="/current-students/index.php">Current Students</a>
+	<a href="/parents/index.php">Parents</a>
+	<a href="/recently-accepted-students/index.php">Recently Accepted Students</a>
+	<a href="/development/index.php">Give to FIT</a>
+	<a href="https://news.fitnyc.edu/">News &amp; Events</a>
+	<a href="/student-life/index.php">Student Life at FIT</a>
+	<a href="/admissions/index.php">Admissions</a>
+	<a href="/academics/index.php">Academics</a>
+	<a href="/about/index.php">About FIT</a>
+	<a href="https://myfit.fitnyc.edu/">My FIT</a>
+	<a href="/about/contact/index.php">Contact Us</a>
+	<a href="/visit/index.php">Visit FIT</a>
+</div>
+                       
+
+<!--*****BEGIN GOOGLE ANALYTICS CODE***** -->
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-5693814-2', 'auto');
+	ga('send', 'pageview');
+</script>
+<noscript></noscript>
+<!-- *****END GOOGLE ANALYTICS CODE*****-->
+
+
+<!-- +++++++++++++++++++++++++++++++++++++++++ -->
+<!-- LinkedIn Manager 2019: Start -->
+<script type="text/javascript">
+_linkedin_partner_id = "106877";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript">
+(function(){var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=106877&fmt=gif" />
+</noscript>
+<!-- LinkedIn Manager 2019: End -->
+<!-- +++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+<!-- +++++++++++++++++++++++++++++++++++++++++ -->
+<!-- Siteimprove Mobile Usibility 2019: Start -->
+<script type="text/javascript">
+/*<![CDATA[*/
+(function() {
+    var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+    sz.src = '//siteimproveanalytics.com/js/siteanalyze_67106548.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+})();
+/*]]>*/
+</script>
+<!-- Siteimprove Mobile Usibility 2019: End -->
+<!-- +++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+<script src="/_resources/js/ou-directedit.js"></script><a id="de" href="https://a.cms.omniupdate.com/10?skin=oucampus&amp;account=suny-fit&amp;site=www&amp;action=de&amp;path=/index.pcf">&#169;</a><!-- ouc:info uuid="f2f3ab14-58ae-4cac-a7db-61bab2a37419"/ --><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"e2e07c1469","applicationID":"10000082","transactionName":"ZFQHNkJSC0YDBhZRV10eMBBZHAxbBgAaFkhbQQ==","queueTime":0,"applicationTime":0,"atts":"SBMEQApIGEg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

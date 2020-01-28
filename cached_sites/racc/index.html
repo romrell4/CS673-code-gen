@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+    <meta name="google-site-verification" content="0tdlKwsamPtQoEhfMzAF5-RmTegYWE2U8ezittx_rKA" />
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"3f11fbe7a6",applicationID:"289103304"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-4435296-1", {"cookieDomain":"auto"});ga("require", "linkid", "linkid.js");ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+<script src="/sites/default/files/hotjar/hotjar.script.js?q4twkd"></script>
+<meta name="title" content="RACC Homepage" />
+<link rel="shortlink" href="https://racc.edu/" />
+<link rel="canonical" href="https://racc.edu/" />
+<meta name="description" content="A two-year institution of higher education which offers educational programs on campus and online to meet the needs of the Berks County and Reading, PA community." />
+<meta name="abstract" content="Reading Area Community College (RACC) is an accredited, comprehensive, open-enrollment education institution that provides the following: Associate degree, Certificate and Diploma Programs; career-focused training; transitional coursework; skills training for business and industry; personal enrichment programs and public service activities. Sponsored by the Berks County Commissioners the College provides affordable access to meet identified community educational needs." />
+<meta name="keywords" content="RACC, Reading, PA, Berks County, Reading Area Community College, College, higher education, school, online courses, online programs, associates degree" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/themes/racc/favicon.ico" type="image/vnd.microsoft.icon" />
+
+        <title>RACC Homepage</title>
+        <link rel="stylesheet" media="all" href="/core/assets/vendor/normalize-css/normalize.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/misc/normalize-fixes.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/modules/superfish/../../sites/all/libraries/superfish/css/superfish.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/sites/all/libraries/superfish/css/superfish.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/ajax-progress.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/align.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/autocomplete-loading.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/fieldgroup.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/container-inline.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/clearfix.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/details.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/hidden.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/item-list.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/js.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/nowrap.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/position-container.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/progress.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/reset-appearance.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/resize.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/sticky-header.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/system-status-counter.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/system-status-report-counters.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/system-status-report-general-info.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/tabledrag.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/tablesort.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/system/components/tree-child.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/modules/video_embed_field/css/video_embed_field.responsive-video.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/stable/css/views/views.module.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/sites/all/libraries/flexslider/flexslider.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/modules/calendar/css/calendar.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/modules/calendar/css/calendar_multiday.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/modules/colorbox/styles/default/colorbox_style.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/modules/flexslider/assets/css/flexslider_img.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/modules/superfish/../../sites/all/libraries/superfish/style/blue/blue.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/sites/all/libraries/superfish/style/blue/blue.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/racc/style/css/layout/front-layout.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/action-links.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/breadcrumb.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/button.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/collapse-processed.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/container-inline.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/details.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/exposed-filters.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/field.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/form.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/icons.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/inline-form.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/item-list.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/link.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/links.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/menu.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/more-link.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/pager.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/tabledrag.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/tableselect.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/tablesort.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/tabs.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/textarea.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/ui-dialog.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/core/themes/classy/css/components/messages.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/base.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/html-elements.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/site-branding.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/breadcrumbs.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/main-menus.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/messages.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/pagers.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/tabs.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/taxonomy-terms.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/omega/omega_tools/omega/style/css/elements/forms.css?q4twkd" />
+<link rel="stylesheet" media="all" href="/themes/racc/style/css/racc.styles.css?q4twkd" />
+
+            
+<!--[if lte IE 8]>
+<script src="/core/assets/vendor/html5shiv/html5shiv.min.js?v=3.7.3"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+
+                </head>
+<body class="path-frontpage">
+<a href="#main-content" class="visually-hidden focusable">
+    Skip to main content
+</a>
+
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="layout-container">
+
+    <header role="banner">
+        <!--
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+      -->
+          <div class="region--header region region-header">
+    <nav role="navigation" aria-labelledby="block-topmenu-menu" id="block-topmenu" class="block block-menu navigation menu--top-menu">
+            
+  <h2 class="visually-hidden" id="block-topmenu-menu">Top menu</h2>
+  
+
+        
+                        <ul>
+                    <li>
+          <a href="https://myracc.racc.edu/" target="">myRACC</a>
+                  </li>
+              <li>
+          <a href="http://millercenter.racc.edu/" target="">MILLER CENTER FOR THE ARTS</a>
+                  </li>
+              <li>
+          <a href="/academics/schmidt-training-and-technology-center" target="" data-drupal-link-system-path="node/94">SCHMIDT TRAINING &amp; TECHNOLOGY CENTER</a>
+                  </li>
+              <li>
+          <a href="" class="fa fa-search" target="">.</a>
+                  </li>
+            </ul>
+      
+
+  </nav>
+<div id="block-racc-branding">
+  
+    
+    
+  <div id="site-branding">
+          <div id="logo">
+        <a href="https://racc.edu/" title="Home" rel="home" class="site-logo">
+          <img src="/sites/default/files/logo_1.png" alt="Home" />
+        </a>
+      </div>
+        
+        
+  </div>
+</div>
+<div id="block-mainmenu">
+  
+    
+
+  <div>
+          
+<ul id="superfish-main-menu" class="menu sf-menu sf-main-menu sf-horizontal sf-style-blue">
+  
+<li id="main-menu-menu-link-content530b5fc7-9a30-4b5a-a5a8-581c0ab65013"
+     class="sf-depth-1 menuparent"><a href="/about-racc" class="sf-depth-1 menuparent" target="">ABOUT</a><ul><li id="main-menu-menu-link-content9b21a0b6-c923-429d-97b0-0f5c35d916ed"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/accreditations" class="sf-depth-2">Accreditations</a></li><li id="main-menu-menu-link-contentb923e9c1-addf-4930-aa9b-9fab6e5abc51"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/board-trustees" title="Board Of Trustees" class="sf-depth-2">Board Of Trustees</a></li><li id="main-menu-menu-link-contenteafe747b-9643-467b-88ec-35537569e7bb"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/business-opportunities" class="sf-depth-2" target="">Business Opportunities</a></li><li id="main-menu-menu-link-content553ae2d4-2e4a-41cf-947a-1ffae364b365"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/campus-map-and-directions" class="sf-depth-2">Campus Map and Directions</a></li><li id="main-menu-menu-link-content158800dc-9d5d-4576-aa0a-16a5a9b7e7ee"
+     class="sf-depth-2 sf-no-children"><a href="/contacts/faculty-and-staff-directory" class="sf-depth-2" target="">Faculty and Staff Directory</a></li><li id="main-menu-menu-link-content5714b202-8986-4c01-95f5-206143eef279"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/foundation-racc" class="sf-depth-2">Foundation for RACC</a></li><li id="main-menu-menu-link-content723a0f21-67e3-42ad-aa8b-a0ea846350e2"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/human-resources" title="RACC offers competitive salaries and excellent fringe benefits, including health and dental insurance, retirement, paid leave time, holidays, life and long term disability insurance, educational assistance and a tuition waiver program." class="sf-depth-2">Human Resources</a></li><li id="main-menu-menu-link-contentf4742d65-2bc1-4643-8788-dd440249f119"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/media" class="sf-depth-2">Media</a></li><li id="main-menu-menu-link-contenta72671a3-5691-46e1-9115-db72e3a1166d"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/memberships" class="sf-depth-2">Memberships</a></li><li id="main-menu-menu-link-content71e5a8d5-1265-4fb9-81a6-c82902e80ecc"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/president" title="A message from the president." class="sf-depth-2">President</a></li><li id="main-menu-menu-link-content6118bcc2-e0bc-4ecb-8f2c-3261e1b940b1"
+     class="sf-depth-2 sf-no-children"><a href="/about-racc/safety-security" class="sf-depth-2" target="">Safety and Security</a></li></ul></li><li id="main-menu-menu-link-content6e90d194-4184-421d-9d33-f06b2bf34280"
+     class="sf-depth-1 menuparent"><a href="/academics?event_type=73" class="sf-depth-1 menuparent" target="">ACADEMICS</a><ul><li id="main-menu-menu-link-content9186cd5c-3099-4cf7-8169-6555bb5bf980"
+     class="sf-depth-2 sf-no-children"><a href="http://catalog.racc.edu/content.php?catoid=11&amp;navoid=416" class="sf-depth-2 sf-external">Programs of Study</a></li><li id="main-menu-menu-link-content0e3b1705-9b60-4f36-86a0-bdfa96ff8092"
+     class="sf-depth-2 sf-no-children"><a href="/academics/online-learning" class="sf-depth-2">Online Learning</a></li><li id="main-menu-menu-link-content795e471f-69e4-4a6f-8cb3-79ff9015c632"
+     class="sf-depth-2 sf-no-children"><a href="/academics/early-college-programs" class="sf-depth-2">Early College Programs</a></li><li id="main-menu-menu-link-contentfcc12c96-e120-4039-8181-43a2bba2ad25"
+     class="sf-depth-2 sf-no-children"><a href="/academics/academic-enrichment" class="sf-depth-2">Academic Enrichment</a></li><li id="main-menu-menu-link-content1a71ea3e-d9a3-4bda-b058-2fd7d56148f1"
+     class="sf-depth-2 sf-no-children"><a href="/academics/health-professions" class="sf-depth-2">Health Professions</a></li><li id="main-menu-menu-link-contenta60788b0-5295-45ae-ade7-65587f1951b4"
+     class="sf-depth-2 sf-no-children"><a href="/academics/career-training-programs" title="Career Training Programs provide non-credit certificate training in as little as six weeks to six months and are designed to prepare adults for entry or re-entry into the job market." class="sf-depth-2">Career Training</a></li><li id="main-menu-menu-link-content97d9becf-4036-408a-888e-33448ad9e63b"
+     class="sf-depth-2 sf-no-children"><a href="/academics/community-education" class="sf-depth-2">Community Education</a></li><li id="main-menu-menu-link-contentf0981a8f-80fb-463d-ae47-c9568fb784f5"
+     class="sf-depth-2 sf-no-children"><a href="/academics/esl-program" class="sf-depth-2">ESL Program</a></li><li id="main-menu-menu-link-contenta6121702-5293-4c99-a781-9fcae18d936a"
+     class="sf-depth-2 sf-no-children"><a href="/calendar-events/month" class="sf-depth-2" target="">Calendar of Events</a></li><li id="main-menu-menu-link-content16ddbfea-a125-475d-bd94-90cc771d34e9"
+     class="sf-depth-2 sf-no-children"><a href="/academics/academic-advising" class="sf-depth-2">Academic Advising</a></li><li id="main-menu-menu-link-content04e5a264-9321-4832-bb7b-f7059268dc38"
+     class="sf-depth-2 sf-no-children"><a href="/services/achievement-center" class="sf-depth-2" target="">Academic Support</a></li><li id="main-menu-menu-link-contentaf3bdf44-9dd6-4f27-a1bc-910147cee501"
+     class="sf-depth-2 sf-no-children"><a href="/academics/academic-testing-center" class="sf-depth-2" target="">Academic Testing Center</a></li><li id="main-menu-menu-link-contente431de1c-1b0c-4956-8ba8-9d1010d33372"
+     class="sf-depth-2 sf-no-children"><a href="/academics/schmidt-training-and-technology-center" class="sf-depth-2" target="">Schmidt Training &amp; Technology Center</a></li><li id="main-menu-menu-link-content9f8c49a3-171c-432a-a0fa-4e571a688e5e"
+     class="sf-depth-2 sf-no-children"><a href="/academics/yocum-library" title="Yocum Library Home Page" class="sf-depth-2">Yocum Library</a></li></ul></li><li id="main-menu-menu-link-contenta7325e6a-0a91-4d0b-81db-43dcbeec1f76"
+     class="sf-depth-1 menuparent"><a href="/admissions?event_type=13" class="sf-depth-1 menuparent" target="">ADMISSIONS</a><ul><li id="main-menu-menu-link-contentc7771005-3a68-4bec-a6b6-650d46157b6b"
+     class="sf-depth-2 sf-no-children"><a href="/admissions/get-started" class="sf-depth-2">How to Get Started</a></li><li id="main-menu-menu-link-contente3c50fbe-9f0a-42d8-a210-61540c9eefea"
+     class="sf-depth-2 sf-no-children"><a href="/admissions/financial-aid" title="Financial Aid and Scholarships" class="sf-depth-2">Financial Aid / Scholarships</a></li><li id="main-menu-menu-link-content4cb6bafe-f2fd-4296-886d-a25b65648321"
+     class="sf-depth-2 sf-no-children"><a href="/admissions/placement-testing" class="sf-depth-2">Placement Testing</a></li><li id="main-menu-menu-link-contentb87fce8b-e20c-4775-b5c3-727690dd5f71"
+     class="sf-depth-2 sf-no-children"><a href="/admissions/tuition-and-fees" class="sf-depth-2">Tuition and Fees</a></li><li id="main-menu-menu-link-content2e01029c-cbe3-4f31-b720-7fc5d3798191"
+     class="sf-depth-2 sf-no-children"><a href="/events?event_type=13" title="Admissions Events" class="sf-depth-2">Admissions Events</a></li><li id="main-menu-menu-link-contentf024129d-b8b2-4192-9a93-885cfa7765ce"
+     class="sf-depth-2 sf-no-children"><a href="/admissions/admissions-faqs" class="sf-depth-2">Admissions FAQs</a></li><li id="main-menu-menu-link-contentb9c2cfaf-8145-406d-864a-a11d49ddab0a"
+     class="sf-depth-2 sf-no-children"><a href="/admissions/orientation" class="sf-depth-2">Orientation</a></li><li id="main-menu-menu-link-content5fc84277-857a-48b3-bf6e-a02fc594e3bf"
+     class="sf-depth-2 sf-no-children"><a href="/admissions/staff" class="sf-depth-2" target="" title="Admissions Staff">Meet the Staff</a></li><li id="main-menu-menu-link-content714c183e-b52a-4e41-a154-17427bb1f97a"
+     class="sf-depth-2 sf-no-children"><a href="/sinkingspring" class="sf-depth-2" target="">Sinking Spring Additional Location</a></li></ul></li><li id="main-menu-menu-link-content90c6abb5-ed87-4ad0-b4ac-48bc1934c5db"
+     class="sf-depth-1 menuparent"><a href="/student-life?event_type=18" class="sf-depth-1 menuparent" target="">STUDENT LIFE</a><ul><li id="main-menu-menu-link-contentd57a1b7b-bb5e-442a-9dd3-abcf766ee397"
+     class="sf-depth-2 sf-no-children"><a href="http://racc.bncollege.com/" class="sf-depth-2 sf-external" target="_blank">Bookstore</a></li><li id="main-menu-menu-link-content414b3d69-b147-4732-b6d9-a1d59a0e7f0c"
+     class="sf-depth-2 sf-no-children"><a href="/student-life/clubs-and-organizations" class="sf-depth-2">Clubs and Organizations</a></li><li id="main-menu-menu-link-content8bb8893c-1889-4426-a677-834bd21ca5d9"
+     class="sf-depth-2 sf-no-children"><a href="/student-life/fitness-center" class="sf-depth-2">Fitness Center</a></li><li id="main-menu-menu-link-content5ade0190-89c8-43ef-8169-4793ad3844da"
+     class="sf-depth-2 sf-no-children"><a href="/student-life/graduation" class="sf-depth-2">Graduation</a></li><li id="main-menu-menu-link-contenta13e2e25-aad5-4d1c-80c2-7c910c160e9c"
+     class="sf-depth-2 sf-no-children"><a href="/student-life/leadership-program" title="RACC offers an excellent opportunity available to students who are interested in learning how to become leaders." class="sf-depth-2">Leadership Program</a></li><li id="main-menu-menu-link-contentaa3e23af-6f03-4a3e-8c2a-cd0246993d3a"
+     class="sf-depth-2 sf-no-children"><a href="/student-life/raccy-olympics" class="sf-depth-2">RACCy Olympics</a></li><li id="main-menu-menu-link-content902e1313-15df-41ba-87de-89b8249ec5eb"
+     class="sf-depth-2 sf-no-children"><a href="/student-life/raven-ambassadors" class="sf-depth-2">Raven Ambassadors</a></li><li id="main-menu-menu-link-contentf0ceaf24-1779-40b4-bba3-6191bbf7d2b0"
+     class="sf-depth-2 sf-no-children"><a href="/student-life/student-conduct-and-expectations" class="sf-depth-2">Student Conduct and Expectations</a></li><li id="main-menu-menu-link-contentcde1f27b-72eb-400e-9909-0532f89815fe"
+     class="sf-depth-2 sf-no-children"><a href="/student-life/student-handbook" class="sf-depth-2">Student Handbook and Catalogs</a></li></ul></li><li id="main-menu-menu-link-contenta6e12335-d330-40c3-b002-1821bcbfc221"
+     class="sf-depth-1 menuparent"><a href="/services" class="sf-depth-1 menuparent" target="">SERVICES</a><ul><li id="main-menu-menu-link-content8a604950-248b-4d73-b321-20a362961ced"
+     class="sf-depth-2 sf-no-children"><a href="/services/achievement-center" title="B209 is the place to go to fit together all of the pieces of academic success. You can schedule an appointment to meet with an advisor, tutor or academic coach." class="sf-depth-2">Academic Support</a></li><li id="main-menu-menu-link-content0a7e912b-1327-4742-a06b-6e75b5fe5808"
+     class="sf-depth-2 sf-no-children"><a href="/services/advantage-program" class="sf-depth-2">Advantage Program</a></li><li id="main-menu-menu-link-contenta4443a1d-c72b-4bc1-93f5-60867f135744"
+     class="sf-depth-2 sf-no-children"><a href="/services/assessment-services" class="sf-depth-2">Assessment Services</a></li><li id="main-menu-menu-link-content3021d0ed-9a36-4d97-8a09-a49e0447aaab"
+     class="sf-depth-2 sf-no-children"><a href="/services/career-link" class="sf-depth-2">CareerLink</a></li><li id="main-menu-menu-link-content54116f8a-c553-4929-a65d-e5c0ce1e0a17"
+     class="sf-depth-2 sf-no-children"><a href="/services/career-services" class="sf-depth-2">Career Services</a></li><li id="main-menu-menu-link-contente300fd01-5445-4ef4-b657-fd0713ae5a5c"
+     class="sf-depth-2 sf-no-children"><a href="/services/disability-services" class="sf-depth-2">Disability Services</a></li><li id="main-menu-menu-link-content79bdaf45-9c39-4656-bc03-07bb9cdd492b"
+     class="sf-depth-2 sf-no-children"><a href="/services/information-services" class="sf-depth-2" target="">Information Services</a></li><li id="main-menu-menu-link-content20be545a-a116-46cf-b13b-8c60156034ae"
+     class="sf-depth-2 sf-no-children"><a href="/services/keys-program" class="sf-depth-2">KEYS Program</a></li><li id="main-menu-menu-link-contentf25cd5d9-2bc6-491a-8a1d-11579dc3618f"
+     class="sf-depth-2 sf-no-children"><a href="/services/nursing-mothers-room" class="sf-depth-2">Nursing Mother&#039;s Room</a></li><li id="main-menu-menu-link-content055fac5d-1194-415e-96d5-7e12d4998bbe"
+     class="sf-depth-2 sf-no-children"><a href="/services/perkins" class="sf-depth-2">Perkins</a></li><li id="main-menu-menu-link-contentdb4575c8-48a4-4a9f-8c7e-da54c6bdabe9"
+     class="sf-depth-2 sf-no-children"><a href="/services/student-records" class="sf-depth-2">Student Records</a></li><li id="main-menu-menu-link-content014e77fb-c5dc-4bbf-8638-f97e28277d5d"
+     class="sf-depth-2 sf-no-children"><a href="/services/transfer-services" class="sf-depth-2">Transfer Services</a></li><li id="main-menu-menu-link-contentbc0f3f8c-52bc-4445-8e7c-03941b31cb15"
+     class="sf-depth-2 sf-no-children"><a href="/services/upward-bound" class="sf-depth-2">Upward Bound</a></li><li id="main-menu-menu-link-contentac121bca-3b37-4671-b304-fa76535a93c9"
+     class="sf-depth-2 sf-no-children"><a href="/services/veterans-services" class="sf-depth-2">Veterans Services</a></li></ul></li><li id="main-menu-menu-link-content2823d7bd-1a54-49d9-ad8d-589b5ab75e2f"
+     class="sf-depth-1 sf-no-children"><a href="https://webadvisor.racc.edu/WebAdvisor/WebAdvisor?CONSTITUENCY=WBAP&amp;type=P&amp;pid=ST-XWAS002" class="sf-depth-1 sf-external" target="">APPLY</a></li><li id="main-menu-menu-link-content1256c9b3-82a9-479b-8786-012c231c66ef"
+     class="sf-depth-1 menuparent"><a href="" class="sf-depth-1 menuparent" target="">MORE</a><ul><li id="main-menu-menu-link-content7f6ef2ac-9451-42cc-bd62-27dc9cf9db04"
+     class="sf-depth-2 sf-no-children"><a href="https://myracc.racc.edu/c/portal/login" class="sf-depth-2 sf-external" target="">myRacc</a></li><li id="main-menu-menu-link-content2db4d90e-3d4e-432a-aefb-d510da4336e1"
+     class="sf-depth-2 sf-no-children"><a href="http://millercenter.racc.edu/" class="sf-depth-2 sf-external" target="">Miller Center For The Arts</a></li><li id="main-menu-menu-link-content7b73d767-7f2d-45c5-b615-a16336c648f3"
+     class="sf-depth-2 sf-no-children"><a href="/academics/schmidt-training-and-technology-center" class="sf-depth-2" target="">Schmidt Training &amp; Technology Center</a></li></ul></li>
+</ul>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+        <div id='searchheader'>
+            <div id='topbarsearch'></div>
+            <form class="search-block-form" data-drupal-selector="search-block-form" action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+			<div class="js-form-item form-item js-form-type-search form-type-search js-form-item-keys form-item-keys form-no-label">
+      <label for="edit-keys" class="visually-hidden">Search</label>
+        <input title="Enter the terms you wish to search for." placeholder="Search RACC" data-drupal-selector="edit-keys" type="search" id="edit-keys" name="keys" value="" size="15" maxlength="128" class="form-search" />
+
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" value="Search" class="button js-form-submit form-submit" />
+</div>
+
+	</form>
+
+        </div>
+    </header>
+
+    
+    
+
+    
+
+      <div class="region--highlighted region region-highlighted">
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+  </div>
+
+
+    
+
+                <div id="popup">
+            <div class="content-popup">
+                <div class="close"><a href="#" id="close"><i class="fa fa-close"></i></a></div>
+                <div>
+                    <div class="views-element-container"><div class="popup-alerts view view-alerts view-id-alerts view-display-id-default js-view-dom-id-37f50db4b584d2bbfee8d3273b16e797e5659f1347cfa1c68eaa898e95c5e8e2">
+  
+    
+      
+      <div class="view-empty">
+      Not results
+    </div>
+  
+          </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="popup-overlay"></div>
+        
+    <main role="main">
+        <a id="main-content" tabindex="-1"></a>
+        <div class="page-container">
+            
+            
+            <div class="page-content-full">
+                <div class="layout-content">
+                      <div class="region--content region region-content">
+    <div id="block-racc-content">
+  
+    
+
+  <div>
+          <div class="page-hp">
+    <div class="first_slider_hp">
+        <div class="block-region-first-slider"><div class="views-element-container">
+  
+    
+
+  <div>
+          <div><div class="slider-hp view view-home-slider view-id-home_slider view-display-id-block_1 js-view-dom-id-32edcdeb3242dfc45dbdca087dd083495fea745456561fbd338bdc630be0213e">
+  
+    
+      
+      <div class="view-content">
+      
+<div>
+    
+<div id="flexslider-1" class="flexslider optionset-default">
+ 
+<ul class="slides">
+    
+<li>
+    <div class='slider-inside-text'><p class="field-content slide-title"><a href="https://www.racc.edu/registertoday?utm_source=S2hero&amp;utm_campaign=Spring20&amp;utm_medium=banner&amp;utm_content=title">It&#039;s not too late.</a></p><p>Spring 2 classes start February 17. <a href="https://www.racc.edu/registertoday?utm_source=S2hero&amp;amp;utm_campaign=Spring20&amp;amp;utm_medium=link&amp;amp;utm_content=learn">Register today</a>!</p></div>  
+<div class="img-container">
+    <img src="/sites/default/files/2020-01/Spring2-Hero.jpg" width="1600" height="1382" alt="Register for Spring classes" />
+    <div class="alt-img">Register for Spring classes</div>
+    <div class="title-img"></div>
+</div>
+
+
+    </li>
+<li>
+    <div class='slider-inside-text'><p class="field-content slide-title"><a href="https://www.racc.edu/openenrollment?utm_source=homepage&amp;utm_medium=hero&amp;utm_campaign=OpenEnroll&amp;utm_content=banner">Join us for Open Enrollment Day</a></p><p>Register for classes on February 4. <a href="/openenrollment?utm_source=homepage&amp;utm_medium=hero&amp;utm_campaign=OpenEnroll&amp;utm_content=link">Learn more</a>.</p></div>  
+<div class="img-container">
+    <img src="/sites/default/files/2020-01/OpenEnroll-Hero.jpg" width="1600" height="1382" alt="Open Enrollment Day" />
+    <div class="alt-img">Open Enrollment Day</div>
+    <div class="title-img"></div>
+</div>
+
+
+    </li>
+<li>
+    <div class='slider-inside-text'><p class="field-content slide-title"><a href="https://www.racc.edu/events/power-systems-institute-psi-information-session?utm_source=website&amp;utm_campaign=PSI&amp;utm_medium=hero&amp;utm_content=title">Get ready for a career that reaches new heights</a></p><p>FirstEnergy's Power Systems Institute. <a href="https://www.racc.edu/events/power-systems-institute-psi-information-session?utm_source=website&amp;amp;amp;utm_campaign=PSI&amp;amp;amp;utm_medium=hero&amp;amp;amp;utm_content=link">Learn more</a>.</p></div>  
+<div class="img-container">
+    <img src="/sites/default/files/2019-10/PSI-Hero.jpg" width="1600" height="1382" alt="FirstEnergy&#039;s Power Systems Institute" />
+    <div class="alt-img">FirstEnergy&amp;#039;s Power Systems Institute</div>
+    <div class="title-img"></div>
+</div>
+
+
+    </li>
+<li>
+    <div class='slider-inside-text'><p class="field-content slide-title"><a href="https://www.racc.edu/dental?utm_source=website&amp;utm_campaign=dental&amp;utm_medium=hero&amp;utm_content=title">Become a Dental Assistant</a></p><p>Classes start February 24th. <a href="https://www.racc.edu/dental?utm_source=website&amp;amp;utm_campaign=dental&amp;amp;utm_medium=hero&amp;amp;utm_content=link">Sign up today</a>!</p></div>  
+<div class="img-container">
+    <img src="/sites/default/files/2020-01/Dental-Hero-3.jpg" width="1600" height="1382" alt="Dental Assistant Program" />
+    <div class="alt-img">Dental Assistant Program</div>
+    <div class="title-img"></div>
+</div>
+
+
+    </li>
+<li>
+    <div class='slider-inside-text'><p class="field-content slide-title"><a href="https://www.racc.edu/LW4?utm_source=website&amp;utm_campaign=LW4&amp;utm_medium=hero&amp;utm_content=title">&quot;RACC is a great place to continue your education&quot; - LW4</a></p><p><a href="https://www.racc.edu/LW4?utm_source=website&amp;utm_campaign=LW4&amp;utm_medium=hero&amp;utm_content=link">Lonnie Walker, IV</a></p></div>  
+<div class="img-container">
+    <img src="/sites/default/files/2019-10/Lonnie-Hero.jpg" width="1600" height="1382" alt="Lonnie Walker, IV" />
+    <div class="alt-img">Lonnie Walker, IV</div>
+    <div class="title-img"></div>
+</div>
+
+
+    </li>
+</ul>
+</div>
+
+</div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+<div>
+  
+    
+
+  <div>
+          
+      </div>
+</div>
+
+
+
+
+
+</div>
+    </div>
+    <div class="link-block">
+        <div class="block-region-link-block"><div>
+  
+    
+
+  <div>
+          
+            <div class="field field--name-field-link field--type-link field--label-hidden field__item"><a href="/admissions/enrollment">Enroll Now</a></div>
+      
+      </div>
+</div>
+
+
+
+
+
+</div>
+    </div>
+
+    <div class="tabs_hp">
+        <div class="block-region-tabs"><div class="views-element-container">
+  
+    
+
+  <div>
+          <div><div class="blocks-information view view-blocks-information view-id-blocks_information view-display-id-block_1 js-view-dom-id-7d75301eebf0e980050633d0420a42d9d3a703d7efc21c73dcd1c83c352dd189">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="title-ihp">
+    
+            <div class="field field--name-field-title-block-bi field--type-string field--label-hidden field__item">Prospective Students</div>
+      
+</div>
+
+<div class="block-ihp">
+    <div class="image-ihp">
+        
+            <div class="field field--name-field-image-block-info field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/iwantto.png" width="775" height="388" alt="I Want to (Prospective Students)" />
+    <div class="alt-img">I Want to (Prospective Students)</div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      
+    </div>
+    <div class="image-hover-ihp">
+        
+            <div class="field field--name-field-image-hover-bi field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/iwantto-red.png" width="775" height="388" alt="I Want to (Prospective Students)" />
+    <div class="alt-img">I Want to (Prospective Students)</div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      
+    </div>
+
+    <div class="bottom-row">
+        <div class="ihp-column-left">
+            <div class="ihp-column-left-title">
+                
+            <div class="field field--name-field-title-column-left-bi field--type-string-long field--label-hidden field__item">PROSPECTIVE STUDENTS:</div>
+      
+            </div>
+            
+            <div class="clearfix text-formatted field field--name-field-column-left-block-info field--type-text-long field--label-hidden field__item"><ul><li><a href="/admissions/get-started">How to Get Started</a></li>
+	<li><a href="http://catalog.racc.edu/content.php?catoid=11&amp;navoid=416">View our Programs of Study</a></li>
+	<li><a href="https://prodselfservice.racc.edu/Student/Courses" target="_blank">Search our Course Offerings</a></li>
+	<li><a href="/academics/online-learning">Online Learning and Education</a></li>
+	<li><a href="/academics/workforce-development">Workforce Development (STTC)</a></li>
+	<li><a href="/academics/community-education">Community Education</a></li>
+</ul></div>
+      
+        </div>
+        <div class="ihp-column-right">
+            <div class="ihp-column-right-title">
+                
+            <div class="field field--name-field-title-column-right-bi field--type-string-long field--label-hidden field__item">Unsure where to begin? No problem!</div>
+      
+            </div>
+            
+            <div class="clearfix text-formatted field field--name-field-column-right-block-info field--type-text-long field--label-hidden field__item"><p>Speak with one of our Enrollment Coordinators by visiting the Welcome Center, calling 610-607-6224, or <strong><a href="https://prodselfservice.racc.edu/Student/guest/prospective-student-information-request" target="_blank">›› complete this information request form ‹‹</a></strong> and we’ll be in touch with you.<br /><a href="https://form.jotform.com/83435870187162" target="_blank">Request a campus tour</a>.</p>
+</div>
+      
+        </div>
+    </div>
+</div>
+
+</div>
+    <div class="views-row"><div class="title-ihp">
+    
+            <div class="field field--name-field-title-block-bi field--type-string field--label-hidden field__item">Get Started</div>
+      
+</div>
+
+<div class="block-ihp">
+    <div class="image-ihp">
+        
+            <div class="field field--name-field-image-block-info field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/Layer-16_1.jpg" width="792" height="533" alt="Apply Now" />
+    <div class="alt-img">Apply Now</div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      
+    </div>
+    <div class="image-hover-ihp">
+        
+            <div class="field field--name-field-image-hover-bi field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/Layer-16-red_1.jpg" width="792" height="533" alt="Apply Now Overlay" />
+    <div class="alt-img">Apply Now Overlay</div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      
+    </div>
+
+    <div class="bottom-row">
+        <div class="ihp-column-left">
+            <div class="ihp-column-left-title">
+                
+            <div class="field field--name-field-title-column-left-bi field--type-string-long field--label-hidden field__item">I am a:</div>
+      
+            </div>
+            
+            <div class="clearfix text-formatted field field--name-field-column-left-block-info field--type-text-long field--label-hidden field__item"><ul><li><a href="/admissions/degree-seeking">Degree-Seeking Student</a></li>
+	<li><a href="/admissions/early-admissions">Early Admission Student</a></li>
+	<li><a href="/admissions/dual-enrollment-application-and-course-registration">Dual Enrollment Student</a></li>
+	<li><a href="/admissions/non-degree-students">Non-Degree Student</a></li>
+	<li><a href="/admissions/guest-students">Guest Student</a></li>
+	<li><a href="/admissions/college-credit-high-school-students">College Credit for High School Students</a></li>
+	<li><a href="/admissions/international-students">International Student</a></li>
+</ul></div>
+      
+        </div>
+        <div class="ihp-column-right">
+            <div class="ihp-column-right-title">
+                
+            <div class="field field--name-field-title-column-right-bi field--type-string-long field--label-hidden field__item">Unsure where to begin? No problem.</div>
+      
+            </div>
+            
+            <div class="clearfix text-formatted field field--name-field-column-right-block-info field--type-text-long field--label-hidden field__item"><p>Speak with one of our Enrollment Coordinators by visiting the Welcome Center, calling 610-607-6224, or complete this <a href="https://prodselfservice.racc.edu/Student/guest/prospective-student-information-request" target="_blank">Information Request</a> and we’ll be in touch with you. <a href="https://form.jotform.com/83435870187162" target="_blank">Request a campus tour</a>.</p>
+</div>
+      
+        </div>
+    </div>
+</div>
+
+</div>
+    <div class="views-row"><div class="title-ihp">
+    
+            <div class="field field--name-field-title-block-bi field--type-string field--label-hidden field__item">How To Pay for College</div>
+      
+</div>
+
+<div class="block-ihp">
+    <div class="image-ihp">
+        
+            <div class="field field--name-field-image-block-info field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/howtopayforcollege.png" width="775" height="388" alt="How To Pay for College" />
+    <div class="alt-img">How To Pay for College</div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      
+    </div>
+    <div class="image-hover-ihp">
+        
+            <div class="field field--name-field-image-hover-bi field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/howtopayforcollege-red.png" width="775" height="388" alt="How To Pay for College Overlay" />
+    <div class="alt-img">How To Pay for College Overlay</div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      
+    </div>
+
+    <div class="bottom-row">
+        <div class="ihp-column-left">
+            <div class="ihp-column-left-title">
+                
+            <div class="field field--name-field-title-column-left-bi field--type-string-long field--label-hidden field__item">Tuition and Payment:</div>
+      
+            </div>
+            
+            <div class="clearfix text-formatted field field--name-field-column-left-block-info field--type-text-long field--label-hidden field__item"><ul><li><a href="/admissions/cashiers-office">Cashier's Office</a></li>
+	<li><a href="/admissions/payment-information#defer">Deferred Payment Plan</a></li>
+	<li><a href="/sites/default/files/imported/HEA/NetPriceCalc/npcalc.htm">Net Price Calculator</a></li>
+	<li><a href="/admissions/payment-information">Payment Information</a></li>
+	<li><a href="/admissions/tuition-and-fees">Tuition and Fees</a></li>
+</ul></div>
+      
+        </div>
+        <div class="ihp-column-right">
+            <div class="ihp-column-right-title">
+                
+            <div class="field field--name-field-title-column-right-bi field--type-string-long field--label-hidden field__item">Additional Financial Aid Information</div>
+      
+            </div>
+            
+            <div class="clearfix text-formatted field field--name-field-column-right-block-info field--type-text-long field--label-hidden field__item"><ul><li><a href="/admissions/financial-aid">Financial Aid</a></li>
+	<li><a href="/admissions/scholarships">Scholarships</a></li>
+	<li><a href="/admissions/financial-aid-veterans">Veterans</a></li>
+</ul></div>
+      
+        </div>
+    </div>
+</div>
+
+</div>
+    <div class="views-row"><div class="title-ihp">
+    
+            <div class="field field--name-field-title-block-bi field--type-string field--label-hidden field__item">Campus Life</div>
+      
+</div>
+
+<div class="block-ihp">
+    <div class="image-ihp">
+        
+            <div class="field field--name-field-image-block-info field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/studentelife.png" width="775" height="388" alt="Student Life" />
+    <div class="alt-img">Student Life</div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      
+    </div>
+    <div class="image-hover-ihp">
+        
+            <div class="field field--name-field-image-hover-bi field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/studentelife-red.png" width="775" height="388" alt="Student Life Overlay" />
+    <div class="alt-img">Student Life Overlay</div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      
+    </div>
+
+    <div class="bottom-row">
+        <div class="ihp-column-left">
+            <div class="ihp-column-left-title">
+                
+            <div class="field field--name-field-title-column-left-bi field--type-string-long field--label-hidden field__item">Services for Students</div>
+      
+            </div>
+            
+            <div class="clearfix text-formatted field field--name-field-column-left-block-info field--type-text-long field--label-hidden field__item"><ul><li><a href="/services/career-services">Career Services</a></li>
+	<li><a href="/services/disability-services">Disability Services</a></li>
+	<li><a href="/services/student-records">Records Office</a></li>
+	<li><a href="/admissions/transfer-services">Transfer Services</a></li>
+	<li><a href="/services/tutoring-center">Tutoring and Academic Support</a></li>
+	<li><a href="/services/veterans-services">Veteran Services</a></li>
+</ul></div>
+      
+        </div>
+        <div class="ihp-column-right">
+            <div class="ihp-column-right-title">
+                
+            <div class="field field--name-field-title-column-right-bi field--type-string-long field--label-hidden field__item">Activities</div>
+      
+            </div>
+            
+            <div class="clearfix text-formatted field field--name-field-column-right-block-info field--type-text-long field--label-hidden field__item"><ul><li>​​​​​​<a href="/student-life/clubs-and-organizations">Clubs and Organizations</a></li>
+	<li><a href="/student-life/leadership-program">Leadership Program</a></li>
+	<li><a href="/student-life/raccy-olympics">RACCy Olympics</a></li>
+</ul></div>
+      
+        </div>
+    </div>
+</div>
+
+</div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+</div>
+    </div>
+
+    <div class="featured_news_hp">
+        <div class="row-title-link">
+            <h2>FEATURED NEWS</h2>
+            <a href="/news" class="view-all">MORE</a>
+        </div>
+
+        <div class="main-new">
+            <div class="block-region-second-slider"><div class="views-element-container">
+  
+    
+
+  <div>
+          <div><div class="main-block view view-second-slider view-id-second_slider view-display-id-block_2 js-view-dom-id-a4fd81e6f844e0f0d80b9324fe250c46fdc856c40776873deab065aef5fa8cb1">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-image-block-ssh"><div class="field-content mn-image"><a href="/news/chad-deshazo">  
+<div class="img-container">
+    <img src="/sites/default/files/styles/featured_news_home/public/2020-01/Chad-DeShazo_0.jpg?itok=Gf-_Joqp" width="600" height="600" alt="Chad DeShazo – Nursing" class="image-style-featured-news-home" />
+    <div class="alt-img">Chad DeShazo – Nursing</div>
+    <div class="title-img"></div>
+</div>
+
+
+</a></div></div><div class="views-field views-field-nothing"><div class="field-content group-text"><div class="mn-title"><a href="/news?news_type=80">Student Success </a></div>
+<div class="mn-subtitle"><a href="/news/chad-deshazo">Chad DeShazo – Nursing</a></div>
+<div class="mn-body"><p>“RACC was my first choice for nursing.”</p></div></div></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+</div>
+        </div>
+        <div class="last-news">
+            <div class="block-region-featured-news"><div class="views-element-container">
+  
+    
+
+  <div>
+          <div><div class="featured-news view view-features-and-news-in-homepage view-id-features_and_news_in_homepage view-display-id-block_1 js-view-dom-id-546910a6c3286f05ba03a786f850db6724725e6b2e232b003677bbc863d57455">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div><div class="fn-image">  <a href="/news/bridging-cultures-partnership">
+<div class="img-container">
+    <img src="/sites/default/files/styles/featured_news_home/public/2020-01/Alexis-Jardine.jpg?itok=37gN4-_7" width="600" height="600" alt="Alexis Jardine of RACC" class="image-style-featured-news-home" />
+    <div class="alt-img">Alexis Jardine of RACC</div>
+    <div class="title-img"></div>
+</div>
+
+</a>
+</div></div><div><div class="fn-title"><a href="/news/bridging-cultures-partnership" hreflang="en">Reading Area Community College and Court Appointed Special Advocates of Berks County Implement Bridging Cultures Partnership</a></div></div></div>
+    <div class="views-row"><div><div class="fn-image">  <a href="/news/distinguished-faculty-recognition-award">
+<div class="img-container">
+    <img src="/sites/default/files/styles/featured_news_home/public/2020-01/Denise-headshot.jpg?itok=OaFnjG01" width="600" height="600" alt="Denise Strohmayr " class="image-style-featured-news-home" />
+    <div class="alt-img">Denise Strohmayr </div>
+    <div class="title-img"></div>
+</div>
+
+</a>
+</div></div><div><div class="fn-title"><a href="/news/distinguished-faculty-recognition-award" hreflang="en">RACC’s Denise Strohmayr awarded 2020 Dale P. Parnell Distinguished Faculty Recognition Award</a></div></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+</div>
+        </div>
+    </div>
+
+    <div class="upcoming_events_hp">
+        <div class="block-region-upcoming-events"><div class="views-element-container">
+  
+      <h2>Upcoming Events</h2>
+    
+
+  <div>
+          <div><div class="upcoming-events view view-events-in-homepage view-id-events_in_homepage view-display-id-block_1 js-view-dom-id-701e43888db05404c4e2d63f437e507b13c608e028ae354660b70304d5a829eb">
+  
+    
+      <div class="view-header">
+      <a href="/events" class="view-all">MORE</a>
+    </div>
+      
+      <div class="view-content">
+          <div class="views-row"><div><div><div class="ue-date">
+  <span class="month">Feb</span>
+  <span class="day">04</span>
+</div>
+</div></div><div><div class="ue-title"><a href="/events/open-enrollment-0" hreflang="en">Open Enrollment Day</a></div></div></div>
+    <div class="views-row"><div><div><div class="ue-date">
+  <span class="month">Feb</span>
+  <span class="day">04</span>
+</div>
+</div></div><div><div class="ue-title"><a href="/events/virtual-information-session-1" hreflang="en">Online Information Session</a></div></div></div>
+    <div class="views-row"><div><div><div class="ue-date">
+  <span class="month">Feb</span>
+  <span class="day">11</span>
+</div>
+</div></div><div><div class="ue-title"><a href="/events/high-school-seniors-parents-info-session" hreflang="en">Financial Aid Information Session</a></div></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+</div>
+    </div>
+
+    <div class="row-hp">
+        <div class="first_back_image_hp">
+            
+        </div>
+
+        <div class="second_slider_hp">
+                    </div>
+    </div>
+
+      <div class="contact_hp">
+       <div style="display:inline-block"><p><span class="need-more-span">NEED MORE INFO? </span>CALL <a href="tel:+16106076224">1-610-607-6224</a> OR <a href="https://prodselfservice.racc.edu/Student/guest/prospective-student-information-request" target="_blank">COMPLETE THIS INFORMATION REQUEST </a></p></div>
+    </div>
+
+    <div class="row-hp">
+        <div class="second_back_image_hp">
+            <div class="block-region-second-back-image"><div class="views-element-container">
+  
+    
+
+  <div>
+          <div><div class="second-ib-hp view view-first-image-background-homepage view-id-first_image_background_homepage view-display-id-block_2 js-view-dom-id-0b423c6e5942c05fd9f6ef24b4e8cd0c04be186b8ec663243e6f6378b2dd22f6">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row">
+            <div class="field field--name-field-image-block-bh field--type-image field--label-hidden field__item">  
+<div class="img-container">
+    <img src="/sites/default/files/2016-08/third_image_back.jpeg" width="3000" height="2008" alt="" />
+    <div class="alt-img"></div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+      </div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+</div>
+        </div>
+
+        <div class="container_last_row_hp">
+            <div class="last_row_hp">
+                <div class="vi_block_hp">
+                    <div class="block-region-vi-block"><div>
+  
+    
+
+  <div>
+          
+            <div class="field field--name-field-video-block-image field--type-video-embed-field field--label-hidden field__item"><div data-video-embed-field-modal="&lt;div class=&quot;video-embed-field-responsive-video video-embed-field-responsive-modal&quot; style=&quot;width:1024px;&quot;&gt;&lt;iframe width=&quot;854&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;allowfullscreen&quot; src=&quot;https://www.youtube.com/embed/PTi15Qsovi0?autoplay=1&amp;amp;start=0&amp;amp;rel=0&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+" class="video-embed-field-launch-modal">
+<div class="img-container">
+    <img src="/sites/default/files/styles/flexslider_full/public/video_thumbnails/PTi15Qsovi0.jpg?itok=M9tA0EEY" width="800" height="500" alt="" class="image-style-flexslider-full" />
+    <div class="alt-img"></div>
+    <div class="title-img"></div>
+</div>
+
+</div>
+</div>
+      
+            <div class="field field--name-field-title-block field--type-string field--label-hidden field__item">Why Reading Area Community College</div>
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Reading Area Community College has an open admission policy, which means that any student may be eligible for enrollment after the completion of certain steps. These steps include placement testing. Based on their placement test scores, some students without a high school diploma or G.E.D. may be required to complete coursework in Community Education prior to enrolling in credit courses.</p></div>
+      
+      </div>
+</div>
+
+
+
+
+
+</div>
+                </div>
+
+                <div class="red_block_hp">
+                    <div class="block-region-red-block"><div>
+  
+      <h2>About Racc</h2>
+    
+
+  <div>
+          
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div id="aboutracc">
+<p id="title">Reading Area Community College (RACC) is an accredited, comprehensive, open-enrollment education institution that provides the following: Associate degree, Certificate and Diploma Programs; career-focused training; transitional coursework; skills training for business and industry; personal enrichment programs and public service activities. Sponsored by Berks County, the College provides affordable access to meet identified community educational needs.</p>
+</div>
+</div>
+      
+      </div>
+</div>
+
+
+
+
+
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="brands-hp">
+        <div class="block-region-brands"><div class="views-element-container">
+  
+    
+
+  <div>
+          <div><div class="brands-hp view view-brands-in-homepage view-id-brands_in_homepage view-display-id-block_1 js-view-dom-id-c36eab2b863c69075d95623dcd7b4c75206f4fafe1f74f4e0328aa6f99c5824a">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div><div class="bhp-image"><a href="http://millercenter.racc.edu/">  
+<div class="img-container">
+    <img src="/sites/default/files/styles/brand/public/2016-08/Vector-Smart-Object.png?itok=CQFdwzZi" width="88" height="150" alt="Miller Center" class="image-style-brand" />
+    <div class="alt-img">Miller Center</div>
+    <div class="title-img"></div>
+</div>
+
+
+</a></div></div></div>
+    <div class="views-row"><div><div class="bhp-image"><a href="/academics/schmidt-training-and-technology-center">  
+<div class="img-container">
+    <img src="/sites/default/files/styles/brand/public/2016-08/logo1.png?itok=XAF1qfQt" width="222" height="150" alt="Schmidt" class="image-style-brand" />
+    <div class="alt-img">Schmidt</div>
+    <div class="title-img"></div>
+</div>
+
+
+</a></div></div></div>
+    <div class="views-row"><div><div class="bhp-image"><a href="/about-racc/donate">  
+<div class="img-container">
+    <img src="/sites/default/files/styles/brand/public/2016-08/logo2.png?itok=Rd13S8V2" width="149" height="150" alt="Give to RACC" class="image-style-brand" />
+    <div class="alt-img">Give to RACC</div>
+    <div class="title-img"></div>
+</div>
+
+
+</a></div></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+</div>
+    </div>
+</div>
+
+      </div>
+</div>
+
+
+
+
+
+
+  </div>
+
+                </div>            </div>
+        </div>
+
+
+                        
+                                        
+                                        
+
+        <footer class='main_footer'>
+            <div class='footer_mobile'>
+	<div id='m_menu'>
+		
+                        <ul>
+                    <li>
+          <a href="/admissions/get-started" target="" data-drupal-link-system-path="node/156">APPLY</a>
+                  </li>
+              <li>
+          <a href="/about-racc/campus-map-and-directions" target="" data-drupal-link-system-path="node/303">Visit Racc</a>
+                  </li>
+              <li>
+          <a href="/about-racc/donate" target="" data-drupal-link-system-path="node/33">Donate</a>
+                  </li>
+            </ul>
+      
+
+	</div>
+	<div id='mfooterlogo'></div>
+	<div id='mftext'>
+		<p>READING AREA</p>
+		<p>COMMUNITY COLLEGE</p>
+		<p>10 S 2nd St.</p>
+		<p>Reading PA 19602</p>
+		<p><a href="tel:610-372-4721" title="Phone">610-372-4721</a></p>
+		<br>
+		<p>Copyright ©<script type="text/javascript">
+  document.write(new Date().getFullYear());
+</script> </p>
+		<p>RACC</p>
+	</div>
+	<div id='msocialntws'>
+		
+                        <ul>
+                    <li>
+          <a href="https://www.facebook.com/ReadingAreaCommunityCollege" class=" fa fa-facebook" target="_blank" title="Facebook">F</a>
+                  </li>
+              <li>
+          <a href="https://twitter.com/racc_edu" class="fa fa-twitter" target="_blank" title="Twitter">T</a>
+                  </li>
+              <li>
+          <a href="https://www.youtube.com/user/RACCvideopage" class=" fa fa-youtube" target="_blank" title="Youtube">Y</a>
+                  </li>
+              <li>
+          <a href="https://www.linkedin.com/company/reading-area-community-college" class=" fa fa-linkedin" target="_blank">L</a>
+                  </li>
+              <li>
+          <a href="https://www.snapchat.com/add/racc_edu" class="fa fa-snapchat" target="_blank" title="Snapchat">S</a>
+                  </li>
+              <li>
+          <a href="https://www.instagram.com/RACC_edu/" class=" fa fa-instagram" target="_blank">I</a>
+                  </li>
+            </ul>
+      
+
+	</div>
+</div>
+<div class='f_links'>
+	<div class='f_bigrow'>
+		
+                        <ul>
+                    <li>
+          <a href="" target="">Popular Links</a>
+                                              <ul>
+                    <li>
+          <a href="/about-racc/business-opportunities" target="" data-drupal-link-system-path="node/27">Business Opportunities</a>
+                  </li>
+              <li>
+          <a href="/about-racc/campus-map-and-directions" target="" data-drupal-link-system-path="node/303">Campus Map and Directions</a>
+                  </li>
+              <li>
+          <a href="/about-racc/human-resources" target="" data-drupal-link-system-path="node/37">Human Resources</a>
+                  </li>
+            </ul>
+      
+                  </li>
+              <li>
+          <a href="">Contact Information</a>
+                                              <ul>
+                    <li>
+          <a href="/contacts/faculty-and-staff-directory" target="" data-drupal-link-system-path="node/569">Faculty/Staff Directory</a>
+                  </li>
+              <li>
+          <a href="/student-life/report-concern-or-incident" data-drupal-link-system-path="node/3838">Incident Reporting</a>
+                  </li>
+              <li>
+          <a href="/services/information-services" target="" data-drupal-link-system-path="node/304">IT Support</a>
+                  </li>
+              <li>
+          <a href="/about-racc/safety-security" target="" data-drupal-link-system-path="node/306">Safety and Security</a>
+                  </li>
+              <li>
+          <a href="/services/website-support" target="" data-drupal-link-system-path="node/313">Webmaster</a>
+                  </li>
+            </ul>
+      
+                  </li>
+              <li>
+          <a href="">Policies</a>
+                                              <ul>
+                    <li>
+          <a href="/heoa" target="" data-drupal-link-system-path="node/1940">Consumer Info (HEOA)</a>
+                  </li>
+              <li>
+          <a href="/right-know-act" target="" data-drupal-link-system-path="node/1936">Right to Know Act</a>
+                  </li>
+              <li>
+          <a href="/about-racc/title-ix" target="">Title IX</a>
+                  </li>
+              <li>
+          <a href="/about-racc/affirmative-action" target="" data-drupal-link-system-path="node/38">Non-Discrimination / EOE Statement</a>
+                  </li>
+              <li>
+          <a href="/smoketobacco-free" target="" data-drupal-link-system-path="node/46">Smoke/Tobacco-Free</a>
+                  </li>
+              <li>
+          <a href="/disclaimer" target="" data-drupal-link-system-path="node/1935">Disclaimer</a>
+                  </li>
+              <li>
+          <a href="/privacy" title="RACC&#039;s Privacy Policy" data-drupal-link-system-path="node/1941">Privacy</a>
+                  </li>
+            </ul>
+      
+                  </li>
+              <li>
+          <a href="">Login Center</a>
+                                              <ul>
+                    <li>
+          <a href="https://myracc.racc.edu/" target="">myRACC Portal</a>
+                  </li>
+              <li>
+          <a href="https://racc.omnilert.net/" target="_blank" title="Omnilert Subscriber Portal Link (not admin)">Omnilert (Alerts)</a>
+                  </li>
+            </ul>
+      
+                  </li>
+            </ul>
+      
+
+	</div>
+	<div id='division'></div>
+		<div class='f_social'>
+			
+                        <ul>
+                    <li>
+          <a href="https://www.facebook.com/ReadingAreaCommunityCollege" class=" fa fa-facebook" target="_blank" title="Facebook">F</a>
+                  </li>
+              <li>
+          <a href="https://twitter.com/racc_edu" class="fa fa-twitter" target="_blank" title="Twitter">T</a>
+                  </li>
+              <li>
+          <a href="https://www.youtube.com/user/RACCvideopage" class=" fa fa-youtube" target="_blank" title="Youtube">Y</a>
+                  </li>
+              <li>
+          <a href="https://www.linkedin.com/company/reading-area-community-college" class=" fa fa-linkedin" target="_blank">L</a>
+                  </li>
+              <li>
+          <a href="https://www.snapchat.com/add/racc_edu" class="fa fa-snapchat" target="_blank" title="Snapchat">S</a>
+                  </li>
+              <li>
+          <a href="https://www.instagram.com/RACC_edu/" class=" fa fa-instagram" target="_blank">I</a>
+                  </li>
+            </ul>
+      
+
+	</div>
+</div>
+
+<div class='f_info'>
+	<div>
+		<div id='footerlogo'></div>
+		<div class='f_description_area'>
+				<div class='f_desc_row1'>
+					<p>Copyright ©<script type="text/javascript">
+  document.write(new Date().getFullYear());
+</script> Reading Area Community College</p>
+					<p>10 South Second Street, Reading, PA 19602 <a href="tel:610-372-4721" title="Reading Area Community College Phone">610-372-4721</a></p>
+				</div>
+				<div class='f_desc_row2'>
+					<p>Accredited by the Middle States Commission <br> on Higher Education</p>
+					<br>
+					<p>3624 Market Street, Philadelphia, PA 19104 <a href="tel:215-662-5606" title="Middle States Commission on Higher Education Phone">215-662-5606</a></p>
+				</div>
+			</p>
+		</div>
+	</div>
+</div>        </footer>
+    </main>
+
+</div>
+
+  </div>
+
+
+<script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"home","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":true},"livechat":{"licence_number":"10103932","livechat_mobile":"No","is_admin_page":false},"omega_breakpoints":{"omega.standard.all":{"query":"all and (min-width: 0px)","name":"All"},"omega.standard.mobile_portrait":{"query":"all and (max-width: 479px)","name":"Mobile Portrait"},"omega.standard.mobile_landscape":{"query":"all and (min-width: 480px) and (max-width: 767px)","name":"Mobile Landscape"},"omega.standard.narrow":{"query":"all and (min-width: 768px) and (max-width: 1023px)","name":"Narrow"},"omega.standard.normal":{"query":"all and (min-width: 1024px) and (max-width: 1219px)","name":"Normal"},"omega.standard.wide":{"query":"all and (min-width: 1220px)","name":"Wide"}},"omega":{"activeLayout":"front","activeTheme":"racc"},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"flexslider":{"optionsets":{"default":{"animation":"fade","animationSpeed":600,"direction":"horizontal","slideshow":true,"easing":"swing","smoothHeight":false,"reverse":false,"slideshowSpeed":7000,"animationLoop":true,"randomize":false,"startAt":0,"itemWidth":0,"itemMargin":0,"minItems":0,"maxItems":0,"move":0,"directionNav":true,"controlNav":true,"thumbCaptions":false,"thumbCaptionsBoth":false,"keyboard":true,"multipleKeyboard":false,"mousewheel":false,"touch":true,"prevText":"Previous","nextText":"Next","namespace":"flex-","selector":".slides \u003E li","sync":"","asNavFor":"","initDelay":0,"useCSS":true,"video":false,"pausePlay":false,"pauseText":"Pause","playText":"Play","pauseOnAction":true,"pauseOnHover":false,"controlsContainer":".flex-control-nav-container","manualControls":""}},"instances":{"flexslider-1":"default"}},"ajaxTrustedUrl":{"\/search\/node":true},"superfish":{"superfish-main-menu":{"id":"superfish-main-menu","sf":{"delay":"1","animation":{"opacity":"show"},"speed":"fast","autoArrows":false},"plugins":{"smallscreen":{"mode":"window_width","breakpoint":1024,"title":"Main menu"},"supposition":true,"supersubs":true}}},"user":{"uid":0,"permissionsHash":"f191b09f96117fefaf3a53bdc25dbd3abe7443e67b3536779282ab152f3be414"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=3.4.1"></script>
+<script src="/core/assets/vendor/underscore/underscore-min.js?v=1.8.3"></script>
+<script src="/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.0"></script>
+<script src="/core/assets/vendor/backbone/backbone-min.js?v=1.2.3"></script>
+<script src="/core/misc/drupalSettingsLoader.js?v=8.8.1"></script>
+<script src="/core/misc/drupal.js?v=8.8.1"></script>
+<script src="/core/misc/drupal.init.js?v=8.8.1"></script>
+<script src="/modules/google_analytics/js/google_analytics.js?v=8.8.1"></script>
+<script src="/themes/racc/js/lib/knockout-3.4.0.js?v=1"></script>
+<script src="/themes/racc/js/block_info.js?v=1"></script>
+<script src="/themes/racc/js/red_block.js?v=1"></script>
+<script src="/themes/racc/js/search.js?v=1"></script>
+<script src="/themes/racc/js/aside_menu.js?v=1"></script>
+<script src="/themes/racc/js/popup.js?v=1"></script>
+<script src="/themes/racc/js/faculty_view.js?v=1"></script>
+<script src="/themes/racc/js/htmltooltip.js?v=1"></script>
+<script src="/themes/racc/js/racc.js?v=1"></script>
+<script src="/modules/live_chat/js/livechat.js?v=1.x"></script>
+<script src="/core/misc/debounce.js?v=8.8.1"></script>
+<script src="/core/misc/announce.js?v=8.8.1"></script>
+<script src="/core/assets/vendor/matchMedia/matchMedia.min.js?v=0.2.0"></script>
+<script src="/core/misc/displace.js?v=8.8.1"></script>
+<script src="/themes/omega/omega_tools/omega/js/omega.js?v=8.8.1"></script>
+<script src="/themes/racc/js/landing_pages.js?q4twkd"></script>
+<script src="/themes/racc/js/socialfeed.js?q4twkd"></script>
+<script src="/themes/racc/js/basic_pages.js?q4twkd"></script>
+<script src="/libraries/colorbox/jquery.colorbox-min.js?v=8.8.1"></script>
+<script src="/modules/colorbox/js/colorbox.js?v=8.8.1"></script>
+<script src="/modules/colorbox/styles/default/colorbox_style.js?v=8.8.1"></script>
+<script src="/modules/video_embed_field/js/video-embed-field.colorbox.js?q4twkd"></script>
+<script src="/sites/all/libraries/flexslider/jquery.flexslider-min.js?q4twkd"></script>
+<script src="/modules/flexslider/assets/js/flexslider.load.js?q4twkd"></script>
+<script src="/modules/superfish/../../sites/all/libraries/superfish/superfish.js?v=8.8.1"></script>
+<script src="/sites/all/libraries/superfish/superfish.js?v=8.8.1"></script>
+<script src="/modules/superfish/../../sites/all/libraries/superfish/jquery.hoverIntent.minified.js?v=8.8.1"></script>
+<script src="/sites/all/libraries/superfish/jquery.hoverIntent.minified.js?v=8.8.1"></script>
+<script src="/modules/superfish/../../sites/all/libraries/superfish/sfsmallscreen.js?v=8.8.1"></script>
+<script src="/sites/all/libraries/superfish/sfsmallscreen.js?v=8.8.1"></script>
+<script src="/modules/superfish/../../sites/all/libraries/superfish/supposition.js?v=8.8.1"></script>
+<script src="/sites/all/libraries/superfish/supposition.js?v=8.8.1"></script>
+<script src="/modules/superfish/../../sites/all/libraries/superfish/supersubs.js?v=8.8.1"></script>
+<script src="/sites/all/libraries/superfish/supersubs.js?v=8.8.1"></script>
+<script src="/modules/superfish/js/superfish.js?v=2.0"></script>
+
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"3f11fbe7a6","applicationID":"289103304","transactionName":"NVdVMkdXWBJYUxUNXwwddgVBX1kPFkAAA1U9UVYFXVM=","queueTime":0,"applicationTime":18,"atts":"GRBWRA9NSxw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

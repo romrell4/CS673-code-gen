@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7"  lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7"  lang="en" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8"  lang="en" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"  lang="en" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html  lang="en" dir="ltr"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"e075a55144",applicationID:"83250521"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<link rel="shortcut icon" href="https://madisoncollege.edu/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="Apply now to start classes in 2019. Choose from 150 programs and certificates." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="canonical" href="https://madisoncollege.edu/home-new" />
+<link rel="shortlink" href="https://madisoncollege.edu/node/43031" />
+  <title>Madison Area Technical College</title>
+
+      <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width">
+    <!--[if IEMobile]><meta http-equiv="cleartype" content="on"><![endif]-->
+
+  <link type="text/css" rel="stylesheet" href="https://madisoncollege.edu/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://madisoncollege.edu/files/css/css_vZ_wrMQ9Og-YPPxa1q4us3N7DsZMJa-14jShHgRoRNo.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://madisoncollege.edu/files/css/css_iNzOtZX4CxdJDEQTSQPsSY7a51NDn4oQNRglxiSnfcs.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://madisoncollege.edu/files/css/css_fA4bazoLK0TpnZxSvhHqDyf3MXmW141G1wxl7imL_68.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://madisoncollege.edu/files/css/css_fjpO2yD3W62eoWSkEVgsYq-E2a2wypwQUdezOxz8AaM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://madisoncollege.edu/files/css/css_S2Xpl_ggvYKhZVdyRQdEbc8DynuxKk8KNbrZR_m5P30.css" media="print" />
+  <script>window.google_analytics_domain_name = ".madisoncollege.edu";window.google_analytics_uacct = "UA-713339-29";</script>
+<script src="https://madisoncollege.edu/files/js/js_EebRuRXFlkaf356V0T2K_8cnUVfCKesNTxdvvPSEhCM.js"></script>
+<script src="https://madisoncollege.edu/files/js/js_VsCK_9UG7HakLHPml2iD4XdM1sRWjevtVSmaSCLB1UE.js"></script>
+<script src="https://madisoncollege.edu/files/js/js_FOTGn7Guk6TNbAZjgGN1mNhrvEFKc9Y47PuGvdN0zBs.js"></script>
+<script>document.createElement( "picture" );</script>
+<script src="https://madisoncollege.edu/files/js/js_2dtTp4VfRNlMvE5ldEGvQpqQogplbzR5N0OZ6aVQhEA.js"></script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://madisoncollege.edu/files/googleanalytics/analytics.js?q4rrcz","ga");ga("create", "UA-713339-29", {"cookieDomain":".madisoncollege.edu"});ga("require", "displayfeatures");ga("send", "pageview");</script>
+<script src="https://madisoncollege.edu/files/js/js_r3r-Ag5-RnIfk2pdHE8Y3zM-g5f7Zt3qZ8vkTGG_3b8.js"></script>
+<script src="https://madisoncollege.edu/files/js/js_vtdMBVa84rqBKV3qVql8z9Dsxv0CFpJAON9ZIiph9nk.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"mc_15_main","theme_token":"MQ2q-rf--UCp2iGTEag7Ph8el_XCRTENi82KgZeDHtY","jquery_version":"1.10","js":{"sites\/all\/modules\/picture\/picturefill2\/picturefill.min.js":1,"sites\/all\/modules\/picture\/picture.min.js":1,"0":1,"sites\/all\/modules\/eu_cookie_compliance\/js\/eu_cookie_compliance.js":1,"1":1,"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/views_slideshow\/js\/views_slideshow.js":1,"sites\/all\/modules\/eu_cookie_compliance\/js\/jquery.cookie-1.4.1.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/misc\/jquery.form.min.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/jquery_update\/js\/jquery_update.js":1,"sites\/all\/modules\/google_cse\/google_cse.js":1,"sites\/all\/modules\/extlink\/extlink.js":1,"2":1,"sites\/all\/modules\/image_caption\/image_caption.min.js":1,"sites\/all\/libraries\/jquery.cycle\/jquery.cycle.all.js":1,"sites\/all\/modules\/views_slideshow\/contrib\/views_slideshow_cycle\/js\/views_slideshow_cycle.js":1,"sites\/all\/modules\/views\/js\/base.js":1,"misc\/progress.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"3":1,"sites\/all\/modules\/quicktabs\/js\/qt_easyresponsivetabs.js":1,"sites\/all\/modules\/views\/js\/ajax_view.js":1,"sites\/all\/themes\/mc_15_main\/third-party\/slick\/slick.min.js":1,"sites\/all\/themes\/mc_15_main\/js\/libs.min.js":1,"sites\/all\/themes\/mc_15_main\/js\/foundation.min.js":1,"sites\/all\/themes\/mc_15_main\/js\/app.min.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/views_slideshow\/views_slideshow.css":1,"modules\/aggregator\/aggregator.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/google_cse\/google_cse.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/picture\/picture_wysiwyg.css":1,"modules\/search\/search.css":1,"sites\/all\/modules\/siteimprove\/css\/siteimprove.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/extlink\/extlink.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/media\/modules\/media_wysiwyg\/css\/media_wysiwyg.base.css":1,"sites\/all\/modules\/madison_college_user_roles\/css\/user_roles.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/views_slideshow\/views_slideshow_controls_text.css":1,"sites\/all\/modules\/views_slideshow\/contrib\/views_slideshow_cycle\/views_slideshow_cycle.css":1,"sites\/all\/modules\/eu_cookie_compliance\/css\/eu_cookie_compliance.bare.css":1,"sites\/all\/modules\/quicktabs\/css\/responsive-tabs-horizontal.css":1,"sites\/all\/themes\/zen\/system.menus.css":1,"sites\/all\/themes\/mc_15_base\/css\/third-party\/responsive-tables.css":1,"sites\/all\/themes\/mc_15_main\/third-party\/slick\/slick.css":1,"sites\/all\/themes\/mc_15_main\/css\/responsive-tabs-horizontal.css":1,"sites\/all\/themes\/mc_15_main\/css\/mc_15_main.css":1,"sites\/all\/themes\/mc_15_base\/css\/print.css":1}},"googleCSE":{"cx":"012210639945208472575:yzzkyrjbo5o","language":"","resultsWidth":730,"domain":"","showWaterMark":0},"viewsSlideshow":{"front_page_content-block_5_1":{"methods":{"goToSlide":["viewsSlideshowPager","viewsSlideshowSlideCounter","viewsSlideshowCycle"],"nextSlide":["viewsSlideshowPager","viewsSlideshowSlideCounter","viewsSlideshowCycle"],"pause":["viewsSlideshowControls","viewsSlideshowCycle"],"play":["viewsSlideshowControls","viewsSlideshowCycle"],"previousSlide":["viewsSlideshowPager","viewsSlideshowSlideCounter","viewsSlideshowCycle"],"transitionBegin":["viewsSlideshowPager","viewsSlideshowSlideCounter"],"transitionEnd":[]},"paused":0}},"viewsSlideshowPager":{"front_page_content-block_5_1":{"bottom":{"type":"viewsSlideshowPagerFields","master_pager":"0"}}},"viewsSlideshowPagerFields":{"front_page_content-block_5_1":{"bottom":{"activatePauseOnHover":0}}},"viewsSlideshowControls":{"front_page_content-block_5_1":{"bottom":{"type":"viewsSlideshowControlsText"}}},"viewsSlideshowCycle":{"#views_slideshow_cycle_main_front_page_content-block_5_1":{"num_divs":4,"id_prefix":"#views_slideshow_cycle_main_","div_prefix":"#views_slideshow_cycle_div_","vss_id":"front_page_content-block_5_1","effect":"scrollLeft","transition_advanced":1,"timeout":5000,"speed":300,"delay":0,"sync":1,"random":0,"pause":1,"pause_on_click":0,"play_on_hover":0,"action_advanced":0,"start_paused":0,"remember_slide":0,"remember_slide_days":1,"pause_in_middle":0,"pause_when_hidden":0,"pause_when_hidden_type":"full","amount_allowed_visible":"","nowrap":0,"pause_after_slideshow":0,"fixed_height":1,"items_per_slide":1,"wait_for_image_load":1,"wait_for_image_load_timeout":3000,"cleartype":0,"cleartypenobg":0,"advanced_options":"{}"}},"views":{"ajax_path":"\/views\/ajax","ajaxViews":{"views_dom_id:0468b0c7a93b680b6bb8ae2c1ee2f25c":{"view_name":"front_page_content","view_display_id":"block_5","view_args":"","view_path":"node\/43031","view_base_path":null,"view_dom_id":"0468b0c7a93b680b6bb8ae2c1ee2f25c","pager_element":0},"views_dom_id:d497e8e060aa1d5ed9f3fece0472b766":{"view_name":"front_page_content","view_display_id":"block_1","view_args":"","view_path":"node\/43031","view_base_path":null,"view_dom_id":"d497e8e060aa1d5ed9f3fece0472b766","pager_element":0},"views_dom_id:60779e4c8bc236605aae9079ac40598e":{"view_name":"front_page_content","view_display_id":"block_3","view_args":"","view_path":"node\/43031","view_base_path":null,"view_dom_id":"60779e4c8bc236605aae9079ac40598e","pager_element":0},"views_dom_id:7f47b2a79c04faea4a3a3cb6ad142d1e":{"view_name":"front_page_content","view_display_id":"block_4","view_args":"","view_path":"node\/43031","view_base_path":null,"view_dom_id":"7f47b2a79c04faea4a3a3cb6ad142d1e","pager_element":0},"views_dom_id:6d4eba2c2d6a65da030149bb8700b735":{"view_name":"front_page_content","view_display_id":"block_2","view_args":"","view_path":"node\/43031","view_base_path":null,"view_dom_id":"6d4eba2c2d6a65da030149bb8700b735","pager_element":0},"views_dom_id:a69ec5ca615283ec5066e8390066e895":{"view_name":"front_page_content","view_display_id":"block_1","view_args":"","view_path":"node\/43031","view_base_path":null,"view_dom_id":"a69ec5ca615283ec5066e8390066e895","pager_element":0}}},"urlIsAjaxTrusted":{"\/views\/ajax":true,"\/search\/google":true,"\/":true},"extlink":{"extTarget":"_blank","extClass":0,"extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":"(youvisit)|(whatcanidowiththismajor\\.com)","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":0,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"eu_cookie_compliance":{"popup_enabled":1,"popup_agreed_enabled":0,"popup_hide_agreed":1,"popup_clicking_confirmation":1,"popup_scrolling_confirmation":1,"popup_html_info":"\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cdiv\u003E\u003Cstrong\u003ECookie Notice\u003C\/strong\u003E\u003C\/div\u003E\u003Cp\u003EWe use cookies on this site to enhance your experience and improve our marketing efforts. By continuing to browse without changing your browser settings to block or delete cookies, you agree to the storing of cookies and related technologies on your device. \u003Ca href=\u0022\/use-privacy\u0022\u003EMadison College Privacy Notice\u003C\/a\u003E\u003C\/p\u003E    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EGot it!\u003C\/button\u003E\n                \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\u003Cp\u003EBy tapping the Accept button, you agree to us doing so.\u003C\/p\u003E    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EGot it!\u003C\/button\u003E\n                \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","mobile_breakpoint":"768","popup_html_agreed":"\u003Cdiv\u003E\n  \u003Cdiv class=\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EThank you for accepting cookies\u003C\/h2\u003E\u003Cp\u003EYou can now hide this message or find out more about cookies.\u003C\/p\u003E    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button eu-cookie-compliance-hide-button\u0022\u003EHide\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","popup_use_bare_css":1,"popup_height":"auto","popup_width":0,"popup_delay":1000,"popup_link":"\/use-privacy","popup_link_new_window":1,"popup_position":null,"fixed_top_position":1,"popup_language":"en","store_consent":false,"better_support_for_screen_readers":0,"reload_page":0,"domain":"madisoncollege.edu","domain_all_sites":1,"popup_eu_only_js":0,"cookie_lifetime":"100","cookie_session":false,"disagree_do_not_show_popup":0,"method":"default","whitelisted_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\u003Cp\u003EYou have given your consent for us to set cookies.\u003C\/p\u003E    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","withdraw_enabled":false,"withdraw_button_on_info_popup":0,"cookie_categories":[],"enable_save_preferences_button":1,"fix_first_cookie_category":1,"select_all_categories_by_default":0},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackDomainMode":1},"mc15base":{"debugGA":false}});</script>
+
+      <!--[if lt IE 9]>
+    <script src="/sites/all/themes/zen/js/html5-respond.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700&display=swap" rel="stylesheet">
+</head>
+<body class="html front not-logged-in no-sidebars page-node page-node- page-node-43031 node-type-super-page menu-section--home" >
+    <div class="off-canvas-wrap">
+  <div class="inner-wrap" id="main-content">
+    <!-- BEGIN Header and Nav -->
+    <div id="skip">
+      <a class="element-invisible element-focusable" href="#main-nav">Skip to main navigation</a>
+      <a class="element-invisible element-focusable" href="#utility-nav">Skip to utility navigation</a>
+      <a class="element-invisible element-focusable" href="#page-content">Skip to main content</a>
+    </div>
+
+    <!-- BEGIN Alert Banner -->
+        <!-- END Alert Banner -->
+    <header role="banner">
+      <nav class="top-bar" data-topbar="" role="navigation">
+
+        <div class="row top-bar-first">
+          <div class="">
+            <!-- BEGIN Utility Nav -->
+                            <div class="region region-top-menu utility-nav">
+    <div id="block-menu-block-13" class="block block-menu-block utility-nav__wrapper first last odd" role="navigation">
+
+      
+  <div class="menu-block-wrapper menu-block-13 menu-name-menu-top-menu parent-mlid-0 menu-level-1">
+  <ul class="menu utility-nav" id="utility-nav" aria-label="Utility Navigation"><li class="menu__item is-leaf first leaf menu-mlid-31164"><a href="/current-students" title="" class="menu__link">Current Students</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-31168"><a href="/calendars" title="" class="menu__link">Calendars</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-42213"><a href="/contact" title="" class="menu__link">Contact/Locations </a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-31166"><a href="http://libguides.madisoncollege.edu/library" title="" class="menu__link">Library</a></li>
+</ul></div>
+
+</div>
+  </div>
+                        <!-- END Utility Nav -->
+          </div>
+          <div class="medium-2 large-2 columns">
+            <ul class="title-area">
+              <li class="name">
+                <a class="logo__link" href="/"  title="Home" rel="home" id="logo">
+                  <img class="logo show-for-medium-up" src="https://madisoncollege.edu/sites/all/themes/mc_15_main/logo.png" alt="Madison Area Technical College" />
+                  <div class="show-for-small-only ">
+                    <div class="mobile-logo__wrapper">
+                      <img class="mobile-logo" src="/sites/all/themes/mc_15_base/images/logo_shield.png" alt="Madison Area Technical College" />
+                      <span class="mobile-logo__text">Madison Area Technical College</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="show-for-small-only right mobile-menu__controller">
+              <span class="icon icon-navicon"></span>
+              <span class="icon icon-search"></span>
+              <span class="icon icon-close"></span>
+            </div>
+          </div>
+
+          <div class="medium-10 large-10 columns">
+            <!-- BEGIN Search Form  -->
+                            <div class="region region-search">
+    <div id="block-nodeblock-43056" class="block block-nodeblock cta--header column large-6 medium-6 first odd">
+
+      
+  <div id="node-43056" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      <ul><li class="menu__item"><a class="button menu__link" href="/apply" title="">Apply</a></li></ul>  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+<div id="block-search-form" class="block block-search column large-6 medium-6 last even" role="search">
+
+      
+  <form class="google-cse" action="/" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." placeholder="Search our site" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-YL3VZ2Ej1enBZENkAorM5W_4_deZPeyyJEZ4hHx-lYM" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>
+</div>
+  </div>
+                        <!-- END Search ends -->
+          </div>
+        </div>
+
+        <div class="row mainnav main-nav__wrapper">
+                        <div class="region region-navigation">
+    <div id="block-menu-menu-main-nav" class="block block-menu first last odd" role="navigation">
+
+      
+  <ul class="main-nav" id="main-nav" aria-label="Main Navigation"><li class="menu__item is-leaf first leaf"><a href="/choose-madison-college" title="" class="menu__link">Why MATC?</a></li>
+<li class="menu__item is-leaf leaf"><a href="/academic-programs" title="" class="menu__link">Academic Programs</a></li>
+<li class="menu__item is-leaf leaf"><a href="/paying-for-college" title="" class="menu__link">Paying for College</a></li>
+<li class="menu__item is-leaf leaf"><a href="/campus-life" title="" class="menu__link">Campus Life</a></li>
+<li class="menu__item is-leaf last leaf"><a href="/continuing-education" title="" class="menu__link">Continuing Education</a></li>
+</ul>
+</div>
+  </div>
+                  </div>
+
+      </nav>
+
+      <!-- BEGIN Sub Navigation Region   -->
+                          <!-- END Sub Navigation Region -->
+    </header>
+    <!-- END Header -->
+<!-- BEGIN Home Slider -->
+  <div class="row row--white nopad">
+          <div id="masthead" role="banner">
+        <div class="slider slick-initialized slick-slider">
+          <div class="region region-slideshow small-12 columns">
+    <div id="block-views-front-page-content-block-5" class="block block-views first last odd">
+
+      
+  <div class="view view-front-page-content view-id-front_page_content view-display-id-block_5 view-dom-id-0468b0c7a93b680b6bb8ae2c1ee2f25c">
+        
+  
+  
+      <div class="view-content">
+      
+  <div class="skin-default">
+  
+    
+    <div id="views_slideshow_cycle_main_front_page_content-block_5_1" class="views_slideshow_cycle_main views_slideshow_main"><div id="views_slideshow_cycle_teaser_section_front_page_content-block_5_1" class="views-slideshow-cycle-main-frame views_slideshow_cycle_teaser_section">
+  <div id="views_slideshow_cycle_div_front_page_content-block_5_1_0" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-1 views-row-first views-row-odd" aria-labelledby='views_slideshow_pager_field_item_bottom_front_page_content-block_5_1_0'>
+  <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd views-row-first">
+    
+  <div class="views-field views-field-field-image">        <div class="field-content"><div class="slick-list draggable">
+    <div class="slick-track">
+      <div class="slide slick-slide">
+          <picture >
+<!--[if IE 9]><video style="display: none;"><![endif]-->
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_desktop_1x/public/slideshow-banners/03184_AreasOfStudy_HomepageBanner.jpg?itok=BEoS6OdR&amp;timestamp=1580233484 1x" media="(min-width: 1050px)" />
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_tablet_1x/public/slideshow-banners/03184_AreasOfStudy_HomepageBanner.jpg?itok=W4fbvAeg&amp;timestamp=1580233484 1x" media="(min-width: 850px)" />
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_mobile_1x/public/slideshow-banners/03184_AreasOfStudy_HomepageBanner.jpg?itok=csF8miOJ&amp;timestamp=1580233484 1x" media="(min-width: 0px)" />
+<!--[if IE 9]></video><![endif]-->
+<img  src="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_mobile_1x/public/slideshow-banners/03184_AreasOfStudy_HomepageBanner.jpg?itok=csF8miOJ&amp;timestamp=1580233484" alt="Two students look at a teacher" title="" />
+</picture>
+          <a href="https://madisoncollege.edu/areas-of-study" ><div class="slide-caption-box slide-caption-box--right">
+<div class="slide-heading"><h2>Undecided? Don’t worry</h2></div>
+            <div class="slide-descrip"> <p>Explore 11 areas of study and earn credits while you choose a program.</p>
+
+<p><span class="button">Your Move</span></p>
+ </div>
+          </div></a>
+          <div class="clearfix"></div>
+      </div>
+    </div>
+  </div></div>  </div></div>
+</div>
+<div id="views_slideshow_cycle_div_front_page_content-block_5_1_1" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-2 views_slideshow_cycle_hidden views-row-even" aria-labelledby='views_slideshow_pager_field_item_bottom_front_page_content-block_5_1_1'>
+  <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
+    
+  <div class="views-field views-field-field-image">        <div class="field-content"><div class="slick-list draggable">
+    <div class="slick-track">
+      <div class="slide slick-slide">
+          <picture >
+<!--[if IE 9]><video style="display: none;"><![endif]-->
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_desktop_1x/public/slideshow-banners/03220_Summer_HomepageBanner.jpg?itok=kwhU5m3A&amp;timestamp=1580233927 1x" media="(min-width: 1050px)" />
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_tablet_1x/public/slideshow-banners/03220_Summer_HomepageBanner.jpg?itok=7TTa31Ls&amp;timestamp=1580233927 1x" media="(min-width: 850px)" />
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_mobile_1x/public/slideshow-banners/03220_Summer_HomepageBanner.jpg?itok=_7y6ltch&amp;timestamp=1580233927 1x" media="(min-width: 0px)" />
+<!--[if IE 9]></video><![endif]-->
+<img  src="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_mobile_1x/public/slideshow-banners/03220_Summer_HomepageBanner.jpg?itok=_7y6ltch&amp;timestamp=1580233927" alt="Outside of Truax Campus in summer" title="" />
+</picture>
+          <a href="https://apps7.madisoncollege.edu/summer" ><div class="slide-caption-box slide-caption-box--right">
+<div class="slide-heading"><h2>Get ahead with summer classes</h2></div>
+            <div class="slide-descrip"> <p>Graduate sooner &amp; boost your GPA! Classes start June 1.</p>
+
+<p><span class="button">Your Move</span></p>
+ </div>
+          </div></a>
+          <div class="clearfix"></div>
+      </div>
+    </div>
+  </div></div>  </div></div>
+</div>
+<div id="views_slideshow_cycle_div_front_page_content-block_5_1_2" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-3 views_slideshow_cycle_hidden views-row-odd" aria-labelledby='views_slideshow_pager_field_item_bottom_front_page_content-block_5_1_2'>
+  <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
+    
+  <div class="views-field views-field-field-image">        <div class="field-content"><div class="slick-list draggable">
+    <div class="slick-track">
+      <div class="slide slick-slide">
+          <picture >
+<!--[if IE 9]><video style="display: none;"><![endif]-->
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_desktop_1x/public/slideshow-banners/03199_EMC_Banner_Final%20%281%29.jpg?itok=8glIbMDz&amp;timestamp=1579273511 1x" media="(min-width: 1050px)" />
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_tablet_1x/public/slideshow-banners/03199_EMC_Banner_Final%20%281%29.jpg?itok=4dSsC6FP&amp;timestamp=1579273511 1x" media="(min-width: 850px)" />
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_mobile_1x/public/slideshow-banners/03199_EMC_Banner_Final%20%281%29.jpg?itok=MO8R0W_e&amp;timestamp=1579273511 1x" media="(min-width: 0px)" />
+<!--[if IE 9]></video><![endif]-->
+<img  src="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_mobile_1x/public/slideshow-banners/03199_EMC_Banner_Final%20%281%29.jpg?itok=MO8R0W_e&amp;timestamp=1579273511" alt="Madison College Truax Gateway with Experience Madison College logo over the image" title="" />
+</picture>
+          <a href="https://madisoncollege.edu/experience-madison-college" ><div class="slide-caption-box slide-caption-box--left">
+<div class="slide-heading"><h2>Experience Madison College</h2></div>
+            <div class="slide-descrip"> <p>Spend an afternoon on campus. Register today!</p>
+
+<p><span class="button">Your Move</span></p>
+ </div>
+          </div></a>
+          <div class="clearfix"></div>
+      </div>
+    </div>
+  </div></div>  </div></div>
+</div>
+<div id="views_slideshow_cycle_div_front_page_content-block_5_1_3" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-4 views_slideshow_cycle_hidden views-row-last views-row-even" aria-labelledby='views_slideshow_pager_field_item_bottom_front_page_content-block_5_1_3'>
+  <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
+    
+  <div class="views-field views-field-field-image">        <div class="field-content"><div class="slick-list draggable">
+    <div class="slick-track">
+      <div class="slide slick-slide">
+          <picture >
+<!--[if IE 9]><video style="display: none;"><![endif]-->
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_desktop_1x/public/slideshow-banners/03208_AAIM_Banner_Final.jpg?itok=1uWEIeGh&amp;timestamp=1579807616 1x" media="(min-width: 1050px)" />
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_tablet_1x/public/slideshow-banners/03208_AAIM_Banner_Final.jpg?itok=Ll_5ddbU&amp;timestamp=1579807616 1x" media="(min-width: 850px)" />
+<source srcset="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_mobile_1x/public/slideshow-banners/03208_AAIM_Banner_Final.jpg?itok=1uA974Si&amp;timestamp=1579807616 1x" media="(min-width: 0px)" />
+<!--[if IE 9]></video><![endif]-->
+<img  src="https://madisoncollege.edu/files/styles/main-slidebreakpoints_theme_mc_15_main_mobile_1x/public/slideshow-banners/03208_AAIM_Banner_Final.jpg?itok=1uA974Si&amp;timestamp=1579807616" alt="Hands on a computer with AAIM logo over image" title="" />
+</picture>
+          <a href="https://madisoncollege.edu/advising-application-information-more" ><div class="slide-caption-box slide-caption-box--left">
+<div class="slide-heading"><h2>AAIM</h2></div>
+            <div class="slide-descrip"> <p>Get help with your application and next steps. Register today!</p>
+
+<p><span class="button">Your Move</span></p>
+ </div>
+          </div></a>
+          <div class="clearfix"></div>
+      </div>
+    </div>
+  </div></div>  </div></div>
+</div>
+</div>
+</div>
+          <div class="views-slideshow-controls-bottom clearfix">
+        <div id="widget_pager_bottom_front_page_content-block_5_1" class="views-slideshow-pager-fields widget_pager widget_pager_bottom views_slideshow_pager_field">
+  <div id="views_slideshow_pager_field_item_bottom_front_page_content-block_5_1_0" class="views-slideshow-pager-field-item views_slideshow_pager_field_item views-row-odd views-row-first" aria-controls="views_slideshow_cycle_div_front_page_content-block_5_1_0">
+  <div class="views-field-counter">
+    <div class="views-content-counter">
+    <a href='#slideshow-0'>1</a>  </div>
+</div>
+</div>
+<div id="views_slideshow_pager_field_item_bottom_front_page_content-block_5_1_1" class="views-slideshow-pager-field-item views_slideshow_pager_field_item views-row-even" aria-controls="views_slideshow_cycle_div_front_page_content-block_5_1_1">
+  <div class="views-field-counter">
+    <div class="views-content-counter">
+    <a href='#slideshow-1'>2</a>  </div>
+</div>
+</div>
+<div id="views_slideshow_pager_field_item_bottom_front_page_content-block_5_1_2" class="views-slideshow-pager-field-item views_slideshow_pager_field_item views-row-odd" aria-controls="views_slideshow_cycle_div_front_page_content-block_5_1_2">
+  <div class="views-field-counter">
+    <div class="views-content-counter">
+    <a href='#slideshow-2'>3</a>  </div>
+</div>
+</div>
+<div id="views_slideshow_pager_field_item_bottom_front_page_content-block_5_1_3" class="views-slideshow-pager-field-item views_slideshow_pager_field_item views-row-even views-row-last" aria-controls="views_slideshow_cycle_div_front_page_content-block_5_1_3">
+  <div class="views-field-counter">
+    <div class="views-content-counter">
+    <a href='#slideshow-3'>4</a>  </div>
+</div>
+</div>
+</div>
+<div id="views_slideshow_controls_text_front_page_content-block_5_1" class="views-slideshow-controls-text views_slideshow_controls_text">
+  <span id="views_slideshow_controls_text_previous_front_page_content-block_5_1" class="views-slideshow-controls-text-previous views_slideshow_controls_text_previous">
+    <a href="#"><button type="button" data-role="none" class="slick-prev" style="display: block;">Previous</button></a></span>
+    <span id="views_slideshow_controls_text_next_front_page_content-block_5_1" class="views-slideshow-controls-text-next views_slideshow_controls_text_next">
+    <a href="#" class=""><button type="button" data-role="none" class="slick-next" style="display: block;">Previous</button></a>
+</span> 
+</div>
+    
+      </div>   
+    
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+  </div>
+        </div>
+      </div>
+      </div>
+  <div class="row row--white nopad">
+      </div>
+<!-- END Home Slider -->
+
+<!-- Start Prospective Students Section -->
+  <div class="row prospective-students__section">
+      <div class="region region-prospective-students">
+    <div id="block-nodeblock-55136" class="block block-nodeblock first last odd">
+
+      
+  <div id="node-55136" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      
+            <h2 class="text-center prospective-students__section--header">Find your path at Madison College</h2>
+            <div class="row columns small-12 prospective-students__section--content">
+              <div class="prospective-students__section--opacity-layer"></div>
+
+              <div class="small-6 large-2 large-offset-1 columns prospective-students__column">
+                <a href="/academic-programs" class="prospective-students__card intro-text-right">
+                  <div class="prospective-students__card--header">Career</div>
+                  <img class="prospective-students__card--image prospective-students__card--career" src="/sites/all/themes/mc_15_main/images/PS-Career-BW.jpg" alt="Ayelen for Madison College career path" />
+                  <div class="prospective-students__card--intro">
+                    <div class="prospective-students__card--header">Career</div>
+                    <div class="prospective-students__card--text">Start or advance your career. Earn a certificate, diploma or associate degree. Programs range from 1 semester to 2 years.</div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="small-6 large-2 columns prospective-students__column">
+                <a href="/areas-of-study" class="prospective-students__card intro-text-right">
+                  <div class="prospective-students__card--header">Undecided</div>
+                  <img class="prospective-students__card--image prospective-students__card--undecided" src="/sites/all/themes/mc_15_main/images/PS-Undecided-BW.jpg" alt="Chaya for Madison College undecided path" />
+                  <div class="prospective-students__card--intro">
+                    <div class="prospective-students__card--header">Undecided</div>
+                    <div class="prospective-students__card--text">Explore your options while you gain college credit. Meet with an advisor and attend career workshops to help you decide.</div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="small-6 large-2 columns prospective-students__column">
+                <a href="/transfer-opportunities" class="prospective-students__card intro-text-right">
+                  <div class="prospective-students__card--header">Transfer</div>
+                  <img class="prospective-students__card--image prospective-students__card--transfer" src="/sites/all/themes/mc_15_main/images/PS-Transfer-BW.jpg" alt="Geo for Madison College transfer path" />
+                  <div class="prospective-students__card--intro">
+                    <div class="prospective-students__card--header">Transfer</div>
+                    <div class="prospective-students__card--text">Save thousands on your bachelor’s degree when you take general ed classes with us. See why we’re #1 in UW transfers!</div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="small-6 large-2 columns prospective-students__column">
+                <a href="/flexible-learning" class="prospective-students__card intro-text-left">
+                  <div class="prospective-students__card--header">Online</div>
+                  <img class="prospective-students__card--image prospective-students__card--online" src="/sites/all/themes/mc_15_main/images/PS-Online-BW.jpg" alt="Meghan for Madison College online path" />
+                  <div class="prospective-students__card--intro">
+                    <div class="prospective-students__card--header">Online</div>
+                    <div class="prospective-students__card--text">Busy schedule? Online classes fit your life. Your classroom is anywhere you can log on!</div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="small-6 large-2 end columns prospective-students__column">
+                <a href="/continuing-education" class="prospective-students__card intro-text-left">
+                  <div class="prospective-students__card--header">Continuing Ed</div>
+                  <img class="prospective-students__card--image prospective-students__card--continuing-ed" src="/sites/all/themes/mc_15_main/images/PS-Continuing-Ed-BW.jpg" alt="Tal for Madison College continuing education path" />
+                  <div class="prospective-students__card--intro">
+                    <div class="prospective-students__card--header">Continuing Ed</div>
+                    <div class="prospective-students__card--text">Beyond your credits or diploma. Continuing Education is for everyone, from the lifelong learner to the career professional looking to move ahead.</div>
+                  </div>
+                </a>
+              </div>
+            </div>  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+  </div>
+  </div>
+<!-- End Prospective Students Section -->
+
+<!-- START Main Content -->
+  <div id="page-content" class="row row--white row--no-padding-bottom">
+    <div class="columns small-12">
+      
+
+
+<article class="node-43031 node node-super-page view-mode-full clearfix">
+
+      <h1 class="page-title">Home Fall 2019</h1>
+  
+  
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      
+    <!-- CTA - Homepage -->
+    <div><div id="block-nodeblock-47966" class="block block-nodeblock cta--horizontal even">
+
+      
+  <div id="node-47966" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      <ul class="large-block-grid-4 medium-block-grid-2">
+	<li><a class="menu__link" href="/apply">Apply</a></li>
+	<li><a class="menu__link" href="/register">Register</a></li>
+	<li><a class="menu__link" href="/visit">Visit</a></li>
+	<li><a class="menu__link" href="/request-information">Request Info</a></li>
+</ul>
+  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+</div>
+    <!-- Story - world-class -->
+    <div><div id="block-nodeblock-43026" class="block block-nodeblock home-story odd">
+
+      
+  <div id="node-43026" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      <a class="home-reason__column" href="/transfer-students">
+<div class="row row--blue medium-collapse row--no-padding home-reason__card">
+<div class="columns medium-6 medium-push-6">
+<div class="home-story__img"><div class="media media-element-container media-default"><div id="file-153686" class="file file-image file-image-jpeg">
+
+  <div class="content">
+    <img alt="Female student at graduation" style="width: auto; height: auto;" class="media-element file-default" data-delta="2" src="https://madisoncollege.edu/files/styles/mc-original-img/public/uploads/transfer2.jpg?itok=FTtGEZrq" width="740" height="493" />  </div>
+
+  
+</div>
+</div></div>
+</div>
+
+<div class="columns medium-6 medium-pull-6 home-story__content--transfer">
+<div class="home-story__copy">
+<h2 class="home-story__title"><span class="home-story__title--large">#1</span> in UW Transfers</h2>
+
+<div class="home-story__body">» 50+ Transfer partners<br />
+» Save thousands when you start your 4-year degree here<br />
+» 6 focused liberal arts majors</div>
+</div>
+</div>
+</div>
+</a>  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+</div>
+    <!-- Story - Real-world -->
+    <div><div id="block-nodeblock-43036" class="block block-nodeblock home-story even">
+
+      
+  <div id="node-43036" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      <a class="home-reason__column" href="/academic-programs">
+    <div class="row row--blue medium-collapse row--no-padding home-reason__card">
+      <div class="columns medium-6">
+        <div class="home-story__img">
+          <div class="media media-element-container media-default"><div id="file-133566" class="file file-image file-image-jpeg">
+
+  <div class="content">
+    <img alt="Female student in carpentry class" style="width: auto; height: auto;" class="media-element file-default" data-delta="1" src="https://madisoncollege.edu/files/styles/mc-original-img/public/career-2.jpg?itok=qlAvFvNU" width="740" height="493" />  </div>
+
+  
+</div>
+</div>
+        </div>
+      </div>
+      <div class="columns medium-6 home-story__content--placement">
+        <div class="home-story__copy">
+          <h2 class="home-story__title">
+            <span class="home-story__title--large">95%</span> Job Placement
+          </h2>
+          <div class="home-story__title-byline">within six months of graduation</div>
+          <div class="home-story__body">» 180+ degree, diploma and certificate programs<br />
+            » 14+ apprenticeship programs<br />
+            » Strong partnerships with local employers
+          </div>
+        </div>
+      </div>
+    </div>
+</a>  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+</div>
+    <!-- Reason - advantage/started -->
+    <div><div id="block-nodeblock-43041" class="block block-nodeblock odd">
+
+      
+  <div id="node-43041" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      <div class="home-reason">
+  <div class="home-reason__overview">
+    <div class="home-reason__overview-content">
+      <h2 class="text-center">Your advantage at Madison College</h2>
+      <p class="lead text-center">Accredited and top-quality, Madison College offers technical training that's real-world smart.</p>
+    </div>
+  </div>
+  <div class="row row--extra-padding-right home-reason__container" data-equalizer="" data-equalizer-mq="medium-up">
+    <a class="medium-4 columns home-reason__column" href="/choose-madison-college">
+    <div class="home-reason__card">
+      <div class="media media-element-container media-default"><div id="file-133556" class="file file-image file-image-jpeg">
+
+  <div class="content">
+    <img alt="Faculty helping student work on machine" style="width: auto; height: auto;" class="media-element file-default" data-delta="1" src="https://madisoncollege.edu/files/styles/mc-original-img/public/faculty.jpg?itok=f-s5DLY-" width="740" height="493" />  </div>
+
+  
+</div>
+</div>
+      <div class="home-reason__column-content" data-equalizer-watch="">
+        <h3 class="home-reason__column-title">Trusted</h3>
+        <p class="lead">Expert, experienced instructors. State-of-the-art facilities. Strong support along the way.</p>
+      </div>
+    </div>
+    </a>
+    <a class="medium-4 columns home-reason__column" href="/flexible-learning">
+      <div class="home-reason__card">
+      <div class="media media-element-container media-default"><div id="file-133551" class="file file-image file-image-jpeg">
+
+  <div class="content">
+    <img alt="Students on campus" style="width: auto; height: auto;" class="media-element file-default" data-delta="2" src="https://madisoncollege.edu/files/styles/mc-original-img/public/campus.jpg?itok=PeWdGUim" width="740" height="494" />  </div>
+
+  
+</div>
+</div>
+      <div class="home-reason__column-content" data-equalizer-watch="">
+        <h3 class="home-reason__column-title">Flexible</h3>
+        <p class="lead">Online or on campus.&nbsp;Evening and day classes. Part-&nbsp;or full-time study.&nbsp;Metro and regional locations.</p>
+      </div>
+    </div>
+    </a>
+    <a class="medium-4 columns home-reason__column" href="paying-for-college">
+      <div class="home-reason__card">
+      <div class="media media-element-container media-default"><div id="file-133546" class="file file-image file-image-jpeg">
+
+  <div class="content">
+    <img alt="Students in class" style="width: auto; height: auto;" class="media-element file-default" data-delta="3" src="https://madisoncollege.edu/files/styles/mc-original-img/public/class.jpg?itok=Hldpc0Qs" width="740" height="493" />  </div>
+
+  
+</div>
+</div>
+      <div class="home-reason__column-content" data-equalizer-watch="">
+        <h3 class="home-reason__column-title">Affordable</h3>
+        <p class="lead">Low cost. Financial aid available. Scholarship opportunities. Earn while you learn.</p>
+      </div>
+    </div>
+    </a>
+  </div>
+  <div class="home-steps row">
+    <h2 class="text-center home-steps__header">Get started at Madison College</h2>
+    <p class="lead text-center home-steps__content">Choosing a college is a big decision. Here are some ways to help you get started.</p>
+    <div class="row row--no-padding">
+      <div class="medium-4 columns"><a class="button expand home-steps__cta" href="/academic-programs"><span class="icon icon-th">&nbsp;</span>Browse Programs</a></div>
+      <div class="medium-4 columns"><a class="button expand home-steps__cta" href="/explore-careers"><span class="icon icon-group">&nbsp;</span>Explore Careers</a></div>
+      <div class="medium-4 columns"><a class="button expand home-steps__cta" href="/paying-for-college"><span class="icon icon-tag">&nbsp;</span>Estimate Cost</a></div>
+    </div>
+  </div>
+</div>
+  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+</div>
+
+    <div class="row homepage--tabs-minute-row">
+    <div class="columns medium-6"><div id="block-quicktabs-quicktabs-homepage" class="block block-quicktabs even">
+
+      
+  <div id="quickset-quicktabs_homepage" class="quick-responsive"><ul class="resp-tabs-list"><li>News</li><li>Events</li><li>Athletics</li></ul><div class="resp-tabs-container"><div><div id="block-views-mc-homepage-rss-block" class="block block-views first odd">
+
+      
+  <div class="view view-mc-homepage-rss view-id-mc_homepage_rss view-display-id-block homepage-rss view-dom-id-1cf53d9e53e06b9bbf7e2da4c63b4dfe">
+        
+  
+  
+      <div class="view-content">
+        <div class="homepage-rss--row">
+    
+
+<h2><a href='https://madisoncollege.edu/node/55556'>New advising and application event helps future students</a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">The new Advising | Application | Information & More (AAIM) sessions are designed to help future students get started at Madison...</div>
+</div>
+  </div>
+  <div class="homepage-rss--row">
+    
+
+<h2><a href='https://madisoncollege.edu/node/54841'>Registration open for Experience Madison College</a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">Are you a high school student interested in exploring careers at Madison College? Spend a day on campus learning about programs...</div>
+</div>
+  </div>
+  <div class="homepage-rss--row">
+    
+
+<h2><a href='https://madisoncollege.edu/node/54196'>Chef Series presents Phillip Foss </a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">Spend an evening with Phillip Foss, chef and owner of EL Ideas, at the next Chef Series event on Wednesday, January 29.</div>
+</div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+</div><div><div id="block-views-mc-homepage-rss-block-1" class="block block-views even">
+
+      
+  <div class="view view-mc-homepage-rss view-id-mc_homepage_rss view-display-id-block_1 homepage-rss view-dom-id-80aedb4b7f3435a638c0639fc9078935">
+        
+  
+  
+      <div class="view-content">
+        <div class="homepage-rss--row">
+    
+
+<h2><a href='http://25livepub.collegenet.com/calendars/performanceandspecialevents'>Wisconsin State Journal Spelling Bee</a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">Truax-Main Building - Rm A1017 - Mitby Theater Saturday, February 8, 2020, 9am&nbsp;&ndash;&nbsp;1pm Event Name:&nbsp;Wisconsin...</div>
+</div>
+  </div>
+  <div class="homepage-rss--row">
+    
+
+<h2><a href='http://25livepub.collegenet.com/calendars/performanceandspecialevents'>Ballet 5:8 Performance</a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">Truax-Main Building - Rm A1017 - Mitby Theater Friday, February 21, 2020, 7&nbsp;&ndash;&nbsp;9pm Event Name:&nbsp;Ballet 5:8...</div>
+</div>
+  </div>
+  <div class="homepage-rss--row">
+    
+
+<h2><a href='http://25livepub.collegenet.com/calendars/performanceandspecialevents'>Ballet 5:8 Performance</a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">Truax-Main Building - Rm A1017 - Mitby Theater Saturday, February 22, 2020, 7&nbsp;&ndash;&nbsp;9pm Event Name:&nbsp;Ballet 5:8...</div>
+</div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+</div><div><div id="block-views-mc-homepage-rss-block-2" class="block block-views odd">
+
+      
+  <div class="view view-mc-homepage-rss view-id-mc_homepage_rss view-display-id-block_2 homepage-rss view-dom-id-090a6c1e6513098ab225642d1d0eeca2">
+        
+  
+  
+      <div class="view-content">
+        <div class="homepage-rss--row">
+    
+
+<h2><a href='https://madisoncollegeathletics.com/news/2020/1/27/mens-basketball-second-half-surge-delivers-narrow-wolfpack-win-over-wolves.aspx'>Second half surge delivers narrow WolfPack win over Wolves</a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">MADISON, WISC. - The Madison College men's basketball team earned its tenth win of the season Saturday with a come-from-behind...</div>
+</div>
+  </div>
+  <div class="homepage-rss--row">
+    
+
+<h2><a href='https://madisoncollegeathletics.com/news/2020/1/27/womens-basketball-wolfpack-avenge-earlier-loss-with-ten-point-win-over-joliet-jc.aspx'>WolfPack avenge earlier loss with ten-point win over Joliet JC</a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">MADISON, WISC. - The Madison College women's basketball team posted a 3-1 record over a four-game homestand, which wrapped up...</div>
+</div>
+  </div>
+  <div class="homepage-rss--row">
+    
+
+<h2><a href='https://madisoncollegeathletics.com/news/2020/1/23/womens-basketball-fourth-quarter-rally-nets-narrow-wolfpack-win-over-rival-stormers.aspx'>Fourth quarter rally nets narrow WolfPack win over rival Stormers</a></h2>
+<div class='field-content'>
+  <div class="homepage-rss__description">MADISON, WISC. - The finish to the 87th all-time meeting between Milwaukee Area Technical College and Madison College on...</div>
+</div>
+  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <a href="http://madisoncollegeathletics.com" class="button" target="_blank" rel="nofollow">Athletics Website</a>    </div>
+  
+  
+</div>
+</div>
+</div></div></div>
+</div>
+</div>
+
+    <div class="columns medium-6"><div id="block-views-front-page-content-block-1" class="block block-views odd">
+
+      
+  <div class="view view-front-page-content view-id-front_page_content view-display-id-block_1 view-dom-id-a69ec5ca615283ec5066e8390066e895">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-video">        <div class="field-content">
+<div class="field field-name-field-video field-type-file field-label-hidden hide-for-print">
+
+  
+  <div class='youtube-fast'>
+          <div class='youtube-fast--video-title'>
+        Law Enforcement Academy      </div>
+    
+          <div class='youtube-fast--video-url'>
+        https://www.youtube.com/watch?v=3jJBQ8M-Y_A      </div>
+      </div>
+
+</div>
+</div>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content show-post-fall-2019"><strong class="homepage__madison-minute-header">Madison College Minute. </strong> <p>To serve and protect. Madison College’s <a href="https://madisoncollege.edu/program/law-enforcement-academy">Law Enforcement Academy</a> graduates are looking forward to serving the community.</p>
+</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+</div>
+    </div>
+      
+</div>
+
+  <!-- Field : Video -->
+  
+  <div class="clearfix"></div>
+
+  
+
+  
+</article>
+    </div>
+  </div>
+<!-- END Main Content -->
+
+<!-- BEGIN Prefooter Ask Madison -->
+  <!-- END Prefooter Ask Madison -->
+
+<!-- BEGIN Footer -->
+    <!--.footer-columns -->
+  <footer>
+    <div class="row l-footer-columns footer-top">
+              <div class="footer-first medium-6 large-7 columns">
+            <div class="region region-footer-firstcolumn">
+    <div id="block-nodeblock-42216" class="block block-nodeblock first last odd">
+
+      
+  <div id="node-42216" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      <div id="contact">
+<div class="footer-location-icon__wrapper"><span class="footer-location-icon"><span aria-label="hidden" class="footer-location-icon__marker icon icon-map-marker">&nbsp;</span>&nbsp;</span></div>
+
+<h2>Madison College</h2>
+
+<div>1701 Wright Street<br />
+Madison, Wisconsin 53704</div>
+
+<p>(608) 246-6100</p>
+
+<h2>#madisoncollege</h2>
+
+<ul class="social-icons" id="social">
+	<li><a aria-label="Madison College on Facebook" href="https://www.facebook.com/madisoncollege" title="Madison College on Facebook"><span class="fa-stack fa-2x"><i aria-hidden="true" class="fas icon icon-square fa-stack-2x">&nbsp;</i><i aria-hidden="true" class="social-icons__fi fab fa-stack-1x icon icon-facebook fa-inverse">&nbsp;</i> </span> </a></li>
+	<li><a aria-label="Madison College on Twitter" href="https://www.twitter.com/madisoncollege" title="Madison College on Twitter"><span class="fa-stack fa-2x"><i aria-hidden="true" class="fas icon icon-square fa-stack-2x">&nbsp;</i><i aria-hidden="true" class="social-icons__fi fab fa-stack-1x icon icon-twitter fa-inverse">&nbsp;</i> </span> </a></li>
+	<li><a aria-label="Madison College on YouTube" href="https://www.youtube.com/user/MadisonCollegeVideo" title="Madison College on YouTube"><span class="fa-stack fa-2x"><i aria-hidden="true" class="fas icon icon-square fa-stack-2x">&nbsp;</i><i aria-hidden="true" class="social-icons__fi fab fa-stack-1x icon icon-youtube-play fa-inverse">&nbsp;</i> </span> </a></li>
+	<li><a aria-label="Madison College on LinkedIn" href="https://www.linkedin.com/school/madison-area-technical-college/" title="Madison College on LinkedIn"><span class="fa-stack fa-2x"><i aria-hidden="true" class="fas icon icon-square fa-stack-2x">&nbsp;</i><i aria-hidden="true" class="social-icons__fi fab fa-stack-1x icon icon-linkedin fa-inverse">&nbsp;</i> </span> </a></li>
+	<li><a aria-label="Madison College on Instagram" href="https://www.instagram.com/madisoncollege" title="Madison College on Instagram"><span class="fa-stack fa-2x"><i aria-hidden="true" class="fas icon icon-square fa-stack-2x">&nbsp;</i><i aria-hidden="true" class="social-icons__fi fab fa-stack-1x icon icon-instagram fa-inverse">&nbsp;</i> </span> </a></li>
+</ul>
+</div>
+  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+  </div>
+        </div>
+                    <div class="footer-second medium-6 large-5 columns">
+            <div class="region region-footer-secondcolumn">
+    <div id="block-nodeblock-42221" class="block block-nodeblock footer__info-for first last odd">
+
+      
+  <div id="node-42221" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      <h2>Information for:</h2>
+<div class="row">
+<div class="columns medium-6">
+<ul>
+<li><a href="/choose-madison-college">Future Students</a></li>
+<li><a href="/high-school-students">High School Students</a></li>
+<li><a href="/parents-mentors">Parents and Mentors</a></li>
+<li><a href="/community-business">Community & Business</a></li>
+<li><a href="/employer-resources">Employers</a></li>
+</ul>
+</div>
+
+<div class="columns medium-6">
+<ul>
+<li><a href="/current-students">Current Students</a></li>
+<li><a href="https://madisoncollege365.sharepoint.com/sites/MCIntranet">Intranet</a></li>
+<li><a href="/alumni-foundation">Alumni</a></li>
+<li><a href="/university-partnership-center">University Partners</a></li>
+</ul>
+</div>
+
+<hr />
+<div class="columns medium-6">
+<ul>
+<li><a href="/contact">Contact/Locations</a></li>
+<li><a href="/calendars">Calendars</a></li>
+<li><a href="/news">News</a></li>
+</ul>
+</div>
+
+<div class="columns medium-6">
+<ul>
+<li><a href="https://madisoncollegebookstore.com/" target="_blank">Bookstore</a></li>
+<li><a href="https://libguides.madisoncollege.edu/library" target="_blank">Library</a></li>
+</ul>
+</div>
+</div>  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+  </div>
+        </div>
+          </div>
+    <!--.l-footer -->
+    <div class="l-footer row" role="contentinfo">
+            <div class="footer-bottom">
+        <div class="footer-bottom__row row">
+          <div class="large-8 footer-bottom__links large-push-4 columns text-center large-text-right">
+                            <div class="region region-footer">
+    <div id="block-block-206" class="block block-block first odd">
+
+      
+  <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0087/6390.js" async="async"></script>
+</div>
+<div id="block-block-221" class="block block-block even">
+
+      
+  <script>jQuery(window).bind("pageshow", function(event) {
+//console.log("hit");
+    if (event.originalEvent.persisted) {
+        window.location.reload();
+console.log("reload");
+    }
+});</script>
+</div>
+<div id="block-block-231" class="block block-block odd">
+
+      
+  <style>.explore-content {display: none;}</style>
+</div>
+<div id="block-nodeblock-42226" class="block block-nodeblock last even">
+
+      
+  <div id="node-42226" class="node node-nodeblock view-mode-full clearfix">
+
+        
+  
+  <div class="content">
+    
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+  
+    
+      <ul class="footer-bottom__legal-menu">
+	<li><a href="/web-accessibility-commitment">Accessibility</a></li>
+	<li><a href="/public-information">Public Info</a></li>
+	<li><a href="/careers">Jobs</a></li>
+	<li><a href="/equal-opportunity-affirmative-action">Nondiscrimination</a></li>
+	<li><a href="/media">Press</a></li>
+	<li><a href="/use-privacy">Privacy</a></li>
+	<li><a href="/public-safety">Safety</a></li>
+</ul>
+  
+</div>
+  </div>
+
+  
+  
+</div>
+
+</div>
+  </div>
+                      </div>
+          <div class="large-4 footer-bottom__concerns large-pull-8 columns text-center large-text-left">
+            <div class="hide-for-print">
+              <span class="icon icon-flag"></span>
+              <a href="/concerns-complaints" bis_skin_checked="1">Student Concerns and Complaints</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom columns">
+        <div class="footer-bottom__row-second footer-bottom_contact-web row">
+          <div class="large-4 columns text-center large-text-left">
+                      </div>
+          <div class="large-8 columns text-center large-text-right">
+             <div class="footer__copyright transparent-white">&copy; Madison Area Technical College</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/.footer-columns-->
+<!-- END Footer -->
+<!-- Close 2 divs in header.tpl.php -->
+</div>
+</div>
+  <script src="https://madisoncollege.edu/files/js/js_7Ukqb3ierdBEL0eowfOKzTkNu-Le97OPm-UqTS5NENU.js"></script>
+<script>var eu_cookie_compliance_cookie_name = "";</script>
+<script src="https://madisoncollege.edu/files/js/js_Llgek5Zasqh0wiimoKH-uIdmSIEO0i9Cbi7UdXEdRgw.js"></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"e075a55144","applicationID":"83250521","transactionName":"Ml1TNRdWDRZXAEYKDAsXZBMMGAoLUgZKTRMNSA==","queueTime":0,"applicationTime":25,"atts":"HhpQQ19MHhg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

@@ -1,0 +1,1483 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"63f61aaa3c",applicationID:"165824674"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="title" content="Home | Moravian College" />
+<link rel="canonical" href="https://www.moravian.edu/" />
+<link rel="shortlink" href="https://www.moravian.edu/" />
+<meta name="description" content="Moravian College is a private liberal arts college in Bethlehem, Pennsylvania offering undergraduate and graduate degrees." />
+<meta name="keywords" content="liberal arts college in Bethlehem Pennsylvania, Moravian College, Lehigh Valley graduate degrees" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/default/files/mcFavicon.png" type="image/png" />
+<link rel="revision" href="https://www.moravian.edu/node/1414" />
+
+      <title>Home | Moravian College</title>
+      <link rel="stylesheet" media="all" href="/sites/default/files/css/css_n3q-l1S8xWNElSH9NtOKNSRoGb8h2G0UCi4y0BnQlSU.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_K1KulAJEQCedACrAvazmDjlh14J1tnNL-DMW3EeC-B4.css" />
+
+      
+<!--[if lte IE 8]>
+<script src="/core/assets/vendor/html5shiv/html5shiv.min.js?v=3.7.3"></script>
+<![endif]-->
+
+      <meta name="msvalidate.01" content="50A6B24F5F44BC37114302C5837956D2" />
+      <script src="https://722add5a49ce49d68a607be5f907ebaa.js.ubembed.com" async></script>
+
+      <!-- Google Tag Manager -->
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NKPBR3P');</script>
+      <!-- End Google Tag Manager -->
+
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.js"></script>
+      <script type="text/javascript" src="https://www.google.com/cse/cse.js?cx=005135433119750109450:npq4q6inebm"></script>
+      <link href="//customer.cludo.com/css/overlay/cludo-search-default.min.css" type="text/css" rel="stylesheet">
+      <!--[if lte IE 9]>
+      <script src="https://api.cludo.com/scripts/xdomain.js" slave="https://api.cludo.com/proxy.html" type="text/javascript"></script>
+      <![endif]-->
+      <style type="text/css">
+        @import url("https://fast.fonts.net/t/1.css?apiType=css&projectid=0311ac5f-7146-4198-ab39-44c961853601");
+      </style>
+    </head>
+    <body>
+
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKPBR3P"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+
+      <a href="#main-content" class="visually-hidden focusable">
+        Skip to main content
+      </a>
+      
+        <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="sticky-header">
+  <div class="container-fluid">
+    <div class="row header">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-8 hidden-xs hidden-sm">
+        <div id="logo">
+          <a href="/">
+            <img src="/themes/modern/dist/images/logo.png"
+                 class="img-responsive"
+                 alt="Go to Moravian College home page">
+          </a>
+        </div>
+      </div>
+
+      <div class="actions hidden-xs hidden-sm">
+          <div class="left">
+          </div>
+          <div class="right">
+            <div class="top-search">
+              <form id="cludoSearchForm" action="/search/node" method="GET">
+                <label for="keys" style="display: none;">Website Search</label>
+                <input type="text" name="keys" id="keys"
+                       class="site-searchfield" value="Search"
+                       aria-label="Search Field"
+                       onfocus="this.value='';">
+                <button type="button" class="search-button fa fa-search" id="search-button"></button>       
+              </form>
+            </div>
+            <div class="row">
+              <div class="col-xs-5"><a href="/about/campus">Campus Map</a></div>
+              <div class="col-xs-3 text-center"><a href="/directory">Directory</a></div>
+              <div class="col-xs-4 text-right"><a href="/contact-us">Contact</a></div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>var syntya = { cake: { menus: new Array(), uri: "/content/financial-aid-handbook" } };</script>
+<script>
+  window.syntya_cke_widget_mobilenav = {
+    site_items: [
+              {
+          title: 'Home',
+          url: '/',
+          active: false,
+          items: [
+                                        {
+                title: 'Contact Us',
+              url: '/contact-us',
+                active: false              },
+                            {
+                title: 'Directory',
+              url: '/directory',
+                active: false              },
+                            {
+                title: 'Students&#039; Links',
+              url: '/students-links',
+                active: false              },
+                            {
+                title: 'Faculty &amp; Staff Links',
+              url: '/faculty-staff-links',
+                active: false              },
+                            {
+                title: 'Parents&#039; &amp; Families&#039; Links',
+              url: '/parents-families-links',
+                active: false              },
+                            {
+                title: 'Community &amp; Visitors&#039; Links',
+              url: '/community-visitors-links',
+                active: false              },
+                            {
+                title: 'Privacy Policy',
+              url: '/privacy-policy',
+                active: false              },
+                                    ]
+        },
+              {
+          title: 'About',
+          url: '/about',
+          active: false,
+          items: [
+                                        {
+                title: 'College History',
+              url: '/about/college-history',
+                active: false              },
+                            {
+                title: 'Office of the President',
+              url: '/about/leadership',
+                active: false              },
+                            {
+                title: 'Accreditation &amp; Affiliates',
+              url: '/about/accreditation-affiliation',
+                active: false              },
+                            {
+                title: 'Administration',
+              url: '/about/leadership/administration',
+                active: false              },
+                            {
+                title: 'Strategic Plan',
+              url: '/about/leadership/strategic-plan',
+                active: false              },
+                            {
+                title: 'Campus Maps',
+              url: '/about/campus-map',
+                active: false              },
+                            {
+                title: 'Partnerships',
+              url: '/graduate/partnerships',
+                active: false              },
+                            {
+                title: 'Historic Bethlehem',
+              url: '/about/historic-bethlehem',
+                active: false              },
+                            {
+                title: 'Sustainability',
+              url: '/sustainability',
+                active: false              },
+                            {
+                title: 'Student Consumer Info',
+              url: '/student-consumer-info',
+                active: false              },
+                            {
+                title: 'More &gt;',
+              url: '/about',
+                active: false              },
+                                    ]
+        },
+              {
+          title: 'Academics',
+          url: '/academics',
+          active: false,
+          items: [
+                                        {
+                title: 'Departments &amp; Programs',
+              url: '/academics/departments',
+                active: false              },
+                            {
+                title: 'Undergraduate Research',
+              url: '/academics/undergraduate-research',
+                active: false              },
+                            {
+                title: 'Student Success',
+              url: '/provost/student-success',
+                active: false              },
+                            {
+                title: 'Graduate &amp; Degree Completion',
+              url: '/graduate',
+                active: false              },
+                            {
+                title: 'Academic Calendars',
+              url: '/registrar/academic-calendars',
+                active: false              },
+                            {
+                title: 'Office of the Provost',
+              url: '/provost',
+                active: false              },
+                            {
+                title: 'Registrar&#039;s Office',
+              url: '/registrar',
+                active: false              },
+                            {
+                title: 'Reeves Library',
+              url: '/academics/reeves-library',
+                active: false              },
+                            {
+                title: 'AMOS',
+              url: 'https://amos.moravian.edu/ICS',
+                active: false              },
+                            {
+                title: 'More &gt;',
+              url: '/academics',
+                active: false              },
+                                    ]
+        },
+              {
+          title: 'Admissions',
+          url: '/admission-all',
+          active: false,
+          items: [
+                                        {
+                title: 'Undergraduate',
+              url: '/admissions',
+                active: false              },
+                            {
+                title: 'Graduate',
+              url: '/graduate',
+                active: false              },
+                            {
+                title: 'Adult Undergraduate',
+              url: '/graduate/programs/adult-undergraduate',
+                active: false              },
+                            {
+                title: 'Visit',
+              url: '/admissions/visit-tour',
+                active: false              },
+                            {
+                title: 'Cost &amp; Aid',
+              url: '/admissions/applying-for-financial-aid',
+                active: false              },
+                            {
+                title: 'Request Information',
+              url: '/admissions/request',
+                active: false              },
+                            {
+                title: 'Virtual Tour',
+              url: 'https://www.youvisit.com/moravian',
+                active: false              },
+                                    ]
+        },
+              {
+          title: 'Student Life',
+          url: '/student-life',
+          active: false,
+          items: [
+                                        {
+                title: 'Student Life Departments',
+              url: '/student-life/departments',
+                active: false              },
+                            {
+                title: 'Student Resources &amp; Services',
+              url: '/student-life/resources',
+                active: false              },
+                            {
+                title: 'Housing and Meal Plans',
+              url: '/rlh',
+                active: false              },
+                            {
+                title: 'Student Involvement',
+              url: '/student-involvement',
+                active: false              },
+                            {
+                title: 'Book Shop',
+              url: '/bookshop',
+                active: false              },
+                            {
+                title: 'Campus Police',
+              url: '/campuspolice',
+                active: false              },
+                            {
+                title: 'Dining Services',
+              url: 'https://moravian.sodexomyway.com',
+                active: false              },
+                            {
+                title: 'More &gt;',
+              url: '/student-life',
+                active: false              },
+                                    ]
+        },
+              {
+          title: 'News/Events',
+          url: '/news',
+          active: false,
+          items: [
+                                        {
+                title: 'Events Calendar',
+              url: '/news/events',
+                active: false              },
+                            {
+                title: 'Inside Moravian',
+              url: '/inside-moravian',
+                active: false              },
+                            {
+                title: 'Moravian College Magazine',
+              url: '/news/moravian-college-magazine',
+                active: false              },
+                            {
+                title: 'News &amp; Media Coverage',
+              url: '/news/releases',
+                active: false              },
+                                    ]
+        },
+              {
+          title: 'Athletics',
+          url: 'http://moraviansports.com/',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'Giving',
+          url: '/giving',
+          active: false,
+          items: [
+                                        {
+                title: 'How to Give',
+              url: '/giving/how-to',
+                active: false              },
+                            {
+                title: 'What to Support',
+              url: '/giving/opportunities',
+                active: false              },
+                            {
+                title: 'Make a Gift Online',
+              url: '/makeagift',
+                active: false              },
+                            {
+                title: 'More &gt;',
+              url: '/giving',
+                active: false              },
+                                    ]
+        },
+              {
+          title: 'Alumni',
+          url: '/alumni',
+          active: false,
+          items: [
+                                        {
+                title: 'Alumni Association',
+              url: '/alumni/association',
+                active: false              },
+                            {
+                title: 'Alumni Perks',
+              url: '/alumni/perks',
+                active: false              },
+                            {
+                title: 'Transcript Information',
+              url: '/registrar/transcript-information',
+                active: false              },
+                            {
+                title: 'Stay in Touch',
+              url: '/alumni/stay-touch',
+                active: false              },
+                            {
+                title: 'Alumni Events',
+              url: '/alumni/events',
+                active: false              },
+                            {
+                title: 'Alumni Photo Album',
+              url: '/alumni/alumni-photo-album',
+                active: false              },
+                            {
+                title: 'More &gt;',
+              url: '/alumni',
+                active: false              },
+                                    ]
+        },
+          ]
+  };
+</script>
+<div id="cke-mobile-nav" class="row"></div>
+
+<!-- Static navbar -->
+ <div class="row site-navigation hidden-sm hidden-xs">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="menu-wrapper">
+          <nav class="menu" id="a11y-menu" role="navigation" aria-lablel="Main menu">
+                                 <ul class="desktop-nav level-1 list-reset" role="menubar" aria-hidden="false">
+          <!-- <ul> -->
+      
+                                                  <li class="has-subnav" role="menuitem" aria-haspop="true">
+              <a href="/about">About <span class="caret"></span></a>
+                                      <ul class=" level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
+      
+                                      <li role="menuitem"><a href="/about/college-history">College History</a>
+                    </li>
+                                              <li role="menuitem"><a href="/about/leadership">Office of the President</a>
+                    </li>
+                                              <li role="menuitem"><a href="/about/accreditation-affiliation">Accreditation &amp; Affiliates</a>
+                    </li>
+                                              <li role="menuitem"><a href="/about/leadership/administration">Administration</a>
+                    </li>
+                                              <li role="menuitem"><a href="/about/leadership/strategic-plan">Strategic Plan</a>
+                    </li>
+                                              <li role="menuitem"><a href="/about/campus-map">Campus Maps</a>
+                    </li>
+                                              <li role="menuitem"><a href="/graduate/partnerships">Partnerships</a>
+                    </li>
+                                              <li role="menuitem"><a href="/about/historic-bethlehem">Historic Bethlehem</a>
+                    </li>
+                                              <li role="menuitem"><a href="/sustainability">Sustainability</a>
+                    </li>
+                                              <li role="menuitem"><a href="/student-consumer-info">Student Consumer Info</a>
+                    </li>
+                                              <li role="menuitem"><a href="/about">More &gt;</a>
+                    </li>
+                    </ul>
+      
+                    </li>
+                                            <li class="has-subnav" role="menuitem" aria-haspop="true">
+              <a href="/academics">Academics <span class="caret"></span></a>
+                                      <ul class=" level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
+      
+                                      <li role="menuitem"><a href="/academics/departments">Departments &amp; Programs</a>
+                    </li>
+                                              <li role="menuitem"><a href="/academics/undergraduate-research">Undergraduate Research</a>
+                    </li>
+                                              <li role="menuitem"><a href="/provost/student-success">Student Success</a>
+                    </li>
+                                              <li role="menuitem"><a href="/graduate">Graduate &amp; Degree Completion</a>
+                    </li>
+                                              <li role="menuitem"><a href="/registrar/academic-calendars">Academic Calendars</a>
+                    </li>
+                                              <li role="menuitem"><a href="/provost">Office of the Provost</a>
+                    </li>
+                                              <li role="menuitem"><a href="/registrar">Registrar&#039;s Office</a>
+                    </li>
+                                              <li role="menuitem"><a href="/academics/reeves-library">Reeves Library</a>
+                    </li>
+                                              <li role="menuitem"><a href="https://amos.moravian.edu/ICS">AMOS</a>
+                    </li>
+                                              <li role="menuitem"><a href="/academics">More &gt;</a>
+                    </li>
+                    </ul>
+      
+                    </li>
+                                            <li class="has-subnav" role="menuitem" aria-haspop="true">
+              <a href="/admission-all">Admissions <span class="caret"></span></a>
+                                      <ul class=" level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
+      
+                                      <li role="menuitem"><a href="/admissions">Undergraduate</a>
+                    </li>
+                                              <li role="menuitem"><a href="/graduate">Graduate</a>
+                    </li>
+                                              <li role="menuitem"><a href="/graduate/programs/adult-undergraduate">Adult Undergraduate</a>
+                    </li>
+                                              <li role="menuitem"><a href="/admissions/visit-tour">Visit</a>
+                    </li>
+                                              <li role="menuitem"><a href="/admissions/applying-for-financial-aid">Cost &amp; Aid</a>
+                    </li>
+                                              <li role="menuitem"><a href="/admissions/request">Request Information</a>
+                    </li>
+                                              <li role="menuitem"><a href="https://www.youvisit.com/moravian">Virtual Tour</a>
+                    </li>
+                    </ul>
+      
+                    </li>
+                                            <li class="has-subnav" role="menuitem" aria-haspop="true">
+              <a href="/student-life">Student Life <span class="caret"></span></a>
+                                      <ul class=" level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
+      
+                                      <li role="menuitem"><a href="/student-life/departments">Student Life Departments</a>
+                    </li>
+                                              <li role="menuitem"><a href="/student-life/resources">Student Resources &amp; Services</a>
+                    </li>
+                                              <li role="menuitem"><a href="/rlh">Housing and Meal Plans</a>
+                    </li>
+                                              <li role="menuitem"><a href="/student-involvement">Student Involvement</a>
+                    </li>
+                                              <li role="menuitem"><a href="/bookshop">Book Shop</a>
+                    </li>
+                                              <li role="menuitem"><a href="/campuspolice">Campus Police</a>
+                    </li>
+                                              <li role="menuitem"><a href="https://moravian.sodexomyway.com">Dining Services</a>
+                    </li>
+                                              <li role="menuitem"><a href="/student-life">More &gt;</a>
+                    </li>
+                    </ul>
+      
+                    </li>
+                                            <li class="has-subnav" role="menuitem" aria-haspop="true">
+              <a href="/news">News/Events <span class="caret"></span></a>
+                                      <ul class=" level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
+      
+                                      <li role="menuitem"><a href="/news/events">Events Calendar</a>
+                    </li>
+                                              <li role="menuitem"><a href="/inside-moravian">Inside Moravian</a>
+                    </li>
+                                              <li role="menuitem"><a href="/news/moravian-college-magazine">Moravian College Magazine</a>
+                    </li>
+                                              <li role="menuitem"><a href="/news/releases">News &amp; Media Coverage</a>
+                    </li>
+                    </ul>
+      
+                    </li>
+                                              <li role="menuitem"><a href="http://moraviansports.com/">Athletics</a>
+                    </li>
+                                            <li class="has-subnav" role="menuitem" aria-haspop="true">
+              <a href="/giving">Giving <span class="caret"></span></a>
+                                      <ul class=" level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
+      
+                                      <li role="menuitem"><a href="/giving/how-to">How to Give</a>
+                    </li>
+                                              <li role="menuitem"><a href="/giving/opportunities">What to Support</a>
+                    </li>
+                                              <li role="menuitem"><a href="/makeagift">Make a Gift Online</a>
+                    </li>
+                                              <li role="menuitem"><a href="/giving">More &gt;</a>
+                    </li>
+                    </ul>
+      
+                    </li>
+                                            <li class="has-subnav" role="menuitem" aria-haspop="true">
+              <a href="/alumni">Alumni <span class="caret"></span></a>
+                                      <ul class=" level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
+      
+                                      <li role="menuitem"><a href="/alumni/association">Alumni Association</a>
+                    </li>
+                                              <li role="menuitem"><a href="/alumni/perks">Alumni Perks</a>
+                    </li>
+                                              <li role="menuitem"><a href="/registrar/transcript-information">Transcript Information</a>
+                    </li>
+                                              <li role="menuitem"><a href="/alumni/stay-touch">Stay in Touch</a>
+                    </li>
+                                              <li role="menuitem"><a href="/alumni/events">Alumni Events</a>
+                    </li>
+                                              <li role="menuitem"><a href="/alumni/alumni-photo-album">Alumni Photo Album</a>
+                    </li>
+                                              <li role="menuitem"><a href="/alumni">More &gt;</a>
+                    </li>
+                    </ul>
+      
+                    </li>
+                    </ul>
+      
+          </nav>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2 hidden-md hidden-lg"
+       style="margin-top:2em;">
+    <div class="top-search">
+      <form action="/search/node" method="GET">
+        <label for="keys-mobile" style="display: none;">Website Search</label>
+        <input type="text" name="keys" class="site-searchfield" value="Search"
+               id="keys-mobile" onfocus="this.value='';">
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row small-header hidden-md hidden-lg">
+  <div class="container">
+    <div class="col-sm-12">
+      <div id="small-logo">
+        <a href="/">
+          <img src="/themes/modern/dist/images/logo.png" class="img-responsive"
+               alt="Go to Moravian College home page">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div> <!-- container-fluid -->
+</div> <!-- sticky-header -->
+
+<main id="main-content" class="mc-main-content container-fluid">
+  <div class="row">
+    <div id="block-modern-mainpagecontent-3">
+  
+    
+      <article data-history-node-id="1414" role="article" about="/node/1414">
+
+  
+    
+
+  <div>
+                <!-- HERO GRAPHIC BEGIN -->
+<div class="row hero">
+  <div class="col-xs-12">
+          <div class="bg" 
+           style="background-image: url(https://www.moravian.edu/sites/default/files/widget-data/hero_video/2020-01/homepage-primary-asd-family.jpg);">
+              </div> <!-- hero-bg -->
+    <div class="container">
+      <div class="row">
+        <div id="hero-caption" class="col-xs-12 caption">
+          <p>You're invited to visit campus<br />
+for an Accepted Students Day!</p>
+
+<p><a href="https://www.moravian.edu/admissions/visit-tour"><button class="btn btn-primary" type="button"><strong>Register now</strong></button></a></p>
+
+        </div>
+      </div>
+    </div>
+
+  </div> </div> <!-- row -->
+<!-- HERO GRAPHIC END -->
+
+          
+<div class="row actionlinks">
+  <div class="container">
+    <div class="row">
+                                      <div class="col-md-3 col-xs-12 link blue text-center">
+          <a href="/apply">
+            <div class="text">Apply</div>
+          </a>
+        </div>
+                                      <div class="col-md-3 col-xs-12 link orange text-center">
+          <a href="/admissions/visit-tour">
+            <div class="text">Visit</div>
+          </a>
+        </div>
+                                      <div class="col-md-3 col-xs-12 link green text-center">
+          <a href="/admissions/request">
+            <div class="text">Request Info</div>
+          </a>
+        </div>
+                                      <div class="col-md-3 col-xs-12 link blue text-center">
+          <a href="/deposit">
+            <div class="text">Deposit</div>
+          </a>
+        </div>
+          </div>
+  </div>
+</div>
+
+          <div class="cke-widget-body paragraph paragraph--type--body paragraph--view-mode--default">
+                  <div><div class="container" style="margin-top: -34px; margin-bottom: -34px;">
+<div class="row">
+<div class="col-xs-12"><!--–– E2Campus code ––--><script type="text/javascript" src="https://widgets.omnilert.net/5e57ce57763b17ec92b8d6135e61982e-931"></script></div>
+</div>
+</div>
+</div>
+      
+  </div>
+
+          
+  <div class="row slogan">
+    <div class="col-xs-12">
+      <img src="/themes/modern/dist/images/slogan.png"
+            class="img-responsive center-block"
+            alt="BE A LITTLE REVOLUTIONARY">
+    </div>
+  </div>
+
+          
+<div class="row stories">
+  <div class="container">
+    <div class="storybox">
+
+                                                      
+        <div class="story green">
+          <div class="graphic" aria-describedby="s0">
+            <a href="https://www.moravian.edu/admissions/applying-moravian-college/test-optional">              <img class="img-responsive"
+                   src="https://www.moravian.edu/sites/default/files/widget-data/feature_block_story/2019-12/homepage-secondary-test-optional.jpg"
+                   alt="Student work on their MacBooks during class">
+              </a>          </div>
+          <div id="s0" class="caption">
+            <a href="https://www.moravian.edu/admissions/applying-moravian-college/test-optional">            <h2>Moravian College is Now Test Optional</h2>
+            <p>Moravian has taken a holistic approach to application evaluation since its founding, more than 275 years ago. And in the spirit of being a little revolutionary, we’ve taken things a step further by establishing our Test Optional Policy for first-year applicants.</p>
+
+                          <p><strong>
+                                  View the policy
+                              </strong></p>
+                        </a>          </div>
+        </div>
+                                                      
+        <div class="story orange">
+          <div class="graphic" aria-describedby="s1">
+            <a href="https://www.moravian.edu/academics/departments">              <img class="img-responsive"
+                   src="https://www.moravian.edu/sites/default/files/widget-data/feature_block_story/2019-12/homepage-secondary-math.jpg"
+                   alt="Two students work with a professor on a math equation at a white board">
+              </a>          </div>
+          <div id="s1" class="caption">
+            <a href="https://www.moravian.edu/academics/departments">            <h2>Explore our Departments &amp; Programs</h2>
+            <p>Moravian offers programs of study leading to four baccalaureate degrees—Bachelor of Arts, Bachelor of Science, Bachelor of Music, Bachelor of Science in Nursing.</p>
+
+                          <p><strong>
+                                  Find your major
+                              </strong></p>
+                        </a>          </div>
+        </div>
+      
+    </div>   </div> </div> 
+          
+    <div class="row stats">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="stats-slider">
+                                                                    <div class="slide">
+                <div id="slick-slide00">
+                                      <img class="img-responsive"
+                        src="https://www.moravian.edu/sites/default/files/widget-data/image_carousel_item/2018-01/benefit-1_1.png"
+                        alt="2 Apple devices for each incoming Freshman">
+                                    </div>
+              </div>
+                                                                    <div class="slide">
+                <div id="slick-slide01">
+                                      <img class="img-responsive"
+                        src="https://www.moravian.edu/sites/default/files/widget-data/image_carousel_item/2018-01/top3percent_2.png"
+                        alt="We rank in the top 3% for graduate outcomes">
+                                    </div>
+              </div>
+                                                                    <div class="slide">
+                <div id="slick-slide02">
+                                      <img class="img-responsive"
+                        src="https://www.moravian.edu/sites/default/files/widget-data/image_carousel_item/2018-01/benefit-3_1b_03.png"
+                        alt="98% of graduates land jobs or head to grad school within 6 months">
+                                    </div>
+              </div>
+                                                                    <div class="slide">
+                <div id="slick-slide03">
+                                      <img class="img-responsive"
+                        src="https://www.moravian.edu/sites/default/files/widget-data/image_carousel_item/2019-01/benefit-4_2c.png"
+                        alt="$40 million awarded in financial aid each year">
+                                    </div>
+              </div>
+                      </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+          
+  <div class="row tagline">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <img src="/themes/modern/dist/images/feed.png"
+               class="img-responsive"
+               alt="BEING A LITTLE REVOLUTIONARY IS IN OUR BLOOD. IS IT IN YOURS?">
+        </div>
+      </div>
+    </div>
+  </div>
+
+          <div class="row college-menu">
+
+  <div class="col-md-6 col-xs-12">
+    <a href="/academics">
+      Undergraduate Studies<br />
+      <img style="width: 200px; margin-top: 10px;" 
+            src="/themes/modern/dist/images/mor-college-sm.png"
+            alt="Moravian College Undergraduate Studies">
+    </a>
+  </div>
+
+  <div class="col-md-6 col-xs-12">
+    <a href="/graduate">
+      Graduate and Continuing Studies<br />
+      <img style="width: 200px; margin-top: 10px;" 
+            src="/themes/modern/dist/images/mor-graduate-sm.png"
+            alt="Moravian College Graduate and Continuing Studies">
+    </a>
+  </div>
+
+</div>
+
+          <div class="container">
+  <div class="row youvisit">
+    <div class="col-xs-12" style="text-align: center; padding: 0 !important;">
+      <script async="async" defer="defer"
+              src="//www.youvisit.com/tour/Embed/js2"></script>
+      <a href= "//www.youvisit.com" class="virtualtour_embed"
+          title="Virtual Tour"
+          data-inst="62378"
+          data-platform="v" data-link-type="image"
+          data-image-width="97%" data-image-height="300">Virtual Tour</a>
+    </div>
+  </div>
+</div>
+
+      
+  </div>
+
+  
+</article>
+
+  </div>
+
+  </div>
+
+  <div class="row">
+    <div class="region region-footer">
+    <div class="container">
+    <div id="moravian-footer" class="row footer">
+      <div class="container">
+        <div class="row social small-social hidden-lg hidden-md" style="margin-bottom: 1em;">
+          <div class="col-md-12">
+            
+<nav role="navigation" aria-labelledby="block-socialmobile-menu">
+  
+<h2 class="visually-hidden" id=block-socialmobile-menu>
+  <a role="button" data-toggle="collapse"
+     data-target="#social-mobile">
+    <div class="title">Social Mobile</div>
+  </a>
+</h2>
+
+<div id="social-mobile" class="collapse in" role="navigation">
+
+  
+
+  <div class="menu">
+              
+                <!-- <ul class="navtree"> -->
+      <ul class="navtree">
+              
+      <li class="menu-icon menu-icon-3734 menu-item">
+        <a href="https://twitter.com/MoravianCollege">Twitter</a>
+              </li>
+          
+      <li class="menu-icon menu-icon-3735 menu-item">
+        <a href="https://www.facebook.com/MoravianCollege">Facebook</a>
+              </li>
+          
+      <li class="menu-icon menu-icon-3736 menu-item">
+        <a href="https://instagram.com/moraviancollege">Instagram</a>
+              </li>
+          
+      <li class="menu-icon menu-icon-3737 menu-item">
+        <a href="https://www.youtube.com/MoravianCollegeOfficial">YouTube</a>
+              </li>
+          
+      <li class="menu-icon menu-icon-3738 menu-item menu-item--last">
+        <a href="https://www.linkedin.com/school/23680/">LinkedIn</a>
+              </li>
+        </ul>
+  
+
+  <script>
+    syntya.cake.menus.push({
+      title: 'At a Glance',
+      id: 'social-mobile',
+      url: null,
+      active: true,
+      system_id: 'system_menu_block:social-mobile',
+      items: [
+                  {
+            title: 'Twitter',
+            url: 'https://twitter.com/MoravianCollege',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'Facebook',
+            url: 'https://www.facebook.com/MoravianCollege',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'Instagram',
+            url: 'https://instagram.com/moraviancollege',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'YouTube',
+            url: 'https://www.youtube.com/MoravianCollegeOfficial',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'LinkedIn',
+            url: 'https://www.linkedin.com/school/23680/',
+            active: false,
+            items: [
+                          ]
+          },
+              ]
+    });
+  </script>
+
+
+
+
+      </div>
+</div>
+</nav>
+
+<script>
+  syntya.cake.menus.push({
+    title: 'Social Mobile',
+    id: 'socialmobile',
+    url: null,
+    active: true,
+    system_id: 'menu_block:social-mobile',
+    items: [
+              {
+          title: 'Twitter',
+          url: 'https://twitter.com/MoravianCollege',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'Facebook',
+          url: 'https://www.facebook.com/MoravianCollege',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'Instagram',
+          url: 'https://instagram.com/moraviancollege',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'YouTube',
+          url: 'https://www.youtube.com/MoravianCollegeOfficial',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'LinkedIn',
+          url: 'https://www.linkedin.com/school/23680/',
+          active: false,
+          items: [
+                      ]
+        },
+          ]
+  });
+</script>
+
+          </div>
+        </div>
+
+        <div class="col-md-4 hidden-sm hidden-xs logo-info">
+          <img src="/sites/default/files/logo-big.png" class="img-responsive"
+               alt="Moravian College">
+          <div class="info">
+            <p>1200 Main Street<br />
+Bethlehem, PA 18018</p>
+            1 800.441.3191<br>
+            610.861.1320<br>
+            FAX: 610.625.7930<br>
+            <a href="/admissions/request">EMAIL ADMISSION</a> <br /><br />
+            <p class="small">Moravian College is committed to making its website accessible to all users. Should you find content that is inaccessible, please contact <a href="mailto:webaccessibility@moravian.edu">webaccessibility@moravian.edu</a>.</p>
+
+          </div>
+        </div>
+        <div class="col-md-8 col-xs-12">
+          <div class="row actions">
+            
+<nav role="navigation" aria-labelledby="block-footeractions-menu">
+  
+<h2 class="visually-hidden" id=block-footeractions-menu>
+  <a role="button" data-toggle="collapse"
+     data-target="#footer-actions">
+    <div class="title">Footer: Actions</div>
+  </a>
+</h2>
+
+<div id="footer-actions" class="collapse in" role="navigation">
+
+  
+
+  <div class="menu">
+              
+                <!-- <ul class="navtree"> -->
+      <ul class="navtree">
+              
+      <li class="col-md-4 col-xs-12 menu-item">
+        <a href="/apply" data-drupal-link-system-path="node/9229">Apply</a>
+              </li>
+          
+      <li class="col-md-4 col-xs-12 menu-item">
+        <a href="/admissions/visit-tour" data-drupal-link-system-path="node/8626">Visit</a>
+              </li>
+          
+      <li class="col-md-4 col-xs-12 menu-item menu-item--last">
+        <a href="/requestinfo" target="_blank" data-drupal-link-system-path="node/1607">Request Info</a>
+              </li>
+        </ul>
+  
+
+  <script>
+    syntya.cake.menus.push({
+      title: 'At a Glance',
+      id: 'footer-actions',
+      url: null,
+      active: true,
+      system_id: 'system_menu_block:footer-actions',
+      items: [
+                  {
+            title: 'Apply',
+            url: '/apply',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'Visit',
+            url: '/admissions/visit-tour',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'Request Info',
+            url: '/requestinfo',
+            active: false,
+            items: [
+                          ]
+          },
+              ]
+    });
+  </script>
+
+
+
+
+      </div>
+</div>
+</nav>
+
+<script>
+  syntya.cake.menus.push({
+    title: 'Footer: Actions',
+    id: 'footeractions',
+    url: null,
+    active: true,
+    system_id: 'system_menu_block:footer-actions',
+    items: [
+              {
+          title: 'Apply',
+          url: '/apply',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'Visit',
+          url: '/admissions/visit-tour',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'Request Info',
+          url: '/requestinfo',
+          active: false,
+          items: [
+                      ]
+        },
+          ]
+  });
+</script>
+
+          </div>
+
+          <div class="row footer-menu">
+            <nav role="navigation" aria-labelledby="block-footer-menu" id="block-footer">
+            
+  <h2 class="visually-hidden">Footer</h2>
+  
+
+        
+              <nav id="block-footer-menu">
+    
+                  <div class="col-md-3 col-xs-6">
+          <h2>Resources</h2>
+      
+              <ul>
+                  
+                    <li><a href="/search/node" data-drupal-link-system-path="search/node">Search</a></li>
+      
+      
+      
+                    <li><a href="/privacy-policy" data-drupal-link-system-path="node/923">Privacy Policy</a></li>
+      
+      
+      
+                    <li><a href="https://cm.maxient.com/reportingform.php?MoravianCollege=&amp;layout_id=24" title="File a disability-related grievance with Moravian College.">Disability Grievance</a></li>
+      
+      
+      
+                    <li><a href="/policy/non-discrimination" data-drupal-link-system-path="node/5425">Non-Discrimination</a></li>
+      
+      
+      
+                    <li><a href="/titleix" title="Moravian College’s compliance with Title Nine" data-drupal-link-system-path="node/4472">Title IX</a></li>
+      
+      
+      
+    
+    
+  
+        </ul>
+      
+              </div>
+      
+                  <div class="col-md-3 col-xs-6">
+          <h2>Links For</h2>
+      
+              <ul>
+                  
+                    <li><a href="/faculty-staff-links" data-drupal-link-system-path="node/1143">Faculty &amp; Staff</a></li>
+      
+      
+      
+                    <li><a href="/students-links" data-drupal-link-system-path="node/1146">Current Students</a></li>
+      
+      
+      
+                    <li><a href="/parents-families-links" data-drupal-link-system-path="node/1147">Parents &amp; Families</a></li>
+      
+      
+      
+                    <li><a href="/alumni" data-drupal-link-system-path="node/205">Alumni &amp; Friends</a></li>
+      
+      
+      
+                    <li><a href="/community-visitors-links" data-drupal-link-system-path="node/1148">Community &amp; Visitors</a></li>
+      
+      
+      
+    
+    
+  
+        </ul>
+      
+              </div>
+      
+                  <div class="col-md-3 col-xs-6">
+          <h2>On Campus</h2>
+      
+              <ul>
+                  
+                    <li><a href="/news" data-drupal-link-system-path="node/5890">News</a></li>
+      
+      
+      
+                    <li><a href="/events">Events Calendar</a></li>
+      
+      
+      
+                    <li><a href="/infocus" data-drupal-link-system-path="node/5519">InFocus</a></li>
+      
+      
+      
+                    <li><a href="/bookshop" data-drupal-link-system-path="node/6924">Book Shop</a></li>
+      
+      
+      
+                    <li><a href="/reeves" data-drupal-link-system-path="node/6208">Reeves Library</a></li>
+      
+      
+      
+    
+    
+  
+        </ul>
+      
+              </div>
+      
+                  <div class="col-md-3 col-xs-6">
+          <h2>Contact</h2>
+      
+              <ul>
+                  
+                    <li><a href="/about/campus-map" data-drupal-link-system-path="node/14">Campus Maps</a></li>
+      
+      
+      
+                    <li><a href="/inside-moravian" data-drupal-link-system-path="inside-moravian">Inside Moravian</a></li>
+      
+      
+      
+                    <li><a href="http://cithelp.moravian.edu/">IT Help</a></li>
+      
+      
+      
+                    <li><a href="/hr/employment/job-opportunities" data-drupal-link-system-path="node/8147">Job Opportunities</a></li>
+      
+      
+      
+                    <li><a href="/news/contact" title="Media Contact" data-drupal-link-system-path="node/6006">Media Contact</a></li>
+      
+      
+      
+    
+    
+  
+        </ul>
+      
+              </div>
+      
+    
+          </nav>
+    
+  
+
+
+
+  </nav>
+
+          </div>
+
+          <div class="row social hidden-xs hidden-sm">
+            
+<nav role="navigation" aria-labelledby="block-social-menu">
+  
+<h2 class="visually-hidden" id=block-social-menu>
+  <a role="button" data-toggle="collapse"
+     data-target="#social">
+    <div class="title">Social</div>
+  </a>
+</h2>
+
+<div id="social" class="collapse in" role="navigation">
+
+  
+
+  <div class="menu">
+              
+                <!-- <ul class="navtree"> -->
+      <ul class="navtree">
+              
+      <li class="menu-icon menu-icon-3691 menu-item">
+        <a href="https://twitter.com/MoravianCollege">Twitter</a>
+              </li>
+          
+      <li class="menu-icon menu-icon-3692 menu-item">
+        <a href="https://www.facebook.com/MoravianCollege">Facebook</a>
+              </li>
+          
+      <li class="menu-icon menu-icon-3693 menu-item">
+        <a href="https://instagram.com/moraviancollege">Instagram</a>
+              </li>
+          
+      <li class="menu-icon menu-icon-3695 menu-item">
+        <a href="https://www.youtube.com/MoravianCollegeOfficial">Youtube</a>
+              </li>
+          
+      <li class="menu-icon menu-icon-3696 menu-item menu-item--last">
+        <a href="https://www.linkedin.com/school/23680/">LinkedIn</a>
+              </li>
+        </ul>
+  
+
+  <script>
+    syntya.cake.menus.push({
+      title: 'At a Glance',
+      id: 'social',
+      url: null,
+      active: true,
+      system_id: 'system_menu_block:social',
+      items: [
+                  {
+            title: 'Twitter',
+            url: 'https://twitter.com/MoravianCollege',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'Facebook',
+            url: 'https://www.facebook.com/MoravianCollege',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'Instagram',
+            url: 'https://instagram.com/moraviancollege',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'Youtube',
+            url: 'https://www.youtube.com/MoravianCollegeOfficial',
+            active: false,
+            items: [
+                          ]
+          },
+                  {
+            title: 'LinkedIn',
+            url: 'https://www.linkedin.com/school/23680/',
+            active: false,
+            items: [
+                          ]
+          },
+              ]
+    });
+  </script>
+
+
+
+
+      </div>
+</div>
+</nav>
+
+<script>
+  syntya.cake.menus.push({
+    title: 'Social',
+    id: 'social',
+    url: null,
+    active: true,
+    system_id: 'system_menu_block:social',
+    items: [
+              {
+          title: 'Twitter',
+          url: 'https://twitter.com/MoravianCollege',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'Facebook',
+          url: 'https://www.facebook.com/MoravianCollege',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'Instagram',
+          url: 'https://instagram.com/moraviancollege',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'Youtube',
+          url: 'https://www.youtube.com/MoravianCollegeOfficial',
+          active: false,
+          items: [
+                      ]
+        },
+              {
+          title: 'LinkedIn',
+          url: 'https://www.linkedin.com/school/23680/',
+          active: false,
+          items: [
+                      ]
+        },
+          ]
+  });
+</script>
+
+          </div>
+
+          <div class="row affiliates">
+            <div id="block-affiliates">
+  
+    
+      <div class="field field-block-content--body field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item">
+        <p><a href="/veterans"><img alt="Yellow Ribbon Program" data-entity-type="" data-entity-uuid="" src="/sites/default/files/department/footer/ribbon-large-grey.png" style="height: 70px;" /></a>     <a href="http://www.itsonus.org" target="_blank"><img alt="It's On Us" data-entity-type="" data-entity-uuid="" src="/sites/default/files/department/footer/itsOnUs-grey.png" style="height: 70px;" /></a>   <a href="/graduate"><img alt="Moravian Graduate" data-entity-type="" data-entity-uuid="" src="/sites/default/files/department/footer/graduateLogoFooter_0-grey.png" style="height: 59px;" /></a> <a href="https://www.moravianseminary.edu/"><img alt="Moravian Seminary" data-entity-type="" data-entity-uuid="" src="/sites/default/files/department/footer/seminaryLogoFooter_0-grey.png" style="height: 59px;" /></a></p>
+
+      </div>
+      </div>
+</div>
+
+  </div>
+
+          </div>
+        </div>
+
+        <div class="col-xs-12 hidden-lg hidden-md logo-info">
+          <img src="/sites/default/files/logo-big.png" class="img-responsive"
+               alt="Moravian College">
+          <div class="info">
+            <p>1200 Main Street<br />
+Bethlehem, PA 18018</p>
+            1 800.441.3191<br>
+            610.861.1320<br>
+            FAX: 610.625.7930<br>
+            <a href="/admissions/request">EMAIL ADMISSION</a> <br /><br />
+            <p class="small">Moravian College is committed to making its website accessible to all users. Should you find content that is inaccessible, please contact <a href="mailto:webaccessibility@moravian.edu">webaccessibility@moravian.edu</a>.</p>
+
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</main>
+
+  </div>
+
+      
+      <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/1414","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"user":{"uid":0,"permissionsHash":"5970b980780c384adb08f366a0c705fa6912dd6e3a2933cfed8c626b5145c6ea"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=3.4.1"></script>
+<script src="/core/misc/drupalSettingsLoader.js?v=8.8.1"></script>
+<script src="/core/misc/drupal.js?v=8.8.1"></script>
+<script src="/core/misc/drupal.init.js?v=8.8.1"></script>
+<script src="/themes/modern/bower_components/slick.js/slick/slick.min.js?q4tyrh"></script>
+<script src="/themes/modern/dist/js/lib.js?q4tyrh"></script>
+<script src="/themes/modern/dist/js/maxient-hack.js?q4tyrh"></script>
+<script src="/themes/modern/dist/js/main-nav.js?q4tyrh"></script>
+<script src="/themes/modern/custom/swipebox/src/js/jquery.swipebox.js?q4tyrh"></script>
+<script src="/sites/all/modules/moravian/lib/js/mobilenav.js?v=1"></script>
+
+
+    <script type="text/javascript" src="//customer.cludo.com/scripts/bundles/search-script.min.js"></script>
+    <script>
+    var CludoSearch;
+    (function () {
+        var cludoSettings = {
+            customerId: 534,
+            engineId: 2183,
+            language: 'en',
+            searchInputs: ["cludoSearchForm"],
+            type: 'standardOverlay',
+            theme: {
+                themeColor: '#5da1ce',
+                themeBannerColor: {textColor: '#4d4d4d', backgroundColor: '#f2f2f2'},
+                borderRadius: 0, borderRadiusInput: 0
+            },
+    searchApiUrl: 'https://api-eu1.cludo.com/api/v3'
+        };
+        CludoSearch= new Cludo(cludoSettings);
+        CludoSearch.init();
+    })();
+    </script>
+
+    <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"63f61aaa3c","applicationID":"165824674","transactionName":"YQNTYUJSC0pZWhJYXFhJcFZEWgpXF30URENXCm12X0EAZXVcCERvcgNXVEVfEXRdVxN9WlgNZUdVVihYVlAWRF9XEl5HQx5bXl1XA0NSQgN4W1RWHXhWXTVeQUI=","queueTime":0,"applicationTime":650,"atts":"TURQFwpIGEQ=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

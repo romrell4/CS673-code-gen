@@ -1,0 +1,1203 @@
+	<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+
+	
+		<meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"ffcde102fb",applicationID:"168232170"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="author" content="UC Hastings Law | San Francisco">
+	<link rel="pingback" href="https://www.uchastings.edu/xmlrpc.php">
+
+		<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="apple-mobile-web-app-title" content="&lt;h1 class=&quot;subheader__title h1&quot;&gt;UC Hastings Law | San Francisco&lt;/h1&gt;">
+
+		<meta name="application-name" content="UC Hastings Law | San Francisco">
+
+			<!-- Hotjar Tracking Code for uchastings.edu -->
+		<script>
+			(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:58719,hjsv:6};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+		</script>
+		
+        <script type="text/javascript">
+            function is_browser() {
+                return (
+                    navigator.userAgent.indexOf("Chrome") !== - 1 ||
+                    navigator.userAgent.indexOf("Opera") !== - 1 ||
+                    navigator.userAgent.indexOf("Firefox") !== - 1 ||
+                    navigator.userAgent.indexOf("MSIE") !== - 1 ||
+                    navigator.userAgent.indexOf("Safari") !== - 1 ||
+                    navigator.userAgent.indexOf("Edge") !== - 1
+                );
+            }
+
+            function less_than_ie11() {
+                return (
+                    !window.atob || // IE9 and below
+                    Function('/*@cc_on return document.documentMode===10@*/')() // IE10
+                );
+            }
+
+            function not_excluded_page() {
+                return (
+                    window.location.href.indexOf("/unsupported-browser/") === - 1 &&
+                    document.title.toLowerCase().indexOf('page not found') === - 1
+                );
+            }
+
+            if (is_browser() && less_than_ie11() && not_excluded_page()) {
+                window.location = location.protocol + '//' + location.host + '/unsupported-browser/';
+            }
+        </script>
+
+		
+		<script>
+			var modern_tribe = window.modern_tribe || {};
+			modern_tribe.fonts = {
+				state: {
+					loading: true,
+					active: false
+				},
+				events: {
+					trigger: function ( event_type, event_data, el ) {
+						var event;
+						try {
+							event = new CustomEvent( event_type, { detail: event_data } );
+						} catch ( e ) {
+							event = document.createEvent( 'CustomEvent' );
+							event.initCustomEvent( event_type, true, true, event_data );
+						}
+						el.dispatchEvent( event );
+					}
+				}
+			};
+			var WebFontConfig = {
+								typekit: {
+					id: 'ekh7fqt'
+				},
+												google: {
+					families: ["Roboto:300,400,400i,500,700,700i"]				},
+												loading: function () {
+					modern_tribe.fonts.state.loading = true;
+					modern_tribe.fonts.state.active = false;
+					modern_tribe.fonts.events.trigger( 'modern_tribe/fonts_loading', {}, document );
+				},
+				active: function () {
+					modern_tribe.fonts.state.loading = false;
+					modern_tribe.fonts.state.active = true;
+					modern_tribe.fonts.events.trigger( 'modern_tribe/fonts_loaded', {}, document );
+				},
+				inactive: function () {
+					modern_tribe.fonts.state.loading = false;
+					modern_tribe.fonts.state.active = false;
+					modern_tribe.fonts.events.trigger( 'modern_tribe/fonts_failed', {}, document );
+				}
+			};
+			(function ( d ) {
+				var wf = d.createElement( 'script' ), s = d.scripts[ 0 ];
+				wf.src = 'https://www.uchastings.edu/wp-content/themes/core/js/vendor/webfontloader.js';
+				s.parentNode.insertBefore( wf, s );
+			})( document );
+		</script>
+
+		<title>UC Hastings College of the Law - San Francisco, California</title>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-34997513-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-34997513-1');
+	</script>
+				<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-5J2XPG4');</script>
+		<!-- End Google Tag Manager -->
+		
+<!-- This site is optimized with the Yoast SEO Premium plugin v7.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Founded in 1878 as the original law department of the University of California system, UC Hastings educates the brightest and most ambitious learners, propelling them to become leaders, trailblazing entrepreneurs, and catalysts of change. Explore what makes UC Hastings one of the top law schools in the nation."/>
+<link rel="canonical" href="https://www.uchastings.edu/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="UC Hastings College of the Law - San Francisco, California" />
+<meta property="og:description" content="Founded in 1878 as the original law department of the University of California system, UC Hastings educates the brightest and most ambitious learners, propelling them to become leaders, trailblazing entrepreneurs, and catalysts of change. Explore what makes UC Hastings one of the top law schools in the nation." />
+<meta property="og:url" content="https://www.uchastings.edu/" />
+<meta property="og:site_name" content="UC Hastings Law | San Francisco" />
+<meta property="og:image" content="https://www.uchastings.edu/wp-content/themes/core/branding-assets/social-share.jpg" />
+<meta property="og:image:secure_url" content="https://www.uchastings.edu/wp-content/themes/core/branding-assets/social-share.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Founded in 1878 as the original law department of the University of California system, UC Hastings educates the brightest and most ambitious learners, propelling them to become leaders, trailblazing entrepreneurs, and catalysts of change. Explore what makes UC Hastings one of the top law schools in the nation." />
+<meta name="twitter:title" content="UC Hastings College of the Law - San Francisco, California" />
+<meta name="twitter:site" content="@uchastingslaw" />
+<meta name="twitter:image" content="https://www.uchastings.edu/wp-content/themes/core/branding-assets/social-share.jpg" />
+<meta name="twitter:creator" content="@uchastingslaw" />
+<meta name="google-site-verification" content="EyhCSZLIBpkUjvDxTF3sDgyVIoVrRyFylO1FTwQpa_E" />
+<!-- / Yoast SEO Premium plugin. -->
+
+<link rel='dns-prefetch' href='//www.uchastings.edu' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='stylesheet' id='core-theme-base-css'  href='https://www.uchastings.edu/wp-content/themes/core/css/dist/master.min.css?ver=7.08.05.21.2019' type='text/css' media='all' />
+<link rel='stylesheet' id='core-theme-print-css'  href='https://www.uchastings.edu/wp-content/themes/core/css/dist/print.min.css?ver=7.08.05.21.2019' type='text/css' media='print' />
+<link rel='stylesheet' id='elasticpress-facets-css'  href='https://www.uchastings.edu/wp-content/plugins/elasticpress/features/facets/assets/css/facets.min.css?ver=2.8.2' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://www.uchastings.edu/wp-content/plugins/tablepress/css/default.min.css?ver=1.9.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.uchastings.edu/wp-content/themes/core/js/vendor/jquery.min.js?ver=7.08.05.21.2019'></script>
+<link rel='https://api.w.org/' href='https://www.uchastings.edu/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.uchastings.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.uchastings.edu/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.1.1" />
+<link rel='shortlink' href='https://www.uchastings.edu/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.uchastings.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.uchastings.edu%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.uchastings.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.uchastings.edu%2F&#038;format=xml" />
+<meta name="tec-api-version" content="v1"><meta name="tec-api-origin" content="https://www.uchastings.edu"><link rel="https://theeventscalendar.com/" href="https://www.uchastings.edu/wp-json/tribe/events/v1/" /><link rel="shortcut icon" href="https://www.uchastings.edu/wp-content/uploads/2018/09/64px.ico"><link rel="icon" sizes="192x192" href="https://www.uchastings.edu/wp-content/uploads/2018/09/192px.png"><link rel="apple-touch-icon-precomposed" href="https://www.uchastings.edu/wp-content/uploads/2018/09/512px.png"><meta name="msapplication-TileImage" content="https://www.uchastings.edu/wp-content/uploads/2018/09/144px.png"><meta name="msapplication-TileColor" content="#0047bb"><meta name="theme-color" content="#0047bb">
+
+</head>
+<body class="home page-template page-template-page-templates page-template-page-landing page-template-page-templatespage-landing-php page page-id-8787 page-parent has-panels is-panels-page page-home tribe-no-js tribe-theme-core">
+
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J2XPG4"
+						  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		
+
+<div class="l-wrapper" data-js="site-wrap">
+
+	<header class="site-header">
+
+	<a href="#main-content" class="a11y-skip-link a11y-skip-link--content">
+		Skip to main content
+	</a>
+
+	<div class="l-container">
+		<div class="site-header__inner">
+
+		<div class="logo" data-js="logo"><a href="https://www.uchastings.edu" rel="home"><span class="u-visual-hide">UC Hastings Law | San Francisco</span></a></div>
+
+		<button
+			class="flyout__trigger flyout__trigger--mobile"
+			data-js="trigger__flyout--open"
+			aria-haspopup="true"
+			aria-expanded="false"
+			aria-controls="flyout"
+			aria-label="Open the navigation menu"
+		>
+			<span class="u-screen-reader-text">
+				Menu
+			</span>
+		</button>
+
+		<div class="site-header__primary">
+			
+	<nav class="primary__nav" aria-label="Primary Navigation">
+
+		<ol class="primary__menu">
+			<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/our-story/" class="primary__action primary__action--depth-0"><span>Our Story</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/admissions/" class="primary__action primary__action--depth-0"><span>Admissions</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/academics/" class="primary__action primary__action--depth-0"><span>Academics</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/faculty-research/" class="primary__action primary__action--depth-0"><span>Faculty &#038; Research</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/campus-life/" class="primary__action primary__action--depth-0"><span>Campus Life</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/careers/" class="primary__action primary__action--depth-0"><span>Careers</span></a></li>
+
+		</ol>
+
+	</nav>
+
+
+		</div>
+
+		<div class="site-header__secondary">
+			
+	<nav class="task__nav" aria-label="Task Navigation">
+
+		<ol class="task__menu">
+			<li class="task__list-item task__list-item--depth-0"><a href="https://www.uchastings.edu/apply/" class="task__action task__action--depth-0">Apply</a></li>
+<li class="task__list-item task__list-item--depth-0"><a href="https://www.uchastings.edu/events/" class="task__action task__action--depth-0">Events</a></li>
+<li class="task__list-item task__list-item--depth-0"><a href="https://www.uchastings.edu/alumni/how-to-give/%20" class="task__action task__action--depth-0">Give</a></li>
+<li class="task__list-item task__list-item--depth-0"><a href="https://uchastingslaw.brandedcompanystore.com/Default.aspx" class="task__action task__action--depth-0">Shop</a></li>
+
+		</ol>
+
+	</nav>
+
+
+
+			<button
+				class="flyout__trigger flyout__trigger--desktop"
+				data-js="trigger__flyout--open"
+				aria-haspopup="true"
+				aria-expanded="false"
+				aria-controls="flyout"
+				aria-label="Open the navigation menu"
+			>
+				<span class="u-screen-reader-text">
+					More
+				</span>
+			</button>
+		</div>
+
+		</div>
+	</div>
+</header>
+
+<section id="flyout" class="flyout" data-js="flyout" aria-hidden="true">
+
+	<div class="flyout__header">
+		<div class="l-container">
+			<button
+				class="flyout__trigger flyout__trigger--close"
+				data-js="trigger__flyout--close"
+				aria-haspopup="true"
+				aria-expanded="true"
+				aria-controls="flyout"
+				aria-label="Close the navigation menu"
+			>
+				Close
+			</button>
+		</div>
+	</div>
+
+	<div class="flyout__content">
+		<div class="l-container">
+			
+<form class="c-search" role='search' method='get' action='https://www.uchastings.edu' data-js='site-search__form'>
+	<div class="search-form">
+		<label class="c-search__label form-control-label" for='s-5e30705fd9821'>I'm Looking for</label>
+		<input class="c-search__input form-control" type='text' id='s-5e30705fd9821' name='s' data-js='site-search__input' value='' />
+		
+<button class="c-button search-form__clear"
+		type="button"
+				data-js='site-search__clear'>
+			<span class="c-btn__text"><span class="u-screen-reader-text">Clear Search</span><i class="icon icon-cross"></i></span>
+	</button>
+
+		
+<button class="c-button search-form__submit"
+		type="submit"
+				data-js='site-search__submit'>
+			<span class="c-btn__text"><span class="u-screen-reader-text">Search</span><i class="icon icon-arrow-right"></i></span>
+	</button>
+
+	</div>
+</form>
+
+
+			
+	<nav class="audience__nav" aria-labelledby="nav__label--audience">
+
+		<div class="nav__label form-control-label" id="nav__label--audience">Resources For</div>
+
+		<ol class="audience__menu">
+			<li class="audience__list-item audience__list-item--depth-0"><a href="https://www.uchastings.edu/alumni/" class="audience__action audience__action--depth-0">Alumni</a></li>
+<li class="audience__list-item audience__list-item--depth-0"><a href="https://www.uchastings.edu/resources-for-faculty/" class="audience__action audience__action--depth-0">Faculty</a></li>
+<li class="audience__list-item audience__list-item--depth-0"><a href="https://www.uchastings.edu/resources-for-staff/" class="audience__action audience__action--depth-0">Staff</a></li>
+<li class="audience__list-item audience__list-item--depth-0"><a href="https://www.uchastings.edu/resources-for-students/" class="audience__action audience__action--depth-0">Students</a></li>
+<li class="audience__list-item audience__list-item--depth-0"><a href="https://www.uchastings.edu/careers/employers/" class="audience__action audience__action--depth-0">Employers</a></li>
+
+		</ol>
+
+	</nav>
+
+
+			
+	<nav class="primary__nav" aria-label="Primary Navigation">
+
+		<ol class="primary__menu">
+			<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/our-story/" class="primary__action primary__action--depth-0"><span>Our Story</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/admissions/" class="primary__action primary__action--depth-0"><span>Admissions</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/academics/" class="primary__action primary__action--depth-0"><span>Academics</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/faculty-research/" class="primary__action primary__action--depth-0"><span>Faculty &#038; Research</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/campus-life/" class="primary__action primary__action--depth-0"><span>Campus Life</span></a></li>
+<li class="primary__list-item primary__list-item--depth-0"><a href="https://www.uchastings.edu/careers/" class="primary__action primary__action--depth-0"><span>Careers</span></a></li>
+
+		</ol>
+
+	</nav>
+
+
+			
+	<nav class="task__nav" aria-label="Task Navigation">
+
+		<ol class="task__menu">
+			<li class="task__list-item task__list-item--depth-0"><a href="https://www.uchastings.edu/apply/" class="task__action task__action--depth-0">Apply</a></li>
+<li class="task__list-item task__list-item--depth-0"><a href="https://www.uchastings.edu/events/" class="task__action task__action--depth-0">Events</a></li>
+<li class="task__list-item task__list-item--depth-0"><a href="https://www.uchastings.edu/alumni/how-to-give/%20" class="task__action task__action--depth-0">Give</a></li>
+<li class="task__list-item task__list-item--depth-0"><a href="https://uchastingslaw.brandedcompanystore.com/Default.aspx" class="task__action task__action--depth-0">Shop</a></li>
+
+		</ol>
+
+	</nav>
+
+
+		</div>
+	</div>
+
+</section>
+
+
+	
+
+
+<a id="main-content" tabindex="-1"></a>
+
+<main>
+
+	
+			
+	
+	
+		<div class="panel-collection" data-modular-content-collection>
+	
+		
+
+			<section class="panel s-wrapper site-panel site-panel--hero"
+				 data-index="0"
+				 data-js="panel"
+				 data-type="hero"
+				 data-modular-content>
+	
+	
+	
+	
+		<div role="img" aria-label="A view of the city of San Francisco" data-expand="200"   data-sizes="(min-width: 1260px) 1260px, 100vw" data-bgset="https://www.uchastings.edu/wp-content/uploads/2018/08/t20_3w3ROy-370x208.jpg 370w 208h, 
+https://www.uchastings.edu/wp-content/uploads/2018/08/t20_3w3ROy-740x416.jpg 740w 416h, 
+https://www.uchastings.edu/wp-content/uploads/2018/08/t20_3w3ROy-970x546.jpg 970w 546h, 
+https://www.uchastings.edu/wp-content/uploads/2018/08/t20_3w3ROy-1480x833.jpg 1480w 833h, 
+https://www.uchastings.edu/wp-content/uploads/2018/08/t20_3w3ROy-1940x1091.jpg 1940w 1091h" style="background-image:url('https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/16x9.png');"  class="hero__figure hero__figure--landscape lazyload"></div>
+		<div role="img" aria-label="A view of the city of San Francisco" data-expand="200"   data-sizes="(min-width: 1260px) 1260px, 100vw" data-bgset="https://www.uchastings.edu/wp-content/uploads/2018/08/t20_3w3ROy-375x500.jpg 375w 500h, 
+https://www.uchastings.edu/wp-content/uploads/2018/08/t20_3w3ROy-563x750.jpg 563w 750h, 
+https://www.uchastings.edu/wp-content/uploads/2018/08/t20_3w3ROy-750x1000.jpg 750w 1000h" style="background-image:url('https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/3x4.png');"  class="hero__figure hero__figure--portrait lazyload"></div>
+		
+
+		<div class="l-container u-vertical-padding hero__container">
+			<div
+				class="g-row g-row--vertical-center g-row--center u-text-align-center"
+				data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"			>
+				<div class="g-col hero__col t-content--light">
+					
+<div class="c-content-block">
+
+	<div class="c-content-block__content">
+
+					
+<h1
+		class="hero__title panel__title h1"
+		>
+
+	Made in <br>San Francisco. <br>Ready for the World.
+
+</h1>
+		
+					
+<div class="hero__content t-content l-container__stagger-double" >
+	
+</div>
+
+		
+		
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+
+	
+				
+	
+			</section>
+	
+
+
+		
+
+			<section class="panel site-panel s-wrapper u-bc-white site-panel--postloop"
+				 data-index="1"
+				 data-js="panel"
+				 data-type="postloop"
+				 data-modular-content>
+	
+			<div class="l-container">
+	
+	
+					<header class="s-header">
+
+				<h1 class="panel__title h1" data-name="title" data-livetext data-depth="0" data-index="0" data-aos='fade' data-aos-delay='300' data-aos-duration='1000'>News</h1>
+
+													
+			</header>
+		
+	
+	
+	<div  class="panel-postloop panel-postloop--count-4"
+	     data-depth="0"
+	     data-name="posts"
+	     data-livetext>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2020/01/24/welcome-jon-abel/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Photo of Jon Abel" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2020/01/Jon-Abel-270x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2020/01/Jon-Abel-270x203.jpg 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Jon-Abel-370x278.jpg 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Jon-Abel-520x420.jpg 520w 420h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Jon-Abel-520x555.jpg 520w 555h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">Jonathan Abel Joins UC Hastings Faculty</h3>
+		
+		
+					<div class="c-card__text"><time datetime="2020-01-24T14:18:42-08:00" class="c-card__date">01/24/20</time></div>
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2020/01/18/remembering-terence-hallinan-64-outspoken-and-fierce-in-pursuing-justice/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Photo of Terence Hallinan" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2020/01/Terence_HALLINAN_SF_District_Attorney-270x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2020/01/Terence_HALLINAN_SF_District_Attorney-270x203.jpg 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Terence_HALLINAN_SF_District_Attorney-370x278.jpg 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Terence_HALLINAN_SF_District_Attorney-560x420.jpg 560w 420h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Terence_HALLINAN_SF_District_Attorney-740x555.jpg 740w 555h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">Remembering Terence Hallinan ’64, “Outspoken and Fierce” in Pursuing Justice</h3>
+		
+		
+					<div class="c-card__text"><time datetime="2020-01-18T10:25:28-08:00" class="c-card__date">01/18/20</time></div>
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2020/01/12/progressive-prosecution/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Photo by poirpom" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2020/01/16479845789_7ec32283ce_k-270x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2020/01/16479845789_7ec32283ce_k-270x203.jpg 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/16479845789_7ec32283ce_k-370x278.jpg 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/16479845789_7ec32283ce_k-560x420.jpg 560w 420h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/16479845789_7ec32283ce_k-740x555.jpg 740w 555h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">Progressive Prosecution and the Carceral State Symposium, February 7</h3>
+		
+		
+					<div class="c-card__text"><time datetime="2020-01-12T23:53:52-08:00" class="c-card__date">01/12/20</time></div>
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2020/01/05/graduates-triumph-ca-bar/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Photo of Katie Gross" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2020/01/Katie-Gross-270x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2020/01/Katie-Gross-270x203.jpg 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Katie-Gross-370x278.jpg 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Katie-Gross-560x420.jpg 560w 420h, 
+https://www.uchastings.edu/wp-content/uploads/2020/01/Katie-Gross-740x555.jpg 740w 555h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">Graduates Triumph on California Bar</h3>
+		
+		
+					<div class="c-card__text"><time datetime="2020-01-05T20:51:20-08:00" class="c-card__date">01/05/20</time></div>
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+		
+	</div>
+
+
+				
+			</div>
+	
+			</section>
+	
+
+
+		
+
+			<section class="panel site-panel s-wrapper u-bc-white site-panel--postloop"
+				 data-index="2"
+				 data-js="panel"
+				 data-type="postloop"
+				 data-modular-content>
+	
+			<div class="l-container">
+	
+	
+		
+	
+	
+	<div  class="panel-postloop panel-postloop--count-4"
+	     data-depth="0"
+	     data-name="posts"
+	     data-livetext>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2020/01/02/happy-new-year/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Photo of David Faigman" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2019/08/david-faigman-270x203.png" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2019/08/david-faigman-270x203.png 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2019/08/david-faigman-370x278.png 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2019/08/david-faigman-560x420.png 560w 420h, 
+https://www.uchastings.edu/wp-content/uploads/2019/08/david-faigman-740x533.png 740w 533h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">Happy New Year</h3>
+		
+		
+					<div class="c-card__text"><time datetime="2020-01-02T11:07:41-08:00" class="c-card__date">01/02/20</time></div>
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2019/12/15/tenant-landlord-clinic-award/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Blue Lower Polk Community Benefit District Logo with Star" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2019/12/LPCBD2-270x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2019/12/LPCBD2-270x203.jpg 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2019/12/LPCBD2-370x278.jpg 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2019/12/LPCBD2-560x420.jpg 560w 420h, 
+https://www.uchastings.edu/wp-content/uploads/2019/12/LPCBD2-740x555.jpg 740w 555h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">Tenant Landlord Clinic Wins Prestigious Award</h3>
+		
+		
+					<div class="c-card__text"><time datetime="2019-12-15T18:55:06-08:00" class="c-card__date">12/15/19</time></div>
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2019/11/23/professor-carol-izumi-honored-with-rutter-award/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Carol Izumi speaks at podium" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2018/11/carol_izumi-246x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2018/11/carol_izumi-246x203.jpg 246w 203h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">Professor Carol Izumi Honored with Rutter Award</h3>
+		
+		
+					<div class="c-card__text"><time datetime="2019-11-23T08:20:03-08:00" class="c-card__date">11/23/19</time></div>
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2019/11/21/uc-hastings-adjunct-teri-l-jackson-nominated-as-first-african-american-woman-to-serve-on-first-district-court-of-appeal/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="judge-jackson2" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2019/11/judge-jackson2-270x203.png" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2019/11/judge-jackson2-270x203.png 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2019/11/judge-jackson2-370x278.png 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2019/11/judge-jackson2-534x420.png 534w 420h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">UC Hastings Adjunct Teri L. Jackson Nominated as First African-American Woman to Serve on First District Court of Appeal</h3>
+		
+		
+					<div class="c-card__text"><time datetime="2019-11-21T14:44:11-08:00" class="c-card__date">11/21/19</time></div>
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+		
+	</div>
+
+
+				
+			</div>
+	
+			</section>
+	
+
+
+		
+
+			<section class="panel site-panel s-wrapper site-panel--events u-bc-dark-blue t-content--light"
+				 data-index="3"
+				 data-js="panel"
+				 data-type="eventloop"
+				 data-modular-content>
+	
+			<div class="l-container">
+	
+	
+					<header class="s-header">
+
+				<h2 class="section__title panel__title h1" data-name="title" data-livetext data-depth="0" data-index="0" data-aos='fade' data-aos-delay='300' data-aos-duration='1000'>Featured Events</h2>
+
+													
+			</header>
+		
+	
+				<div class="stats-panel__events">
+							<div class="event-row">
+					<div class="event-row__date">
+					<span class="event-row__date-month">
+						Feb
+					</span>
+						<span class="event-row__date-day">
+						05
+					</span>
+					</div>
+					<div class="event-row__content">
+						<h3 class="event-row__title h4">
+							<a class="event-row__title-link" href="https://www.uchastings.edu/event/2019-rutter-award-ceremony-for-professor-carol-izumi/">2019 Rutter Award Ceremony for Professor Carol Izumi</a>
+						</h3>
+						<div class="event-row__excerpt">
+							<p>The Rutter Endowment provides UC Hastings an annual award of $10,000 for our outstanding professor.  According to the terms of the gift, the outstanding professor&hellip;</p>
+
+						</div>
+					</div>
+					<div class="event-row__meta">
+													<div class="event-row__meta-venue">
+								Alumni Reception Center
+							</div>
+																			<div class="event-row__meta-time">
+								3:30 pm - 5:00 pm
+							</div>
+											</div>
+				</div>
+							<div class="event-row">
+					<div class="event-row__date">
+					<span class="event-row__date-month">
+						Feb
+					</span>
+						<span class="event-row__date-day">
+						07
+					</span>
+					</div>
+					<div class="event-row__content">
+						<h3 class="event-row__title h4">
+							<a class="event-row__title-link" href="https://www.uchastings.edu/event/progressive-prosecutors-symposium/">Progressive Prosecution in the Carceral State</a>
+						</h3>
+						<div class="event-row__excerpt">
+							<p>University of California Hastings, Journal of Crime and Punishment 1st Annual Symposium Our daylong symposium will focus on emerging efforts to reform prosecutorial practices within&hellip;</p>
+
+						</div>
+					</div>
+					<div class="event-row__meta">
+													<div class="event-row__meta-venue">
+								Alumni Reception Center
+							</div>
+																			<div class="event-row__meta-time">
+								8:30 am - 5:00 pm
+							</div>
+											</div>
+				</div>
+							<div class="event-row">
+					<div class="event-row__date">
+					<span class="event-row__date-month">
+						Mar
+					</span>
+						<span class="event-row__date-day">
+						26
+					</span>
+					</div>
+					<div class="event-row__content">
+						<h3 class="event-row__title h4">
+							<a class="event-row__title-link" href="https://www.uchastings.edu/event/333-golden-gate-ribbon-cutting-last-beer-on-the-beach/">333 Golden Gate Ribbon Cutting &#038; Final Beer on the Beach</a>
+						</h3>
+						<div class="event-row__excerpt">
+							<p>All alumni, friends, partners, and neighbors of UC Hastings Law are invited to celebrate the completion of our new academic building at 333 Golden Gate.&hellip;</p>
+
+						</div>
+					</div>
+					<div class="event-row__meta">
+													<div class="event-row__meta-venue">
+								333 Golden Gate
+							</div>
+																			<div class="event-row__meta-time">
+								3:00 pm - 6:00 pm
+							</div>
+											</div>
+				</div>
+							<div class="event-row">
+					<div class="event-row__date">
+					<span class="event-row__date-month">
+						Apr
+					</span>
+						<span class="event-row__date-day">
+						15
+					</span>
+					</div>
+					<div class="event-row__content">
+						<h3 class="event-row__title h4">
+							<a class="event-row__title-link" href="https://www.uchastings.edu/event/tobriner-lecture/">The Mathew O. Tobriner Memorial Lecture</a>
+						</h3>
+						<div class="event-row__excerpt">
+							<p>We are excited that Judge Robert Wilkins of the D.C. Circuit will be our 2019-20 Mathew O. Tobriner Memorial lecturer. He will talk about how his&hellip;</p>
+
+						</div>
+					</div>
+					<div class="event-row__meta">
+													<div class="event-row__meta-venue">
+								Alumni Reception Center
+							</div>
+																			<div class="event-row__meta-time">
+								3:30 pm - 5:00 pm
+							</div>
+											</div>
+				</div>
+					</div>
+	
+				
+			</div>
+	
+			</section>
+	
+
+
+		
+
+			<section class="panel site-panel s-wrapper u-bc-white site-panel--postloop"
+				 data-index="4"
+				 data-js="panel"
+				 data-type="postloop"
+				 data-modular-content>
+	
+			<div class="l-container">
+	
+	
+					<header class="s-header">
+
+				<h2 class="panel__title h1" data-name="title" data-livetext data-depth="0" data-index="0" data-aos='fade' data-aos-delay='300' data-aos-duration='1000'>Faculty Sightings &amp; Citations</h2>
+
+													
+			</header>
+		
+	
+	
+	<div  class="panel-postloop panel-postloop--count-4"
+	     data-depth="0"
+	     data-name="posts"
+	     data-livetext>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2019/11/20/scholarship-for-judges/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Judges Book Volume 3" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2019/11/Screen-Shot-2019-11-20-at-12.59.47-PM-270x203.png" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2019/11/Screen-Shot-2019-11-20-at-12.59.47-PM-270x203.png 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2019/11/Screen-Shot-2019-11-20-at-12.59.47-PM-370x278.png 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2019/11/Screen-Shot-2019-11-20-at-12.59.47-PM-560x420.png 560w 420h, 
+https://www.uchastings.edu/wp-content/uploads/2019/11/Screen-Shot-2019-11-20-at-12.59.47-PM-730x555.png 730w 555h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">Scholarship for Judges</h3>
+		
+		
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2019/09/08/in-the-news-prof-jared-a-ellias-discusses-pge-insys-bankruptcies/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="ellias-head-shot (1)" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2018/07/ellias-head-shot-1-270x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2018/07/ellias-head-shot-1-270x203.jpg 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2018/07/ellias-head-shot-1-370x278.jpg 370w 278h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">In the News: Prof. Jared A. Ellias Discusses PG&#038;E, Insys Bankruptcies</h3>
+		
+		
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2019/09/24/in-the-news-why-the-cancer-moonshot-has-been-so-disappointing-washington-post/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="feldman-robin" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2018/07/5bc37b0faef1fc6a3b652d8b4179a5821435608816_o-2-270x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2018/07/5bc37b0faef1fc6a3b652d8b4179a5821435608816_o-2-270x203.jpg 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2018/07/5bc37b0faef1fc6a3b652d8b4179a5821435608816_o-2-370x278.jpg 370w 278h, 
+https://www.uchastings.edu/wp-content/uploads/2018/07/5bc37b0faef1fc6a3b652d8b4179a5821435608816_o-2-560x372.jpg 560w 372h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">In the News: Why the Cancer ‘Moonshot’ Has Been So Disappointing | Washington Post</h3>
+		
+		
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+					
+<article
+	
+	class="c-card postloop__card">
+
+			<a class="c-card__link" href="https://www.uchastings.edu/2019/09/20/in-the-news-lets-follow-californias-lead-and-regulate-companies-like-uber-the-guardian/" rel="bookmark">
+	
+			<header class="c-card__header postloop__card-header">
+			<figure  class="c-card__image postloop__image"><img class=" lazyload" alt="Veena Dubal" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2018/05/veena-dubal-cited-270x203.jpg" srcset="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" data-sizes="(min-width: 1260px) 1260px, 100vw" data-srcset="https://www.uchastings.edu/wp-content/uploads/2018/05/veena-dubal-cited-270x203.jpg 270w 203h, 
+https://www.uchastings.edu/wp-content/uploads/2018/05/veena-dubal-cited-370x278.jpg 370w 278h" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/4x3.png" /></figure>
+		</header>
+	
+	<div class="c-card__content postloop__card-content">
+
+		
+					<h3 class="c-card__title">In the News: Let&#8217;s follow California&#8217;s lead and regulate companies like Uber | The Guardian</h3>
+		
+		
+		
+		
+	</div>
+
+			</a>
+	
+</article>
+
+		
+	</div>
+
+
+				
+			</div>
+	
+			</section>
+	
+
+</div>
+
+		
+	
+
+</main>
+
+
+	
+		<footer class="site-footer">
+
+	<div class="l-container site-footer__container">
+
+		<div class="site-footer__top">
+
+			<div class="site-footer__branding">
+
+				<figure  class="tribe-image"><img class="site-footer__logo lazyload" alt="Logo" data-expand="200" data-parent-fit="width" data-src="https://www.uchastings.edu/wp-content/uploads/2018/04/Logo.svg" src="https://www.uchastings.edu/wp-content/themes/core/img/theme/shims/large.png" /></figure>
+
+									<a href="https://www.uchastings.edu/home/aba-required-disclosures/" class="site-footer__disclosures">ABA Required Disclosures</a>
+				
+			</div>
+			<div class="site-footer__contact">
+
+									<div class="site-footer__label">
+						Contact Us
+					</div>
+
+					<div class="site-footer__contact-body">
+						<address>
+															<div>200 McAllister Street</div>
+							
+							
+															<div>San Francisco, CA 94102</div>
+													</address>
+
+													<div><abbr title="Telephone">T</abbr>: (415) 565-4600</div>
+						
+						
+											</div>
+
+				
+
+									<a href="https://www.uchastings.edu/building-hours/" class="site-footer__directory-link">Building Hours</a>
+							</div>
+
+			<div class="site-footer__resource-menu">
+				
+	<nav class="site-footer__resources-nav" aria-labelledby="site-footer__resources-nav-label">
+
+		<div class="site-footer__label" id="site-footer__resources-nav-label">Resources For</div>
+
+		<ol class="site-footer__nav-list">
+			<li class="resources__list-item resources__list-item--depth-0"><a href="https://www.uchastings.edu/alumni/" class="resources__action resources__action--depth-0">Alumni</a></li><li class="resources__list-item resources__list-item--depth-0"><a href="https://www.uchastings.edu/resources-for-faculty/" class="resources__action resources__action--depth-0">Faculty</a></li><li class="resources__list-item resources__list-item--depth-0"><a href="https://www.uchastings.edu/resources-for-staff/" class="resources__action resources__action--depth-0">Staff</a></li><li class="resources__list-item resources__list-item--depth-0"><a href="https://www.uchastings.edu/resources-for-students/" class="resources__action resources__action--depth-0">Students</a></li><li class="resources__list-item resources__list-item--depth-0"><a href="https://www.uchastings.edu/careers/employers/" class="resources__action resources__action--depth-0">Employers</a></li>
+		</ol>
+
+	</nav>
+
+
+			</div>
+
+		</div>
+
+		<div class="site-footer__bottom">
+
+			<div class="site-footer__footer-social">
+				
+<div class="social-follow">
+	<ul class="social-follow__list">
+
+					<li class="social-follow__item">
+				<a href="https://twitter.com/uchastingslaw" title="Follow us on Twitter" class="social-follow__anchor" rel='me noopener' target='_blank'>
+					<i class="icon icon-twitter"></i>
+					<span class="u-visual-hide">Follow us on Twitter</span>
+				</a>
+			</li>
+					<li class="social-follow__item">
+				<a href="https://www.facebook.com/uchastings" title="Find us on Facebook" class="social-follow__anchor" rel='me noopener' target='_blank'>
+					<i class="icon icon-facebook"></i>
+					<span class="u-visual-hide">Find us on Facebook</span>
+				</a>
+			</li>
+					<li class="social-follow__item">
+				<a href="https://www.instagram.com/uchastingslaw/" title="Follow us on Instagram" class="social-follow__anchor" rel='me noopener' target='_blank'>
+					<i class="icon icon-instagram"></i>
+					<span class="u-visual-hide">Follow us on Instagram</span>
+				</a>
+			</li>
+					<li class="social-follow__item">
+				<a href="https://plus.google.com/105773972248045410763" title="Follow us on Google+" class="social-follow__anchor" rel='me noopener' target='_blank'>
+					<i class="icon icon-google-plus"></i>
+					<span class="u-visual-hide">Follow us on Google+</span>
+				</a>
+			</li>
+					<li class="social-follow__item">
+				<a href="https://www.youtube.com/uchastings" title="Follow us on YouTube" class="social-follow__anchor" rel='me noopener' target='_blank'>
+					<i class="icon icon-youtube"></i>
+					<span class="u-visual-hide">Follow us on YouTube</span>
+				</a>
+			</li>
+		
+	</ul>
+</div>
+			</div>
+
+
+			<div class="site-footer__footer-menu">
+				
+	<nav class="site-footer__nav" aria-label="Footer Navigation">
+
+		<ol class="site-footer__nav-list">
+			<li class="footer__list-item footer__list-item--depth-0"><a href="https://www.uchastings.edu/map-directions/" class="footer__action footer__action--depth-0">Map &#038; Directions</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="https://www.uchastings.edu/offices-and-services/human-resources/working-at-hastings/" class="footer__action footer__action--depth-0">Work @ Hastings</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="https://www.uchastings.edu/anti-discrimination-harassment/" class="footer__action footer__action--depth-0">Anti-Discrimination/Harassment</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="https://www.uchastings.edu/offices-and-services/" class="footer__action footer__action--depth-0">Offices and Services A-Z</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="https://www.uchastings.edu/accessibility/" class="footer__action footer__action--depth-0">Accessibility</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="https://www.uchastings.edu/privacy-policy/" class="footer__action footer__action--depth-0">Privacy Policy</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="http://uchastings.edu/intranet" class="footer__action footer__action--depth-0">MyHastings</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="http://email.uchastings.edu/" class="footer__action footer__action--depth-0">Email</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="http://webadvisor.uchastings.edu/" class="footer__action footer__action--depth-0">WebAdvisor</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="http://canvas.uchastings.edu/" class="footer__action footer__action--depth-0">Canvas</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="https://www.uchastings.edu/academics/library/" class="footer__action footer__action--depth-0">Library</a></li><li class="footer__list-item footer__list-item--depth-0"><a href="https://app.adaptibar.com/landing/sign-in" class="footer__action footer__action--depth-0">Adaptibar</a></li>
+		</ol>
+
+	</nav>
+
+
+			</div>
+
+		</div>
+
+		<div class="site-footer__copyright">
+			&copy; 2020
+			<a href="https://www.uchastings.edu/" rel="external">
+				UC Hastings Law | San Francisco
+			</a>
+		</div>
+
+	</div>
+
+</footer>
+
+
+	</div><!-- .l-wrapper -->
+
+			<!-- Linkedin -->
+		<script type="text/javascript">
+			_linkedin_partner_id = "518242";
+			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+			window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+		</script>
+		<script type="text/javascript"> (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+		</script>
+		<noscript>
+			<img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=518242&fmt=gif" />
+		</noscript>
+		<script type="application/ld+json">{
+    "@context": "https:\/\/schema.org",
+    "@type": "Organization",
+    "name": "UC Hastings",
+    "logo": [],
+    "url": "https:\/\/www.uchastings.edu",
+    "sameAs": [
+        "https:\/\/plus.google.com\/u\/0\/115379189893046057301",
+        "https:\/\/www.linkedin.com\/company\/modern-tribe-inc-",
+        "https:\/\/www.facebook.com\/ModernTribeInc\/"
+    ],
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https:\/\/www.uchastings.edu\/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}</script><script type="application/ld+json">{
+    "@context": "https:\/\/schema.org",
+    "@type": "WebPage",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/www.uchastings.edu\/"
+    },
+    "datePublished": "2018-06-19 19:57:35",
+    "dateModified": "2020-01-24 15:06:40",
+    "description": "Founded in 1878 as the original law department of the University of California system, UC Hastings educates the brightest and most ambitious learners, propelling them to become leaders, trailblazing entrepreneurs, and catalysts of change. Explore what makes UC Hastings one of the top law schools in the nation.",
+    "name": "UC Hastings College of the Law - San Francisco, California",
+    "headline": "UC Hastings College of the Law - San Francisco, California",
+    "copyrightHolder": "",
+    "creator": "",
+    "image": [],
+    "thumbnailUrl": "",
+    "url": "https:\/\/www.uchastings.edu\/",
+    "text": "<h2>Made in <br>San Francisco. <br>Ready for the World.<h2\/>\n"
+}</script>		<script>window.Promise ||
+			document.write('<script src="https://www.uchastings.edu/wp-content/themes/core/js/vendor/es6-promise.auto.js"><\/script>');
+		</script>
+				<script>
+		( function ( body ) {
+			'use strict';
+			body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+		} )( document.body );
+		</script>
+		<script> /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": activate to sort column ascending","sort_descending":": activate to sort column descending"},"length_menu":"Show _MENU_ entries","empty_table":"No data available in table","info":"Showing _START_ to _END_ of _TOTAL_ entries","info_empty":"Showing 0 to 0 of 0 entries","info_filtered":"(filtered from _MAX_ total entries)","zero_records":"No matching records found","search":"Search:","all_selected_text":"All items on this page were selected. ","select_all_link":"Select all pages","clear_selection":"Clear Selection.","pagination":{"all":"All","next":"Next","previous":"Previous"},"select":{"rows":{"0":"","_":": Selected %d rows","1":": Selected 1 row"}},"datepicker":{"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesMin":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Prev","currentText":"Today","closeText":"Done","today":"Today","clear":"Clear"}};var tribe_system_info = {"sysinfo_optin_nonce":"0379436b64","clipboard_btn_text":"Copy to clipboard","clipboard_copied_text":"System info copied","clipboard_fail_text":"Press \"Cmd + C\" to copy"};/* ]]> */ </script><script type='text/javascript' src='https://www.uchastings.edu/wp-content/themes/core/js/dist/vendor.min.js?ver=7.08.05.21.2019'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var modern_tribe_i18n = {"help_text":{"msg_limit":"There is a limit to the messages you can post.","a11y_dropdown":"Press delete to remove selection.","a11y_checkbox":"Checkbox filter group"},"tooltips":{"add_to_save":"Add Photo to Saved Items","in_this_photo":"Products in this photo"},"loop":{"removeFilter":"Remove %filterLabel% filter","noResultsTitle":"No Results","noResultsContent":"Sorry, but no results match your query. Please try a different search term or adjust the filters to widen your query."},"search":{"noResultsTitle":"No Results","noResultsContent":"Sorry, but no results match your search term. Please try a different term  or use the navigational menu to find your way through the site.","resultFileFormat":"File format:","viewPage":"View page","prevPage":"Previous page","nextPage":"Next page"}};
+var modern_tribe_config = {"ajax_url":"https:\/\/www.uchastings.edu\/wp-admin\/admin-ajax.php","images_url":"https:\/\/www.uchastings.edu\/wp-content\/themes\/core\/img\/theme\/","template_url":"https:\/\/www.uchastings.edu\/wp-content\/themes\/core\/","posts_per_page":"12","google_cse_id":"001342172482595407088:WMX-287323931","google_api_key":"AIzaSyAzJzy6yto7H_ozC0tNf96mDXs3h09WxQY"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.uchastings.edu/wp-content/themes/core/js/dist/scripts.min.js?ver=7.08.05.21.2019'></script>
+<script src='https://www.uchastings.edu/wp-content/plugins/the-events-calendar/common/src/resources/js/underscore-before.js'></script>
+<script type='text/javascript' src='https://www.uchastings.edu/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script src='https://www.uchastings.edu/wp-content/plugins/the-events-calendar/common/src/resources/js/underscore-after.js'></script>
+<script type='text/javascript' src='https://www.uchastings.edu/wp-content/plugins/elasticpress/features/facets/assets/js/facets.min.js?ver=2.8.2'></script>
+<script type='text/javascript' src='https://www.uchastings.edu/wp-includes/js/wp-embed.min.js?ver=5.1.1'></script>
+
+<!-- Hand crafted by Modern Tribe, Inc. (http://tri.be) -->
+
+
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"ffcde102fb","applicationID":"168232170","transactionName":"YVQAMUpYDRFQUhFfWVgeIwZMUAwMHkEEUVMbXQMLXFANBQ==","queueTime":0,"applicationTime":1206,"atts":"TRMDRwJCHh8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+
+
