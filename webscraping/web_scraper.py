@@ -1,13 +1,12 @@
-from bs4 import BeautifulSoup
-import requests
 import sys
-import time
+
+import requests
 import tinycss2
-import os
+from bs4 import BeautifulSoup
 # Need to install the webdriver https://sites.google.com/a/chromium.org/chromedriver/home
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
 
 def running_linux():
     return 'linux' in sys.platform
@@ -26,18 +25,16 @@ def scrape(url):
     return soup, all_css_rules
 
 def get_photo(url):
-    if url.startswith("http") and running_linux():
-        chrome_options = Options()
-        chrome_options.binary_location = '/usr/bin/google-chrome-stable'
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usage')
-        with webdriver.Chrome(executable_path=os.path.abspath("/opt/google/chromedriver"), options=chrome_options) as driver:
-            driver.set_window_size(1080,800)
-            driver.get(url)
-            wait = WebDriverWait(driver, 1)
-            driver.save_screenshot("screenshot.png")
-        return
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    with webdriver.Chrome(options=chrome_options) as driver:
+        driver.set_window_size(1080,800)
+        driver.get(url)
+        wait = WebDriverWait(driver, 1)
+        driver.save_screenshot("screenshot.png")
+    return
 
 def get_html(url):
     """
@@ -49,11 +46,10 @@ def get_html(url):
     if url.startswith("http"):
         if running_linux():
             chrome_options = Options()
-            chrome_options.binary_location = '/usr/bin/google-chrome-stable'
             chrome_options.add_argument('--headless')
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--disable-dev-shm-usage')
-            with webdriver.Chrome(executable_path=os.path.abspath("/opt/google/chromedriver"), options=chrome_options) as driver:
+            with webdriver.Chrome(options=chrome_options) as driver:
                 driver.set_window_size(1080,800)
                 driver.get(url)
                 wait = WebDriverWait(driver, 1)
@@ -101,13 +97,6 @@ class Tag:
 
 
 if __name__ == '__main__':
-    if running_linux():
-        import dryscrape
-
-        # start xvfb in case no X is running. Make sure xvfb
-        # is installed, otherwise this won't work!
-        dryscrape.start_xvfb()
-
     # scrape("https://www.crummy.com/software/BeautifulSoup/bs4/doc/")
     # scrape("https://recipes.twhiting.org")
     # soup, _ = scrape("test.html")
