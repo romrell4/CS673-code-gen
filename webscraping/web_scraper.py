@@ -26,6 +26,8 @@ def scrape(url):
 
 def get_photo(url):
     chrome_options = Options()
+    if running_linux():
+        chrome_options.binary_location = "/usr/bin/google-chrome-stable"
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
@@ -44,18 +46,18 @@ def get_html(url):
     :return: html text
     """
     if url.startswith("http"):
+        chrome_options = Options()
         if running_linux():
-            chrome_options = Options()
-            chrome_options.add_argument('--headless')
-            chrome_options.add_argument('--no-sandbox')
-            chrome_options.add_argument('--disable-dev-shm-usage')
-            with webdriver.Chrome(options=chrome_options) as driver:
-                driver.set_window_size(1080,800)
-                driver.get(url)
-                wait = WebDriverWait(driver, 1)
-                return driver.page_source
-        else:              
-            return requests.get(url).text
+            chrome_options.binary_location = "/usr/bin/google-chrome-stable"
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        with webdriver.Chrome(options=chrome_options) as driver:
+            driver.set_window_size(1080,800)
+            driver.get(url)
+            wait = WebDriverWait(driver, 1)
+            return driver.page_source
+        
     else:
         with open("test_html/" + url) as f:
             return f.read()
