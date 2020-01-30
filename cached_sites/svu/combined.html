@@ -1,0 +1,4423 @@
+<!DOCTYPE html>
+<html>
+<head><style>/*
+Theme Name: Southern Virginia University
+Theme URI: http://www.svu.edu
+Description: A theme for Southern Virginia University
+Version: 1.0
+*/
+
+
+
+/********* FONTS *********/
+
+@import url(sovaicon.css);
+
+
+/********* BOOTSTRAP *********/
+@import url(css/bootstrap.min.css);
+
+.row:before, .row:after {
+    display: inline-block;
+}
+.btn-success {
+    background-color: #bbb;
+    white-space: normal;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+    color: #ffffff;
+    background-color: #333;
+}
+.btn {
+    border: none;
+    border-radius: 0;
+    padding: 12px;
+    line-height: 26px;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: .04em;
+    white-space: normal;
+    transition: .3s;
+}
+.modal-footer {
+clear:both;
+}
+.modal-footer .btn {
+    border: 1px solid #e5e5e5;
+}
+.alert-emergency {
+    margin-bottom: 0;
+    border-radius: 0;
+/***     background-color: #7F192A;    ***/
+     background-color: #DB3333;
+    color: #fff;
+    border: 0;
+    text-align: center;
+    padding: 8px 35px;
+}
+.alert-emergency a, .alert-emergency a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.alert-emergency .close {
+    padding: 4px;
+    opacity: .7;
+}
+.label-success {
+    background-color: #981e32;
+}
+.modal-content {
+    border-radius: 2px;
+}
+@media screen and (min-width: 768px) {
+.modal-dialog {
+width: 768px;
+}
+}
+@media screen and (min-width: 850px) {
+.modal-dialog {
+width: 850px;
+}
+}
+
+.tab-content .tab-pane {
+    margin-top: 1%;
+}
+
+blockquote {
+    color: #666;
+    font-size: 18px;
+    font-style: italic;
+    border: none;
+    margin: 10px 15px 20px 15px;
+}
+
+blockquote small {
+    float: right;
+    font-style: normal;
+    font-size: 14px;
+    padding: 1%;
+}
+
+/********* GENERAL CLASSES *********/
+
+body {
+    font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    margin: 0 0 255px;
+}
+@media screen and (max-width: 767px) {
+    body {
+        margin-bottom: 521px;
+    }
+}
+.content {
+    float: left;
+    margin: 0 0 80px;
+    padding-right: 30px;
+    padding-top: 25px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+hr {
+    clear: both;
+    border-top: 1px solid #BBB;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.headerunderline {
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
+    font-weight: 400;
+}
+a {
+    color: #981e32;
+    font-weight: bold;
+    -o-transition:.3s;
+    -ms-transition:.3s;
+    -moz-transition:.3s;
+    -webkit-transition:.3s;
+    transition:.3s;
+}
+a:hover, a:focus {
+    color: #333;
+}
+p {
+    line-height: 26px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.content {
+    line-height: 1.8em;
+    margin-bottom: 1.8em;
+    font-size: 15px;
+}
+dd {
+    margin-left:30px
+}
+.subheading {
+    font-size:20px;
+    margin:0 0 15px 0;
+}
+.size-full {
+    max-width: 100%;
+    height: auto;
+}
+.alignright {
+    float: right;
+    margin: 20px 0 30px 35px;
+    max-width: 50%;
+    height: auto;
+}
+.alignleft {
+    float: left;
+    margin: 20px 35px 30px 0;
+    max-width: 50%;
+    height: auto;
+}
+.aligncenter {
+    display: block;
+    margin: 20px 0 30px 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+}
+.alignnone {
+    width: 100%;
+    height: auto;
+}
+.archivethumb .size-full {
+    width: 100%;
+}
+.clear {
+    clear: both;
+}
+.atone {
+height: 111px;
+}
+@media screen and (max-width: 991px) {
+.atone {
+height: 102px;
+}
+}
+@media screen and (max-width: 600px) {
+.atone {
+height: 79px;
+}
+}
+.fixed {
+    position: fixed;
+    top:0;
+    z-index: 100;
+    width: 100%;
+    background-color: #981e32;
+    padding-top: 29px;
+}
+.fixed .navbar-brand {
+    padding: 0 10px 0 0;
+}
+@media screen and (max-width: 991px) {
+.fixed {
+padding-top: 0;
+}
+}
+.bottom-padding {
+    padding: 0 0 50px 0;
+}
+.flexible-container {
+    position: relative;
+    padding-bottom: 52.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    margin: 0 0 10px;
+}
+
+.flexible-container iframe,
+.flexible-container object,
+.flexible-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.wp-caption {
+    position: relative;
+    width: auto !important;
+}
+.wp-caption-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    padding: 10px 15px;
+    background-color: rgba(0,0,0,.5);
+    text-shadow: 1px 1px 30px #000;
+    margin: 0;
+}
+.wp-caption img {
+    max-width: 100%;
+    height: auto;
+}
+@media screen and (max-width: 767px) {
+.wp-caption-text {
+    display:none;
+}
+}
+span.glyphicon-circle-arrow-right, span.glyphicon-new-window {
+    margin-left: 5px;
+    top: 2px;
+}
+@media (min-width: 768px) {
+.right-column {
+    float: right;
+}
+}
+@media (max-width: 767px) {
+.right-column {
+    float: none;
+}
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/*************Helper Classes**********/
+.sm-float-right {
+    float: right;
+    margin-left: 20px;
+    display: block;
+}
+@media screen and (max-width: 767px) {
+.sm-float-right {
+    float: none;
+    margin: 0 auto;
+    display: block;
+}
+}
+.sm-float-left {
+    float: left;
+    margin: 0 20px 20px 0;
+    display: block;
+}
+@media screen and (max-width: 767px) {
+.sm-float-left {
+    float: none;
+    margin: 0 auto;
+    display: block;
+}
+}
+/*************Content Transition**********/
+.content {
+
+    -webkit-animation: fadein .3s; /* Safari and Chrome */
+        -ms-animation: fadein .3s; /* Internet Explorer */
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+
+/********* Banner *********/
+
+.banner-container {
+    position: relative;
+    display: block;
+    margin: auto;
+    max-width: 1800px;
+    max-height: 325px;
+    overflow: hidden;
+}
+.banner-container.large-banner {
+      max-height: unset;
+}
+.banner-image {
+    width: 100%;
+}
+.banner-branded {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  margin: auto;
+}
+.banner-branded img {
+  width: auto;
+  height: 80%;
+  margin: 2% auto;
+  display: block;
+}
+@media screen and (max-width: 767px) {
+.banner-image {
+    margin-left: -25%;
+    width: 150%;
+}
+.banner-branded img {
+    margin-top: 3%;
+}
+}
+@media screen and (min-width: 1400px) {
+.banner-container {
+    min-height: 350px;
+}
+}
+@media screen and (min-width: 1550px) {
+.banner-container {
+    min-height: 400px;
+}
+}
+@media screen and (min-width: 1600px) {
+.banner-image {
+    position: absolute;
+    top: -10%;
+}
+.large-banner .banner-image {
+    position: static;
+    margin-left: 0;
+    width: 100%;
+}
+}
+
+/********* Search Bar *********/
+#search {
+    width: 149px;
+    outline: none;
+    margin: 0 0 0 5px;
+    display:inline-block;
+    position: relative;
+}
+#search button {
+    margin-left: -25px;
+    padding: 2px 6px 3px 6px;
+}
+#search input[type="text"]  {
+    background-color: #7F192A;
+    width:145px;
+    border: 0 none;
+    font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    padding: 4px 27px 4px 8px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+
+#search input[type="text"]:focus {
+    color: #6a6f75;
+    background-color: #fff;
+}
+
+#search button {
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+#search input[type="text"]:focus + button {
+    color: #6a6f75;
+}
+#search .glyphicon {
+    top: 5px;
+    right: 10px;
+    position: absolute;
+}
+
+
+/********* NEW SEARCH BAR *********/
+
+#___gcse_0, #___gcse_1 {
+    display: inline-block;
+    width: 145px;
+    position: relative;
+    margin: 5px;
+}
+
+.gsc-control-cse {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+form.gsc-search-box {
+    margin: 0;
+}
+
+table.gsc-search-box {
+    margin: 0;
+}
+
+.gsib_a {
+    padding: 0 !important;
+}
+
+.gsc-input input {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin: 0 !important;
+    height: 25px !important;
+    text-indent: 0 !important;
+    padding: 4px 30px 4px 8px !important;
+    font-family: 'Avenir', 'Helvetica Neue', sans-serif !important;
+    font-weight: bold !important;
+    font-size: 12px !important;
+    color: #fff;
+    border-radius: 3px;
+    outline: none;
+    transition: all 0.3s ease 0s;
+    background: url('/wp-content/themes/Southern%20Virginia%20University/img/search-white.png') right 5px center/18px no-repeat #7F192A !important;
+}
+
+.gsc-input input:focus {
+    color: #6a6f75;
+    background: url(/wp-content/themes/Southern%20Virginia%20University/img/search-dark.png) right 5px center/18px no-repeat #fff !important;
+}
+
+.quikbar-dropdown .gsc-input input {
+    height: 34px !important;
+    top: -4px;
+}
+
+.gsc-input-box {
+    border: 0 !important;
+    background: none !important;
+    height: 0 !important;
+}
+
+.gsib_b {
+    display: none;
+}
+
+button.gsc-search-button, button.gsc-search-button:hover, button.gsc-search-button:focus {
+    position: absolute;
+    border: 0 !important;
+    background-color: transparent !important;
+    right: 0;
+    margin: 0;
+    padding: 12.5px 15px !important;
+    height: 0 !important;
+    width: 0 !important;
+    cursor: pointer;
+}
+
+.gsc-search-button svg {
+    display: none;
+}
+
+.gsc-input input::placeholder {
+  opacity: 0;
+}
+
+
+/********* SIDEBAR NAVIGATION *********/
+.navcol {
+    order: 1;
+    margin-bottom: 100px;
+}
+
+.navigation {
+    background-color: #333;
+    height: auto;
+    margin: 25px 0 0 0;
+}
+.navigation a{
+    color: #fff;
+    letter-spacing: .04em;
+    font-weight: 300;
+    padding: 4px 25px 4px 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: none;
+    display:block;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 3px #111;
+    border-bottom: 1px solid #444;
+}
+.navigation li{
+    list-style-type: none;
+    line-height: 2.9em;
+}
+.sidebar-toggle {
+    float: right;
+    border: 0;
+    padding: 18px 25px 20px 25px;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid #444;
+}
+.icon-bar {
+    background-color: #f5f5f5;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    margin-top: 4px;
+}
+#contentnavlist {
+    padding: 0;
+}
+.widgettitle {
+    font-size: 16px;
+    margin:0;
+    line-height: 3em;
+}
+.widgettitle a {
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    font-size: 22px;
+}
+.navigation .widgettitle, .navigation ul li a {
+    background-color: #333;
+    -o-transition:.3s;
+    -ms-transition:.3s;
+    -moz-transition:.3s;
+    -webkit-transition:.3s;
+    transition:.3s;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    padding: 0;
+    border: none;
+    max-height: none;
+}
+.navigation .widgettitle:hover, .navigation ul li a:hover {
+    background-color: #444;
+}
+.navigation li.current_page_item > a{
+    background-color: #444 !important;
+}
+.navigation ul {
+    padding: 0;
+}
+.navigation ul li ul li a {
+    padding-left: 50px;
+}
+.navigation ul li ul li ul li a {
+    padding-left: 65px;
+}
+@media screen and (max-width: 991px) {
+.navcol {
+    order: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    padding: 0;
+}
+.navigation {
+    padding: 0;
+    margin: 0;
+}
+body .container {
+    width: 100%;
+}
+.content {
+    padding: 25px 25px 45px;
+}
+}
+@media screen and (min-width: 992px) {
+.sidebar-toggle {
+    display: none;
+}
+#contentnavlist {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+}
+.navigation {
+    max-width: 253px;
+    margin-left: 10px;
+}
+}
+
+
+/********* TOP NAVIGATION BAR NAVBAR (Bootstrap) *********/
+
+.navbar {
+    background-color: #981e32;
+    border-radius: 0;
+    margin-bottom: 0;
+    border: 0 solid transparent;
+}
+@media (min-width: 991px) {
+.navbar-nav {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    float:none;
+    margin-top: 15px;
+    margin-bottom: 7px;
+}
+.fixed .navbar-nav {
+    margin-top: 7px;
+}
+}
+.navbar-default
+.navbar-nav > li > a {
+    color:#fff;
+    font-size: 17px;
+    outline:none;
+    padding: 8px 10px;
+    text-align: center;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #f5f5f5;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    background-color: transparent;
+}
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a {
+    font-weight: 300;
+    padding: 11px 16px;
+}
+.navbar-brand {
+    float: left;
+    padding: 0 10px 10px 0;
+    margin-top: -19px;
+    height: auto;
+}
+.navbar-nav > .dropdown > a .caret {
+    display:none;
+}
+header .dropdown-menu > li > a {
+    padding: 11px 16px;
+    text-align: left;
+    color: #fff;
+    border-top: 1px solid #444;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+header .dropdown-menu > li > a:hover,
+header .dropdown-menu > li > a:focus {
+    background-color: #444;
+    color: #fff;
+}
+.navbar-form {
+    margin: 10px 20px;
+    min-width: 150px;
+}
+.navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+.navbar-default .navbar-toggle:hover {
+    background-color: #7F192A;
+}
+.navbar-toggle {
+    border: 0;
+    margin-top: 38px;
+    outline: none;
+}
+@media (max-width: 600px) {
+.navbar-toggle {
+    margin-top: 22px;
+}
+}
+.navbar-nav > li > .dropdown-menu {
+    margin-left: -.6px;
+    min-width: 185px;
+    background-color: rgba(51,51,51,.96);
+    padding: 0;
+    border-top: none;
+}
+
+@media (min-width: 768px) {
+.navbar-collapse.in {
+    overflow-y: visible;
+}
+}
+@media screen and (max-width: 991px) {
+.navbar-brand {
+    margin-left: 0;
+    float: none;
+    margin-top: 0;
+    padding: 15px !important;
+}
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a {
+    padding: 6px 25px 6px 30px !important;
+}
+.container>.navbar-header,.container>.navbar-collapse {
+    float: none;
+    text-align: center;
+    padding: 0;
+    border:0;
+    box-shadow:none;
+    margin:0;
+}
+.navbar-default
+.navbar-nav > li > a {
+    margin-top: 0;
+}
+}
+@media screen and (max-width: 800px) {
+.navbar-default
+.navbar-nav > li > a {
+    font-size: 15px;
+}
+}
+
+@media screen and (max-width: 991px) {
+.navbar-default
+.navbar-nav > li > a {
+    border-radius: 0;
+    border-bottom: 1px solid #7F192A;
+    line-height: 2em;
+    padding: 6px 25px 6px 30px;
+    text-align: left;
+    background-color: #981e32;
+}
+.navbar-collapse .container {
+ padding: 0;
+}
+.navbar-default
+.navbar-nav > li > a:hover {
+    border-bottom: 1px solid #7F192A;
+    color: #fff;
+}
+header .open>.dropdown-menu {
+    display: none;
+}
+.navbar-nav {
+    margin: 0;
+}
+#menu-header-menu {
+    border-top: 1px solid #7F192A;
+}
+}
+.navbar-header img {
+    margin-right: -44px;
+}
+@media screen and (min-width: 991px) {
+.navbar-header img {
+    margin-right: 100px;
+}
+}@media screen and (min-width: 601px) {
+.navbar-header img {
+    width: auto;
+    height: 69px;
+}
+}
+@media screen and (max-width: 600px) {
+.navbar-brand {
+    padding: 11px !important;
+}
+.navbar-header img {
+    height: 54px;
+}
+}
+.navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    background-color: #444;
+    color: #fff;
+}
+@media screen and (min-width: 768px) {
+.navbar-default .navbar-nav>.open>a {
+    background-color: #333;
+    text-shadow: none;
+    color: #fff;
+}
+}
+@media screen and (max-width: 991px) {
+.navbar-default .navbar-nav>.open>a {
+    background-color: inherit;
+    text-shadow: none;
+    color: #fff;
+}
+.navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    background-color: #7F192A;
+}
+}
+
+@media screen and (max-width: 1199px) {
+
+.navbar-default .navbar-nav > li > a {
+  padding: 8px 7px;
+  font-size: 15px;
+}
+}
+.navbar-header {
+  width: 100%;
+}
+    /********  TOP NAVIGATION TRANSITIONS   ********/
+.nav-tabs>.dropdown-menu {
+    z-index: 100;
+    position: absolute;
+    animation: fadein .2s;
+    -moz-animation: fadein .2s; /* Firefox */
+    -webkit-animation: fadein .2s; /* Safari and Chrome */
+    -o-animation: fadein .2s; /* Opera */
+
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}â€‹
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a {
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+ }
+.quikbar {
+    float: right;
+    display: block;
+    margin: 10px 0;
+    color: #7F192A;
+}
+.quikbar a {
+    color: #fff;
+    font-size: 13px;
+    padding: 0 10px;
+    font-weight: 300;
+}
+.quikbar-dropdown {
+    float: none;
+    text-align: center;
+    margin: 10px 0 0;
+    padding: 5px;
+}
+.quikbar-dropdown a {
+    border-radius: 3px;
+    width: 149px;
+    padding: 4px;
+}
+.quikbar-dropdown #search input[type="text"] {
+    padding: 8px 27px 9px 8px;
+    background-color: #7F192A;
+}
+.quikbar-dropdown #search input[type="text"]:focus {
+background-color: #fff;
+}
+.quikbar-dropdown #search .glyphicon {
+    top: 7px;
+}
+.quikbar .btn {
+    background-color: #7F192A;
+}
+.quikbar .btn:hover {
+    background-color: rgba(0,101,49,.8);
+}
+
+@media screen and (min-width: 768px) {
+.navbar-nav>li {
+    margin-left: 43px;
+}
+}
+@media screen and (max-width: 1199px) {
+.navbar-nav>li {
+    margin-left: 28px;
+}
+}
+@media screen and (max-width: 991px) {
+.navbar-nav>li {
+    margin-left: 0;
+}
+}
+.header-front {
+    border-bottom: 3px solid #7F192A;
+}
+@media screen and (max-width: 991px) {
+.header-front .container {
+    padding: 0;
+}
+}
+/********* FOOTER *********/
+.footer {
+    background-color: #981e32;
+    color:#fff;
+    padding: 30px 0;
+    clear:both;
+    border-top: solid 4px #7F192A;
+}
+.footer ul {
+    padding: 0;
+}
+.footer li {
+    list-style-type: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+}
+.footer a {
+    color:#fff;
+    font-weight: 300;
+}
+.footer .glyphicon {
+    margin: 0 4.5px;
+}
+#footerseal {
+    width: 160px;
+    margin: 0 auto;
+}
+#footerseal img {
+    opacity: .7;
+    transition: opacity ease-in-out .2s;
+}
+#footerseal a:hover img {
+    opacity: 1;
+}
+#social-icons {
+    width: 100%;
+    margin: 15px auto 0;
+    text-align: center;
+}
+#social-icons li {
+    display: inline;
+    font-size: 22px;
+}
+.tooltip-inner {
+   background-color: rgba(51,51,51,.7);
+}
+.tooltip.top .tooltip-arrow {
+    border-top-color: rgba(51,51,51,.7);
+}
+.footer-bottom {
+    background-color: #7F192A;
+}
+.footer-bottom p {
+    color: #fff;
+    text-align: center;
+    margin: .25%;
+    font-size: 13px;
+    font-weight: 400;
+    word-spacing: 1px;
+}
+.footer-bottom img {
+    width: 80%;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+#footer-info {
+    color: #fff;
+    text-align: center;
+    margin: 3px;
+    padding-bottom: 4px;
+    font-size: 13px;
+    font-weight: 400;
+    word-spacing: 1px;
+    line-height: 20px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.social-circle {
+    background-color: #fff;
+    height: 18px;
+    width: 18px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    margin-bottom: -5px;
+}
+#social-list {
+    display: inline;
+    margin-right: -7px;
+    font-size: 19px;
+    padding: 0;
+}
+.footer-bottom a:hover .social-circle {
+    opacity: 1;
+}
+.footer-bottom .glyphicon {
+    margin: 0 7px;
+    font-size: 16px;
+    vertical-align: text-bottom;
+}
+.footer-bottom a {
+    color: inherit;
+    font-weight: inherit;
+}
+.footer-bottom li {
+    display: inline-block;
+    margin: 0 9px 0 -5px;
+}
+@media screen and (max-width: 767px) {
+.footer {
+    padding-bottom: 15px;
+}
+#footer-info {
+    line-height: 26px;
+}
+#social-list {
+    margin-left: 9px;
+    margin-bottom: -20px;
+    display: block;
+    font-size: 18px;
+}
+.social-circle {
+    width: 22px;
+    height: 22px;
+    margin-bottom: -10px;
+}
+}
+
+/******** PROMPTS ********/
+
+.prompts {
+    margin: -120px 0;
+    width: 130px;
+}
+.prompts img {
+    width: 70px;
+    margin: 0 auto;
+    display: block;
+    opacity: 0.7;
+    transition: opacity ease-in-out .2s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.prompts h3 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 15px;
+}
+.prompts a:hover {
+    text-decoration: none;
+}
+.prompts:hover img {
+    opacity: 1;
+}
+.prompts hr {
+    border-top: 0;
+    margin-top: 35px;
+}
+
+#prompt-apply {
+    float: left;
+    margin-left: 50px;
+}
+#prompt-info {
+    float: left;
+    margin-left: 225px;
+    cursor: pointer;
+}
+#prompt-visit {
+    float: right;
+    margin-right: 225px;
+}
+#prompt-openhouse {
+    float: right;
+    margin-right: 50px;
+}
+@media (max-width: 1199px) {
+#prompt-apply {
+    margin-left: 0;
+}
+#prompt-info {
+    margin-left: 17%;
+}
+#prompt-visit {
+    margin-right: 17%;
+}
+#prompt-openhouse {
+    margin-right: 0;
+}
+}
+@media (max-width: 767px) {
+#prompt-apply, #prompt-info, #prompt-visit, #prompt-openhouse {
+    float: none;
+    margin: 30px auto;
+}
+.prompts {
+    clear: both;
+    width: 170px;
+}
+.prompts img {
+    width: 35px;
+    float: left;
+    margin-top: -10px;
+}
+.prompts h3 {
+    font-size: 16px;
+    text-align: left;
+    margin-left: 45px;
+}
+}
+
+/******* FAB INFO FORM ********/
+
+#fab-container {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 5;
+}
+#fab-container.fab-unfixed {
+    position: absolute;
+    bottom: calc(100% + 32px);
+}
+@media (max-width: 767px) {
+#fab-container {
+    bottom: 16px;
+    right: 16px;
+}
+#fab-container.fab-unfixed {
+    bottom: calc(100% + 16px);
+}
+}
+#fab-info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 30px;
+    text-align: center;
+    background-color: #981e32;
+    -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all ease-in-out .2s;
+}
+#fab-info:after {
+    position: absolute;
+    right: calc(100% + 10px);
+    text-align: right;
+    background-color: rgba(64, 64, 64, .9);
+    padding: 3px 5px;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 300;
+    white-space: nowrap;
+    top: 50%;
+    margin-top: -12px;
+    opacity: 0;
+    transition: opacity ease-in-out .2s;
+}
+#fab-info img {
+    width: 11px;
+    top: 12px;
+    position: absolute;
+    right: 22px;
+}
+#fab-info:after {
+    content: 'Request Info';
+    transition: all ease-in-out .2s;
+}
+#fab-info:hover:after {
+    opacity: 1;
+}
+#fab-info.active {
+    width: 288px;
+    height: 300px;
+    border-radius: 5px;
+    cursor: default;
+}
+#fab-info img {
+    transition: opacity ease-in-out .2s;
+}
+#fab-info.active img {
+    opacity: 0;
+}
+#fab-info.active:after {
+    background: transparent;
+    top: 30px;
+    right: 159px;
+    font-size: 16px;
+    opacity: 1;
+}
+#fab-info.active .info-form-container {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+#fab-info-close {
+    position: absolute;
+    right: 57px;
+    bottom: 40px;
+    font-size: 18px;
+    color: #fff;
+    top: auto;
+    cursor: pointer;
+    z-index: -1;
+    opacity: 0;
+    transition: all ease-in-out .2s;
+}
+#fab-info.active + #fab-info-close {
+    opacity: 1;
+    right: 25px;
+    bottom: 260px;
+    z-index: 5;
+}
+.info-form-container {
+    color: #fff;
+    width: 288px;
+    height: 300px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    font-size: 14px;
+    text-align: left;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+    transition: opacity .2s ease-in-out .2s;
+}
+.inline-field {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 100px;
+    padding: 0 5px;
+    border-bottom: 1px solid #999;
+    border-radius: 0;
+    transition: border-color .2s ease-in-out;
+}
+.inline-field:focus {
+    border-color: #fff;
+}
+.info-form-container input[name="your-email"] {
+    width: 200px;
+}
+.info-form-container input[name="your-phone"] {
+    width: 150px;
+}
+.info-form-container input[name="your-state"], .info-form-container input[name="your-zip"] {
+    width: 145px;
+}
+.info-form-container textarea[name="your-interest"] {
+    max-height: 100px;
+}
+.info-form-container #your-interest {
+    position: relative;
+}
+.info-form-container #your-interest:after {
+    content: '.';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #981e32;
+}
+.form-wrap {
+    position: absolute;
+    top: calc(50% - 75px);
+    left: calc(50% - 100px);
+    width: 200px;
+    height: 110px;
+    perspective: 600px;
+}
+.form-cube {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .6s ease-in-out;
+}
+.form-wrap.state1 .form-cube {
+    transform: rotateX(0);
+}
+.form-wrap.state2 .form-cube {
+    transform: rotateX(90deg);
+}
+.form-wrap.state3 .form-cube {
+    transform: rotateX(180deg);
+}
+.form-face {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    background-color: #981e32;
+}
+.form-back {
+    transform: rotateY(180deg) rotateZ(180deg) translate3d(0, 0, 55px);
+}
+.form-bottom {
+    transform: rotateX(-90deg) translate3d(0, 0, 55px);
+}
+.form-front {
+    transform: translate3d(0, 0, 55px);
+}
+
+.state1 ~ .form-controls #form-submit, .state2 ~ .form-controls #form-submit, .state3 ~ .form-controls #form-required {
+    pointer-events: none;
+    opacity: 0;
+}
+.state1 ~ .form-controls #form-back:before, .state3 ~ .form-controls #form-next:before {
+    border-top-color: #999;
+    border-bottom-color: #999;
+}
+.state1 ~ .form-controls #form-back, .state3 ~ .form-controls #form-next {
+    cursor: default;
+}
+#form-submit {
+    position: absolute;
+    bottom: 32px;
+    right: 40px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    outline: 0;
+    opacity: 1;
+    font-size: 15px;
+    transition: opacity .6s ease-in-out;
+}
+#form-next {
+    position: absolute;
+    bottom: 50px;
+    left: 100px;
+    font-size: 15px;
+    opacity: 1;
+    transition: opacity .6s ease-in-out;
+    cursor: pointer;
+}
+#form-next:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 0;
+    border-top: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transition: border-top-color .6s ease-in-out;
+}
+#form-next:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top: 10px solid #981e32;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+#form-back {
+    position: absolute;
+    bottom: 50px;
+    left: 60px;
+    font-size: 15px;
+    opacity: 1;
+    transition: opacity .6s ease-in-out;
+    cursor: pointer;
+}
+#form-back:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transition: border-bottom-color .6s ease-in-out;
+}
+#form-back:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 0;
+    border-bottom: 10px solid #981e32;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+#form-required {
+    position: absolute;
+    bottom: 32px;
+    right: 40px;
+    opacity: 1;
+    font-size: 15px;
+    transition: opacity .6s ease-in-out;
+    color: #999;
+}
+.info-form-container .screen-reader-response {
+    display: none;
+}
+.info-form-container .wpcf7-response-output {
+    position: absolute;
+    bottom: 65px;
+    text-align: center;
+    width: 100%;
+}
+
+/********* COLORED BUTTONS *********/
+
+.btn-gray {
+    color: #bbb;
+    background-color: #fff;
+    border: 2px solid #bbb;
+}
+.btn-gray:hover, .btn-gray:focus, .btn-gray:active, .btn-gray.active, .btn-open .dropdown-toggle.gray {
+    color: #ffffff;
+    background-color: #bbb;
+}
+.btn-gray-invert {
+    color: #fff;
+    background-color: #bbb;
+    border: 2px solid #bbb;
+}
+.btn-gray-invert:hover, .btn-gray-invert:focus, .btn-gray-invert:active, .btn-gray-invert.active, .btn-open .dropdown-toggle.gray-invert {
+    color: #bbb;
+    background-color: #fff;
+    border: 2px solid #bbb;
+}
+.btn-green {
+    color: #981e32;
+    background-color: #fff;
+    border: 2px solid #981e32;
+}
+.btn-green:hover, .btn-green:focus, .btn-green:active, .btn-green.active, .btn-open .dropdown-toggle.green {
+    color: #ffffff;
+    background-color: #981e32;
+}
+.btn-green-invert {
+    color: #fff;
+    background-color: #981e32;
+    border: 2px solid #981e32;
+}
+.btn-green-invert:hover, .btn-green-invert:focus, .btn-green-invert:active, .btn-green-invert.active, .btn-open .dropdown-toggle.green-invert {
+    color: #981e32;
+    background-color: #fff;
+    border: 2px solid #981e32;
+}
+.btn-yellow {
+    color: #ffd100;
+    background-color: #fff;
+    border: 2px solid #ffd100;
+}
+.btn-yellow:hover, .btn-yellow:focus, .btn-yellow:active, .btn-yellow.active, .btn-open .dropdown-toggle.yellow {
+    color: #ffffff;
+    background-color: #ffd100;
+}
+.btn-yellow-invert {
+    color: #fff;
+    background-color: #ffd100;
+    border: 2px solid #ffd100;
+}
+.btn-yellow-invert:hover, .btn-yellow-invert:focus, .btn-yellow-invert:active, .btn-yellow-invert.active, .btn-open .dropdown-toggle.yellow-invert {
+    color: #ffd100;
+    background-color: #fff;
+    border: 2px solid #ffd100;
+}
+.btn-orange {
+    color: #f38a00;
+    background-color: #fff;
+    border: 2px solid #f38a00;
+}
+.btn-orange:hover, .btn-orange:focus, .btn-orange:active, .btn-orange.active, .btn-open .dropdown-toggle.orange {
+    color: #ffffff;
+    background-color: #f38a00;
+}
+.btn-orange-invert {
+    color: #fff;
+    background-color: #f38a00;
+    border: 2px solid #f38a00;
+}
+.btn-orange-invert:hover, .btn-orange-invert:focus, .btn-orange-invert:active, .btn-orange-invert.active, .btn-open .dropdown-toggle.orange-invert {
+    color: #f38a00;
+    background-color: #fff;
+    border: 2px solid #f38a00;
+}
+.btn-red {
+    color: #c13c27;
+    background-color: #fff;
+    border: 2px solid #c13c27;
+}
+.btn-red:hover, .btn-red:focus, .btn-red:active, .btn-red.active, .btn-open .dropdown-toggle.red {
+    color: #ffffff;
+    background-color: #c13c27;
+}
+.btn-red-invert {
+    color: #fff;
+    background-color: #c13c27;
+    border: 2px solid #c13c27;
+}
+.btn-red-invert:hover, .btn-red-invert:focus, .btn-red-invert:active, .btn-red-invert.active, .btn-open .dropdown-toggle.red-invert {
+    color: #c13c27;
+    background-color: #fff;
+    border: 2px solid #c13c27;
+}
+.btn-violet {
+    color: #783cbd;
+    background-color: #fff;
+    border: 2px solid #783cbd;
+}
+.btn-violet:hover, .btn-violet:focus, .btn-violet:active, .btn-violet.active, .btn-open .dropdown-toggle.violet {
+    color: #ffffff;
+    background-color: #783cbd;
+}
+.btn-violet-invert {
+    color: #fff;
+    background-color: #783cbd;
+    border: 2px solid #783cbd;
+}
+.btn-violet-invert:hover, .btn-violet-invert:focus, .btn-violet-invert:active, .btn-violet-invert.active, .btn-open .dropdown-toggle.violet-invert {
+    color: #783cbd;
+    background-color: #fff;
+    border: 2px solid #783cbd;
+}
+.btn-royal {
+    color: #1d4189;
+    background-color: #fff;
+    border: 2px solid #1d4189;
+}
+.btn-royal:hover, .btn-royal:focus, .btn-royal:active, .btn-royal.active, .btn-open .dropdown-toggle.royal {
+    color: #ffffff;
+    background-color: #1d4189;
+}
+.btn-royal-invert {
+    color: #fff;
+    background-color: #1d4189;
+    border: 2px solid #1d4189;
+}
+.btn-royal-invert:hover, .btn-royal-invert:focus, .btn-royal-invert:active, .btn-royal-invert.active, .btn-open .dropdown-toggle.royal-invert {
+    color: #1d4189;
+    background-color: #fff;
+    border: 2px solid #1d4189;
+}
+.btn-blue {
+    color: #61b3e4;
+    background-color: #fff;
+    border: 2px solid #61b3e4;
+}
+.btn-blue:hover, .btn-blue:focus, .btn-blue:active, .btn-blue.active, .btn-open .dropdown-toggle.blue {
+    color: #ffffff;
+    background-color: #61b3e4;
+}
+.btn-blue-invert {
+    color: #fff;
+    background-color: #61b3e4;
+    border: 2px solid #61b3e4;
+}
+.btn-blue-invert:hover, .btn-blue-invert:focus, .btn-blue-invert:active, .btn-blue-invert.active, .btn-open .dropdown-toggle.blue-invert {
+    color: #3c57a5;
+    background-color: #fff;
+    border: 2px solid #3c57a5;
+}
+
+/********* COLORED BOXES *********/
+
+.colored-box {
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+.green-box {
+    border-color: rgb(0,122,59);
+    background-color: rgba(0,122,59,.1);
+}
+.yellow-box {
+    border-color: rgb(255,209,0);
+    background-color: rgba(255,209,0,.1);
+}
+.orange-box {
+    border-color: rgb(243,138,0);
+    background-color: rgba(243,138,0,.1);
+}
+.pink-box {
+    border-color: rgb(255,139,177);
+    background-color: rgba(255,139,177,.1);
+}
+.red-box {
+    border-color: rgb(199,74,55);
+    background-color: rgba(199,74,55,.1);
+}
+.violet-box {
+    border-color: rgb(120,60,189);
+    background-color: rgba(120,60,189,.1);
+}
+.royal-box {
+    border-color: rgb(29,65,137);
+    background-color: rgba(29,65,137,.1);
+}
+.blue-box {
+    border-color: rgb(97,179,228);
+    background-color: rgba(97,179,228,.1);
+}
+
+/********  DATA TABLE   ********/
+table.datatable
+{
+    border-collapse:collapse;
+    text-align:left;
+    margin:0 0 15px;
+    font-family: "Lucida Grande", "Lucida Sans", Verdana, Arial, sans-serif;
+}
+datatable th
+{
+    border-bottom:solid 1px #000;
+    background-color:#ffffff;
+}
+
+.datatable td,#content th
+{
+    padding:6px 10px;
+}
+
+.datatable tr:nth-child(even)
+{
+    background-color:#f2f7f5;
+}
+/********  CLEAN TABLE   ********/
+.cleantable {border-collapse: collapse; text-align:left; line-height: 1.5em;}
+.cleantable th {font-weight:bold; border-bottom:solid 1px #333; padding:4px 6px; text-align:left;}
+.cleantable tr {border-bottom:solid 1px #ccc; }
+.cleantable td {border-bottom:solid 1px #ccc; border-top:solid 1px #ccc; border-left:dotted 1px #ccc; padding:4px 6px;  }
+.cleantable td:first-child, .cleantable th:first-child { border-left:0; }
+
+/********  SCHEDULE TABLE   ********/
+
+.table-schedule .time-cell { width: 25%; }
+.table-schedule .location-cell { width: 25%; }
+
+@media screen and (max-width: 767px) {
+.table-schedule .time-cell { width: 35%; }
+.table-schedule .location-cell { display: none; }
+}
+
+.table-schedule th:nth-child(1), .table-schedule td:nth-child(1) { width: 25%; }
+.table-schedule th:nth-child(3), .table-schedule td:nth-child(3) { width: 25%; }
+
+@media (max-width: 767px) {
+.table-schedule th:nth-child(1), .table-schedule td:nth-child(1) { width: 35%; }
+.table-schedule th:nth-child(3), .table-schedule td:nth-child(3) { display: none; }
+}
+/********* PAGINATION *********/
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+    background-color: #981e32;
+    border-color: #981e32;
+}
+.pagination {
+    margin: 50px 0;
+}
+.pagination>li>a, .pagination>li>span, .pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
+    color: #981e32;
+}
+
+/********* LINED LIST *********/
+
+ll {
+    display: block;
+    border-left-style: solid;
+    border-color: #000;
+    border-width: 1px;
+    margin: 20px 0 0 30px;
+}
+
+ll le {
+    display: block;
+    margin-left: 15px;
+}
+
+
+/********* TEXT ON THUMBNAILS *********/
+
+#thumbtext ul
+{
+padding:0 0 0 0;
+        margin:0 -41px 0 0;
+}
+.thumbtext li {
+list-style-type:none;
+margin:0;
+padding:0;
+display:block;
+float:left;
+margin:0 28px 20px 0 !important;
+}
+.thumbtext a {
+border:0;
+text-decoration:none;
+}
+.thumbtext .info {
+display:block;
+font-size:10px;
+height:20px;
+color:#fff;
+        float: right;
+        margin-right: .5%;
+}
+.thumbtext .info * {
+float:left;
+padding:0px 7px;
+font-size: 12px;
+        font-weight: 400;
+}
+.thumbtext .info .orange {
+background-color:#cf8024;
+}
+.thumbtext .info .yellow {
+background-color:#d0c42e;
+}
+.thumbtext .info .blue {
+background-color:#3892bf;
+}
+/********* TEXT ON THUMBNAILS *********/
+
+.thumbtext {
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden; /* Chrome and Safari */
+    -moz-backface-visibility:hidden; /* Firefox */
+    -ms-backface-visibility:hidden; /* Internet Explorer */
+    margin:0;
+}
+.thumbtext .thumb-margin {
+    margin-bottom: 20px;
+}
+.thumbtext .imgtext {
+    /*background: #981e32;*/
+    background: #000;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    position: relative;
+}
+.thumbtext img {
+    opacity: .5;
+    width: 100%;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+.thumbtext h4 {
+    /*opacity: 1;
+    -webkit-transition: none;
+    transition: none;
+    position: absolute;
+    bottom: 3%;
+    left: 3%;
+    margin-right: 5%;
+    color: #fff;
+    text-shadow: 1px 1px 6px #000;
+    font-size: 20px;
+    font-weight: 600;*/
+
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 15%;
+    color: #fff;
+    text-align: center;
+}
+@media screen and (min-width: 769px){
+.thumbtext .imgtext:hover img{
+    opacity: 1;
+    /*filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);*/
+}
+.imgtext:hover h4{
+    opacity: 0;
+}
+}
+
+
+
+/********* LOCAL CSS *********/
+
+/********* HOMEPAGE TILES *********/
+
+.tileleft {
+    float: left;
+    display: inline-block;
+    width: 23.25%;
+}
+.tilemiddle {
+    display: inline-block;
+    width: 53.5%;
+    margin-left: -4px; left: 4px; /***wtf***/
+}
+.tileright {
+    float: right;
+    display: inline-block;
+    width: 23.25%;
+}
+#play-button {
+    margin: 40% 0;
+    auto 0;
+    font-size: 130px;
+    width: 100px;
+    height: 100px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.tilemiddle:hover #play-button {
+    -ms-transform: scale(1.05,1.05);
+    -webkit-transform: scale(1.05,1.05);
+    transform: scale(1.05,1.05);
+}
+.tile {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.tile h3{
+    position: absolute;
+    color: #fff;
+    background-color: rgba(0,0,0,0.5);
+    bottom: -10px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    text-shadow: 1px 1px 30px #000;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    font-weight: 400;
+}
+.tile:hover h3 {
+    background-color: rgba(0,0,0,0);
+    bottom: 35%;
+}
+.tile img{
+    transition: opacity .2s ease-in-out;
+    -webkit-transition: opacity .2s ease-in-out;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.tile:hover img{
+    opacity: 0.15;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+}
+.tile a {
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    margin: 16px;
+    font-size: 18px;
+    opacity: 0;
+    display: none;
+    text-shadow: 1px 1px 30px #000;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    transition: opacity .2s ease-in-out;
+    -webkit-transition: opacity .2s ease-in-out;
+}
+.tile:hover a {
+    display: block;
+    opacity: 1;
+    text-decoration: none;
+}
+.tile-green {
+    background-color: #981e32;
+    margin-bottom: 31px;
+}
+.tile-green h3 {
+    background-color: rgba(0,122,59,.85);
+}
+.tile-orange {
+    background-color: #f5911e;
+}
+.tile-orange h3 {
+    background-color: rgba(245,145,30,.85);
+}
+.tile-blue {
+    background-color: #3c57a5;
+}
+.tile-blue h3 {
+    background-color: rgba(60,87,165,.85);
+}
+.tile-red {
+    background-color: #c13c27;
+    margin-bottom: 31px;
+}
+.tile-red h3 {
+    background-color: rgba(193,60,39,.85);
+}
+.tile-video {
+    position: relative;
+}
+@media screen and (max-width: 767px) {
+.tileleft, .tilemiddle, .tileright {
+    width: 100%;
+}
+.tile-green, .tile-red {
+    margin-bottom: inherit;
+}
+.tile {
+    background-color: #fff;
+}
+.tile img {
+    display: none;
+}
+.tile h3 {
+    position: initial;
+    margin: 2% 0;
+}
+.tile:hover h3 {
+    text-decoration: none;
+}
+.tile-green:hover h3 {
+    background-color: #981e32;
+}
+.tile-orange:hover h3 {
+    background-color: #f5911e;
+}
+.tile-blue:hover h3 {
+    background-color: #3c57a5;
+}
+.tile-red:hover h3 {
+    background-color: #c13c27;
+}
+}
+@media screen and (min-width: 473px) {
+#experience-break {
+    display: none;
+}
+}
+
+/********* HOME PAGE NEWS *********/
+.feed-thumb {
+    margin-bottom: 20px;
+}
+.feed-thumb img {
+    width: 100%;
+    height: auto;
+}
+.feed-thumb a {
+    display: block;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+}
+.feed-thumb p, .feed-thumb h3 {
+    border-bottom: 10px solid #ededed;
+    color: #333 !important;
+    font-weight: 400;
+    padding: 14px 10px 10px 10px;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 102px;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+.feed-thumb a:hover p, .feed-thumb a:hover h3 {
+    border-bottom: 10px solid #333;
+}
+.feed-thumb a:hover {
+    text-decoration: none;
+}
+h3.fronttitle {
+    display: inline-block;
+    margin: 21px 0 21px 0;
+    color: #4d4d4d;
+    font-weight: 300!important;
+    font-size: 34px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.viewall {
+    display: inline-block;
+}
+.viewall a {
+    color: #4d4d4d;
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 22px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (max-width: 490px) {
+.feed-thumb {
+    width: 100%;
+}
+.feed-thumb p, .feed-thumb h3 {
+    height: auto;
+    min-height: inherit;
+}
+}
+
+
+/********* MISSION *********/
+
+.mission {
+    background-image: url('/wp-content/uploads/2015/06/stats-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 125px 0;
+}
+.mission h1 {
+    font-size: 65px;
+    font-weight: 300;
+}
+.mission p {
+    max-width: 270px;
+    margin: 0 auto;
+    line-height: inherit;
+    font-size: 18px;
+}
+.mission hr {
+    border-top: 1px dotted #fff;
+    width: 80%;
+}
+@media screen and (max-width: 1024px) {
+    .mission {
+        background-attachment: initial;
+        background-position-y: -33px;
+    }
+}
+@media screen and (max-width: 793px) {
+    .mission {
+        background-size: initial;
+        background-position-x: 100%;
+        padding: 50px 0;
+    }
+}
+
+/********* EVENTS *********/
+
+.events {
+    position: relative;
+    padding: 33px 0 50px;
+    background-color: #fff;
+}
+.darken-item {
+    position: relative;
+    margin-bottom: 30px;
+    background-color: #981e32;
+    overflow: hidden;
+    cursor: default;
+}
+.darken-item img {
+    width: 100%;
+    height: auto;
+    transition: opacity .2s ease-in-out;
+    -webkit-transform: translateZ(0);
+}
+.darken-bg {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    padding-top: 100%;
+    transition: transform .5s ease-in-out;
+    transform: scale(1) translateZ(0);
+}
+.darken-item a:hover .darken-bg {
+    transform: scale(1.05) translateZ(0);
+}
+.darken-fg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+div.darken-fg {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 100%);
+}
+.event-title, .event-date, .faculty-name {
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    padding: 0 5%;
+    text-align: center;
+}
+.event-title {
+    bottom: 18%;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+}
+.event-date {
+    bottom: 9%;
+    font-size: 16px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.faculty-name {
+    bottom: 5%;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+}
+.darken-item.no-photo {
+    background-color: #fff;
+}
+.darken-item.no-photo div.darken-fg {
+    background: #fff;
+}
+.darken-item.no-photo .event-title, .darken-item.no-photo .event-date, .darken-item.no-photo .faculty-name {
+    color: #000;
+}
+@media screen and (max-width: 1199px) {
+    .event-title {
+        font-size: 30px;
+        bottom: 15%;
+    }
+    .event-date {
+        font-size: 14px;
+        bottom: 6%;
+    }
+}
+@media screen and (max-width: 991px) {
+    .event-title {
+        font-size: 3vw;
+    }
+    .event-date {
+        font-size: 1.4vw;
+    }
+}
+@media screen and (max-width: 575px) {
+    .event-title {
+        font-size: 10vw;
+    }
+    .event-date {
+        font-size: 4vw;
+    }
+}
+
+
+
+/********  LET'S CONNECT   ********/
+
+.letsconnect {
+    background: #ededed;
+    padding: 30px 0 20px;
+}
+.letsconnect .hbspt-form {
+    min-height: 85px;
+}
+.letsconnect .hbspt-form form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.letsconnect .hbspt-form input[type="text"], .letsconnect .hbspt-form input[type="email"], .letsconnect .hbspt-form select {
+    background: #fff;
+    border-radius: 25px;
+    height: 45px;
+    padding: 0 30px;
+}
+.letsconnect label {
+    padding: 0 30px;
+    font-weight: 400;
+}
+.letsconnect .hs_firstname, .letsconnect .hs_lastname {
+    width: 19%;
+}
+.letsconnect .hs_email {
+    width: 30%;
+}
+.letsconnect .hs_admissions_state {
+    width: 19%;
+}
+.letsconnect .hs_submit {
+    width: 10%;
+}
+.letsconnect .hbspt-form input[type="submit"] {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 60px;
+    color: #333;
+    width: 100%;
+}
+.letsconnect .hbspt-form input[type="submit"]:hover {
+    background: transparent;
+    color: initial;
+}
+
+
+@media (max-width: 1000px) {
+    .letsconnect .hs_firstname, .letsconnect .hs_lastname, .letsconnect .hs_email, .letsconnect .hs_admissions_state {
+        width: 49%;
+    }
+    .letsconnect .hs_submit {
+        width: 100%;
+        margin-top: -25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .letsconnect .hs_email, .letsconnect .hs_admissions_state {
+        width: 100%;
+    }
+}
+
+
+/********  SCOOP BLOG FEED   ********/
+.blogfeed {
+    padding: 0;
+}
+.rfw_dock a {
+    display: table-footer-group;
+}
+.rfw_dock li {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+.rfw_dock li:hover h3 {
+    border-bottom: 10px solid #333;
+}
+.rfw_dock {
+    padding: 0;
+}
+.feed-thumb h3 {
+    line-height: 26px;
+    margin: 0;
+}
+@media screen and (min-width: 992px) {
+.rfw_dock > li:nth-child(2) {
+    display: none;
+}
+}
+@media screen and (max-width: 991px) {
+.rfw_dock {
+    margin: 0 -15px;
+}
+.rfw_dock > li {
+    float: left;
+    width: 50%;
+    padding: 0 15px;
+}
+}
+@media screen and (max-width: 490px) {
+.rfw_dock > li {
+    margin-bottom: 30px;
+    width: 100%;
+}
+}
+
+/********* CAROUSEL *********/
+.carousel {
+    background-color: #333;
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-inner > .item {
+    text-align: center;
+}
+.carousel-control {
+    width: 5%;
+    opacity: 0;
+    z-index: 2;
+    moz-transition: opacity ease-in-out .3s;
+    -o-transition: opacity ease-in-out .3s;
+    -webkit-transition: opacity ease-in-out .3s;
+    transition: opacity ease-in-out .3s;
+    text-shadow: none;
+}
+.carousel:hover > .carousel-control {
+    opacity: .8;
+}
+.carousel-control.left {
+background-image: none;
+}
+.carousel-control.right {
+background-image: none;
+}
+.carousel-control:hover,
+.carousel-control:focus {
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+.carousel-control .glyphicon, .carousel-control .icon-prev, .carousel-control .icon-next {
+    font-size: 25px;
+    margin-left: -15px;
+}
+.carousel-indicators {
+    width: 130px;
+    left: calc(50% - 65px);
+    margin-left: 0;
+}
+.carousel-indicators .active {
+    width: 18px;
+    height: 18px;
+    background-color: rgba(255,255,255,.8);
+    border: 1px solid #999;
+    opacity: 1;
+    margin: 0 -4px 0 3px;
+}
+.carousel-indicators li {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #555;
+    margin: 0 -4px 0 3px;
+    background-color: #000;
+    opacity: .5;
+    border-radius: 3px;
+}
+
+@media screen and (min-width: 768px) {
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    margin-top: -4.5%;
+    margin-bottom: -4.5%;
+}
+}
+@media screen and (max-width: 835px) {
+.carousel-control {
+    width: 8%;
+}
+.news-carousel .carousel-inner>.item img {
+    max-width: 110%;
+    margin-left: -5%;
+}
+.carousel-indicators {
+    display:none;
+}
+}
+@media screen and (max-width: 550px) {
+.news-carousel .carousel-inner>.item img {
+    max-width: 120%;
+    margin-left: -10%;
+}
+}
+    /********* CAROUSEL CAPTIONS *********/
+.carousel-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 100%);
+}
+.captionblock a:hover {
+    text-decoration:none;
+}
+.captionblock {
+    position: absolute;
+    bottom: 75px;
+    max-width: 650px;
+}
+.captionleft {
+    text-align: left;
+    left: 12%;
+}
+.captionright {
+    right: 12%;
+    text-align: right;
+}
+.captionblock h3 {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+}
+.captionblock h4 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+}
+@media screen and (max-width: 835px) {
+.captionblock {
+    width: 100%;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    max-width: 835px;
+}
+.captionblock h3{
+    text-align: center;
+}
+.captionblock h4{
+    display: none;
+}
+}
+@media screen and (max-width: 550px) {
+.captionblock h3{
+    font-size: 25px;
+}
+}
+    /********* CAROUSEL FADE *********/
+.carousel {
+  opacity: 1;
+}
+.carousel .item {
+  -moz-transition: opacity ease-in-out 0.5s;
+  -o-transition: opacity ease-in-out 0.5s;
+  -webkit-transition: opacity ease-in-out 0.5s;
+  transition: opacity ease-in-out 0.5s;
+  left: 0 !important;
+  opacity: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  display: block !important;
+  z-index: 0;
+  overflow: hidden;
+}
+.carousel .item:first-child {
+  top: auto;
+  position: relative;
+}
+.carousel .item.active {
+  opacity: 1;
+  -moz-transition: opacity ease-in-out 0.5s;
+  -o-transition: opacity ease-in-out 0.5s;
+  -webkit-transition: opacity ease-in-out 0.5s;
+  transition: opacity ease-in-out 0.5s;
+  z-index: 1;
+}
+
+.carousel {
+    opacity: 1;
+}
+.carousel .item .captionblock h3, .carousel .item .captionblock h4{
+    -moz-transition: opacity ease-in-out 1.5s;
+    -o-transition: opacity ease-in-out 1.5s;
+    -webkit-transition: opacity ease-in-out 1.5s;
+    transition: opacity ease-in-out 1.5s;
+    -webkit-transform: translateZ(0px);
+    opacity: 0;
+    z-index: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.carousel .item.active .captionblock h3, .carousel .item.active .captionblock h4{
+    opacity: 1;
+    -moz-transition: opacity ease-in-out 1.5s;
+    -o-transition: opacity ease-in-out 1.5s;
+    -webkit-transition: opacity ease-in-out 1.5s;
+    transition: opacity ease-in-out 1.5s;
+    z-index: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/********* NEWS *********/
+
+.news {
+    padding: 33px 0 50px;
+}
+.newsthumblg {
+    float: right;
+    margin: 0 0 30px 30px;
+    max-width: 40%;
+}
+.articlebanner {
+    margin: 0 0 30px 0;
+    width: 100%;
+}
+.archivethumb {
+    display: block;
+}
+.addthis_toolbox {
+    margin-bottom: 15px;
+}
+.archivetitle {
+    margin-top: 0;
+}
+.archivetitle a {
+    color: #4d4d4d;
+    font-weight: 300;
+    font-size: 25px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.newsrow {
+    margin-bottom: 10px;
+    min-height: 200px;
+}
+.newsrow h5 {
+    font-weight: 400;
+    padding-bottom: 5px;
+}
+.newsheader {
+    color: #4d4d4d;
+    font-weight: 300;
+    font-size: 37px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+    /* NEWS TAGS */
+div.newstags {
+    margin-top:42px;
+    text-align: center;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+.newstags a {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 7px 7px 13px 5px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.tagstitle {
+    text-align: center;
+}
+.ssba img {
+    width: 37px;
+    margin: 0 4px 13px 0;
+}
+@media screen and (max-width: 991px) {
+div.newstags {
+    display: none;
+}
+}
+/********* COMMENTS *********/
+#disqus_thread {
+    padding-top: 25px;
+}
+
+
+/********* DIRECTORY *********/
+.dir-photo img{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.directory-image {
+    width: 200px;
+}
+.table.directory td {
+    vertical-align: middle;
+}
+@media screen and (max-width: 1200px) {
+.dir-hide {
+display:none;
+}
+}
+@media screen and (max-width: 650px) {
+.dir-hide2 {
+display:none;
+}
+}
+
+.directory td:nth-child(1), .directory th:nth-child(1) {
+    width: 28%;
+}
+.directory td:nth-child(2), .directory th:nth-child(2) {
+    width: 21%;
+}
+.directory td:nth-child(3), .directory th:nth-child(3) {
+    width: 25%;
+}
+.directory td:nth-child(4), .directory th:nth-child(4) {
+    width: 26%;
+}
+
+@media screen and (max-width: 1200px) {
+    .directory td:nth-child(1), .directory th:nth-child(1) {
+        width: 37%;
+    }
+    .directory td:nth-child(2), .directory th:nth-child(2) {
+        width: 28%;
+    }
+    .directory td:nth-child(3), .directory th:nth-child(3) {
+        width: 35%;
+    }
+    .directory td:nth-child(4), .directory th:nth-child(4) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .directory td:nth-child(1), .directory th:nth-child(1) {
+        width: auto;
+    }
+    .directory td:nth-child(2), .directory th:nth-child(2) {
+        width: 110px;
+    }
+    .directory td:nth-child(3), .directory th:nth-child(3) {
+        display: none;
+    }
+}
+
+/********* CIRCLE ICONS *********/
+.circle-container {
+    text-align: center;
+}
+.circle {
+    max-width: 200px;
+    margin: 0 auto;
+    position: relative;
+}
+.circle-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all ease-in-out .2s;
+}
+a:hover .circle-bg {
+    opacity: .25;
+}
+.circle-container hr {
+    border-top: 1px dotted #bbb;
+    width: 80%;
+}
+@media (min-width: 768px) {
+.circle-container hr {
+    display: none;
+}
+}
+.circle-red {
+    background-color: #c74a37;
+}
+.circle-orange {
+    background-color: #f38a00;
+}
+.circle-blue {
+    background-color: #61b3e4;
+}
+.circle-green {
+    background-color: #981e32;
+}
+.circle-royal {
+    background-color: #1d4189;
+}
+.circle-yellow {
+    background-color: #ffd100;
+}
+.circle-violet {
+    background-color: #783cbd;
+}
+.circle-gray {
+    background-color: #666666;
+}
+
+
+/********* HISTORY TIMELINE *********/
+  .timeline .date {
+    float:left;
+    width:16%;
+    }
+    .timeline .description {
+    float:left;
+    width:80%;
+    border-left:solid 1px #666;
+    padding:0 0 0 3%;
+    margin: 0 0 20px 0;
+    }
+    .timeline h2 {
+    margin-top:0 !important;
+    }
+    .timeline h3 {
+    margin-top:0 !important;
+    }
+    .timeline p:last-child {
+    margin-bottom:0;
+    }
+@media screen and (max-width: 767px) {
+    .timeline h3 {
+    font-size: 15px;
+    }
+}
+
+
+/********* HOUSING *********/
+
+#housing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.housing {
+    text-align: center;
+    margin: 35px 15px 5px;
+    line-height: 45px;
+}
+.housing figure {
+    width: 175px;
+    height: 175px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.housing img {
+    width: 100%;
+}
+.big-house .housing figure {
+    width: 200px;
+    height: 200px;
+}
+.house-price {
+    float: right;
+    font-size: 30px;
+}
+.table-housing td:first-child {
+    font-weight: 700;
+    text-align: left;
+}
+.table-housing tfoot {
+    background-color: #ededed;
+    font-weight: 700;
+}
+.table-housing th {
+    border-color: #000 !important;
+    text-align: right;
+}
+.table-housing td {
+    border-top: 0 !important;
+    width: 20%;
+    text-align: right;
+}
+
+/********* OFF-CAMPUS HOUSING *********/
+@media screen and (max-width: 767px) {
+.xs-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    max-width: 100%;
+}
+}
+
+/********* 404 Page *********/
+
+#search404 input[type="text"]  {
+    background-color: #a0a0a0;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 6px 50px 6px 8px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    margin-top: 20px;
+    width: 95%;
+    font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+#search404 button {
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    margin-left:-45px;
+}
+#search404 input[type="text"]:focus {
+    color: #333;
+    background-color: #ededed;
+}
+#search404 input[type="text"]:focus + button {
+    color: #333;
+}
+#search404 .glyphicon {
+    top: 2px;
+    right: 4px;
+}
+
+
+
+/********* SUMMER CAMPS *********/
+
+.camps-info {
+    background-color: #ededed;
+    text-align: center;
+    padding: 1%;
+    margin-bottom: 2%;
+}
+.camps-learnmore {
+    padding: 15px;
+}
+.camps-banner {
+    position: relative;
+    margin-bottom: 2%;
+    overflow: hidden;
+}
+.camps-sidebar {
+    padding: 5%;
+    background-color: #e5e5e5;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 350px;
+}
+.camps-sidebar .signup {
+    background: #1c1d22;
+    height: 90px;
+    margin-bottom: 25px;
+}
+.camps-sidebar img {
+    margin-top: 10px;
+    padding: 0 5px;
+}
+.camps img {
+    max-width: 385px;
+    margin: 0 auto;
+}
+@media screen and (max-width: 1199px) {
+.camps-banner img {
+    width: 150%;
+    margin-left: -25%;
+    max-width: 150%;
+}
+}
+@media screen and (min-width: 768px) {
+.camps .col-sm-8 {
+    float: right;
+}
+}
+@media screen and (max-width: 767px) {
+.camps .col-sm-8 {
+    float: none;
+}
+}
+
+/************* CAPITAL CAMPAIGN *************/
+
+.campaign-graphic {
+    margin: 0 auto 70px;
+    display: block;
+    width: 80%;
+    position: relative;
+}
+.campaign-graphic-filler {
+    padding-top: 50%;
+}
+.campaign-graphic-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.campaign-circle {
+    position: absolute;
+    width: 13%;
+    height: 26%;
+    background-color: #ccc;
+    border-radius: 50%;
+    text-align: center;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.campaign-circle h4 {
+    font-size: 16px;
+}
+.campaign-circle:hover {
+    -ms-transform: scale(1.05,1.05);
+    -webkit-transform: scale(1.05,1.05);
+    transform: scale(1.05,1.05);
+}
+#you-circle {
+    left: 0;
+    top: 37.5%;
+}
+#you-circle img {
+    height: 75%;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+#donate-circle {
+    background-color: #981e32;
+    left: 44%;
+    top: 37.5%;
+}
+#donate-circle:hover {
+    background-color: #003f1f;
+}
+#donate-circle img {
+    height: 75%;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+#schol-circle {
+    background-color: #3c57a5;
+    right: 0;
+    top: 0;
+}
+#schol-circle:hover {
+    background-color: #2c407a;
+}
+#schol-circle img {
+    height: 60%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    margin-left: 8px;
+}
+#prof-circle {
+    background-color: #f5911e;
+    right: 0;
+    top: 37.5%;
+}
+#prof-circle:hover {
+    background-color: #cf7309;
+}
+#prof-circle img {
+    height: 60%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+#fac-circle {
+    background-color: #c13c27;
+    right: 0;
+    bottom: 0;
+}
+#fac-circle:hover {
+    background-color: #902d1d;
+}
+#fac-circle img {
+    height: 50%;
+    margin-top: 25%;
+    margin-bottom: 25%;
+}
+@media screen and (max-width: 767px) {
+.campaign-graphic {
+    width: 100%;
+}
+.campaign-graphic-filler {
+    padding-top: 125%;
+}
+.campaign-circle {
+    width: 27%;
+    height: 21.6%;
+}
+#you-circle {
+    top: 0;
+    left: 36.5%;
+}
+#donate-circle {
+    left: 36.5%;
+    top: 38%;
+}
+#schol-circle {
+    left: 0;
+    bottom: 0;
+    top: inherit;
+}
+#prof-circle {
+    bottom: 0;
+    left: 36.5%;
+    top: inherit;
+}
+#fac-circle {
+    right: 0;
+    bottom: 0;
+}
+}
+
+.campaign-goal {
+    margin: 0px auto 30px;
+    background-color: #ccc;
+    padding: 15px;
+}
+.campaign-progress-container {
+    padding: 0 15px;
+    float: none;
+    display: inline-block;
+    margin-left: -4px; left: 4px; /***wtf***/
+}
+.campaign-progress {
+    background-color: #fff;
+    height: 35px;
+    border-radius: 3px;
+    margin: 15px 0;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+}
+.funds-raised {
+    height: 25px;
+    background-color: rgb(0, 122, 59);
+    border-radius: inherit;
+    margin: 5px;
+}
+.campaign-goal p {
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 5px;
+}
+.goal-total {
+    text-align: right;
+}
+@media screen and (max-width: 490px) {
+.campaign-goal p {
+    font-size: inherit;
+}
+}
+
+
+
+/************* PROGRESS BAR (Capital Campaign) *************/
+
+.progress {
+  width:auto;
+  height:auto;
+  display:block;
+  padding:20px 40px;
+  margin:30px 0;
+  background:#eee;
+  border: solid 1px #ddd;
+}
+.progress h5 {
+ margin:10px 0;
+  padding:0;
+}
+.progress .goal {
+  width:auto;
+  display:block;
+  margin:0;
+  background:#fff;
+  border:solid 1px #ccc;
+  -moz-box-shadow:    inset 0 0 3px #ccc;
+   -webkit-box-shadow: inset 0 0 3px #ccc;
+   box-shadow:         inset 0 0 3px #ccc;
+  -webkit-border-radius: 4px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius: 4px;
+  -moz-border-radius-topleft: 3px;
+  border-radius: 4px;
+  border-top-left-radius: 3px;
+  padding:8px;
+}
+.progress .value {
+  background:#981e32;
+  height:25px;
+  display:block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-top: 1px solid #9edebd;
+  border-bottom:1px solid #086b38;
+
+  background: -webkit-gradient(linear, left top, left bottom, from(#14a85c), to(#981e32));
+  background: -webkit-linear-gradient(top, #14a85c, #981e32);
+  background: -moz-linear-gradient(top, #14a85c, #981e32);
+  background: -ms-linear-gradient(top, #14a85c, #981e32);
+  background: -o-linear-gradient(top, #14a85c, #981e32);
+  text-align:right;
+}
+.progress .current {
+  float:right;
+  background:#14a85c;
+  font-weight:bold;
+  padding:5px 10px;
+  position:relative;
+  width:auto;
+  top:-52px;
+  right:-53px;
+  text-align:center;
+  color:#fff;
+   -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 4px rgba(50, 50, 50, 0.5);
+-moz-box-shadow:    0px 1px 4px rgba(50, 50, 50, 0.5);
+box-shadow:         0px 1px 4px rgba(50, 50, 50, 0.5);
+font-weight:normal;
+
+}
+.progress .current::after {
+content: "";
+position: absolute;
+bottom: -10px;
+left: 45px;
+border-width: 10px 10px 0;
+border-style: solid;
+border-color: #14a85c transparent;
+display: block;
+width: 0;
+}
+@media (max-width: 400px) {
+     .current {
+     visibility:hidden;
+}
+}
+/************* SMALL PROGRESS BAR *************/
+
+.smallprogress {
+  width:auto;
+  display:block;
+  padding:0;
+  margin:0;
+
+}
+.smallprogress h5 {
+ margin:5px 0;
+  padding:0;
+  font-size:14px;
+}
+.smallprogress .goal {
+  width:auto;
+  display:block;
+  margin:0;
+  background:#fff;
+  border:solid 1px #ccc;
+  -moz-box-shadow:    inset 0 0 3px #ccc;
+   -webkit-box-shadow: inset 0 0 3px #ccc;
+   box-shadow:         inset 0 0 3px #ccc;
+  -webkit-border-radius: 4px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius: 4px;
+  -moz-border-radius-topleft: 3px;
+  border-radius: 4px;
+  border-top-left-radius: 3px;
+  padding:5px;
+}
+.smallprogress .value {
+  background:#981e32;
+  height:15px;
+  display:block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-top: 1px solid #9edebd;
+  border-bottom:1px solid #086b38;
+
+  background: -webkit-gradient(linear, left top, left bottom, from(#14a85c), to(#981e32));
+  background: -webkit-linear-gradient(top, #14a85c, #981e32);
+  background: -moz-linear-gradient(top, #14a85c, #981e32);
+  background: -ms-linear-gradient(top, #14a85c, #981e32);
+  background: -o-linear-gradient(top, #14a85c, #981e32);
+  text-align:right;
+}
+.smallprogress .current {
+  float:right;
+  background:#14a85c;
+  font-weight:bold;
+  position:relative;
+  width:100px;
+  top:-36px;
+  right:-41px;
+  width:80px;
+  text-align:center;
+  color:#fff;
+   -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 4px rgba(50, 50, 50, 0.5);
+-moz-box-shadow:    0px 1px 4px rgba(50, 50, 50, 0.5);
+box-shadow:         0px 1px 4px rgba(50, 50, 50, 0.5);
+font-weight:normal;
+	font-size:13px;
+
+}
+.smallprogress .current::after {
+content: "";
+position: absolute;
+bottom: -7px;
+left: 30px;
+border-width: 10px 10px 0;
+border-style: solid;
+border-color: #14a85c transparent;
+display: block;
+width: 0;
+}
+
+/******* ALUMNI CHAPTER MAP ********/
+
+#chapter-container {
+    position: relative;
+}
+#chapter-key {
+    position: absolute;
+    bottom: 5%;
+    right: 0;
+    width: 90px;
+}
+@media (max-width: 767px) {
+#chapter-key {
+    position: inherit;
+    margin: 0 auto;
+    width: 195px;
+}
+}
+.chapter-circle {
+    width: 12px;
+    height: 12px;
+    background-color: #000;
+    border-radius: 50%;
+    margin-right: 5px;
+    float: left;
+}
+#chapter-purple {
+    background-color: #8c4684;
+}
+#chapter-blue {
+    background-color: #3c57a5;
+}
+#chapter-red {
+    background-color: #c13c27;
+}
+#chapter-yellow {
+    background-color: #ffd05c;
+}
+#chapter-green {
+    background-color: #14793b;
+}
+#chapter-orange {
+    background-color: #f5911f;
+}
+
+/********* CONTACT FORM 7 RESPONSIVE *********/
+form.wpcf7-form input {
+    max-width: 100%;
+}
+form.wpcf7-form textarea {
+    max-width: 100%;
+}
+
+/********* FORM STYLES *********/
+
+.form-text, .wpcf7-free-text, .form-date {
+    outline: none;
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 100%;
+    -webkit-transition: border-color ease-in-out .2s;
+    -moz-transition: border-color ease-in-out .2s;
+    -o-transition: border-color ease-in-out .2s;
+    transition: border-color ease-in-out .2s;
+    display: block;
+    border: 2px solid #ccc;
+}
+.form-text:focus, .wpcf7-free-text:focus, .form-date:focus {
+    border-color: #666;
+}
+.form-date {
+    width: auto;
+}
+.wpcf7-free-text {
+    width: 100px;
+    display: initial;
+    padding: 0 10px;
+    margin-top: -12px;
+}
+.wpcf7-list-item {
+   display: block;
+   margin: 5px 0;
+}
+.wpcf7-not-valid-tip {
+    display: none !important;
+}
+.wpcf7-not-valid {
+    border-color: #c13c27;
+}
+
+/********* HUBSPOT FORM *********/
+
+.hbspt-form fieldset {
+    margin: 20px 0;
+}
+.hbspt-form legend, .hs-richtext {
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.hbspt-form input[type="text"], .hbspt-form input[type="email"], .hbspt-form input[type="tel"], .hbspt-form input[type="number"], .hbspt-form input[type="file"], .hbspt-form textarea, .hbspt-form select, .hbspt-form .upload-button {
+    border: 1px solid #ccc;
+    border-radius: 0;
+	padding: 10px 15px;
+	outline: none;
+	font-family: inherit;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 0 15px;
+    width: 100%;
+    resize: none;
+    -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   background: transparent;
+   position: relative;
+   transition: border-color ease-in-out .2s;
+}
+.hbspt-form input[type="text"]:focus, .hbspt-form input[type="email"]:focus, .hbspt-form input[type="tel"]:focus, .hbspt-form input[type="number"]:focus, .hbspt-form input[type="file"]:focus, .hbspt-form textarea:focus, .hbspt-form select:focus, .hbspt-form .upload-button:focus {
+    border-color: #981e32;
+}
+
+.hbspt-form textarea {
+    height: 175px;
+}
+
+.hbspt-form .hs-error-msgs, .hbspt-form .hs-form-required {
+    display: none !important;
+}
+
+.hbspt-form .select-container {
+    position: relative;
+}
+.hbspt-form .select-container:before, .select-container:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 6px transparent solid;
+    position: absolute;
+    right: 10px;
+}
+.hbspt-form .select-container:before {
+    border-bottom: 10px #ccc solid;
+    top: 5px
+}
+.hbspt-form .select-container:after {
+    border-top: 10px #ccc solid;
+    bottom: 20px;
+}
+
+.hbspt-form input[type="submit"] {
+    display: block;
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: #981e32;
+    font-family: inherit;
+    border: 1px solid #981e32;
+    border-radius: 0;
+    outline: none;
+    padding: 10px;
+    font-size: 18px;
+    margin: 50px auto;
+    width: 50%;
+    cursor: pointer;
+    transform: translateY(15px);
+    transition: all .2s ease-in-out;
+}
+.hbspt-form input[type="submit"]:hover {
+    background-color: #981e32;
+    color: #fff;
+}
+.hbspt-form .screen-reader-response {
+    display: none;
+}
+.hbspt-form .submitted-message {
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+    .hbspt-form input[type="submit"] {
+        width: 100%;
+    }
+}
+
+
+/********* CONCENTRATIONS *********/
+
+.flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+.conc-image {
+    width: 150px;
+}
+.conc-content {
+    width: calc(100% - 200px);
+}
+.conc-content p, .conc-content ul {
+    margin-bottom: 0;
+}
+@media (max-width: 776px) {
+    .flexbox {
+        display: block;
+    }
+    .conc-content {
+        width: 100%;
+    }
+}
+
+
+/********* SANDBOX *********/
+
+.btn-half {
+    width: 30%;
+    border-radius: 20px;
+}
+.btn-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 1px solid #7F192A;
+}
+.btn-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.btn-left:hover {
+    border-right: 1px solid #981e32;
+}
+
+.center {
+    text-align: center;
+}
+
+.panel-heading {
+    padding: 0;
+}
+.accordion-toggle {
+    width: 100%;
+    display: block;
+    height: 100%;
+    padding: 10px 15px;
+}
+
+/*******Modal Shift Fix (remove when Bootstrap releases official fix)********/
+.modal{
+    overflow-y: auto;
+}
+
+.modal-open{
+    overflow:auto;
+    overflow-x:hidden;
+}
+/*********************/
+
+
+/*********
+.nav-tabs>.dropdown>.dropdown-menu>li>a:hover, .nav-tabs>.dropdown>.dropdown-menu>li>a:focus {
+    color: #fff;
+}
+.nav-tabs>.dropdown>.dropdown-menu>.active>a, .nav-tabs>.dropdown>.dropdown-menu>.active>a:hover, .nav-tabs>.dropdown>.dropdown-menu>.active>a:focus {
+    background-color: #333;
+    color: #fff;
+}
+.nav-tabs>.open>.dropdown-menu {
+    displayplay: block;
+}
+
+
+*********/
+
+
+.ekko-lightbox-container{position:relative}.ekko-lightbox-nav-overlay{position:absolute;top:0;left:0;z-index:100;width:100%;height:100%}.ekko-lightbox-nav-overlay a{z-index:100;display:block;width:49%;height:100%;padding-top:45%;font-size:30px;color:#fff;text-shadow:2px 2px 4px #000;opacity:0;filter:dropshadow(color=#000000,offx=2,offy=2);-webkit-transition:opacity .5s;-moz-transition:opacity .5s;-o-transition:opacity .5s;transition:opacity .5s}.ekko-lightbox-nav-overlay a:empty{width:49%}.ekko-lightbox a:hover{text-decoration:none;opacity:1}.ekko-lightbox .glyphicon-chevron-left{left:0;float:left;padding-left:15px;text-align:left}.ekko-lightbox .glyphicon-chevron-right{right:0;float:right;padding-right:15px;text-align:right}.ekko-lightbox .modal-footer{text-align:left}
+
+.ekko-lightbox .modal-header {
+    border-bottom: none;
+    padding: 15px 15px 0 15px;
+}
+
+#videotile:hover .videoicon {
+    background-color: rgba(0,122,59,.85);
+}
+
+.videoicon{
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    margin: 40% auto 0;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0,0,0,.5);
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+/******* Early Mobile Break Point ********/
+
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in {
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+}
+
+/******* Fix in-page links for fixed header ********/
+a[name]:before {
+    content:"";
+    display:block;
+    height:89px;
+    margin:-89px 0 0;
+}
+
+/******* fix google search button width (relevance/date) ********/
+div.gsc-selected-option-container.gsc-inline-block {
+width: auto!important;
+}
+
+
+
+#loading-indicator {
+position: fixed;
+left: 0;
+top: 231px;
+width:100%
+}
+
+.modal-header {
+  padding: 15px 20px;
+}
+
+
+
+/******* Are we using this anywhere? ********/
+
+.squarer {
+    padding-top:
+}
+
+/********* Print Style Sheet *********/
+
+body {
+    font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+}
+
+body:before{
+  background:url('logo.png');
+  width: 255px;
+  height: 66px;
+  display:block;
+}
+header, .banner, footer, .navcol, #respond, #feedback, .ssba {
+    display:none;
+}
+a {
+    color: #007a3b;
+    text-decoration: none;
+}
+
+.newsthumblg {
+    float: right;
+    margin: 0 0 30px 30px;
+    max-width: 40%;
+}
+.articlebanner {
+    margin: 0 0 30px 0;
+    width: 100%;
+}
+.archivethumb {
+    display: block;
+}
+.alignright {
+    float: right;
+    margin: 20px 0 30px 35px;
+    max-width: 50%;
+}
+.alignleft {
+    float: left;
+    margin: 20px 35px 30px 0;
+    max-width: 50%;
+}
+.aligncenter {
+    display: block;
+    margin: 20px 0 30px 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+.alignnone {
+    width: 100%;
+    height: auto;
+}
+#disqus_thread {
+     display: none;
+}
+
+/* Slider */
+.slick-slider
+{
+    position: relative;
+
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+
+    height: auto;
+
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+
+/********* EDITS *********/
+
+.slick {
+    width: 100%;
+    margin: 0 0 20px;
+}
+.slick-slide {
+    outline: 0;
+}
+.slick-slide.slick-current {
+}
+.slick-slide img {
+    max-width: 100%;
+}
+
+.slick-dots button {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 0;
+}
+
+.slick-dots li {
+    display: inline-block;
+}
+
+.slick-dots button:before {
+    content: '•';
+    font-size: 35px;
+    line-height: 20px;
+    color: #fff;
+    opacity: .5;
+}
+.slick-dots .slick-active button:before {
+    opacity: 1;
+}
+
+.slick-dots {
+    position: absolute;
+    padding: 0;
+    bottom: -15px;
+    width: 100%;
+    text-align: center;
+}
+
+.slick-arrow {
+    display: none !important;
+}
+
+@media (max-width: 767px) {
+    .slick {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-bottom: 40px;
+    }
+    .slick-dots {
+        bottom: -60px;
+    }
+    .slick-dots button:before {
+        color: #007a3b;
+        opacity: 0.25;
+    }
+}
+
+</style>
+<title>Southern Virginia University</title>
+<meta content="#892333" name="theme-color"/>
+<meta charset="utf-8"/>
+<meta content="Southern Virginia University a private, self-reliant, residential university aligned with The Church of Jesus Christ of Latter-day Saints and its principles and values." name="description"/>
+<meta content="Southern Virginia University Liberal Arts East Coast Athletics Arts Music Latter Day Saints LDS Mormon College School" name="keywords"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<link href="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/img/apple-touch-icon.ico" rel="apple-touch-icon"/>
+<!-- CSS -->
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1462215-17', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+    adroll_adv_id = "E5ASNM5OMNB4FJB2OUBRNS";
+    adroll_pix_id = "27QUKS5CV5DQJLSVDZ75ZH";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+</script>
+<meta content="8371638089" property="fb:pages"/>
+<meta content="https://svu.edu/wp-content/uploads/thumbnail.jpg" property="og:image"/>
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '105674816618471'); // Insert your pixel ID here.
+        fbq('track', 'PageView');
+</script>
+<!-- HubSpot Tracking Code -->
+<script async="" defer="" id="hs-script-loader" src="//js.hs-scripts.com/2775796.js" type="text/javascript"></script>
+<noscript>
+<img height="1" src="https://www.facebook.com/tr?id=105674816618471&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/>
+</noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+</head>
+<body>
+<header>
+<nav class="navbar navbar-default" role="navigation">
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="header-back">
+<div class="container">
+<div class="quikbar hidden-xs hidden-sm">
+<a href="https://my.svu.edu/">my<strong>svu</strong></a>|
+         <a href="https://calendar.svu.edu/">Calendar</a>|
+         <a href="/directory">Directory</a>|
+         <a href="/employment">Jobs</a>|
+         <a data-toggle="modal" href="#tools">Tools</a>
+<!-- Search Bar -->
+<script>
+          (function() {
+            var cx = '008131609942010079980:e6ha6tcprgq';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+<gcse:search></gcse:search>
+<!--
+        <form method="get" action="/search" id="search" autocomplete="off">
+            <input name="s" type="text" size="40" placeholder="">
+            <button type="submit">
+                <span type="submit" class="glyphicon glyphicon-search"></span>
+            </button>
+        </form>
+-->
+</div>
+</div>
+</div>
+<div class="header-front">
+<div class="container">
+<div class="navbar-header">
+<button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<div class="navbar-brand">
+<a href="/"><img alt="Southern Virginia University" src="/wp-content/uploads/southern_virginia_university.png"/>
+</a></div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse navbar-ex1-collapse" style="box-shadow:none;">
+<div class="container">
+<div class="quikbar quikbar-dropdown visible-xs visible-sm">
+<a class="btn btn-success" data-toggle="modal" href="#tools">Tools</a>
+<!-- Search Bar -->
+<script>
+                   (function() {
+                     var cx = '008131609942010079980:e6ha6tcprgq';
+                     var gcse = document.createElement('script');
+                     gcse.type = 'text/javascript';
+                     gcse.async = true;
+                     gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                     var s = document.getElementsByTagName('script')[0];
+                     s.parentNode.insertBefore(gcse, s);
+                   })();
+                 </script>
+<gcse:search></gcse:search>
+<!--
+                 <form method="get" action="/search" id="search" autocomplete="off">
+                     <input name="s" type="text" size="40" placeholder="">
+                     <button type="submit">
+                         <span type="submit" class="glyphicon glyphicon-search"></span>
+                     </button>
+                 </form>
+         -->
+</div>
+<ul class="nav navbar-nav" id="menu-header-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-289 dropdown" id="menu-item-289"><a class="dropdown-toggle" data-hover="dropdown" href="https://svu.edu/about/">About <span class="caret"></span></a>
+<ul class=" dropdown-menu" role="menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3775" id="menu-item-3775"><a href="/news">News</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9601" id="menu-item-9601"><a href="https://svu.edu/about/alumni/">Alumni</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23760" id="menu-item-23760"><a href="https://catalog.svu.edu/accreditation/">Accreditation</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26727" id="menu-item-26727"><a href="https://svu.edu/about/milestones/">Mission &amp; Milestones</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25764" id="menu-item-25764"><a href="https://catalog.svu.edu/leaders/">University Leadership</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117" id="menu-item-117"><a href="https://svu.edu/about/map/">Map &amp; Directions</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-98 dropdown" id="menu-item-98"><a class="dropdown-toggle" data-hover="dropdown" href="https://svu.edu/academics/">Academics <span class="caret"></span></a>
+<ul class=" dropdown-menu" role="menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26418" id="menu-item-26418"><a href="https://catalog.svu.edu/academic-calendar-exam-schedule/">Academic Calendar</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3637" id="menu-item-3637"><a href="/academics/#programs">Programs &amp; Degrees</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26876" id="menu-item-26876"><a href="https://svu.edu/academics/launchpad/">LaunchPad Initiative</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16482" id="menu-item-16482"><a href="https://svu.edu/academics/career-placement/">Career Placement</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18616" id="menu-item-18616"><a href="https://voncanon.svu.edu">Library</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23589" id="menu-item-23589"><a href="https://catalog.svu.edu">Catalog</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29282" id="menu-item-29282"><a href="/faculty">Our Faculty</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-104 dropdown" id="menu-item-104"><a class="dropdown-toggle" data-hover="dropdown" href="https://svu.edu/admissions/">Admissions &amp; Aid <span class="caret"></span></a>
+<ul class=" dropdown-menu" role="menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26981" id="menu-item-26981"><a href="/admissions/#contact">Contact Admissions</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28557" id="menu-item-28557"><a href="https://svu.edu/admissions/visit/">Visit Campus</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14633" id="menu-item-14633"><a href="/admissions/#apply">Application</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25374" id="menu-item-25374"><a href="https://svu.edu/admissions/enrollment/">Enrollment</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25750" id="menu-item-25750"><a href="https://svu.edu/admissions/scholarships-and-aid/">Scholarships &amp; Aid</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25751" id="menu-item-25751"><a href="https://svu.edu/admissions/tuition-and-payments/">Tuition &amp; Payments</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-101 dropdown" id="menu-item-101"><a class="dropdown-toggle" data-hover="dropdown" href="https://svu.edu/campus-life/">Campus Life <span class="caret"></span></a>
+<ul class=" dropdown-menu" role="menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25825" id="menu-item-25825"><a href="https://svu.edu/campus-life/code-of-honor/">Code of Honor</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-473" id="menu-item-473"><a href="https://svu.edu/campus-life/dining/">Dining</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-469" id="menu-item-469"><a href="https://svu.edu/campus-life/housing/">Housing</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15381" id="menu-item-15381"><a href="https://svu.edu/campus-life/athletics/">Athletics</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25551" id="menu-item-25551"><a href="https://music.svu.edu">Music</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25550" id="menu-item-25550"><a href="https://svu.edu/campus-life/theatre/">Theatre</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29071" id="menu-item-29071"><a href="https://svu.edu/campus-life/student-success/">Student Success</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26309" id="menu-item-26309"><a href="https://svu.edu/campus-life/student-wellness/">Student Wellness</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8252 dropdown" id="menu-item-8252"><a class="dropdown-toggle" data-hover="dropdown" href="https://svu.edu/giving/">Giving <span class="caret"></span></a>
+<ul class=" dropdown-menu" role="menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12610" id="menu-item-12610"><a href="https://secure.svu.edu/donate/">Make a Gift</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12625" id="menu-item-12625"><a href="/giving#priorities">Priorities</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12626" id="menu-item-12626"><a href="/giving#office">Contact Us</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div><!-- /Collapse -->
+</div>
+</div>
+</div>
+</nav>
+</header>
+<!-- Carousel -->
+<div class="news-carousel">
+<div class="carousel slide" id="cptbc_2">
+<div class="container"><ol class="carousel-indicators">
+<li class="active" data-interval="12000" data-slide-to="0" data-target="#cptbc_2"></li>
+<li data-interval="12000" data-slide-to="1" data-target="#cptbc_2"></li>
+<li data-interval="12000" data-slide-to="2" data-target="#cptbc_2"></li>
+<li data-interval="12000" data-slide-to="3" data-target="#cptbc_2"></li>
+<li data-interval="12000" data-slide-to="4" data-target="#cptbc_2"></li>
+</ol></div>
+<div class="carousel-inner">
+<div class="item active">
+<a href="https://www.youtube.com/watch?v=EzHkvO8o1_k" target="_blank">
+<img alt="" class="attachment-full size-full wp-post-image" height="900" sizes="(max-width: 2000px) 100vw, 2000px" src="https://svu.edu/wp-content/uploads/2018/10/lambert_carousel.jpg" srcset="https://svu.edu/wp-content/uploads/2018/10/lambert_carousel.jpg 2000w, https://svu.edu/wp-content/uploads/2018/10/lambert_carousel-150x68.jpg 150w, https://svu.edu/wp-content/uploads/2018/10/lambert_carousel-300x135.jpg 300w, https://svu.edu/wp-content/uploads/2018/10/lambert_carousel-1040x468.jpg 1040w" width="2000"/>
+<div class="carousel-gradient">
+<div class="captionblock captionleft">
+<h3>Personalized Education</h3>
+<h4>The best things in life are personalized. We believe education should be too. </h4>
+</div></div>
+</a>
+</div>
+<div class="item ">
+<a href="/admissions/visit/">
+<img alt="" class="attachment-full size-full wp-post-image" height="900" sizes="(max-width: 2000px) 100vw, 2000px" src="https://svu.edu/wp-content/uploads/2017/03/campus_enhanced_carousel.jpeg" srcset="https://svu.edu/wp-content/uploads/2017/03/campus_enhanced_carousel.jpeg 2000w, https://svu.edu/wp-content/uploads/2017/03/campus_enhanced_carousel-150x68.jpeg 150w, https://svu.edu/wp-content/uploads/2017/03/campus_enhanced_carousel-300x135.jpeg 300w, https://svu.edu/wp-content/uploads/2017/03/campus_enhanced_carousel-1040x468.jpeg 1040w" width="2000"/>
+<div class="carousel-gradient">
+<div class="captionblock captionleft">
+<h3>Visit Campus</h3>
+<h4>Come and see why we’re one of the fastest-growing colleges in the country.</h4>
+</div></div>
+</a>
+</div>
+<div class="item ">
+<a href="/campus-life/athletics">
+<img alt="" class="attachment-full size-full wp-post-image" height="2683" sizes="(max-width: 5962px) 100vw, 5962px" src="https://svu.edu/wp-content/uploads/2019/06/athletics_carousel.jpg" srcset="https://svu.edu/wp-content/uploads/2019/06/athletics_carousel.jpg 5962w, https://svu.edu/wp-content/uploads/2019/06/athletics_carousel-150x68.jpg 150w, https://svu.edu/wp-content/uploads/2019/06/athletics_carousel-300x135.jpg 300w, https://svu.edu/wp-content/uploads/2019/06/athletics_carousel-1040x468.jpg 1040w" width="5962"/>
+<div class="carousel-gradient">
+<div class="captionblock captionleft">
+<h3>NCAA DIII Athletics for Latter-day Saints</h3>
+<h4>Play the sport you love in a collegiate faith-supportive environment.</h4>
+</div></div>
+</a>
+</div>
+<div class="item ">
+<a href="/music" target="_blank">
+<img alt="" class="attachment-full size-full wp-post-image" height="2683" sizes="(max-width: 5962px) 100vw, 5962px" src="https://svu.edu/wp-content/uploads/2019/06/performing_arts_carousel.jpg" srcset="https://svu.edu/wp-content/uploads/2019/06/performing_arts_carousel.jpg 5962w, https://svu.edu/wp-content/uploads/2019/06/performing_arts_carousel-150x68.jpg 150w, https://svu.edu/wp-content/uploads/2019/06/performing_arts_carousel-300x135.jpg 300w, https://svu.edu/wp-content/uploads/2019/06/performing_arts_carousel-1040x468.jpg 1040w" width="5962"/>
+<div class="carousel-gradient">
+<div class="captionblock captionleft">
+<h3>Music &amp; Theatre Scholarships</h3>
+<h4>Receive a performing arts scholarship regardless of your major.</h4>
+</div></div>
+</a>
+</div>
+<div class="item ">
+<a href="/admissions/scholarships-and-aid/">
+<img alt="" class="attachment-full size-full wp-post-image" height="900" sizes="(max-width: 2000px) 100vw, 2000px" src="https://svu.edu/wp-content/uploads/2018/10/rm_scholarship.jpg" srcset="https://svu.edu/wp-content/uploads/2018/10/rm_scholarship.jpg 2000w, https://svu.edu/wp-content/uploads/2018/10/rm_scholarship-150x68.jpg 150w, https://svu.edu/wp-content/uploads/2018/10/rm_scholarship-300x135.jpg 300w, https://svu.edu/wp-content/uploads/2018/10/rm_scholarship-1040x468.jpg 1040w" width="2000"/>
+<div class="carousel-gradient">
+<div class="captionblock captionleft">
+<h3>Missionary Scholarships</h3>
+<h4>At Southern Virginia University, RMs receive a $1,500 scholarship annually. </h4>
+</div></div>
+</a>
+</div>
+</div>
+<a class="left carousel-control" data-slide="prev" href="#cptbc_2"><i class="glyphicon glyphicon-chevron-left"></i></a>
+<a class="right carousel-control" data-slide="next" href="#cptbc_2"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+</div>
+<!-- LET'S CONNECT -->
+<div class="letsconnect">
+<div class="container">
+<!--[if lte IE 8]>
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+        <![endif]-->
+<script charset="utf-8" src="//js.hsforms.net/forms/v2.js" type="text/javascript"></script>
+<script>
+        hbspt.forms.create({
+            css: '',
+            portalId: '2775796',
+            formId: 'a07ae17f-b653-4f09-9bd2-a864193d04e0'
+        });
+    </script>
+</div>
+</div>
+<!-- NEWS -->
+<div class="news">
+<div class="container">
+<a href="/news"><h3 class="fronttitle">News</h3></a>
+<div class="viewall"><a href="https://svu.us1.list-manage.com/subscribe?u=a101ac3a0b531555b8275b197&amp;id=fc575a9b01">subscribe</a></div>
+<div class="row">
+<div class="col-xs-6 col-md-3 feed-thumb" id="news-item-1"><a href="https://svu.edu/news/2020/fall-2019-president-and-provost-lists/" title="Fall 2019 President’s and Provost’s Lists"><img class="archivethumb size-full" src="https://svu.edu/wp-content/uploads/2020/01/7J2A0255-copy.jpg"/><p class="entry-title">Fall 2019 President’s and Provost’s Lists</p></a></div>
+<div class="col-xs-6 col-md-3 feed-thumb" id="news-item-2"><a href="https://svu.edu/news/2019/top-stories-of-2019/" title="Top 10 Stories of 2019"><img class="archivethumb size-full" src="https://svu.edu/wp-content/uploads/2019/12/2019Top10-copy.png"/><p class="entry-title">Top 10 Stories of 2019</p></a></div>
+<div class="col-xs-6 col-md-3 feed-thumb" id="news-item-3"><a href="https://svu.edu/news/2019/southern-virginia-university-set-to-join-usa-south/" title="Southern Virginia University Set to Join USA South"><img class="archivethumb size-full" src="https://svu.edu/wp-content/uploads/2019/12/USA-South-News-Graphic-01-copy.jpeg"/><p class="entry-title">Southern Virginia University Set to Join USA South</p></a></div>
+<div class="col-xs-6 col-md-3 feed-thumb" id="news-item-4"><a href="https://svu.edu/news/2019/southern-virginia-university-students-share-faith-testimonies-through-performance-at-annual-festival-of-lights/" title="Students Share Faith, Testimonies through Performance at Annual Festival of Lights"><img class="archivethumb size-full" src="https://svu.edu/wp-content/uploads/2019/12/festivallights_m.jpg"/><p class="entry-title">Students Share Faith, Testimonies through Performance at Annual Festival of Lights</p></a></div>
+</div>
+</div>
+</div>
+<!-- Mission -->
+<div class="mission">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<h1>Gather.</h1>
+<p>We gather faithful Latter-day Saints and like-minded students</p>
+</div>
+<hr class="visible-xs"/>
+<div class="col-md-4">
+<h1>Lift.</h1>
+<p>We lift students in intellect, character, and spirituality</p>
+</div>
+<hr class="visible-xs"/>
+<div class="col-md-4">
+<h1>Launch.</h1>
+<p>We launch students into successful lives and careers</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Events -->
+<div class="events">
+<div class="container">
+<a href="https://calendar.svu.edu/"><h3 class="fronttitle">Events</h3></a>
+<div class="viewall"><a href="https://calendar.svu.edu">view calendar</a></div>
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-4">
+<div class="darken-item">
+<a href="https://calendar.svu.edu/">
+<div class="darken-bg" style="background-image: url('https://svu.edu/wp-content/uploads/2013/09/svu_idol-1.jpg');"></div>
+<!--<img src="https://svu.edu/wp-content/uploads/2013/09/svu_idol-1.jpg" class="darken-bg" /> -->
+<div class="darken-fg">
+<div class="event-title">SVU Idol Finale</div>
+<div class="event-date">Jan. 31, 2020</div>
+</div>
+</a>
+</div>
+</div>
+<div class="col-xs-12 col-sm-4 col-md-4">
+<div class="darken-item">
+<a href="/admissions/visit/">
+<div class="darken-bg" style="background-image: url('https://svu.edu/wp-content/uploads/2019/08/OH_Nov19.jpg');"></div>
+<!--<img src="https://svu.edu/wp-content/uploads/2019/08/OH_Nov19.jpg" class="darken-bg" /> -->
+<div class="darken-fg">
+<div class="event-title">Open House</div>
+<div class="event-date">Feb. 15, 2019</div>
+</div>
+</a>
+</div>
+</div>
+<div class="col-xs-12 col-sm-4 col-md-4">
+<div class="darken-item">
+<a href="/campus-life/ysa-wards">
+<div class="darken-bg" style="background-image: url('https://svu.edu/wp-content/uploads/2019/07/ysa_schedule3.jpg');"></div>
+<!--<img src="https://svu.edu/wp-content/uploads/2019/07/ysa_schedule3.jpg" class="darken-bg" /> -->
+<div class="darken-fg">
+<div class="event-title">YSA Wards</div>
+<div class="event-date">Meeting Schedule</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer>
+<div class="footer footer-top">
+<div class="container">
+<div id="footerseal">
+<a href="/">
+<img alt="Southern Virginia University" height="160" src="/wp-content/uploads/academic_seal.png" width="160"/>
+</a>
+</div>
+<div class="prompts" id="prompt-apply">
+<a href="/apply">
+<img alt="Apply" src="/wp-content/uploads/2015/08/apply_circle.png"/>
+<h3>Apply</h3>
+</a>
+</div>
+<div class="prompts" id="prompt-info">
+<a href="/info">
+<img alt="Request Info" src="/wp-content/uploads/2015/08/info_circle.png"/>
+<h3>Request Info</h3>
+</a>
+</div>
+<div class="prompts" id="prompt-visit">
+<a href="/admissions/visit">
+<img alt="Visit Campus" src="/wp-content/uploads/2015/08/tower_circle.png"/>
+<h3>Visit Campus</h3>
+</a>
+</div>
+<div class="prompts" id="prompt-openhouse">
+<a href="/openhouse">
+<img alt="Open House" src="/wp-content/uploads/2015/08/speaker_circle.png"/>
+<h3>Open House</h3>
+</a>
+</div>
+</div>
+</div>
+<!-- /.row -->
+<!-- /.container -->
+<!-- /.footer -->
+<div class="footer-bottom">
+<div class="container">
+<div id="footer-info">
+<ol id="social-list">
+<li>
+<a data-original-title="Instagram" data-toggle="tooltip" href="http://instagram.com/svuedu" title="">
+<div class="social-circle">
+<img src="/wp-content/uploads/social/instagram.png"/>
+</div>
+</a>
+</li>
+<li>
+<a data-original-title="Facebook" data-toggle="tooltip" href="https://www.facebook.com/southernvirginia" title="">
+<div class="social-circle">
+<img src="/wp-content/uploads/social/facebook.png"/>
+</div>
+</a>
+</li>
+<li>
+<a data-original-title="YouTube" data-toggle="tooltip" href="http://www.youtube.com/user/SouthernVirginiaUniv" title="">
+<div class="social-circle">
+<img src="/wp-content/uploads/social/youtube.png"/>
+</div>
+</a>
+</li>
+<li>
+<a data-original-title="Twitter" data-toggle="tooltip" href="http://twitter.com/SVUedu/" title="">
+<div class="social-circle">
+<img src="/wp-content/uploads/social/twitter.png"/>
+</div>
+</a>
+</li>
+<li>
+<a data-original-title="LinkedIn" data-toggle="tooltip" href="https://www.linkedin.com/edu/school?id=33581&amp;trk=tyah&amp;trkInfo=tarId:1406932886559%2ctas:southern%20virginia%20university%2cidx:2-1-3" title="">
+<div class="social-circle">
+<img src="/wp-content/uploads/social/linkedin.png"/>
+</div>
+</a>
+</li>
+</ol>
+<span class="hidden-xs"> | </span><br class="visible-xs"/>
+      ©2020 Southern Virginia University
+      <span class="hidden-xs"> • </span><br class="visible-xs"/>
+      540-261-8400 • <a href="/privacy-policy">Privacy Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- TOOLS MODAL -->
+<div aria-hidden="false" class="modal fade in" id="tools" style="display: none;">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+<h2 class="modal-title">Tools</h2>
+</div>
+<div class="modal-body row">
+<div class="col-sm-4">
+<h4>Connect</h4>
+<hr/>
+<ul>
+<li><a href="https://my.svu.edu/">mysvu</a></li>
+<li><a href="https://www.google.com/a/svu.edu">University Email</a></li>
+<li><a href="/directory">Directory</a></li>
+<li><a href="/employment">Employment</a></li>
+<li><a href="mailto:communications@svu.edu">Feedback</a></li>
+</ul>
+</div>
+<div class="col-sm-4">
+<h4>Campus</h4>
+<hr/>
+<ul>
+<li><a href="http://catalog.svu.edu/academic-calendar-exam-schedule/">Academic Calendar</a></li>
+<li><a href="http://calendar.svu.edu/">Event Calendar</a></li>
+<li><a href="/about/map">Map &amp; Directions</a></li>
+<li><a href="https://svu.freshservice.com/support/home">IT Support</a></li>
+</ul>
+</div>
+<div class="col-sm-4">
+<h4>Other</h4>
+<hr/>
+<ul>
+<li><a href="http://apply.svu.edu/">Apply</a></li>
+<li><a href="https://svu.ecampus.com/">Bookstore</a></li>
+<li><a href="https://secure.svu.edu/payments/">Payments</a></li>
+<li><a href="/info">Request Info</a></li>
+<li><a href="http://catalog.svu.edu/wp-content/uploads/transcript-request.pdf">Transcript Order</a></li>
+</ul>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+<!-- /.modal --></div>
+<!-- JAVASCRIPT -->
+<!-- JavaScript plugins (requires jQuery) -->
+<script src="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/js/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/js/bootstrap.min.js"></script>
+<!-- Toggle hover dropdowns - https://github.com/CWSpear/bootstrap-hover-dropdown -->
+<script src="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<!-- Bootstrap Lightboxes - https://github.com/ashleydw/lightbox  -->
+<script src="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/js/ekko-lightbox.min.js" type="text/javascript"></script>
+<!-- Start the Carousel -->
+<script src="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/js/sova.js" type="text/javascript"></script>
+<!-- Custom File Input -->
+<script src="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/js/custom-file-input.js" type="text/javascript"></script>
+<!-- Expanding Info Form Textarea --->
+<script src="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/js/expanding.js" type="text/javascript"></script>
+<!-- Slick --->
+<script src="https://svu.edu/wp-content/themes/Southern%20Virginia%20University/js/slick.min.js" type="text/javascript"></script>
+</body>
+</html>
+

@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<!--[if lte IE 9]>     <html class="ie ie9 lte9"> <![endif]--><!--[if !IE]><!--><html lang="en-US"> <!--<![endif]-->
+<head><style>.CodeMirror {
+  line-height: 1em;
+  font-family: monospace;
+}
+
+.CodeMirror-scroll {
+  overflow: auto;
+  height: 300px;
+  /* This is needed to prevent an IE[67] bug where the scrolled content
+     is visible outside of the scrolling box. */
+  position: relative;
+}
+
+.CodeMirror-gutter {
+  position: absolute; left: 0; top: 0;
+  z-index: 10;
+  background-color: #f7f7f7;
+  border-right: 1px solid #eee;
+  min-width: 2em;
+  height: 100%;
+}
+.CodeMirror-gutter-text {
+  color: #aaa;
+  text-align: right;
+  padding: .4em .2em .4em .4em;
+  white-space: pre !important;
+}
+.CodeMirror-lines {
+  padding: .4em;
+}
+
+.CodeMirror pre {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  border-width: 0; margin: 0; padding: 0; background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0; margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.CodeMirror-wrap pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.CodeMirror-wrap .CodeMirror-scroll {
+  overflow-x: hidden;
+}
+
+.CodeMirror textarea {
+  outline: none !important;
+}
+
+.CodeMirror pre.CodeMirror-cursor {
+  z-index: 10;
+  position: absolute;
+  visibility: hidden;
+  border-left: 1px solid black;
+  border-right:none;
+  width:0;
+}
+.CodeMirror pre.CodeMirror-cursor.CodeMirror-overwrite {}
+.CodeMirror-focused pre.CodeMirror-cursor {
+  visibility: visible;
+}
+
+div.CodeMirror-selected { background: #d9d9d9; }
+.CodeMirror-focused div.CodeMirror-selected { background: #d7d4f0; }
+
+.CodeMirror-searching {
+  background: #ffa;
+  background: rgba(255, 255, 0, .4);
+}
+
+/* Default theme */
+
+.cm-s-default span.cm-keyword {color: #708;}
+.cm-s-default span.cm-atom {color: #219;}
+.cm-s-default span.cm-number {color: #164;}
+.cm-s-default span.cm-def {color: #00f;}
+.cm-s-default span.cm-variable {color: black;}
+.cm-s-default span.cm-variable-2 {color: #05a;}
+.cm-s-default span.cm-variable-3 {color: #085;}
+.cm-s-default span.cm-property {color: black;}
+.cm-s-default span.cm-operator {color: black;}
+.cm-s-default span.cm-comment {color: #a50;}
+.cm-s-default span.cm-string {color: #a11;}
+.cm-s-default span.cm-string-2 {color: #f50;}
+.cm-s-default span.cm-meta {color: #555;}
+.cm-s-default span.cm-error {color: #f00;}
+.cm-s-default span.cm-qualifier {color: #555;}
+.cm-s-default span.cm-builtin {color: #30a;}
+.cm-s-default span.cm-bracket {color: #cc7;}
+.cm-s-default span.cm-tag {color: #170;}
+.cm-s-default span.cm-attribute {color: #00c;}
+.cm-s-default span.cm-header {color: #a0a;}
+.cm-s-default span.cm-quote {color: #090;}
+.cm-s-default span.cm-hr {color: #999;}
+.cm-s-default span.cm-link {color: #00c;}
+
+span.cm-header, span.cm-strong {font-weight: bold;}
+span.cm-em {font-style: italic;}
+span.cm-emstrong {font-style: italic; font-weight: bold;}
+span.cm-link {text-decoration: underline;}
+
+div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}
+div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
+
+.tribe-common{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-smoothing:antialiased}.tribe-common *{box-sizing:border-box}.tribe-common article,.tribe-common aside,.tribe-common details,.tribe-common figcaption,.tribe-common figure,.tribe-common footer,.tribe-common header,.tribe-common main,.tribe-common menu,.tribe-common nav,.tribe-common section,.tribe-common summary{display:block}.tribe-common svg:not(:root){overflow:hidden}.tribe-common audio,.tribe-common canvas,.tribe-common progress,.tribe-common video{display:inline-block}.tribe-common audio:not([controls]){display:none;height:0}.tribe-common progress{vertical-align:baseline}.tribe-common [hidden],.tribe-common template{display:none}.tribe-common pre{overflow:auto}.tribe-common sub,.tribe-common sup{position:relative;vertical-align:baseline}.tribe-common sup{top:-.5em}.tribe-common sub{bottom:-.25em}.tribe-common button,.tribe-common input,.tribe-common select,.tribe-common textarea{box-sizing:border-box;margin:0}.tribe-common input[type=number]::-webkit-inner-spin-button,.tribe-common input[type=number]::-webkit-outer-spin-button{height:auto}.tribe-common legend{color:inherit;display:table;max-width:100%;white-space:normal}.tribe-common textarea{resize:none;overflow:auto}.tribe-common button,.tribe-common input[type=button],.tribe-common input[type=reset],.tribe-common input[type=submit]{cursor:pointer;overflow:visible}.tribe-common button[disabled],.tribe-common input[disabled]{cursor:default}.tribe-common button::-moz-focus-inner,.tribe-common input::-moz-focus-inner{border:0;padding:0}.tribe-common a,.tribe-common abbr,.tribe-common acronym,.tribe-common address,.tribe-common applet,.tribe-common article,.tribe-common aside,.tribe-common audio,.tribe-common b,.tribe-common big,.tribe-common blockquote,.tribe-common canvas,.tribe-common caption,.tribe-common center,.tribe-common cite,.tribe-common code,.tribe-common dd,.tribe-common del,.tribe-common details,.tribe-common dfn,.tribe-common div,.tribe-common dl,.tribe-common dt,.tribe-common em,.tribe-common embed,.tribe-common fieldset,.tribe-common figcaption,.tribe-common figure,.tribe-common footer,.tribe-common form,.tribe-common h1,.tribe-common h2,.tribe-common h3,.tribe-common h4,.tribe-common h5,.tribe-common h6,.tribe-common header,.tribe-common i,.tribe-common iframe,.tribe-common img,.tribe-common ins,.tribe-common kbd,.tribe-common label,.tribe-common legend,.tribe-common li,.tribe-common main,.tribe-common mark,.tribe-common menu,.tribe-common nav,.tribe-common object,.tribe-common ol,.tribe-common output,.tribe-common p,.tribe-common pre,.tribe-common q,.tribe-common ruby,.tribe-common s,.tribe-common samp,.tribe-common section,.tribe-common small,.tribe-common span,.tribe-common strike,.tribe-common strong,.tribe-common sub,.tribe-common summary,.tribe-common sup,.tribe-common table,.tribe-common tbody,.tribe-common td,.tribe-common tfoot,.tribe-common th,.tribe-common thead,.tribe-common time,.tribe-common tr,.tribe-common tt,.tribe-common u,.tribe-common ul,.tribe-common var,.tribe-common video{margin:0;padding:0;border:0}.tribe-common img{-ms-interpolation-mode:bicubic;height:auto;max-width:100%;border-style:none}.tribe-common embed,.tribe-common iframe,.tribe-common video{max-width:100%;max-height:100%}.tribe-theme-avada input[type=text]{margin:0}.tribe-theme-divi .entry-content .tribe-common table,.tribe-theme-divibody.et-pb-preview #main-content .container .tribe-common table{border:0;margin:0}.tribe-theme-divi .entry-content .tribe-common td,.tribe-theme-divibody.et-pb-preview #main-content .container .tribe-common td{border:0}.tribe-theme-divi #content-area .tribe-common td,.tribe-theme-divi #content-area .tribe-common th,.tribe-theme-divi #content-area .tribe-common tr{padding:0}#top.tribe-theme-enfold .tribe-common form,#top.tribe-theme-enfold .tribe-common input{margin:0}.tribe-theme-twentynineteen .tribe-common h1:before,.tribe-theme-twentynineteen .tribe-common h2:before{content:none}.tribe-theme-twentynineteen .tribe-common button,.tribe-theme-twentynineteen .tribe-common input[type=button],.tribe-theme-twentynineteen .tribe-common input[type=reset],.tribe-theme-twentynineteen .tribe-common input[type=submit]{outline:none}.tribe-theme-twentynineteen .tribe-common td,.tribe-theme-twentynineteen .tribe-common th{word-break:normal}.tribe-theme-twentyseventeen .tribe-common h5{letter-spacing:normal;text-transform:none}.tribe-theme-twentyseventeen .tribe-common input[type=text]{border-radius:0}
+.tribe-common figure{line-height:0}.tribe-common figcaption{line-height:normal}.tribe-common a{background-color:transparent;-webkit-text-decoration-skip:objects}.tribe-common abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}.tribe-common code,.tribe-common kbd,.tribe-common pre,.tribe-common samp{font-family:monospace;font-size:1em}.tribe-common b,.tribe-common strong{font-weight:inherit;font-weight:bolder}.tribe-common dfn{font-style:italic}.tribe-common mark{background-color:#ff0;color:#000}.tribe-common small{font-size:80%}.tribe-common sub,.tribe-common sup{font-size:75%;line-height:0}.tribe-common hr{border:0;height:0}.tribe-common button,.tribe-common input[type=button],.tribe-common input[type=email],.tribe-common input[type=password],.tribe-common input[type=reset],.tribe-common input[type=search],.tribe-common input[type=submit],.tribe-common input[type=text],.tribe-common input[type=url],.tribe-common textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none}.tribe-common button,.tribe-common input,.tribe-common optgroup,.tribe-common select,.tribe-common textarea{color:inherit;font:inherit;line-height:normal;-webkit-font-smoothing:antialiased}.tribe-common button,.tribe-common input,.tribe-common select,.tribe-common textarea{outline:0;border-radius:0}.tribe-common select:-moz-focusring{color:transparent;text-shadow:0 0 0 #000}.tribe-common optgroup{font-weight:700}.tribe-common ol,.tribe-common ul{list-style:none}.tribe-common h1,.tribe-common h2,.tribe-common h3,.tribe-common h4,.tribe-common h5,.tribe-common h6,.tribe-common p{font-weight:400;text-rendering:optimizeLegibility}.tribe-common .tribe-common-form-control-checkbox,.tribe-common .tribe-common-form-control-radio{line-height:0}.tribe-common .tribe-common-form-control-checkbox__label,.tribe-common .tribe-common-form-control-radio__label{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:14px;line-height:1.62;font-weight:400;color:#727272;cursor:pointer;display:inline-block;margin-left:11px;vertical-align:middle}.tribe-common .tribe-common-form-control-checkbox__input,.tribe-common .tribe-common-form-control-radio__input{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#fff;border:1px solid #141827;cursor:pointer;display:inline-block;height:20px;margin:0;position:relative;vertical-align:middle;width:20px}.tribe-common .tribe-common-form-control-checkbox__input:active,.tribe-common .tribe-common-form-control-checkbox__input:focus,.tribe-common .tribe-common-form-control-checkbox__input:hover,.tribe-common .tribe-common-form-control-radio__input:active,.tribe-common .tribe-common-form-control-radio__input:focus,.tribe-common .tribe-common-form-control-radio__input:hover{border:1px solid #141827}.tribe-common .tribe-common-form-control-checkbox__input:checked,.tribe-common .tribe-common-form-control-radio__input:checked{background-color:#141827}.tribe-common .tribe-common-form-control-checkbox__input:checked:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='9' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.6.1L3.9 6.8 1.4 4.3c-.1-.1-.3-.1-.4 0l-.8.8c-.1.1-.1.3 0 .4l3.4 3.4c.2.1.4.1.5 0l7.7-7.7c.1-.1.1-.3 0-.4L11 .1c-.1-.1-.3-.1-.4 0z' fill='%23FFF'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;content:"";display:block;height:9px;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:12px}.tribe-common .tribe-common-form-control-radio__input{border-radius:50%}.tribe-common .tribe-common-form-control-radio__input:checked:before{background-color:#fff;border-radius:50%;content:"";display:block;height:8px;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:8px}#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-checkbox__input{display:inline-block}#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-checkbox__label,#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-radio__label{font-weight:400;font-size:14px}.tribe-common .tribe-common-form-control-checkbox-radio-group>*{margin-bottom:15px}.tribe-common .tribe-common-form-control-checkbox-radio-group>:last-child{margin-bottom:0}.tribe-common .tribe-common-form-control-slider{line-height:0}.tribe-common .tribe-common-form-control-slider__input{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;cursor:pointer;display:inline-block;margin:0;padding:0;width:120px;vertical-align:middle}.tribe-common .tribe-common-form-control-slider__input::-webkit-slider-runnable-track{border:none;border-radius:5px;height:10px;margin:5px 0;padding:0;position:relative;transition:background-color .2s ease;background-color:#334aff}.tribe-common .tribe-common-form-control-slider__input::-moz-range-track{border:none;border-radius:5px;height:10px;margin:5px 0;padding:0;position:relative;transition:background-color .2s ease;background-color:#334aff}.tribe-common .tribe-common-form-control-slider__input::-ms-track{background-color:transparent;border-color:transparent;border-width:5px 0;color:transparent;height:10px}.tribe-common .tribe-common-form-control-slider__input::-ms-fill-lower,.tribe-common .tribe-common-form-control-slider__input::-ms-fill-upper{background-color:#334aff;border-radius:10px}.tribe-common .tribe-common-form-control-slider__input::-webkit-slider-thumb{background-color:#fff;border:1px solid #d5d5d5;border-radius:50%;box-shadow:0 2px 5px 0 rgba(0,0,0,.14);height:20px;width:20px;margin-top:-5px;-webkit-appearance:none;appearance:none}.tribe-common .tribe-common-form-control-slider__input::-moz-range-thumb{background-color:#fff;border:1px solid #d5d5d5;border-radius:50%;box-shadow:0 2px 5px 0 rgba(0,0,0,.14);height:20px;width:20px;margin-top:-5px}.tribe-common .tribe-common-form-control-slider__input::-ms-thumb{background-color:#fff;border:1px solid #d5d5d5;border-radius:50%;box-shadow:0 2px 5px 0 rgba(0,0,0,.14);height:20px;width:20px;margin-top:-5px;box-shadow:none;margin-top:-1px}.tribe-common .tribe-common-form-control-slider__label{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:12px;line-height:1.38;font-weight:400;color:#727272;cursor:pointer;display:inline-block;margin-left:11px;vertical-align:middle}.tribe-common .tribe-common-form-control-slider--vertical .tribe-common-form-control-slider__label{display:block;margin:0 0 6px}#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-slider__label{font-weight:400;font-size:12px}.tribe-common .tribe-common-form-control-text__label{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.tribe-common .tribe-common-form-control-text__input{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:16px;line-height:1.62;font-weight:400;border:0;border-bottom:1px solid #d5d5d5;height:auto;padding:12px 28px 12px 0;width:100%}.tribe-common .tribe-common-form-control-text__input::-webkit-input-placeholder{color:#727272;font-style:normal}.tribe-common .tribe-common-form-control-text__input:-ms-input-placeholder,.tribe-common .tribe-common-form-control-text__input::-ms-input-placeholder{color:#727272;font-style:normal}.tribe-common .tribe-common-form-control-text__input::placeholder{color:#727272;font-style:normal}.tribe-common .tribe-common-form-control-text__input:focus{border-bottom-color:#141827;outline:0}.tribe-theme-twentyseventeen .tribe-common .tribe-common-form-control-text__input{color:#141827}#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-text__input{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:16px;line-height:1.62;font-weight:400;border:0;border-bottom:1px solid #d5d5d5;padding:12px 28px 12px 0;width:100%}#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-text__input:focus{border-bottom-color:#141827;box-shadow:none}.tribe-common .tribe-common-form-control-toggle{line-height:0}.tribe-common .tribe-common-form-control-toggle__input{border:none;border-radius:5px;height:10px;margin:5px 0;padding:0;position:relative;transition:background-color .2s ease;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#d5d5d5;cursor:pointer;display:inline-block;vertical-align:middle;width:40px}.tribe-common .tribe-common-form-control-toggle__input:after{background-color:#fff;border:1px solid #d5d5d5;border-radius:50%;box-shadow:0 2px 5px 0 rgba(0,0,0,.14);height:20px;width:20px;content:"";left:0;position:absolute;top:-5px;transition:transform .2s ease}.tribe-common .tribe-common-form-control-toggle__input:checked{background-color:#334aff}.tribe-common .tribe-common-form-control-toggle__input:checked:after{transform:translateX(20px)}.tribe-common .tribe-common-form-control-toggle__label{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:12px;line-height:1.38;font-weight:400;color:#727272;cursor:pointer;display:inline-block;margin-left:11px;vertical-align:middle}.tribe-common .tribe-common-form-control-toggle--vertical .tribe-common-form-control-toggle__label{display:block;margin:0 0 6px}#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-toggle__input{display:inline-block;margin:5px 0}#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-toggle__label{font-weight:400;font-size:12px}.tribe-common .tribe-common-g-col{min-width:0;width:100%}.tribe-common .tribe-common-g-row{display:flex;flex-wrap:wrap}.tribe-common .tribe-common-g-row--gutters{margin-left:-21px;margin-right:-21px}.tribe-common .tribe-common-g-row--gutters>.tribe-common-g-col{padding-left:21px;padding-right:21px}.tribe-common a{cursor:pointer}.tribe-common a,.tribe-common a:active,.tribe-common a:focus,.tribe-common a:hover,.tribe-common a:visited{color:#141827;outline:0;text-decoration:none}.tribe-theme-twentyseventeen .tribe-common a:focus,.tribe-theme-twentyseventeen .tribe-common a:hover{box-shadow:none;color:#141827}.tribe-theme-twentynineteen .entry .tribe-common a{text-decoration:none}.tribe-common .tribe-common-anchor{border-bottom:2px solid transparent;transition:border-color .2s ease}.tribe-common .tribe-common-anchor:active,.tribe-common .tribe-common-anchor:focus,.tribe-common .tribe-common-anchor:hover{border-bottom:2px solid #141827}.tribe-common .tribe-common-anchor-alt{border-bottom:2px solid #334aff;color:#141827;transition:color .2s ease}.tribe-common .tribe-common-anchor-alt:active,.tribe-common .tribe-common-anchor-alt:focus,.tribe-common .tribe-common-anchor-alt:hover{border-bottom:2px solid #334aff;color:#334aff}.tribe-common .tribe-common-anchor-thin{border-bottom:1px solid transparent;transition:border-color .2s ease}.tribe-common .tribe-common-anchor-thin:active,.tribe-common .tribe-common-anchor-thin:focus,.tribe-common .tribe-common-anchor-thin:hover{border-bottom:1px solid #141827}.tribe-theme-twentyseventeen .tribe-common .tribe-common-anchor-alt:focus,.tribe-theme-twentyseventeen .tribe-common .tribe-common-anchor-alt:hover{color:#334aff}.tribe-common .tribe-common-b1{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.62}.tribe-common .tribe-common-b1--bold{font-weight:700}.tribe-common .tribe-common-b2{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:12px;font-weight:400;line-height:1.38}.tribe-common .tribe-common-b2--bold{font-weight:700}.tribe-common .tribe-common-b3{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:11px;font-weight:400;line-height:1.5}.tribe-common .tribe-common-b3--bold{font-weight:700}.tribe-common .tribe-common-cta{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:12px;line-height:1.38;font-weight:400;font-weight:700;border-bottom:2px solid transparent;transition:border-color .2s ease}.tribe-common .tribe-common-cta:active,.tribe-common .tribe-common-cta:focus,.tribe-common .tribe-common-cta:hover{border-bottom:2px solid #141827}.tribe-common .tribe-common-cta--alt{border-bottom:2px solid #334aff;color:#141827;transition:color .2s ease}.tribe-common .tribe-common-cta--alt:active,.tribe-common .tribe-common-cta--alt:focus,.tribe-common .tribe-common-cta--alt:hover{border-bottom:2px solid #334aff;color:#334aff}.tribe-common .tribe-common-cta--thin-alt{border-bottom:1px solid #334aff;color:#141827;transition:color .2s ease}.tribe-common .tribe-common-cta--thin-alt:active,.tribe-common .tribe-common-cta--thin-alt:focus,.tribe-common .tribe-common-cta--thin-alt:hover{border-bottom:1px solid #334aff;color:#334aff}.tribe-theme-twentyseventeen .tribe-common .tribe-common-cta--alt:focus,.tribe-theme-twentyseventeen .tribe-common .tribe-common-cta--alt:hover,.tribe-theme-twentyseventeen .tribe-common .tribe-common-cta--thin-alt:focus,.tribe-theme-twentyseventeen .tribe-common .tribe-common-cta--thin-alt:hover{color:#334aff}.tribe-common .tribe-common-h1{font-size:28px}.tribe-common .tribe-common-h1,.tribe-common .tribe-common-h2{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-weight:700;line-height:1.42}.tribe-common .tribe-common-h2{font-size:24px}.tribe-common .tribe-common-h3{font-size:22px;line-height:1.5}.tribe-common .tribe-common-h3,.tribe-common .tribe-common-h4{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-weight:700}.tribe-common .tribe-common-h4{font-size:20px;line-height:1.42}.tribe-common .tribe-common-h5{font-size:18px}.tribe-common .tribe-common-h5,.tribe-common .tribe-common-h6{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-weight:700;line-height:1.5}.tribe-common .tribe-common-h6{font-size:16px}.tribe-common .tribe-common-h7{font-size:14px;line-height:1.62}.tribe-common .tribe-common-h7,.tribe-common .tribe-common-h8{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-weight:700}.tribe-common .tribe-common-h8{font-size:12px;line-height:1.38}.tribe-common .tribe-common-h--alt{font-weight:400}.tribe-theme-avada #main .tribe-common .tribe-common-h1{font-size:28px}.tribe-theme-avada #main .tribe-common .tribe-common-h1,.tribe-theme-avada #main .tribe-common .tribe-common-h2{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-weight:700;line-height:1.42}.tribe-theme-avada #main .tribe-common .tribe-common-h2{font-size:24px}.tribe-theme-avada #main .tribe-common .tribe-common-h3{font-size:22px;line-height:1.5}.tribe-theme-avada #main .tribe-common .tribe-common-h3,.tribe-theme-avada #main .tribe-common .tribe-common-h4{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-weight:700}.tribe-theme-avada #main .tribe-common .tribe-common-h4{font-size:20px;line-height:1.42}.tribe-theme-avada #main .tribe-common .tribe-common-h5{font-size:18px}.tribe-theme-avada #main .tribe-common .tribe-common-h5,.tribe-theme-avada #main .tribe-common .tribe-common-h6{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-weight:700;line-height:1.5}.tribe-theme-avada #main .tribe-common .tribe-common-h6{font-size:16px}.tribe-theme-avada #main .tribe-common .tribe-common-h7{font-size:14px;line-height:1.62}.tribe-theme-avada #main .tribe-common .tribe-common-h7,.tribe-theme-avada #main .tribe-common .tribe-common-h8{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-weight:700}.tribe-theme-avada #main .tribe-common .tribe-common-h8{font-size:12px;line-height:1.38}.tribe-theme-avada #main .tribe-common .tribe-common-h--alt{font-weight:400}.tribe-theme-divi #left-area .tribe-common ul,.tribe-theme-divi .entry-content .tribe-common ul,body.et-pb-preview.tribe-theme-divi #main-content .container .tribe-common ul{list-style-type:none;padding:0}.tribe-common button{border:none;padding:0}.tribe-common button,.tribe-common button:focus,.tribe-common button:hover,.tribe-theme-twentyseventeen .tribe-common button:focus,.tribe-theme-twentyseventeen .tribe-common button:hover{background-color:transparent}.tribe-common .tribe-common-l-container{max-width:1260px;margin-left:auto;margin-right:auto;padding-left:19.5px;padding-right:19.5px;width:100%}.tribe-common .tribe-common-svgicon{background-repeat:no-repeat;background-size:contain}.tribe-common .tribe-common-svgicon--day{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='21' height='21' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 .503v19.994c0 .278.19.503.424.503h20.152c.234 0 .424-.225.424-.503V.503C21 .225 20.81 0 20.576 0H.424C.19 0 0 .225 0 .503zm1.156.943h18.66v2.7H1.157v-2.7zm0 4.023h18.66V19.55H1.157V5.469zM14.18 14.53v1.747c0 .482.39.874.873.874H16.8a.873.873 0 0 0 .873-.874V14.53a.873.873 0 0 0-.873-.873h-1.747a.873.873 0 0 0-.873.873z' fill='%23141827'/%3E%3C/svg%3E")}.tribe-common .tribe-common-svgicon--list{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='21' height='18' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23141827'%3E%3Cpath d='M19.883 3.272c.342 0 .622-.21.622-.467v-.464c0-.257-.28-.467-.622-.467H7.127c-.342 0-.622.21-.622.467v.464c0 .257.28.467.622.467h12.756zm-18.045.935a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5zM19.883 9.98c.342 0 .622-.21.622-.466v-.465c0-.257-.28-.467-.622-.467H7.127c-.342 0-.622.21-.622.467v.465c0 .256.28.466.622.466h12.756zm-18.045.936a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5zM19.883 16.689c.342 0 .622-.21.622-.467v-.465c0-.256-.28-.466-.622-.466H7.127c-.342 0-.622.21-.622.466v.465c0 .257.28.467.622.467h12.756zm-18.045.935a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5z'/%3E%3C/g%3E%3C/svg%3E")}.tribe-common .tribe-common-svgicon--map{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='22' height='21' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23141827'%3E%3Cpath stroke-linejoin='round' d='M13.921 11.632H17.5l3.588 8.421H1l3.488-8.421h4.016'/%3E%3Cpath d='M11.32 15.506c.2-.248 4.93-6.108 4.93-9.04 0-3.015-2.305-5.468-5.138-5.468-2.833 0-5.138 2.453-5.138 5.467 0 2.933 4.729 8.793 4.93 9.041a.268.268 0 0 0 .208.101c.08 0 .155-.037.207-.101zm-4.797-9.04c0-2.693 2.058-4.883 4.589-4.883 2.53 0 4.588 2.19 4.588 4.882 0 2.387-3.667 7.22-4.588 8.397-.922-1.177-4.589-6.009-4.589-8.397z' stroke-width='.4' fill='%23141827' fill-rule='nonzero'/%3E%3Cpath d='M12.85 6.477c0-1.007-.78-1.826-1.738-1.826-.96 0-1.74.819-1.74 1.826 0 1.007.78 1.826 1.74 1.826.959 0 1.739-.82 1.739-1.826zm-3.15 0c0-.817.633-1.482 1.412-1.482.778 0 1.41.665 1.41 1.482s-.632 1.482-1.41 1.482c-.779 0-1.412-.665-1.412-1.482z' stroke-width='.7' fill='%23000' fill-rule='nonzero'/%3E%3C/g%3E%3C/svg%3E")}.tribe-common .tribe-common-svgicon--month{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='22' height='22' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.637 1.063v19.879c0 .276.189.5.422.5h20.037c.232 0 .421-.224.421-.5V1.062c0-.275-.189-.5-.421-.5H1.059c-.233 0-.422.225-.422.5zM1.787 2H20.34v2.685H1.787V2zm0 4H20.34v14H1.787V6zM8 8.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm-8 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm-12 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5z' fill='%23141827'/%3E%3C/svg%3E")}.tribe-common .tribe-common-svgicon--photo{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='17' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23141827'%3E%3Cpath d='M19.348.11H.634a.509.509 0 0 0-.52.508v15.017c0 .284.23.508.52.508h18.714a.51.51 0 0 0 .52-.508V.618a.509.509 0 0 0-.52-.508zm-.54 1.035v10.837l-2.87-3.084c-.583-.61-1.664-.61-2.246 0l-1.393 1.481-4.034-4.525a1.625 1.625 0 0 0-1.227-.528 1.6 1.6 0 0 0-1.206.548l-4.657 5.175V1.145h17.632zM1.174 15.108v-2.496l5.448-6.089a.529.529 0 0 1 .415-.182c.146 0 .333.06.437.182l4.429 4.972c.104.102.25.183.395.183.166.02.291-.06.395-.162l1.788-1.908c.167-.183.5-.183.686 0l3.66 3.917v1.603H1.175v-.02z'/%3E%3Cpath d='M14.19 5.757c1.044 0 1.91-.872 1.91-1.968s-.846-1.969-1.91-1.969c-1.062 0-1.909.873-1.909 1.969s.866 1.968 1.91 1.968zm0-2.902c.493 0 .907.427.907.934 0 .507-.414.933-.906.933-.492 0-.906-.426-.906-.933 0-.507.414-.934.906-.934z'/%3E%3C/g%3E%3C/svg%3E")}.tribe-common .tribe-common-svgicon--week{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='21' height='21' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 .503v19.994c0 .278.19.503.424.503h20.152c.234 0 .424-.225.424-.503V.503C21 .225 20.81 0 20.576 0H.424C.19 0 0 .225 0 .503zm1.156.943h18.66v2.7H1.157v-2.7zm0 4.023h18.66V19.55H1.157V5.469zm6.25 6.537v1.006c0 .278.224.503.502.503h1.006a.503.503 0 0 0 .503-.503v-1.006a.503.503 0 0 0-.503-.502H7.908a.503.503 0 0 0-.503.502zm4.022 0v1.006c0 .278.225.503.503.503h1.006a.503.503 0 0 0 .503-.503v-1.006a.503.503 0 0 0-.503-.502H11.93a.503.503 0 0 0-.503.502zm4.023 0v1.006c0 .278.225.503.503.503h1.006a.503.503 0 0 0 .503-.503v-1.006a.503.503 0 0 0-.503-.502h-1.006a.503.503 0 0 0-.503.502zm-12.069 0v1.006c0 .278.225.503.503.503h1.006a.503.503 0 0 0 .503-.503v-1.006a.503.503 0 0 0-.503-.502H3.885a.503.503 0 0 0-.503.502z' fill='%23141827'/%3E%3C/svg%3E")}.tribe-common .tribe-common-svgicon--featured{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h16v20l-7.902-5.122L0 20z' fill='%23334AFF'/%3E%3C/svg%3E");height:10px;width:8px}.tribe-common .tribe-common-svgicon--recurring{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.333 3.826c0 .065 0 .13-.02.174 0 .022-.02.065-.02.087a.9.9 0 0 1-.197.37L10.45 7.37a.797.797 0 0 1-.592.26.797.797 0 0 1-.593-.26c-.316-.348-.316-.935 0-1.305l1.225-1.348H6.3c-2.547 0-4.64 2.283-4.64 5.11 0 1.369.474 2.651 1.363 3.608.316.348.316.935 0 1.304A.797.797 0 0 1 2.43 15a.797.797 0 0 1-.593-.26C.652 13.434 0 11.695 0 9.847c0-3.826 2.825-6.935 6.301-6.935h4.208L9.284 1.565c-.316-.348-.316-.935 0-1.304.316-.348.85-.348 1.185 0l2.647 2.913a.952.952 0 0 1 .198.37c0 .021.02.065.02.086v.196zM20 10.152c0 3.826-2.825 6.935-6.301 6.935H9.49l1.225 1.348c.336.348.336.935 0 1.304a.797.797 0 0 1-.593.261.83.83 0 0 1-.592-.26l-2.627-2.936a.948.948 0 0 1-.198-.37c0-.021-.02-.064-.02-.086-.02-.065-.02-.109-.02-.174 0-.065 0-.13.02-.174 0-.022.02-.065.02-.087a.9.9 0 0 1 .198-.37L9.55 12.63c.316-.347.849-.347 1.185 0 .336.348.336.935 0 1.305L9.51 15.283h4.208c2.548 0 4.641-2.283 4.641-5.11 0-1.369-.474-2.651-1.362-3.608a.97.97 0 0 1 0-1.304c.316-.348.849-.348 1.185 0C19.348 6.543 20 8.283 20 10.152z' fill='%23334AFF'/%3E%3C/svg%3E");height:10px;width:10px}.tribe-common .tribe-common-svgicon--search{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 18.711l-6.044-6.044a7.782 7.782 0 0 0 1.688-4.845c0-2.089-.822-4.044-2.288-5.533C11.866.822 9.91 0 7.822 0S3.778.822 2.29 2.289A7.801 7.801 0 0 0 0 7.822c0 2.09.822 4.045 2.289 5.534a7.801 7.801 0 0 0 5.533 2.288c1.778 0 3.467-.6 4.845-1.688L18.71 20 20 18.711zM3.578 12.067c-2.334-2.334-2.334-6.156 0-8.49a5.968 5.968 0 0 1 4.244-1.755c1.6 0 3.111.622 4.245 1.756 2.333 2.333 2.333 6.155 0 8.489a5.968 5.968 0 0 1-4.245 1.755c-1.6 0-3.11-.622-4.244-1.755z' fill='%23727272'/%3E%3C/svg%3E")}.tribe-common .tribe-common-svgicon--filters{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23727272' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' transform='translate(1 1)'%3E%3Cpath d='M3 3V0m0 15v-2'/%3E%3Ccircle cx='3' cy='9' r='3'/%3E%3Cpath d='M12 9v6'/%3E%3Ccircle cx='12' cy='3' r='3' transform='matrix(1 0 0 -1 0 6)'/%3E%3C/g%3E%3C/svg%3E")}.tribe-theme-enfold .tribe-common th{letter-spacing:0;text-transform:none}.tribe-common .tribe-common-a11y-hidden{display:none!important;visibility:hidden}.tribe-common .tribe-common-a11y-visual-hide,.tribe-common .tribe-common-a11y-visual-show{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.tribe-common .tribe-common-c-btn-border,.tribe-common a.tribe-common-c-btn-border{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:12px;line-height:1.38;font-weight:400;border:0;cursor:pointer;display:inline-block;height:auto;padding:0;text-decoration:none;width:auto;background-color:#fff;border:1px solid #d5d5d5;border-radius:4px;text-align:center;transition:color .2s ease,border-color .2s ease;color:#727272;padding:14px 20px;width:100%}.tribe-common .tribe-common-c-btn-border:focus,.tribe-common .tribe-common-c-btn-border:hover,.tribe-common a.tribe-common-c-btn-border:focus,.tribe-common a.tribe-common-c-btn-border:hover{background-color:#fff}.tribe-common .tribe-common-c-btn-border:active,.tribe-common a.tribe-common-c-btn-border:active{border-color:#141827}.tribe-common .tribe-common-c-btn-border:active,.tribe-common .tribe-common-c-btn-border:focus,.tribe-common .tribe-common-c-btn-border:hover,.tribe-common a.tribe-common-c-btn-border:active,.tribe-common a.tribe-common-c-btn-border:focus,.tribe-common a.tribe-common-c-btn-border:hover{color:#141827}.tribe-common .tribe-common-c-btn-border:disabled,.tribe-common a.tribe-common-c-btn-border:disabled{color:#d5d5d5}.tribe-theme-twentyseventeen .tribe-common .tribe-common-c-btn-border:hover{background-color:#fff}.tribe-common .tribe-common-c-btn-icon{border:0;cursor:pointer;display:inline-block;height:auto;padding:0;text-decoration:none;width:auto}.tribe-common .tribe-common-c-btn-icon:before{background-repeat:no-repeat;background-size:contain;content:"";display:block}.tribe-common .tribe-common-c-btn-icon--border{background-color:#fff;border:1px solid #d5d5d5;align-items:center;display:inline-flex;height:56px;justify-content:center;transition:none;width:56px}.tribe-common .tribe-common-c-btn-icon--border:focus,.tribe-common .tribe-common-c-btn-icon--border:hover{background-color:#fff}.tribe-common .tribe-common-c-btn-icon--border:active{border-color:#141827}.tribe-common .tribe-common-c-btn-icon--caret-left:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.916 17.841L10 19.757l-9.9-9.9L10-.041l1.916 1.916-7.983 7.984z' fill='%23BABABA'/%3E%3C/svg%3E");height:20px;width:12px}.tribe-common .tribe-common-c-btn-icon--caret-left:active:before,.tribe-common .tribe-common-c-btn-icon--caret-left:focus:before,.tribe-common .tribe-common-c-btn-icon--caret-left:hover:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.916 17.841L10 19.757l-9.9-9.9L10-.041l1.916 1.916-7.983 7.984z' fill='%23727272'/%3E%3C/svg%3E")}.tribe-common .tribe-common-c-btn-icon--caret-left:disabled:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.916 17.841L10 19.757l-9.9-9.9L10-.041l1.916 1.916-7.983 7.984z' fill='%23D5D5D5'/%3E%3C/svg%3E")}.tribe-common .tribe-common-c-btn-icon--caret-right:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.084 2.159L2 .243l9.9 9.9L2 20.041.084 18.126l7.983-7.984z' fill='%23BABABA'/%3E%3C/svg%3E");height:20px;width:12px}.tribe-common .tribe-common-c-btn-icon--caret-right:active:before,.tribe-common .tribe-common-c-btn-icon--caret-right:focus:before,.tribe-common .tribe-common-c-btn-icon--caret-right:hover:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.084 2.159L2 .243l9.9 9.9L2 20.041.084 18.126l7.983-7.984z' fill='%23727272'/%3E%3C/svg%3E")}.tribe-common .tribe-common-c-btn-icon--caret-right:disabled:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.084 2.159L2 .243l9.9 9.9L2 20.041.084 18.126l7.983-7.984z' fill='%23D5D5D5'/%3E%3C/svg%3E")}.tribe-common .tribe-common-c-btn-icon--filters:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23727272' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' transform='translate(1 1)'%3E%3Cpath d='M3 3V0m0 15v-2'/%3E%3Ccircle cx='3' cy='9' r='3'/%3E%3Cpath d='M12 9v6'/%3E%3Ccircle cx='12' cy='3' r='3' transform='matrix(1 0 0 -1 0 6)'/%3E%3C/g%3E%3C/svg%3E");height:20px;width:24px}.tribe-common .tribe-common-c-btn-icon--filters:active:before,.tribe-common .tribe-common-c-btn-icon--filters:focus:before,.tribe-common .tribe-common-c-btn-icon--filters:hover:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' transform='translate(1 1)'%3E%3Cpath d='M3 3V0m0 15v-2'/%3E%3Ccircle cx='3' cy='9' r='3'/%3E%3Cpath d='M12 9v6'/%3E%3Ccircle cx='12' cy='3' r='3' transform='matrix(1 0 0 -1 0 6)'/%3E%3C/g%3E%3C/svg%3E")}.tribe-common .tribe-common-c-btn-icon--filters:disabled:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23D5D5D5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' transform='translate(1 1)'%3E%3Cpath d='M3 3V0m0 15v-2'/%3E%3Ccircle cx='3' cy='9' r='3'/%3E%3Cpath d='M12 9v6'/%3E%3Ccircle cx='12' cy='3' r='3' transform='matrix(1 0 0 -1 0 6)'/%3E%3C/g%3E%3C/svg%3E")}.tribe-common .tribe-common-c-btn-icon--search:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 18.711l-6.044-6.044a7.782 7.782 0 0 0 1.688-4.845c0-2.089-.822-4.044-2.288-5.533C11.866.822 9.91 0 7.822 0S3.778.822 2.29 2.289A7.801 7.801 0 0 0 0 7.822c0 2.09.822 4.045 2.289 5.534a7.801 7.801 0 0 0 5.533 2.288c1.778 0 3.467-.6 4.845-1.688L18.71 20 20 18.711zM3.578 12.067c-2.334-2.334-2.334-6.156 0-8.49a5.968 5.968 0 0 1 4.244-1.755c1.6 0 3.111.622 4.245 1.756 2.333 2.333 2.333 6.155 0 8.489a5.968 5.968 0 0 1-4.245 1.755c-1.6 0-3.11-.622-4.244-1.755z' fill='%23727272'/%3E%3C/svg%3E");height:20px;width:20px}.tribe-common .tribe-common-c-btn-icon--search:active:before,.tribe-common .tribe-common-c-btn-icon--search:focus:before,.tribe-common .tribe-common-c-btn-icon--search:hover:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 18.711l-6.044-6.044a7.782 7.782 0 0 0 1.688-4.845c0-2.089-.822-4.044-2.288-5.533C11.866.822 9.91 0 7.822 0S3.778.822 2.29 2.289A7.801 7.801 0 0 0 0 7.822c0 2.09.822 4.045 2.289 5.534a7.801 7.801 0 0 0 5.533 2.288c1.778 0 3.467-.6 4.845-1.688L18.71 20 20 18.711zM3.578 12.067c-2.334-2.334-2.334-6.156 0-8.49a5.968 5.968 0 0 1 4.244-1.755c1.6 0 3.111.622 4.245 1.756 2.333 2.333 2.333 6.155 0 8.489a5.968 5.968 0 0 1-4.245 1.755c-1.6 0-3.11-.622-4.244-1.755z' fill='%23141827'/%3E%3C/svg%3E")}.tribe-common .tribe-common-c-btn-icon--search:disabled:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 18.711l-6.044-6.044a7.782 7.782 0 0 0 1.688-4.845c0-2.089-.822-4.044-2.288-5.533C11.866.822 9.91 0 7.822 0S3.778.822 2.29 2.289A7.801 7.801 0 0 0 0 7.822c0 2.09.822 4.045 2.289 5.534a7.801 7.801 0 0 0 5.533 2.288c1.778 0 3.467-.6 4.845-1.688L18.71 20 20 18.711zM3.578 12.067c-2.334-2.334-2.334-6.156 0-8.49a5.968 5.968 0 0 1 4.244-1.755c1.6 0 3.111.622 4.245 1.756 2.333 2.333 2.333 6.155 0 8.489a5.968 5.968 0 0 1-4.245 1.755c-1.6 0-3.11-.622-4.244-1.755z' fill='%23D5D5D5'/%3E%3C/svg%3E")}.tribe-theme-twentyseventeen .tribe-common .tribe-common-c-btn-icon--border:hover{background-color:#fff}.tribe-common .tribe-common-c-btn,.tribe-common a.tribe-common-c-btn{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:14px;line-height:1.62;font-weight:400;font-weight:700;border:0;cursor:pointer;display:inline-block;height:auto;padding:0;text-decoration:none;width:auto;border-radius:4px;color:#fff;text-align:center;transition:background-color .2s ease;background-color:#334aff;padding:11px 20px;width:100%}.tribe-common .tribe-common-c-btn:focus,.tribe-common .tribe-common-c-btn:hover,.tribe-common a.tribe-common-c-btn:focus,.tribe-common a.tribe-common-c-btn:hover{background-color:rgba(51,74,255,.8)}.tribe-common .tribe-common-c-btn:active,.tribe-common a.tribe-common-c-btn:active{background-color:rgba(51,74,255,.9)}.tribe-common .tribe-common-c-btn:disabled,.tribe-common a.tribe-common-c-btn:disabled{background-color:rgba(51,74,255,.07)}.tribe-theme-twentyseventeen .tribe-common .tribe-common-c-btn:focus,.tribe-theme-twentyseventeen .tribe-common .tribe-common-c-btn:hover{background-color:rgba(51,74,255,.8);color:#fff}.tribe-common .tribe-common-c-image{display:block;height:auto;margin-left:auto;margin-right:auto;width:100%}.tribe-common .tribe-common-c-image--bg{position:relative}.tribe-common .tribe-common-c-image__bg{background:50% no-repeat;background-size:cover;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.tribe-common .tribe-common-c-loader{display:flex;padding-top:192px}.tribe-common .tribe-common-c-loader__dot{background-color:rgba(51,74,255,.07);height:15px;width:15px;animation-name:a;animation-duration:2.24s;animation-iteration-count:infinite;animation-direction:normal;border-radius:50%}.tribe-common .tribe-common-c-loader__dot:not(:first-of-type){margin-left:8px}.tribe-common .tribe-common-c-loader__dot--first{animation-delay:.45s}.tribe-common .tribe-common-c-loader__dot--second{animation-delay:1.05s}.tribe-common .tribe-common-c-loader__dot--third{animation-delay:1.35s}@keyframes a{50%{background-color:#334aff}}@media (min-width:768px){#top.tribe-theme-enfold .tribe-common .tribe-common-form-control-text__input,.tribe-common .tribe-common-form-control-text__input{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:14px;line-height:1.62;font-weight:400;border:0;padding:20px 20px 20px 40px}.tribe-common .tribe-common-g-row--gutters{margin-left:-24px;margin-right:-24px}.tribe-common .tribe-common-g-row--gutters>.tribe-common-g-col{padding-left:24px;padding-right:24px}.tribe-common .tribe-common-b1{font-size:16px;line-height:1.62}.tribe-common .tribe-common-b2{font-size:14px;line-height:1.62}.tribe-common .tribe-common-b3{font-size:12px;line-height:1.38}.tribe-common .tribe-common-b1--min-medium{font-size:16px;line-height:1.62}.tribe-common .tribe-common-b2--min-medium{font-size:14px;line-height:1.62}.tribe-common .tribe-common-b3--min-medium{font-size:12px;line-height:1.38}.tribe-common .tribe-common-h1{font-size:42px;line-height:1.38}.tribe-common .tribe-common-h2{font-size:32px;line-height:1.38}.tribe-common .tribe-common-h3{font-size:28px;line-height:1.42}.tribe-common .tribe-common-h4{font-size:24px;line-height:1.42}.tribe-common .tribe-common-h6{font-size:16px;line-height:1.62}.tribe-common .tribe-common-h3--min-medium{font-size:28px;line-height:1.42}.tribe-common .tribe-common-h4--min-medium{font-size:24px;line-height:1.42}.tribe-common .tribe-common-h5--min-medium{font-size:18px;line-height:1.5}.tribe-common .tribe-common-h6--min-medium{font-size:16px;line-height:1.62}.tribe-common .tribe-common-h7--min-medium{font-size:14px;line-height:1.62}.tribe-theme-avada #main .tribe-common .tribe-common-h1{font-size:42px;line-height:1.38}.tribe-theme-avada #main .tribe-common .tribe-common-h2{font-size:32px;line-height:1.38}.tribe-theme-avada #main .tribe-common .tribe-common-h3{font-size:28px;line-height:1.42}.tribe-theme-avada #main .tribe-common .tribe-common-h4{font-size:24px;line-height:1.42}.tribe-theme-avada #main .tribe-common .tribe-common-h6{font-size:16px;line-height:1.62}.tribe-theme-avada #main .tribe-common .tribe-common-h3--min-medium{font-size:28px;line-height:1.42}.tribe-theme-avada #main .tribe-common .tribe-common-h4--min-medium{font-size:24px;line-height:1.42}.tribe-theme-avada #main .tribe-common .tribe-common-h5--min-medium{font-size:18px;line-height:1.5}.tribe-theme-avada #main .tribe-common .tribe-common-h6--min-medium{font-size:16px;line-height:1.62}.tribe-theme-avada #main .tribe-common .tribe-common-h7--min-medium{font-size:14px;line-height:1.62}.tribe-common .tribe-common-l-container{padding-left:42px;padding-right:42px}.tribe-common .tribe-common-c-btn-border,.tribe-common a.tribe-common-c-btn-border{padding:6px 15px;width:auto}.tribe-common .tribe-common-c-btn,.tribe-common a.tribe-common-c-btn{width:auto}.tribe-common .tribe-common-c-loader{padding-top:288px}}
+.tribe-tooltip{cursor:pointer;display:inline-block;margin:0;position:relative;text-align:left}.tribe-tooltip .dashicons-info{color:#a9a9a9;font-size:16px;line-height:1em;vertical-align:middle}.tribe-tooltip .down,.tribe-tooltip .left,.tribe-tooltip .right,.tribe-tooltip .up{background-color:#fff;box-shadow:0 0 3px 3px rgba(4,5,5,.05);box-sizing:border-box;color:#333;font-size:16px;font-weight:400;max-weight:100vw;opacity:0;padding:15px;position:absolute;transform:translate(-50%);transition:opacity .8s;visibility:hidden;width:250px;z-index:99999999}.tribe-tooltip .down i,.tribe-tooltip .left i,.tribe-tooltip .right i,.tribe-tooltip .up i{height:12px;overflow:hidden;position:absolute;width:24px}.tribe-tooltip .down i:after,.tribe-tooltip .left i:after,.tribe-tooltip .right i:after,.tribe-tooltip .up i:after{background-color:#fff;content:"";height:12px;position:absolute;width:24px}.tribe-tooltip.large .down,.tribe-tooltip.large .left,.tribe-tooltip.large .right,.tribe-tooltip.large .up{width:400px}.tribe-tooltip .tooltip-list{padding-left:10px}.tribe-tooltip .tooltip-list li{list-style-type:disc}.tribe-tooltip .down{left:50%;top:28px}.tribe-tooltip .down i{bottom:100%;left:50%;margin-left:-7px}.tribe-tooltip .down i:after{box-shadow:0 0 3px 3px rgba(4,5,5,.05);left:50%;top:50%;transform:translate(-50%,50%) rotate(45deg)}.tribe-tooltip.active .down,.tribe-tooltip.active .left,.tribe-tooltip.active .right,.tribe-tooltip.active .up{opacity:1;visibility:visible}@media screen and (max-width:480px){.tribe-tooltip.large .down,.tribe-tooltip.large .left,.tribe-tooltip.large .right,.tribe-tooltip.large .up{width:250px}}
+.wp-block-audio figcaption{margin-top:.5em;margin-bottom:1em}.wp-block-audio audio{width:100%;min-width:300px}.wp-block-button{color:#fff}.wp-block-button.aligncenter{text-align:center}.wp-block-button.alignright{text-align:right}.wp-block-button__link{background-color:#32373c;border:none;border-radius:28px;box-shadow:none;color:inherit;cursor:pointer;display:inline-block;font-size:18px;margin:0;padding:12px 24px;text-align:center;text-decoration:none;overflow-wrap:break-word}.wp-block-button__link:active,.wp-block-button__link:focus,.wp-block-button__link:hover,.wp-block-button__link:visited{color:inherit}.is-style-squared .wp-block-button__link{border-radius:0}.no-border-radius.wp-block-button__link{border-radius:0!important}.is-style-outline{color:#32373c}.is-style-outline .wp-block-button__link{background-color:transparent;border:2px solid}.wp-block-calendar{text-align:center}.wp-block-calendar tbody td,.wp-block-calendar th{padding:4px;border:1px solid #e2e4e7}.wp-block-calendar tfoot td{border:none}.wp-block-calendar table{width:100%;border-collapse:collapse;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif}.wp-block-calendar table th{font-weight:400;background:#edeff0}.wp-block-calendar a{text-decoration:underline}.wp-block-calendar tfoot a{color:#00739c}.wp-block-calendar table caption,.wp-block-calendar table tbody{color:#40464d}.wp-block-categories.alignleft{margin-right:2em}.wp-block-categories.alignright{margin-left:2em}.wp-block-columns{display:flex;margin-bottom:28px;flex-wrap:wrap}@media (min-width:782px){.wp-block-columns{flex-wrap:nowrap}}.wp-block-column{flex-grow:1;min-width:0;word-break:break-word;overflow-wrap:break-word}@media (max-width:599px){.wp-block-column{flex-basis:100%!important}}@media (min-width:600px){.wp-block-column{flex-basis:calc(50% - 16px);flex-grow:0}.wp-block-column:nth-child(2n){margin-left:32px}}@media (min-width:782px){.wp-block-column:not(:first-child){margin-left:32px}}.wp-block-columns.are-vertically-aligned-top{align-items:flex-start}.wp-block-columns.are-vertically-aligned-center{align-items:center}.wp-block-columns.are-vertically-aligned-bottom{align-items:flex-end}.wp-block-column.is-vertically-aligned-top{align-self:flex-start}.wp-block-column.is-vertically-aligned-center{-ms-grid-row-align:center;align-self:center}.wp-block-column.is-vertically-aligned-bottom{align-self:flex-end}.wp-block-cover,.wp-block-cover-image{position:relative;background-color:#000;background-size:cover;background-position:50%;min-height:430px;height:100%;width:100%;display:flex;justify-content:center;align-items:center;overflow:hidden}.wp-block-cover-image.has-parallax,.wp-block-cover.has-parallax{background-attachment:fixed}@supports (-webkit-overflow-scrolling:touch){.wp-block-cover-image.has-parallax,.wp-block-cover.has-parallax{background-attachment:scroll}}@media (prefers-reduced-motion:reduce){.wp-block-cover-image.has-parallax,.wp-block-cover.has-parallax{background-attachment:scroll}}.wp-block-cover-image.has-background-dim:before,.wp-block-cover.has-background-dim:before{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background-color:inherit;opacity:.5;z-index:1}.wp-block-cover-image.has-background-dim.has-background-dim-10:before,.wp-block-cover.has-background-dim.has-background-dim-10:before{opacity:.1}.wp-block-cover-image.has-background-dim.has-background-dim-20:before,.wp-block-cover.has-background-dim.has-background-dim-20:before{opacity:.2}.wp-block-cover-image.has-background-dim.has-background-dim-30:before,.wp-block-cover.has-background-dim.has-background-dim-30:before{opacity:.3}.wp-block-cover-image.has-background-dim.has-background-dim-40:before,.wp-block-cover.has-background-dim.has-background-dim-40:before{opacity:.4}.wp-block-cover-image.has-background-dim.has-background-dim-50:before,.wp-block-cover.has-background-dim.has-background-dim-50:before{opacity:.5}.wp-block-cover-image.has-background-dim.has-background-dim-60:before,.wp-block-cover.has-background-dim.has-background-dim-60:before{opacity:.6}.wp-block-cover-image.has-background-dim.has-background-dim-70:before,.wp-block-cover.has-background-dim.has-background-dim-70:before{opacity:.7}.wp-block-cover-image.has-background-dim.has-background-dim-80:before,.wp-block-cover.has-background-dim.has-background-dim-80:before{opacity:.8}.wp-block-cover-image.has-background-dim.has-background-dim-90:before,.wp-block-cover.has-background-dim.has-background-dim-90:before{opacity:.9}.wp-block-cover-image.has-background-dim.has-background-dim-100:before,.wp-block-cover.has-background-dim.has-background-dim-100:before{opacity:1}.wp-block-cover-image.alignleft,.wp-block-cover-image.alignright,.wp-block-cover.alignleft,.wp-block-cover.alignright{max-width:305px;width:100%}.wp-block-cover-image:after,.wp-block-cover:after{display:block;content:"";font-size:0;min-height:inherit}@supports ((position:-webkit-sticky) or (position:sticky)){.wp-block-cover-image:after,.wp-block-cover:after{content:none}}.wp-block-cover-image.aligncenter,.wp-block-cover-image.alignleft,.wp-block-cover-image.alignright,.wp-block-cover.aligncenter,.wp-block-cover.alignleft,.wp-block-cover.alignright{display:flex}.wp-block-cover-image .wp-block-cover__inner-container,.wp-block-cover .wp-block-cover__inner-container{width:calc(100% - 70px);z-index:1;color:#f8f9f9}.wp-block-cover-image .wp-block-subhead:not(.has-text-color),.wp-block-cover-image h1:not(.has-text-color),.wp-block-cover-image h2:not(.has-text-color),.wp-block-cover-image h3:not(.has-text-color),.wp-block-cover-image h4:not(.has-text-color),.wp-block-cover-image h5:not(.has-text-color),.wp-block-cover-image h6:not(.has-text-color),.wp-block-cover-image p:not(.has-text-color),.wp-block-cover .wp-block-subhead:not(.has-text-color),.wp-block-cover h1:not(.has-text-color),.wp-block-cover h2:not(.has-text-color),.wp-block-cover h3:not(.has-text-color),.wp-block-cover h4:not(.has-text-color),.wp-block-cover h5:not(.has-text-color),.wp-block-cover h6:not(.has-text-color),.wp-block-cover p:not(.has-text-color){color:inherit}.wp-block-cover__video-background{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);width:100%;height:100%;z-index:0;-o-object-fit:cover;object-fit:cover}.wp-block-cover-image-text,.wp-block-cover-text,section.wp-block-cover-image h2{color:#fff}.wp-block-cover-image-text a,.wp-block-cover-image-text a:active,.wp-block-cover-image-text a:focus,.wp-block-cover-image-text a:hover,.wp-block-cover-text a,.wp-block-cover-text a:active,.wp-block-cover-text a:focus,.wp-block-cover-text a:hover,section.wp-block-cover-image h2 a,section.wp-block-cover-image h2 a:active,section.wp-block-cover-image h2 a:focus,section.wp-block-cover-image h2 a:hover{color:#fff}.wp-block-cover-image .wp-block-cover.has-left-content{justify-content:flex-start}.wp-block-cover-image .wp-block-cover.has-right-content{justify-content:flex-end}.wp-block-cover-image.has-left-content .wp-block-cover-image-text,.wp-block-cover.has-left-content .wp-block-cover-text,section.wp-block-cover-image.has-left-content>h2{margin-left:0;text-align:left}.wp-block-cover-image.has-right-content .wp-block-cover-image-text,.wp-block-cover.has-right-content .wp-block-cover-text,section.wp-block-cover-image.has-right-content>h2{margin-right:0;text-align:right}.wp-block-cover-image .wp-block-cover-image-text,.wp-block-cover .wp-block-cover-text,section.wp-block-cover-image>h2{font-size:2em;line-height:1.25;z-index:1;margin-bottom:0;max-width:610px;padding:14px;text-align:center}.block-editor-block-list__block[data-type="core/embed"][data-align=left] .block-editor-block-list__block-edit,.block-editor-block-list__block[data-type="core/embed"][data-align=right] .block-editor-block-list__block-edit,.wp-block-embed.alignleft,.wp-block-embed.alignright{max-width:360px;width:100%}.wp-block-embed{margin-bottom:1em}.wp-block-embed figcaption{margin-top:.5em;margin-bottom:1em}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-1-1 .wp-block-embed__wrapper,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-1-2 .wp-block-embed__wrapper,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-4-3 .wp-block-embed__wrapper,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-9-16 .wp-block-embed__wrapper,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-18-9 .wp-block-embed__wrapper,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-21-9 .wp-block-embed__wrapper{position:relative}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-1-1 .wp-block-embed__wrapper:before,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-1-2 .wp-block-embed__wrapper:before,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-4-3 .wp-block-embed__wrapper:before,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-9-16 .wp-block-embed__wrapper:before,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper:before,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-18-9 .wp-block-embed__wrapper:before,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-21-9 .wp-block-embed__wrapper:before{content:"";display:block;padding-top:50%}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-1-1 .wp-block-embed__wrapper iframe,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-1-2 .wp-block-embed__wrapper iframe,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-4-3 .wp-block-embed__wrapper iframe,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-9-16 .wp-block-embed__wrapper iframe,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper iframe,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-18-9 .wp-block-embed__wrapper iframe,.wp-embed-responsive .wp-block-embed.wp-embed-aspect-21-9 .wp-block-embed__wrapper iframe{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-21-9 .wp-block-embed__wrapper:before{padding-top:42.85%}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-18-9 .wp-block-embed__wrapper:before{padding-top:50%}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper:before{padding-top:56.25%}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-4-3 .wp-block-embed__wrapper:before{padding-top:75%}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-1-1 .wp-block-embed__wrapper:before{padding-top:100%}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-9-16 .wp-block-embed__wrapper:before{padding-top:177.78%}.wp-embed-responsive .wp-block-embed.wp-embed-aspect-1-2 .wp-block-embed__wrapper:before{padding-top:200%}.wp-block-file{margin-bottom:1.5em}.wp-block-file.aligncenter{text-align:center}.wp-block-file.alignright{text-align:right}.wp-block-file .wp-block-file__button{background:#32373c;border-radius:2em;color:#fff;font-size:13px;padding:.5em 1em}.wp-block-file a.wp-block-file__button{text-decoration:none}.wp-block-file a.wp-block-file__button:active,.wp-block-file a.wp-block-file__button:focus,.wp-block-file a.wp-block-file__button:hover,.wp-block-file a.wp-block-file__button:visited{box-shadow:none;color:#fff;opacity:.85;text-decoration:none}.wp-block-file *+.wp-block-file__button{margin-left:.75em}.blocks-gallery-grid,.wp-block-gallery{display:flex;flex-wrap:wrap;list-style-type:none;padding:0;margin:0}.blocks-gallery-grid .blocks-gallery-image,.blocks-gallery-grid .blocks-gallery-item,.wp-block-gallery .blocks-gallery-image,.wp-block-gallery .blocks-gallery-item{margin:0 16px 16px 0;display:flex;flex-grow:1;flex-direction:column;justify-content:center;position:relative}.blocks-gallery-grid .blocks-gallery-image figure,.blocks-gallery-grid .blocks-gallery-item figure,.wp-block-gallery .blocks-gallery-image figure,.wp-block-gallery .blocks-gallery-item figure{margin:0;height:100%}@supports ((position:-webkit-sticky) or (position:sticky)){.blocks-gallery-grid .blocks-gallery-image figure,.blocks-gallery-grid .blocks-gallery-item figure,.wp-block-gallery .blocks-gallery-image figure,.wp-block-gallery .blocks-gallery-item figure{display:flex;align-items:flex-end;justify-content:flex-start}}.blocks-gallery-grid .blocks-gallery-image img,.blocks-gallery-grid .blocks-gallery-item img,.wp-block-gallery .blocks-gallery-image img,.wp-block-gallery .blocks-gallery-item img{display:block;max-width:100%;height:auto;width:100%}@supports ((position:-webkit-sticky) or (position:sticky)){.blocks-gallery-grid .blocks-gallery-image img,.blocks-gallery-grid .blocks-gallery-item img,.wp-block-gallery .blocks-gallery-image img,.wp-block-gallery .blocks-gallery-item img{width:auto}}.blocks-gallery-grid .blocks-gallery-image figcaption,.blocks-gallery-grid .blocks-gallery-item figcaption,.wp-block-gallery .blocks-gallery-image figcaption,.wp-block-gallery .blocks-gallery-item figcaption{position:absolute;bottom:0;width:100%;max-height:100%;overflow:auto;padding:40px 10px 9px;color:#fff;text-align:center;font-size:13px;background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.3) 70%,transparent)}.blocks-gallery-grid .blocks-gallery-image figcaption img,.blocks-gallery-grid .blocks-gallery-item figcaption img,.wp-block-gallery .blocks-gallery-image figcaption img,.wp-block-gallery .blocks-gallery-item figcaption img{display:inline}.blocks-gallery-grid.is-cropped .blocks-gallery-image a,.blocks-gallery-grid.is-cropped .blocks-gallery-image img,.blocks-gallery-grid.is-cropped .blocks-gallery-item a,.blocks-gallery-grid.is-cropped .blocks-gallery-item img,.wp-block-gallery.is-cropped .blocks-gallery-image a,.wp-block-gallery.is-cropped .blocks-gallery-image img,.wp-block-gallery.is-cropped .blocks-gallery-item a,.wp-block-gallery.is-cropped .blocks-gallery-item img{width:100%}@supports ((position:-webkit-sticky) or (position:sticky)){.blocks-gallery-grid.is-cropped .blocks-gallery-image a,.blocks-gallery-grid.is-cropped .blocks-gallery-image img,.blocks-gallery-grid.is-cropped .blocks-gallery-item a,.blocks-gallery-grid.is-cropped .blocks-gallery-item img,.wp-block-gallery.is-cropped .blocks-gallery-image a,.wp-block-gallery.is-cropped .blocks-gallery-image img,.wp-block-gallery.is-cropped .blocks-gallery-item a,.wp-block-gallery.is-cropped .blocks-gallery-item img{height:100%;flex:1;-o-object-fit:cover;object-fit:cover}}.blocks-gallery-grid .blocks-gallery-image,.blocks-gallery-grid .blocks-gallery-item,.wp-block-gallery .blocks-gallery-image,.wp-block-gallery .blocks-gallery-item{width:calc((100% - 16px)/2)}.blocks-gallery-grid .blocks-gallery-image:nth-of-type(2n),.blocks-gallery-grid .blocks-gallery-item:nth-of-type(2n),.wp-block-gallery .blocks-gallery-image:nth-of-type(2n),.wp-block-gallery .blocks-gallery-item:nth-of-type(2n){margin-right:0}.blocks-gallery-grid.columns-1 .blocks-gallery-image,.blocks-gallery-grid.columns-1 .blocks-gallery-item,.wp-block-gallery.columns-1 .blocks-gallery-image,.wp-block-gallery.columns-1 .blocks-gallery-item{width:100%;margin-right:0}@media (min-width:600px){.blocks-gallery-grid.columns-3 .blocks-gallery-image,.blocks-gallery-grid.columns-3 .blocks-gallery-item,.wp-block-gallery.columns-3 .blocks-gallery-image,.wp-block-gallery.columns-3 .blocks-gallery-item{width:calc((100% - 32px)/3);margin-right:16px}@supports (-ms-ime-align:auto){.blocks-gallery-grid.columns-3 .blocks-gallery-image,.blocks-gallery-grid.columns-3 .blocks-gallery-item,.wp-block-gallery.columns-3 .blocks-gallery-image,.wp-block-gallery.columns-3 .blocks-gallery-item{width:calc((100% - 32px)/3 - 1px)}}.blocks-gallery-grid.columns-4 .blocks-gallery-image,.blocks-gallery-grid.columns-4 .blocks-gallery-item,.wp-block-gallery.columns-4 .blocks-gallery-image,.wp-block-gallery.columns-4 .blocks-gallery-item{width:calc((100% - 48px)/4);margin-right:16px}@supports (-ms-ime-align:auto){.blocks-gallery-grid.columns-4 .blocks-gallery-image,.blocks-gallery-grid.columns-4 .blocks-gallery-item,.wp-block-gallery.columns-4 .blocks-gallery-image,.wp-block-gallery.columns-4 .blocks-gallery-item{width:calc((100% - 48px)/4 - 1px)}}.blocks-gallery-grid.columns-5 .blocks-gallery-image,.blocks-gallery-grid.columns-5 .blocks-gallery-item,.wp-block-gallery.columns-5 .blocks-gallery-image,.wp-block-gallery.columns-5 .blocks-gallery-item{width:calc((100% - 64px)/5);margin-right:16px}@supports (-ms-ime-align:auto){.blocks-gallery-grid.columns-5 .blocks-gallery-image,.blocks-gallery-grid.columns-5 .blocks-gallery-item,.wp-block-gallery.columns-5 .blocks-gallery-image,.wp-block-gallery.columns-5 .blocks-gallery-item{width:calc((100% - 64px)/5 - 1px)}}.blocks-gallery-grid.columns-6 .blocks-gallery-image,.blocks-gallery-grid.columns-6 .blocks-gallery-item,.wp-block-gallery.columns-6 .blocks-gallery-image,.wp-block-gallery.columns-6 .blocks-gallery-item{width:calc((100% - 80px)/6);margin-right:16px}@supports (-ms-ime-align:auto){.blocks-gallery-grid.columns-6 .blocks-gallery-image,.blocks-gallery-grid.columns-6 .blocks-gallery-item,.wp-block-gallery.columns-6 .blocks-gallery-image,.wp-block-gallery.columns-6 .blocks-gallery-item{width:calc((100% - 80px)/6 - 1px)}}.blocks-gallery-grid.columns-7 .blocks-gallery-image,.blocks-gallery-grid.columns-7 .blocks-gallery-item,.wp-block-gallery.columns-7 .blocks-gallery-image,.wp-block-gallery.columns-7 .blocks-gallery-item{width:calc((100% - 96px)/7);margin-right:16px}@supports (-ms-ime-align:auto){.blocks-gallery-grid.columns-7 .blocks-gallery-image,.blocks-gallery-grid.columns-7 .blocks-gallery-item,.wp-block-gallery.columns-7 .blocks-gallery-image,.wp-block-gallery.columns-7 .blocks-gallery-item{width:calc((100% - 96px)/7 - 1px)}}.blocks-gallery-grid.columns-8 .blocks-gallery-image,.blocks-gallery-grid.columns-8 .blocks-gallery-item,.wp-block-gallery.columns-8 .blocks-gallery-image,.wp-block-gallery.columns-8 .blocks-gallery-item{width:calc((100% - 112px)/8);margin-right:16px}@supports (-ms-ime-align:auto){.blocks-gallery-grid.columns-8 .blocks-gallery-image,.blocks-gallery-grid.columns-8 .blocks-gallery-item,.wp-block-gallery.columns-8 .blocks-gallery-image,.wp-block-gallery.columns-8 .blocks-gallery-item{width:calc((100% - 112px)/8 - 1px)}}.blocks-gallery-grid.columns-1 .blocks-gallery-image:nth-of-type(1n),.blocks-gallery-grid.columns-1 .blocks-gallery-item:nth-of-type(1n),.wp-block-gallery.columns-1 .blocks-gallery-image:nth-of-type(1n),.wp-block-gallery.columns-1 .blocks-gallery-item:nth-of-type(1n){margin-right:0}.blocks-gallery-grid.columns-2 .blocks-gallery-image:nth-of-type(2n),.blocks-gallery-grid.columns-2 .blocks-gallery-item:nth-of-type(2n),.wp-block-gallery.columns-2 .blocks-gallery-image:nth-of-type(2n),.wp-block-gallery.columns-2 .blocks-gallery-item:nth-of-type(2n){margin-right:0}.blocks-gallery-grid.columns-3 .blocks-gallery-image:nth-of-type(3n),.blocks-gallery-grid.columns-3 .blocks-gallery-item:nth-of-type(3n),.wp-block-gallery.columns-3 .blocks-gallery-image:nth-of-type(3n),.wp-block-gallery.columns-3 .blocks-gallery-item:nth-of-type(3n){margin-right:0}.blocks-gallery-grid.columns-4 .blocks-gallery-image:nth-of-type(4n),.blocks-gallery-grid.columns-4 .blocks-gallery-item:nth-of-type(4n),.wp-block-gallery.columns-4 .blocks-gallery-image:nth-of-type(4n),.wp-block-gallery.columns-4 .blocks-gallery-item:nth-of-type(4n){margin-right:0}.blocks-gallery-grid.columns-5 .blocks-gallery-image:nth-of-type(5n),.blocks-gallery-grid.columns-5 .blocks-gallery-item:nth-of-type(5n),.wp-block-gallery.columns-5 .blocks-gallery-image:nth-of-type(5n),.wp-block-gallery.columns-5 .blocks-gallery-item:nth-of-type(5n){margin-right:0}.blocks-gallery-grid.columns-6 .blocks-gallery-image:nth-of-type(6n),.blocks-gallery-grid.columns-6 .blocks-gallery-item:nth-of-type(6n),.wp-block-gallery.columns-6 .blocks-gallery-image:nth-of-type(6n),.wp-block-gallery.columns-6 .blocks-gallery-item:nth-of-type(6n){margin-right:0}.blocks-gallery-grid.columns-7 .blocks-gallery-image:nth-of-type(7n),.blocks-gallery-grid.columns-7 .blocks-gallery-item:nth-of-type(7n),.wp-block-gallery.columns-7 .blocks-gallery-image:nth-of-type(7n),.wp-block-gallery.columns-7 .blocks-gallery-item:nth-of-type(7n){margin-right:0}.blocks-gallery-grid.columns-8 .blocks-gallery-image:nth-of-type(8n),.blocks-gallery-grid.columns-8 .blocks-gallery-item:nth-of-type(8n),.wp-block-gallery.columns-8 .blocks-gallery-image:nth-of-type(8n),.wp-block-gallery.columns-8 .blocks-gallery-item:nth-of-type(8n){margin-right:0}}.blocks-gallery-grid .blocks-gallery-image:last-child,.blocks-gallery-grid .blocks-gallery-item:last-child,.wp-block-gallery .blocks-gallery-image:last-child,.wp-block-gallery .blocks-gallery-item:last-child{margin-right:0}.blocks-gallery-grid.alignleft,.blocks-gallery-grid.alignright,.wp-block-gallery.alignleft,.wp-block-gallery.alignright{max-width:305px;width:100%}.blocks-gallery-grid.aligncenter .blocks-gallery-item figure,.wp-block-gallery.aligncenter .blocks-gallery-item figure{justify-content:center}.wp-block-image{max-width:100%;margin-bottom:1em}.wp-block-image img{max-width:100%}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull img,.wp-block-image.alignwide img{width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.is-resized{display:table;margin-left:0;margin-right:0}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.is-resized>figcaption{display:table-caption;caption-side:bottom}.wp-block-image .alignleft{float:left;margin-right:1em}.wp-block-image .alignright{float:right;margin-left:1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image figcaption{margin-top:.5em;margin-bottom:1em}.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.is-style-circle-mask img{-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-position:center;mask-position:center;border-radius:none}}.wp-block-latest-comments__comment{font-size:15px;line-height:1.1;list-style:none;margin-bottom:1em}.has-avatars .wp-block-latest-comments__comment{min-height:36px;list-style:none}.has-avatars .wp-block-latest-comments__comment .wp-block-latest-comments__comment-excerpt,.has-avatars .wp-block-latest-comments__comment .wp-block-latest-comments__comment-meta{margin-left:52px}.has-dates .wp-block-latest-comments__comment,.has-excerpts .wp-block-latest-comments__comment{line-height:1.5}.wp-block-latest-comments__comment-excerpt p{font-size:14px;line-height:1.8;margin:5px 0 20px}.wp-block-latest-comments__comment-date{color:#8f98a1;display:block;font-size:12px}.wp-block-latest-comments .avatar,.wp-block-latest-comments__comment-avatar{border-radius:24px;display:block;float:left;height:40px;margin-right:12px;width:40px}.wp-block-latest-posts.alignleft{margin-right:2em}.wp-block-latest-posts.alignright{margin-left:2em}.wp-block-latest-posts.wp-block-latest-posts__list{list-style:none}.wp-block-latest-posts.is-grid{display:flex;flex-wrap:wrap;padding:0}.wp-block-latest-posts.is-grid li{margin:0 16px 16px 0;width:100%}@media (min-width:600px){.wp-block-latest-posts.columns-2 li{width:calc(50% - 16px)}.wp-block-latest-posts.columns-3 li{width:calc(33.33333% - 16px)}.wp-block-latest-posts.columns-4 li{width:calc(25% - 16px)}.wp-block-latest-posts.columns-5 li{width:calc(20% - 16px)}.wp-block-latest-posts.columns-6 li{width:calc(16.66667% - 16px)}}.wp-block-latest-posts__post-date{display:block;color:#6c7781;font-size:13px}.wp-block-latest-posts__post-excerpt{margin-top:8px;margin-bottom:16px}.wp-block-media-text{display:-ms-grid;display:grid;-ms-grid-rows:auto;grid-template-rows:auto;-ms-grid-columns:50% 1fr;grid-template-columns:50% 1fr}.wp-block-media-text .has-media-on-the-right{-ms-grid-columns:1fr 50%;grid-template-columns:1fr 50%}.wp-block-media-text.is-vertically-aligned-top .wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-top .wp-block-media-text__media{-ms-grid-row-align:start;align-self:start}.wp-block-media-text.is-vertically-aligned-center .wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-center .wp-block-media-text__media,.wp-block-media-text .wp-block-media-text__content,.wp-block-media-text .wp-block-media-text__media{-ms-grid-row-align:center;align-self:center}.wp-block-media-text.is-vertically-aligned-bottom .wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-bottom .wp-block-media-text__media{-ms-grid-row-align:end;align-self:end}.wp-block-media-text .wp-block-media-text__media{-ms-grid-column:1;grid-column:1;-ms-grid-row:1;grid-row:1;margin:0}.wp-block-media-text .wp-block-media-text__content{word-break:break-word;padding:0 8%}.wp-block-media-text.has-media-on-the-right .wp-block-media-text__media,.wp-block-media-text .wp-block-media-text__content{-ms-grid-column:2;grid-column:2;-ms-grid-row:1;grid-row:1}.wp-block-media-text.has-media-on-the-right .wp-block-media-text__content{-ms-grid-column:1;grid-column:1;-ms-grid-row:1;grid-row:1}.wp-block-media-text>figure>img,.wp-block-media-text>figure>video{max-width:unset;width:100%;vertical-align:middle}.wp-block-media-text.is-image-fill figure{height:100%;min-height:250px;background-size:cover}.wp-block-media-text.is-image-fill figure>img{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}@media (max-width:600px){.wp-block-media-text.is-stacked-on-mobile{-ms-grid-columns:100%!important;grid-template-columns:100%!important}.wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media{-ms-grid-column:1;grid-column:1;-ms-grid-row:1;grid-row:1}.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__media,.wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content{-ms-grid-column:1;grid-column:1;-ms-grid-row:2;grid-row:2}.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__content{-ms-grid-column:1;grid-column:1;-ms-grid-row:1;grid-row:1}}.is-small-text{font-size:14px}.is-regular-text{font-size:16px}.is-large-text{font-size:36px}.is-larger-text{font-size:48px}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;line-height:.68;font-weight:100;margin:.05em .1em 0 0;text-transform:uppercase;font-style:normal}.has-drop-cap:not(:focus):after{content:"";display:table;clear:both;padding-top:14px}p.has-background{padding:20px 30px}p.has-text-color a{color:inherit}.wp-block-pullquote{padding:3em 0;margin-left:0;margin-right:0;text-align:center}.wp-block-pullquote.alignleft,.wp-block-pullquote.alignright{max-width:305px}.wp-block-pullquote.alignleft p,.wp-block-pullquote.alignright p{font-size:20px}.wp-block-pullquote p{font-size:28px;line-height:1.6}.wp-block-pullquote cite,.wp-block-pullquote footer{position:relative}.wp-block-pullquote .has-text-color a{color:inherit}.wp-block-pullquote:not(.is-style-solid-color){background:none}.wp-block-pullquote.is-style-solid-color{border:none}.wp-block-pullquote.is-style-solid-color blockquote{margin-left:auto;margin-right:auto;text-align:left;max-width:60%}.wp-block-pullquote.is-style-solid-color blockquote p{margin-top:0;margin-bottom:0;font-size:32px}.wp-block-pullquote.is-style-solid-color blockquote cite{text-transform:none;font-style:normal}.wp-block-pullquote cite{color:inherit}.wp-block-quote.is-large,.wp-block-quote.is-style-large{margin:0 0 16px;padding:0 1em}.wp-block-quote.is-large p,.wp-block-quote.is-style-large p{font-size:24px;font-style:italic;line-height:1.6}.wp-block-quote.is-large cite,.wp-block-quote.is-large footer,.wp-block-quote.is-style-large cite,.wp-block-quote.is-style-large footer{font-size:18px;text-align:right}.wp-block-rss.alignleft{margin-right:2em}.wp-block-rss.alignright{margin-left:2em}.wp-block-rss.is-grid{display:flex;flex-wrap:wrap;padding:0;list-style:none}.wp-block-rss.is-grid li{margin:0 16px 16px 0;width:100%}@media (min-width:600px){.wp-block-rss.columns-2 li{width:calc(50% - 16px)}.wp-block-rss.columns-3 li{width:calc(33.33333% - 16px)}.wp-block-rss.columns-4 li{width:calc(25% - 16px)}.wp-block-rss.columns-5 li{width:calc(20% - 16px)}.wp-block-rss.columns-6 li{width:calc(16.66667% - 16px)}}.wp-block-rss__item-author,.wp-block-rss__item-publish-date{display:block;color:#6c7781;font-size:13px}.wp-block-search{display:flex;flex-wrap:wrap}.wp-block-search .wp-block-search__label{width:100%}.wp-block-search .wp-block-search__input{flex-grow:1}.wp-block-search .wp-block-search__button{margin-left:10px}.wp-block-separator.is-style-wide{border-bottom-width:1px}.wp-block-separator.is-style-dots{background:none!important;border:none;text-align:center;max-width:none;line-height:1;height:auto}.wp-block-separator.is-style-dots:before{content:"\00b7 \00b7 \00b7";color:currentColor;font-size:20px;letter-spacing:2em;padding-left:2em;font-family:serif}.wp-block-social-links{display:flex;justify-content:flex-start;padding-left:0;padding-right:0;margin-left:0}.wp-social-link{width:36px;height:36px;border-radius:36px;margin-right:8px}.wp-social-link,.wp-social-link a{display:block;transition:transform .1s ease}.wp-social-link a{padding:6px;line-height:0}.wp-social-link a,.wp-social-link a:active,.wp-social-link a:hover,.wp-social-link a:visited,.wp-social-link svg{color:currentColor;fill:currentColor}.wp-social-link:hover{transform:scale(1.1)}.wp-block-social-links.aligncenter{justify-content:center;display:flex}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link{background-color:#f0f0f0;color:#444}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-amazon{background-color:#f90;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-bandcamp{background-color:#1ea0c3;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-behance{background-color:#0757fe;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-codepen{background-color:#1e1f26;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-deviantart{background-color:#02e49b;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-dribbble{background-color:#e94c89;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-dropbox{background-color:#4280ff;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-etsy{background-color:#f45800;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-facebook{background-color:#1977f2;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-fivehundredpx{background-color:#000;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-flickr{background-color:#0461dd;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-foursquare{background-color:#e65678;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-github{background-color:#24292d;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-goodreads{background-color:#eceadd;color:#382110}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-google{background-color:#ea4434;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-instagram{background-color:#f00075;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-lastfm{background-color:#e21b24;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-linkedin{background-color:#0577b5;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-mastodon{background-color:#3288d4;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-medium{background-color:#02ab6c;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-meetup{background-color:#f6405f;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-pinterest{background-color:#e60122;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-pocket{background-color:#ef4155;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-reddit{background-color:#fe4500;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-skype{background-color:#0478d7;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-snapchat{background-color:#fefc00;color:#fff;stroke:#000}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-soundcloud{background-color:#ff5600;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-spotify{background-color:#1bd760;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-tumblr{background-color:#011835;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-twitch{background-color:#6440a4;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-twitter{background-color:#21a1f3;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-vimeo{background-color:#1eb7ea;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-vk{background-color:#4680c2;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-wordpress{background-color:#3499cd;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-yelp{background-color:#d32422;color:#fff}.wp-block-social-links:not(.is-style-logos-only) .wp-social-link-youtube{background-color:#ff0100;color:#fff}.wp-block-social-links.is-style-logos-only .wp-social-link{background:none;padding:4px}.wp-block-social-links.is-style-logos-only .wp-social-link svg{width:28px;height:28px}.wp-block-social-links.is-style-logos-only .wp-social-link-amazon{color:#f90}.wp-block-social-links.is-style-logos-only .wp-social-link-bandcamp{color:#1ea0c3}.wp-block-social-links.is-style-logos-only .wp-social-link-behance{color:#0757fe}.wp-block-social-links.is-style-logos-only .wp-social-link-codepen{color:#1e1f26}.wp-block-social-links.is-style-logos-only .wp-social-link-deviantart{color:#02e49b}.wp-block-social-links.is-style-logos-only .wp-social-link-dribbble{color:#e94c89}.wp-block-social-links.is-style-logos-only .wp-social-link-dropbox{color:#4280ff}.wp-block-social-links.is-style-logos-only .wp-social-link-etsy{color:#f45800}.wp-block-social-links.is-style-logos-only .wp-social-link-facebook{color:#1977f2}.wp-block-social-links.is-style-logos-only .wp-social-link-fivehundredpx{color:#000}.wp-block-social-links.is-style-logos-only .wp-social-link-flickr{color:#0461dd}.wp-block-social-links.is-style-logos-only .wp-social-link-foursquare{color:#e65678}.wp-block-social-links.is-style-logos-only .wp-social-link-github{color:#24292d}.wp-block-social-links.is-style-logos-only .wp-social-link-goodreads{color:#382110}.wp-block-social-links.is-style-logos-only .wp-social-link-google{color:#ea4434}.wp-block-social-links.is-style-logos-only .wp-social-link-instagram{color:#f00075}.wp-block-social-links.is-style-logos-only .wp-social-link-lastfm{color:#e21b24}.wp-block-social-links.is-style-logos-only .wp-social-link-linkedin{color:#0577b5}.wp-block-social-links.is-style-logos-only .wp-social-link-mastodon{color:#3288d4}.wp-block-social-links.is-style-logos-only .wp-social-link-medium{color:#02ab6c}.wp-block-social-links.is-style-logos-only .wp-social-link-meetup{color:#f6405f}.wp-block-social-links.is-style-logos-only .wp-social-link-pinterest{color:#e60122}.wp-block-social-links.is-style-logos-only .wp-social-link-pocket{color:#ef4155}.wp-block-social-links.is-style-logos-only .wp-social-link-reddit{color:#fe4500}.wp-block-social-links.is-style-logos-only .wp-social-link-skype{color:#0478d7}.wp-block-social-links.is-style-logos-only .wp-social-link-snapchat{color:#fff;stroke:#000}.wp-block-social-links.is-style-logos-only .wp-social-link-soundcloud{color:#ff5600}.wp-block-social-links.is-style-logos-only .wp-social-link-spotify{color:#1bd760}.wp-block-social-links.is-style-logos-only .wp-social-link-tumblr{color:#011835}.wp-block-social-links.is-style-logos-only .wp-social-link-twitch{color:#6440a4}.wp-block-social-links.is-style-logos-only .wp-social-link-twitter{color:#21a1f3}.wp-block-social-links.is-style-logos-only .wp-social-link-vimeo{color:#1eb7ea}.wp-block-social-links.is-style-logos-only .wp-social-link-vk{color:#4680c2}.wp-block-social-links.is-style-logos-only .wp-social-link-wordpress{color:#3499cd}.wp-block-social-links.is-style-logos-only .wp-social-link-yelp{background-color:#d32422;color:#fff}.wp-block-social-links.is-style-logos-only .wp-social-link-youtube{color:#ff0100}.wp-block-social-links.is-style-pill-shape .wp-social-link{width:auto}.wp-block-social-links.is-style-pill-shape .wp-social-link a{padding-left:16px;padding-right:16px}.wp-block-spacer{clear:both}p.wp-block-subhead{font-size:1.1em;font-style:italic;opacity:.75}.wp-block-table{overflow-x:auto}.wp-block-table table{width:100%}.wp-block-table .has-fixed-layout{table-layout:fixed;width:100%}.wp-block-table .has-fixed-layout td,.wp-block-table .has-fixed-layout th{word-break:break-word}.wp-block-table.aligncenter,.wp-block-table.alignleft,.wp-block-table.alignright{display:table;width:auto}.wp-block-table.aligncenter td,.wp-block-table.aligncenter th,.wp-block-table.alignleft td,.wp-block-table.alignleft th,.wp-block-table.alignright td,.wp-block-table.alignright th{word-break:break-word}.wp-block-table .has-subtle-light-gray-background-color{background-color:#f3f4f5}.wp-block-table .has-subtle-pale-green-background-color{background-color:#e9fbe5}.wp-block-table .has-subtle-pale-blue-background-color{background-color:#e7f5fe}.wp-block-table .has-subtle-pale-pink-background-color{background-color:#fcf0ef}.wp-block-table.is-style-stripes{border-spacing:0;border-collapse:inherit;background-color:transparent;border-bottom:1px solid #f3f4f5}.wp-block-table.is-style-stripes tbody tr:nth-child(odd){background-color:#f3f4f5}.wp-block-table.is-style-stripes.has-subtle-light-gray-background-color tbody tr:nth-child(odd){background-color:#f3f4f5}.wp-block-table.is-style-stripes.has-subtle-pale-green-background-color tbody tr:nth-child(odd){background-color:#e9fbe5}.wp-block-table.is-style-stripes.has-subtle-pale-blue-background-color tbody tr:nth-child(odd){background-color:#e7f5fe}.wp-block-table.is-style-stripes.has-subtle-pale-pink-background-color tbody tr:nth-child(odd){background-color:#fcf0ef}.wp-block-table.is-style-stripes td,.wp-block-table.is-style-stripes th{border-color:transparent}.wp-block-text-columns,.wp-block-text-columns.aligncenter{display:flex}.wp-block-text-columns .wp-block-column{margin:0 16px;padding:0}.wp-block-text-columns .wp-block-column:first-child{margin-left:0}.wp-block-text-columns .wp-block-column:last-child{margin-right:0}.wp-block-text-columns.columns-2 .wp-block-column{width:50%}.wp-block-text-columns.columns-3 .wp-block-column{width:33.33333%}.wp-block-text-columns.columns-4 .wp-block-column{width:25%}pre.wp-block-verse{white-space:nowrap;overflow:auto}.wp-block-video{margin-left:0;margin-right:0}.wp-block-video video{max-width:100%}@supports ((position:-webkit-sticky) or (position:sticky)){.wp-block-video [poster]{-o-object-fit:cover;object-fit:cover}}.wp-block-video.aligncenter{text-align:center}.wp-block-video figcaption{margin-top:.5em;margin-bottom:1em}:root .has-pale-pink-background-color{background-color:#f78da7}:root .has-vivid-red-background-color{background-color:#cf2e2e}:root .has-luminous-vivid-orange-background-color{background-color:#ff6900}:root .has-luminous-vivid-amber-background-color{background-color:#fcb900}:root .has-light-green-cyan-background-color{background-color:#7bdcb5}:root .has-vivid-green-cyan-background-color{background-color:#00d084}:root .has-pale-cyan-blue-background-color{background-color:#8ed1fc}:root .has-vivid-cyan-blue-background-color{background-color:#0693e3}:root .has-vivid-purple-background-color{background-color:#9b51e0}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-cyan-bluish-gray-background-color{background-color:#abb8c3}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-pale-pink-color{color:#f78da7}:root .has-vivid-red-color{color:#cf2e2e}:root .has-luminous-vivid-orange-color{color:#ff6900}:root .has-luminous-vivid-amber-color{color:#fcb900}:root .has-light-green-cyan-color{color:#7bdcb5}:root .has-vivid-green-cyan-color{color:#00d084}:root .has-pale-cyan-blue-color{color:#8ed1fc}:root .has-vivid-cyan-blue-color{color:#0693e3}:root .has-vivid-purple-color{color:#9b51e0}:root .has-very-light-gray-color{color:#eee}:root .has-cyan-bluish-gray-color{color:#abb8c3}:root .has-very-dark-gray-color{color:#313131}.has-small-font-size{font-size:13px}.has-normal-font-size,.has-regular-font-size{font-size:16px}.has-medium-font-size{font-size:20px}.has-large-font-size{font-size:36px}.has-huge-font-size,.has-larger-font-size{font-size:42px}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}
+/* =General CSS
+-------------------------------------------------------------- */
+.full_width,
+.one_half,
+.one_third,
+.two_third,
+.one_fourth,
+.three_fourth,
+.one_fifth,
+.two_fifth,
+.three_fifth,
+.four_fifth,
+.one_sixth,
+.five_sixth {
+	float: left;
+}
+.clear_column {
+	clear:both;
+	display:block;
+	font-size:0; height:0;
+	line-height:0; width:100%;
+	overflow: hidden;
+}
+
+/* =Shortcodes Templates
+-------------------------------------------------------------- */
+
+/* =Default Template (no margin)
+-------------------------------------------------------------- */
+.full_width  {
+	width: 100%;
+}
+.one_half  {
+	width: 50%;
+}
+.one_third  {
+	width: 33.3%;
+}
+.two_third  {
+	width: 66.6%;
+}
+.one_fourth  {
+	width: 25%;
+}
+.three_fourth  {
+	width: 75%;
+}
+.one_fifth  {
+	width: 20%;
+}
+.two_fifth  {
+	width: 40%;
+}
+.three_fifth  {
+	width: 60%;
+}
+.four_fifth  {
+	width: 80%;
+}
+.one_sixth  {
+	width: 16.6%;
+}
+.five_sixth  {
+	width: 83.4%;
+}
+
+/* =Responsive
+-------------------------------------------------------------- */
+/* Maximum width of 600 pixels. */
+@media screen and (max-width: 600px) {
+	.full_width,
+	.one_half,
+	.one_third,
+	.two_third,
+	.one_fourth,
+	.three_fourth,
+	.one_fifth,
+	.two_fifth,
+	.three_fifth,
+	.four_fifth,
+	.one_sixth,
+	.five_sixth {
+		clear: both;
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 1em;
+	}
+}
+
+/* =Small Margins Template
+-------------------------------------------------------------- */
+/*
+.full_width  {
+	width: 100%;
+}
+.one_half {
+	width: 49% !important;
+	margin-right: 2% !important;
+}
+.one_half.last_column {
+	width: 49% !important;
+	margin-right: 0px !important;
+}
+.one_third {
+	width: 32% !important;
+	margin-right: 2% !important;
+}
+.one_third.last_column {
+	width: 32% !important;
+	margin-right: 0px !important;
+}
+.two_third {
+	width: 66% !important;
+	margin-right: 2% !important;
+}
+.two_third.last_column {
+	width: 66% !important;
+	margin-right: 0px !important;
+}
+.one_fourth {
+	width: 23.5% !important;
+	margin-right: 2% !important;
+}
+.one_fourth.last_column {
+	width: 23.5% !important;
+	margin-right: 0px !important;
+}
+.three_fourth {
+	width: 74.5% !important;
+	margin-right: 2% !important;
+}
+.three_fourth.last_column {
+	width: 74.5% !important;
+	margin-right: 0px !important;
+}
+.one_fifth {
+	width: 18.4% !important;
+	margin-right: 2% !important;
+}
+.one_fifth.last_column {
+	width: 18.4% !important;
+	margin-right: 0px !important;
+}
+.two_fifth {
+	width: 39% !important;
+	margin-right: 2% !important;
+}
+.two_fifth.last_column {
+	width: 39% !important;
+	margin-right: 0px !important;
+}
+.three_fifth {
+	width: 59% !important;
+	margin-right: 2% !important;
+}
+.three_fifth.last_column {
+	width: 59% !important;
+	margin-right: 0px !important;
+}
+.four_fifth {
+	width: 79.6% !important;
+	margin-right: 2% !important;
+}
+.four_fifth.last_column {
+	width: 79.6% !important;
+	margin-right: 0px !important;
+}
+.one_sixth {
+	width: 15% !important;
+	margin-right: 2% !important;
+}
+.one_sixth.last_column {
+	width: 15% !important;
+	margin-right: 0px !important;
+}
+*/
+body .facts {
+  color: #404040;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.facts .panel {
+    padding: 50px;
+    border-radius: 0;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+    font-weight: 400;
+    padding: 40px;
+}
+
+.facts .grey { background-color: #f2f2f2 !important; }
+.facts .gold { background-color: #FFBD00 !important; }
+.facts .white { background-color: #ffffff !important; }
+
+.facts .panel.panel-stat { text-align: center; }
+
+.facts .panel.panel-stat .text { font-size: 2.8rem; font-weight: 700; }
+
+.facts .panel p {
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 0.9rem;
+}
+
+/*
+Theme Name: UWM 2016
+Theme URI: http://uwm.edu
+Author: UW-Milwaukee
+Author URI: http://uwm.edu
+Description: Theme for UWM.edu.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: uwm2016
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+uwm2016 is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+@import url("dist/css/uwm2016.min.css");
+
+/**CONTACT TEST**/
+@media screen and (max-width:643px){
+  #contact-gmap{
+    position:relative;
+    width:100%;
+    height:0px;
+    padding-bottom:56.25%;
+    margin-bottom:100px;
+  }
+  #contact-body-2{padding-top:100px;}
+  #contact-general{padding-top:100px;}
+  #contact-gmap{padding-top:30px;}
+}
+
+@media screen and (min-width:644px){
+  #contact-fastinfo{
+    width:62%; float:left;
+    padding:20px;
+    border:1px solid #dadbdc;
+    border-radius:5px;
+    margin-right:2%;
+  }
+  
+  #contact-prospective{
+    width:49%;
+    float:left;
+    border-right:1px solid #dadbdc;
+  }
+  
+  #contact-current{
+    width:49%;
+    float:right;
+  }
+  
+  #contact-general{
+    width:35%;
+    float:right;
+  }
+  
+  #contact-body-2{
+    width:100%;
+    padding-top:100px;
+    clear:both;
+  }
+  #contact-quick-res{
+    width:35%;
+    float:right;
+  }
+  
+  #contact-gmap{
+    width:62%;
+    float:left;
+    position:relative;
+    height:0px;
+    padding-bottom:56.25%;
+    margin-bottom:100px;
+  }
+}
+
+/** ILLINOIS CAMPAIGN **/
+
+#illinois-header .logo-header {
+    float: left;
+    background-color: #fff;
+    margin: 10px 10px;
+}
+
+#illinois-header {
+    display: block;
+    max-width: 200px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px 0;
+}
+
+#illinois-footer {
+    background-color: #333;
+    height: auto;
+    padding: 15px 0 0 60px;
+    margin-bottom: 0!important;
+}
+
+#illinois-footer .il-footer-logo {
+    float: right;
+    max-width: 100px;
+    margin: -50px 80px 0 0;
+}
+
+#illinois-footer h1 {
+    font-size:42px;
+    text-transform:uppercase;
+    color: #fff;
+    font-weight: 900;
+    text-align: center;
+}
+
+#illinois-footer h1 span {
+    color: #ffcb00;
+}
+
+#illinois .ill-banner {
+    background-image: url('https://uwm.edu/wp-content/uploads/2016/10/illinois_bkg_campus.jpg');
+    background-size:cover;
+    position: relative;
+    width: 100%;
+}
+
+#illinois .il-banner-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width:960px;
+    transform: translate(-50%, -50%);
+}
+
+#illinois .text-img{
+    clear:both;
+    max-width:960px;
+    color: #fff;
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: normal;
+    text-align: center;
+    margin: 0px 10px 35px 10px;
+    text-shadow: 1px 2px 1px rgba(0,0,0,0.7);
+}
+
+#illinois .il-form {
+    float: right;
+    margin-right:10px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px 20px 10px 20px;
+    margin-top: 25px;
+}
+
+#illinois .h2-il {
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#illinois .h3-il {
+    color: #fff;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#illinois .gform_wrapper label.gfield_label {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#illinois .il-boxes {
+    background-color: #898989;
+    width: 280px;
+    height: 280px;
+    text-align: center;
+    margin: 40px auto;
+    padding: 20px 10px;
+}
+
+#illinois .il-boxes:hover {
+    background-color: #ffcb00;
+    text-decoration: none;
+}
+
+#illinois .il-boxes i h6 p:visited {
+    text-decoration: none;
+}
+
+#illinois .row {
+    overflow: auto;
+    max-width: 1200px;
+}
+
+#illinois h6{
+    font-size: 34px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 5px 0 15px 0;
+    line-height: 45px;
+}
+
+#illinois p{
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    line-height: 24px;
+    margin: 0 0 15px 0;
+}
+
+#illinois a:hover {
+    text-decoration: none;
+}
+
+#illinois .fa.fa-5x {
+    color: #fff;
+    font-size: 72px;
+    display: block;
+    text-align: center;
+    margin: 30px auto 10px auto;
+}
+
+#illinois .fa-xs {
+    color: #ffcb00;
+    font-size: 40px;
+}
+
+#illinois .legacy-modal-container p {
+    font-size: 22px;
+    font-weight: normal;
+    color: #898989;
+    margin: 5px 0 15px 0;
+}
+
+#illinois .legacy-modal-container h1 {
+    font-size: 60px;
+    font-weight: bold;
+    color: #898989;
+    margin: 5px 0 15px 0;
+}
+
+#illinois .legacy-modal-container h1 span {
+    color: #ffcb00;
+}
+
+@media (max-width: 620px) {
+    
+    #illinois .ill-banner {
+        background-image: none!important;
+    }
+
+    #illinois .text-img {
+        color: #333!important;
+        text-shadow: none!important;
+    } 
+
+    #illinois .il-form {
+        float: none!important;
+        margin: 0;
+    }
+
+    #illinois-header .logo-header {
+        background-color: #fff;
+        margin: 10px 10px;
+    }
+
+    #illinois-footer {
+        padding: 15px 0;
+    }
+
+    #illinois-footer h1 {
+        font-size:26px!important;
+        text-align: center!important;
+    }
+
+    #illinois-footer .il-footer-logo {
+        display: none;
+    }
+}
+
+/** VETERANS **/
+
+#VeteransSliderWrapper {
+  margin-bottom: 5em;
+}
+
+#VeteransSliderWrapper .veterans-metaslider .caption-wrap {
+  position: relative;
+  opacity: 1;
+  background: none;
+  color: inherit;
+}
+
+#VeteranResources .additionalClear {
+  margin: 25px 0;
+}
+
+/** HOMECOMING **/
+
+@media (max-width: 400px) {
+  .uwm-homecoming .legacy-content h2 {
+    font-size: 21px;
+  }
+
+  .uwm-homecoming .legacy-content .btn {
+    font-size: 12px;
+    padding: 6px 15px;
+}
+}
+.home .site-content,.uwm-home-dynamic .site-content,.uwm-home .site-content{padding:0}.banner-footer{text-align:center}.banner-footer.center-cc{padding:0}@media only screen and (min-width:768px){.banner-footer.center-cc{padding:0 20px}}.banner-footer a{color:#404040}.banner-footer .news{padding:10px}@media only screen and (min-width:768px){.banner-footer .news{padding:10px calc(50% - 190px)}}@media only screen and (min-width:1200px){.banner-footer .news{float:left;width:45%;padding:0;text-align:left}}.banner-footer .news a{display:block}.banner-footer .news .badge{float:left;height:100px;width:100px;background:#ffbd00;margin-right:20px;margin-bottom:10px;background-image:url(../../images/uwm-news-gray.svg);background-size:100px 100px;cursor:pointer}@media only screen and (min-width:768px){.banner-footer .news .badge{margin-bottom:0;background-image:url(../../images/uwm-news.svg)}}.banner-footer .news .content-wrap{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;height:100px}.banner-footer .news .content{position:relative;text-align:left;line-height:1.2}.banner-footer .news .content a:hover{text-decoration:underline}.banner-footer .news h4{font-size:.9rem;text-transform:uppercase;margin:0 0 4px}.banner-footer .cta{padding-top:10px;text-align:center}@media only screen and (min-width:768px){.banner-footer .cta{padding:20px 0;border-bottom:1px solid #e5e5e5}}@media only screen and (min-width:1200px){.banner-footer .cta{float:right;width:50%;padding-top:24px;border-bottom:none}}.banner-footer .cta a{text-transform:uppercase;font-weight:600;padding:10px;background:#ffbd00;border-bottom:1px solid #fff;display:block;width:100%}.banner-footer .cta a:nth-child(odd){border-left:1px solid #fff}@media only screen and (min-width:768px){.banner-footer .cta a{padding:0;background:none;border-bottom:none;width:auto}.banner-footer .cta a:nth-child(odd){border-left:none}}.banner-footer .cta a:hover{text-decoration:underline;background:#ffd14d;text-decoration:none}@media only screen and (min-width:768px){.banner-footer .cta a:hover{background:none;text-decoration:underline}}.banner-footer .cta ul{list-style:none;margin:0;padding:0}@media only screen and (min-width:1200px){.banner-footer .cta ul{float:right}}.banner-footer .cta li{text-align:center;float:left;width:50%}@media only screen and (min-width:768px){.banner-footer .cta li{float:none;width:auto;display:inline-block;vertical-align:middle;margin-left:35px;text-align:left}}@media only screen and (min-width:1200px){.banner-footer .cta li{margin-left:40px}}.banner-footer .cta li:first-of-type{margin-left:0}.banner-footer .cta .icon{display:inline-block;vertical-align:middle;margin-right:20px;height:50px;width:50px;background:#ffbd00}.banner-footer .cta .fa-stack{display:none}@media only screen and (min-width:768px){.banner-footer .cta .fa-stack{display:inline-block;font-size:1.5em;margin-right:10px}}.banner-footer .cta .fa-circle{color:#ffbd00}.banner-footer .cta .fa-calculator,.banner-footer .cta .fa-university{font-size:1.1rem}.banner-footer .cta a:hover .fa-circle{color:#ffd14d}#home-academics,#home-news-ctas{padding:0}#home-research{padding-bottom:0}@media only screen and (min-width:768px){#home-research{padding-bottom:80px}}#home-experience h2{text-align:center}#home-events{padding:0 0 80px}#home-impact{padding-bottom:0}@media only screen and (min-width:768px){#home-impact{padding-bottom:80px}}#home-prefooter .banner .overlay-content{position:absolute;bottom:0;left:0;right:0;width:100%;height:100%;color:#fff;text-shadow:1px 1px 2px rgba(0,0,0,.5);top:20%}@media only screen and (min-width:768px){#home-prefooter .banner .overlay-content{top:30%}}#home-newsevents{background:#333;color:#fff;text-align:center;max-width:2000px;min-height:400px;margin:0 auto;display:none}#home-newsevents .tabcontent{display:none}#home-newsevents .button{margin:70px 0 0;color:#fff;border:2px solid #555}#home-newsevents .button:hover{border:2px solid #ffbd00;color:#333}#home-newsevents ul.post-list{list-style:none;margin:0;padding:0;font-size:.8rem;line-height:1.2;max-width:500px;margin:0 auto}@media screen and (min-width:1100px){#home-newsevents ul.post-list{display:table;max-width:100%}}#home-newsevents ul.post-list li{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid #555}#home-newsevents ul.post-list li:first-of-type{padding-top:0;border-top:none}#home-newsevents ul.post-list li:last-of-type{padding-bottom:0;margin-bottom:0;border-bottom:none}@media screen and (min-width:1100px){#home-newsevents ul.post-list li{display:table-cell;width:25%;padding:0 30px;margin-bottom:0;border-right:1px solid #555;border-bottom:none}#home-newsevents ul.post-list li:last-of-type{border-right:none;padding-right:0}#home-newsevents ul.post-list li:first-of-type{border-top:none;padding-left:0}}#home-newsevents ul.post-list a{display:block;font-weight:600;color:#fff;margin-bottom:10px}#home-newsevents ul.post-list a:hover{text-decoration:underline}#home-newsevents ul.post-list .datebox{background:#444;color:#ccc}#home-newsevents ul.post-list .image{background-image:url(../../images/postlist-default-thumbnail-dark.png)}#home-newsevents ul.events-list .content{text-align:center}@media screen and (min-width:1100px){#home-newsevents ul.events-list .content{text-align:left}}.newsevents-tabs{list-style:none;margin:0;padding:0;padding:22px 0}@media only screen and (min-width:1200px){.newsevents-tabs{float:left;width:45%;text-align:left}}.newsevents-tabs li{display:inline-block}.newsevents-tabs li:first-of-type{margin-right:14px}.newsevents-tabs li.button{padding-top:12px;padding-bottom:12px;margin-bottom:0;background:#fff;border-color:#ccc}.newsevents-tabs li.button:hover{background:#ffbd00;border-color:#ffbd00}@media screen and (min-width:768px){.newsevents-tabs li.button{background:#ffbd00;border-color:#ffbd00}.newsevents-tabs li.button:hover{background:#ffd14d;border-color:#ffd14d}}.newsevents-tabs li a:hover{text-decoration:none}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P2JJ6Z');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/wp-content/themes/uwm-2016/images/favicon.ico" rel="shortcut icon"/>
+<link href="http://gmpg.org/xfn/11" rel="profile"/>
+<title>University of Wisconsin-Milwaukee</title>
+<!-- This site is optimized with the Yoast SEO plugin v12.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta content="The University of Wisconsin-Milwaukee excels in teaching, research and service to the community while fueling the Wisconsin economy." name="description"/>
+<meta content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+<link href="https://uwm.edu" rel="canonical"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="article" property="og:type"/>
+<meta content="University of Wisconsin-Milwaukee" property="og:title"/>
+<meta content="The University of Wisconsin-Milwaukee excels in teaching, research and service to the community while fueling the Wisconsin economy." property="og:description"/>
+<meta content="https://uwm.edu" property="og:url"/>
+<meta content="UW-Milwaukee" property="og:site_name"/>
+<meta content="https://www.facebook.com/UWMilwaukee/" property="article:publisher"/>
+<meta content="/wp-content/uploads/2016/12/uwm-seo-default-image-1024x683.jpg" property="og:image"/>
+<meta content="/wp-content/uploads/2016/12/uwm-seo-default-image-1024x683.jpg" property="og:image:secure_url"/>
+<meta content="1024" property="og:image:width"/>
+<meta content="683" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="The University of Wisconsin-Milwaukee excels in teaching, research and service to the community while fueling the Wisconsin economy." name="twitter:description"/>
+<meta content="University of Wisconsin-Milwaukee" name="twitter:title"/>
+<meta content="@UWM" name="twitter:site"/>
+<meta content="https://uwm.edu/wp-content/uploads/2016/12/uwm-seo-default-image.jpg" name="twitter:image"/>
+<meta content="@UWM" name="twitter:creator"/>
+<script class="yoast-schema-graph yoast-schema-graph--main" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"/#organization","name":"University of Wisconsin - Milwaukee","url":"/","sameAs":["https://www.facebook.com/UWMilwaukee/","https://www.instagram.com/uwmilwaukee/","https://www.linkedin.com/edu/university-of-wisconsin-milwaukee-19691","https://www.youtube.com/user/uwmnews","https://twitter.com/UWM"],"logo":{"@type":"ImageObject","@id":"/#logo","url":"/wp-content/uploads/2016/12/uwm-seo-logo.jpg","width":225,"height":224,"caption":"University of Wisconsin - Milwaukee"},"image":{"@id":"/#logo"}},{"@type":"WebSite","@id":"/#website","url":"/","name":"UW-Milwaukee","publisher":{"@id":"/#organization"},"potentialAction":{"@type":"SearchAction","target":"/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"/home/#webpage","url":"/home/","inLanguage":"en-US","name":"University of Wisconsin-Milwaukee","isPartOf":{"@id":"/#website"},"datePublished":"2016-08-08T14:59:22-05:00","dateModified":"2020-01-22T14:20:42-06:00","description":"The University of Wisconsin-Milwaukee excels in teaching, research and service to the community while fueling the Wisconsin economy."}]}</script>
+<!-- / Yoast SEO plugin. -->
+<link href="//use.fontawesome.com" rel="dns-prefetch"/>
+<link href="//www.youvisit.com" rel="dns-prefetch"/>
+<link href="//s.w.org" rel="dns-prefetch"/>
+<link href="/upcoming/?ical=1" rel="alternate" title="UW-Milwaukee » iCal Feed" type="text/calendar"/>
+
+
+
+
+
+
+
+
+
+<script src="/wp-content/plugins/debug-bar-console/codemirror/debug-bar-codemirror.js?ver=2.22" type="text/javascript"></script>
+<script src="/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp" type="text/javascript"></script>
+<script src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1" type="text/javascript"></script>
+<script src="https://use.fontawesome.com/cd5cdfa324.js?ver=5.3.2" type="text/javascript"></script>
+<script src="https://www.youvisit.com/tour/Embed/js2?ver=1" type="text/javascript"></script>
+<link href="/wp-json/" rel="https://api.w.org/"/>
+<link href="/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fuwm.edu%2Fhome%2F" rel="alternate" type="application/json+oembed"/>
+<link href="/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fuwm.edu%2Fhome%2F&amp;format=xml" rel="alternate" type="text/xml+oembed"/>
+<meta content="v1" name="tec-api-version"/><meta content="https://uwm.edu" name="tec-api-origin"/><link href="/wp-json/tribe/events/v1/" rel="https://theeventscalendar.com/"/>
+
+<!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body class="page-template-default page page-id-12396 tribe-no-js tribe-theme-uwm-2016 uwm-home banner-active">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-P2JJ6Z" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="site" id="page">
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<a class="skip-link screen-reader-text" href="#colophon">Skip to footer</a>
+<header class="site-header" id="masthead" role="banner">
+<div class="nav-sitemenu"><a href="#header-nav" id="sitemenu-toggle" title="Site Menu"><i class="fa fa-bars"></i><span class="hide">Site Menu</span></a></div>
+<div id="header-nav">
+<nav class="main-navigation" id="primary-nav" role="navigation">
+<div class="primary-menu-container"><ul class="menu" id="primary-menu"><li class="tab menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12280" id="menu-item-12280"><a>About</a><div class="sub-menu"> <ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12308" id="menu-item-12308"><a href="/about/">Overview</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16444" id="menu-item-16444"><a href="/visit/">Visit</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21635" id="menu-item-21635"><a href="/about-milwaukee/">About Milwaukee</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20438" id="menu-item-20438"><a href="/search/locations/">Locations</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12591" id="menu-item-12591"><a href="http://youtube.com/uwmnews">Video &amp; Stories</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14993" id="menu-item-14993"><a href="/centers-institutes/">Centers &amp; Institutes</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12593" id="menu-item-12593"><a href="/chancellor/">Office of the Chancellor</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15001" id="menu-item-15001"><a href="/mission/">Vision, Values &amp; Mission</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20463" id="menu-item-20463"><a href="/leadership/">Leadership Team</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12997" id="menu-item-12997"><a href="/budget/">Budget</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12596" id="menu-item-12596"><a href="/alumni/">Alumni</a></li>
+</ul></div>
+</li>
+<li class="tab menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12281" id="menu-item-12281"><a>Academics</a><div class="sub-menu"> <ul class="sub-menu-col"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16441" id="menu-item-16441"><a href="/academics/">Academic Programs</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16576" id="menu-item-16576"><a href="https://catalog.uwm.edu/">Academic Catalog</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20886" id="menu-item-20886"><a href="/schools-colleges/">Schools &amp; Colleges</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18551" id="menu-item-18551"><a href="/online">UWM Online</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22488" id="menu-item-22488"><a href="/honors">Honors College</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15146" id="menu-item-15146"><a href="/precollege/">Pre-College</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12607" id="menu-item-12607"><a href="/sce/">Continuing Education</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12608" id="menu-item-12608"><a href="/onestop/your-student-record/">Grades &amp; Transcripts</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12610" id="menu-item-12610"><a href="/cie/study-abroad/">Study Abroad</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12612" id="menu-item-12612"><a href="/secu/calendars/">Academic Calendar</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12632" id="menu-item-12632"><a href="http://www4.uwm.edu/schedule/">Schedule of Classes</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23012" id="menu-item-23012"><a href="/pathway-advising/">Advising</a></li>
+</ul></div>
+</li>
+<li class="tab menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12282" id="menu-item-12282"><a>Admission</a><div class="sub-menu"> <ul class="sub-menu-col"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16446" id="menu-item-16446"><a href="/admission/">Overview</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12618" id="menu-item-12618"><a href="/cost-aid/">Cost &amp; Financial Aid</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12619" id="menu-item-12619"><a href="/admission/">Apply Now</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12620" id="menu-item-12620"><a href="/undergrad-admission/admitted-students/">Admitted Students</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12621" id="menu-item-12621"><a href="/undergrad-admission/student-type/new-freshmen/">New Freshman</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12622" id="menu-item-12622"><a href="/graduateschool/">Graduate Study</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12623" id="menu-item-12623"><a href="/cie/international-admissions/">International</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12624" id="menu-item-12624"><a href="/undergrad-admission/student-type/transfer/">Transfer</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12625" id="menu-item-12625"><a href="/undergrad-admission/student-type/adult-returning/">Adult &amp; Returning</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12626" id="menu-item-12626"><a href="/undergrad-admission/student-type/re-entry/">Re-entry</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12627" id="menu-item-12627"><a href="/undergrad-admission/student-type/2nd-degree/">Second Degree</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18550" id="menu-item-18550"><a href="/online">UWM Online</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12629" id="menu-item-12629"><a href="/undergrad-admission/student-type/out-of-state/">Out-of-state</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21638" id="menu-item-21638"><a href="/military-veterans/">Military &amp; Veterans</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12631" id="menu-item-12631"><a href="/undergrad-admission/student-type/non-degree/">Non-Degree</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12633" id="menu-item-12633"><a href="/undergrad-admission/forms-resources/">Admission Forms</a></li>
+</ul></div>
+</li>
+<li class="tab menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12283" id="menu-item-12283"><a>Student Life</a><div class="sub-menu"> <ul class="sub-menu-col"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20192" id="menu-item-20192"><a href="/student-life/">Overview</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20198" id="menu-item-20198"><a href="/housing">Housing &amp; Residence Life</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12639" id="menu-item-12639"><a href="/housing/communities/living-learning-communities/">Learning Communities</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17545" id="menu-item-17545"><a href="/transportation/">Transportation Services</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12641" id="menu-item-12641"><a href="/studentaffairs/">Student Services</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12642" id="menu-item-12642"><a href="/family/">Parents &amp; Family</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12644" id="menu-item-12644"><a href="http://mkepanthers.com/">Panther Athletics</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12643" id="menu-item-12643"><a href="/urec/">Recreation &amp; Fitness</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20217" id="menu-item-20217"><a href="/careerplan/">Jobs &amp; Careers</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12647" id="menu-item-12647"><a href="/technology/">Technology &amp; Apps</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16498" id="menu-item-16498"><a href="/health-safety/">Health &amp; Safety</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12650" id="menu-item-12650"><a href="/mentalhealth/">Mental Health</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12651" id="menu-item-12651"><a href="http://uwm.booksbyecampus.com">Virtual Bookstore</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12653" id="menu-item-12653"><a href="/union/">Union</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18418" id="menu-item-18418"><a href="/events/">Campus Events</a></li>
+</ul></div>
+</li>
+<li class="tab menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12284" id="menu-item-12284"><a>Research</a><div class="sub-menu"> <ul class="sub-menu-col"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12659" id="menu-item-12659"><a href="/research/">Overview</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12661" id="menu-item-12661"><a href="/uwmresearch">UWM Research Magazine</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12662" id="menu-item-12662"><a href="/libraries/">Libraries</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12663" id="menu-item-12663"><a href="/news/media/">Featured Experts</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12664" id="menu-item-12664"><a href="/officeofresearch/distinguished-professors/">Distinguished Professors</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15215" id="menu-item-15215"><a href="/research-partnerships/">Partnerships</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12666" id="menu-item-12666"><a href="/news/category/research/">Research News</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20380" id="menu-item-20380"><a href="/centers-institutes/">Centers &amp; Institutes</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12668" id="menu-item-12668"><a href="https://uwmrf.org/">Research Foundation</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12669" id="menu-item-12669"><a href="http://uwmrealestatefoundation.org/">Real Estate Foundation</a></li>
+</ul></div>
+</li>
+<li class="tab menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-14425" id="menu-item-14425"><a>International</a><div class="sub-menu"> <ul class="sub-menu-col"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20201" id="menu-item-20201"><a href="/international/">Overview</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12670" id="menu-item-12670"><a href="/cie/international-admissions/">International Admissions</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12672" id="menu-item-12672"><a href="/cie/study-abroad/">Study Abroad</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20205" id="menu-item-20205"><a href="/officeofresearch/">Research</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12675" id="menu-item-12675"><a href="/cie/partner/">Partnerships</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12676" id="menu-item-12676"><a href="/housing/communities/living-learning-communities/">Learning Communities</a></li>
+</ul><ul class="sub-menu-col"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12677" id="menu-item-12677"><a href="/cie/">Center for International Education</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12678" id="menu-item-12678"><a href="/cie/iwa/">Institute of World Affairs</a></li>
+</ul></div>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22619" id="menu-item-22619"><a href="/campuses/">Campuses</a></li>
+</ul></div> </nav><!-- #primary-nav -->
+<nav class="main-navigation" id="secondary-nav" role="navigation">
+<div class="secondary-menu-container center-cc cf"><ul class="menu" id="secondary-menu"><li class="cta menu-item menu-item-type-post_type menu-item-object-page menu-item-16445" id="menu-item-16445"><a href="/visit/">Visit</a></li>
+<li class="cta menu-item menu-item-type-custom menu-item-object-custom menu-item-12287" id="menu-item-12287"><a href="/admission/">Apply</a></li>
+<li class="cta menu-item menu-item-type-custom menu-item-object-custom menu-item-12288" id="menu-item-12288"><a href="/give/">Give</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12289" id="menu-item-12289"><a href="#">Current Students</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12294" id="menu-item-12294"><a href="http://d2l.uwm.edu/">D2L</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20260" id="menu-item-20260"><a href="/canvas/">Canvas</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12295" id="menu-item-12295"><a href="https://paws.uwm.edu">PAWS</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12988" id="menu-item-12988"><a href="https://uwmilwaukee.campus.eab.com">Navigate/SSC Campus</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12296" id="menu-item-12296"><a href="/onestop/">One Stop</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12297" id="menu-item-12297"><a href="/office365/">Office 365</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15847" id="menu-item-15847"><a href="/events/">Events</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12290" id="menu-item-12290"><a href="#">Faculty / Staff</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12299" id="menu-item-12299"><a href="/office365/">Office 365</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12991" id="menu-item-12991"><a href="http://d2l.uwm.edu/">D2L</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20261" id="menu-item-20261"><a href="/canvas/">Canvas</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13192" id="menu-item-13192"><a href="https://paws.uwm.edu">PAWS</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12987" id="menu-item-12987"><a href="https://uwmilwaukee.campus.eab.com">Navigate/SSC Campus</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12302" id="menu-item-12302"><a href="http://my.wisconsin.edu/">My UW System</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16919" id="menu-item-16919"><a href="/faculty-staff/">More Resources…</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12291" id="menu-item-12291"><a href="/libraries/">Libraries</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12292" id="menu-item-12292"><a href="http://mkepanthers.com/">Athletics</a></li>
+<li class="open-left menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12293" id="menu-item-12293"><a href="#">More</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12303" id="menu-item-12303"><a href="/alumni/">Alumni</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12304" id="menu-item-12304"><a href="http://jobs.uwm.edu/">Employment</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12305" id="menu-item-12305"><a href="/directory">Directory</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20834" id="menu-item-20834"><a href="https://apps.uwm.edu/map/">Map</a></li>
+</ul>
+</li>
+</ul></div> </nav><!-- #secondary-nav -->
+</div>
+<div class="uwm-branding"><h1><a href="/" rel="home" title="UW-Milwaukee"><span class="hide">University of Wisconsin-Milwaukee</span></a></h1></div>
+<div class="nav-search"><a href="#search-bar" id="search-toggle" title="Search"><span class="hide">Search</span></a></div>
+<div id="search-bar"><div class="search-bar-inner"><div class="srch-header">
+<div class="srch-container" v-click-outside="hideSuggestions">
+<div id="top-level-search">
+<form action="/search" autocomplete="off" class="search-form" method="get" ref="form" role="search">
+<label>
+<span class="screen-reader-text">Search for:</span>
+<input class="search-field" minlength="2" name="q" placeholder="Search …" tabindex="1" title="Search for:" type="search" v-model="query"/>
+<div class="suggestions" id="top-level-suggestions" v-if="suggestions" v-on:mouseout="highlightIndex = null">
+<div :class="{ 'highlight': highlightIndex === index }" :key="index" class="suggestion" v-for="(suggestion, index) in limitSuggestions" v-on:mouseover="highlightSuggest('hover', index)">{{ suggestion }}
+						</div>
+</div>
+</label>
+<button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-search"></i></button>
+</form>
+</div>
+</div>
+</div>
+</div></div>
+</header><!-- #masthead -->
+<div class="site-content" id="content">
+<section class="no-pad " id="home-banner">
+<div class="banner">
+<div class="banner-container">
+<div class="banner-video">
+<video autoplay="on" id="bg-video" loop="on" muted="muted" preload="auto">
+<!--<source src="/wp-content/themes/uwm-2016/videos/#" type="video/webm">-->
+<!--<source src="Research_200115.mp4" type="video/mp4">-->
+<source src="/wp-content/themes/uwm-2016/videos/Research_200115.mp4" type="video/mp4">
+<!--<source src="/wp-content/themes/uwm-2016/videos/" type="video/ogg">-->
+</source></video>
+<img alt="UWM student performing research in a grassy field." class="attachment-full size-full" height="650" sizes="(max-width: 1500px) 100vw, 1500px" src="/wp-content/uploads/2020/01/UWM_Hmpg_Banner_Research_Vid_2020.jpg" srcset="/wp-content/uploads/2020/01/UWM_Hmpg_Banner_Research_Vid_2020.jpg 1500w, /wp-content/uploads/2020/01/UWM_Hmpg_Banner_Research_Vid_2020-300x130.jpg 300w, /wp-content/uploads/2020/01/UWM_Hmpg_Banner_Research_Vid_2020-1024x444.jpg 1024w, /wp-content/uploads/2020/01/UWM_Hmpg_Banner_Research_Vid_2020-768x333.jpg 768w" width="1500"/> <div class="overlay-gradient"></div>
+<div class="overlay-content center-cc center-txt">
+<div class="uwm-branding"><span class="hide">UWM</span></div>
+<h2>Forge New Paths</h2>
+<p>Nationally recognized for undergraduate research, UWM is the place to make your mark.</p>
+</div>
+<div class="video-control"></div>
+</div>
+</div><!-- .banner-container -->
+</div><!-- #banner -->
+</section>
+<section id="home-news-ctas">
+<div class="banner-footer center-cc cf">
+<div class="cta cf">
+<ul>
+<li><a class="gtm-home-cta" href="//uwm.edu/academics"><span class="fa-stack"><i aria-hidden="true" class="fa fa-circle fa-stack-2x"></i><i aria-hidden="true" class="fa fa-university fa-stack-1x fa-inverse"></i></span>Majors</a></li>
+<li><a class="gtm-home-cta" href="//uwm.edu/visit/"><span class="fa-stack"><i aria-hidden="true" class="fa fa-circle fa-stack-2x"></i><i aria-hidden="true" class="fa fa-map-marker fa-stack-1x fa-inverse"></i></span>Visit</a></li>
+<li><a class="gtm-home-cta" href="//uwm.edu/admission/"><span class="fa-stack"><i aria-hidden="true" class="fa fa-circle fa-stack-2x"></i><i aria-hidden="true" class="fa fa-check fa-stack-1x fa-inverse"></i></span>Apply</a></li>
+<li><a class="gtm-home-cta" href="//uwm.edu/cost-aid"><span class="fa-stack"><i aria-hidden="true" class="fa fa-circle fa-stack-2x"></i><i aria-hidden="true" class="fa fa-calculator fa-stack-1x fa-inverse"></i></span>Cost</a></li>
+</ul>
+</div>
+<ul class="newsevents-tabs">
+<li class="button button-gold" id="news"><a class="gtm-home-news" href="/news/">News</a></li>
+<li class="button button-gold" id="events"><a class="gtm-home-events" href="/events/">Events</a></li>
+</ul>
+</div>
+</section>
+<section class="section-bg-gray" id="home-research">
+<div class="center-cc">
+<div class="row">
+<div class="col-md-5 module-heading ">
+<h2>One of America’s Top Research Universities</h2>
+Emerge as a leader, critical thinker and professional from one of the nation’s top public universities. You’ll work alongside professors in laboratories and learn from them in lecture halls. UWM professors tackle issues local and global, sharing their expertise in leading publications, earning patents and influencing public policy. They also have connections with more than 4,400 companies and nonprofits in the region – enhancing students’ capacity to learn and earn real-world experience.
+<div class="button-wrap"><a class="button button-border gtm-home-research" href="/research">More about research</a></div>
+<div class="news-feed">
+<span class="fa-stack">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-arrow-circle-right fa-stack-1x fa-inverse"></i>
+</span>
+<div class="content">
+<h4>Research news</h4>
+<a class="gtm-home-research" href="/news/uwm-researcher-studies-importance-of-diversity-in-recruiting-retaining-teachers/" title="Posted 2020-01-13 10:56:15">UWM researcher studies importance of diversity in recruiting, retaining teachers</a>
+</div>
+</div> </div>
+<div class="col-md-6 col-md-offset-1">
+<div class="uwm-grid cf">
+<div class="block ">
+<a class=" gtm-home-research" data-lightbox="21487" href="/news/decoding-consumer-behavior/" id="21487">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2019/03/Feature_PapatlaData_GridBlock_800x400_20181204_TCF_IMC_IMG_8950.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content "><span>Big data helps decode consumer behavior</span></div>
+</div>
+</a>
+</div><!-- .block --> <div class="block block-half stat">
+<div class="content-wrap bg-gold">
+<div class="content "><span><strong>1,000+</strong> undergrads research alongside top faculty</span></div>
+</div>
+</div><!-- .block --> <div class="block block-half">
+<a class="uwm-modal-content gtm-home-research" data-lightbox="22056" href="/gridblock/nancy-duque-grad-research-student-story/#modal" id="22056">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2019/06/Nancy_Duque_Undergrad_Research_20181003_IMC_EH_0028.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content icon-quote "><span>I love the atmosphere here</span></div>
+</div>
+</a>
+</div><!-- .block --> </div><!-- .uwm-grid -->
+</div><!-- .col-md-6 -->
+</div><!-- .row -->
+</div> <!-- .center-cc -->
+</section> <section class="section-bg-white" id="home-experience">
+<div class="center-cc">
+<h2>Your UWM Experience</h2> <div class="uwm-grid cf">
+<div class="block-group">
+<div class="block block-half">
+<a class="uwm-modal-content gtm-home-experience" data-lightbox="22936" href="/gridblock/nisreen-atta-video-testimonial-dec-graduation-2019/#modal" id="22936">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2019/12/CB_Edits_OCT-6827d.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content icon-quote "><span>I can graduate and start my career right away</span></div>
+</div>
+</a>
+</div><!-- .block --> <div class="block block-half block-tall push-right">
+<a class=" gtm-home-experience" data-lightbox="13022" href="/aboutmke/" id="13022">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2016/08/Milwaukee-sunset-kadish-park.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content "><span><strong>Explore Milwaukee</strong></span></div>
+</div>
+</a>
+</div><!-- .block --> <div class="block block-half stat">
+<div class="content-wrap bg-gold">
+<div class="content "><span><strong>36%</strong> of undergraduates<br/>are first-generation<br/>college students</span></div>
+</div>
+</div><!-- .block --> </div>
+<div class="block-group">
+<div class="block block-half stat">
+<a class=" gtm-home-experience" data-lightbox="12833" href="/academics/" id="12833">
+<div class="content-wrap bg-gray-dark">
+<div class="content "><span><strong>92</strong> undergraduate programs</span></div>
+</div>
+</a>
+</div><!-- .block --> <div class="block block-half">
+<a class=" gtm-home-experience" data-lightbox="17047" href="/#/vte/?data-platform=v&amp;data-inst=63755&amp;data-loc=138075" id="17047">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2017/07/Kirc-400X400.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content icon-location "><span>Take a virtual tour of campus</span></div>
+</div>
+</a>
+</div><!-- .block --> <div class="block block-half">
+<a class=" gtm-home-experience" data-lightbox="16903" href="http://mkepanthers.com/" id="16903">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2019/05/MXC_edited.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content "><span><strong>15 </strong>Division 1 teams</span></div>
+</div>
+</a>
+</div><!-- .block --> <div class="block block-half">
+<a class="uwm-modal-content gtm-home-experience" data-lightbox="18680" href="/gridblock/video-room-tour-sandburg-west-single/#modal" id="18680">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2018/02/valeria_400x400.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content icon-social icon-youtube"><span>Take a room tour</span></div>
+</div>
+</a>
+</div><!-- .block --> </div>
+</div><!-- .uwm-grid -->
+</div>
+</section> <section class="section-bg-gray" id="home-impact">
+<div class="center-cc">
+<div class="row">
+<div class="col-md-5 module-heading col-md-push-7">
+<h2>Our Graduates Shape the World</h2>
+Make a name for yourself and a difference in the world with a UWM degree. Our 189,000 alumni create an impact from CEO offices to classrooms, architecture firms to film studios. There’s not an industry or nonprofit sector in Wisconsin that hasn’t been shaped by our graduates. Join Milwaukee’s thriving alumni network, combining your UWM degree with career connections that can set you up for success before graduation day.
+<div class="button-wrap"><a class="button button-border gtm-home-impact" href="/alumni/">UWM Alumni Association</a></div> </div>
+<div class="col-md-6 col-md-pull-5">
+<div class="uwm-grid cf">
+<div class="block ">
+<a class="uwm-modal-content gtm-home-impact" data-lightbox="17706" href="/gridblock/photo-alumni-marilyn-rantz/#modal" id="17706">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2017/10/Rantz-800x400.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content icon-social icon-youtube"><span>UWM alum leads the way in elder care</span></div>
+</div>
+</a>
+</div><!-- .block --> <div class="block block-half">
+<a class="uwm-modal-content gtm-home-impact" data-lightbox="22029" href="/gridblock/testimonial-alumni-nick-carnahan/#modal" id="22029">
+<div class="content-wrap gradient" style="background: url(/wp-content/uploads/2019/06/Carnahan2_portrait_20190514_TCF_IMC_5370.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<div class="hover-overlay"></div>
+<div class="content icon-quote "><span>UWM equipped me with the skills I’m using in my career</span></div>
+</div>
+</a>
+</div><!-- .block --> <div class="block block-half stat">
+<a class=" gtm-home-impact" data-lightbox="12954" href="/news/here-are-11-uwm-alumni-you-should-know/" id="12954">
+<div class="content-wrap bg-gold">
+<div class="content "><span><strong>11</strong> alums you should know</span></div>
+</div>
+</a>
+</div><!-- .block --> </div><!-- .uwm-grid -->
+</div><!-- .col-md-6 -->
+</div><!-- .row -->
+</div> <!-- .center-cc -->
+</section> <script>
+                    
+                    window['obj'+22056] = "<div class=\"uwm-modal-content uwm-modal-gallery uwm-modal-testimonial\"><div class=\"row\"><div class=\"col-md-8\"><div class=\"uwm-gallery-images\"><div class=\"slick-slide\"><img width=\"750\" height=\"500\" src=\"https:\/\/uwm.edu\/wp-content\/uploads\/2019\/06\/Nancy_Duque_Research_10032018IMC_EH_007.jpg\" class=\"attachment-full size-full\" alt=\"Nancy Duque\" srcset=\"https:\/\/uwm.edu\/wp-content\/uploads\/2019\/06\/Nancy_Duque_Research_10032018IMC_EH_007.jpg 750w, https:\/\/uwm.edu\/wp-content\/uploads\/2019\/06\/Nancy_Duque_Research_10032018IMC_EH_007-300x200.jpg 300w\" sizes=\"(max-width: 750px) 100vw, 750px\" \/><div class=\"caption\"><p>Nancy is analyzing how fluids affect rocks through extreme heat given off from the close proximity to the Earth's crust and clashing tectonic plates. The rocks are part of the sample that Dyanna Czeck, associate professor of geosciences, brought back from her research trip to southern Spain. (UWM Photo\/Elora Hennessey)<\/p><\/div><\/div><\/div><\/div><div class=\"col-md-4\"><blockquote>UWM and the Geosciences department have been so supportive. I love the atmosphere here.&#8221;\r\n\r\n<footer><h3>Nancy Duque<\/h3>\r\nGeosciences graduate student<br \/>\r\nFrom Lennox, California\r\n\r\n<\/footer><\/blockquote><div class=\"button-wrap\" style=\"text-align: center\"><a class=\"button button-border\" href=\"https:\/\/uwm.edu\/our\/\">Learn More About Undergrad Research<\/a><\/div><\/div><\/div><!-- close 'row' --><\/div><!-- close 'uwm-modal-content' -->";
+                    
+                    window['obj'+22936] = "<div class=\"uwm-modal-content uwm-modal-video uwm-modal-testimonial\"><div class=\"row\"><div class=\"col-md-8\"><div class=\"video-embed-container\"><iframe width=\"853\" height=\"480\" src=\"https:\/\/www.youtube.com\/embed\/bpDTVaVjDJk\" frameborder=\"0\" allowfullscreen><\/iframe><\/div><\/div><div class=\"col-md-4\"><h2>Nisreen Atta<\/h2><p>Nisreen has been working up to 40 hours per week in the emergency department at Aurora St. Luke\u2019s Medical Center while studying at UWM to become a nurse. Despite having no previous experience, she\u2019s excelled at work and in school.<\/p><p>And all the while, Nisreen has been heavily involved in the community. She helped organize an event that provided over 100,000 food packs and hundreds of clothing items for Syrian and Somali refugees. She\u2019s accepted a job as a nurse after graduation in the St. Luke\u2019s emergency room.<\/p><\/div><\/div><!-- close 'row' --><\/div><!-- close 'uwm-modal-content' -->";
+                    
+                    window['obj'+18680] = "<div class=\"uwm-modal-content uwm-modal-video\"><div class=\"row\"><div class=\"col-md-8\"><div class=\"video-embed-container\"><iframe width=\"853\" height=\"480\" src=\"https:\/\/www.youtube.com\/embed\/O9PHGy1P8F0\" frameborder=\"0\" allowfullscreen><\/iframe><\/div><\/div><div class=\"col-md-4\"><h2>Valeria&#8217;s Room<\/h2>\r\nValeria\u2019s single room is located in Sandburg Hall West, one of UW-Milwaukee\u2019s residence halls located centrally on the main campus.\r\n\r\nSandburg Hall&#8217;s north, south and west towers are identical in suite and room layout. Suitemates share a private hallway and bathroom. Suite and room amenities in the west tower include cable television, wired internet connections, closet organizing kits and a bathroom.\r\n<div class=\"button-wrap\" style=\"text-align: center;\"><a class=\"button button-gold\" href=\"https:\/\/www.youtube.com\/playlist?list=PLylbcMvk6V54jIVE9FuHsQDxvVejx4asy\">Tour More Rooms<\/a><\/div><\/div><\/div><!-- close 'row' --><\/div><!-- close 'uwm-modal-content' -->";
+                    
+                    window['obj'+17706] = "<div class=\"uwm-modal-content uwm-modal-video\"><div class=\"row\"><div class=\"col-md-8\"><div class=\"video-embed-container\"><iframe width=\"853\" height=\"480\" src=\"https:\/\/www.youtube.com\/embed\/JJ6_42EF5Js\" frameborder=\"0\" allowfullscreen><\/iframe><\/div><\/div><div class=\"col-md-4\"><h2>Marilyn Rantz<\/h2>\r\nRantz (\u201992 PhD Nursing) is curators\u2019 professor emerita at the University of Missouri\u2019s Sinclair School of Nursing. Her pioneering work in nursing home care quality spans 30 years, first as a practicing nurse, then as a leading researcher in the Midwest. Rantz is a premier international expert in quality measurement of nursing homes and research programs to improve the quality of care of older people.\r\n<div class=\"button-wrap\" style=\"text-align: center;\"><a class=\"button button-gold\" href=\"https:\/\/www.youtube.com\/playlist?list=PL713133C15B283A83\">Meet More Alumni<\/a><\/div><\/div><\/div><!-- close 'row' --><\/div><!-- close 'uwm-modal-content' -->";
+                    
+                    window['obj'+22029] = "<div class=\"uwm-modal-content uwm-modal-gallery uwm-modal-testimonial\"><div class=\"row\"><div class=\"col-md-8\"><div class=\"uwm-gallery-images\"><div class=\"slick-slide\"><img width=\"750\" height=\"500\" src=\"https:\/\/uwm.edu\/wp-content\/uploads\/2019\/06\/Carnahan3_20190514_TCF_IMC_5375.jpg\" class=\"attachment-full size-full\" alt=\"\" srcset=\"https:\/\/uwm.edu\/wp-content\/uploads\/2019\/06\/Carnahan3_20190514_TCF_IMC_5375.jpg 750w, https:\/\/uwm.edu\/wp-content\/uploads\/2019\/06\/Carnahan3_20190514_TCF_IMC_5375-300x200.jpg 300w\" sizes=\"(max-width: 750px) 100vw, 750px\" \/><div class=\"caption\"><p>Nick Carnahan, who graduated from UWM's School of Architecture and Urban Studies with a bachelor's and master's degree, is a partner in Galbraith Carnahan Architects, based in Wauwatosa. He and Joe Galbraith are transforming this Wauwatosa log cabin into office space for their growing firm. (UWM Photo\/Troye Fox)<\/p><\/div><\/div><\/div><\/div><div class=\"col-md-4\"><blockquote>For a country kid coming to the big city, UWM&#8217;s small campus was easy to digest. I also found mentors and future colleagues \u2014 I still see many of them around the city. UWM&#8217;s program equipped me with the skills I&#8217;m using in my career and that I&#8217;ve used for the past 18 years.&#8221;\r\n\r\n<footer><h3>Nick Carnahan<\/h3>\r\nClass of &#8217;02 and &#8217;06, Studied Architecture<br \/>\r\nFrom Platteville, Wisconsin\r\n\r\n<\/footer><\/blockquote><div class=\"button-wrap\" style=\"text-align: center\"><a class=\"button button-border\" href=\"https:\/\/uwm.edu\/sarup\/\">Learn About UWM&#8217;s Architecture Program<\/a><\/div><\/div><\/div><!-- close 'row' --><\/div><!-- close 'uwm-modal-content' -->";
+                            </script>
+<section class="no-pad" id="home-prefooter">
+<div class="banner">
+<img alt="UWM campus aerial photo" src="/wp-content/themes/uwm-2016/images/campus-panorama.jpg"/>
+<div class="overlay-content center-cc center-txt">
+<h2>Welcome to Your University</h2>
+</div>
+</div>
+</section>
+<div class="uwm-modal-container mfp-hide" id="uwm-modal"></div>
+</div><!-- #content -->
+<footer class="site-footer" id="colophon" role="contentinfo">
+<div class="footer-content center-cc">
+<div class="row">
+<div class="col-sm-12 col-md-3 row-margin-b">
+<div class="uwm-branding"><a href="//uwm.edu"><span class="hide">University of Wisconsin-Milwaukee</span></a></div>
+</div>
+<div class="col-sm-4 col-md-3">
+<div class="menu-footer-quicklinks-1-container"><ul class="menu" id="menu-footer-quicklinks-1"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16442" id="menu-item-16442"><a href="/academics/">Academic Programs</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20887" id="menu-item-20887"><a href="/schools-colleges/">Schools &amp; Colleges</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12315" id="menu-item-12315"><a href="/admission/">Admission</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12316" id="menu-item-12316"><a href="/cost-aid/">Cost &amp; Financial Aid</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12317" id="menu-item-12317"><a href="/onestop/">One Stop Student Services</a></li>
+</ul></div> </div>
+<div class="col-sm-4 col-md-3 row-margin-b">
+<div class="menu-footer-quicklinks-2-container"><ul class="menu" id="menu-footer-quicklinks-2"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12318" id="menu-item-12318"><a href="http://mkepanthers.com/">Athletics</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12319" id="menu-item-12319"><a href="/news/">News</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16497" id="menu-item-16497"><a href="/health-safety/">Health &amp; Safety</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14995" id="menu-item-14995"><a href="/accessibility/">Accessibility</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12322" id="menu-item-12322"><a href="/news/media/">For Media</a></li>
+</ul></div> </div>
+<div class="col-sm-4 col-md-3">
+<div class="cta"><ul class="menu" id="menu-footer-ctas"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16447" id="menu-item-16447"><a href="/visit/">Schedule a Tour</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12311" id="menu-item-12311"><a href="/admission/">Apply</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12312" id="menu-item-12312"><a href="/contact/">Contact Us</a></li>
+</ul></div> <ul class="social">
+<li><a class="fa-stack" href="http://facebook.com/uwmilwaukee" target="_blank"><i aria-hidden="true" class="fa fa-circle fa-stack-2x"></i><i aria-hidden="true" class="fa fa-facebook fa-stack-1x fa-inverse"></i><span class="hide">Facebook</span></a></li>
+<li><a class="fa-stack" href="http://twitter.com/uwm" target="_blank"><i aria-hidden="true" class="fa fa-circle fa-stack-2x"></i><i aria-hidden="true" class="fa fa-twitter fa-stack-1x fa-inverse"></i><span class="hide">Twitter</span></a></li>
+<li><a class="fa-stack" href="http://youtube.com/uwmnews" target="_blank"><i aria-hidden="true" class="fa fa-circle fa-stack-2x"></i><i aria-hidden="true" class="fa fa-youtube-play fa-stack-1x fa-inverse"></i><span class="hide">YouTube</span></a></li>
+<li><a class="fa-stack" href="http://instagram.com/uwmilwaukee" target="_blank"><i aria-hidden="true" class="fa fa-circle fa-stack-2x"></i><i aria-hidden="true" class="fa fa-instagram fa-stack-1x fa-inverse"></i><span class="hide">Instagram</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="site-info">
+<div class="center-cc">© 2020 University of Wisconsin-Milwaukee. All rights reserved. <span class="web-feedback"><a href="/website-feedback/?url=%2Fhome%2F">Website Feedback</a></span></div>
+</div><!-- .site-info -->
+</footer><!-- #colophon -->
+</div><!-- #page -->
+<script>
+		( function ( body ) {
+			'use strict';
+			body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+		} )( document.body );
+		</script>
+<script> /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": activate to sort column ascending","sort_descending":": activate to sort column descending"},"length_menu":"Show _MENU_ entries","empty_table":"No data available in table","info":"Showing _START_ to _END_ of _TOTAL_ entries","info_empty":"Showing 0 to 0 of 0 entries","info_filtered":"(filtered from _MAX_ total entries)","zero_records":"No matching records found","search":"Search:","all_selected_text":"All items on this page were selected. ","select_all_link":"Select all pages","clear_selection":"Clear Selection.","pagination":{"all":"All","next":"Next","previous":"Previous"},"select":{"rows":{"0":"","_":": Selected %d rows","1":": Selected 1 row"}},"datepicker":{"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesMin":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Prev","currentText":"Today","closeText":"Done","today":"Today","clear":"Clear"}};/* ]]> */ </script><script src="/wp-content/plugins/the-events-calendar/common/src/resources/js/tribe-common.min.js?ver=4.9.20" type="text/javascript"></script>
+<script src="/wp-content/plugins/the-events-calendar/common/src/resources/js/tooltip.min.js?ver=4.9.20" type="text/javascript"></script>
+<script src="/wp-content/themes/uwm-2016/dist/js/global.min.js?ver=1.0" type="text/javascript"></script>
+<script src="/wp-content/themes/uwm-2016/directory-search/dist/js/app.js?ver=1574873275" type="text/javascript"></script>
+<script src="/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4" type="text/javascript"></script>
+<script src="/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4" type="text/javascript"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":0,"isRTL":false});});
+</script>
+<script src="/wp-includes/js/wp-embed.min.js?ver=5.3.2" type="text/javascript"></script>
+<script src="/wp-content/plugins/the-events-calendar/common/src/resources/js/underscore-before.js"></script>
+<script src="/wp-includes/js/underscore.min.js?ver=1.8.3" type="text/javascript"></script>
+<script src="/wp-content/plugins/the-events-calendar/common/src/resources/js/underscore-after.js"></script>
+<script src="/wp-includes/js/backbone.min.js?ver=1.4.0" type="text/javascript"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpApiSettings = {"root":"https:\/\/uwm.edu\/wp-json\/","nonce":"1bbbac6d27","versionString":"wp\/v2\/"};
+/* ]]> */
+</script>
+<script src="/wp-includes/js/api-request.min.js?ver=5.3.2" type="text/javascript"></script>
+<script src="/wp-includes/js/wp-api.min.js?ver=5.3.2" type="text/javascript"></script>
+<script src="/wp-content/themes/uwm-2016/dist/js/home.min.js?ver=1.0" type="text/javascript"></script>
+<!-- $$UWM_TOP_LEVEL_SUCCESS$$ -->
+</body>
+</html>
+<!-- last render: 1/28/2020 13:17:2 -->
+

@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Lato Light Italic'), local('Lato-LightItalic'), url(https://fonts.gstatic.com/s/lato/v16/S6u_w4BMUTPHjxsI9w2_Gwfo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v16/S6u8w4BMUTPHjxsAXC-v.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwiPHA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWw.ttf) format('truetype');
+}
+
+@charset "utf-8";
+
+/*reset*/
+* {box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;}main, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block; margin: 0;}button, input {background-color: transparent; margin: 0px; padding: 0px; border-style: none; font-family: Lato; font-size: inherit; font-weight: 300; }button {cursor: pointer;}img {border-width: 0px;}
+/*layout*/
+html {
+height: 100%;
+}
+body {
+height: 100%;
+margin: 0;
+}
+header {
+width: 100%;
+background-color: #002853;
+}
+.columns {
+display: table;
+width: 100%;
+}
+.column {
+display: table-cell;
+vertical-align: top;
+}
+.hide {
+display: none;
+}
+.collapsed {
+position: absolute;
+clip: rect(1px, 1px, 1px, 1px);
+width: 1px;
+height: 1px;
+overflow: hidden;
+white-space: nowrap;
+}
+/*typography*/
+body {
+font-family: 'Lato';
+font-weight: 300;
+line-height: 1.48;
+color: #292929;
+}
+/*rem sizes*/
+.font-xsm {
+font-size: 0.78rem;
+}
+.font-sm {
+font-size: 0.89rem;
+}
+.font-md {
+font-size: 1rem;
+}
+.font-lg {
+font-size: 1.111rem;
+}
+.font-xlg {
+font-size: 1.222rem;
+}
+.font-xxlg {
+font-size: 1.333rem;
+}
+/*em sizes*/
+.txt-xsm {
+font-size: 0.78em;
+}
+.txt-sm {
+font-size: 0.89em;
+}
+.txt-md {
+font-size: 1em;
+}
+.txt-lg {
+font-size: 1.111em;
+}
+.txt-xlg {
+font-size: 1.222em;
+}
+.txt-xxlg {
+font-size: 1.333em;
+}
+h1.heading {
+margin-bottom: 0.75em;
+color: #C1C1C1;
+font-weight: 400;
+text-transform: uppercase;
+letter-spacing: -0.015em;
+}
+h1 {
+font-size: 1.78em;
+color:  #016DB8;
+font-weight: 300;
+}
+h2 {
+font-size: 1.67em;
+color:  #016DB8;
+font-weight: 300;
+}
+h3 {
+font-size: 1.56em;
+color:  #016DB8;
+font-weight: 300;
+}
+h4 {
+font-size: 1.333em;
+color:  #016DB8;
+font-weight: 300;
+}
+h5 {
+font-size: 1.167em;
+color: #016DB8;
+font-weight: 300;
+}
+h6 {
+margin-top: 0;
+margin-bottom: 0.15em;
+line-height: 1.125;
+font-size: 1em;
+font-weight: 400;
+color: #292929;
+}
+/*DEPRECIATE for .head-first*/
+.head-first > h1:first-child, .head-first > h2:first-child, .head-first > h3:first-child, .head-first > h4:first-child, .head-first > h5:first-child {
+margin-top: 0;
+}
+h1, h2, h3, h4, h5 {
+margin-top: 0.8em;
+line-height: 1.125;
+}
+h2.headline {
+margin-bottom: 0.45em;
+}
+h1, h2, h3 {
+margin-bottom: 0.3em;
+}
+h4, h5 {
+margin-bottom: 0.2em;
+}
+main p, main ul, main ol, main address, main fieldset, main hr {
+margin: 0em 0em 0.76em;
+}
+p.center {
+text-align: center;
+}
+strong {
+font-weight: 400;
+}
+address {
+font-style: normal;
+line-height: 1.35;
+}
+.quote p {
+font-style: italic;
+line-height: 1.45;
+}
+/*block text*/
+.block-text {
+margin-top: 2em;
+padding: 2.25em 3em;
+background-color: #EEE;
+}
+/*depreciate??*/
+.quote-meta {
+margin-top: 0.75em;
+font-size: 0.75em;
+font-style: normal;
+line-height: 1.25;
+}
+/*new new text columns*/
+.txt-col {
+column-width: 16em;
+column-gap: 1.5em;
+}
+.txt-colx2 {
+column-count: 2;
+column-gap: 1.65em;
+}
+.txt-col ul {
+display: inline-block;
+width: 100%;
+}
+ul.list-col, .list-col ul {
+column-width: 16em;
+column-gap: 2em;
+padding-left: 0;
+list-style: none outside;
+}
+.list-col li {
+/*display: inline-block;*/
+width: 100%;
+}
+.txt-col li, .list-col li {
+page-break-inside: avoid;
+break-inside: avoid;
+}
+/*old text columns*/
+.margin-x1 {
+margin-top: 0.76em;
+margin-bottom: 0.76em;
+}
+.margin-x2 {
+margin-top: 2em;
+margin-bottom: 2em;
+}
+/*old text columns*/
+/*.txt-colx2 {
+column-count: 2;
+column-width: 16em;
+}*/
+.txt-colx3 {
+column-count: 3;
+column-width: 12em;
+}
+.txt-colx3 ul {  /*temp until .txt-col.x3*/
+display: inline-block;
+width: 100%;
+}
+.txt-colx4 {
+column-count: 4;
+column-width: 12em;
+}
+.txt-colx2 li, .txt-colx3 li, .txt-colx4 li {
+page-break-inside: avoid;
+break-inside: avoid;
+}
+/*icons*/
+i {
+font-family: icons;
+font-style: normal;
+}
+.hide-icon i {
+display: none;
+}
+.icon-links i {
+font-size: 70%;
+vertical-align: 0.09em;
+line-height:0;
+color: inherit; /*color: #4683b7;*/
+}
+.icon-links.right i {
+padding-left: 0.45em;
+}
+.icon-links.left i {
+padding-right: 0.8em;
+}
+.icon-links a:hover i, .toggle-title:hover i { 
+color: inherit;
+}
+.toggle-title i:after { 
+content: "\f05e";
+}
+.open-toggle .toggle-title i:after {
+content: "\f05f";
+}
+/*links*/
+a {
+text-decoration: none;
+}
+a:hover {
+text-decoration: underline;
+}
+.nobreak {
+white-space: nowrap;
+}
+main a, main a:hover {
+color:  #016DB8; /*#006AA4*/
+}
+h3 a, h4 a, .toggle-title:hover > h4 {
+color: #016DB8 !important;
+text-decoration: none !important;
+}
+h3 a:hover, h4 a:hover, .toggle-title:hover > h4 {
+color: #292929 !important;
+text-decoration: none !important;
+}
+/*.content h3 a, .content h4 a, .toggle-title:hover > h4 {
+color: #016DB8 !important;
+text-decoration: none !important;
+}
+.content h3 a:hover, .content h4 a:hover, .toggle-title:hover > h4 {
+color: #292929 !important;
+text-decoration: none !important;
+}*/
+.headline-hover a:hover {
+text-decoration: none;
+}
+.headline-hover a:hover .headline {
+text-decoration: underline;
+}
+.link {     /*DEPRECIATE ?*/
+text-decoration: none;
+}
+.quick-links h4, .quick-links a {
+border-bottom: 1px dashed #ccc;
+white-space: nowrap;
+}
+.quick-links h4 {
+margin: 0;
+padding-bottom: 0.33em;
+font-size: 1.22em;
+line-height: 1.2em;
+color: #006AA4;
+}
+.quick-links a {
+display: block;
+padding-top: 0.4em;
+padding-bottom: 0.54em;
+line-height: 1em;
+color: #7D7D7D;
+}
+.quick-links a:hover {
+color: #7D7D7D;
+text-decoration: underline;
+}
+.linkbox {
+display: block;
+color: rgb(41,41,41);
+}
+.linkbox a {
+text-decoration: none;
+}
+.linkbox:hover {
+background: rgb(245,245,245);
+text-decoration: none;
+color: rgb(41,41,41);
+}
+/*buttons*/
+.btn-link, .item-button {  /*DEPRECIATE .btn-link*/
+display: inline-block;
+margin-right: 1em;
+margin-top: 0.25em;
+margin-bottom: 0.5em;
+padding: 0.56em 1.2em;
+font-size: 0.75em;
+font-weight: 400;
+line-height: 1em;
+text-transform: uppercase;
+background-color: #006AA4;
+color: #EEE;
+}
+.btn-link:hover, .item-button:hover {
+opacity: 0.7;
+text-decoration: none;
+color: #FFF;
+}
+/*lists*/
+.content li {
+padding-bottom: 0.25em;
+line-height: 1.4
+}
+main ul {
+padding-left: 2em;
+}
+main ol {
+padding-left: 2.2em;
+}
+h6 + ul, h6 + ol {
+margin-top: 0.4em;
+}
+ul.no-indent, ol.no-indent {
+padding-left: 1.1em;
+}
+.no-indent ul, .no-indent ol {
+padding-left: 1.1em;
+}
+ul.no-bullets {
+list-style: none outside;
+padding-left: 0;
+}
+.no-bullets ul {
+list-style: none outside;
+padding-left: 0;
+}
+.spaced-out li {
+margin-top: 0.4em;
+margin-bottom: 0.4em;
+}
+ul li ul {
+margin-bottom: 0;
+}
+.inline-meta {
+list-style: none outside;
+padding-left: 0;
+margin-top: 0.5em;
+margin-bottom: 0.6em;
+/*margin: 0.85em 0 1.2em;*/
+}
+.inline-meta li {
+display: inline-block;
+}
+.inline-meta li + li:before {
+content: "\00a0\00a0|\00a0\00a0\00a0";
+}
+/*depreciate for new text columns*/
+.list-colx2 > ul, .list-colx3 > ul, .list-colx4 > ul {
+padding-left: 0;
+list-style: none outside;
+font-size: 0.88em
+}
+.list-colx2 {
+-webkit-column-width: 16em;
+-moz-column-width: 16em;
+column-width: 16em;
+}
+.single .list-colx3 > ul {
+-webkit-column-width: 19.5em;
+-moz-column-width: 19.5em;
+column-width: 19.5em;
+}
+.list-colx2 li, .list-colx3 li, .list-colx4 li {
+display: block;
+white-space: nowrap;
+}
+.list-colx4 > ul {   /*not sure about this?*/
+-webkit-column-width: 14.5em;
+-moz-column-width: 14.5em;
+column-width: 14.5em;
+}
+.single .list-colx4 > ul {
+-webkit-column-width: 16em;
+-moz-column-width: 16em;
+column-width: 16em;
+}
+/*tables*/
+table {
+width: 100%;
+margin-top: 1.35em;
+margin-bottom: 1.35em;
+border-collapse: collapse;
+line-height: 1.35;
+}
+table + table {
+margin-top: 1.65em;
+}
+th {
+padding: 0.55em 1.2em;
+background-color: #F8F8F8;
+border: 1px solid #DDD;
+color: #016DB8;
+text-align: left;
+font-weight: 300;
+}
+td {
+padding: 0.8em 1.2em;
+font-size: 0.888em;
+border: 1px solid #DDD;
+}
+table caption {
+caption-side: bottom;
+padding-top: 6px;
+padding-left: 18px;
+font-size: 12px;
+text-align: left;
+}
+.content > table:first-child {
+margin-top: 6px;
+}
+/*resource tables*/
+.resource-table table {
+border: 1px solid #DDD;
+}
+.resource-table a {
+padding: 0.8em 1.2em;
+display: block;
+}
+.resource-table a:hover {
+background-color: #F8F8F8;
+text-decoration: none;
+}
+.resource-table td {
+border: none;
+}
+.resource-table td:first-child {
+width: 225px;
+font-weight: 400;
+}
+.resource-table td:last-child {
+padding: 0;
+border: 1px solid #DDD;
+}
+/*MEDIA*/
+.headline span.subhead {
+display: inline-block;
+margin-top: 0.25em;
+font-size: 0.78em;
+}
+/*depreciate after alumni, commencement*/
+.schedule-table {
+margin-top: 2.5em;
+margin-bottom: 2.5em;
+}
+.schedule-table th {
+font-size: 1.111em;
+}
+.schedule-table p {
+margin-bottom: 0.45em;
+}
+.schedule-table p:last-child {
+margin-bottom: 0em;
+}
+.events-schedule td:first-child { 
+white-space: nowrap;
+font-weight: 400;
+text-align: center;
+}
+/*images*/
+.image, .bkg-image {
+background-position: center center;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+background-repeat: no-repeat;
+}
+.image.aspect {
+width: 100%;
+height: 0;
+overflow: hidden;
+}
+/*.full img {
+width: 100%;
+}*/
+/*img.left, figure.left, object.left, iframe.left {
+float: left;
+margin: 0.4em 1.25em 0.2em 0;
+}
+img.right, figure.right, object.right, iframe.right {
+float: right;
+margin: 0.4em 0.1em 0.2em 1em;
+}*/
+.columns figure + figure {
+border-left: 2px solid transparent;
+}
+/*figure img {
+display: block;
+}*/
+figcaption {
+margin-top: 14px;
+}
+.content figcaption {
+line-height: 1.35;
+font-size: 0.88em;
+}
+.image-item figcaption {
+font-size: 1em;
+}
+/*text blocks*/
+.statement {
+font-style: italic;
+}
+/*toggle blocks*/
+.toggle-header {
+margin-top: 1.1em;
+}
+.toggle {
+display: none;
+}
+.open-toggle + .toggle, .open-toggle + .toggle  + .toggle, .open-toggle + .toggle  + .toggle  + .toggle, .open-toggle + .toggle  + .toggle + .toggle  + .toggle {
+display: block;
+}
+.open-toggle + .toggle + .toggle-header, .open-toggle + .toggle  + .toggle + .toggle-header, .open-toggle + .toggle  + .toggle + .toggle + .toggle-header, .open-toggle + .toggle  + .toggle + .toggle + .toggle + .toggle-header {
+margin-top: 2.5em;
+}
+.open-toggle > .hide-description {
+display: none;
+}
+.toggle-title {
+text-align: left;
+}
+.toggle-title > h4 {
+margin-top: 0;
+}
+.toggle hr {
+opacity: 0.175;
+margin-top: 0.76em;
+margin-bottom: 0.76em;
+}
+.toggle hr:last-of-type {
+margin-bottom: 0.5em;
+}
+/*new image styles*/
+.full > img, .left > img, .right > img, .full-caption > img {
+display: block;
+width: 100%;
+}
+figure.full, figure.center {
+margin-top: 2.5em;
+margin-bottom: 2.5em;
+}
+figure.left, figure.right {
+width: 38%;
+}
+figure.left {
+float: left;
+margin: 0.35em 1.35em 0.4em 0;
+}
+figure.right {
+float: right;
+margin: 0.35em 0.1em 0.4em 1em;
+}
+figure.center {
+text-align: center;
+}
+figure.center img {
+width: auto;
+max-width: 100%;
+height: auto;
+}
+figure.full-caption {
+margin-top: 3.5em;
+margin-bottom: 1em;
+}
+
+/*image blocks depreciate for  image item*/
+.image-block.left {
+display: block;
+text-align: left;
+}
+.image-block.right {
+display: block;
+text-align: left;
+}
+.image-block.center {
+display: block;
+text-align: center;
+}
+.content .image-block + .image-block {
+margin-top: 2.5em;
+}
+.image-block figcaption {
+font-size: 1em;
+}
+/*figure.block.center img {
+margin: auto;
+}*/
+/*photo-blocks*/
+
+/*.photo-block.full {
+margin: 5.25% 0 5.25% 0;
+}
+.photo-block.center {
+margin: 5.25% auto 5.25% auto;
+}
+.photo-block.left {
+float: left;
+width: 47%;
+margin: 0.35em 1.35em 0.4em 0;
+}
+.photo-block.right {
+float: right;
+width: 47%;
+margin: 0.35em 0.1em 0.4em 1em;
+}
+.photo-block.full img, .photo-block.left img, .photo-block.right img {
+display: block;
+width: 100%;
+}
+figure.center {
+text-align: center;
+line-height: 0;
+}
+figure.center img {
+display: inline;
+}*/
+
+/*graphic blocks*/
+.graphic-block.left {
+text-align: left;
+}
+.graphic-block.right {
+text-align: right;
+}
+.graphic-block.center {
+text-align: center;
+}
+.graphic-block a:hover {
+opacity: 0.7;
+}
+.graphic-block img {
+vertical-align: top;
+display: inline-block;
+}
+.grid-x2 img {
+width: 50%;
+}
+.grid-x3 img {
+width: 33.33%;
+}
+.grid-x4 img {
+width: 25%;
+}
+/*DEPRECTATE*/
+.video-container {
+position: relative;
+overflow: hidden;
+padding-bottom: 56.2%;
+height: 0;
+}
+.video-container iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.video-block {
+position: relative;
+overflow: hidden;
+height: 0;
+}
+.video-block iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.hover-icon {
+position: relative;
+display: block;
+}
+.hover-icon:hover img {
+opacity: 0.8;
+}
+.hover-icon i {
+position: absolute;
+line-height: 1em;
+color: #FFF;
+text-decoration: none;
+opacity: 0.65;
+}
+.hover-icon:hover i {
+z-index: 100;
+opacity: 0.85;
+}
+.content .hover-icon i {
+right: 18px;
+bottom: 18px;
+font-size: 32px;
+}
+.sidebar .hover-icon i {
+right: 16px;
+bottom: 18px;
+font-size: 32px;
+}
+/*excerpts  DEPRECIATED*/
+.content .excerpt {
+margin: 2em 0px 2em;
+}
+.content .excerpt + .excerpt {
+margin-top: 2.65em;
+}
+.excerpt .title {
+margin-bottom: 0.2em;
+}
+.excerpt .hover-icon i {
+bottom: 10px;
+right: 12px;
+font-size: 28px;
+}
+.read-more p:last-of-type {
+display: inline;
+padding-right: 0.3em;
+}
+.read-more p + a {
+white-space: nowrap;
+}
+p.read-more a {
+display: inline-block;
+padding-left: 0.3em;
+white-space: nowrap;
+}
+p.read-more a:after {
+content: "\2026";
+}
+.hide-read-more .read-more a {
+display: none;
+}
+/*items  DEPREICTAE*/
+.item {
+display: table;
+}
+.item p {
+margin-bottom: 0.65em;
+}
+.item p:last-child {
+margin-bottom: 0;
+}
+.item > div {
+display: table-cell;
+vertical-align: top;
+}
+.item .imagebox {
+padding-right: 1.75em;
+padding-top: 0.2em;
+line-height: 0;
+}
+.item .imagebox a:hover {
+opacity: 0.8;
+}
+.item img {
+width: 200px;
+}
+h3 + .item {
+margin-top: 0.75em;
+}
+/*sidebar blurb*/
+.sidebar-blurb img {
+width: 100%;
+}.sidebar-blurb .textbox {
+margin-top: 0.45em;
+}
+/*events DEPRECIATE*/
+.event-meta {
+font-weight: 400;
+}
+.event-meta span {
+margin-left: 0.5em;
+margin-right: 0.5em;
+color: #006AA4;
+}
+/*degrees-list  DEPRECIATED*/
+.degrees-list td {
+padding: 0;
+}
+.degrees-list th, .degrees-list td + td, .degrees-list a {
+padding: 0.4em 1.2em;
+}
+.degrees-list a {
+display: block;
+line-height: 1em;
+}
+/*spotlights*/
+.spotlight-meta {
+margin-top: 1.25em;
+line-height: 1.35;
+}.spotlight-meta h6 {
+font-size: 18px;
+color: #00A5FF;
+}.spotlight-meta strong {
+margin-right: 0.5em;
+font-weight: 300;
+white-space: nowrap;
+}.spotlight-meta em {
+white-space: nowrap;
+}.spotlight .hover-icon i {
+bottom: 24px;
+font-size: 36px;
+}.spotlight-item:hover a {
+opacity: 0.85;
+}.spotlight-item a:hover {
+text-decoration: none;
+}
+/*promos*/
+.promo a:hover {
+opacity: 0.8;
+}
+/*video item*/
+.video {
+position: relative;
+overflow: hidden;
+padding-bottom: 56.2%;
+height: 0;
+}.video iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+/*feedbox*/
+.feed-item {
+display: block;
+margin-bottom: 1em;
+}.feedbox .heading {
+margin-top: 0;
+margin-bottom: 0.5em;
+}.feedbox .headline { 
+font-size: 1.11em;
+}.feedbox p { 
+margin-bottom: 0.1em;
+line-height: 1.3em;
+color: #222;
+}.feedbox .icon-links i {
+font-size: 75%;
+/*color: inherit;*/
+}
+/*color*/
+.highlight-blue {
+background-color: #E8F2F7;
+}
+/*media*/
+.article-meta {
+margin-bottom: 2.5em;
+font-style: italic;
+}
+
+@charset "utf-8";
+
+/*layout*/
+:root {
+font-size: 18px;
+}
+body {
+background: #CCC;
+}
+.page-wrap {
+height: 100%;
+max-width: 1600px;
+min-width: 1024px;
+margin: 0px auto;
+padding-bottom: 78px;
+}
+header {
+height: 78px;
+line-height: 78px;
+padding-left: 42px;
+padding-right: 24px;
+}
+.header-nav {
+float: right;
+height: inherit;
+line-height: 78px;
+}
+.header-nav a, .header-nav button {
+color: #E4E4E4;
+}
+.header-nav a {
+display: inline-block;
+height: inherit;
+padding-left: 18px;
+padding-right: 18px;
+font-size: 16px;
+font-weight: 400;
+text-decoration: none;
+}
+.header-nav button {
+width: 55px;
+height: inherit;
+font-size: 21px;
+}
+.header-nav .nav-icon {
+vertical-align: -1px;
+}
+.header-nav a:hover {
+color: #5CA3CD;
+}
+.hide-desktop {
+display: none !important;
+}
+.content.head-first h2.headline {
+margin-top: 0;
+}
+.page {
+display: table;
+width: 100%;
+height: 100%;
+background: #fff;
+}
+main {
+height: 100%;
+}
+.limit {
+margin-right: auto;
+margin-left: auto;
+}
+.gutter {
+min-width: 45px;
+}
+.sidebar aside:first-child, .sidebar figure:first-child {
+margin-top: 6px;
+}
+.sidebar-offset {
+margin-top: 0.75em;
+margin-right: 8%;
+}
+/*quicklinks*/
+.quicklinks-wrap {
+margin-bottom: 2.5em;
+}
+.quicklinks a, .quicklinks span {
+border-bottom: 1px dashed #ccc;
+white-space: nowrap;
+display: block;
+padding-top: 0.45em;
+padding-bottom: 0.58em;
+line-height: 1em;
+color: #7D7D7D;
+}
+.quicklinks a:first-child, .quicklinks span:first-child {
+padding-top: 0.3em;
+padding-bottom: 0.45em;
+font-size: 1.08em;
+}
+.sidebar .quicklinks a:hover {
+color: #7D7D7D;
+}
+.sm-icons {
+margin-top: 0.25em;
+margin-left: -0.4em;
+font-size: 1.7em;
+}
+.sm-icons a {
+display: inline-block;
+vertical-align: middle;
+color: #AAA;
+}
+.sm-icons i {
+display: block;
+width: 1.4em;
+vertical-align: middle;
+text-align: center;
+}
+.sm-icons .facebook-icon {
+width: 1em;
+font-size: 96%;
+}
+.sm-icons .flicker-icon {
+width: 1.1em;
+font-size: 112%;
+}
+.sm-icons .linkedin-icon {
+width: 1.3em;
+}
+.sm-icons .merit-icon {
+width: 1.5em;
+font-size: 96%;
+}
+.quicklinks + .sm-icons a:hover {
+opacity: 0.6;
+text-decoration: none;
+}
+/*content*/
+.content .excerpt:first-child {
+margin-top: 0;
+}
+/*depreciate aside for .aside*/
+.content aside:first-child, .content figure.full:first-child {
+margin-top: 6px;
+}
+.content aside {
+margin: 2.5em 0px 2.5em;
+}
+.content aside + aside {
+margin-top: 3em;
+}
+/*new aside spacing*/
+.content .aside {
+margin-top: 2.5em;
+margin-bottom: 2.5em;
+}
+.sidebar .aside {
+margin-top: 2em;
+margin-bottom: 2em;
+}
+.content .aside + .aside {
+margin-top: 3em;
+}
+.aside:first-child {
+margin-top: 0;
+}
+.spacer-top {
+padding-top: 1.25em;
+}
+.spacer-bottom {
+padding-bottom: 1.25em;
+}
+/*promos*/
+.promo {
+max-width: 640px;
+}
+.promo a {
+display: block;
+min-height: 368px;
+background-size: cover;
+background-position: center center;
+}
+/*spotlights*/
+.spotlight-item {
+position: relative;
+}
+.spotlight-image {
+min-height: 500px;
+}
+.spotlight-item .textbox {
+position: absolute;
+top: 0;
+bottom: 0;
+width: 300px;
+padding: 46px 28px 46px 34px;
+color: #FFF;
+background-color: rgba(0, 0, 0, 0.75);
+}
+.spotlight-item .textbox.right {
+right: 0;
+}
+/*content-blurb*/
+.content-blurb {
+display: table;
+line-height: 1.4;
+}
+.content-blurb .imagebox {
+display: table-cell;
+vertical-align: top;
+padding-right: 1.75em;
+padding-top: 0.2em;
+line-height: 0;
+}
+.content-blurb .imagebox a:hover {
+opacity: 0.8;
+}
+.content-blurb .textbox {
+display: table-cell;
+vertical-align: top;
+}
+.content-blurb p {
+margin-bottom: 0.65em;
+}
+.content-blurb p:last-child {
+margin-bottom: 0;
+}
+/*footer*/
+footer {
+max-width: 1600px;
+margin: 0px auto;
+padding-right: 4%;
+padding-left: 4%;
+background: rgb(21,21,21);
+}
+.footer-wrap {
+margin-right: auto;
+margin-left: auto;
+}
+.footer {
+display: table;
+height: 185px;
+width: 100%;
+color:rgb(255,255,255);
+}
+.footer-links, .footer-logo {
+display: table-cell;
+vertical-align: middle;
+}
+.footer-logo img {
+display: inline-block;
+vertical-align: middle;
+}
+.footer-logo address {
+display: inline-block;
+vertical-align: middle;
+margin-left: 3.75%;
+}
+.footer-logo address a {
+display: inline-block;
+margin-top: 0.1em;
+color: #3BBCF1
+}
+.footer-links div {
+height: 75px;
+padding-left: 5%;
+float: right;
+}
+.footer-links a {
+display: block;
+margin-bottom: 3px;
+color:rgb(255,255,255);
+}
+.footer-smedia {
+float: right;
+width: 65px;
+margin-top: 4px;
+margin-left: 5%;
+border-style: none;
+}
+.footer-facebook {
+text-align: center;
+}
+.footer-smedia td {
+padding: 0;
+border-style: none;
+}
+.footer-smedia a {
+color: #999;
+}
+.footer-smedia a:hover {
+color: #63A4CD;
+text-decoration: none;
+}
+.footer-smedia i {
+display: block;
+padding: 3px;
+font-size: 26px;
+line-height: 24px;
+}
+.footer-smedia i {
+display: block;
+padding: 3px;
+font-size: 26px;
+line-height: 24px;
+}
+/*active menu state*/
+.active-menu .main-menu {
+display: block;
+}
+.active-menu .section-nav {
+display: none;
+}
+.active-search .search-form {
+display: block;
+}
+.active-search .section-nav {
+display: none;
+}
+/*search*/
+.search-form {
+display: none;
+padding-left: 4.4%;
+padding-right: 4.4%;
+background-color: #F7F7F7;
+}
+.main-search {
+display: table;
+width: 100%;
+color: #666;
+}
+.search-input {
+display: table-cell;
+}
+#searchbox {
+width: 100%;
+height: 100px;
+padding-left: 12px;
+padding-right: 12px;
+background: none !important;
+border: none !important;
+font-family: lato !important;
+font-size: 24px !important;
+font-weight: 400 !important;
+font-style: italic;
+color: inherit;
+}
+.search-button {
+display: table-cell;
+width: 2em;
+}
+.main-search button {
+width: 100%;
+height: 100px;
+color: inherit;
+white-space: nowrap;
+}
+.main-search button:hover {
+color: #006AA4;
+}
+.search-submit {
+font-size: 24px;
+}
+.search-close {
+font-size: 20px;
+}
+::-webkit-input-placeholder {
+  color: transparent;
+}
+::-moz-placeholder {
+color: transparent;
+}
+:-ms-input-placeholder {
+color: transparent;
+}
+::-moz-placeholder {
+color: transparent;
+}
+#searchbox::-ms-clear {
+display: none;
+}
+/*main menu*/
+.main-menu {
+display: none;
+background: rgb(42,42,42);
+}
+.menu-header {
+padding-left: 79px;
+text-align: center;
+background: #3F3F3F;
+line-height: 42px;
+}
+.menu-header a {
+color: #E4E4E4;
+}
+.menu-header button {
+color: #999;
+}
+.menu-header a {
+display: inline-block;
+padding-left: 18px;
+padding-right: 18px;
+font-size: 24px;
+text-decoration: none;
+}
+.menu-header button {
+float: right;
+width: 55px;
+margin-right: 24px;
+font-size: 20px;
+line-height: inherit;
+}
+.menu-header a:hover, .menu-header button:hover {
+color: #5CA3CD;
+}
+.menu-panel {
+max-width: 1420px;
+margin-right: auto;
+margin-left: auto;
+padding: 40px 2% 45px 3.5%;
+}
+.menu {
+display: table;
+table-layout: fixed;
+width: 100%;
+}
+.menu h6 {
+margin-bottom: 6px;
+line-height: 1.15;
+color: rgb(113,187,232);
+}
+.menu h6 a {
+padding-top: 0px;
+padding-bottom: 0px;
+font-size: inherit;
+color: inherit;
+}
+.menu .subnav {
+display: table-cell;
+vertical-align: top;
+padding-left: 18px;
+padding-right: 6px;
+border-left: 1px solid rgb(78,78,78);
+}
+.menu-title {
+display: none;
+}
+.menu a {
+display: block;
+padding-top: 6px;
+padding-bottom: 6px;
+font-size: 16px;
+line-height: 1.15;
+color: #EEE;
+}
+.student-nav {
+background-color: #3F3F3F;
+text-align: center;
+font-size: 14px;
+}
+.student-nav a {
+display: inline-block;
+padding: 0 2.5%;
+line-height: 36px;
+color: #EEE;
+text-transform: uppercase;
+}
+/*section-nav*/
+.section-nav {
+display: table;
+width: 100%;
+white-space: nowrap;
+}
+.section-nav button { 
+display: none;
+}
+.section-nav a, .section-nav span {
+padding: 6px 14px 8px;
+font-size: 18px;
+line-height: 20px;
+color: #FFF;
+text-decoration: none;
+}
+.section-nav a:hover {
+background-color: #5CA3CD;
+}
+.section-title {
+display: table-cell;
+width: 20%;
+background: #116999;
+text-align: center;
+vertical-align: middle;
+}
+.section-title a, .section-title span {
+display: block;
+padding-left: 65px;
+padding-right: 65px;
+}
+.section-links {
+display: table-cell;
+padding-left: 20px;
+background-color: #2B7CA9;
+}
+.section-links a, .section-links .dropdown {
+display: inline-block;
+vertical-align: middle;
+}
+.dropdown {
+position: relative;
+}
+.dropdown span {
+display: block;
+}
+.section-nav .dropdown span {
+cursor: pointer;
+}
+.dropdown:hover:after, .dropdown.active:after, .dropdown > a:hover:after {
+content: ' ';
+height: 0;
+position: absolute;
+width: 0;
+border: 11px solid transparent;
+top: 100%;
+left: 50%;
+margin-left: -12px;
+}
+.dropdown:hover:after, .dropdown.active:after {
+z-index: 900;
+border-top-color: #2B7CA9;
+}
+.dropdown > a:hover:after {
+z-index: 910;
+border-top-color: #5CA3CD;
+}
+.section-title.active:after {
+border-top-color: #116999;
+}
+.dropdown-links {
+display: none;
+position: absolute;
+top: 34px;
+left: 0;
+z-index: 900;
+min-width: 100%;
+padding-top: 18px;
+padding-bottom: 22px;
+background: rgba(63, 63, 63, 0.9);
+}
+.dropdown-links a {
+display: block;
+padding-top: 6px;
+padding-bottom: 6px;
+font-size: 16px;
+}
+.dropdown-links strong {
+display: none;
+}
+.section-nav .dropdown-links a:hover {
+background: #777;
+}
+.section-links .dropdown-links {
+min-width: 10em;
+}
+.dropdown:hover .dropdown-links {
+display: block;
+}
+/*lists*/
+.list-colx4.x-axis h5 {
+float: left;
+width: 12.5em;
+margin-top: 0;
+margin-right: 1.5em;
+}
+.list-colx4 > ul {
+min-height: 4em;
+}
+/*resource tables*/
+.resource-table thead {
+display: none;
+}
+/*images*/
+/*show-caption moved to _media/css*/
+.show-caption { 
+position: relative; 
+overflow: hidden; 
+}
+.show-caption:before { 
+content: "?"; 
+position: absolute; 
+bottom: 10px;
+right: 15px;
+background-color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 0.85);
+color: black;
+width: 26px;
+height: 24px;
+-webkit-border-radius: 12px;
+-moz-border-radius:12px;
+border-radius: 12px;
+text-align: center;
+font-size: 18px;
+font-weight: 400;
+line-height: 24px;
+}
+.show-caption:hover:before {
+display: none;
+}
+.show-caption:hover figcaption {
+display: block;
+}
+.show-caption figcaption { 
+display: none;
+position: absolute;
+right: 0;
+bottom: 0;
+max-width: 600px;
+padding-top: 6px;
+padding-right: 20px;
+padding-left: 20px;
+padding-bottom: 8px;
+background-color: rgb(0, 0, 0);
+background-color: rgba(0, 0, 0, 0.8);
+font-style: normal;
+color: white;
+}
+
+/*sidebar blocks*/
+.sidebar figure img {
+display: block;
+}
+.sidebar figcaption {
+font-style: normal;
+}
+.sidebar-meta {
+program-info: 16em;
+}
+
+</style>
+<!--metadata-->
+<meta charset="utf-8"/>
+<meta content="8E9D271C07791E63A04727652C48CBB3" name="msvalidate.01"/>
+<title>Colby-Sawyer College</title>
+<meta content="Founded in 1837, Colby-Sawyer is a comprehensive baccalaureate college that integrates the liberal arts and sciences with professional preparation. The college is located in the scenic Lake Sunapee Region of central New Hampshire." name="description"/>
+<meta content="339638262902567" property="fb:app_id"/>
+<meta content="Colby-Sawyer College" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="Colby-Sawyer College" property="og:title"/>
+<meta content="Founded in 1837, Colby-Sawyer is a comprehensive baccalaureate college that integrates the liberal arts and sciences with professional preparation. The college is located in the scenic Lake Sunapee Region of central New Hampshire." property="og:description"/>
+<meta content="https://colby-sawyer.edu/" property="og:url"/>
+<meta content="/assets/site/colgate-aerial.jpg" property="og:image"/>
+<meta content="telephone=no" name="format-detection"/>
+
+<style>@font-face { font-family: icons; src: url('/css/fonts/icons.woff2') format('woff2'), url('/css/fonts/icons.woff') format('woff'); }</style>
+
+
+<link href="/img/site/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/img/site/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<style>
+</style>
+</head>
+<body>
+<!--swiftype/google-->
+<div class="page-wrap " data-swiftype-index="false" id="menu-state">
+<!--header-->
+<header data-swiftype-index="false" role="banner">
+<a class="header-logo" href="https://colby-sawyer.edu/" tabindex="1"><img aria-hidden="true" class="hide-mobile" src="/assets/site/csc-wordmark.png"/></a>
+<nav class="header-nav" role="navigation">
+<a href="https://colby-sawyer.edu/visit" tabindex="-1">VISIT</a><a href="/apply" tabindex="-1">APPLY</a><a href="https://colby-sawyer.edu/giving" tabindex="-1">GIVE</a><button aria-expanded="false" onclick="menuState('active-search');" role="button" tabindex="2"><i aria-hidden="true"></i></button><button aria-expanded="false" onclick="menuState('active-menu');" role="button" tabindex="6"><i aria-hidden="true" class="nav-icon"></i></button>
+</nav>
+</header>
+<!--search-->
+<form class="search-form" data-swiftype-index="false" role="search">
+<div class="limit">
+<div class="main-search">
+<div class="search-button">
+<button aria-hidden="true" class="search-submit hide-mobile" role="button" tabindex="4" title="Search" type="submit">SEARCH FOR:</button>
+</div>
+<div class="search-input">
+<input aria-label="enter search text" class="st-default-search-input" id="searchbox" placeholder="SEARCH" tabindex="3" type="text"/>
+</div>
+<div class="search-button">
+<button class="search-close hide-mobile" onclick="menuState('close-menus'); return false;" role="button" tabindex="5"><i aria-hidden="true"></i></button>
+</div>
+</div></div>
+</form>
+<!--main menu-->
+<div class="main-menu" data-swiftype-index="false">
+<nav aria-hidden="true" class="menu-header header-icons close-icon hide-mobile">
+<a href="https://facebook.com/colbysawyercollege" target="_blank"><i></i></a>
+<a href="https://twitter.com/colbysawyer" target="_blank"><i></i></a>
+<a href="https://instagram.com/colbysawyercollege" target="_blank"><i></i></a>
+<a href="https://youtube.com/user/colbysawyercollege" target="_blank"><i></i></a>
+<a href="https://colby-sawyer.meritpages.com/" target="_blank"><i></i></a>
+<button onclick="menuState('close-menus')"><i></i></button>
+</nav>
+<div class="menu-panel" role="navigation">
+<div class="menu" role="menubar">
+<!--about-->
+<div class="subnav">
+<button aria-expanded="false" class="menu-title" onclick="menuState(this);" role="button">ABOUT<i aria-hidden="true"></i></button>
+<nav class="sublinks" role="menu">
+<h6><a href="https://colby-sawyer.edu/about">About</a></h6>
+<a href="https://colby-sawyer.edu/assets/about/campus-map.pdf" target="_blank">Campus Map</a>
+<a href="https://colby-sawyer.edu/about/alpha-directory">College Directory</a>
+<a href="https://colby-sawyer.edu/governance">College Leadership</a>
+<a href="https://colby-sawyer.edu/diversity">Diversity &amp; Inclusion</a>
+<a href="https://colby-sawyer.edu/about/driving-directions">Directions &amp; Parking</a>
+<a href="https://colby-sawyer.edu/emergency">Emergency</a>
+<a href="https://colby-sawyer.edu/about/main-contacts">Main Contacts</a>
+<a href="https://colby-sawyer.edu/communications">Marketing &amp; Communications</a>
+<a href="https://colby-sawyer.edu/sustainability">Sustainability</a>
+</nav>
+</div>
+<!--admissions-->
+<div class="subnav">
+<button aria-expanded="false" class="menu-title" onclick="menuState(this);" role="button">ADMISSIONS<i aria-hidden="true"></i></button>
+<nav class="sublinks" role="menu">
+<h6><a href="https://colby-sawyer.edu/admissions">Admissions</a></h6>
+<a href="https://colby-sawyer.edu/apply">Applying</a>
+<a href="https://colby-sawyer.edu/admissions/contact">Contact Admissions</a>
+<a href="https://colby-sawyer.edu/financial-aid">Financial Aid</a>
+<a href="https://colby-sawyer.edu/admissions/majors">Majors &amp; Minors</a>
+<a href="https://colby-sawyer.secure.force.com/form?formid=217721" target="_blank">Request Information</a>
+<a href="/apply/non-degree-applications">Take a Course</a>
+<a href="https://colby-sawyer.college-tour.com" target="_blank">Virtual Tour</a>
+<a href="https://colby-sawyer.edu/visit">Visiting</a>
+</nav>
+</div>
+<!--academics-->
+<div class="subnav">
+<button aria-expanded="false" class="menu-title" onclick="menuState(this);" role="button">ACADEMICS<i aria-hidden="true"></i></button>
+<nav class="sublinks" role="menu">
+<h6><a href="https://colby-sawyer.edu/academics">Academics</a></h6>
+<a href="https://colby-sawyer.edu/academics/schedules">Academic Calendar</a>
+<!--<a href="https://colby-sawyer.edu/academics/academic-deans">Academic Deans</a>-->
+<a href="https://colby-sawyer.edu/adventures">Adventures in Learning</a>
+<a href="https://colby-sawyer.edu/academics/schedules">Course Catalog</a>
+<a href="https://colby-sawyer.edu/academics/majors">Majors &amp; Minors</a>
+<a href="https://colby-sawyer.edu/registrar">Registrar</a>
+<a href="/academics/schools">Schools</a>
+<a href="https://colby-sawyer.edu/academics/sustainable-learning-initiative">Sustainable Learning Initiative</a>
+<a href="https://colby-sawyer.edu/learning-collaborative">Student Learning Collaborative</a>
+</nav>
+</div>
+<!--student life-->
+<div class="subnav">
+<button aria-expanded="false" class="menu-title" onclick="menuState(this);" role="button">STUDENT LIFE<i aria-hidden="true"></i></button>
+<nav class="sublinks" role="menu">
+<h6 class="hide-mobile">Student Life</h6>
+<a href="https://www.colby-sawyerathletics.com">Athletics</a>
+<a href="https://colby-sawyer.edu/access-resources">Access Resources</a>
+<a href="https://colby-sawyer.edu/baird-health">Baird Health Center</a>
+<a href="https://colby-sawyer.edu/campus-safety">Campus Safety</a>
+<a href="https://colby-sawyer.edu/citizenship-education">Citizenship Education</a>
+<a href="https://colby-sawyer.edu/commencement">Commencement</a>
+<a href="https://colby-sawyer.edu/harrington-center">Harrington Center</a>
+<!--<a href="https://colby-sawyer.edu/international/services">International Students</a>-->
+<a href="https://colby-sawyer.edu/parents">Parents &amp; Family</a>
+<a href="https://colby-sawyer.edu/residential-life">Residential Life</a>
+<a href="https://colby-sawyer.edu/student-activities">Student Activities</a>
+<a href="https://colby-sawyer.edu/student-success">Student Success</a>
+</nav>
+</div>
+<!--alumni-->
+<div class="subnav">
+<button aria-expanded="false" class="menu-title" onclick="menuState(this);" role="button">ALUMNI &amp; FRIENDS<i aria-hidden="true"></i></button>
+<nav class="sublinks" role="menu">
+<h6><a href="https://colby-sawyer.edu/alumni">Alumni &amp; Friends</a></h6>
+<a href="https://colby-sawyer.edu/adventures">Adventures in Learning</a>
+<a href="https://colby-sawyer.edu/alumni/awards">Alumni Awards</a>
+<a href="https://colby-sawyer.edu/alumni/profiles">Alumni Profiles</a>
+<a href="https://colby-sawyer.edu/annual-report">Annual Report</a>
+<a href="https://colby-sawyer.edu/alumni/contact">Contact Us</a>
+<a href="https://colby-sawyer.edu/giving">Giving to Colby-Sawyer</a>
+<a href="https://colby-sawyer.edu/homecoming">Homecoming</a>
+<a href="https://colby-sawyer.edu/alumni/events">News &amp; Events</a>
+<a href="https://colby-sawyer.edu/registrar/transcript-requests">Transcript Requests</a>
+<a href="https://colby-sawyer.edu/alumni/volunteer">Volunteer</a>
+</nav>
+</div>
+<!--offices + services-->
+<div class="subnav">
+<button aria-expanded="false" class="menu-title" onclick="menuState(this);" role="button">OFFICES &amp; SERVICES<i aria-hidden="true"></i></button>
+<nav class="sublinks" role="menu">
+<h6 class="hide-mobile">Offices &amp; Services</h6>
+<a href="https://colby-sawyer.edu/harrington-center">Career Services</a>
+<a href="https://colbysawyerdining.catertrax.com/" target="_blank">Dining Services</a>
+<a href="https://colby-sawyer.edu/event-services">Event Services</a>
+<a href="https://colby-sawyer.edu/facilities">Facilities</a>
+<a href="https://colby-sawyer.edu/financial-services">Financial Services</a>
+<a href="https://www.colby-sawyerathletics.com/sports/2009/8/17/GEN_0817090030.aspx?path=hogan&amp;&amp;tab=4">Hogan Sports Center</a>
+<a href="https://colby-sawyer.edu/human-resources">Human Resources</a>
+<a href="https://colby-sawyer.edu/technology">Information Technology</a>
+<a href="https://library.colby-sawyer.edu/home">Library</a>
+<a href="https://colby-sawyer.edu/testing-center">Testing Center</a>
+<a href="https://colby-sawyer.edu/windyhill">Windy Hill</a>
+<div class="hide-desktop">
+<a href="https://bncvirtual.com/colby-sawyer" target="_blank">Book Store</a>
+<a href="https://shop.colby-sawyer.edu/" target="_blank">Campus Store</a>
+<a href="https://my.colby-sawyer.edu">My Colby-Sawyer</a>
+<a href="https://colby-sawyer.edu/technology">Web Gateways</a>
+</div>
+</nav>
+</div>
+<!--athletics-->
+<a class="menu-title hide-desktop" href="https://www.colby-sawyerathletics.com">ATHLETICS</a>
+</div></div>
+<nav class="student-nav" role="menu">
+<a href="https://www.colby-sawyerathletics.com">Athletics</a>
+<a href="https://bncvirtual.com/colby-sawyer" target="_blank">Book Store</a>
+<a href="https://shop.colby-sawyer.edu/" target="_blank">Campus Store</a>
+<a href="https://my.colby-sawyer.edu">My Colby-Sawyer</a>
+<a href="https://colby-sawyer.edu/technology">Web Gateways</a>
+</nav>
+</div>
+<!--section nav-->
+<nav class="section-nav" role="menubar">
+<div class="section-title">
+<a href="https://colby-sawyer.edu/">Colby-Sawyer College</a>
+</div>
+<div class="section-links">
+<a href="https://colby-sawyer.edu/about">About</a>
+<a href="https://colby-sawyer.edu/admissions">Admissions</a>
+<a href="https://colby-sawyer.edu/academics">Academics</a>
+<div class="subnav dropdown">
+<button aria-expanded="false" aria-haspopup="true" onclick="menuState(this);" role="button">Student Life<i aria-hidden="true"></i></button>
+<span>Student Life</span>
+<div class="sublinks dropdown-links" role="menu">
+<a href="https://colby-sawyer.edu/access-resources">Access Resources</a>
+<a href="https://colby-sawyer.edu/baird-health">Baird Health Center</a>
+<a href="https://colby-sawyer.edu/campus-safety">Campus Safety</a>
+<a href="https://colby-sawyer.edu/harrington-center">Harrington Center</a>
+<a href="https://colby-sawyer.edu/citizenship-education">Citizenship Education</a>
+<a href="https://colby-sawyer.edu/commencement">Commencement</a>
+<a href="https://colby-sawyer.edu/parents">Parents &amp; Family</a>
+<a href="https://colby-sawyer.edu/residential-life">Residential Life</a>
+<a href="https://colby-sawyer.edu/student-activities">Student Activities</a>
+<a href="https://colby-sawyer.edu/student-success">Student Success</a>
+</div></div>
+<a href="https://colby-sawyer.edu/alumni">Alumni</a>
+<div class="subnav dropdown">
+<button aria-expanded="false" aria-haspopup="true" onclick="menuState(this);" role="button">Offices &amp; Services<i aria-hidden="true"></i></button>
+<span>Offices &amp; Services</span>
+<div class="sublinks dropdown-links" role="menu">
+<a href="https://colby-sawyer.edu/bookstore" target="_blank">Bookstore</a>
+<a href="https://shop.colby-sawyer.edu" target="_blank">Campus Store</a>
+<a href="https://colby-sawyer.edu/harrington-center">Career Services</a>
+<a href="https://colbysawyerdining.catertrax.com/" target="_blank">Dining Services</a>
+<a href="https://colby-sawyer.edu/event-services">Event Services</a>
+<a href="https://colby-sawyer.edu/financial-services">Financial Services</a>
+<a href="https://colby-sawyerathletics.com/sports/2009/8/17/GEN_0817090030.aspx?path=hogan&amp;&amp;tab=4">Hogan Sports Center</a>
+<a href="https://colby-sawyer.edu/human-resources">Human Resources</a>
+<a href="https://colby-sawyer.edu/information">Information Technology</a>
+<a href="https://library.colby-sawyer.edu/home">Library</a>
+<a href="https://colby-sawyer.edu/testing-center">Testing Center</a>
+<a href="https://colby-sawyer.edu/windyhill">Windy Hill</a>
+</div></div>
+<a href="https://colby-sawyerathletics.com">Athletics</a>
+</div>
+</nav>
+<!--content-->
+<style>
+.desktop.homepage {
+padding-bottom: 40px;
+}
+.limit {
+max-width: 1100px;
+}
+.banner {
+height: 525px;
+}
+.extended-banner {
+height: 550px;
+overflow: hidden;
+margin-bottom: 2px;
+}
+.feedbox {
+width: 30%;
+padding: 0 3.65% 3.75% 3.75%;
+}
+.feed {
+margin-bottom: 2.5em;
+}
+aside.promo, aside.video {
+margin: 0 0 32px 0 !important;
+}
+.promo img {
+display: block;
+width:100%;
+}
+.promo a {
+display: inline;
+}
+.promo img:hover {
+opacity: 0.75;
+}
+@media only screen and (max-width: 1200px) 
+{ .section-title {display:none;} .section-links {padding-left: 32px;}}
+</style>
+<main aria-label="main content" class="page" role="main">
+<!--swiftype  content-->
+<div class="collapsed" data-swiftype-index="true">Founded in 1837, Colby-Sawyer is a comprehensive baccalaureate college that integrates the liberal arts and sciences with professional preparation. The college is located in the scenic Lake Sunapee Region of central New Hampshire.</div>
+<div class="desktop homepage">
+<!--banner image-->
+<div class="banner font-lg">
+<div class="banner-image image" style="background-image: url(/assets/academics/sciences/bernashe-biology-quote.jpg); background-position:top center;"></div>
+<a class="banner-textbox txt-md" href="https://colby-sawyer.edu/biology">
+<p class="icon-links right" id="banner-action">LEARN MORE <i aria-hidden="true"></i></p>
+<div class="banner-text banner-quote">
+<p>“My Biology classes have taken me to places like Martha’s Vineyard, New Jersey and even Finland. The wide variety of hands-on experiences available to students really makes Colby-Sawyer unique.”</p>
+<h6><em>Kaitlin Bernashe ’20</em></h6>
+<p><em>Biology</em></p></div>
+</a>
+</div>
+<style>
+.banner {
+display: table;
+width: 100%;
+}
+.banner-image {
+display: table-cell;
+}
+.banner-textbox {
+display: table-cell;
+width: 26%;
+min-width: 375px;
+padding: 5% 3.75% 2.5% 4%;
+vertical-align: middle;
+color: #EEE;
+background-color: #292929;
+}
+.banner-headline {
+margin-top: 0;
+margin-bottom: 0.45em;
+color: #0DA9E8;
+}
+.banner-textbox p {
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-textbox p + p {
+margin-bottom: 0.65em;
+}
+.banner-textbox ul {
+line-height: 1.3em;
+}
+.banner-textbox .spaced-out li {
+margin-bottom: 0.6em;
+}
+#banner-action {
+margin-bottom: 16%;
+font-size: 1.05em;
+font-weight: 300;
+letter-spacing: 0.05em;
+color: #FFF;
+opacity: 0.65;
+}
+a.banner-textbox {
+text-decoration: none;
+}
+a:hover.banner-textbox {
+background-color: #000;
+color: #EEE;
+text-decoration: none;
+}
+a:hover #banner-action {
+opacity: 0.75;
+}
+.banner-quote {
+padding-bottom: 1em;
+}
+.banner-quote h6 {
+margin-top: 0.8em;
+margin-bottom: 0;
+font-size: 1.1em;
+font-style: italic;
+color: #0092CD;
+}
+.banner-quote h6 + p {
+font-style: italic;
+}
+@media only screen and (max-width: 1430px) 
+{.banner {height: 480px;}}
+@media only screen and (max-width: 1160px) 
+{.banner {height: 425px;} .banner-textbox {min-width: 365px;}}
+</style>
+<!--content area-->
+<ul class="badges">
+<li><a href="/admissions/majors"><img alt="Majors button" src="/assets/admissions/majors-badge.svg"/></a></li>
+<li><a href="https://colby-sawyer.secure.force.com/form?formid=217721"><img alt="Inquire button" src="/assets/admissions/inquire-badge.svg"/></a></li>
+<li><a href="/visit"><img alt="Visit button" src="/assets/admissions/visit-badge.svg"/></a></li>
+<li><a href="/apply"><img alt="Apply button" src="/assets/admissions/apply-badge.svg"/></a></li>
+</ul>
+<style>
+.badges {
+display: flex;
+justify-content: space-between;
+width: 65%;
+max-width: 800px;
+list-style: none;
+margin: 50px auto 65px;
+padding: 0;
+}
+.badges img {
+display: block;
+width: 136px;
+height: auto;
+}
+.badges li:hover {
+opacity: 0.6;
+}
+h2.heading {
+font-weight: 400;
+}
+@media only screen and (max-width: 1160px) 
+{.badges img {width: 126px;}}
+</style>
+<div aria-label="main content" class="columns content" role="main">
+<!--stories feed-->
+<div class="column feedbox headline-hover txt-sm">
+<div class="feed">
+<h2 class="heading icon-links right"><a href="/stories">LATEST STORIES <i aria-hidden="true"></i></a></h2>
+<a class="feed-item" href="https://colby-sawyer.edu/stories/david-carroll">
+<h6 class="headline">'Seldom Seen’ Work of David M. Carroll</h6>
+<p>An exhibition featuring the rarely seen work of award-winning natural artist David M. Carroll will be on display at Colby-Sawyer College’s Davidow Center for Art + Design beginning Feb. 27.</p>
+</a>
+<a class="feed-item" href="https://colby-sawyer.edu/stories/steve-hash07">
+<h6 class="headline">Inspired Passion for the Environment</h6>
+<p>Environmental studies major Steve Hash ’07 credits those at Colby-Sawyer who inspired his passion for the environment and recognizes how his time at the college continues to impact his life. </p>
+</a>
+<a class="feed-item" href="https://colby-sawyer.edu/stories/nurse-athletes">
+<h6 class="headline">The Pulse on Nursing Scholar-Athletes</h6>
+<p>Nursing majors learn to balance academics with athletics to find  success in their sport and in their
+scrubs.</p>
+</a>
+<a class="feed-item" href="https://colby-sawyer.edu/stories/inspired-to-help">
+<h6 class="headline">Inspired to Help Others</h6>
+<p>As a high school freshman in southern New Hampshire, Robin Baldwin could sense that one of her classmates, who had been diagnosed with selective mutism, wasn’t getting the support he needed in school.</p>
+</a>
+</div>
+</div>
+<!--promo feed-->
+<div class="column">
+<aside class="aside promo full">
+<a href="https://colby-sawyer.edu/health-related-majors" target=""><img alt="Health sciences student working in lab" src="/assets/academics/health/health-related-majors-promo.jpg"/></a>
+</aside>
+<aside class="aside promo full">
+<a href="https://colby-sawyer.edu/financial-aid/applying-for-aid" target=""><img alt="Student on top of Mt. Kearsarge" src="/assets/admissions/fafsa-promo.jpg"/></a>
+</aside>
+</div>
+<!--news and events-->
+<div class="column feedbox headline-hover txt-sm">
+<!--news feed-->
+<div class="feed">
+<h2 class="heading icon-links right"><a href="/news">LATEST NEWS <i aria-hidden="true"></i></a></h2>
+<a class="feed-item" href="https://colby-sawyer.edu/news/dh-partnership">
+<h6 class="headline">Colby-Sawyer and Dartmouth-Hitchcock Build Healthcare Workforce</h6>
+<p>​Colby-Sawyer and Dartmouth-Hitchcock enhance their longstanding academic relationship to directly address the growing shortage of qualified health care professionals.</p>
+</a>
+<a class="feed-item" href="https://colby-sawyer.edu/news/david-carroll">
+<h6 class="headline">'Seldom Seen’ Art Exhibition</h6>
+<p>Rarely seen work by award-winning natural artist David M. Carroll will be on display at the Davidow Center for Art + Design beginning Feb. 27.</p>
+</a>
+</div>
+<!--events feed-->
+<div class="feed">
+<h2 class="heading icon-links right"><a href="/events">UPCOMING EVENTS <i aria-hidden="true"></i></a></h2>
+<a class="feed-item" href="/events#12038">
+<h6 class="headline">Lake Sunapee Region Chamber of Commerce Annual Meeting</h6>
+<p>Members and guests celebrate the accomplishments of 2019 and the goals for 2020.</p>
+</a>
+<a class="feed-item" href="/events#11782">
+<h6 class="headline">Duval Patrick Campaign Visit</h6>
+<p>The former Massachusetts governor discusses issues facing the nation.</p>
+</a>
+</div>
+</div>
+</div></div>
+</main>
+<!--footer-->
+<footer aria-hidden="true">
+<div class="footer-wrap">
+<div class="footer txt-sm">
+<div class="footer-logo">
+<a href="https://colby-sawyer.edu/"><img alt="Colby-Sawyer logo" src="/assets/site/footer-stamp.png"/></a>
+<address>Colby-Sawyer College<br/>541 Main Street, New London, NH<br/>
+<a href="https://colby-sawyer.edu/main-contacts">Contact Us</a></address>
+</div>
+<nav class="footer-links">
+<table class="footer-smedia">
+<tr><td><a href="https://facebook.com/colbysawyercollege" target="_blank"><i class="footer-facebook"></i></a></td><td><a href="https://youtube.com/user/colbysawyercollege" target="_blank"><i></i></a></td></tr>
+<tr><td><a href="https://twitter.com/colbysawyer" target="_blank"><i></i></a></td><td><a href="https://instagram.com/colbysawyercollege" target="_blank"><i></i></a></td></tr>
+</table>
+<div>
+<a href="https://colby-sawyer.edu/human-resources/employment">Employment</a>
+<a href="https://colby-sawyer.edu/mailroom">Mailroom</a>
+<a href="https://colby-sawyer.edu/privacy-policy">Privacy Policy</a>
+</div>
+<div>
+<a href="https://my.colby-sawyer.edu">myColby-Sawyer</a>
+<a href="https://colby-sawyer.edu/technology">Web Gateways</a>
+<a href="https://library.colby-sawyer.edu/home">Library</a>
+</div>
+<div>
+<a href="https://colby-sawyer.edu/campus-safety">Campus Safety</a>
+<a href="https://colby-sawyer.edu/emergency">Emergency</a>
+<a href="https://colby-sawyer.edu/about/alpha-directory">College Directory</a>
+</div>
+</nav>
+</div></div>
+</footer>
+</div>
+<script defer="" src="https://colby-sawyer.edu/js/desktop.js"></script>
+<script defer="" src="https://colby-sawyer.edu/js/capture.js"></script>
+<script defer="" src="https://colby-sawyer.edu/js/google.js"></script>
+<script defer="" src="https://colby-sawyer.edu/js/swiftype.js"></script>
+</body>
+</html>
+

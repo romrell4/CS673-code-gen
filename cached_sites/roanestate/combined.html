@@ -1,0 +1,1238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head><style>/* ////////////////////////////////////////////////////// */
+/* General Resets and Common Use Classes                  */
+/* ////////////////////////////////////////////////////// */
+
+html { font-family:Verdana; font-size:16px; }
+body { min-width:310px; margin:0; padding:0; } /* set min-width for page: scrolling is better than being narrower than this */
+a { /*color:#007ac7;*/ /* 2016-06-24 color shifted down to #layoutContent due to interference with WAVE extension */ text-decoration:none; }
+a:hover { text-decoration:underline; }
+a:focus { text-decoration:underline !important; }
+caption { margin:1em 0; font-weight:bold; }
+h1 { font-size:2em; line-height:2em; }
+h2 { font-size:1.5em; margin-top:1.5em; }
+h3 { font-size:1.17em; margin-top:1.75em; }
+h4 { font-size:1.0em; }
+h5 { font-size:0.83em; }
+h6 { font-size:0.67em; }
+img { border:none; }
+img { max-width:100%; height:auto !important; }
+img[usemap], map area { outline:none; }
+input, textarea, select { font-size:inherit; font-family:inherit; }
+input[type=text], input[type=password], textarea { padding:0.15em 0.2em; }
+p { margin:1.25em 0; }
+noscript { font-weight:bold; color:#D60507; }
+
+.linkMaker { color:#007ac7; /*text-decoration:underline;*/ cursor:pointer; }
+.contentClear:after { content:""; display:table; clear:both; } /* clear floated items */
+.screenReaderOnly { position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+/* 17px is first guess of scrollbar width; it updates with JS later */
+.layoutFullWidth { position:relative; left:50%; /*fallback for no calc*/ left:calc(50% + 8px); right:50%; width:100vw; /*fallback for no calc*/ width:calc(100vw - 17px); margin-left:-50vw; margin-right:-50vw; }
+
+table.general { border-collapse:collapse; border-spacing:0; }
+table.general tr:nth-child(even) { background-color:#F5F5F5; }
+table.general th, table.general td { padding:0.5em 0.25em; border:1px solid #DDD; }
+table.general th { background-color:#226291; color:white; }
+table.general p { margin:0; }
+table.general a { color:#0464A0; } /* for contrast */
+
+.faq { }
+.faq div.jumpContainer { padding:1px; /*background-color:#e2f0f7;*/ background-color:#eff7fb; }
+.faq div.jumpContainer ul { margin:1em 1.5em; padding:0; list-style-type:none; }
+.faq div.jumpContainer ul li { margin:1em auto; }
+.faq div.jumpContainer ul li a { color:#006699; font-weight:bold; font-size:0.90em; }
+.faq div.jumpContainer ul li a:visited { color:#993366; }
+.faq .faqQuestion .section.section2 { display:none; }
+.faq .faqQuestion .section.section2.expanded { color:white; text-shadow:0px 0px 1px black; }
+.faq div.faqAnswer.expanded { display:block; }
+@media screen and (max-width:900px){
+	.faq div.jumpContainer { display:none; }
+	.faq div.faqAnswer { display:none; }
+	.faq .faqQuestion { margin:0.85em 0; padding:1em; font-size:1em; border:1px solid #CDCDCD; border-radius:3px; box-shadow: 0 2px 2px -2px #CCCCCC; cursor:pointer; }
+	.faq .faqQuestion .section { display:table-cell; width:100%; }
+	.faq .faqQuestion .section.section2 { display:table-cell; padding:0 10px 0 40px; font-size:1.4em; vertical-align:middle; }
+}
+
+/* ////////////////////////////////////////////////////// */
+/* Layout Styles                                          */
+/* ////////////////////////////////////////////////////// */
+
+#layoutWeather #widgetWeather { margin:0; padding:20px 10px; text-align:center; font-family:Verdana; font-size:1em; background-color:#002845; color:white; }
+#layoutWeather #widgetWeather p { margin:0 !important; padding:0 !important; }
+#layoutWeather #widgetWeather a { color:white; text-decoration:underline; }
+#layoutWeather #widgetWeather #widgetWeather_campus { margin:10px 0; text-align:center; }
+#layoutWeather #widgetWeather .widgetWeather_column { /*float:left;*/ display:inline-block; vertical-align:top; margin-right:40px; border-collapse:collapse; }
+#layoutWeather #widgetWeather .widgetWeather_column:last-of-type { margin-right:0; }
+#layoutWeather #widgetWeather td { vertical-align:text-top; }
+#layoutWeather #widgetWeather .widgetWeather_columnRowTD1 { font-weight:bold; padding-right:10px; }
+#layoutWeather #widgetWeather .widgetWeather_columnClear { clear:both; }
+#layoutWeather #widgetWeather ul { margin:10px auto; max-width:460px; text-align:left; }
+@media screen and (max-width:900px) {
+	#layoutWeather #widgetWeather .widgetWeather_column { /*float:none;*/ /*display:table;*/ margin-right:0; }
+	#layoutWeather #widgetWeather .widgetWeather_columnRowTD1 { width:85px; }
+	#layoutWeather #widgetWeather .widgetWeather_linksText { display:block; }
+	#layoutWeather #widgetWeather .widgetWeather_linksPipe { display:none; }
+}
+
+#layoutMiniBanner { background-color:#1C0300; }
+.layoutNavMini { width:1170px; margin:0 auto; padding:0.375em 0; text-align:right; color:white; font-size:0.9em; font-family:Verdana; }
+.layoutNavMini li { display:inline-block; margin:0; padding:0; list-style-type:none; }
+.layoutNavMini a { color:white; }
+.layoutNavMini span { position:relative; top:0.8px; display:inline-block; width:1px; height:0.83em; margin:0 0.56em 0 0.59em; border-right:1px solid #794b45; -ms-transform:rotate(23deg); transform:rotate(23deg); }
+#layoutNavMobileMenu { display:none; height:20px; padding:8px 10px; color:white; font-size:0.85em; }
+#layoutNavMobile3Links { float:right; margin:3px 0 0 0; padding:0; font-size:0.82em; }
+#layoutNavMobile3Links li { display:inline-block; float:left; /*centers the slash*/ margin:0; padding:0; list-style-type:none; }
+#layoutNavMobile3Links span { padding:0 0.5em; }
+#layoutNavMobile3Links a { color:white; white-space:nowrap; }
+#layoutMobileMenuSlider { display:none; padding-bottom:1px; }
+
+#layoutBannerContainer { background-color:#8C1101; font-family:Verdana; }
+#layoutBannerContent { position:relative; width:1170px; height:97px; margin:0 auto; color:white; }
+#layoutRSFull { position:absolute; left:0; bottom:0; display:block; height:90px; /* fixes the RS on ipad landscaped */ margin-bottom:-2px; font-size:0; }
+#layoutRSShort { display:none; }
+.layoutNavPeople { position:absolute; top:16px; right:0; margin:0; padding:0; text-align:right; font-size:1em; }
+.layoutNavPeople li { display:inline-block; float:left; /*centers the slash*/ margin:0; padding:0; list-style-type:none; }
+.layoutNavPeople a { color:white; white-space:nowrap; }
+/*.layoutNavPeople span { padding:0 0.382em; color:#9D4F57; }*/
+.layoutNavPeople span { position:relative; top:0.8px; display:inline-block; width:1px; height:0.83em; margin:0 0.50em 0 0.53em; border-right:1px solid #9D4F57; -ms-transform:rotate(23deg); transform:rotate(23deg); }
+/*.rnMobile { display:none; }*/
+.layoutSearchForm { position:absolute; top:54px; right:0; width:210px; padding:5px 5px 3px 5px; font-size:1.125em; border-bottom:1px solid #9D4F57; }
+.layoutSearchForm input { -webkit-appearance:none; -webkit-border-radius:0; border-radius:0; }
+.layoutSearchForm .layoutSearchBox input { float:left; width:170px; height:21px; margin-right:5px; padding:1px 5px; color:white; background-color:transparent; border:none; }
+.layoutSearchForm .layoutSearchBox input:focus { outline:none; }
+.layoutSearchForm .layoutSearchImage input { float:left; width:23px; height:21px; }
+
+#layoutRSCCPrintBanner { position:absolute; left:-10000px; top:auto; }
+
+.layoutNavMajor { /*margin:1.5em 0;*/ margin:1.5em 0 1.8em; padding:0; list-style-type:none; text-align:center; font-weight:bold; font-size:1.25em; }
+.layoutNavMajor li { display:inline-block; }
+.layoutNavMajor a { color:black; }
+.layoutNavMajor a:hover { text-decoration:none; }
+.layoutNavMajor span { position:relative; top:7px; display:inline-block; width:8px; height:1.5em; margin:0 0.9em 0 0.5em; border-right:1px solid #6D6D6D; -ms-transform:rotate(23deg); transform:rotate(23deg); }
+
+/* for skipping navigation */
+#layoutMenuSkip { text-align:right; }
+#layoutMenuSkip a { position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; color:black; }
+#layoutMenuSkip a:focus { position:static; width:auto; height:auto; }
+
+#layoutWebwizardEdit { position:fixed; top:5px; right:5px; }
+
+/* this must go here (as in, not just the homepage) due to need to break out of layoutContent  */
+#reconnectBanner { display:none; margin:1.5em 0; padding:25px 2em 30px; /*background-color:#8cb98f;*/ background-image:url(/_images/reconnectHomepageBanner2_background.jpg); background-size:contain; background-position:center; text-align:center; cursor:pointer; /* has a JS click event */ }
+#reconnectBanner img.mobile { display:none; padding-top:10px; }
+@media screen and (max-width:984px) {
+	#reconnectBanner { background-size:cover; } 
+	#reconnectBanner img.desktop { display:none; }
+	#reconnectBanner img.mobile { display:inline; }
+}
+
+/* this must go here (as in, not just the homepage) due to need to break out of layoutContent  */
+#wintertermBanner { display:none; margin:1.5em 0; padding:25px 2em 25px; /*background-color:#8cb98f;*/ background-image:url(/_images/wintertermHomepageBanner_background.png); background-size:cover; background-position:bottom; text-align:center; cursor:pointer; /* has a JS click event */ }
+#wintertermBanner img.mobile { display:none; padding-top:10px; }
+@media screen and (max-width:984px) {
+	#wintertermBanner { background-size:cover; } 
+	#wintertermBanner img.desktop { display:none; }
+	#wintertermBanner img.mobile { display:inline; }
+}
+
+#layoutContent { position:relative; /*prevent positioned content from breaking out of parent*/ max-width:1170px; min-height:250px; margin:0 auto 10px; line-height:1.5; }
+.layoutContentClass li { margin-top:0.25em; margin-bottom:0.25em; } /* was using padding, but that doesn't allow nested lists to collapse margin */
+.layoutContentClass a { color:#007ac7; } /* added 2016-06-24; a { color:#007ac7; } was interfering with WAVE extension */
+
+/* optionally give to a UL, or any other suitable element this class in a subpage */
+.layoutContentClass .layoutSidebar { float:right; max-width:40%; padding:1em 2em; margin:0 0 2em 2em; font-size:1.1em; background-color:#F5F5F5; list-style-type:none; }
+.layoutContentClass .layoutSidebar ul { margin:0; padding:0; list-style-type:none; } /* if class was added to something else */
+.layoutContentClass .layoutSidebar h3, .layoutContentClass .layoutSidebar h4 { margin-top:1em; }
+.layoutContentClass .layoutSidebar li { padding:0.3em 0; }
+.layoutContentClass .layoutSidebar a { color:#0464A0; }
+@media screen and (max-width:984px) {
+	.layoutContentClass .layoutSidebar { float:none; max-width:none; margin:2em 0; }
+}
+
+/* optionally make a sidebar list into a horizontal navigation */
+.layoutContentClass .layoutSidebar.horizontal { float:none; max-width:none; margin:2em 0; padding:0; background:none; }
+.layoutContentClass .layoutSidebar.horizontal li { display:inline-block; margin:0; font-weight:bold; }
+.layoutContentClass .layoutSidebar.horizontal li a { display:inline-block; margin:0 0.5em 0.5em 0; padding:0.5em 1em; background-color:#30485e; color:white; text-decoration:none; }
+.layoutContentClass .layoutSidebar.horizontal li a:hover { background-color:#989898; }
+.layoutContentClass .layoutSidebar.horizontal li a:focus { background-color:#989898; text-decoration:none !important; /* override; the "focus" will be the background color */ }
+@media screen and (max-width:500px) {
+	.layoutContentClass .layoutSidebar.horizontal li { display:block; text-align:center; }
+	.layoutContentClass .layoutSidebar.horizontal li a { display:block; }
+}
+
+#layoutContact { clear:both; max-width:1170px; margin:0 auto; }
+#layoutContact h3.normal { float:left; margin:0; font-weight:normal; font-size:16px; /* fix IE */ font-size:initial; }
+#layoutContact p { margin-top:2em; }
+#layoutContact a { color:#007ac7; }
+
+#layoutFooter { margin:2.5em 0 1.5em; padding:2.5em 0; background-color:#8C1101; color:white; font-size:0.938em; }
+#layoutFooterContent { width:1170px; margin:0 auto; }
+#layoutFooter ul { float:left; margin:0 45px 20px 0; padding:0; list-style-type:none; }
+#layoutFooter li { margin:0.4em 0; }
+#layoutFooter a { color:white; }
+#layoutSocial { clear:both; margin-left:20px; margin-right:20px; padding-top:10px; font-weight:bold; font-size:1.25em; text-align:center; color:white; }
+#layoutSocial a { margin:0 15px; }
+#layoutSocial img { height:50px !important; width:auto; }
+#layoutLegal { max-width:1170px; margin:20px auto 10px; font-size:10px; /*color:#ABABAB;*/ color:#767676; }
+#layoutLegal a { color:#767676; font-weight:bold; }
+#layoutExternalLogos { float:right; text-align:center; }
+#layoutExternalLogos a { display:inline-block; margin:-5px 40px 10px; }
+
+/* ////////////////////////////////////////////////////// */
+/* Subpages                                               */
+/* ////////////////////////////////////////////////////// */
+
+#layoutCrumbs, #layoutSiteTitle, #layoutPageTitle { max-width:1170px; margin-left:auto; margin-right:auto; }
+#subpagePhoto { display:block; margin:2em 0; background-color:#6F6F6F; background-position:center; background-size:cover; background-repeat:no-repeat; }
+#subpagePhoto:hover { text-decoration:none; }
+#layoutSiteTitle { padding:0.882em 0; font-size:3.188em; color:white; font-weight:bold; text-shadow:1px 1px 2px rgba(0,0,0,.8); }
+#layoutCrumbs { margin:1rem auto 2rem; font-size:0.813em; /*color:#A7A7A7;*/ color:#757575; }
+#layoutCrumbs div { display:inline; }
+#layoutCrumbs a { color:#757575; }
+#layoutCrumbs img { margin-bottom:2px; vertical-align:middle; }
+#layoutCrumbs .crumbArrow { padding:0 0.75em; /*color:#E6E6E6;*/ color:#757575; font-size:0.7em; }
+#layoutCrumbs .lastCrumb { display:none; }
+#layoutPageTitle { margin:1.5rem auto; font-size:1.7em; font-weight:normal; }
+
+/* for editing homepage spotlight (the rotator) */
+.spotlightTable td { text-align:center; } .spotlightTable td:nth-child(1) { font-weight:bold; font-size:1.5em; }
+
+/* for Webwizard wwCatalog() plugin */
+#layoutContent .layoutCatalogQuote { padding-left:25px; border-left:solid 4px #a0a002; /*#e4e400*/ }
+#layoutContent .layoutCatalogQuote h4 { margin:0; padding:0; }
+#layoutContent .layoutCatalogQuoteTitle a { font-weight:bold; color:#6f6f00; }
+#layoutContent .layoutCatalogQuotePage { /*font-style:italic;*/ color:#5b5b00; }
+
+/* ////////////////////////////////////////////////////// */
+/* Mailforms                                              */
+/* ////////////////////////////////////////////////////// */
+
+.layoutContentClass form[action*="/mailform/"]:not(.plain) { padding:1px 1.5em; background-color:#f5f5f5; background-color:#fafafa; border-left:5px solid #dbdbdb; }
+.layoutContentClass form[action*="/mailform/"] label { display:block; margin-top:1.25em; font-weight:bold; font-size:0.95em; }
+.layoutContentClass form[action*="/mailform/"] .requiredNotation { font-size:0.7em; font-style:italic; font-weight:normal; }
+.layoutContentClass form[action*="/mailform/"]:not(.plain) input[type=submit] { display:block; margin:1em 0 1.5em; padding:0.3em 0.75em; font-weight:bold; }
+.layoutContentClass form[action*="/mailform/"] textarea { min-width:27em; min-height:5em; }
+
+/* if using fieldset groupings */
+.layoutContentClass form[action*="/mailform/"] fieldset { margin:1em 0; padding-top:0; padding-bottom:0; background-color:#f9fafb; border:1px solid #9C9B9B; }
+.layoutContentClass form[action*="/mailform/"] fieldset label { margin:0.5em 0; font-weight:normal; }
+.layoutContentClass form[action*="/mailform/"] fieldset input:last-of-type { margin-bottom:1em; }
+.layoutContentClass form[action*="/mailform/"] legend { font-weight:bold; font-size:0.95em; display:-ms-inline-grid; /* for very long legends in IE going off page */ }
+
+/* if a link is present, darken it for contrast */
+.layoutContentClass form[action*="/mailform/"]:not(.plain) a { color:#0067a7; }
+
+.layoutContentClass form[action*="/mailform/"] .error { outline:4px groove #D40000; }
+.layoutContentClass form[action*="/mailform/"] .errorMessage { color:#D40000; }
+
+@media screen and (max-width:984px){
+	.layoutContentClass form[action*="/mailform/"] { padding:1px 0.75em; }
+	.layoutContentClass form[action*="/mailform/"] textarea { width:100%; min-width:5em; }
+}
+
+/* ////////////////////////////////////////////////////// */
+/* Mobile-related                                         */
+/* ////////////////////////////////////////////////////// */
+
+/* used to test for narrow window width to set JS variable */
+#mobileDetection { display:none; position:relative; z-index:0; /* must be positioned for z-index to work */ }
+
+/* CSS for smaller desktop view (not used in mobile detection) */
+@media screen and (max-width:1225px) { /* was 1186px */
+	.layoutNavMini { width:auto; margin:0 20px; }
+	#layoutBannerContent { width:auto; margin:0 20px; }
+	.layoutNavPeople { top:15px; }
+
+	#layoutContent, #layoutCrumbs, #layoutSiteTitle, #layoutPageTitle, #layoutContact { max-width:950px; }
+	
+	#layoutFooterContent { width:auto; margin-left:20px; margin-right:20px; }
+	#layoutLegal { margin:20px; }
+}
+
+@media screen and (max-width:1070px) { 
+	.layoutNavPeople { font-size:0.9em; }
+	.layoutNavPeople span { margin:0 0.45em 0 0.45em; }
+}
+
+/* CSS for tablet view */
+@media screen and (max-width:984px) {
+	#mobileDetection { z-index:984; }
+
+	.layoutNavMini { line-height:1.7; text-align:center; }
+	#layoutBannerContent { height:auto; padding:8px 0 20px; text-align:center; }
+	#layoutRSFull { position:static; display:block; max-width:100%; height:auto !important; margin:0 auto 20px; }
+	.layoutNavPeople { position:static; font-size:0.83em; text-align:center; line-height:2.2; }
+	.layoutNavPeople li { float:none; }
+	.layoutNavPeople span { /*padding:0 5px; color:#9D4F57;*/ }
+	.layoutSearchForm { position:static; display:inline-block; margin:20px auto 0; }
+	
+	.layoutNavMajor { margin:15px 20px; line-height:2.2; font-size:17px; }
+	.layoutNavMajor span { top:8px; }
+
+	#layoutContent, #layoutContact { margin:27px 20px 10px; }
+	
+	#layoutCrumbs, #layoutSiteTitle, #layoutPageTitle { margin-left:20px; margin-right:20px; }
+	
+	#layoutFooter ul { float:none; }
+	#layoutSocial { padding-top:10px; text-align:left; }
+	#layoutSocial img { margin:10px 0; }
+	#layoutExternalLogos { float:none; }
+	
+	.map-responsive { overflow:hidden; padding-bottom:49%; position:relative; height:0; }
+	.map-responsive iframe { left:0; top:0; height:100%; width:100%; position:absolute; }
+}
+
+/* CSS for phone view */
+@media screen and (max-width:414px) { /* changed from 360px */
+	#mobileDetection { z-index:414; } /* changed from 360 */
+	
+	#layoutWeather #widgetWeather { margin:0; font-size:0.83em; }
+	
+	.layoutNavMini { display:none; }
+	#layoutNavMobileMenu { display:block; }
+	#layoutMenuBurger { float:left; margin-right:10px; color:#E1E1E1; cursor:pointer; }
+	#layoutMenuBurger .patty { width:23px; height:4px; font-size:0; border-bottom:1px solid #E1E1E1; }
+	#layoutMenuText { float:left; height:15px; line-height:20px; /*centers menu text vertically */ cursor:pointer; }
+	#layoutMobileMenuSlider .layoutNavMajor a { color:white; }
+	#layoutMobileMenuSlider .layoutNavPeople { margin-top:10px; }
+	#layoutMobileMenuSlider .layoutNavPeople a { padding:0 4px; }
+	
+	#layoutBannerContent { margin:0 13px; padding:10px 0 0 0; text-align:left; }
+	#layoutBannerContent:after { content:""; display:table; clear:both; } /* clear floated items */
+	#layoutBannerContent .layoutNavPeople { display:none; }
+	#layoutRSFull { display:none; }
+	#layoutRSShort { display:block; float:left; width:81px; overflow:hidden; }
+	#layoutRSShort img { margin-bottom:10px; vertical-align:bottom; }
+	.layoutSearchForm { display:table; width:auto; margin:9px 0 0 107px; padding-bottom:0; }
+	.layoutSearchForm .layoutSearchBox { display:table-cell; }
+	.layoutSearchForm .layoutSearchImage { display:table-cell; }
+	.layoutSearchForm .layoutSearchBox input { width:100%; }
+	.layoutSearchForm .layoutSearchImage input { float:none; }
+	
+	.layoutNavMajor { display:none; margin:15px 20px; line-height:1.9; font-size:17px; }
+	.layoutNavMajor li { display:block; }
+	.layoutNavMajor span { display:none; }
+	
+	#layoutSiteTitle { padding:0.50em 0; font-size:2.5em; }
+	
+	#layoutContent { min-height:150px; }
+	#layoutContent, #layoutContact { margin:27px 10px 10px; }
+	
+	#layoutSocial { text-align:center; }
+	#layoutSocial a { margin:0 3%; }
+}
+
+@media print {
+	body { margin:0 1px; padding:0; /* 2019-02-08 a zero margin-left on the body forces a google bug where the first letter of a heading or para is not printed; adding 1px solves */ }
+	a { text-decoration:underline !important; }
+	#layoutMiniBanner, #layoutBannerContainer, .layoutNavMajor, #layoutWebwizardEdit, #layoutWeather, #subpagePhoto, #layoutFooter, #layoutLegal { display:none; }
+	#layoutRSCCPrintBanner { position:static; margin-top:1em; font-size:1em; }
+	#layoutContent, #layoutContact { font-size:0.75em; }
+	.noprint, .screenReaderOnly { display:none; }
+	
+	body.print #layoutCrumbs, body.print #layoutContact { display:none; }
+	body.print #layoutRSCCPrintBanner { margin:0; }
+	body.print #layoutPageTitle { max-width:none; margin:0 0 2rem; font-size:1.5em; }
+	body.print #layoutContent { max-width:none; margin:0; }
+	
+	.faq div.jumpContainer { display:none; }
+	
+	#layoutContact h3.normal { font-size:0.75rem; }
+}
+</style>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- The IE meta tag must be one of the first tags in the HEAD. It prevents the outrageously silly "compatability mode" in intranet. -->
+<!-- -->
+<meta content="width=device-width" name="viewport"/>
+<meta content="initial-scale=1.0" name="viewport"/>
+<meta content="yes" name="apple-touch-fullscreen"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Welcome - Roane State Community College</title>
+<link href="https://www.roanestate.edu" rel="canonical"/>
+
+<!--<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>-->
+<style>
+#subpagePhoto { background-image:url("/_images/banners/"); }
+</style>
+<script src="/_functions/jquery/jquery-1.12.4.min.js" type="text/javascript"></script>
+<script src="/layout.js?v=38" type="text/javascript"></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-12099813-1', 'auto');
+ga('send', 'pageview');
+</script>
+</head>
+<body class="-Page">
+<div id="mobileDetection"></div>
+<!--Keep directly after #mobileDetection HTML-->
+<script>
+function isMobile(){
+
+	if(parseInt($("#mobileDetection").css("z-index")) > 0){ return true; } else { return false; }
+	
+}
+function mobileCategory(){
+	
+	return parseInt($("#mobileDetection").css("z-index"));
+	
+}
+</script>
+<div id="layoutWeather"></div>
+<div id="layoutMenuSkip"><a href="#layoutContent">Skip to Main Content</a></div>
+<div id="layoutMiniBanner">
+<ul class="layoutNavMini">
+<!--no whitespace to remove spaces for inline-block-->
+<li><a href="/?6110-RaiderNet">RaiderNet</a><span></span></li><li><a href="/?6022-Momentum-Login-Page">Momentum</a><span></span></li><li><a href="/?5430-Outlook-Web-Access">Email</a><span></span></li><li><a href="/?470-Schedule-of-Classes-RSCC">Class Schedule</a><span></span></li><li><a href="/?12106-Athletics">Athletics</a><span></span></li><li><a href="/?6924-Campuses">Campuses</a><span></span></li><li><a href="/?6921-A-Z-Index">A-Z</a><span></span></li><li><a href="/?6999-Contact-the-CollegeHelp-Center">Contact Us</a></li>
+</ul>
+<div id="layoutNavMobileMenu">
+<div id="layoutMenuBurger">
+<div class="patty"></div>
+<div class="patty"></div>
+<div class="patty"></div>
+</div>
+<div id="layoutMenuText">Menu</div>
+<ul id="layoutNavMobile3Links">
+<li><a href="/?6110-RaiderNet">RaiderNet</a><span aria-hidden="true">/</span></li>
+<li><a href="/?6022-Momentum-Login-Page">Momentum</a><span aria-hidden="true">/</span></li>
+<li><a href="/?5430-Outlook-Web-Access">Email</a></li>
+</ul>
+</div>
+</div>
+<div id="layoutBannerContainer">
+<div id="layoutBannerContent"> <a href="//www.roanestate.edu/" id="layoutRSFull"><img alt="Roane State Community College" src="/_images/top_rsRoaneState.png"/></a><a href="//www.roanestate.edu/" id="layoutRSShort"><img alt="Roane State Community College" src="/_images/top_rs.png"/></a>
+<ul class="layoutNavPeople">
+<li><a href="/?6691-Student-Services">Students</a><span></span></li>
+<li><a href="/?11344-Parents">Parents</a><span></span></li>
+<li><a href="/?20-Alumni">Alumni</a><span></span></li>
+<li><a href="/?9904-Community-Resources">Community</a><span></span></li>
+<li><a href="/?6680-FacultyStaff">Faculty/Staff</a><span></span></li>
+<li><a href="/?9662-Workforce-Programs">Workforce</a></li>
+</ul>
+<form action="/search/" class="layoutSearchForm" method="get">
+<div class="layoutSearchBox"><input name="for" title="Search" type="text" value=""/></div>
+<div class="layoutSearchImage"><input alt="Search" src="/_images/searchGlass.png" type="image"/></div>
+</form>
+</div>
+</div>
+<!-- Print-Only Banner -->
+<h1 id="layoutRSCCPrintBanner">Roane State Community College</h1>
+<ul class="layoutNavMajor">
+<li><a href="/?5506-Academic-Programs">Programs</a><span></span></li><li><a href="/?10434-Paying-for-College">Paying for College</a><span></span></li><li><a href="/?9646-Campus-Tours-and-Questions">Tours &amp; Questions</a><span></span></li><li><a href="/?6691-Student-Services">Student Services</a><span></span></li><li><a href="/?6958-Admissions-Office">Apply Now</a></li></ul>
+<div id="reconnectBanner"><a href="/?10317-Tennessee-Reconnect"><img alt="Reconnect. Free tuition for adults. Get started now. See Requirements" class="desktop" src="/_images/reconnectHomepageBanner2_pixelAccurate.png"/><img alt="Free tuition for adults. Get started now. See Requirements" class="mobile" src="/_images/reconnectHomepageBanner2_mobile.png"/></a></div>
+<!--<div id="wintertermBanner"><a href="/winter"><img class="desktop" alt="New Winter Term! Take accelerated online classes: Dec 16 – Jan 16. Registration available now. Learn more." src="/_images/wintertermHomepageBanner_foreground.png"><img class="mobile" alt="New Winter Term! Take accelerated online classes: Dec 16 – Jan 16. Registration available now. Learn more." src="/_images/wintertermHomepageBanner_foregroundMobile.png"></a></div>-->
+<div id="layoutHomeMainPhoto"></div>
+<h2 id="layoutPageTitle">Welcome</h2>
+<div class="layoutContentClass" id="layoutContent">
+<style>
+@font-face { font-family:GlacialIndifference; src:url("/_images/fonts/GlacialIndifference/GlacialIndifference-Regular.otf"); }
+@font-face { font-family:GlacialIndifference; src:url("/_images/fonts/GlacialIndifference/GlacialIndifference-Bold.otf"); font-weight:bold; }
+@font-face { font-family:GlacialIndifference; src:url("/_images/fonts/GlacialIndifference/GlacialIndifference-Italic.otf"); font-style:italic; }
+</style>
+<!-- STYLE SECTION FOR MAIN PHOTO ONLY -->
+<style>
+#layoutHomeMainPhoto { height:600px; margin-bottom:2.07em; background-image:url('/_images/homeMainPhoto/homepage_17_fall.jpg'); background-position:top; background-size:cover; background-repeat:no-repeat; }
+@media screen and (max-width:1100px) {
+	#layoutHomeMainPhoto { height:450px; }
+}
+@media screen and (max-width:740px) {
+	#layoutHomeMainPhoto { height:300px; }
+}
+@media screen and (max-width:550px) {
+	#layoutHomeMainPhoto { height:200px; }
+}
+@media print {
+	#layoutHomeMainPhoto { display:none; }
+}
+</style>
+<!-- STYLE SECTION FOR MAIN TEMPLATE & MISC -->
+<style>
+html { overflow-y:scroll; }
+.homeWidth { width:1170px; margin:0 auto; }
+#layoutContent { max-width:none; }
+#reconnectBanner { display:block; }
+/*#wintertermBanner { display:block; }*/
+#layoutCrumbs, #layoutPageTitle { display:none; }
+
+@media screen and (max-width:1225px) {
+	.homeWidth { width:950px; }
+}
+
+@media screen and (max-width:984px) {
+	.homeWidth { width:auto; }
+}
+
+@media screen and (max-width:414px) {
+	#layoutRSFull { display:block; margin:0 15px 15px; } /* homepage & subpages in mobile receive different images */
+	#layoutRSShort { display:none; }
+	.layoutSearchForm { max-width:275px; margin:0 auto 10px; }
+	.layoutNavMajor { display:block; } /* main nav ordinarily hidden, except for homepage */
+}
+</style>
+<!-- STYLE SECTION FOR CALENDAR -->
+<style>
+.sectionCalendar { display:none; /* hide temp contents including editor table */ font-family:"Microsoft New Tai Lue", "Segoe UI", Frutiger, "DejaVu Sans", "Helvetica Neue", Arial, sans-serif; }
+
+.sectionCalendar .calendarTabRow { margin:24px 0 32px; font-size:16px; border-bottom:1px solid #cfcfcf; }
+.sectionCalendar .calendarTabRow.second { margin-top:36px; }
+.sectionCalendar .calendarTabRow .calendarTab { display:inline-block; margin-bottom:-2px; padding-bottom:2px; font-weight:bold; border-bottom:2px solid #860e00; }
+.sectionCalendar .calendarMore { float:right; text-shadow: 0px 0px 0px black; } /* .calendarMore will exist in multiple structures */
+.sectionCalendar .calendarMore a { text-decoration:none; }
+.sectionCalendar .calendarMore.evenMore { float:none; padding:5px 0 2em; font-weight:bold; text-align:right; }
+
+.sectionCalendar ul { margin:0; padding:0; list-style-type:none; }
+.sectionCalendar ul li { display:inline-block; width:32.66%; margin:0 1% 0 0; padding:0; }
+.sectionCalendar ul li:nth-child(n+4) { display:none; margin-top:24px; }
+.sectionCalendar ul li:nth-child(3), .sectionCalendar ul li:nth-child(6) { margin-right:0; }
+.sectionCalendar ul li a { display:table; width:100%; }
+.sectionCalendar ul li a:hover { text-decoration:none; }
+.sectionCalendar ul li a:focus { text-decoration:none !important; }
+.sectionCalendar ul li a div.datePart { display:table-cell; width:65px; vertical-align:middle; text-align:center; line-height:1; text-transform:uppercase; color:black; border-right:1px solid #cfcfcf; }
+.sectionCalendar ul li a div.datePart div.multiDate { position:relative; left:-4px; display:inline-block; }
+.sectionCalendar ul li a div.datePart div.multiDate:last-child {  }
+.sectionCalendar ul li a div.datePart span { display:block; margin-top:3px; }
+.sectionCalendar ul li a div.datePart span.bigM { font-size:18px; font-weight:bold; }
+.sectionCalendar ul li a div.datePart span.bigD { margin-top:5px; font-size:36px; }
+.sectionCalendar ul li a div.datePart span.littleM { font-size:9px; font-weight:bold; }
+.sectionCalendar ul li a div.datePart span.littleD { margin-top:5px; font-size:20px; }
+.sectionCalendar ul li a div.datePart div.hyphen { position:relative; bottom:12px; left:-4px; display:inline-block; padding:0 2px; font-size:20px; }
+.sectionCalendar ul li a div.textPart { display:table-cell; /*height:62px;*/ height:2.7em; padding-left:10px; box-sizing:border-box; font-size:24px; line-height:normal; vertical-align:middle; color:#0071bc; }
+.sectionCalendar ul li a div.textPart div.overflowStop { max-height:2.7em; overflow:hidden; }
+.sectionCalendar ul li a div.textPart div.overflowStop span.hellip { position:relative; left:-4px; font-family:Verdana; font-size:1rem; }
+.sectionCalendar ul li a div.datePart.MMM { font-weight:bold; font-size:1.3em; }
+
+@media screen and (max-width:1225px) {
+	.sectionCalendar ul li a div.textPart { font-size:20px; }
+}
+@media screen and (max-width:984px) {
+	.sectionCalendar ul li a div.datePart { width:60px; }
+	.sectionCalendar ul li a div.datePart span.bigM { font-size:16px; }
+	.sectionCalendar ul li a div.datePart span.bigD { margin-top:5px; font-size:30px; }
+	.sectionCalendar ul li a div.textPart { font-size:17px; }
+}
+@media screen and (max-width:820px) {
+	.sectionCalendar ul li { width:49%; }
+	.sectionCalendar ul li:nth-child(n+4) { display:inline-block; /* reset from eariler use */ }
+	.sectionCalendar ul li:nth-child(n+5) { display:none; }
+	.sectionCalendar ul li:nth-child(2) { margin-right:0; }
+	.sectionCalendar ul li:nth-child(3) { margin-right:1%; /* reset from eariler use */}
+	.sectionCalendar ul li:nth-child(4) { margin-right:0; }
+	.sectionCalendar ul li:nth-child(n+3) { margin-top:0.7em; }
+}
+@media screen and (max-width:560px) {
+	.sectionCalendar .calendarTabRow.second { margin-top:24px; }
+	.sectionCalendar ul li { display:block; width:auto; }
+	.sectionCalendar ul li:nth-child(n+0) { margin-top:0.7em; margin-right:0; }
+	.sectionCalendar .calendarMore { float:none; display:inline-block; margin-left:0.75em; font-size:0.9em; }
+}
+@media screen and (max-width:400px) {
+	.sectionCalendar .calendarTabRow { font-size:0.9em; text-shadow:none; }
+}
+</style>
+<!-- STYLE SECTION FOR NEWS GRID -->
+<style>
+.sectionNews { margin-top:3em; font-family:GlacialIndifference, Verdana; /* Verdana fallback for IE11 */}
+.sectionNews ul { list-style-type:none; margin:0; padding:0; }
+.sectionNews ul li { position:relative; float:left; width:20%; margin:0; box-sizing:border-box; overflow:hidden; }
+.sectionNews ul li:before { content:""; display:block; margin-top:100%; } /* https://stackoverflow.com/a/6615994 */
+.sectionNews ul li a { position:absolute; top:0; left:0; display:block; width:100%; height:100%; font-size:0; color:white; background-color:#5c5c5c; }
+.sectionNews ul li:nth-child(odd) a { background-color:#3d3d3d; }
+.sectionNews ul li a img { position:relative; width:100%; height:100% !important; /* if off-square by a few pixels, ensure fix */ transition-property:transform; transition-duration:.33s; transition-timing-function:cubic-bezier(.16,.51,.39,.97); }
+.sectionNews ul li a:hover img { transform:scale(1.05, 1.05); }
+
+.sectionNews ul li a span.titleContainer { position:absolute; top:0; left:0; z-index:100; width:100%; height:100%; background:linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.30) 60%,rgba(0,0,0,0.65) 100%); transition-property:background-color; transition-duration:0.20s; transition-timing-function:linear; }
+.sectionNews ul li a span.titleContainer:hover { background-color:rgba(0, 0, 0, 0.80); }
+
+.sectionNews ul li a span.titleContainer span.firstTitle { position:absolute; bottom:0.5em; display:block; width:86%; margin:0 7% 3%; opacity:1; transition-property:all; transition-duration:0.20s; transition-timing-function:linear; /* fixes for GlacialIndifference: */ line-height:1.3; font-size:25px; letter-spacing:1px; }
+.sectionNews ul li a span.titleContainer:hover span.firstTitle { opacity:0; }
+
+.sectionNews ul li a span.titleContainer span.secondTitle { position:absolute; top:50%; transform:translateY(-50%); display:block; width:86%; margin:0 7% 0; opacity:0; font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif; font-size:30px; text-align:center; transition-property:all; transition-duration:0.20s; transition-timing-function:linear; }
+.sectionNews ul li a span.titleContainer:hover span.secondTitle { opacity:1; }
+.sectionNews ul li a span.titleContainer span.secondTitle span.linkAction { display:block; margin-top:0.9em; font-size:0.65em; backface-visibility:hidden; color:white; font-weight:bold; font-style:italic; opacity:0; }
+.sectionNews ul li a span.titleContainer:hover span.secondTitle span.linkAction { opacity:1; color:#0071bc; color:#0093f5; /* #0093f5 passes AA contrast limit against ~ the lightest possible bkgrnd #282727 */ }
+
+.sectionNews ul li a.noImage span.titleContainer { background-image:none; }
+.sectionNews ul li a.noImage span.titleContainer span.firstTitle { display:none; }
+.sectionNews ul li a.noImage span.titleContainer:hover span.firstTitle { opacity:0; }
+.sectionNews ul li a.noImage span.titleContainer span.secondTitle { opacity:1; }
+
+.newsMore { text-align:right; }
+.newsMore a { display:inline-block; margin-top:0.5em; padding:0 1em; text-decoration:none; font-family:"Microsoft New Tai Lue", "Segoe UI", Frutiger, "DejaVu Sans", "Helvetica Neue", Arial, sans-serif; text-shadow:0px 0px 0px black; }
+
+@media screen and (max-width:1700px) {
+	.sectionNews ul li { width:25%; }
+	.sectionNews ul li:nth-child(n+9) { display:none; }
+}
+
+@media screen and (max-width:1400px) {
+	.sectionNews ul li a span.titleContainer span.firstTitle { font-size:22px; }
+	.sectionNews ul li a span.titleContainer span.secondTitle { font-size:25px; }
+}
+
+@media screen and (max-width:1225px) {
+	.sectionNews ul li { width:33.333%; width:calc(100% / 3); }
+	.sectionNews ul li:nth-child(n+10) { display:initial; }
+}
+
+@media screen and (max-width:900px) {
+	.sectionNews ul li { width:50%; }
+	.sectionNews ul li:nth-child(n+7) { display:none; }
+	.sectionNews ul li a.noImage span.titleContainer { background-color:rgba(0, 0, 0, 0.80); }
+	.sectionNews ul li a span.titleContainer span.secondTitle span.linkAction { opacity:1; }
+}
+
+@media screen and (max-width:600px) {
+	.sectionNews ul li { width:100%; }
+	.sectionNews ul li:nth-child(n+6) { display:none; }
+	.sectionNews ul li a span.titleContainer span.firstTitle { font-size:30px; }
+	.sectionNews ul li a span.titleContainer span.secondTitle { font-size:37px; }
+	
+	.sectionNews ul li a:hover img { transform:none; }
+	.sectionNews ul li a span.titleContainer:hover { background-color:transparent; }
+	.sectionNews ul li a span.titleContainer:hover span.firstTitle { opacity:1; }
+	.sectionNews ul li a span.titleContainer:hover span.secondTitle { opacity:0; }
+	.sectionNews ul li a span.titleContainer:hover span.secondTitle span.linkAction { opacity:0; }
+	
+	.sectionNews ul li a.noImage span.titleContainer:hover { background-color:rgba(0, 0, 0, 0.80); }
+	.sectionNews ul li a.noImage span.titleContainer:hover span.firstTitle { opacity:0; }
+	.sectionNews ul li a.noImage span.titleContainer:hover span.secondTitle { opacity:1; }
+	.sectionNews ul li a.noImage span.titleContainer:hover span.secondTitle span.linkAction { opacity:1; }
+	
+	.sectionNews ul li a img { transition:none; }
+	.sectionNews ul li a span.titleContainer { transition:none; }
+	.sectionNews ul li a span.titleContainer span.firstTitle { transition:none; }
+	.sectionNews ul li a span.titleContainer span.secondTitle { transition:none; }
+}
+
+@media screen and (max-width:414px) {
+	.sectionNews ul li a span.titleContainer span.firstTitle { font-size:25px; }
+	.sectionNews ul li a span.titleContainer span.secondTitle { font-size:30px; }
+}
+
+@media screen and (max-width:365px) {
+	.sectionNews ul li a span.titleContainer span.firstTitle { font-size:20px; }
+	.sectionNews ul li a span.titleContainer span.secondTitle { font-size:23px; }
+}
+
+@media print {
+}
+</style>
+<!-- STYLE SECTION FOR MAPS -->
+<style>
+.sectionMaps { min-height:465px; margin:4em 0 3em; text-align:center; font-family:"Microsoft New Tai Lue", "Segoe UI", Frutiger, "DejaVu Sans", "Helvetica Neue", Arial, sans-serif; }
+.sectionMaps div.controls { margin-bottom:2.5em; }
+.sectionMaps div.controls span { display:inline-block; margin:0 1.25em; font-size:37px; line-height:1.1; cursor:pointer; }
+.sectionMaps div.controls span:hover { border-bottom:3px solid #313131; }
+.sectionMaps div.controls span.active { border-bottom:3px solid #313131; }
+.sectionMaps div.content { display:none; }
+.sectionMaps div.content.local { display:block; }
+.sectionMaps div.content div.column { display:inline-block; font-size:18px; vertical-align:top; }
+.sectionMaps div.content div.column:first-child { width:700px; margin:0 20px 0 0; text-align:right; }
+.sectionMaps div.content div.column:last-child { width:700px; margin-left:20px; text-align:left; }
+.sectionMaps div.content div.column h4 { margin:0; font-size:30px; text-align:center; }
+.sectionMaps div.content div.column p.hangingindent { padding-left:1.7em; text-indent:-1.7em; }
+.sectionMaps div.content div.column span.legendBox { position:relative; top:2px; display:inline-block; width:1em; height:1em; margin-right:0.7em; background-color:#8c1101; }
+.sectionMaps div.content div.column a#seeGlobalList { margin-left:0.25em; text-decoration:underline; }
+.sectionMaps div.content div.column div.globalList { display:none; }
+.sectionMaps div.content div.column div.globalList h5 { margin:0 0 0.5em;  }
+.sectionMaps div.content div.column div.globalList ul { margin:0 0 0.5em; padding:0; list-style-type:none; }
+.sectionMaps div.content div.column div.globalList ul li { display:inline-block; }
+.sectionMaps div.content div.column div.globalList ul li:not(:last-child):after { content:",\00A0"; }
+
+@media screen and (max-width:1475px) {
+	.sectionMaps { min-height:auto; }
+	.sectionMaps div.controls { margin-bottom:2.5em; }
+	.sectionMaps div.content div.column { display:block; }
+	.sectionMaps div.content div.column:first-child { margin:0 auto; text-align:center; }
+	.sectionMaps div.content div.column:last-child { margin:1.5em auto 0; text-align:left; }
+}
+
+@media screen and (max-width:984px) {
+	.sectionMaps { margin:3em 0 2.5em; }
+	.sectionMaps div.controls { margin-bottom:2em; }
+	.sectionMaps div.controls span { margin:0 5%; font-size:2em; }
+	.sectionMaps div.content div.column:first-child { width:90%; }
+	.sectionMaps div.content div.column:last-child { width:90%; }
+}
+
+@media screen and (max-width:500px) {
+	.sectionMaps div.controls span { margin:0 4%; font-size:1.75em; }
+	.sectionMaps div.content div.column { font-size:1em; }
+	.sectionMaps div.content div.column h4 { font-size:1.5em; }
+	.sectionMaps div.content div.column:first-child { width:auto; }
+	.sectionMaps div.content div.column:last-child { width:auto; }
+}
+</style>
+<!-- STYLE SECTION FOR WHY SECTION -->
+<style>
+.sectionWhy { padding-bottom:1px; background-color:#353336; color:white; font-family:"Microsoft New Tai Lue", "Segoe UI", Frutiger, Arial, sans-serif; }
+.sectionWhy div.table { display:table; margin:0 auto; }
+.sectionWhy div.table div.cell { display:table-cell; width:33.333%; padding:0; }
+.sectionWhy div.table div.cell h4 { margin:1em 0; font-size:27px; font-weight:normal; text-align:center; }
+.sectionWhy div.table div.cell img { width:100%; }
+.sectionWhy div.table div.cell p {  margin-left:2em; margin-right:2em; line-height:1.35; }
+.sectionWhy div.table div.cell a { color:white; text-decoration:underline; }
+
+@media screen and (max-width:1650px) {
+	.sectionWhy div.table div.cell h4 { font-size:27px; }
+}
+@media screen and (max-width:1300px) {
+	.sectionWhy div.table div.cell h4 { font-size:20px; }
+}
+@media screen and (max-width:984px) {
+	.sectionWhy div.table { display:block; }
+	.sectionWhy div.table div.cell { display:block; width:auto; max-width:90%; margin:0 auto; padding-top:1px; }
+	.sectionWhy div.table div.cell h4 { font-size:1.75em; font-weight:bold; }
+	.sectionWhy div.table div.cell p { margin-left:0; margin-right:0; }
+}
+@media screen and (max-width:500px) {
+	.sectionWhy div.table div.cell h4 { font-size:1.35em; }
+}
+</style>
+<!-- STYLE SECTION FOR BY THE NUMBERS -->
+<style>
+.sectionInfo { padding:10em 0 13em; font-family:"Microsoft New Tai Lue", "Segoe UI", Frutiger, Arial, sans-serif; }
+.sectionInfo div.contentRow { position:relative; max-width:75%; margin:0 auto; }
+.sectionInfo div.contentRow div.background { position:absolute; left:0; top:0; z-index:1; width:100%; height:100%; opacity:0.94; background-color:white; }
+.sectionInfo div.contentRow div.contentColumn { position:relative; z-index:2; display:table-cell; width:33.33%; padding:0 1.5em 2em; text-align:center; }
+.sectionInfo div.contentRow div.contentColumn h4 { margin:2em 0; }
+.sectionInfo div.contentRow div.contentColumn h4 span { display:block; }
+.sectionInfo div.contentRow div.contentColumn h4 span:first-child { font-size:40px; }
+.sectionInfo div.contentRow div.contentColumn h4 span:nth-child(2) { height:20px; margin:0.5em 0 1em; background-color:hsla(0, 0%, 79%, 1); box-shadow:0 0 0px 0.5px hsla(0, 0%, 79%, 1); }
+.sectionInfo div.contentRow div.contentColumn h4 span:last-child { font-weight:normal; font-size:27px; line-height:1.15; }
+.sectionInfo div.contentRow div.contentColumn p { line-height:1.35; text-shadow:0px 0px 0px black; }
+
+.parallax { background-image:url(/_images/homeSectionInfo/oakridge-footer.jpg); background-attachment:fixed; background-position:bottom; }
+#layoutContent { margin-bottom:0; }
+#layoutFooter { margin-top:0; }
+
+@media screen and (max-width:1300px) {
+.sectionInfo div.contentRow { max-width:1170px; }
+}
+
+@media screen and (max-width:984px) {
+	.sectionInfo { padding:0; }
+	.sectionInfo div.contentRow div.contentColumn { display:block; width:auto; padding-top:1px; padding-bottom:1px; }
+	.sectionInfo div.contentRow div.contentColumn:last-child { padding-bottom:1.5em; }
+	.sectionInfo div.contentRow div.contentColumn h4 { margin-bottom:0; }
+	.sectionInfo div.contentRow div.contentColumn h4 span { font-size:27px; }
+	.sectionInfo div.contentRow div.contentColumn h4 span:nth-child(2) {display:none; }
+	.sectionInfo div.contentRow div.contentColumn h4 span:last-child br { display:inline-block; }
+	.sectionInfo div.contentRow div.contentColumn h4 span:last-child br{ display:none; }	
+	.parallax { background:none; }
+}
+</style>
+<script>
+//make a case-insensitive "Contains"
+//http://stackoverflow.com/questions/187537/is-there-a-case-insensitive-jquery-contains-selector
+jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
+	return function( elem ) {
+		return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+	};
+});
+</script>
+<script>
+$(function(){
+//***** SECTION: CALENDAR DATE ITEMS *****
+
+	var $sectionCalendar = $(".sectionCalendar:first");
+	var $sourceDateTable = $sectionCalendar.find("table:first");
+	var $newCalendar = $("<div>");
+
+	//cleanup
+	$sourceDateTable.html($sourceDateTable.html().replace(/&nbsp;/g, " "));  //no nbsp's
+	$sourceDateTable.find("p").contents().unwrap();  //no P's
+	$sourceDateTable.find("th:first").closest("tr").remove();  //no header row
+	
+	//assign classes to list items
+	$sourceDateTable.find("tr").each(function(){
+		if($(this).children(":eq(2):Contains('Y')").length > 0){ $(this).addClass("itemEvents"); } else { $(this).addClass("itemDates"); } //assign class for what type of item this is
+	});
+
+	//remove items which have passed
+	$sourceDateTable.find("tr").each(function(){
+		var endingDateText = $(this).children(":eq(1)").text();
+		if(endingDateText.indexOf("/") > -1){  //ignore "ongoing" situations (cell will be blank)
+			var today = new Date();
+			today.setHours(0, 0, 0, 0);  //must clear time portion otherwise comparison will be off
+			var testdate = new Date(Date.parse(endingDateText));
+			if(today > testdate){ $(this).remove(); };
+		}
+	});
+
+	$newCalendar.append("<div class='calendarTabRow'><div class='calendarTab'>IMPORTANT DATES</div><div class='calendarMore'><a href='/?6553-Academic-Calendar'>More important dates</a></div></div>");
+
+	//output first X "Important Dates" items
+	var $ul = $("<ul>");
+	$sourceDateTable.find("tr.itemDates:lt(6)").each(function(){
+		var $li = $("<li>").attr("class", $(this).attr("class")).append($(this).find("a"));
+		$li.find("a").contents().wrap("<div class='textPart'><div class='overflowStop'></div></div>");
+		var $datePart = getDateHTML($.trim($(this).find("td:eq(0)").text()), $.trim($(this).find("td:eq(1)").text()), $("<div class='datePart'></div>"));
+		$li.find("a").prepend($datePart)
+		$ul.append($li);
+	});
+	$newCalendar.append($ul).append("<div class='calendarTabRow second'><div class='calendarTab'>EVENTS</div><div class='calendarMore'><a href='/?6457-College-Calendar'>More events</a></div></div>");
+
+	//output first X "Events" items
+	var $ul = $("<ul>");
+	$sourceDateTable.find("tr.itemEvents:lt(6)").each(function(){
+		var $li = $("<li>").attr("class", $(this).attr("class")).append($(this).find("a"));
+		$li.find("a").contents().wrap("<div class='textPart'><div class='overflowStop'></div></div>");
+		var $datePart = getDateHTML($.trim($(this).find("td:eq(0)").text()), $.trim($(this).find("td:eq(1)").text()), $("<div class='datePart'></div>"));
+		$li.find("a").prepend($datePart)
+		$ul.append($li);
+	});
+	$newCalendar.append($ul);
+
+	//cleanup and show container
+	$newCalendar.find("li:contains('NaN')").each(function(){ console.log("Date item has invalid date and has been hidden: " + $(this).text()); $(this).hide(); });
+	$sectionCalendar.html($newCalendar.html()).show();
+
+	//no overflowing; make ellipses
+	reduceOverflows($sectionCalendar.find("div.overflowStop"));
+	
+	//handle request to show more items
+	$("div.calendarMore a").on("click", function(e){
+		
+		var $thisMore = $(this).closest(".calendarMore");
+		var $associatedItems = $(this).closest(".calendarTabRow").next("ul").children();
+		
+		//if there are more calendar items in DOM than visible calendar items, then show them all		
+		if($associatedItems.length > $associatedItems.filter(":visible").length){
+			
+			e.preventDefault();
+			
+			$associatedItems.not(":visible")
+				.addClass("expanded")
+				.slideDown({
+					start: function(){
+						$(this).css('display','inline-block');
+					}
+			});
+			
+			//add a View All link
+			var $evenMore = $thisMore.clone().addClass("evenMore").hide();
+			$evenMore.find("a").text("View all items");
+			$associatedItems.parent().after($evenMore);
+			$evenMore.slideDown();
+			
+		} else if($associatedItems.filter(".expanded").length > 0){  //else, if these items have been previously expanded, then collapse them
+			
+			e.preventDefault();
+			$associatedItems.filter(".expanded").slideUp();
+			$thisMore.closest(".calendarTabRow").next().next(".evenMore").slideUp(200);  //remove any (associated) previously added element		
+			
+		}
+		
+	});
+
+});
+
+function getDateHTML(beg, ending, $container){
+//http://stackoverflow.com/questions/8579861/how-to-convert-milliseconds-into-a-readable-date
+//input: date string, like 1/20/2017
+
+	var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+	
+	//ordinarily, there is no beginning date to show
+	if(beg.length === 0){
+		
+		//the ending date may be empty, too, in cases such as "ongoing" events
+		if(ending.length === 0){
+			var date = new Date();
+			return $container.addClass("MMM").append(months[date.getMonth()]);
+		} else {
+			//return string format, like Jan 20
+			var date = new Date(Date.parse(ending));
+			return $container.append("<span class='bigM'>" + months[date.getMonth()] + "</span><span class='bigD'>" + date.getDate() + "</span>");
+		}
+		
+	} else {
+	//else, there is a beginning date to show	
+		if(ending.length !== 0){
+			var date1 = new Date(Date.parse(beg));
+			var date2 = new Date(Date.parse(ending));
+			return $container.append("<div class='multiDate'><span class='littleM'>" + months[date1.getMonth()] + "</span><span class='littleD'>" + date1.getDate() + "</span></div>")
+							 .append("<div class='hyphen'>-</div>")
+							 .append("<div class='multiDate'><span class='littleM'>" + months[date2.getMonth()] + "</span><span class='littleD'>" + date2.getDate() + "</span></div>");
+		}
+	}
+}
+
+function reduceOverflows($elems){
+	
+	$.each($elems, function(){
+		if(checkOverflow(this)){ //initial check to see if overflowing
+		
+			//add ellipsis
+			$(this).append(" <span class='hellip'>&hellip;</span>");
+		
+			//reduce words until not overflowing
+			while(checkOverflow(this)){
+				//console.log(arrStr);
+				var arrStr = $(this).html().split(" ");
+				arrStr.splice(arrStr.length - 3, 1);
+				$(this).html(arrStr.join(" "));
+			}	
+		}		
+	});
+	
+}
+
+function checkOverflow(el){
+//http://stackoverflow.com/questions/143815/determine-if-an-html-elements-content-overflows
+//This sets the element to CSS (inline) overflow if it is not already, compares its different dimension values, and returns the CSS property to its original (inline) state.
+   
+   var isOverflowing = el.scrollHeight > el.parentElement.clientHeight;
+   //console.log(el.scrollHeight,  el.parentElement.clientHeight);
+   return isOverflowing;
+   
+}
+</script>
+<script>
+$(function(){
+//***** SECTION: NEWS ITEMS *****
+
+	//lazy load news images
+	$(".sectionNews ul li a img").each(function(){
+		$(this).attr("src", $(this).data("src"));
+	});
+	
+	//no hanging digits (2019-08-14 email)
+	$("span.firstTitle, span.secondTitle").each(function(){
+		var htmlHeadline = $(this).html();
+		htmlHeadline = htmlHeadline.replace(/ (?=\d)/g, "&nbsp;");
+		$(this).html(htmlHeadline);
+	});
+
+});
+</script>
+<script>
+$(function(){
+//***** SECTION: MAPS *****
+	$(".sectionMaps .controls").on("click", "span", function(){
+		var thisIndex = $(this).index();
+		$(".sectionMaps .content").hide().eq(thisIndex).show();
+		$(this).addClass("active").siblings().removeClass("active");
+	});
+	
+	$("#seeGlobalList").on("click", function(e){
+			e.preventDefault();
+			$("div.globalList").slideToggle();
+	});
+});
+</script>
+<script>
+$(function(){
+//***** SECTION: BY THE NUMBERS *****
+
+	//lazy load image
+	$(".sectionInfo").addClass("parallax");
+
+});
+</script>
+<div class="sectionCalendar homeWidth">
+<table border="1" cellpadding="3" cellspacing="0">
+<caption>Important Dates &amp; Events</caption>
+<thead>
+<tr>
+<th scope="col">Starting Date</th>
+<th scope="col">Ending Date</th>
+<th scope="col">Event?<br/>
+			(Y/N)</th>
+<th scope="col">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> </td>
+<td>11/25/2019</td>
+<td>Y</td>
+<td><a href="/?11662-Lighting-of-the-Tree">Roane County Lighting of the Tree</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>11/27/2019</td>
+<td> </td>
+<td><a href="/?12195-News-Campus-Schedules-for-Wednesday-November-28">No Classes (see details for campus availability)</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>11/26/2019</td>
+<td>Y</td>
+<td><a href="http://www.princessharriman.org/events/">Princess: Willy Wonka &amp; Chocolate Factory</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>11/27/2019</td>
+<td>Y</td>
+<td><a href="http://www.princessharriman.org/events/">Princess: The Wizard of Oz</a></td>
+</tr>
+<tr>
+<td>11/28/2019</td>
+<td>12/01/2019</td>
+<td> </td>
+<td><a href="/catalog/?id=595">Thanksgiving holiday (college closed)</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>12/02/2019</td>
+<td>Y</td>
+<td><a href="http://www.princessharriman.org/events/">Princess: Christmas Vacation</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>12/05/2019</td>
+<td> </td>
+<td><a href="/?12138-Winter-Term">Last day to register for the new winter term</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>12/07/2019</td>
+<td>Y</td>
+<td><a href="http://www.princessharriman.org/events/?event_id=390">Princess: Winter Concert</a></td>
+</tr>
+<tr>
+<td>12/06/2019</td>
+<td>12/08/2019</td>
+<td>Y</td>
+<td><a href="/?6497-Expo-Events-Calendar">Expo: TQHA Hillbilly Christmas Classic</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>12/09/2019</td>
+<td> </td>
+<td><a href="/catalog/?id=595">Last day of classes</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>12/12/2019</td>
+<td>Y</td>
+<td><a href="http://www.princessharriman.org/events/?event_id=402">Princess: A Bass Forensic Christmas &amp; Local Storytellers</a></td>
+</tr>
+<tr>
+<td>12/10/2019</td>
+<td>12/12/2019</td>
+<td> </td>
+<td><a href="/catalog/?id=595">Exam period</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>12/14/2019</td>
+<td>Y</td>
+<td><a href="http://www.princessharriman.org/events/?event_id=401">Princess: Movie, A Christmas Story</a></td>
+</tr>
+<tr>
+<td>12/16/2019</td>
+<td>01/16/2020</td>
+<td> </td>
+<td><a href="/?12138-Winter-Term">Winter Term classes</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>12/16/2019</td>
+<td>Y</td>
+<td><a href="http://www.princessharriman.org/events/?event_id=400">Princess: Movie, Scrooged</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>12/23/2019</td>
+<td>Y</td>
+<td><a href="http://www.princessharriman.org/events/?event_id=396">Princess: Movie, It's a Wonderful Life</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>01/14/2020</td>
+<td> </td>
+<td><a href="/?5505-Bursars-Office-Tuition-and-Fees">Payment deadline (spring full-term classes)</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>01/20/2020</td>
+<td> </td>
+<td><a href="/catalog/?id=595">Martin Luther King Holiday (college closed)</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>01/21/2020</td>
+<td> </td>
+<td><a href="/catalog/?id=595">Spring classes begin</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>01/20/2020</td>
+<td> </td>
+<td><a href="/catalog/?id=596">Last day for 100% refund (full term)</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>02/03/2020</td>
+<td> </td>
+<td><a href="/catalog/?id=596">Last day to drop without W grade (full term)</a></td>
+</tr>
+<tr>
+<td>02/07/2020</td>
+<td>02/16/2020</td>
+<td>Y</td>
+<td><a href="/?5585-Roane-State-Presents-Performing-and-Visual-Arts">O'Brien Theatre: Lewis Black's One Slight Hitch (see dates)</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>02/28/2020</td>
+<td> </td>
+<td><a href="/?5464-Graduation">Graduation applications for spring due</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>02/28/2020</td>
+<td>Y</td>
+<td><a href="/?7987-Princess-Theatre-wwwprincessharrimanorg">Princess: Romantic Movie Night</a></td>
+</tr>
+<tr>
+<td>03/09/2020</td>
+<td>03/15/2020</td>
+<td> </td>
+<td><a href="/catalog/?id=596">Spring Break</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>03/28/2020</td>
+<td>Y</td>
+<td><a href="/?5585-Roane-State-Presents-Performing-and-Visual-Arts">O'Brien Theatre: Music Department Alumni Concert</a></td>
+</tr>
+<tr>
+<td> </td>
+<td>04/02/2020</td>
+<td> </td>
+<td><a href="/catalog/?id=596">Last day to withdraw from classes</a></td>
+</tr>
+</tbody>
+</table>
+<p>Items must be linked and have a valid ending date (M/D/YYYY). Items will appear in the order listed.</p>
+</div>
+<div class="sectionNews contentClear">
+<ul>
+<li><a class="noImage" href="/?12280-News-Oak-Ridge-Counseling-and-Disability-Services-Open-House-Jan-28"><span class="titleContainer"><span class="firstTitle">Oak Ridge Counseling and Disability Services Open House Jan. 28</span><span class="secondTitle">Oak Ridge Counseling and Disability Services Open House Jan. 28<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="hasImage" href="/?12302-News-Playmakers-Lewis-Blacks-One-Slight-Hitch-Feb-7-16"><img alt="" data-src="/webfolders/NEWS/newsContent/12302_slightHitch_square.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEUAAAALAAAAAABAAEAAAICRAEAOw=="/><span class="titleContainer"><span class="firstTitle">Playmakers: Lewis Black's One Slight Hitch, Feb 7-16</span><span aria-hidden="true" class="secondTitle">Playmakers: Lewis Black's One Slight Hitch, Feb 7-16<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="noImage" href="/?12276-News-New-Facebook-page-for-Counseling-and-Disability-Services"><span class="titleContainer"><span class="firstTitle">New Facebook page for Counseling and Disability Services</span><span class="secondTitle">New Facebook page for Counseling and Disability Services<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="hasImage" href="/?12283-News-Roane-State-Foundation-wins-6000-grant-from-CNS-Y-12"><img alt="" data-src="/webfolders/NEWS/newsContent/12283_y12_square.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEUAAAALAAAAAABAAEAAAICRAEAOw=="/><span class="titleContainer"><span class="firstTitle">Roane State Foundation wins $6,000 grant from CNS Y-12</span><span aria-hidden="true" class="secondTitle">Roane State Foundation wins $6,000 grant from CNS Y-12<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="hasImage" href="/?12285-News-Roane-State-graduate-doing-climate-change-research-at-OR-National-Lab"><img alt="" data-src="/webfolders/NEWS/newsContent/12285_rachelAndrews_square.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEUAAAALAAAAAABAAEAAAICRAEAOw=="/><span class="titleContainer"><span class="firstTitle">Roane State graduate doing climate change research at OR National Lab</span><span aria-hidden="true" class="secondTitle">Roane State graduate doing climate change research at OR National Lab<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="noImage" href="/?12289-News-Rotaract-Club-informational-meeting-Jan-30-in-Oak-Ridge"><span class="titleContainer"><span class="firstTitle">Rotaract Club informational meeting, Jan 30 in Oak Ridge</span><span class="secondTitle">Rotaract Club informational meeting, Jan 30 in Oak Ridge<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="hasImage" href="/?12275-News-First-Oak-Ridge-High-Middle-College-class-at-Roane-State-about-to-graduate"><img alt="" data-src="/webfolders/NEWS/newsContent/12275_oakRidgeMiddle_square.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEUAAAALAAAAAABAAEAAAICRAEAOw=="/><span class="titleContainer"><span class="firstTitle">First Oak Ridge High Middle College class at Roane State about to graduate</span><span aria-hidden="true" class="secondTitle">First Oak Ridge High Middle College class at Roane State about to graduate<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="hasImage" href="/?12282-News-Roane-State-dental-clinics-serve-both-students-and-area-residents"><img alt="" data-src="/webfolders/NEWS/newsContent/12282_dental_square.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEUAAAALAAAAAABAAEAAAICRAEAOw=="/><span class="titleContainer"><span class="firstTitle">Roane State dental clinics serve both students and area residents</span><span aria-hidden="true" class="secondTitle">Roane State dental clinics serve both students and area residents<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="hasImage" href="/?12288-News-Roane-State-Valentines-Dance"><img alt="" data-src="/webfolders/NEWS/newsContent/12288_ValentinesDance_square.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEUAAAALAAAAAABAAEAAAICRAEAOw=="/><span class="titleContainer"><span class="firstTitle">Roane State Valentine's Dance</span><span aria-hidden="true" class="secondTitle">Roane State Valentine's Dance<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li><li><a class="noImage" href="/?12287-News-Vote-for-the-romantic-film-shown-on-Feb-28-at-the-Princess-Theatre"><span class="titleContainer"><span class="firstTitle">Vote for the romantic film shown on Feb 28 at the Princess Theatre</span><span class="secondTitle">Vote for the romantic film shown on Feb 28 at the Princess Theatre<span class="linkAction accTextLight">Continue reading –</span></span></span></a></li>
+</ul>
+</div>
+<div class="newsMore"><a href="/?9243-News">More news</a></div>
+<!--<div id="athletics">
+	
+</div>-->
+<div class="sectionMaps">
+<div class="controls"><span class="active">Local</span><span>National</span><span>Global</span></div>
+<div class="content local">
+<div class="column"><img alt="Image of Tennessee representing Roane State's locations" src="/_images/homeSectionMaps/local4.png"/></div>
+<div class="column">
+<h4>Wherever you are, we are</h4>
+<p>Roane State is proud to have campuses in each of our service area counties.</p>
+<p>We also bring college instruction to over 30 area high schools. Additionally, Middle College is a way for high school students to earn a degree and a diploma at the same time.</p>
+<p>If you prefer to go to class online, we offer that too. Providing convenient access to higher learning is one of our most important missions.</p>
+</div>
+</div>
+<div class="content national">
+<div class="column"><img alt="Map of the United States" src="/_images/homeSectionMaps/national5.png"/></div>
+<div class="column">
+<h4>Transfer ready</h4>
+<p>Roane State's graduates have transferred to colleges and universities in almost every state, and are well-known for being academically prepared for transfer.</p>
+<p>Whether you want to transfer in-state to colleges such as Tennessee Tech of the University of Tennessee – or even venture out-of-state to places such as Purdue or Virginia – our exceptional faculty will help you succeed.</p>
+</div>
+</div>
+<div class="content global">
+<div class="column"><img alt="World Map" src="/_images/homeSectionMaps/global4.png"/></div>
+<div class="column">
+<h4>A global reach</h4>
+<p>Roane State has abundant opportunities for global interaction and education.</p>
+<p class="hangingindent"><span class="legendBox"></span>Indicates those residents who have studied at Roane State within the last ten years, and also past and present study-abroad locations. <a href="#" id="seeGlobalList">See List</a></p>
+<div class="globalList">
+<h5>Has Travelled From:</h5>
+<ul><li>Australia</li><li>Bahamas</li><li>Belgium</li><li>Brazil</li><li>Burkina Faso</li><li>Cameroon</li><li>Canada</li><li>China</li><li>Columbia</li><li>Croatia</li><li>Denmark</li><li>Egypt</li><li>France</li><li>Gambia</li><li>Germany</li><li>Ghana</li><li>India</li><li>Indonesia</li><li>Japan</li><li>Kazakhstan</li><li>Kenya</li><li>Liberia</li><li>Lithuania</li><li>Mexico</li><li>Nepal</li><li>Netherlands</li><li>Pakistan</li><li>Russia</li><li>Saudi Arabia</li><li>Senegal</li><li>South Korea</li><li>Sudan</li><li>Sweden</li><li>Switzerland</li><li>Ukraine</li><li>Vietnam</li></ul>
+<h5>Has Travelled To:</h5>
+<ul class="globalList"><li>Barbados</li><li>Belgium</li><li>Belize</li><li>Bonaire</li><li>Costa Rica</li><li>Cuba</li><li>Denmark</li><li>Ecuador</li><li>England</li><li>France</li><li>Galapagos</li><li>Germany</li><li>Guatemala</li><li>Haiti</li><li>Italy</li><li>Jamaica</li><li>Mexico</li><li>Panama</li><li>Peru</li><li>Spain</li><li>Sweden</li></ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sectionWhy">
+<div class="table">
+<div class="cell">
+<h4>Roane State: a place for growth</h4>
+<img alt="Southwest Field Trip Students" height="400" src="/_images/homeSectionWhy/slot1f.jpg" width="722"/>
+<p>“I was so alive those three weeks. My soul... the freedom... I just felt like I was really living, not just existing.”</p>
+<p>Haley Russell, on the<br/>Southwest Field Trip Course<br/>Course Numbers: SSC 211 and HUM 261</p><p><a href="https://www.youtube.com/watch?v=7z5A57yRMYI">Watch the Southwest Field Trip Video</a></p>
+</div>
+<div class="cell">
+<h4>Roane State: a place to succeed</h4>
+<img alt="Student with Success Coach" height="400" src="/_images/homeSectionWhy/slot2d.jpg" width="722"/>
+<p>“My Success Coach taught me how to go to college. Without Karry, I would have been lost. She helped me with forms and scheduling classes. It’s so personal. When I had a question, I could always go to Karry and get answers.”</p><p>Student Seth Long, on his<br/>Success Coach, Karry Garcia</p>
+<p><a href="/?11056-Success-Coaches">More about Success Coaches</a></p>
+</div>
+<div class="cell">
+<h4>Roane State: a place for results</h4>
+<img alt="Photo of the Student Speaking at Commencement Ceremony" height="400" src="/_images/homeSectionWhy/slot3e.jpg" width="722"/>
+<p>“Roane State is for everyone. It does not matter who you are, your age, or your culture. This college has shown me that everyone is welcome <span style="font-family:Verdana">…</span> I went from being someone that could barely speak the language to someone that is a few minutes away from graduating as a professional radiology technologist.”</p>
+<p>Maria Paulina Juarez of Lenoir City<br/>Winner of the President’s Award, Roane State’s highest student honor</p>
+<p><a href="https://www.youtube.com/watch?v=ITpBODLEcLQ&amp;t=5178">Watch Maria’s 2019 graduation speech</a></p>
+</div>
+</div>
+</div>
+<div class="sectionInfo">
+<div class="contentRow">
+<div class="background"></div>
+<div class="contentColumn"><h4><span>Over 90%</span><span> </span><span>Job Placement<br/> Rate</span></h4><p>Our programs lead to jobs in the fields that interest you. Transferring to a university instead? Our academic programs vigorously prepare you for your continued academic career.</p></div>
+<div class="contentColumn"><h4><span>18:1</span><span> </span><span>Student to Faculty<br/> Ratio</span></h4><p>Big, 200-student classes where you are afraid to ask a question? Not our style. Our professors will work with you one-on-one and know you on a first-name basis.</p></div>
+<div class="contentColumn"><h4><span>$15 million</span><span> </span><span>Scholarships &amp; Grants<br/> Awarded Last Year</span></h4><p>You may be able to take advantage of Tennessee Promise, Tennessee Reconnect, book scholarships or many other opportunities.</p></div>
+</div>
+</div>
+</div>
+<!-- Contact, Formerly in Page Content -->
+<div style="clear:both;"></div>
+<div id="layoutFooter">
+<div id="layoutFooterContent">
+<ul>
+<li>Roane State Community College<br/>
+				276 Patton Lane<br/>
+				Harriman, TN 37748-5011<br/>
+<br/>
+				(865) 354-3000 or toll free 866-462-7722</li>
+</ul>
+<ul>
+<li><a href="/?6924-Campuses">Campus Maps</a></li>
+<li><a href="/?6826-Police-Department">Roane State Police Department</a></li>
+<li><a href="/?406-Presidents-Office">President's Welcome</a></li>
+<li><a href="/?10874-Accessibility-Settings">Accessibility Settings</a></li>
+</ul>
+<ul>
+<li><a href="/?73-Catalog">College Catalog</a></li>
+<li><a href="/?10-Student-Learning">VP of Student Learning</a></li>
+<li><a href="/?7-Academic-Divisions">Academic Divisions</a></li>
+<li><a href="/?297-Libraries">Library</a></li>
+</ul>
+<ul>
+<li><a href="/?5354-About-Roane-State">About the College</a></li>
+<li><a href="/?7000-Accreditation">Accreditation</a></li>
+<li><a href="/?394-RSCC-Policies">Policies</a></li>
+<li><a href="/?9085-Be-Safe-at-Roane-State">Be Safe at College</a></li>
+<li><a href="/?8243-Annual-Security-Reports">Annual Security Report</a></li>
+</ul>
+</div>
+<div id="layoutSocial"><h4>Connect with us</h4><a href="http://twitter.com/roanestate"><img alt="Twitter" src="/_images/social/white/twitter.svg"/></a><a href="http://www.facebook.com/roanestate"><img alt="Facebook" src="/_images/social/white/facebook.svg"/></a><a href="https://www.instagram.com/roanestate/"><img alt="Instagram" src="/_images/social/white/instagram2.svg"/></a><a href="https://www.youtube.com/user/roanestatecc"><img alt="Youtube" src="/_images/social/white/youtube.svg"/></a></div>
+</div>
+<div id="layoutLegal">
+<span>© Roane State Community College</span>
+<p>Roane State Community College is a TBR and AA/EEO employer and does not discriminate against students, employees, or applicants for admission or employment on the basis of race, color, religion, creed, national origin, sex, sexual orientation, gender identity/expression, disability, age, status as a protected veteran, genetic information, or any other legally protected class with respect to all employment, programs and activities sponsored by Roane State. <a href="/?7876-Non-discrimination-Employment-Policy">View full non-discrimination policy</a>.</p>
+<div id="layoutExternalLogos"><a href="http://communitycolleges.tbr.edu/"><img alt="Tennessee's Community Colleges" src="/_images/externalLogo1.png"/></a><!-- <a href="http://www.tntransferpathway.org/"><img src="/_images/externalLogo2.png" alt="Tennessee Board of Regents / Tennessee Transfer Pathways"></a> <a href="https://tnecampus.org/"><img src="/_images/externalLogo3.png" alt="TN eCampus"></a>--></div>
+<p><a href="/?6418-Reporting-Fraud-Waste-and-Abuse">Report Fraud, Waste and Abuse</a></p>
+<p><a href="/?136-Digital-Millennium-Copyright-Act-of-1998">Digital Millennium Copyright Act of 1998</a></p>
+</div>
+<script>
+//if (top != self) { top.location.replace(self.location.href); }
+</script>
+</body>
+</html>
+
