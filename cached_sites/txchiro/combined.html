@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en"><head><style></style><meta charset="utf-8"/><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQUAUVNXDRACU1BUBAIHXw==",licenseKey:"94778f977a",applicationID:"27163309"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(20),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(21),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(21),a=t(20);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(18),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=f(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(13),u=t(11).generateTracePayload,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(16),w=t(15),v=window.XMLHttpRequest;s.features.xhr=!0,t(10),t(6),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=u(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)}),d.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=f(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=u(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(20),s=t(21),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],15:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],16:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],17:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?a("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&a("timing",["fcp",Math.floor(t.startTime)])})}function o(t){if(t instanceof c&&!u){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:s.now()-e,u=!0,a("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var i,a=t("handle"),s=t("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){i=new PerformanceObserver(r);try{i.observe({entryTypes:["paint"]})}catch(f){}}if("addEventListener"in document){var u=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(t){document.addEventListener(t,o,!1)})}}},{}],18:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],19:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],20:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],21:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],22:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(20),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(20),u=t("ee"),d=t(19),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(14),t(17),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(22)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(21),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon.png" rel="apple-touch-icon"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+<link href="//www.txchiro.edu/plugins/editor/cms/skins/seanz/assets/images/favicons/apple-touch-icons/chiromatrix/icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+<title>Home | Chiropractor in Pasadena, TX | Texas Chiropractic College</title>
+<meta content="Home in Pasadena, TX. Texas Chiropractic College is your local Chiropractor in Pasadena serving all of your needs. Call us today at 281-487-1170 for an appointment." name="description"/>
+<meta content="Home, Pasadena, Chiropractor" name="keywords"/>
+<meta content="0024925" name="SiteID"/>
+<link href="http://www.txchiro.edu" rel="canonical"/>
+<meta content="Home | Chiropractor in Pasadena, TX | Texas Chiropractic College" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="Home in Pasadena, TX. Texas Chiropractic College is your local Chiropractor in Pasadena serving all of your needs. Call us today at 281-487-1170 for an appointment." property="og:description"/>
+<meta content="http://www.txchiro.edu" property="og:url"/>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    
+        ga('create', 'UA-42651322-3', 'auto', 'brandTracker');
+    ga('brandTracker.send', 'pageview');
+    </script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-130454319-1"></script>
+<script> 
+window.dataLayer = window.dataLayer || []; 
+function gtag(){dataLayer.push(arguments);} 
+gtag('js', new Date()); 
+
+gtag('config', 'UA-130454319-1'); 
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TJ8K324');</script>
+<script>var baseUrlForMyPages='//www.txchiro.edu';</script>
+<script type="text/javascript">
+    window.addEventListener("load", function() {
+        var piwikElTel = document.querySelectorAll('a[href^="tel:"]:not(.piwik_ignore)');
+        for (var i = 0; i < piwikElTel.length; i++) {
+            piwikElTel[i].classList.add("piwik_ignore");
+        }
+
+        var piwikElFax = document.querySelectorAll('a[href^="fax:"]:not(.piwik_ignore)');
+        for (var j = 0; j < piwikElFax.length; j++) {
+            piwikElFax[j].classList.add("piwik_ignore");
+        }
+    });
+</script>
+<script>
+    /*! loadCSS: load a CSS file asynchronously. [c]2016 @scottjehl, Filament Group, Inc. Licensed MIT */
+    (function(w){
+        "use strict";
+        /* exported loadCSS */
+        var loadCSS = function( href, before, media ){
+            // Arguments explained:
+            // `href` [REQUIRED] is the URL for your CSS file.
+            // `before` [OPTIONAL] is the element the script should use as a reference for injecting our stylesheet <link> before
+            // By default, loadCSS attempts to inject the link after the last stylesheet or script in the DOM. However, you might desire a more specific location in your document.
+            // `media` [OPTIONAL] is the media type or query of the stylesheet. By default it will be 'all'
+            var doc = w.document;
+            var ss = doc.createElement( "link" );
+            var ref;
+            if( before ){
+                ref = before;
+            }
+            else {
+                var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+                ref = refs[ refs.length - 1];
+            }
+
+            var sheets = doc.styleSheets;
+            ss.rel = "stylesheet";
+            ss.href = href;
+            // temporarily set media to something inapplicable to ensure it'll fetch without blocking render
+            ss.media = "only x";
+
+            // wait until body is defined before injecting link. This ensures a non-blocking load in IE11.
+            function ready( cb ){
+                if( doc.body ){
+                    return cb();
+                }
+                setTimeout(function(){
+                    ready( cb );
+                });
+            }
+            // Inject link
+            // Note: the ternary preserves the existing behavior of "before" argument, but we could choose to change the argument to "after" in a later release and standardize on ref.nextSibling for all refs
+            // Note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
+            ready( function(){
+                ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+            });
+            // A method (exposed on return object for external use) that mimics onload by polling document.styleSheets until it includes the new sheet.
+            var onloadcssdefined = function( cb ){
+                var resolvedHref = ss.href;
+                var i = sheets.length;
+                while( i-- ){
+                    if( sheets[ i ].href === resolvedHref ){
+                        return cb();
+                    }
+                }
+                setTimeout(function() {
+                    onloadcssdefined( cb );
+                });
+            };
+
+            function loadCB(){
+                if( ss.addEventListener ){
+                    ss.removeEventListener( "load", loadCB );
+                }
+                ss.media = media || "all";
+            }
+
+            // once loaded, set link's media back to `all` so that the stylesheet applies once it loads
+            if( ss.addEventListener ){
+                ss.addEventListener( "load", loadCB);
+            }
+            ss.onloadcssdefined = onloadcssdefined;
+            onloadcssdefined( loadCB );
+            return ss;
+        };
+        // commonjs
+        if( typeof exports !== "undefined" ){
+            exports.loadCSS = loadCSS;
+        }
+        else {
+            w.loadCSS = loadCSS;
+        }
+    }( typeof global !== "undefined" ? global : this ));
+</script>
+
+<script>loadCSS("//www.txchiro.edu/combine/9835094c0e849c81e00a1918154abfe8-1579701987.css");</script>
+
+<!--[if lte IE 9]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser.  Please <a href="http://outdatedbrowser.com/en">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<script type="application/ld+json">
+[{"@context":["http:\/\/schema.org",{"language":"en-us"}],"@type":"MedicalBusiness","url":"https:\/\/www.txchiro.edu","name":"Texas Chiropractic College","description":"Home in Pasadena, TX. Texas Chiropractic College is your local Chiropractor in Pasadena serving all of your needs. Call us today at 281-487-1170 for an appointment.","image":"","telephone":"281-487-1170","email":"shughes@txchiro.edu","priceRange":"Call for pricing options","address":{"@type":"PostalAddress","addressLocality":"Pasadena","addressRegion":"TX","postalCode":"77505","streetAddress":"5912 Spencer Highway ","addressCountry":"US"},"sameAs":["http:\/\/facebook.com\/76128094654","https:\/\/www.instagram.com\/texaschiropracticcollege\/","http:\/\/twitter.com\/TXChiroCollege","https:\/\/www.linkedin.com\/school\/texas-chiropractic-college\/","https:\/\/outlook.office365.com\/","https:\/\/txchiro.instructure.com\/login\/canvas","https:\/\/txchiro.libguides.com\/home","http:\/\/facebook.com\/76128094654","https:\/\/www.instagram.com\/texaschiropracticcollege\/","http:\/\/twitter.com\/TXChiroCollege","https:\/\/www.linkedin.com\/school\/texas-chiropractic-college\/","https:\/\/outlook.office365.com\/","https:\/\/txchiro.instructure.com\/login\/canvas","https:\/\/txchiro.libguides.com\/home","https:\/\/www.moodyhealthcenter.com\/","https:\/\/appweb.stopitsolutions.com\/login"],"geo":{"@type":"GeoCoordinates","latitude":29.664440200000001,"longitude":-95.151382100000006},"logo":"https:\/\/www.txchiro.edu\/storage\/app\/media","openingHours":["Mo - Fr 9:00-17:00"]}]</script>
+<script defer="" src="//www.txchiro.edu/plugins/editor/cms/assets/js/ibeugdpr.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // SMBWMGR-6630 Hide banner for screenshots
+	window.addEventListener('DOMContentLoaded', function() {
+		if(window.IBEUGDPR !== undefined) {
+	    	if(location.href.indexOf("screenshot_mode=1") === -1) {
+	    	    IBEUGDPR.displayBanner({"bodyText":"<p>We process personal data about users of our site, through the use of cookies and other technologies, to deliver our services, personalize advertising, and to analyze site activity. We may share certain information about our users with our advertising and analytics partners. For additional details, refer to our <a href=\"https:\/\/www.internetbrands.com\/privacy\/privacy-main.html\" target=\"_blank\" class=\"ibeugdpr-privacy\">Privacy Policy<\/a>.<\/p><p>By clicking \"<b>I AGREE<\/b>\" below, you agree to our <a href=\"https:\/\/www.internetbrands.com\/privacy\/privacy-main.html\" target=\"_blank\" class=\"ibeugdpr-privacy\">Privacy Policy<\/a> and our personal data processing and cookie practices as described therein. You also consent to the transfer of your data to our servers in the United States, where data protection laws may be different from those in your country.<\/p>","bannerPosition":"top"});
+	    	}
+		}
+	});
+</script>
+<script type="text/javascript">
+    !function(e,n){var t=document.createElement("script");t.onload=t.onreadystatechange=function(e)
+    {("load"===(e||window.event).type||/loaded|complete/.test(t.readyState)&&document.documentMode<=11)&&(t.onload=t.onreadystatechange=t.onerror=null,new IBTracker(n))}
+        ,t.onerror=function(){t.onload=t.onreadystatechange=t.onerror=null},t.async=1,t.src="//ibclick.stream/assets/js/track/dist/js/v1/tracker.min.js",t.setAttribute("crossorigin","anonymous"),document.getElementsByTagName("head")[0].appendChild(t)}(0,
+        {site:"txchiro.edu",snippetVersion:"1.1",vertical:"SMB"}
+    );
+</script>
+</head><body class=" chiropractic venice">
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-TJ8K324" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="ada_modal" id="ada-modal-on" style="display: none;">
+<div class="ada_modal--container">
+<p class="ada_modal--description">Would you like to switch to the accessible version of this site?</p>
+<a class="ada_modal--link" data-action="accessible" href="#" tabindex="0" title="Go to accessible site">Go to accessible site</a>
+<a class="ada_modal--close" data-action="close" href="#" tabindex="1" title="Close modal window">
+<span>Close modal window</span>
+</a>
+</div>
+</div>
+<div class="ada_modal" id="ada-modal-off" style="display: none;">
+<div class="ada_modal--container">
+<p class="ada_modal--description">Don't need the accessible version of this site?</p>
+<a class="ada_modal--link" data-action="remove-accessible" href="#" tabindex="0" title="Hide the accessibility button">Hide the accessibility button</a>
+<a class="ada_modal--close" data-action="close" href="#" tabindex="1" title="Close modal window">
+<span>Close modal window</span>
+</a>
+</div>
+</div>
+<div class="ada_toolbar bottom" id="ada-toolbar" style="display: none;">
+<div class="ada_toolbar--content">
+<a class="ada_toolbar--opener" data-action="modal" data-modal-id="ada-modal-on" href="#" tabindex="0" title="Accessibility View">
+Accessibility View
+</a>
+<a class="ada_toolbar--close" data-action="modal" data-modal-id="ada-modal-off" href="#" tabindex="0" title="Close toolbar">
+<span>Close toolbar</span>
+</a>
+</div>
+</div>
+<noscript>
+<div class="no-js-alert">Javascript must be enabled for the correct page display</div>
+</noscript>
+<div class="home-layout wrap__layout">
+<div class="wrap__header">
+<div class="wrap__header--inner">
+<header>
+<div class="wrap__headerPanel">
+<div class="wrap__headerPanel--inner">
+<div class="wrap__navigationHeader wrap-item">
+<div class="wrap__navigationHeader--inner wrap-item__inner">
+<a class="hamburger ada-hidden" href="#mm-navigation_header" id="hamburger">
+<span class="hamburger__text">Menu</span>
+</a>
+<div class="navigation_header__container navigation__container"><div class="navigation_header__container--inner navigation__container--inner" data-component-alias="navigation_header" data-component-name="navigation_header" data-widget-alias="SMB__Navigation__Widgets__NavigationSettings___navigation_header" data-widget-id-base="NavigationSettings-SMB__Navigation__Widgets__NavigationSettings___navigation_header"><nav class="navigation" data-more-button="" id="navigation_header" role="navigation_header">
+<ul class="navigation__list more_nav">
+<li class="navigation__item active ">
+<a href="//www.txchiro.edu">Home</a>
+</li>
+<li class="navigation__item has-child">
+<a data-title="About TCC Submenu" href="//www.txchiro.edu/about-tcc.html">About TCC</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/office-of-the-president.html">Office of the President</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/tcc-president-s-cabinet.html">TCC President's Cabinet</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/tcc-board-of-regents.html">TCC Board of Regents</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/mission-statement.html">Mission Statement</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/history.html">History</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/at-a-glance.html">At a Glance</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/location.html">Location</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/campus-map---directions.html">Campus Map &amp; Directions</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/accreditations.html">Accreditations</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/educational-outcomes.html">Educational Outcomes</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/about-tcc/blueprint.html">Blueprint</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/human-resources--hr-.html">Human Resources</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/contact">Contact Us</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Future Students Submenu" href="//www.txchiro.edu/future-students.html">Future Students</a>
+<ul class="navigation__list--sub"> <li class="navigation__item has-child">
+<a data-title="Admissions Submenu" href="//www.txchiro.edu/future-students/admissions.html">Admissions</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/why-choose-tcc.html">Why Choose TCC</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/visit-tcc.html">Visit TCC</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/tcc-admission-requirements.html">TCC Admission Requirements</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/prerequisites.html">Prerequisites</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/steps-to-apply-.html">Steps to Apply</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/apply-online.html">Apply Online</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/transferring.html">Transferring</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/international-students.html">International Students</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/advanced-standing.html">Advanced Standing</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/checklist.html">Checklist</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/new-student-scholarships.html">New Student Scholarships</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/meet-our-team.html">Meet Our Team</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/articulation-agreements.html">Articulation Agreements</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/admission-faqs.html">Admission FAQs</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/request-more-info.html">Request More Info</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/admissions/speak-with-a-tcc-student-.html">Speak With A TCC Student!</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/future-students/exploring-chiropractic-care.html">Exploring Chiropractic Care</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Student Services Submenu" href="//www.txchiro.edu/student-services.html">Student Services</a>
+<ul class="navigation__list--sub"> <li class="navigation__item has-child">
+<a data-title="Academics Submenu" href="//www.txchiro.edu/student-services/academics.html">Academics</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/doctor-of-chiropractic.html">Doctor of Chiropractic</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/curriculum.html">Curriculum</a>
+</li>
+<li class="navigation__item ">
+<a href="http://txchiro.libguides.com/home" target="_blank">Library</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/dual-degree-program.html">Dual Degree Program</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/fitness-and-human-performance.html">Exercise and Health Sciences</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/biology.html">Biology</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/human-biology.html">BS Human Biology</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/bs-biology-requirements-.html">BS Biology Requirements</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/hands-on-experience.html">Hands-On-Experience</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/clinical-internships.html">Clinical Internships</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/preceptorship.html">Preceptorship</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/rice-athletics-rotation.html">Rotation Programs</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/uh-clear-lake-clinic.html">UH-Clear Lake Clinic</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/academics/faculty.html">Faculty</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Financial Aid Submenu" href="//www.txchiro.edu/student-services/financial-aid.html">Financial Aid</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/helpful-links.html">Financial Literacy</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/scholarships.html">Scholarships</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/continuing-student-application.html">Continuing Student Application</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/new-student-application-process.html">New Student Application Process</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/private-loans.html">Private Loans</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/exit-counseling.html">Exit Counseling</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/eligibility.html">Eligibility</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/sources.html">Types of Financial Aid</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/tuition---fees.html">Tuition &amp; Fees</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/verification---forms.html">Verification &amp; Forms</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/financial-aid/veterans.html">Veterans</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Student Life Submenu" href="//www.txchiro.edu/student-services/student-life.html">Student Life</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/student-life/new-student-orientation.html">New Student Orientation</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/student-life/bookstore.html">Bookstore</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/student-life/campus-accessibility.html">Campus Accessibility</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/student-life/health-services.html">Health Services</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/student-life/dining-services.html">Dining Services</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/student-life/student-organizations.html">Student Organizations</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Research Submenu" href="//www.txchiro.edu/student-services/research.html">Research</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/research/faculty-information.html">Faculty Information</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/research/current-studies.html">Current Studies</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Resources Submenu" href="//www.txchiro.edu/student-services/resources.html">Resources</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/academic-calendar.html">Academic Calendar</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/career-services.html">Career Services</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/registrar.html">Registrar's Office</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/the-assessment-center.html">The Assessment Center</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/catalog---handbook.html">Catalog &amp; Handbook</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-grievance-form">Student Grievance Form</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/national-board-examinations.html">National Board Examinations</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/thedirectory.html">Directory</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/student-positions.html">Student Positions</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/safety.html">Safety</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/resources/explore-chiropractic.html">Explore Chiropractic</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Alumni Services Submenu" href="//www.txchiro.edu/alumni-services.html">Alumni Services</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/alumi-services/transcripts-or-diplomas-online.html">Transcripts or Diplomas</a>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Alumni Relations Submenu" href="//www.txchiro.edu/alumi-services/alumni-relations.html">Alumni Relations</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/1908society">1908 Society</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/alumni-relations/alumni-programs.html">Alumni Programs</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/alumni-relations/support-tcc.html">Support TCC</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/alumni-relations/refer-a-student.html">Refer a Student</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Supporting TCC Submenu" href="//www.txchiro.edu/alumi-services/supporting-tcc.html">Supporting TCC</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/supporting-tcc/giving-societies.html">Giving Societies &amp; Community Partners</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-services/supporting-tcc/reasons-to-give.html">Ways to Give</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="Continuing Education Submenu" href="//www.txchiro.edu/alumni-services/continuing-education2.html">Continuing Education</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/acupuncture">100 Hour Chiropractic Acupuncture Course</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item ">
+<a href="http://www.txchiroclassifieds.com/" target="_blank">TCC Classifieds</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item has-child">
+<a data-title="News &amp; Events Submenu" href="//www.txchiro.edu/events.html">News &amp; Events</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/bagsandbubbly">Bags &amp; Bubbly</a>
+</li>
+<li class="navigation__item has-child">
+<a data-title="TCC News Submenu" href="//www.txchiro.edu/news">TCC News</a>
+<ul class="navigation__list--sub"> <li class="navigation__item ">
+<a href="//www.txchiro.edu/student-spotlight-francisco-vega-maldonado">Student Spotlight: Francisco Vega-Maldonado</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/tcc-receives-accreditation-reaffirmation-from-cce">TCC Receives Accreditation Reaffirmation from CCE</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/tcc-receives-accreditation-reaffirmation">TCC Receives Accreditation Reaffirmation</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/mayor-proclamation-chiro-health-month">Mayor Announces National Chiropractic Health Month</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/alumni-spotlight-dr-virgilio-paniagua">Alumni Spotlight: Dr. Virgilio Paniagua</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/dr-gray-hired-as-mhc-chief-of-staff">Dr. Kent Gray Hired as MHC Chief of Staff</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/dr-weiss-recognized-as-outstanding-faculty-member">Dr. Weiss Recognized as Outstanding Faculty Member</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-spotlight-chris-thomas">Student Spotlight: Chris Thomas</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/student-spotlight-holly-tharp">Student Spotlight: Holly Tharp</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/tcc-students-participate-in-ipe-session-at-uthsc">TCC Students Participate in IPE Session at UTHSC</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/board-retreat-fall-2018">TCC Hosts Board of Regents Retreat</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/news---events/news-releases/mhc-service-requirement">MHC Launches Service-Learning Requirement</a>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/news---events/news-releases/tcc-recognizes-greg-chubon--bob-fairey-with-harper">TCC Recognizes Greg Chubon, Bob Fairey with Harper</a>
+</li>
+</ul>
+</li>
+<li class="navigation__item ">
+<a href="//www.txchiro.edu/news---events/office-of-communication.html">Office of Communication</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div></div>
+</div>
+</div>
+<div class="wrap__headerInfo">
+<div class="wrap__headerInfo--inner">
+<div class="wrap__socialmediaHeader">
+<div class="wrap__socialmediaHeader--inner">
+<div class="socialmedia_header__container socialmedia__container"><div class="socialmedia_header__container--inner socialmedia__container--inner" data-component-alias="socialmedia_header" data-component-name="socialmedia_header" data-widget-alias="SMB__Socialmedia__Widgets__SocialmediaSettings___socialmedia_header" data-widget-id-base="SocialmediaSettings-SMB__Socialmedia__Widgets__SocialmediaSettings___socialmedia_header"><div class="socialmedia ">
+<ul class="socialmedia__list">
+<li class="socialmedia__item">
+<a aria-label="icon facebook" class="socialmedia__link-wrapper" href="http://facebook.com/76128094654" target="_blank" title="Facebook">
+<span aria-hidden="true" class="socialmedia__link icon icon-facebook"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon instagram" class="socialmedia__link-wrapper" href="https://www.instagram.com/texaschiropracticcollege/" target="_blank" title="Instagram">
+<span aria-hidden="true" class="socialmedia__link icon icon-instagram"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon twitter" class="socialmedia__link-wrapper" href="http://twitter.com/TXChiroCollege" target="_blank" title="Twitter">
+<span aria-hidden="true" class="socialmedia__link icon icon-twitter"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon linkedin" class="socialmedia__link-wrapper" href="https://www.linkedin.com/school/texas-chiropractic-college/" target="_top" title="LinkedIn">
+<span aria-hidden="true" class="socialmedia__link icon icon-linkedin"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon envelope o" class="socialmedia__link-wrapper" href="https://outlook.office365.com/" target="_blank" title="Email">
+<span aria-hidden="true" class="socialmedia__link icon icon-envelope-o"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon asterisk" class="socialmedia__link-wrapper" href="https://txchiro.instructure.com/login/canvas" target="_blank" title="Canvas">
+<span aria-hidden="true" class="socialmedia__link icon icon-asterisk"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon book" class="socialmedia__link-wrapper" href="https://txchiro.libguides.com/home" target="_blank" title="Mae Hilty Library">
+<span aria-hidden="true" class="socialmedia__link icon icon-book"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="cicon vet_1" class="socialmedia__link-wrapper" href="https://www.moodyhealthcenter.com/" target="_top" title="Moody Health Center">
+<span aria-hidden="true" class="socialmedia__link icon cicon-vet_1"></span>
+</a>
+</li>
+<li class="socialmedia__item custom-uploaded">
+<a aria-label="Title IX" class="socialmedia__link icon" href="https://appweb.stopitsolutions.com/login" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/50x50_80/webmgr/0j/8/d/title-ix.png)" target="_top" title="Title IX">
+</a>
+</li>
+</ul>
+</div>
+</div></div> </div>
+</div>
+<div class="wrap__locationsHeader">
+<div class="wrap__locationsHeader--inner">
+<div class="locations_header__container locations__container"><div class="locations_header__container--inner locations__container--inner" data-component-alias="locations_header" data-component-name="locations_header" data-widget-alias="SMB__Locations__Widgets__LocationSettings___locations_header" data-widget-id-base="LocationSettings-SMB__Locations__Widgets__LocationSettings___locations_header"><div class="locations ">
+<div class="component__title-caption-wrap">
+<h2 class="locations__title">Call today:</h2>
+</div>
+<div class="location">
+<p class="location__phone"><a href="tel:281-487-1170">281-487-1170</a></p>
+</div>
+</div>
+</div></div> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="wrap__logoHeader clogo">
+<div class="wrap__logoHeader--inner">
+<div class="colData__container logo__container"><div class="logo_header__container--inner logo__container--inner" data-component-alias="logo_header" data-component-name="logo_header" data-component-prop-coldata="" data-widget-alias="SMB__Logo__Widgets__LogoSettings___logo_header" data-widget-id-base="LogoSettings-SMB__Logo__Widgets__LogoSettings___logo_header"><div class="logo ">
+<a class="logo__link logo__top" href="//www.txchiro.edu">
+<div class="logo__summary">
+</div>
+</a>
+</div></div></div> </div>
+</div>
+</header>
+</div>
+</div>
+<div class="wrap__slider">
+<div class="wrap__slider--inner">
+<div class="slider_home__container slider__container"><div class="slider_home__container--inner slider__container--inner" data-component-alias="slider_home" data-component-name="slider_home" data-widget-alias="SMB__Slider__Widgets__SliderSettings___slider_home" data-widget-id-base="SliderSettings-SMB__Slider__Widgets__SliderSettings___slider_home"> <div class="slider js-slider-layout-settings " data-items-type-array='[{"id":"item-1538404119434","image_path":"\/Slideshow-Mobile\/homepage-slideshow-m1.jpg","type":"image","title":"","caption":"","call_to_action_text":"Why Choose TCC","link_type":"my-pages","link":"\/\/www.txchiro.edu\/student-services\/admissions\/why-choose-tcc.html","display_tablet":true,"display_mobile":true,"alt_text":"","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"display_desktop":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1538400365234","image_path":"\/Slideshow-Desktop\/131115-tcc-day-1-0021.jpg","type":"image","title":"","caption":"","call_to_action_text":"Why Choose TCC","link_type":"my-pages","link":"\/\/www.txchiro.edu\/student-services\/admissions\/why-choose-tcc.html","display_desktop":true,"display_tablet":false,"display_mobile":false,"alt_text":"Why Choose TCC","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1538405650554","image_path":"\/Slideshow-Mobile\/homepage-slideshow-m2.jpg","type":"image","title":"","caption":"","call_to_action_text":"Visit TCC","link_type":"my-pages","link":"\/\/www.txchiro.edu\/visit-tcc.html","display_tablet":true,"display_mobile":true,"alt_text":"Visit TCC","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"display_desktop":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1505762192338","image_path":"\/Slideshow-Desktop\/131115-tcc-day-1-0686.jpg","type":"image","title":"","caption":"","call_to_action_text":"Visit TCC","link_type":"my-pages","link":"\/\/www.txchiro.edu\/visit-tcc.html","display_desktop":true,"display_tablet":false,"display_mobile":false,"alt_text":"Visit TCC","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1538405979183","image_path":"\/homepage-slideshow-m3.jpg","type":"image","title":"","caption":"","call_to_action_text":"Steps to Apply","link_type":"my-pages","link":"\/\/www.txchiro.edu\/student-services\/admissions\/steps-to-apply-.html","display_tablet":true,"display_mobile":true,"alt_text":"Steps to Apply","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"display_desktop":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1505762222881","image_path":"\/Slideshow-Desktop\/131115-tcc-day-1-0462.jpg","type":"image","title":"","caption":"","call_to_action_text":"Steps to Apply","link_type":"my-pages","link":"\/\/www.txchiro.edu\/student-services\/admissions\/steps-to-apply-.html","display_desktop":true,"display_tablet":false,"display_mobile":false,"alt_text":"Steps to Apply","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1538406031430","image_path":"\/Slideshow-Mobile\/homepage-slideshow-m4.jpg","type":"image","title":"","caption":"","call_to_action_text":"Support TCC","link_type":"my-pages","link":"\/\/www.txchiro.edu\/student-services\/alumni-relations\/support-tcc.html","display_tablet":true,"display_mobile":true,"alt_text":"Support TCC","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"display_desktop":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1505762265425","image_path":"\/Slideshow-Desktop\/131118-tcc-day-2-0726.jpg","type":"image","title":"","caption":"","call_to_action_text":"Support TCC","link_type":"my-pages","link":"\/\/www.txchiro.edu\/student-services\/alumni-relations\/support-tcc.html","display_desktop":true,"display_tablet":false,"display_mobile":false,"alt_text":"Support TCC","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1538406073652","image_path":"\/Slideshow-Mobile\/homepage-slideshow-m5.jpg","type":"image","title":"","caption":"","call_to_action_text":"News Releases","link_type":"my-pages","link":"\/\/www.txchiro.edu\/news---events\/news-releases.html","display_tablet":true,"display_mobile":true,"alt_text":"News Releases","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"display_desktop":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1534429092492","image_path":"\/Slideshow-Desktop\/131115-tcc-day-1-0091.jpg","type":"image","title":"","caption":"","call_to_action_text":"News Releases","link_type":"my-pages","link":"\/\/www.txchiro.edu\/news---events\/news-releases.html","display_desktop":true,"display_tablet":false,"display_mobile":false,"alt_text":"News Releases","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1538406114896","image_path":"\/Slideshow-Mobile\/homepage-slideshow-m6.jpg","type":"image","title":"","caption":"","call_to_action_text":"TCC Classified Ads","link_type":"external-link","link":"http:\/\/www.txchiroclassifieds.com\/","display_tablet":true,"display_mobile":true,"alt_text":"TCC Classified Ads","img_title":"","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"display_desktop":false,"use_custom_thumbnail":false,"thumbnail":[]},{"id":"item-1538402570981","image_path":"\/Slideshow-Desktop\/IMG_4671.jpg","type":"image","title":"","caption":"","call_to_action_text":"TCC Classified Ads","link_type":"external-link","display_desktop":true,"display_tablet":false,"display_mobile":false,"alt_text":"TCC Classified Ads","img_title":"","link":"http:\/\/www.txchiroclassifieds.com\/","active":true,"open_link_in_new_tab":false,"show_text_while_play_in":false,"use_custom_thumbnail":false,"thumbnail":[]}]' id="slider">
+<ul class="slider__list bxslider" data-auto="1" data-auto-delay="0" data-auto-hover-modified="" data-autoplaymuted="true" data-autoplayvideo="1" data-control="slider" data-controls="1" data-controls-hover="1" data-count-videos="0" data-easing="" data-first-slide-video="" data-is-editor="" data-mode="horizontal" data-pager="1" data-pause="4000" data-responsive="1" data-speed="500" data-stop-slideshow-after-one-loop="">
+<li aria-label="" class="slider__item slider__image" data-desktop="" data-mobile="1" data-tablet="1" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Mobile/homepage-slideshow-m1.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/student-services/admissions/why-choose-tcc.html">
+Why Choose TCC
+</a>
+</div>
+</div>
+</li>
+<li aria-label="Why Choose TCC" class="slider__item slider__image" data-desktop="1" data-mobile="" data-tablet="" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Desktop/131115-tcc-day-1-0021.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/student-services/admissions/why-choose-tcc.html">
+Why Choose TCC
+</a>
+</div>
+</div>
+</li>
+<li aria-label="Visit TCC" class="slider__item slider__image" data-desktop="" data-mobile="1" data-tablet="1" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Mobile/homepage-slideshow-m2.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/visit-tcc.html">
+Visit TCC
+</a>
+</div>
+</div>
+</li>
+<li aria-label="Visit TCC" class="slider__item slider__image" data-desktop="1" data-mobile="" data-tablet="" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Desktop/131115-tcc-day-1-0686.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/visit-tcc.html">
+Visit TCC
+</a>
+</div>
+</div>
+</li>
+<li aria-label="Steps to Apply" class="slider__item slider__image" data-desktop="" data-mobile="1" data-tablet="1" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/homepage-slideshow-m3.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/student-services/admissions/steps-to-apply-.html">
+Steps to Apply
+</a>
+</div>
+</div>
+</li>
+<li aria-label="Steps to Apply" class="slider__item slider__image" data-desktop="1" data-mobile="" data-tablet="" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Desktop/131115-tcc-day-1-0462.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/student-services/admissions/steps-to-apply-.html">
+Steps to Apply
+</a>
+</div>
+</div>
+</li>
+<li aria-label="Support TCC" class="slider__item slider__image" data-desktop="" data-mobile="1" data-tablet="1" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Mobile/homepage-slideshow-m4.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/student-services/alumni-relations/support-tcc.html">
+Support TCC
+</a>
+</div>
+</div>
+</li>
+<li aria-label="Support TCC" class="slider__item slider__image" data-desktop="1" data-mobile="" data-tablet="" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Desktop/131118-tcc-day-2-0726.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/student-services/alumni-relations/support-tcc.html">
+Support TCC
+</a>
+</div>
+</div>
+</li>
+<li aria-label="News Releases" class="slider__item slider__image" data-desktop="" data-mobile="1" data-tablet="1" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Mobile/homepage-slideshow-m5.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/news---events/news-releases.html">
+News Releases
+</a>
+</div>
+</div>
+</li>
+<li aria-label="News Releases" class="slider__item slider__image" data-desktop="1" data-mobile="" data-tablet="" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Desktop/131115-tcc-day-1-0091.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="//www.txchiro.edu/news---events/news-releases.html">
+News Releases
+</a>
+</div>
+</div>
+</li>
+<li aria-label="TCC Classified Ads" class="slider__item slider__image" data-desktop="" data-mobile="1" data-tablet="1" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Mobile/homepage-slideshow-m6.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="http://www.txchiroclassifieds.com/">
+TCC Classified Ads
+</a>
+</div>
+</div>
+</li>
+<li aria-label="TCC Classified Ads" class="slider__item slider__image" data-desktop="1" data-mobile="" data-tablet="" role="img" style="background-image:url(https://cdcssl.ibsrv.net/ibimg/smb/1600x1600_80/webmgr/0j/8/d/Slideshow-Desktop/IMG_4671.jpg)">
+<div class="slider__text align-center ">
+<div class="slider__button">
+<a href="http://www.txchiroclassifieds.com/">
+TCC Classified Ads
+</a>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div></div> </div>
+</div>
+<div class="wrap__page-area">
+<div class="wrap__page">
+<div class="wrap__page--inner">
+<div class="wrap__featuredblocks wrap-item">
+<div class="wrap__featuredblocks--inner wrap-item__inner">
+<center><div class="colData__container logo__container"><div class="logo_custom__container--inner logo__container--inner" data-component-alias="logo_custom" data-component-name="logo_custom" data-component-prop-coldata="" data-widget-alias="SMB__Logo__Widgets__LogoSettings___logo_custom" data-widget-id-base="LogoSettings-SMB__Logo__Widgets__LogoSettings___logo_custom"><div class="logo ">
+<a class="logo__link logo__top" href="//www.txchiro.edu">
+<img alt="texas chiropractic college" class="logo__image" src="/storage/app/media/logo/logo_big-389.png" style="max-height: px; 
+                    height: px; 
+                    width:  auto; " title=""/>
+<div class="logo__summary">
+</div>
+</a>
+</div></div></div></center>
+</div>
+<div class="wrap__featuredblocks--inner wrap-item__inner">
+<div class="featuredblocks_home__container featuredblocks__container"><div class="featuredblocks_home__container--inner featuredblocks__container--inner" data-component-alias="featuredblocks_home" data-component-name="featuredblocks_home" data-widget-alias="SMB__Featuredblocks__Widgets__FeaturedblocksSettings___featuredblocks_home" data-widget-id-base="FeaturedblocksSettings-SMB__Featuredblocks__Widgets__FeaturedblocksSettings___featuredblocks_home">
+<div class="featuredblocks ">
+<ul class="featuredblocks__list">
+<li class="featuredblock__item ">
+<div class="featuredblock__container featuredblock__container--clickable">
+<a class="featuredblock__containerlink" href="//www.txchiro.edu/student-services/admissions/apply-online.html" target="">
+<h4 class="featuredblock__title">Apply Now</h4>
+<p class="featuredblock__description">When you apply for admission to Texas Chiropractic College you will be personally guided through the process by an admissions professional who will alleviate all of your concerns. Take the first step. Apply today!</p>
+<span class="featuredblock__button">Apply Online</span>
+</a>
+</div>
+</li>
+<li class="featuredblock__item ">
+<div class="featuredblock__container featuredblock__container--clickable">
+<a class="featuredblock__containerlink" href="//www.txchiro.edu/visit-tcc.html" target="">
+<h4 class="featuredblock__title">Visit Campus</h4>
+<p class="featuredblock__description">Visit TCC and get a feel for our personalized style of chiropractic education. Texas Chiropractic College offers a campus visit program every other Friday that classes are in session and students are on campus.</p>
+<span class="featuredblock__button">Visit TCC</span>
+</a>
+</div>
+</li>
+<li class="featuredblock__item ">
+<div class="featuredblock__container featuredblock__container--clickable">
+<a class="featuredblock__containerlink" href="//www.txchiro.edu/request-more-information-iform" target="">
+<h4 class="featuredblock__title">Request More Information</h4>
+<p class="featuredblock__description">Since 1908, Texas Chiropractic College has led the way in chiropractic education. Our mission is to educate knowledgeable, skillful and patient-centered chiropractors.</p>
+<span class="featuredblock__button">Learn More</span>
+</a>
+</div>
+</li>
+<li class="featuredblock__item ">
+<div class="featuredblock__container featuredblock__container--clickable">
+<a class="featuredblock__containerlink" href="//www.txchiro.edu/contact" target="">
+<h4 class="featuredblock__title">Contact Us</h4>
+<p class="featuredblock__description">At Texas Chiropractic College (TCC), we are here to serve our potential, current and former students.</p>
+<span class="featuredblock__button">Learn More</span>
+</a>
+</div>
+</li>
+</ul>
+</div>
+</div></div> </div>
+</div>
+<div class="wrap__form wrap-item">
+<div class="wrap__form--inner wrap-item__inner">
+<center><div class="embedcode_cstmhome__container embedcode__container"><div class="embedcode_cstmhome__container--inner embedcode__container--inner" data-component-alias="embedcode_cstmhome" data-component-name="embedcode_cstmhome" data-widget-alias="Editor__Cms__Widgets__EmbedCodeSettings___embedcode_cstmhome" data-widget-id-base="EmbedCodeSettings-Editor__Cms__Widgets__EmbedCodeSettings___embedcode_cstmhome"><div class="embed-code ">
+<div class="embed-code__input-code" id="embed_input_code">
+<div>
+<p></p><h1>Upcoming Events</h1>
+<p><a href="http://www.txchiro.edu/bagsandbubbly"><img src="//my.chiromatrix.com/0024925/storage/app/media/Bags-and-Bubbly/NEW-DATE/logo-april-copy.png" style="width:400px; border-radius: 50%; border: 1px solid #35546c;"/><br/><h2>Bags &amp; Bubbly</h2></a><br/>April 18, 2020
+</p>
+<p><img src="//my.chiromatrix.com/0024925/storage/app/media/2020Gala/night-at-the-museum-v2.jpg" style="width:400px; border-radius: 50%; border: 1px solid #35546c;"/><br/></p><h2>2020 Annual Gala: Night at the Museum<br/>October 17, 2020</h2>
+</div>
+</div>
+</div></div></div></center>
+</div>
+</div>
+<div class="wrap__page-content">
+<div class="wrap__page-content--inner">
+<div class="editable__container editable__container"><div class="editable__container--inner editable__container--inner" data-component-alias="editable" data-component-name="editable"><h1 style="text-align: center;"><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/tlz1yrDloHs" width="560"></iframe></h1>
+<p></p>
+<h1 style="text-align: center;">Texas Chiropractic College </h1>
+<p>At Texas Chiropractic College in Pasadena, we are passionate about providing the highest quality of education and training to those aspiring to become a chiropractor. Our pride is being known as much more than a school focused merely on academics. Here, we also place a strong emphasis on training students to embrace their passion for helping people through natural, holistic healing practices and practical applications. Read on to discover more about who we are and our mission, what we do and how we can help you realize your chiropractor education dreams.
+</p>
+<h2>A Chiropractic School on a Mission</h2>
+<p>For more than a century, we’ve been educating the next generation of chiropractors who come here from all over the world to train at our highly ranked program. In fact, due to the dedication of our students and exceptional faculty, our chiropractic school is noted as one of the premier colleges to get a degree within the field. Our mission is to not only provide future practitioners with a top-tier education, but we aspire to go further. We want them to graduate as compassionate, ethical and skilled healthcare professionals.
+</p>
+<h2>Our Principles and Philosophy</h2>
+<p>We focus on teaching the history and the principles that the field of chiropractic was founded upon to lay a solid foundation of its value in healing pain and injuries within the body. Every nerve in the body is connected to areas of the spine, hands, and feet, allowing knowledgeable chiropractors to heal many areas of the body beyond the neck and back. We believe this approach contributes to the high caliber of our graduating students' capabilities to succeed.
+</p>
+<h2>Our Teachings at Texas Chiropractic College</h2>
+<p>Students learn how to be the top in their field here. We utilize the most modern approaches in chiropractic techniques that keep our graduates on the cusp of the next generation of holistic medicinal practices. An emphasis is placed on taking classroom knowledge and putting it into practical uses with patients. Interaction is a key aspect of patient relations and can have a very positive impact on the success of treatments and the comfort of those undergoing treatment. Our students get to work hands-on with the latest scientific tools used in the field, better preparing them to bring relief to those in need.
+</p>
+<h2>The Clear Choice for Chiropractic Education</h2>
+<p>While we’re not the only school for chiropractic training in Texas, we’re certain that our reputation ensures that we are one of the best. Beyond our comprehensive academics options, hands-on approach and modern training facilities, we also teach our students the science behind spinal care and offer instruction in business practices. Those seeking Master’s degrees will appreciate our strong partnerships with universities willing to help you continue your educational path.
+</p>
+<p>If you’re ready to get back in the game and pursue chiropractic education in Texas, apply now to our program or request additional information about our programs. If you have questions, simply email us or call 281-487-1170 and we’ll help get you on your way to graduation day.
+</p></div></div> </div>
+</div>
+<div class="wrap__map-home wrap-item">
+<div class="wrap__map-home--inner wrap-item__inner">
+<div class="map_home__container map__container"><div class="map_home__container--inner map__container--inner" data-component-alias="map_home" data-component-name="map_home" data-widget-alias="SMB__Map__Widgets__MapSettings___map_home" data-widget-id-base="MapSettings-SMB__Map__Widgets__MapSettings___map_home"><div class="map component ">
+<div class="component__title-caption-wrap">
+<h2 class="map__title">Location</h2>
+<h3 class="map__caption">Find us on the map</h3>
+</div>
+<div class="js-mapComponent map__display" id="gmap"></div>
+<input type="hidden" value='{"width":100,"height":100,"autoFit":true,"assetsPath":"plugins\/smb\/map\/assets\/","hue":{"stylers":[{"gama":"1,61"},{"lightness":"-7"},{"hue":"none"}]},"icon":"default","iconColor":"default","iconUrl":"","zoom":10,"zoomControl":true,"streetViewControl":false,"mapTypeControl":false,"showAddressOnHover":false,"alwaysShowInfoWindow":true,"locations":[{"latitude":29.664440200000001,"longitude":-95.151382100000006,"address":"5912 Spencer Highway, Pasadena, TX, 77505, US","address_format":{"first":"5912 Spencer Highway","second":"Pasadena, TX, 77505, US"},"title":"Primary Location","cta":{"openInNew":false},"phone":"281-487-1170","fax":"","city":"Pasadena","country":"US","state":"TX","zip":"77505","name":"Primary Location","query":"street=5912+Spencer+Highway&amp;city=Pasadena&amp;state=TX&amp;postcode=77505&amp;country=US"}]}'/> </div>
+</div></div> </div>
+</div>
+<div class="wrap__hours-home wrap-item">
+<div class="wrap__hours-home--inner wrap-item__inner">
+<div class="hours_home__container hours__container"><div class="hours_home__container--inner hours__container--inner" data-component-alias="hours_home" data-component-name="hours_home" data-widget-alias="SMB__Hours__Widgets__HoursSettings___hours_home" data-widget-id-base="HoursSettings-SMB__Hours__Widgets__HoursSettings___hours_home">
+<div class="hours ">
+<div class="component__title-caption-wrap">
+<h2 class="hours__title">College Hours </h2>
+</div>
+<div class="hours__wrapper">
+<p class="hours__name">Texas Chiropractic College</p>
+<div class="hours__list">
+<div class="day">
+<p class="day__name">Monday:</p>
+<div class="day__time--wrap">
+<p class="day__time">8:00 am - 5:00 pm</p>
+</div>
+</div>
+<div class="day">
+<p class="day__name">Tuesday:</p>
+<div class="day__time--wrap">
+<p class="day__time">8:00 am - 5:00 pm</p>
+</div>
+</div>
+<div class="day">
+<p class="day__name">Wednesday:</p>
+<div class="day__time--wrap">
+<p class="day__time">8:00 am - 5:00 pm</p>
+</div>
+</div>
+<div class="day">
+<p class="day__name">Thursday:</p>
+<div class="day__time--wrap">
+<p class="day__time">8:00 am - 5:00 pm</p>
+</div>
+</div>
+<div class="day">
+<p class="day__name">Friday:</p>
+<div class="day__time--wrap">
+<p class="day__time">8:00 am - 4:00 pm</p>
+</div>
+</div>
+<div class="day">
+<p class="day__name">Saturday:</p>
+<div class="day__time--wrap">
+<p class="day__time--closed">Closed</p>
+</div>
+</div>
+<div class="day">
+<p class="day__name">Sunday:</p>
+<div class="day__time--wrap">
+<p class="day__time--closed">Closed</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="application/ld+json">
+{"@context":["http:\/\/schema.org",{"language":"en-us"}],"@type":"MedicalBusiness","name":"Texas Chiropractic College","image":"https:\/\/cdcssl.ibsrv.net\/ibimg\/smb\/100x100_80-1\/webmgr\/0j\/8\/d\/","telephone":"281-487-1170","address":{"@type":"PostalAddress","addressLocality":"Pasadena","addressRegion":"TX","postalCode":"77505","streetAddress":"5912 Spencer Highway ","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","closes":"17:00","dayOfWeek":"http:\/\/schema.org\/Monday","opens":"09:00"},{"@type":"OpeningHoursSpecification","closes":"17:00","dayOfWeek":"http:\/\/schema.org\/Tuesday","opens":"09:00"},{"@type":"OpeningHoursSpecification","closes":"17:00","dayOfWeek":"http:\/\/schema.org\/Wednesday","opens":"09:00"},{"@type":"OpeningHoursSpecification","closes":"17:00","dayOfWeek":"http:\/\/schema.org\/Thursday","opens":"09:00"},{"@type":"OpeningHoursSpecification","closes":"17:00","dayOfWeek":"http:\/\/schema.org\/Friday","opens":"09:00"}]}
+</script>
+</div></div> </div>
+<div>
+<center><div class="embedcode_logo__container embedcode__container"><div class="embedcode_logo__container--inner embedcode__container--inner" data-component-alias="embedcode_logo" data-component-name="embedcode_logo" data-widget-alias="Editor__Cms__Widgets__EmbedCodeSettings___embedcode_logo" data-widget-id-base="EmbedCodeSettings-Editor__Cms__Widgets__EmbedCodeSettings___embedcode_logo"><div class="embed-code ">
+<div class="embed-code__input-code" id="embed_input_code">
+<div><a class="tcc_email" href="https://outlook.office365.com/" target="_blank">TCC Email Portal</a><a href="https://txchiro.instructure.com/login/canvas" target="_blank"><img src="//my.chiromatrix.com/0024925/storage/app/media/CanvasLogo.png" style="width: 150px; vertical-align: middle; margin: 10px;"/></a><br/>
+<a href="https://txchiro.libguides.com/home" target="_blank">
+</a><a href="http://www.moodyhealthcenter.com/" target="_blank"><img src="//my.chiromatrix.com/0024925/storage/app/media/Logos/mhc-logo.png" style="width: 150px; vertical-align: middle; margin: 10px;"/></a>
+<a href="https://txchiro.libguides.com/home" target="_blank"><img src="//my.chiromatrix.com/0024925/storage/app/media/3color_Library.jpg" style="width: 150px; vertical-align: middle; margin: 10px;"/></a>
+</div>
+</div>
+</div></div></div></center>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-home">
+<div class="wrap__footer wrap-item">
+<div class="wrap__footer--inner wrap-item__inner">
+<footer>
+<div class="wrap__logoFooter">
+<div class="wrap__logoFooter--inner">
+<div class="colData__container logo__container"><div class="logo_footer2__container--inner logo__container--inner" data-component-alias="logo_footer2" data-component-name="logo_footer2" data-component-prop-coldata="" data-widget-alias="SMB__Logo__Widgets__LogoSettings___logo_footer2" data-widget-id-base="LogoSettings-SMB__Logo__Widgets__LogoSettings___logo_footer2"><div class="logo hidden--l">
+<a class="logo__link logo__top" href="//www.txchiro.edu">
+<img alt="Texas Chiropractic College" class="logo__image" src="/storage/app/media/logo_big-389.png" style="max-height: px; 
+                    height: px; 
+                    width:  auto; " title=""/>
+<div class="logo__summary">
+</div>
+</a>
+</div></div></div> </div>
+</div>
+<div class="wrap__socialmediaFooter">
+<div class="wrap__socialmediaFooter--inner">
+<div class="socialmedia_footer__container socialmedia__container"><div class="socialmedia_footer__container--inner socialmedia__container--inner" data-component-alias="socialmedia_footer" data-component-name="socialmedia_footer" data-widget-alias="SMB__Socialmedia__Widgets__SocialmediaSettings___socialmedia_footer" data-widget-id-base="SocialmediaSettings-SMB__Socialmedia__Widgets__SocialmediaSettings___socialmedia_footer"><div class="socialmedia hidden--l">
+<ul class="socialmedia__list">
+<li class="socialmedia__item">
+<a aria-label="icon facebook" class="socialmedia__link-wrapper" href="http://facebook.com/76128094654" target="_blank" title="Facebook">
+<span aria-hidden="true" class="socialmedia__link icon icon-facebook"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon instagram" class="socialmedia__link-wrapper" href="https://www.instagram.com/texaschiropracticcollege/" target="_blank" title="Instagram">
+<span aria-hidden="true" class="socialmedia__link icon icon-instagram"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon twitter" class="socialmedia__link-wrapper" href="http://twitter.com/TXChiroCollege" target="_blank" title="Twitter">
+<span aria-hidden="true" class="socialmedia__link icon icon-twitter"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon linkedin" class="socialmedia__link-wrapper" href="https://www.linkedin.com/school/texas-chiropractic-college/" target="_top" title="LinkedIn">
+<span aria-hidden="true" class="socialmedia__link icon icon-linkedin"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon envelope o" class="socialmedia__link-wrapper" href="https://outlook.office365.com/" target="_blank" title="Email">
+<span aria-hidden="true" class="socialmedia__link icon icon-envelope-o"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon asterisk" class="socialmedia__link-wrapper" href="https://txchiro.instructure.com/login/canvas" target="_blank" title="Canvas">
+<span aria-hidden="true" class="socialmedia__link icon icon-asterisk"></span>
+</a>
+</li>
+<li class="socialmedia__item">
+<a aria-label="icon book" class="socialmedia__link-wrapper" href="https://txchiro.libguides.com/home" target="_blank" title="Mae Hilty Library">
+<span aria-hidden="true" class="socialmedia__link icon icon-book"></span>
+</a>
+</li>
+</ul>
+</div>
+</div></div> </div>
+</div>
+<div class="wrap__copyright">
+<div class="wrap__copyright--inner">
+<div class="copyright__container copyright__container"><div class="copyright__container--inner copyright__container--inner" data-component-alias="copyright" data-component-name="copyright" data-widget-alias="Editor__Cms__Widgets__Copyright___copyright" data-widget-id-base="Copyright-Editor__Cms__Widgets__Copyright___copyright"><div id="copyright">
+<ul class="copyright__list">
+<li class="copyright__item">
+<a class="copyright__link" href="http://chiromatrix.com" rel="nofollow" target="_blank">Copyright © 2020 MH Sub I, LLC dba iMatrix.</a>
+</li>
+<li class="copyright__item">
+<a class="copyright__link" href="https://portal.chiromatrixbase.com" rel="nofollow" target="_blank">Admin Log In</a>
+</li>
+<li class="copyright__item">
+<a class="copyright__link" href="http://www.internetbrands.com/privacy/privacy-highlights.html" rel="nofollow" target="_blank">Privacy Policy</a>
+</li>
+<li class="copyright__item">
+<a class="copyright__link" href="http://www.internetbrands.com/ibterms/" rel="nofollow" target="_blank">Terms of Use</a>
+</li>
+<li class="copyright__item">
+<a class="copyright__link" href="http://www.internetbrands.com/ibterms/supplementalhealthterms/index.php" rel="nofollow" target="_blank">Health Disclaimer</a>
+</li>
+<li class="copyright__item">
+<a class="copyright__link" href="http://www.internetbrands.com/privacy/cookie-policy.html" rel="nofollow" target="_blank">Cookie Policy</a>
+</li>
+<li class="copyright__item">
+<a class="copyright__link" href="//www.txchiro.edu/sitemap" rel="nofollow" target="_blank">Site Map</a>
+</li>
+</ul>
+</div>
+</div></div> </div>
+</div>
+</footer>
+</div>
+</div> </div>
+</div>
+</div>
+<script defer="" src="//www.txchiro.edu/combine/83e0d6b64f7957b5634cf94d327b4a38-1580232908.js"></script>
+<script defer="" src="https://smbleads.ibsmb.com/v1/js/CampaignTracker.min.js"></script>
+<script type="text/javascript">
++function() {
+    "use strict";
+
+    // Show ada-toolbar btn after page is loaded
+    window.onload = function() {
+        document.getElementById("ada-toolbar").style.display = "block";
+    };
+
+    var activeModal = null,
+        i,
+        toggleModal =  function(id) {
+            id = (typeof id !== 'undefined') ?  id : null;
+
+            // Close if another modal is visible
+            if (activeModal) {
+                activeModal.style.display = "none";
+            }
+            // Select the modal if id is provided
+            if (id) {
+                activeModal = document.getElementById(id);
+                activeModal.style.display = "block";
+            }
+            // Get the links in the modal and the event handlers
+            var link = activeModal.querySelector(".ada_modal--link"),
+                closeBtn = activeModal.querySelector(".ada_modal--close"),
+                linkHandler = function(e) {
+                    if (e.which === 9) {
+                        e.preventDefault();
+                        closeBtn.focus();
+                    }
+                },
+                closeHandler = function(e) {
+                    if (e.which === 9) {
+                        e.preventDefault();
+                        link.focus();
+                    }
+                },
+                escButtonHandler = function(e) {
+                    if (e.which === 27 && activeModal !== null) {
+                        e.preventDefault();
+                        activeModal.style.display = "none";
+                    }
+                },
+                closeModalHandler = function(e) {
+                    if (e.target == activeModal) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleModal();
+                    }
+                };
+
+            if (id === null) {
+                // remove the event listeners
+                activeModal.removeEventListener('click', closeModalHandler);
+                link.removeEventListener('keydown', linkHandler);
+                closeBtn.removeEventListener('keydown', closeHandler);
+                document.removeEventListener('keydown', escButtonHandler);
+                activeModal.style.display = "none";
+                activeModal = null;
+                return;
+            }
+            // add event listeners for tab, shift + tab and close modal
+            activeModal.addEventListener('click', closeModalHandler);
+            closeBtn.addEventListener('keydown', closeHandler);
+            link.addEventListener('keydown', linkHandler);
+            document.addEventListener('keydown', escButtonHandler);
+            link.focus();
+        };
+
+    // init the modals
+    var modals = document.querySelectorAll("[data-action=modal]");
+    for (i = 0; i < modals.length; i++) {
+        modals[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleModal(this.getAttribute("data-modal-id"));
+        });
+    }
+
+    // button for enabling ada mode
+    document.querySelector("[data-action=accessible]").addEventListener("click", function() {
+        window.location.href = "?ada_mode=1";
+    });
+
+    // buttons for closing the modal
+    var closeBtns = document.querySelectorAll("[data-action=close]");
+    for (i = 0; i < closeBtns.length; i++) {
+        closeBtns[i].addEventListener("click", function(e) {
+            e.preventDefault();
+            toggleModal();
+        });
+    };
+
+    // remove the ada toolbar
+    document.querySelector("[data-action=remove-accessible]").addEventListener("click", function(e) {
+        e.preventDefault();
+        document.getElementById("ada-toolbar").style.display = "none";
+        toggleModal();
+    });
+
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (!mutation.addedNodes) return;
+
+            if (document.body.firstChild.id !== "ada-toolbar") {
+                document.body.insertBefore(document.getElementById("ada-toolbar"), document.body.childNodes[0]);
+                document.body.insertBefore(document.getElementById("ada-modal-on"), document.body.childNodes[1]);
+                document.body.insertBefore(document.getElementById("ada-modal-off"), document.body.childNodes[1]);
+            }
+        })
+    });
+
+    observer.observe(document.body, {
+        childList: true
+        , subtree: true
+        , attributes: false
+        , characterData: false
+    });
+}();
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"94778f977a","applicationID":"27163309","transactionName":"MlFUMhRZD0AEAkMPVgsbdwUSUQ5dSiJaFWUmWFcVFV0SbyYMRCVWC0BECQpUBEElE0II","queueTime":0,"applicationTime":446,"atts":"HhZDRFxDHB9HABVcQhhJ","errorBeacon":"bam.nr-data.net","agent":""}</script></body></html>
+

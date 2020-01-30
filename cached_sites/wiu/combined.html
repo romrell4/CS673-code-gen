@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><style>/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*
+Skin Name: Nivo Slider Default Theme
+Skin URI: http://nivo.dev7studios.com
+Description: The default skin for the Nivo Slider.
+Version: 1.3
+Author: Gilbert Pellegrom
+Author URI: http://dev7studios.com
+Supports Thumbs: true
+*/
+
+.theme-default .nivoSlider {
+	position:relative;
+	background:#fff url(loading.gif) no-repeat 50% 50%;
+    margin-bottom:10px;
+    -webkit-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow: 0px 1px 5px 0px #4a4a4a;
+}
+.theme-default .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.theme-default .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.theme-default .nivo-controlNav {
+	text-align: center;
+	padding: 20px 0;
+}
+.theme-default .nivo-controlNav a {
+	display:inline-block;
+	width:22px;
+	height:22px;
+	background:url(bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin: 0 2px;
+}
+.theme-default .nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.theme-default .nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	background:url(arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	opacity: 1;
+}
+.theme-default:hover .nivo-directionNav a { opacity: 1; }
+.theme-default a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+.theme-default a.nivo-prevNav {
+	left:15px;
+}
+
+.theme-default .nivo-caption {
+    font-family: Helvetica, Arial, sans-serif;
+}
+.theme-default .nivo-caption a {
+    color:#fff;
+    border-bottom:1px dotted #fff;
+}
+.theme-default .nivo-caption a:hover {
+    color:#fff;
+}
+
+.theme-default .nivo-controlNav.nivo-thumbs-enabled {
+	width: 100%;
+}
+.theme-default .nivo-controlNav.nivo-thumbs-enabled a {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-bottom: 5px;
+}
+.theme-default .nivo-controlNav.nivo-thumbs-enabled img {
+	display: block;
+	width: 120px;
+	height: auto;
+}
+.nivo-box,.nivo-caption,.nivoSlider{overflow:hidden}.nivoSlider{position:relative;width:100%;height:auto}.nivoSlider img{position:absolute;top:0;left:0;max-width:none}.nivo-main-image{display:block!important;position:relative!important;width:100%!important;height:auto!important}.nivoSlider a.nivo-imageLink{position:absolute;top:0;left:0;width:100%;height:100%;border:0;padding:0;margin:0;z-index:6;display:none;background:#fff;filter:alpha(opacity=0);opacity:0}.nivo-box,.nivo-slice{z-index:5;position:absolute}.nivo-box,.nivo-box img,.nivo-slice{display:block}.nivo-slice{height:100%;top:0}.nivo-caption a{display:inline!important}.nivo-html-caption{display:none}.nivo-directionNav a{position:absolute;bottom:11em;z-index:9;cursor:pointer}.nivo-prevNav{left:0}.nivo-nextNav{right:0}.nivo-controlNav{text-align:center;padding:15px 0}.nivo-controlNav a{display:inline-block;width:22px;height:22px;background:url(themes/default/bullets.png) no-repeat;text-indent:-9999px;border:0;margin:4.5% 5.5%}.nivo-controlNav a.active{background-position:0 -22px}
+.menuItemLeft,.tabContent h3{font-size:1em}.menuItem,.menuItemLeft{font-family:Arial;color:#80d}.tabsLeft,.tabsTop{list-style-type:none}.showMenu,.tabContent{border-top-style:solid;border-width:5px;border-color:#FC0;box-shadow:0 0 .3em rgba(0,0,0,.3)}.menuItem:first-child{background:0 0}.menuItemLeft,.showMenu,.tabContent{background-color:#fff}.menuItemLeft{display:block;text-align:center;font-weight:700;width:8em;padding-top:1em}.tabContent,.tabsTop{z-index:200;text-align:left}.tabsLeft{position:relative;top:300px;bottom:300px;margin:0;padding:0;overflow:hidden}.tabContent,.tabContent h2{position:absolute;overflow:hidden}.tabsTop{margin:auto;padding:0;overflow:hidden;width:auto;left:auto;right:5%}.hideMenu{display:none}.menuSeparator{color:#d3d3d3;font-weight:400;font-size:1.4em;margin:0;padding:0}.showMenu{width:85%;height:20em;padding-top:1em;border-radius:.1em;-webkit-border-radius:1px;-webkit-box-shadow:0 0 3px rgba(0,0,0,.3);-moz-box-shadow:0 0 3px rgba(0,0,0,.3)}.tabContent{display:block;width:98%;max-width:1730px;padding-top:0;margin-left:auto;margin-right:auto;left:1%;right:1%;border-radius:.1em;-webkit-border-radius:1px;-webkit-box-shadow:0 0 3px rgba(0,0,0,.3);-moz-box-shadow:0 0 3px rgba(0,0,0,.3)}.tabContent h3,.tabContent h4{padding:.75em 1em;font-weight:700}.tabContent h2{left:-9999px;width:0;height:0}.tabContent h4{font-size:.8em}.tabContent p{padding:0 1em .5em 1.2em;font-size:.75em;line-height:125%}.tabContent img{max-height:24em}.tabContent .thirdcolumn{width:29.3333333%;padding:1em 2%;float:left}.tabContent .fourthcolumn{width:21%;padding:1em 2%;float:left}.tabContent .fifthcolumn{width:16%;padding:1em 2%;float:left}.tabContent .sixthcolumn{width:12.6666667%;padding:1em 2%;float:left}.tabContent ul{font-size:.75em;padding:0 2em .75em 1em}.tabContent li{list-style-type:disc;line-height:175%;left:2em;position:relative}.tabContent ul.nobullets{padding:0 2em .75em 0}.tabContent ul.nobullets li{list-style-type:none;left:1.2em}.tabContent .biglinks li{padding-bottom:1em}.tabContent .biglinks a{font-size:1.2em;font-weight:700}.tabContent span.explanation{font-size:1em;line-height:125%;display:block}.tabContent a:hover{border-bottom:1px solid #fc0}.tabContent .column{padding:1em 1.33333333%;font-size:.9em;float:left;max-width:14%}.tabContent .column li{list-style-type:none;line-height:200%}.tabContent .featured{background-color:rgba(255,204,0,.33);border:1px dotted #639}.tabContentLeft{position:absolute;margin-right:0;margin-left:0;padding-left:0;top:20em;left:10em;width:60em;height:20em;padding-top:0;border-top-style:solid;border-width:5px;border-color:#FC0;background-color:#fff;border-radius:.1em;box-shadow:0 0 .3em rgba(0,0,0,.3);-webkit-border-radius:1px;-webkit-box-shadow:0 0 3px rgba(0,0,0,.3);-moz-box-shadow:0 0 3px rgba(0,0,0,.3)}.menuItem{font-size:1.1em;display:inline-block;text-align:center;font-weight:700;height:2em;padding:.5em 1.5% 0 calc(1.5% + 2px)!important;margin:0;background:url(../../images/pipe.gif) left .4em no-repeat}.menuItem:first-child{padding-left:0!important}.menuItem:first-child a{margin-left:.8em!important}.menuItemHover{background-color:#FC0!important;text-align:center;cursor:pointer;color:#fff;margin-bottom:0;height:2em;z-index:100;padding-top:1em;box-shadow:0 0 .3em rgba(0,0,0,.3)}.menuItemHoverLeft,.menuItemLeft:hover{background-color:#FC0;text-align:center;cursor:pointer;color:#fff;height:2em;margin-bottom:0;padding-top:1em;box-shadow:0 0 .3em rgba(0,0,0,.3)}
+#header,#rotatingfeature{text-align:center}strong{font-weight:700}em{font-style:italic}img{max-width:100%;height:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}#skiptocontent{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}#skiptocontent.active{position:relative;left:auto;background:#fc0;top:auto;width:100%;height:auto;padding:1em;font-size:1.1em}#skiptocontent.active a{color:#000}#menu_container{display:none}#content,#nav{-webkit-transition:.2s all ease;-moz-transition:.2s all ease;transition:.2s all ease;width:100%}.mastheadbullets li{display:inline;line-height:2em}.mastheadbullets li:before{content:" \00a0\00a0\2022\00a0 "}#rotatingfeature{width:94%;padding:0 3% 3%}#container{overflow:hidden;max-width:1680px;margin:0 auto;background:#fff}body{font-size:100%;background:#DDD;font-family:'Open Sans', serif;text-size-adjust:100%;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%}#content{float:left;margin:.5em 0 0;position:relative;background:#FFF;padding-bottom:1em}#content a,#nav a{color:#639;text-decoration:none}#footer #footer_bottom p{color:#fff;font-size:.8em;line-height:175%}#footer #footer_bottom a{color:#fff;text-decoration:none}div#social_media img{height:3em;padding:.7em!important}@media print{@page :first{margin:0 -1in 0 0!important}#footer,#header,#mainnav,#masthead_big,#nav,#sideNav,#sitsearch{display:none!important}#content{width:98%!important;float:none!important;margin:0!important;padding:0!important}#highlightRight,#mainContentFull,#mainContentLeftColumn,#mainContentRightColumn,#mainContentTop{width:100%!important;float:none!important;margin:0!important;padding:0!important}body{font:12pt Georgia,"Times New Roman",Times,serif;line-height:1.3}h1{font-size:24pt}h2{font-size:14pt;margin-top:25px}img{border:0}header{margin-bottom:40px}header:after{display:block;content:"www.wiu.edu "}blockquote{font-size:13pt;font-style:italic}p a{color:#000}p a:after{content:" (http://www.wiu.edu/ " attr(href) ")";font-size:80%;word-wrap:break-word}p a[href^="https://"]:after,p a[href^="http://"]:after{content:" (" attr(href) ")"}}
+#spotlight_container .spotlight .ox-regioneditbutton img{width:70px;height:30px}#current_feature_container #current_feature .ox-regioneditbutton img{width:94px;height:61px}@media only screen and (min-width:1025px){#nav #audiencenav #mywiu_items li:before,#nav #audiencenav ul li:first-child:before,.mastheadbullets li:first-child:before{content:none}#nav #audiencenav,#nav #sitesearch{background:#639;font-size:.9em;float:left}#nav #audiencenav{height:1em;padding:1.2em 0 1.2em 2%;color:#999;width:76%}#nav #audiencenav a{color:#fff;text-decoration:none}#nav #audiencenav ul li{display:inline}#nav #audiencenav ul li:before{content:" | "}#nav #audiencenav #externalaudience{float:left}#nav #audiencenav #internalaudience{float:right}#nav #audiencenav #mywiu>a:after{content:' \25BC'}#nav #audiencenav #mywiu_items{width:1px;height:1px;margin-left:0;padding-top:0;z-index:1000;position:absolute;left:-10000px;display:block}#mywiu_items.displaymenu{width:55%!important;height:auto!important;margin-left:45%!important;padding-top:1.2em!important;z-index:1000!important;position:relative!important;left:auto!important;display:block!important}#mywiu_items.hidemenu{width:1px!important;height:1px!important;margin-left:0!important;padding-top:0!important;z-index:1000!important;position:absolute!important;left:-10000px!important;display:block!important}#d_about,#d_academics,#d_admissions,#d_alumni,#d_arts,#d_athletics,#d_giving,#d_studentlife,#masthead_small{display:none}#nav #audiencenav #mywiu_items li{display:list-item;background:#CCC;line-height:2em;padding:.5em 1em;text-align:right;border-bottom:1px solid #BBB}#nav #audiencenav #mywiu_items li:hover{background:#FC0}#nav #audiencenav #mywiu_items li a{color:#000;display:block}#nav #sitesearch{height:1em;padding:.2em 2% 2.2em 0;width:20%}#nav #sitesearch #searchWIUform{float:right;width:98%}#nav #sitesearch #searchWIUform #WIUsearchterms{width:80%}#nav #sitesearch #searchWIUform #searchbutton{background:url(../../images/magnifying_glass2.gif) no-repeat;cursor:pointer;width:26px;height:26px;border:none;top:.6em;display:inline-block;position:relative}div#applybutton,div#container div#header div#nav div#mainnav ul#tabitems li.menuItem:hover{background:#fc0}#masthead_big{clear:both;padding:0 0 0 3%}#masthead_big h1{font-size:2em;font-weight:700;color:#639;text-align:left;padding-top:.7em;margin:0}#masthead_big #mastheadlogo{float:left;height:120px;padding:0 2% 0 0}div#applybutton{float:right;color:#639;clear:both;width:16.3%;text-align:center;position:relative;z-index:199;right:0;padding:.5em 0;font-weight:700;margin-right:calc(3.28% + 26px);font-size:1.2em}div#applybutton a{color:#639;display:block;width:100%}div#applybutton a:hover{color:#000}.mastheadbullets{text-align:left;font-size:1em;padding:0}.mastheadbullets li:first-child{font-weight:400;font-style:italic}.mastheadbullets li a{text-decoration:none}#header #nav #mainnav{text-align:left!important;padding-top:.4em}#header #nav #mainnav #tabitems{position:relative;left:-1em}#header #nav #mainnav #tabitems li{font-family:'Open Sans', serif;font-size:1.1em;display:inline-block;text-align:center;font-weight:700;margin-left:0;margin-right:0;height:1.5em;padding:0 3% 0 0}#footer{background:#333;clear:both;width:100%;padding:0;overflow:hidden}#footer .link_column{float:left;margin:1.5%;padding:0 1%;width:13%;border-left:1px solid #444}#footer .link_column h3{color:#fff;font-size:1.2em;margin:.5em 0 1em .5em}#footer .link_column ul{margin:.5em 0 3em .5em}#footer .link_column ul li{padding:.5em;font-size:.8em;line-height:150%}#footer .link_column ul li a{color:#c5c5c5;text-decoration:none}#footer #social_media{float:left;margin:1.5%;padding:0 1.5%;width:21.333333333333%;border-left:1px solid #444}#footer #social_media h3{color:#fff;font-size:1.2em;margin:.5em 0 1em .5em}#footer #social_media img{float:left;padding:3%}#footer #footer_bottom{clear:both;background:#000;border-top:1px solid #888;overflow:hidden;padding:0}#footer #footer_bottom #footer_links{width:60.666666666666%;padding:1% 0 0 3%;overflow:hidden;float:left}#footer #footer_bottom ul li{display:inline;float:left;margin:.8em}#footer #footer_bottom ul li a{color:#fff;text-decoration:none}#footer #footer_bottom #contact{float:right;padding:0 3% 0 0;width:32.333333333333%}#footer #footer_bottom #contact #footerlogo{float:right;max-width:33%}#footer #footer_bottom #contact #address{padding-top:2em;float:right;max-width:65%}#footer #footer_bottom #contact #address h3{color:#fff;font-weight:700;padding-bottom:.5em}#footer #footer_bottom #contact #address h4{color:#fff;font-size:.9em;font-weight:700;font-style:italic;padding-bottom:.5em}#footer #footer_bottom #contact #address p:nth-of-type(1){color:#888;line-height:150%;font-size:.8em}#footer #footer_bottom #contact #address p:nth-of-type(2){color:#FFF;line-height:150%;font-size:.8em}#footer #footer_bottom #copyright{float:left;padding:3%;margin:.8em}#footer #footer_bottom #copyright p{color:#888;font-size:.8em}}
+@media only screen and (max-width:1024px){#externalaudience,#sitesearch{background:#CCC}#externalaudience,#internalaudience,#mainnav{border-right:1px solid #CCC}#applynowbullet:before,.mastheadbullets li:first-child:before{content:none}body.active #nav{margin-left:0;margin-bottom:0;width:40%}body.active #content,body.active #footer,body.active #masthead_small,body.active #menu_container{margin-right:-100%}#nav{margin-bottom:-100%;margin-left:-100%;float:left}#nav ul{text-align:right}#nav ul li{line-height:3em;padding-right:2em;border-bottom:1px solid #999}#nav ul li a{font-weight:700;color:#639;text-decoration:none;font-size:1.5em}#sitesearch{overflow:hidden}#sitesearch #searchWIUform input[type=text]{font-size:1.4em;width:78%;height:1.7em;margin:.3em;float:left;padding:0 1%}#sitesearch #searchWIUform #searchbutton{background:url(../../images/magnifying_glass.gif) no-repeat;cursor:pointer;width:26px;height:26px;border:none;top:1em;float:left;display:inline-block;position:relative}#internalaudience{background:#AAA}#internalaudience #mywiu_items li{padding-right:0}#menu_container{background:#639;color:#FFF;display:block;float:left;padding:.75em;text-align:left}#menu-toggle{color:#fff;text-decoration:none;font-size:2em}#masthead_big{display:none}#masthead_small{color:#639}#masthead_small h1{font-size:1.8em;padding-top:.6em;font-weight:700;margin-right:2em!important}#masthead_small h1 a{text-decoration:none;color:#639}.mastheadbullets{font-size:1.1em;padding:0 0 1em;margin-left:7em}.mastheadbullets li:first-child{font-weight:700}.mastheadbullets li a{color:inherit;text-decoration:none}#applynowbullet{background:#fc0;color:#639;margin-right:3%;padding:0 2%;float:right;font-weight:700;font-size:.8em}h1{padding:.5em 0 .25em!important}#footer{background:#333;clear:both;width:100%;padding:6% 0 0;overflow:hidden}#footer .link_column{float:left;margin:3% 1.5%;padding:0 1.5%;width:19%}#footer .link_column h3{color:#fff;font-size:1.2em;margin:.5em 0 1em .5em}#footer .link_column ul{margin:.5em 0 1em .5em}#footer .link_column ul li{padding:.8em}#footer .link_column ul li a{color:#c5c5c5;text-decoration:none}#footer #social_media{clear:both;margin:3% 1.5%;padding:0 1.5%}#footer #social_media h3{color:#fff;font-size:1.2em;margin:.5em 0 1em .5em}#footer #social_media img{float:left;padding:3%}#footer #footer_bottom{clear:both;background:#000;border-top:1px solid #888;overflow:hidden;padding:3% 0}#footer #footer_bottom ul li{display:inline;float:left;margin:.8em}#footer #footer_bottom ul li a{color:#fff;text-decoration:none}#footer #footer_bottom #contact{float:right;padding:0 3% 0 0}#footer #footer_bottom #contact #footerlogo{float:right;max-width:33%}#footer #footer_bottom #contact #address{float:right;padding-top:2em}#footer #footer_bottom #contact #address h3{color:#fff;font-weight:700;padding-bottom:.5em}#footer #footer_bottom #contact #address h4{color:#fff;font-size:.9em;font-weight:700;font-style:italic;padding-bottom:.5em}#footer #footer_bottom #contact #address p:nth-of-type(1){color:#888;line-height:150%;font-size:.8em}#footer #footer_bottom #contact #address p:nth-of-type(2){color:#FFF;line-height:150%;font-size:.8em}#footer #footer_bottom #copyright p{color:#888;clear:both;font-size:.8em;float:right;padding-top:1.5em}}
+@media only screen and (max-width:767px){body.active #nav{margin-left:0;margin-bottom:0;width:80%}#masthead_small h1{font-size:1.3em;padding-top:1em;font-weight:700}.mastheadbullets{font-size:.9em;padding:0;margin-left:6em}.mastheadbullets li:first-child{display:none}.mastheadbullets li:first-child:before{content:none}.mastheadbullets li a{color:inherit;text-decoration:none}.mastheadbullets li:nth-of-type(1){display:inline}#footer{background:#333;clear:both;width:100%;padding:6% 0 0;overflow:hidden}#footer .link_column{float:none;margin:3% 1.5%;padding:0 1.5%;width:43%;display:inline-block;vertical-align:top}#footer .link_column h3{color:#fff;font-size:1.2em;margin:.5em 0 1em .5em}#footer .link_column ul{margin:.5em 0 1em .5em}#footer .link_column ul li{padding:.8em}#footer .link_column ul li a{color:#c5c5c5;text-decoration:none}#footer #social_media{clear:both;margin:3% 1.5%;padding:0 1.5%}#footer #social_media h3{color:#fff;font-size:1.2em;margin:.5em 0 1em .5em}#footer #social_media img{float:left;padding:3%}#footer #footer_bottom{clear:both;background:#000;border-top:1px solid #888;overflow:hidden;padding:3% 0}#footer #footer_bottom ul li{display:inline;float:left;margin:.8em}#footer #footer_bottom ul li a{color:#fff;text-decoration:none}#footer #footer_bottom #contact{clear:both;padding-top:1.5em}#footer #footer_bottom #copyright p{color:#888;clear:both;font-size:.8em;float:right}}@media only screen and (max-width:716px){.mastheadbullets li:nth-of-type(1){display:none}.mastheadbullets li:nth-of-type(2):before{content:'\00a0'}.mastheadbullets li:nth-of-type(3):before{content:'\007C\00a0'}}
+@media only screen and (min-width:1025px){#current_feature_container,#spotlight_container{border-left:1px solid #AAA;border-right:1px solid #AAA}#rotatingfeature{padding:0 3%}#rotatingfeature #slider .nivo-caption{height:7em;max-height:7em;position:absolute;bottom:0;background-color:rgba(0,0,0,.5);width:96%;padding:.1em 2%;z-index:10}#rotatingfeature a{color:#fff}#rotatingfeature p{text-align:left;color:#fff}#rotatingfeature p:nth-of-type(1){font-size:1.6em;font-weight:700;padding:.2em .125em;line-height:110%}#rotatingfeature p:nth-of-type(2){font-size:1.2em;font-weight:400;padding:.3em .25em;line-height:120%}#rotatingfeature p:nth-of-type(2) a{font-weight:700;color:#fff}#rotatingfeature .nivo-controlNav{padding:0}#rotatingfeature .nivo-controlNav a{cursor:pointer;margin:2%}#news_events{width:46%;border:1px solid #AAA;margin:0 1% 0 3%;float:left;background:#fff}#events_selector,#news_selector{padding:1.5em 0;background:url(../../images/graybar.jpg) right top no-repeat #FFF;float:left;width:30%;height:1em}#events_selector a,#news_selector a{color:#AAA}#events_selector.selected,#news_selector.selected{border-bottom:none}#events_selector,#more_selector,#news_content .featured_news,#news_selector,#spotlight_container{border-bottom:1px solid #AAA}#events_selector.selected a,#news_selector.selected a{color:#000}#more_selector{padding:1.5em 0;float:left;width:40%;height:1em;text-align:right}#more_selector img{margin:-1% 10% 0 0}#events_selector h3,#news_selector h3{font-size:1.2em;font-weight:700;text-align:center}#events_content,#news_content{position:absolute;left:-2000%;bottom:-2000%;width:0}#events_content.selected,#news_content.selected{position:relative;left:0;bottom:0;width:94%;clear:both;padding:0 3% 3%}#news_content .featured_news{width:97%;padding:4% 3% 4% 0;overflow:hidden;min-height:12em}#news_content .featured_news img{max-width:33%;max-height:225px;float:right;margin:0 0 3% 3%}#news_content .featured_news .news_details{width:100%;float:left}#news_content .featured_news .news_date{color:#AAA;font-size:.9em;float:left}#news_content .featured_news .headline a,#news_content .featured_news .teaser a{color:#000}#news_content .featured_news .headline{font-size:1.35em;font-weight:700;padding-top:2%;clear:left;line-height:120%}#news_content .featured_news .teaser{color:#000;font-size:1em;padding-top:2.5%;clear:left;line-height:150%}#events_content .featured_event{width:97%;padding:4% 3% 4% 0;overflow:hidden;border-bottom:1px solid #AAA}#events_content .featured_event .event_date{float:left;margin:0 3% 0 0;font-size:2em;max-width:33%;width:33%;text-align:center;line-height:150%}#events_content .featured_event .event_date a{font-weight:700;color:#639}#events_content .featured_event .event_title{line-height:150%;font-size:1.35em}#events_content .featured_event .event_title a{font-weight:700;color:#000}#events_content .featured_event .event_details_container{max-width:64%;float:left}#events_content .featured_event .event_time,.event_location{line-height:150%}#bottom_more_selector{font-size:1em;font-weight:700;height:3em;width:94%;padding:0 3%}#bottom_more_selector #more_icon{margin-left:37%;float:left}#bottom_more_selector p{float:left;padding:.35em 0 0 .5em}#spotlight_container{width:46%;background:#CCC;margin:0 3% 0 0;float:right}#spotlight_container .spotlight{width:94%;padding:4% 3%;overflow:hidden}#spotlight_container .spotlight #slider2{background:#fff}#spotlight_container .spotlight #slider2 .nivo-directionNav a{bottom:20em}#spotlight_container .spotlight #slider2 .nivo-caption{background:#fff;height:19em;max-height:19em}#spotlight_container .spotlight .nivo-controlNav{background:#fff;padding:0}#spotlight_container .spotlight .nivo-controlNav a{cursor:pointer;margin:2%}#spotlight_container .spotlight img{width:100%}#spotlight_container .spotlight .spotlight_details{background:#fff}#spotlight_container .spotlight .spotlight_title{font-weight:700;font-size:1.7em;padding:2.5% 3%;line-height:120%}#spotlight_container .spotlight .spotlight_title a{color:#000}#spotlight_container .spotlight .spotlight_teaser{color:#000;font-size:1em;padding:0 3% 2.5%;line-height:150%}#spotlight_container .spotlight .spotlight_link{font-size:1em;line-height:150%;font-weight:700;padding:0 3% 2.5% 6%;margin:0 0 0 3%;background:url(../../images/green_arrow.gif) left top no-repeat}#current_feature_container{width:46%;border-top:1px solid #AAA;background:#CCC;margin:0 3% 0 0;padding-top:1%;float:right}#current_feature_container #current_feature{background:#fff;margin:0 3%;width:94%;overflow:hidden}#current_feature_container #current_feature img{width:33%;float:right;padding:0 0 3% 3%}#current_feature_container #current_feature #current_feature_title{font-weight:700;font-size:1.7em;padding:2.5% 3%;line-height:120%}#current_feature_container #current_feature #current_feature_teaser{color:#000;font-size:1em;padding:0 3% 2.5%;line-height:150%}#current_feature_container #current_feature #current_feature_teaser a{color:#639;font-weight:700}div#current_feature div.action_button{background:#639;width:35%;margin:1.3em 10.11%;padding:.5em 0;text-align:center;font-weight:700}div#current_feature div.action_button:nth-of-type(1){margin-top:2em}div#current_feature div.action_button:nth-of-type(3){margin-bottom:2em}div#current_feature div.action_button a{display:block;width:100%}div#current_feature div.action_button a:hover{color:#fff!important}div#current_feature img{margin:1em 11.11%;padding:0;width:33%}#fast_facts_container{width:94%;background:#FFF;margin:3% 3% 0;overflow:hidden}#fast_facts_container .fast_fact{margin:3% 1.5% 0;padding:1.5%;width:27.333333%;float:left;height:9em;max-height:9em;background:#FAFAFA}#fast_facts_container .fast_fact h3{font-size:3.5em}#fast_facts_container .fast_fact h3.fact1{color:#d17021}#fast_facts_container .fast_fact h3.fact2{color:#80aa2a}#fast_facts_container .fast_fact h3.fact3{color:#639}#fast_facts_container .fast_fact p{color:#888;line-height:125%;padding-top:.5em;font-size:1.25em}}@media only screen and (max-width:1500px){div#current_feature img{margin:2em 11.11%}}@media only screen and (max-width:1200px){div#current_feature img{margin:3em 11.11%}}
+@media only screen and (max-width:1024px){#current_feature_container,#spotlight_container{border-left:1px solid #AAA;border-right:1px solid #AAA}#rotatingfeature #slider .nivo-caption{height:4em;max-height:4em;position:absolute;bottom:0;background-color:rgba(0,0,0,.5);width:94%;padding:1% 3%;z-index:10}#rotatingfeature a{color:#fff}#rotatingfeature p{text-align:left;color:#fff}#rotatingfeature p:nth-of-type(1){font-size:1em;font-weight:700;padding:.25em .125em;line-height:110%}#rotatingfeature p:nth-of-type(2){font-size:.9em;font-weight:400;padding:.25em .125em;line-height:100%}#rotatingfeature p:nth-of-type(2) a{font-weight:700;color:#fff}.nivo-control{margin:1.25%!important}#news_events{width:46%;border:1px solid #AAA;margin:0 1% 0 3%;float:left;background:#fff}#events_selector,#news_selector{padding:1.5em 0;background:url(../../images/graybar.jpg) right top no-repeat #FFF;float:left;width:30%;height:1em}#events_selector a,#news_selector a{color:#AAA}#events_selector.selected,#news_selector.selected{border-bottom:none}#events_selector,#more_selector,#news_content .featured_news,#news_selector,#spotlight_container{border-bottom:1px solid #AAA}#events_selector.selected a,#news_selector.selected a{color:#000}#more_selector{padding:1.5em 0;float:left;width:40%;height:1em;text-align:right}#more_selector img{margin:-5% 10% 0 0}#events_selector h3,#news_selector h3{font-size:1.2em;font-weight:700;text-align:center}#events_content,#news_content{position:absolute;left:-2000%;bottom:-2000%;width:0}#events_content.selected,#news_content.selected{position:relative;left:0;bottom:0;width:94%;clear:both;padding:0 3% 3%}#news_content .featured_news{width:97%;padding:4% 3% 4% 0;overflow:hidden}#news_content .featured_news img{width:33%;float:right;margin:0 0 0 3%}#news_content .featured_news .news_details{width:100%;float:left}#news_content .featured_news .news_date{color:#AAA;font-size:.9em;float:left}#news_content .featured_news .headline a,#news_content .featured_news .teaser a{color:#000}#news_content .featured_news .headline{font-size:1.4em;font-weight:700;padding-top:2%;clear:left;line-height:120%}#news_content .featured_news .teaser{color:#000;font-size:1em;padding-top:2.5%;clear:left;line-height:150%}#events_content .featured_event{width:97%;padding:4% 3% 4% 0;overflow:hidden;border-bottom:1px solid #AAA}#events_content .featured_event .event_date{float:left;margin:0 3% 0 0;font-size:1.4em;max-width:33%;width:33%;text-align:center;line-height:150%}#events_content .featured_event .event_date a{font-weight:700;color:#639}#events_content .featured_event .event_title{line-height:150%;font-size:1.4em}#events_content .featured_event .event_title a{font-weight:700;color:#000}#events_content .featured_event .event_details_container{max-width:64%;float:left}#events_content .featured_event .event_time,.event_location{line-height:150%}#bottom_more_selector{font-size:1em;font-weight:700;height:3em;width:94%;padding:0 3%}#bottom_more_selector #more_icon{margin-left:37%;float:left}#bottom_more_selector p{float:left;padding:.35em 0 0 .5em}#spotlight_container{width:46%;background:#CCC;margin:0 3% 0 0;float:right}#spotlight_container .spotlight #slider2,#spotlight_container .spotlight .nivo-controlNav,#spotlight_container .spotlight .spotlight_details{background:#fff}#spotlight_container .spotlight{width:94%;padding:4% 3%;overflow:hidden}#spotlight_container .spotlight #slider2 .nivo-directionNav a{bottom:22em}#spotlight_container .spotlight #slider2 .nivo-caption{background:#fff;height:20em;max-height:20em}#spotlight_container .spotlight img{width:100%}#spotlight_container .spotlight .spotlight_title{font-weight:700;font-size:1.4em;padding:2.5% 3%;line-height:120%}#spotlight_container .spotlight .spotlight_title a{color:#000}#spotlight_container .spotlight .spotlight_teaser{color:#000;font-size:1em;padding:0 3% 2.5%;line-height:150%}#spotlight_container .spotlight .spotlight_link{font-size:1em;line-height:150%;font-weight:700;padding:0 3% 2.5% 6%;margin:0 0 0 3%;background:url(../../images/green_arrow.gif) left top no-repeat}#current_feature_container{width:46%;border-top:1px solid #AAA;background:#CCC;margin:0 3% 0 0;padding-top:1%;float:right}#current_feature_container #current_feature{background:#fff;margin:0 3%;width:94%;overflow:hidden}#current_feature_container #current_feature img{width:33%;float:right;padding:0 0 3% 3%}#current_feature_container #current_feature #current_feature_title{font-weight:700;font-size:1.4em;padding:2.5% 3%;line-height:120%}#current_feature_container #current_feature #current_feature_teaser{color:#000;font-size:1em;padding:0 3% 2.5%;line-height:150%}#current_feature_container #current_feature #current_feature_teaser a{color:#639;font-weight:700}div#current_feature div.action_button{background:#639;padding:.5em 0;text-align:center;font-weight:700}div#current_feature{text-align:center}div#current_feature img{float:none!important;clear:both!important;width:90%!important;max-width:276px!important;padding:0!important;margin-bottom:0}div#current_feature div.action_button{width:90%;margin:1em 5%}#fast_facts_container{width:94%;background:#FFF;margin:3%;overflow:hidden;clear:both;height:12em}#fast_facts_container .fast_fact{margin:6% 3% 0;width:27.333333%;float:left}#fast_facts_container .fast_fact h3{font-size:2.5em}#fast_facts_container .fast_fact h3.fact1{color:#d17021}#fast_facts_container .fast_fact h3.fact2{color:#80aa2a}#fast_facts_container .fast_fact h3.fact3{color:#639}#fast_facts_container .fast_fact p{color:#888;line-height:150%;padding-top:1em}}
+@media only screen and (min-width:768px){#fast_facts_container .fast_fact{margin:3% 0 3% 1%;padding:1.5%;width:27.66666666666666666666%}#nextfact,#prevfact{height:9em;float:left;width:2%;margin:3% 0 0;padding:1.5% 0;cursor:pointer}#nextfact{margin-left:1%;float:right}#nextfact img,#prevfact img{height:100%}}@media only screen and (max-width:767px){body.active #nav{margin-left:0;margin-bottom:0;width:80%}#rotatingfeature #slider .nivo-caption{height:11em;max-height:11em;position:relative;background:inherit;width:100%;padding:0}.nivo-controlNav a{width:7%}#rotatingfeature a{color:#639}#rotatingfeature p{text-align:left;color:inherit}#rotatingfeature p:nth-of-type(1){font-size:1.2em;font-weight:700;padding:.5em .25em;line-height:120%}#rotatingfeature p:nth-of-type(2){font-size:1em;font-weight:400;padding:0 .25em .5em;line-height:140%}#rotatingfeature p:nth-of-type(2) a{font-weight:700;color:#639}#news_events{width:94%;border:1px solid #AAA;margin:0 3%;background:#fff}#events_selector,#news_selector{padding:1.5em 0;background:url(../../images/graybar.jpg) right top no-repeat #FFF;float:left;width:30%;height:1em}#events_selector a,#news_selector a{color:#AAA}#events_selector.selected,#news_selector.selected{border-bottom:none}#events_selector,#more_selector,#news_content .featured_news,#news_selector,#spotlight_container{border-bottom:1px solid #AAA}#events_selector.selected a,#news_selector.selected a{color:#000}#more_selector{padding:1.5em 0;float:left;width:40%;height:1em;text-align:right}#more_selector img{margin:-5% 10% 0 0}#events_selector h3,#news_selector h3{font-size:1.2em;font-weight:700;text-align:center}#events_content,#news_content{position:absolute;left:-200%;bottom:-200%}#events_content.selected,#news_content.selected{position:relative;left:0;bottom:0;width:94%;clear:both;padding:0 3% 3%}#news_content .featured_news{width:97%;padding:4% 3% 4% 0;overflow:hidden}#news_content .featured_news img{width:33%;float:right;margin:0 0 0 3%}#news_content .featured_news .news_details{width:100%;float:left}#news_content .featured_news .news_date{color:#AAA;font-size:.9em;float:left}#news_content .featured_news .headline{font-size:1.4em;font-weight:700;padding-top:2%;clear:left;line-height:120%}#news_content .featured_news .headline a{color:#000}#news_content .featured_news .teaser{color:#000;font-size:1em;padding-top:2.5%;clear:left;line-height:150%}#events_content .featured_event{width:97%;padding:4% 3% 4% 0;overflow:hidden;border-bottom:1px solid #AAA}#events_content .featured_event .event_date{float:left;margin:0 3% 0 0;font-size:1.4em;max-width:20%;width:20%;text-align:center;line-height:150%}#events_content .featured_event .event_date a{font-weight:700;color:#639}#events_content .featured_event .event_title{line-height:150%;font-size:1.4em}#events_content .featured_event .event_title a{font-weight:700;color:#000}#events_content .featured_event .event_details_container{max-width:77%;float:left}#events_content .featured_event .event_time,.event_location{line-height:150%}#bottom_more_selector{font-size:1em;font-weight:700;height:3em;width:94%;padding:0 3%}#bottom_more_selector #more_icon{margin-left:37%;float:left}#bottom_more_selector p{float:left;padding:.35em 0 0 .5em}#spotlight_container{width:94%;border-left:1px solid #AAA;border-right:1px solid #AAA;background:#CCC;margin:0 3%}#spotlight_container .spotlight #slider2,#spotlight_container .spotlight .nivo-controlNav,#spotlight_container .spotlight .spotlight_details{background:#fff}#spotlight_container .spotlight{width:94%;padding:4% 3%;overflow:hidden}#spotlight_container .spotlight #slider2 .nivo-directionNav a{bottom:24em}#spotlight_container .spotlight #slider2 .nivo-caption{background:#fff;height:22em;max-height:22em}#spotlight_container .spotlight img{width:100%}#spotlight_container .spotlight .spotlight_title{font-weight:700;font-size:1.4em;padding:2.5% 3%;line-height:120%}#spotlight_container .spotlight .spotlight_title a{color:#000}#spotlight_container .spotlight .spotlight_teaser{color:#000;font-size:1em;padding:0 3% 2.5%;line-height:120%}#spotlight_container .spotlight .spotlight_link{font-size:1em;line-height:150%;font-weight:700;padding:0 3% 2.5% 6%;margin:3% 0 0 3%;background:url(../../images/green_arrow.gif) left top no-repeat}#current_feature_container{width:94%;border-top:1px solid #AAA;border-left:1px solid #AAA;border-right:1px solid #AAA;background:#CCC;margin:0 3%;padding-top:3%}#current_feature_container #current_feature{background:#fff;margin:0 3%;width:94%;overflow:hidden}#current_feature_container #current_feature img{width:33%;float:right;padding:0 0 3% 3%}#current_feature_container #current_feature #current_feature_title{font-weight:700;font-size:1.4em;padding:2.5% 3%;line-height:120%}#current_feature_container #current_feature #current_feature_teaser{color:#000;font-size:1em;padding:0 3% 2.5%;line-height:150%}#current_feature_container #current_feature #current_feature_teaser a{color:#639;font-weight:700}div#current_feature div.action_button{width:90%;margin:1em 5%;padding:1.5em 0}#fast_facts_container{width:94%;background:#FFF;margin:3%;overflow:hidden;height:24em}#fast_facts_container .fast_fact{margin:3% .5%;padding:1.5%;width:46%;height:9em;max-height:9em;float:left}#fast_facts_container .fast_fact h3{font-size:2.5em}#fast_facts_container .fast_fact h3.fact1{color:#d17021}#fast_facts_container .fast_fact h3.fact2{color:#80aa2a}#fast_facts_container .fast_fact h3.fact3{color:#639}#fast_facts_container .fast_fact p{color:#888;line-height:150%;padding-top:1em}#prevfact img{display:none}#nextfact{height:9em;float:right;margin:3% .5% 3% 6%;padding:1.5%;width:40%;vertical-align:middle}#nextfact a{color:#333;font-weight:700}#nextfact a:before{content:"more"}#nextfact img{height:100%;vertical-align:middle}}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url(https://fonts.gstatic.com/s/lora/v14/0QIvMX1D_JOuMwr7Jg.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
+}
+
+</style>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Western Illinois University - Your potential. Our purpose. </title>
+<meta content="initial-scale=1.0, width=device-width" name="viewport"/>
+<meta content="Western Illinois University students have the advantages of large universities - accomplished faculty; modern technologies and facilities; and broad academic and extracurricular opportunities. We give you the extras that larger public universities can't - personalized attention from our faculty and staff." name="description"/>
+<meta content="wiu, western illinois university, western illinois, western, university, illinois, college, higher education, majors, macomb, moline, quad cities, midwest, Best Midwestern College, Top Tier Midwestern University, Military Friendly School, Best for Vets College, online degree, online, online classes " name="keywords"/>
+
+
+
+
+
+
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="/_resources/_redesign/css/common/desktop-ie8.css" />
+<![endif]-->
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript">/*blank*/</script>
+<!-- Western Illinois University JavaScript Conversion; Goal ID: 'main-edu' -->
+<script type="text/javascript">var ordnumber = Math.random() * 10000000000000;var sscUrl = ("https:" == document.location.protocol ? "https://" : "http://") + "trkn.us/pixel/c?ppt=890&amp;g=main-edu&amp;gid=4346&amp;ord="+ordnumber+"&amp;v=115";var x = document.createElement("IMG");x.setAttribute("src", sscUrl);x.setAttribute("width", "1");x.setAttribute("height", "1");document.body.appendChild(x);</script>
+<script src="/_resources/_redesign/js/jquery.tabnavigation.plugin.2018.js" type="text/javascript">/*blank*/</script>
+<script src="/_resources/_redesign/js/jquery.hoverIntent.minified.js" type="text/javascript">/*blank*/</script>
+
+
+<!-- Main Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2985336-1']);
+  _gaq.push(['_setDomainName', 'wiu.edu']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- Facebook Pixel Code -->
+<script type="text/javascript">
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init', '1779055662143887'); 
+fbq('track', 'PageView');
+</script>
+<!-- End Facebook Pixel Code -->
+<!-- Twitter universal website tag code -->
+<script type="text/javascript">
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+// Insert Twitter Pixel ID and Standard Event data below
+twq('init','nyvqw');
+twq('track','PageView');
+</script>
+<!-- End Twitter universal website tag code -->
+<!-- linkedin tag-->
+<script type="text/javascript">
+_linkedin_data_partner_id = "287609";
+</script><script type="text/javascript">
+(function(){var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})();
+</script>
+<!-- end of linkedin tag-->
+<!-- SnapChat -->
+<script type="text/javascript">
+  (function(win, doc, sdk_url){
+  if(win.snaptr) return;
+  var tr=win.snaptr=function(){
+  tr.handleRequest? tr.handleRequest.apply(tr, arguments):tr.queue.push(arguments);
+};
+  tr.queue = [];
+  var s='script';
+  var new_script_section=doc.createElement(s);
+  new_script_section.async=!0;
+  new_script_section.src=sdk_url;
+  var insert_pos=doc.getElementsByTagName(s)[0];
+  insert_pos.parentNode.insertBefore(new_script_section, insert_pos);
+})(window, document, 'https://sc-static.net/scevent.min.js');
+
+  snaptr('init','cfbdb3a0-9e26-4ff1-b538-f9edca480f12',{
+  'user_email':'<USER-EMAIL>'
+})
+  snaptr('track','PAGE_VIEW') 
+</script>
+<!-- google adwords -->
+<!-- Global site tag (gtag.js) - AdWords: 791058119 --> <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-791058119" type="text/javascript"></script> <script type="text/javascript"> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-791058119'); </script>
+<!-- bing -->
+<script type="text/javascript">
+  (function(w, d, t, r, u) {
+    var f, n, i;
+    w[u] = w[u] || [], f = function() {
+      var o = {
+        ti: "14002146"
+      };
+      o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad")
+    }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function() {
+      var s = this.readyState;
+      s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null)
+    }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i)
+  })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PF5RS93');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-PF5RS93" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Google Tag Manager Illinois West Central -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TG5TVK3');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager Northern -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M2S7Z3M');</script>
+<!-- End Google Tag Manager -->
+<style type="text/css">
+				
+					#container{max-width:100%;}
+					#videocontainer{width:100%;}
+					video#dronevid{width:100%;}
+					
+					#videocontainer #buttoncontainer{
+						position:absolute;
+						top:0;
+						right:0;		
+						z-index:5;		
+						width:100%;		
+
+					}
+					
+					#buttoncontainer div.button{
+						background-color: rgba(102, 51, 153, 1);		
+						color: white;
+						/*text-transform: uppercase;*/
+						min-width: 16.3%;
+					    margin-right: calc(3.28% + 22px);	
+						margin-top: 1em;
+						text-align:center;
+						font-size: 1.4em;
+						white-space:nowrap;
+						padding: 0.7em 0;
+						clear:both;
+						float: right;
+						/*border: 4px solid white*/
+						/*text-shadow: 2px 2px black;*/
+						/* font-family: 'Oswald', sans-serif; */
+						
+					}
+					
+					#buttoncontainer div.button:nth-of-type(1){
+						margin-top: 4.5em;	
+					}	
+					
+					#buttoncontainer div.button a{
+						color:white !important;
+						display:block;
+						width:100%;
+					}
+				
+					#buttoncontainer div.button a:hover{
+						
+						color: #fc0 !important;
+					}
+					
+					@media only screen and (max-width:1340px){
+						#buttoncontainer div.button{
+							min-width: 10em;
+						}
+					}
+					
+					@media only screen and (max-width:850px){
+						#videocontainer #buttoncontainer{
+							position:relative;	
+						}
+						
+						#buttoncontainer div.button{
+							margin-top:0.5em !important;
+							float:none;
+							width: 100%;	
+						}
+					}
+					
+					#graycontainer{
+						background: #ccc;
+					}
+					
+					#themecontainer{
+						/* width: 95.5%;	 */
+						max-width:1680px;
+						clear:both;
+						padding: 4em 2.25%;
+						overflow: hidden;
+						margin-bottom: 1em;
+						margin-right:auto;
+						margin-left:auto;
+					}
+					
+				
+					
+					#themecontainer div.feature{
+						width: 30%;	
+						float:left;
+						margin-right: 5%;
+						background:white;
+					}
+					
+												
+					
+					#themecontainer div.feature:nth-of-type(3){
+						
+						margin-right: 0;
+					}
+					
+					#themecontainer div.feature h3{
+						padding: 10px;
+						font-size:1.5em;
+						font-weight:bold;
+					}
+					
+					#themecontainer div.feature p{
+						padding: 16px 10px;
+						font-size:1.2em;
+						color:black;
+						padding-top:0;
+					}
+					
+					#factcontainer{
+						width:100%;	
+						overflow:hidden;
+						margin: 2em auto;
+						max-width: 1680px;
+					}
+					
+					#factcontainer div.fact:hover{
+						background: #ddd;
+					}
+					
+					#factcontainer div.fact{
+						width: 20%;
+						float:left;
+						padding: 0 2.25%;	
+						font-size:1.8em;
+						border-right: 1px solid #ccc;
+						height: 8em;
+						line-height: 8em;
+						padding-bottom: 500em;
+  						margin-bottom: -500em;
+						background: white;
+						
+					}
+					
+					#factcontainer div.fact p{
+						
+						display: inline-block;
+					  	vertical-align: middle;
+					  	line-height: normal;
+					}
+					
+					#factcontainer a:nth-of-type(5) div.fact{
+						border-right: 1px solid white;
+						width:21.5%;	
+					}
+					
+					#factcontainer div.fact span.big{
+						font-size: 1.3em;
+						font-weight:bold;
+					}
+					
+					#factcontainer div.fact span.reallybig{
+						font-size: 1.7em;
+						font-weight:bold;
+					}
+					
+					#factcontainer div.fact span.purple{
+						color: #639;	
+					}
+					
+					@media only screen and (max-width:1340px){
+						#factcontainer div.fact{
+							font-size: 1.3em;
+						}
+						
+						#themecontainer{
+							font-size:85%;
+						}
+					}
+					@media only screen and (max-width:1024px){
+						#factcontainer div.fact{
+							font-size: 1.0em;
+						}
+					}
+					@media only screen and (max-width:800px){
+						#factcontainer div.fact{
+							width:45% !important;
+							border-right: none;
+							border-bottom: 1px solid #ccc;
+							padding-bottom: 1em;
+  							margin-bottom: 1em;
+							height: 6em;
+							text-align:center;
+							font-size:1.5em;
+						}
+					}
+					@media only screen and (max-width:700px){
+						#factcontainer div.fact{
+							font-size:1.1em;
+							height: 8em;
+						}
+					}
+					@media only screen and (max-width:360px){
+						#factcontainer div.fact{
+							font-size:0.8em;
+							height: 8em;
+						}
+					}
+					
+					#newseventsparent{
+						max-width: 1680px;
+						margin:0 auto;
+					}
+					
+					#newseventstabs{
+						
+						width: 24.5%;
+						font-weight:bold;
+					}
+					
+					#newstab, #eventstab{
+						float:left;
+						width: 48%;
+						background: #3f0e71;
+						color:white;
+						padding: 0.8em 0;
+						text-align:center;
+						margin-bottom: 0em;
+						cursor: pointer;
+					}
+					
+					#eventstab{
+						margin-left: 4%;	
+					}
+					
+					#eventstab.selected, #newstab.selected {background: #639;}
+					
+					
+					#newseventscontainer,#newscontainer,#eventscontainer{
+						width:100%;
+						float:left;
+						background: #639;
+						margin: 0 0 1em 0;
+						overflow:hidden;
+						
+					}
+			
+					
+					#newseventscontainer a:hover{
+						color:#fc0 !important;	
+					}
+					
+					#newscontainer,#eventscontainer{
+						width:100%;
+						background: #639;
+						margin: 0 0 1em 0;
+						overflow:hidden;
+					}
+					
+					#newseventscontainer #newscontainer div.urgent a{
+						color:#fc0 !important;
+					}
+					
+					
+					#newseventscontainer #newscontainer div.news, #newseventscontainer #eventscontainer div.event{
+						width: 20%;
+						float:left;
+						padding: 1em 2.25% 1em 2.25%;	
+						font-size:1.2em;
+						border-right: 1px solid #999;
+						line-height: 1.3em;
+						padding-bottom: 5em;
+  						margin-bottom: -5em;
+						background: #639;
+						margin-top: 1em;
+
+					}
+					
+					#newseventscontainer #newscontainer div.news:nth-of-type(4),#newseventscontainer #eventscontainer div.event:nth-of-type(4){
+						width:21%;
+						border-right: 1px solid #639;	
+					}
+					
+					#newseventscontainer #newscontainer div.news a,#newseventscontainer #eventscontainer div.event a{
+						color:white;	
+					}
+					
+					#newseventscontainer div.viewmore{
+						font-weight:bold;
+						clear:both;	
+						float:right;
+						margin-right:2.25%;
+						padding-top:0.8em;
+					}
+					
+					#newseventscontainer div.viewmore a{
+						color:white;
+					}
+					
+					#newseventscontainer #eventscontainer{
+						display:none;
+					}
+					#newseventscontainer #eventscontainer div.event p.event_date{
+						font-size:1.0em;
+						line-height:1.1em;
+					}
+					#newseventscontainer #eventscontainer div.event h4.event_title{
+						font-size:1.2em;
+						font-weight:bold;
+						line-height:1.5em;
+					}
+					#newseventscontainer #eventscontainer div.event p.event_location,#newseventscontainer #eventscontainer div.event p.event_time{
+						font-size:0.8em;
+						color:white;
+					}
+					
+					
+					@media only screen and (max-width:1024px){
+						#newseventstabs{
+							font-size:0.8em;
+						}
+						#newstab, #eventstab{
+							padding: 1.5em 0;
+						}
+						#newseventscontainer #newscontainer div.news, #newseventscontainer #eventscontainer div.event{
+							font-size: 1.0em;
+						}
+					}
+					
+					@media only screen and (max-width:767px){
+						#newseventstabs{
+							clear:both;
+							width:100%;
+						}
+						#newstab,#eventstab{
+							width: 25%;
+							float:left;
+							margin: 0 1.5em 0 0;
+							
+						}
+						#newseventscontainer{
+							width:100%;	
+						}
+						#newseventscontainer #newscontainer div.news,#newseventscontainer #eventscontainer div.event{
+							width: 90% !important;
+							margin: 0.5em 5% 0 5%;
+							clear:both;
+							border-right:none;	
+							border-bottom: 1px solid #555;
+							padding: 0.8em 0;
+							font-size:1.2em;
+						}
+						#newseventscontainer div.viewmore{
+							margin-right: 5%;
+						}
+						
+					}
+					
+					#facultystudentscontainer{
+						width: 100%;	
+						clear:both;
+						padding: 1em 0%;
+						overflow: hidden;
+						margin-bottom: 1em;
+					}
+					
+					#facultystudentscontainer h2{
+						margin-left:2.25%;
+						font-size: 2em;
+						font-weight:bold;
+						text-transform:uppercase;
+						color: #639;
+						margin-bottom: 0.5em;
+						
+					}
+					
+					#facultystudentscontainer div.feature{
+
+						max-width: 1680px;
+						clear: both;
+						padding: 2em 2.25%;
+						overflow: hidden;
+						margin-bottom: 1em;
+						margin-right: auto;
+						margin-left: auto;	
+						border-bottom: 1px solid #ccc;
+					}
+					
+					#facultystudentscontainer div.feature img{
+						width: 360px; /* width of container */
+						height: 220px; /* height of container */
+						object-fit: cover;
+						
+						
+					}
+					
+					#facultystudentscontainer div.feature:nth-child(even) img{
+						float:left;
+						margin-right: 5%;
+					}
+					
+					#facultystudentscontainer div.feature:nth-child(odd) img{
+						float:right;
+						margin-left: 5%;
+					}
+					
+					#facultystudentscontainer div.feature p.title{
+						font-size:1.3em;
+						line-height:1.3em;	
+						margin-top: 0em;
+						font-weight:bold;
+					}
+					
+					#facultystudentscontainer div.feature p.quote{
+						font-size:1.2em;
+						line-height:1.5em;	
+						margin-top: 0.5em;
+					}
+					#facultystudentscontainer div.feature p.attribution{
+						font-style:italic;
+						font-size:1.1em;
+						line-height:1.2em;	
+						margin-top: 0.5em;
+						text-align:left;
+					}
+					#facultystudentscontainer div.feature a{
+						color: black;	
+					}
+					#facultystudentscontainer div.feature a:hover{
+						color: #639;
+					}
+					
+					blockquote:before{
+						content: open-quote;
+						font-size: 4.5em;
+						line-height: 0.1em;
+						margin-right: 0.25em;
+						vertical-align: -0.4em;
+						margin-right:0;
+						font-family:Times New Roman;
+						color:#639 !important;
+						padding-right:0.1em;
+						margin-left:0.0em;
+					}
+
+					blockquote{
+						background: #FFF;
+						border-left: 1em solid #ccc;
+						margin: 1.5em 0;
+						padding: 0.5em 0;
+						quotes: "\201C""\201D""\2018""\2019";	
+						border:0 !important;
+						font-size:1.2em;
+						line-height:1.5em;
+						font-style:normal;
+						margin:0 !important;
+						font-weight: normal;
+						text-align:left;
+						background: inherit !important;
+						
+					}
+					
+				
+					
+					blockquote:after {
+					  visibility: hidden;
+					  content: close-quote;
+					}
+					
+					#facultystudentscontainer div.feature p.viewmore{
+						margin-top:2em;						
+					}
+					
+					#facultystudentscontainer div.feature p.viewmore a{
+						background: #639;
+						color: #fff;
+						font-size: 1.0em;
+						font-weight: bold;
+						padding: 0.6em 1em;
+					}
+					
+					#facultystudentscontainer div.feature p.viewmore a:hover{
+						color:#fc0;
+					}
+					
+					@media only screen and (max-width:950px){
+						#facultystudentscontainer div.feature{
+							margin-left: 2.25%;
+							margin-right: 2.25%;
+							width: 94.5%;
+							clear:both;	
+							margin-bottom: 2em;
+							padding:0 0 2.5em 0;
+						}
+						#facultystudentscontainer div.feature:nth-of-type(3){
+							margin-bottom: 0;
+						}
+						#facultystudentscontainer div.feature img{
+							width: 100%;
+							height:100%;
+							object-fit:unset;
+							float:none !important;
+							margin: 0 !important;
+						}
+						
+						#facultystudentscontainer div.feature p.title{
+							margin-top:1em;	
+						}
+						
+						#themecontainer div.feature{
+							margin-left: 2.25%;
+							margin-right: 2.25%;
+							width: 94.5%;
+							clear:both;	
+							margin-bottom: 2em;
+							text-align:center;
+						}
+						#themecontainer div.feature:nth-of-type(3){
+							margin-bottom: 0;
+						}
+						#themecontainer div.feature img{
+							width: 100%;
+						}
+					}
+					
+					#featuredsocialcontainer,#postcontainer{
+						width:100%;
+						float:left;
+						margin: 0 0 1em 0;
+						overflow:hidden;						
+					}
+					
+					#featuredsocialcontainer h2{
+						font-size: 2em;
+						font-weight:bold;
+						text-transform:uppercase;
+						color: #639;
+						margin: 0 2.5% 0.5em 2.5%;	
+					}
+					
+					#postcontainer{
+						background: #639;
+						width:100%;
+						float:left;
+						margin: 0 0 1em 0;
+						overflow:hidden;
+									
+					}
+					
+					#featuredsocialcontainer div.post{
+						width: 20%;
+						float:left;
+						padding: 1em 2.25% 1em 2.25%;	
+						font-size:1.1em;
+						border-right: 1px solid #999;
+						line-height: 1.3em;
+						padding-bottom: 5em;
+  						margin-bottom: -5em;
+						background: #639;
+
+					}
+					
+					#featuredsocialcontainer div.post:nth-of-type(4){
+						width:21%;
+						border-right: 1px solid #639;	
+					}
+					
+					#featuredsocialcontainer div.post a{
+						color:white;	
+					}
+					
+					#featuredsocialcontainer div.post img{
+						width: 15%;
+						float: left;
+						margin: 0 5% 0 0;	
+					}
+					
+					#featuredsocialcontainer p.quote{
+						float:right;
+						width: 80%;
+						margin-bottom:1em;	
+					}
+					
+					#featuredsocialcontainer p.attribution{
+						clear:both;
+						text-align:left;
+						width: 100%;
+						margin-bottom:0.5em;
+						font-weight:bold;
+					}
+					
+					#featuredsocialcontainer p.attribution span.handle{
+						color: #ccc;
+						font-weight: normal;	
+					}
+					
+					#featuredsocialcontainer a:hover, #featuredsocialcontainer a:hover span, #featuredsocialcontainer a:hover p{
+						color:#fc0 !important;	
+					}
+					
+					/* new header & faculty/student treatments */
+					div.main-hero{overflow:hidden; background:#fff;}
+			
+					img.mobile-image{display:none;}
+					img.desktop-image{display:block;}
+
+					div.hero-image{
+						width:100%;
+						float:left;
+					}
+
+					div.image-container{
+						overflow:hidden;
+						padding:0;
+						margin:0;
+						width:100%;
+					}
+
+					div.hero-image img{ width:100%;  }
+
+					div.hero-blurb{
+						position:absolute;
+						top:0;
+						right:0;
+						width:32%;
+						color: white;
+						padding-top:1.5vw;
+					}
+
+					div.hero-blurb h2{
+						font-size:3vw;
+						font-weight:bold;
+
+						line-height: 3vw;
+
+					}
+
+					div.hero-blurb p{
+						font-size: 2vw;
+						font-weight:bold;
+						line-height: 2.2vw;
+						margin: 2vw 0 3vw 0;
+					}
+
+					div.hero-blurb a.button{
+						background: #fc0;				
+						color: #663399;
+						font-size: 1.2vw;
+						font-weight:bold;				
+						padding: 0.6vw 1vw;
+					}
+
+					div.hero-blurb a.button:hover{
+						color: black !important;
+
+					}
+
+					/* disabled temporarily	
+					div#facultystudentscontainer p.quote{
+						font-weight:bold;
+						text-align:center;
+						font-size:1.5em !important;
+					}
+
+					div#facultystudentscontainer{
+						padding-top:2em;
+						padding-bottom:2em;
+
+					}
+					*/	
+					
+					
+					@media only screen and (max-width: 1024px){
+						div.featured-image{
+							min-height: auto;
+						}
+						div.hero-image{
+							width:100%;
+							clear:both;
+							float:none;
+							min-height:auto;
+						}
+						div.hero-blurb{
+							position:relative;
+							background:#639;
+							clear:both;
+							width:calc(100% - 3em);
+							padding:1.5em 1.5em 2em 1.5em;
+							text-align:center;
+						}
+
+						div.hero-blurb h2{
+							font-size:3em;
+							line-height: 1em;
+						}
+
+						div.hero-blurb p{
+							font-size:1.5em;
+							margin:1.5em 0;
+							line-height: 1em;
+						}
+
+						div.hero-blurb a.button{
+							font-size:1.5em;
+							padding: 0.5em .8em;
+						}
+
+						img.mobile-image{display:block;}
+						img.desktop-image{display:none;}
+						br.desktop-break{display:none;}
+						
+						
+						/* disabled temporarily
+						div#facultystudentscontainer p.quote{
+							font-size:1.2em !important;
+						}
+						*/
+
+					}
+					
+					
+					@media only screen and (max-width:1300px){
+						#featuredsocialcontainer div.post{
+							width: 40% !important;
+							margin: 0.5em 5% 0 5%;
+							float:left;
+							border-right:none !important;	
+							border-bottom: 1px solid #555;
+							padding: 1.5em 0;
+							font-size:1.1em;
+							height: 7em;
+						}					
+						
+					}
+					
+					@media only screen and (max-width:950px){
+						#featuredsocialcontainer div.post{
+							width: 90% !important;
+							margin: 0.5em 5% 0 5%;
+							float:left;
+							border-right:none !important;	
+							border-bottom: 1px solid #555;
+							padding: 0.8em 0;
+							font-size:1.2em;
+							height: auto;
+						}					
+						
+					}
+					
+					@media only screen and (max-width: 767px){
+				
+				
+						br.desktop-break{display:block;}
+
+
+
+						div.hero-blurb h2{
+							font-size:2em;
+							line-height: 1em;
+						}
+
+						div.hero-blurb p{
+							font-size:1.2em;
+							margin:1.5em 0 2em 0;
+							line-height: 1em;
+						}
+
+						div.hero-blurb a.button{
+							font-size:1.25em;
+
+						}
+					}
+					
+					#featuredvideocontainer{
+						width: 95.5%;	
+						clear:both;
+						padding: 1em 2.25%;
+						margin-bottom:1em;
+					}
+					#featuredvideo{
+						overflow:hidden;
+						padding-bottom:56.25%;
+						position:relative;
+						height:0;	
+	
+					}
+					#featuredvideo img#thumbnail{
+						width: 100%;
+						cursor: pointer;	
+					}
+					#featuredvideo iframe{
+						display:none;
+						left:0;
+						top:0;
+						height:100%;
+						width:100%;
+						position:absolute;	
+					}
+					
+					#socialmedia{
+						width: 94.5%;
+						margin: 0 auto;	
+						max-width: 1680px;
+					}
+					
+					#socialmedia h2{
+						font-size: 2em;
+						font-weight:bold;
+						text-transform:uppercase;
+						color: #639;
+						margin-bottom: 0.5em;
+					}
+					
+				</style>
+<script type="text/javascript">
+					$( document ).ready(function() {
+						
+						$('#newstab').addClass('selected');
+						
+						$('#eventstab').click(function(){
+							$('#eventscontainer').show();
+							$('#newscontainer').hide();
+							$('#newstab').removeClass('selected');
+							$('#eventstab').addClass('selected');
+						});
+						
+						$('#newstab').click(function(){
+							$('#eventscontainer').hide();
+							$('#newscontainer').show();
+							$('#newstab').addClass('selected');
+							$('#eventstab').removeClass('selected');
+						});
+						
+						$('#featuredvideo #thumbnail').click(function(){
+							$('#featuredvideo #thumbnail').hide();
+							$('#featuredvideo iframe').show();
+							$('#featuredvideo iframe').attr('src','https://www.youtube.com/embed/1gluSrbINNI?rel=0&amp;showinfo=0&amp;autoplay=1');
+						});
+						
+					});
+				</script>
+</head>
+<body>
+<div id="container"><style type="text/css">
+body{font-family: 'Open Sans', serif;}
+#header #nav #mainnav #tabitems li{font-family: 'Open Sans', serif;}
+</style>
+<div id="header">
+<div id="skiptocontent"><a href="#content">Skip to main content</a></div>
+<div id="nav">
+<div id="audiencenav">
+<ul id="externalaudience">
+<li><a href="http://www.wiu.edu/parents_and_family/" onclick="_gaq.push(['_trackEvent', 'headerlink_extaudience', 'click', 'parentsfamilies']);">Parents &amp; Families</a></li>
+<li><a href="http://www.wiu.edu/visit/" onclick="_gaq.push(['_trackEvent', 'headerlink_extaudience', 'click', 'visitors']);">Visitors</a></li>
+<li><a href="http://www.wiu.edu/global_education/global.php" onclick="_gaq.push(['_trackEvent', 'headerlink_extaudience', 'click', 'internationalstudents']);">International Students</a></li>
+</ul>
+<ul id="internalaudience">
+<li><a href="http://www.wiu.edu/libraries/" onclick="_gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'libraries']);">Libraries</a></li>
+<li><a href="http://www.wiu.edu/registrar/courses.php" onclick="_gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'courseofferings']);">Course Offerings</a></li>
+<li><a href="http://directory.wiu.edu/" onclick="_gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'directory']);">Directory</a></li>
+<li><a href="http://www.wiu.edu/table_of_contents/" onclick="_gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'azindex']);">A-Z Index</a></li>
+<li id="mywiu"><a href="http://my.wiu.edu/" onclick="_gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'mywiu']);">myWIU</a>
+<ul id="mywiu_items">
+<li><a href="http://www.wiu.edu/email" onclick="_gaq.push(['_trackPageview','/vpv/gmail/']); _gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'email']);">Email</a></li>
+<li><a href="http://westernonline.wiu.edu" onclick="_gaq.push(['_trackPageview','/vpv/wo/']); _gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'westernonline']);">WesternOnline</a></li>
+<li><a href="http://www.wiu.edu/stars/" onclick="_gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'stars']);">STARS</a></li>
+<li><a href="http://www.wiu.edu/university_technology/administrative_information_management_systems/" onclick="_gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'wiup']);">WIUP</a></li>
+<li><a href="http://www.wiu.edu/purplepost" onclick="_gaq.push(['_trackPageview','/vpv/purplepost/']); _gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'purplepost']);">Purple Post</a></li>
+<li><a href="http://www.wiu.edu/account/" onclick="_gaq.push(['_trackEvent', 'headerlink_intaudience', 'click', 'account']);">Password &amp; Account Self-Service</a></li>
+</ul>
+</li>
+</ul>
+</div> <!-- end of audiencenav -->
+<div id="sitesearch">
+<form action="/_resources/_redesign/php/search.php" id="searchWIUform" method="post">
+<label for="WIUsearchterms"></label>
+<input id="WIUsearchterms" name="searchWIU" type="text" value="Search WIU"/>
+<label for="searchbutton"></label>
+<input id="searchbutton" type="submit" value=""/>
+</form>
+</div>
+<div id="masthead_big" style="padding-top:0; padding-right:0; padding-left:1.5%;">
+<div id="applybutton"><p><a href="http://www.wiu.edu/apply/" onclick="_gaq.push(['_trackEvent', 'applynow_header_button', 'click', 'Apply Now']);">APPLY NOW</a> </p></div>
+<a href="/" onclick="_gaq.push(['_trackEvent', 'mastheadlink', 'click', 'wiu_logo']);"><img alt="" id="mastheadlogo" src="/_resources/_redesign/images/wlogo.png" style="height: 76px; padding: 25px 1.5% 0 0; margin-bottom:20px;"/></a>
+<h1 style="font-family: 'Lora', serif;"><a href="http://www.wiu.edu/" onclick="_gaq.push(['_trackEvent', 'mastheadlink', 'click', 'wiu']);">Western Illinois University</a></h1>
+<ul class="mastheadbullets">
+<li><a href="http://www.wiu.edu/corevalues/" onclick="_gaq.push(['_trackEvent', 'mastheadlink', 'click', 'yourpotential']);">Your potential. Our purpose.</a></li>
+<li><a href="http://www.wiu.edu/macomb/" onclick="_gaq.push(['_trackEvent', 'mastheadlink', 'click', 'macomb']);">Macomb</a></li>
+<li><a href="http://www.wiu.edu/qc/" onclick="_gaq.push(['_trackEvent', 'mastheadlink', 'click', 'qc']);">Quad Cities</a></li>
+</ul>
+</div> <!-- end of masthead_big -->
+<!-- Main Navigation (jquery plugin: jquery.tabnavigation.plugin.js) -->
+<div id="mainnav">
+<ul class="tabs" id="tabitems">
+<li id="navabout" onclick="_gaq.push(['_trackEvent', 'mainnavlink', 'click', 'about']);"><a href="http://www.wiu.edu/about/">About WIU</a></li>
+<li id="navacademics"><a href="http://www.wiu.edu/academics/" onclick="_gaq.push(['_trackEvent', 'mainnavlink', 'click', 'academics']);">Academics</a></li>
+<li id="navadmissions"><a href="http://www.wiu.edu/admissions/" onclick="_gaq.push(['_trackEvent', 'mainnavlink', 'click', 'admissions']);">Admissions</a></li>
+<li id="navarts"><a href="https://www.westernpresents.com/" onclick="_gaq.push(['_trackEvent', 'mainnavlink', 'click', 'arts']);">Arts</a></li>
+<li id="navathletics"><a href="http://www.goleathernecks.com/" onclick="_gaq.push(['_trackEvent', 'mainnavlink', 'click', 'athletics']);">Athletics</a></li>
+<li id="navalumni"><a href="http://www.wiu.edu/alumni/" onclick="_gaq.push(['_trackEvent', 'mainnavlink', 'click', 'alunmi']);">Alumni</a></li>
+<li id="navgiving"><a href="http://www.wiu.edu/giving/" onclick="_gaq.push(['_trackEvent', 'mainnavlink', 'click', 'giving']);">Giving</a></li>
+<li id="navstudentlife"><a href="http://www.wiu.edu/student_services/" onclick="_gaq.push(['_trackEvent', 'mainnavlink', 'click', 'studentlife']);">Student Life</a></li>
+</ul>
+<!-- Menu content -->
+<div id="d_about"> </div>
+<div id="d_academics"> </div>
+<div id="d_admissions"> </div>
+<div id="d_arts"> </div>
+<div id="d_athletics"> </div>
+<div id="d_alumni"> </div>
+<div id="d_giving"> </div>
+<div id="d_studentlife"> </div>
+</div> <!-- end of mainnav -->
+</div> <!-- end of nav -->
+<div id="menu_container">
+<a href="#" id="menu-toggle">≡</a>
+</div> <!-- end of menu_container -->
+<div id="masthead_small" style="text-align:left !important;">
+<style type="text/css">
+		#masthead_small h1{padding:0.1em 0 0 0 !important; }
+		#masthead_small #small-logo{margin: 0.25em 1em 1em 1em;height:55px;}
+		@media only screen and (max-width: 767px){
+			#masthead_small #small-logo{height:35px !important; margin: 0.5em 0.5em 1em 0.5em !important;}
+			#masthead_small h1{font-size:1.1em; padding-top:0.4em !important;}
+			body.active #masthead_small #small-logo{margin-left:50px !important;}
+			#applynowbullet {margin-top:0.5em;}
+
+
+		}
+
+		</style>
+<div style="float:left;"><a href="/" onclick="_gaq.push(['_trackEvent', 'mastheadlink_mobile', 'click', 'wiu_logo']);"><img id="small-logo" src="/_resources/_redesign/images/wlogo.png"/></a></div>
+<h1 style="font-family: 'Lora', serif; margin-right:0 !important;"><a href="http://www.wiu.edu/" onclick="_gaq.push(['_trackEvent', 'mastheadlink_mobile', 'click', 'wiu']);">Western Illinois University</a></h1>
+<ul class="mastheadbullets" style="padding:0;margin-top: 0.1em;">
+<li><a href="http://www.wiu.edu/corevalues/" onclick="_gaq.push(['_trackEvent', 'mastheadlink_mobile', 'click', 'yourpotential']);">Your potential. Our purpose.</a></li>
+<li><a href="http://www.wiu.edu/macomb/" onclick="_gaq.push(['_trackEvent', 'mastheadlink_mobile', 'click', 'macomb']);">Macomb</a></li>
+<li><a href="http://www.wiu.edu/qc/" onclick="_gaq.push(['_trackEvent', 'mastheadlink_mobile', 'click', 'qc']);">Quad Cities</a></li>
+<li id="applynowbullet"><a href="http://www.wiu.edu/apply" onclick="_gaq.push(['_trackEvent', 'applynow_header_button_mobile', 'click', 'Apply Now']);">APPLY NOW</a></li>
+</ul>
+</div> <!-- end of masthead_small -->
+</div> <!-- end of header -->
+<div id="content">
+<div class="main-hero">
+<div class="hero-image">
+<div class="image-container">
+<img alt="Students outside of the University Union" class="desktop-image" src="images/front/hero/Fall-Banner-homepage-min.jpg"/>
+<img alt="Students outside of the University Union" class="mobile-image" src="images/front/hero/Fall-Banner-homepage-mobile-min.jpg"/>
+</div>
+<div class="hero-blurb">
+<h2><strong>Your potential. <br class="desktop-break"/>Our purpose.</strong></h2>
+<p>We believe in where your potential will take you.</p>
+<a class="button" href="/visit" onclick="_gaq.push(['_trackEvent', 'common_action_buttons', 'click', 'visit']);">Visit Campus</a>
+</div>
+</div>
+</div>
+<div id="graycontainer">
+<div id="themecontainer">
+<div class="feature">
+<a href="/diversity" onclick="_gaq.push(['_trackEvent', 'homepage_theme', 'click', 'individuality_diversity']);"><img alt="" src="/images/front/theme/individuality-min.jpg"/>
+<h3>Connect to Individuality</h3>
+<p>Diversity, Equity and Inclusion</p>
+</a></div>
+<div class="feature">
+<a href="/academics" onclick="_gaq.push(['_trackEvent', 'homepage_theme', 'click', 'opportunities_academics']);"><img alt="" src="/images/front/theme/opportunities-min.jpg"/>
+<h3>Connect to Opportunities</h3>
+<p>Over 100 Academic Programs</p>
+</a></div>
+<div class="feature">
+<a href="/outcomes" onclick="_gaq.push(['_trackEvent', 'homepage_theme', 'click', 'success_outcomes']);"><img alt="" src="/images/front/theme/success-min.jpg"/>
+<h3>Connect to Success</h3>
+<p>See our Success Stories</p>
+</a></div>
+</div>
+</div>
+<div id="factcontainer">
+<a href="/majors" onclick="_gaq.push(['_trackEvent', 'homepage_sellingpoint', 'click', 'more_than_60_majors']);"><div class="fact">
+<p><span class="purple">More than</span><br/>
+<span class="purple big">60 majors</span>
+</p>
+</div></a>
+<a href="/admissions/best.php" onclick="_gaq.push(['_trackEvent', 'homepage_sellingpoint', 'click', 'best_midwest']);"><div class="fact">
+<p>
+<span class="big purple">"Best Midwestern University"</span> <span class="purple">— 15 consecutive years</span>
+</p>
+</div></a>
+<a href="/scholarships" onclick="_gaq.push(['_trackEvent', 'homepage_sellingpoint', 'click', '$10M_scholarships']);"><div class="fact">
+<p>
+<span class="purple big">$10M</span> in scholarships awarded 
+                <span class="big purple"> each year</span>
+</p>
+</div></a>
+<a href="/apply" onclick="_gaq.push(['_trackEvent', 'homepage_recruitment_event', 'click', 'apply_without_scores']);"><div class="fact">
+<p><span class="big purple">Apply Now</span><br/>without test scores </p>
+</div></a>
+</div>
+<div id="newseventsparent">
+<div id="newseventstabs">
+<div id="newstab" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'news_tab']);">NEWS</div>
+<div id="eventstab" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'events_tab']);">EVENTS</div>
+</div>
+<div id="newseventscontainer">
+<div id="newscontainer">
+<div class="news"><p><a href="/news/newsrelease.php?release_id=16944" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_story']);">WIU Music Professors visit Hong Kong</a></p></div><div class="news"><p><a href="/news/newsrelease.php?release_id=16932" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_story']);">WIU Admissions Events Set for Spring 2020</a></p></div><div class="news"><p><a href="/news/newsrelease.php?release_id=16938" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_story']);">Ag Mech Club's 50th Annual Farm Expo and School of Agriculture 100th Anniversary Dinner</a></p></div><div class="news"><p><a href="/news/newsrelease.php?release_id=16928" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_story']);">Spring 2020 State of the University Address</a></p></div>
+<div class="viewmore">
+<a href="/news" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_more_news']);"><img alt="" src="/_resources/_redesign/images/whiteplus.png" style="vertical-align:middle;"/> <span>View More</span></a>
+</div>
+</div>
+<div id="eventscontainer">
+<div class="event"> <p class="event_date"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34298">Tuesday, January 28</a></p><div class="event_details_container"><h4 class="event_title"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34298">WISE Spain Study Abroad Interest Meeting </a></h4><p class="event_location"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34298" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_event']);">Morgan Hall Room 330</a></p><p class="event_time">3:30 pm - 4:30 pm</p></div></div> <div class="event"> <p class="event_date"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34111">Tuesday, January 28</a></p><div class="event_details_container"><h4 class="event_title"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34111">Orlando Alumni &amp; Friends Social</a></h4><p class="event_location"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34111" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_event']);">Bar Louie
+8510 International Drive
+Orlando, FL</a></p><p class="event_time">6:00 pm - 8:00 pm</p></div></div> <div class="event"> <p class="event_date"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34285">Wednesday, January 29</a></p><div class="event_details_container"><h4 class="event_title"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34285">Earth Hour</a></h4><p class="event_location"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34285" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_event']);">Quad Cities Campus Atrium</a></p><p class="event_time">5:00 pm - 6:00 pm</p></div></div> <div class="event"> <p class="event_date"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34150">Thursday, January 30</a></p><div class="event_details_container"><h4 class="event_title"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34150">WIU Women's Basketball vs SDSU</a></h4><p class="event_location"><a href="http://www.wiu.edu/wiucalendar/index.sphp?id=34150" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_event']);">Western Hall </a></p><p class="event_time">5:30 pm</p></div></div>
+<div class="viewmore">
+<a href="/wiucalendar" onclick="_gaq.push(['_trackEvent', 'news_events', 'click', 'view_more_events']);"><img alt="" src="/_resources/_redesign/images/whiteplus.png" style="vertical-align:middle;"/> <span>View More</span></a>
+</div>
+</div>
+</div>
+</div>
+<div id="facultystudentscontainer">
+<!-- <h2>Faculty-Staff-Student Connection</h2> -->
+<div class="feature">
+<img alt="" src="http://www.wiu.edu/images/front/faculty_student/kessler-min.jpg"/>
+<p class="title">Student involvement is a key part of being a holistic student</p>
+<blockquote>I really think that getting involved truly can develop you better as a person and give you the skills that you might need in a job later in life.</blockquote>
+<p class="attribution"><strong>— Julianna Kessler</strong>, Speech Pathology and Audiology Major</p>
+<p class="viewmore"><a href="https://www.youtube.com/watch?v=pEDlQBCC8kw" onclick="_gaq.push(['_trackEvent', 'homepage_faculty_students', 'click', 'kessler_1']);">View more</a></p>
+</div>
+<div class="feature">
+<img alt="" src="http://www.wiu.edu/images/front/faculty_student/pihlstrom-min.jpg"/>
+<p class="title">Among the Best &amp; the Brightest</p>
+<blockquote>WIU has provided me with numerous opportunities for growth and development. The lectures provided in the classroom can be translated to other areas of my life. WIU has made a tremendous impact and I am forever grateful. </blockquote>
+<p class="attribution"><strong>— Isaiah Pihlstrom</strong>, Finance Major </p>
+<p class="viewmore"><a href="http://www.wiu.edu/news/newsrelease.php?release_id=16722" onclick="_gaq.push(['_trackEvent', 'homepage_faculty_students', 'click', 'pihlstrom_2']);">Read more</a></p>
+</div>
+<div class="feature">
+<img alt="" src="http://www.wiu.edu/images/front/faculty_student/muniz-min.jpg"/>
+<p class="title">Celebrating WIU's First Generation Students</p>
+<blockquote>As a first generation student, I've been a part of organizations that have allowed me to grow as a leader, meet new people, and learn more about myself and my abilities. I came to Western because of the diversity, location, cost and programs.</blockquote>
+<p class="attribution"><strong>— Jessica Muniz</strong>, Psychology Major </p>
+<p class="viewmore"><a href="http://www.wiu.edu/news/newsrelease.php?release_id=16798" onclick="_gaq.push(['_trackEvent', 'homepage_faculty_students', 'click', 'muniz_3']);">Read more</a></p>
+</div>
+</div>
+<!--
+		<div id="featuredsocialcontainer">
+        	<h2>Our Leathernecks</h2>
+            <div id="postcontainer">
+				<div class="post">
+                    <a href="https://www.instagram.com/p/Bw67B5yhj4t/?hl=en" onclick="_gaq.push(['_trackEvent', 'homepage_ourleathernecks', 'click', '@ericamaee__1']);">
+                        <p class="attribution">Erica <span class="handle">@ericamaee_</span></p>
+                        <img src="/_resources/_redesign/images/social_media_icons/insta.svg" alt=""/>
+                        <p class="quote">I choose WIU because it’s such a welcoming place and the great law enforcement program. I’m excited for all the new friends I will make!</p>
+                    </a>
+                </div>
+				<div class="post">
+                    <a href="https://www.facebook.com/Rivkah76/posts/10212958289142948" onclick="_gaq.push(['_trackEvent', 'homepage_ourleathernecks', 'click', '@Riv_2']);">
+                        <p class="attribution">Riv Dunn</p>
+                         <img src="/_resources/_redesign/images/social_media_icons/fb.svg" alt=""/>
+                        <p class="quote">Parents: If you are looking for a University for your student that will answer your questions with promptness, friendliness, a genuine sense of care for both student and you ... you literally need to look no further.</p>
+                    </a>
+                </div>
+				<div class="post">
+                    <a href="https://twitter.com/JohnnyMac_18/status/1080899514972688385" onclick="_gaq.push(['_trackEvent', 'homepage_ourleathernecks', 'click', '@JohnnyMac_18_3']);">
+                        <p class="attribution">Sean McGuire <span class="handle">@JohnnyMac_18</span></p>
+                        <img src="/_resources/_redesign/images/social_media_icons/twit.svg" alt=""/>
+                        <p class="quote">If you know me, you know how special WIU is to me, and always will be. I’ll carry the purple and gold with me forever. Thank you!!!</p>
+                    </a>
+                </div>
+                <div class="post">
+                    <a href="https://twitter.com/msander27/status/1083235001339138048" onclick="_gaq.push(['_trackEvent', 'homepage_ourleathernecks', 'click', '@msander27_4']);">
+                        <p class="attribution">Matthew Sander <span class="handle">@msander27</span></p>
+                        <img src="/_resources/_redesign/images/social_media_icons/twit.svg" alt=""/>
+                        <p class="quote">Got accepted to @WesternILUniv's Honors College! Cannot wait to visit!</p>
+                    </a>
+                </div>
+                
+                
+                
+                
+                
+        	</div>        
+       	</div>  
+		-->
+<div id="socialmedia" onclick="_gaq.push(['_trackEvent', 'homepage_socialmedia', 'click', 'juicer']);">
+<h2>Get Social at #WIU</h2>
+<!-- <script src="https://assets.juicer.io/embed-no-jquery.js" type="text/javascript">/*comment*/</script>
+<link href="https://assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
+<ul class="juicer-feed" data-feed-id="wiu-edu" data-per="4" data-columns="4" data-gutter="30" data-truncate="100"> </ul>-->
+<script src="https://assets.juicer.io/embed-no-jquery.js" type="text/javascript">/*comment*/</script>
+
+<ul class="juicer-feed" data-columns="4" data-feed-id="westerniluniv-503fccb2-e652-419f-b231-41385bbe3e4c" data-gutter="30" data-per="4" data-truncate="140"> </ul>
+<!--<img src="images/social_screenshot.jpg" alt=""/> -->
+</div>
+</div>
+<div id="footer"><div class="link_column">
+<h3>News &amp; Events</h3>
+<ul>
+<li><a href="/news" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'newsreleases']);">News Releases</a></li>
+<li><a href="/provost/calendar/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'academiccalendar']);">Academic Calendar</a></li>
+<li><a href="/wiucalendar/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'eventscalendar']);">Events Calendar</a></li>
+</ul>
+<h3>Libraries</h3>
+<ul>
+<li><a href="/libraries/help/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'libraries_asklibrarian']);">Ask a Librarian / Get Help</a></li>
+<li><a href="/libraries/info/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'libraries_branches']);">Branches &amp; Units</a></li>
+<li><a href="/library/direct/?WestCat" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'libraries_catalog']);">Catalog</a></li>
+<li><a href="/libraries/databases/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'libraries_databases']);">Databases</a></li>
+<li><a href="/libraries/services/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'libraries_services']);">Services</a></li>
+</ul>
+</div>
+<div class="link_column">
+<h3>Campus Safety</h3>
+<ul>
+<li><a href="/ops" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'safety_ops']);">Office of Public Safety</a></li>
+<li><a href="/vpas/risk_management_and_emergency_preparedness/wiu_emergency_alert_system/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'safety_emergencyalert']);">Emergency Alert System</a></li>
+<li><a href="/vpaps/university_relations/timely-warnings.php" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'safety_timelywarnings']);">Timely Warnings</a></li>
+<li><a href="/clery/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'safety_crimestats']);">Campus Crime Stats</a></li>
+<li><a href="/rmep" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'safety_riskmgmt']);">Risk Management &amp; Emergency Preparedness</a></li>
+</ul>
+<h3>Technology Resources</h3>
+<ul>
+<li><a href="/computerlabs" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'tech_labs']);">Computer Labs</a></li>
+<li><a href="/university_technology/faculty_staff_resources/classroom_support_services/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'tech_classrooms']);">Electronic Classrooms</a></li>
+<li><a href="/university_technology/accounts_and_access/passwords.php" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'tech_password']);">Password Assistance</a></li>
+<li><a href="/supportcenter" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'tech_supportcenter']);">Technology Support Center</a></li>
+<li><a href="/utech" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'tech_utech']);">University Technology</a></li>
+</ul>
+</div>
+<div class="link_column">
+<h3>University Relations</h3>
+<ul>
+<li><a href="http://wiu.edu/vpaps/university_relations/ur_publications.php" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'ur_publications']);">Publications</a></li>
+<li><a href="http://wiu.edu/vpaps/visual_production_center/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'ur_photography']);">University Photography</a></li>
+<li><a href="/utv" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'ur_utv']);">University Television</a></li>
+<li><a href="/higher_education_act/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'ur_hea']);">Higher Education Act</a></li>
+</ul>
+<h3>Policies &amp; Procedures</h3>
+<ul>
+<li><a href="/policies" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'policies_univpolicies']);">University Policies</a></li>
+<li><a href="/board_of_trustees/regulations/index.php" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'policies_botreg']);">Board of Trustees Regulations</a></li>
+<li><a href="/provost/facultypolicies.php" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'policies_faculty']);">Faculty Policy Manual</a></li>
+<li><a href="/vpas/administrative_procedures_handbook/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'policies_admin']);">Administrative Procedures Handbook</a></li>
+<li><a href="/vpas/human_resources/civil_service_handbook/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'policies_cs']);">Civil Service Handbook</a></li>
+<li><a href="/provost/students.php" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'policies_student']);">Student Rights &amp; Responsibilities</a></li>
+<li><a href="/complaints" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'policies_complaints']);">Complaints</a></li>
+</ul>
+</div>
+<div class="link_column">
+<h3>Administrative Services</h3>
+<ul>
+<li><a href="/billing">Billing &amp; Receivables</a></li>
+<li><a href="/vpas/business_services/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'admin_business']);">Business Office</a></li>
+<li><a href="/dps" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'admin_dps']);">Document &amp; Publication Services</a></li>
+<li><a href="/vpas/ethics_training/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'admin_ethics']);">Ethics Training</a></li>
+<li><a href="/vpas/fm/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'admin_fm']);">Facilities Management</a></li>
+<li><a href="/hr" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'admin_hr']);">Human Resources</a></li>
+<li><a href="/parking" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'admin_parking']);">Parking Services</a></li>
+<li><a href="/vpas/purchasing/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'admin_purchasing']);">Purchasing Office</a></li>
+</ul>
+<h3>Campus Directory</h3>
+<ul>
+<li><a href="http://directory.wiu.edu/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'directory_index']);">Find an Employee or Student</a></li>
+<li><a href="/table_of_contents/academic_administrative_offices.pdf" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'directory_acaadmin']);">Find an Office</a></li>
+<li><a href="/table_of_contents/deans.php" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'directory_dean']);">Deans &amp; Directors</a></li>
+<li><a href="/table_of_contents/administration.php" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'directory_admin']);">University Administration</a></li>
+</ul>
+</div>
+<!-- Google Code for Remarketing Tag -->
+<script type="text/javascript">// <![CDATA[
+var google_conversion_id = 995227825;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+// ]]></script>
+<script src="//www.googleadservices.com/pagead/conversion.js" type="text/javascript">// <![CDATA[
+
+// ]]></script>
+<noscript>
+<div style="display:inline;">
+<img alt="" height="1" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995227825/?guid=ON&amp;script=0" style="border-style:none;" width="1"/>
+</div>
+</noscript><!-- Google Code for Remarketing Tag -->
+<script type="text/javascript">// <![CDATA[
+var google_conversion_id = 819613523;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+// ]]></script>
+<script src="//www.googleadservices.com/pagead/conversion.js" type="text/javascript">// <![CDATA[
+
+// ]]></script>
+<noscript>
+<div style="display:inline;">
+<img alt="" height="1" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/819613523/?guid=ON&amp;script=0" style="border-style:none;" width="1"/>
+</div>
+</noscript><div id="social_media">
+<h3>Connect with us:</h3>
+<a href="https://www.facebook.com/WesternIlUniv" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'social_facebook']);"><img alt="Find us on Facebook" src="/_resources/_redesign/images/social_media_icons/fb.svg"/></a>
+<a href="https://twitter.com/WesternILUniv" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'social_twitter']);"><img alt="Follow us on Twitter" src="/_resources/_redesign/images/social_media_icons/twit.svg"/></a>
+<a href="https://www.youtube.com/user/WesternIllinoisU" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'social_youtube']);"><img alt="Watch us on YouTube" src="/_resources/_redesign/images/social_media_icons/yt.svg"/></a>
+<a href="http://instagram.com/westerniluniv" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'social_instagram']);"><img alt="Find us on Instagram" src="/_resources/_redesign/images/social_media_icons/insta.svg"/></a>
+<a href="https://www.linkedin.com/school/western-illinois-university/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'social_linkedin']);"><img alt="Connect with us on Linkedin" src="/_resources/_redesign/images/social_media_icons/in.svg"/></a>
+</div>
+<div id="footer_bottom"><div id="footer_links">
+<ul>
+<li><a href="http://www.wiu.edu/accessibility/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'accessibility']);">Accessibility</a></li>
+<li><a href="http://www.wiu.edu/budget/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'budget']);">Budget</a></li>
+<li><a href="http://www.wiu.edu/diversity/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'diversity']);">Diversity</a></li>
+<li><a href="http://www.wiu.edu/employment/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'employment']);">Employment</a></li>
+<li><a href="http://www.wiu.edu/eoa/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'eoa']);">Equal Opportunity &amp; Access</a></li>
+<li><a href="http://www.wiu.edu/sustainability/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'sustainability']);">Sustainability</a></li>
+<li><a href="http://www.wiu.edu/veterans/" onclick="_gaq.push(['_trackEvent', 'footerlink', 'click', 'veterans']);">Veterans</a></li>
+</ul>
+</div>
+<div id="contact">
+<div id="address"><h3>Western Illinois University</h3>
+<p>
+	1 University Circle<br/>
+	Macomb, IL 61455 USA
+</p>
+<p>
+	Phone: (309) 298-1414<br/>
+	Text Telephone: (309) 298-4444<br/>
+<a href="mailto:info@wiu.edu">info@wiu.edu</a>
+</p>
+</div>
+<div id="footerlogo">
+<!-- intentionally blank -->
+</div>
+</div>
+<div id="copyright">
+<p><!-- com.omniupdate.ob --><a href="https://omniupdate.wiu.edu/10?skin=oucampus&amp;account=Main&amp;site=www&amp;action=de&amp;path=/index.php">© 2020</a><!-- /com.omniupdate.ob -->  Western Illinois University. All Rights Reserved. | <a href="http://www.wiu.edu/vpas/policies/webprivacy.php">Web Privacy Policy</a></p>
+</div>
+</div>
+</div>
+<script src="/_resources/_redesign/js/common-minified.js" type="text/javascript">/*blank*/</script>
+</div>
+</body></html>
+

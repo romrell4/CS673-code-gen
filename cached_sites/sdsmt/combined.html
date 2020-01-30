@@ -1,0 +1,5620 @@
+<!DOCTYPE HTML>
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#">
+<head><style>
+﻿/*!
+ * jQuery UI CSS Framework 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:before, .ui-helper-clearfix:after { content: ""; display: table; }
+.ui-helper-clearfix:after { clear: both; }
+.ui-helper-clearfix { zoom: 1; }
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/*!
+ * jQuery UI CSS Framework 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ctl=themeroller
+ */
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget { /*font-family: Verdana,Arial,sans-serif; */font-size: .9em; }
+.ui-widget .ui-widget { font-size: 1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { /*font-family: Verdana,Arial,sans-serif; */ font-size: 1em; }
+.ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff url(images/ui-bg_glass_75_ffffff_1x400.png) 50% 50% repeat-x; color: #222222; }
+.ui-widget-content a { color: #222222; }
+.ui-widget-header { border: 1px solid #aaaaaa; background: white; color: #222222; font-weight: bold; }
+.ui-widget-header a { color: #222222; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3; background: #011c4f; font-weight: bold; color: #FFFFFF; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #FFFFFF; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #999999; background: #003366; font-weight: bold; color: #FFFFFF; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #FFFFFF; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa; background: #298e21; font-weight: bold; color: #FFFFFF; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #FFFFFF; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #fcefa1; background: #fbf9ee url(images/ui-bg_glass_55_fbf9ee_1x400.png) 50% 50% repeat-x; color: #363636; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(images/ui-bg_inset-soft_95_fef1ec_1x100.png) 50% bottom repeat-x; color: #cd0a0a; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #cd0a0a; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_222222_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(images/ui-icons_222222_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(images/ui-icons_222222_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(images/ui-icons_888888_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_454545_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(images/ui-icons_454545_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_2e83ff_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_cd0a0a_256x240.png); }
+
+/* positioning */
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-ne { background-position: -16px 0; }
+.ui-icon-carat-1-e { background-position: -32px 0; }
+.ui-icon-carat-1-se { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-sw { background-position: -80px 0; }
+.ui-icon-carat-1-w { background-position: -96px 0; }
+.ui-icon-carat-1-nw { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-off { background-position: -96px -144px; }
+.ui-icon-radio-on { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px; }
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px; }
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; -khtml-border-top-left-radius: 4px; border-top-left-radius: 4px; }
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; -khtml-border-top-right-radius: 4px; border-top-right-radius: 4px; }
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; -khtml-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; -khtml-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
+
+/* Overlays */
+.ui-widget-overlay { background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }/*!
+ * jQuery UI Resizable 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Resizable#theming
+ */
+.ui-resizable { position: relative;}
+.ui-resizable-handle { position: absolute;font-size: 0.1px; display: block; }
+.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+.ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+.ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+.ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+.ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}/*!
+ * jQuery UI Selectable 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Selectable#theming
+ */
+.ui-selectable-helper { position: absolute; z-index: 100; border:1px dotted black; }
+/*!
+ * jQuery UI Accordion 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Accordion#theming
+ */
+/* IE/Win - Fix animation bug - #4615 */
+.ui-accordion { width: 100%; }
+.ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
+.ui-accordion .ui-accordion-li-fix { display: inline; }
+.ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }
+.ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em .7em; }
+.ui-accordion-icons .ui-accordion-header a { padding-left: 2.2em; }
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
+.ui-accordion .ui-accordion-content-active { display: block }
+/*!
+ * jQuery UI Autocomplete 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu 1.8.20
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu {
+	list-style:none;
+	padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+}
+/*!
+ * jQuery UI Button 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Button#theming
+ */
+.ui-button { display: inline-block; position: relative; padding: 0; margin-right: .1em; text-decoration: none !important; cursor: pointer; text-align: center; zoom: 1; overflow: visible; } /* the overflow property removes extra width in IE */
+.ui-button-icon-only { width: 2.2em; } /* to make room for the icon, a width needs to be set here */
+button.ui-button-icon-only { width: 2.4em; } /* button elements seem to need a little more width */
+.ui-button-icons-only { width: 3.4em; } 
+button.ui-button-icons-only { width: 3.7em; } 
+
+/*button text element */
+.ui-button .ui-button-text { display: block; line-height: 1.4;  }
+.ui-button-text-only .ui-button-text { padding: .4em 1em; }
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text { padding: .4em; text-indent: -9999999px; }
+.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 1em .4em 2.1em; }
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 2.1em .4em 1em; }
+.ui-button-text-icons .ui-button-text { padding-left: 2.1em; padding-right: 2.1em; }
+/* no icon support for input elements, provide padding by default */
+input.ui-button { padding: .4em 1em; }
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon { position: absolute; top: 50%; margin-top: -8px; }
+.ui-button-icon-only .ui-icon { left: 50%; margin-left: -8px; }
+.ui-button-text-icon-primary .ui-button-icon-primary, .ui-button-text-icons .ui-button-icon-primary, .ui-button-icons-only .ui-button-icon-primary { left: .5em; }
+.ui-button-text-icon-secondary .ui-button-icon-secondary, .ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+.ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+
+/*button sets*/
+.ui-buttonset { margin-right: 7px; }
+.ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em; }
+
+/* workarounds */
+button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
+/*!
+ * jQuery UI Dialog 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Dialog#theming
+ */
+.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
+.ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; } 
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
+.ui-dialog .ui-dialog-content { position: relative; border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
+.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
+.ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
+.ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+.ui-draggable .ui-dialog-titlebar { cursor: move; }
+/*!
+ * jQuery UI Slider 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
+
+.ui-slider-horizontal { height: .8em; }
+.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.ui-slider-vertical { width: .8em; height: 100px; }
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
+.ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
+.ui-slider-vertical .ui-slider-range-min { bottom: 0; }
+.ui-slider-vertical .ui-slider-range-max { top: 0; }/*!
+ * jQuery UI Tabs 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide {  position: absolute ! important; left: -10000px ! important; }
+/*!
+ * jQuery UI Datepicker 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Datepicker#theming
+ */
+.ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+.ui-datepicker .ui-datepicker-prev { left:2px; }
+.ui-datepicker .ui-datepicker-next { right:2px; }
+.ui-datepicker .ui-datepicker-prev-hover { left:1px; }
+.ui-datepicker .ui-datepicker-next-hover { right:1px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.ui-datepicker td { border: 0; padding: 1px; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi { width:auto; }
+.ui-datepicker-multi .ui-datepicker-group { float:left; }
+.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.ui-datepicker-row-break { clear:both; width:100%; font-size:0em; }
+
+/* RTL support */
+.ui-datepicker-rtl { direction: rtl; }
+.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}/*!
+ * jQuery UI Progressbar 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Progressbar#theming
+ */
+.ui-progressbar { height:2em; text-align: left; overflow: hidden; }
+.ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
+/* Slider */
+.slick-slider
+{
+    position: relative;
+
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+
+    height: auto;
+
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+﻿@charset 'UTF-8';
+
+/* Icons */
+@font-face
+{
+    font-family: 'slick';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('./fonts/slick.eot');
+    src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype'), url('./fonts/slick.svg#slick') format('svg');
+}
+/* Arrows */
+.slick-prev,
+.slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus
+{
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before
+{
+    opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before
+{
+    opacity: .25;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+
+    opacity: .75;
+    color: white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev
+{
+    left: -25px;
+}
+[dir='rtl'] .slick-prev
+{
+    right: -25px;
+    left: auto;
+}
+.slick-prev:before
+{
+    content: '←';
+}
+[dir='rtl'] .slick-prev:before
+{
+    content: '→';
+}
+
+.slick-next
+{
+    right: -25px;
+}
+[dir='rtl'] .slick-next
+{
+    right: auto;
+    left: -25px;
+}
+.slick-next:before
+{
+    content: '→';
+}
+[dir='rtl'] .slick-next:before
+{
+    content: '←';
+}
+
+/* Dots */
+.slick-dotted.slick-slider
+{
+    margin-bottom: 30px;
+}
+
+.slick-dots
+{
+    position: absolute;
+    bottom: -25px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}
+
+/*
+ * jQuery FlexSlider v2.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Tyler Smith (@mbmufffin)
+ */
+
+ 
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
+
+/* FlexSlider Necessary Styles
+*********************************/ 
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
+html[xmlns] .slides {display: block;} 
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {position: relative; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1;}
+.flex-viewport {max-height: 2100px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
+.loading .flex-viewport {max-height: 300px;}
+.flexslider .slides {zoom: 1;}
+
+/* Direction Nav */
+.flex-direction-nav {*height: 0;}
+.flex-direction-nav a {width: 30px; height: 30px; display: block; background: url(/images/flexslider/bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 50%; z-index: 10; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease;}
+.flex-direction-nav .flex-next {background-position: 100% 0; right: -36px; }
+.flex-direction-nav .flex-prev {left: -36px;}
+.flexslider:hover .flex-next {opacity: 0.8; right: 5px;}
+.flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+
+/* Control Nav */
+.flex-control-nav {width: 100%; position: absolute; bottom: -40px; text-align: center;}
+.flex-control-nav li {display: inline-block; zoom: 1; *display: inline;}
+.flex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; box-shadow: inset 0 0 3px rgba(0,0,0,0.3);}
+.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
+.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9); cursor: default; }
+
+.flex-control-thumbs {position: static; overflow: hidden;}
+.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+.flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+.flex-control-thumbs img:hover {opacity: 1;}
+.flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+@media screen and (max-width: 860px) {
+  .flex-direction-nav .flex-prev {opacity: 1; left: 0;}
+  .flex-direction-nav .flex-next {opacity: 1; right: 0;}
+}
+﻿/* -----------------------------------------------------------------------
+
+SD Mines stylesheet
+
+----------------------------------------------------------------------- */
+@charset "utf-8";
+/* This is a custom stylesheet */
+
+@font-face {
+    font-family: 'pt_sansregular';
+    src: url('../fonts/PTS55F-webfont.eot');
+    src: url('../fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/PTS55F-webfont.woff') format('woff'), url('../fonts/PTS55F-webfont.ttf') format('truetype'), url('../fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pt_sans_narrowregular';
+    src: url('../fonts/PTN57F-webfont.eot');
+    src: url('../fonts/PTN57F-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/PTN57F-webfont.woff') format('woff'), url('../fonts/PTN57F-webfont.ttf') format('truetype'), url('../fonts/PTN57F-webfont.svg#pt_sans_narrowregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pt_sans_narrowbold';
+    src: url('../fonts/PTN77F-webfont.eot');
+    src: url('../fonts/PTN77F-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/PTN77F-webfont.woff') format('woff'), url('../fonts/PTN77F-webfont.ttf') format('truetype'), url('../fonts/PTN77F-webfont.svg#pt_sans_narrowbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pt_sans_captionregular';
+    src: url('../fonts/PTC55F-webfont.eot');
+    src: url('../fonts/PTC55F-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/PTC55F-webfont.woff') format('woff'), url('../fonts/PTC55F-webfont.ttf') format('truetype'), url('../fonts/PTC55F-webfont.svg#pt_sans_captionregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* Override Bootstraps urls on print */
+@media print {
+  a[href]:after {
+    content: none;
+  }
+}
+/* Start Ektron Override */
+div.ektronPageHeader .ektronTitlebar {
+    height: 24px;
+}
+div.couponList div.actions ul, div.ektronPageHeader .ektronToolbar {
+    height: 40px;
+}
+.ektronToolbar .button, .ektronToolbar .button-over {
+    cursor: pointer;
+    height: 22px;
+    padding: 3px;
+    width: auto !important;
+}
+.ui-widget {
+    font-size: 1em;
+    font-family: "pt_sansregular","Arial Narrow",Arial,sans-serif;
+}
+.ui-widget-content {
+    border: none;
+}
+.ui-widget-header {
+    border: none;
+}
+.ui-tabs .ui-tabs-panel {
+    border: 1px solid #dddddd;
+    padding: 10px;
+}
+.ui-tabs .ui-tabs-hide {
+    border: none;
+} 
+.ui-tabs .ui-tabs-nav {
+    padding: 0 0.2em 0 0;
+}
+.ui-tabs-nav .ui-state-default, .ui-tabs-nav .ui-state-default, .ui-tabs-nav .ui-widget-header, .ui-tabs-nav .ui-state-default {
+    background: #eeedeb none repeat scroll 0 0;
+    color: #011c4f;
+    border: none;
+}
+.ui-tabs-nav .ui-state-default a, .ui-tabs-nav .ui-state-default a:link, .ui-tabs-nav .ui-state-default a:visited {
+    color: #011c4f;
+}
+.ui-tabs-nav .ui-state-active, .ui-tabs-nav .ui-widget-content .ui-state-active, .ui-tabs-nav .ui-widget-header .ui-state-active {
+    background: #011c4f none repeat scroll 0 0;
+    color: #ffffff;
+    border: none;
+}
+.ui-tabs-nav .ui-state-active a, .ui-tabs-nav .ui-state-active a:link, .ui-tabs-nav .ui-state-active a:visited {
+    color: #ffffff;
+}
+.ui-tabs .ui-tabs-nav li {
+    margin-bottom: 0;
+    padding-bottom: 1px;
+}
+#insAdvanced input[type="text"], #insBasic input[type="text"] {
+    color: #333;
+}
+
+/* Start Bootstrap Override*/
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12, .col-xs-13, .col-sm-13, .col-md-13, .col-lg-13, .col-xs-14, .col-sm-14, .col-md-14, .col-lg-14, .col-xs-15, .col-sm-15, .col-md-15, .col-lg-15, .col-xs-16, .col-sm-16, .col-md-16, .col-lg-16, .col-xs-17, .col-sm-17, .col-md-17, .col-lg-17, .col-xs-18, .col-sm-18, .col-md-18, .col-lg-18, .col-xs-19, .col-sm-19, .col-md-19, .col-lg-19, .col-xs-20, .col-sm-20, .col-md-20, .col-lg-20, .col-xs-21, .col-sm-21, .col-md-21, .col-lg-21, .col-xs-22, .col-sm-22, .col-md-22, .col-lg-22, .col-xs-23, .col-sm-23, .col-md-23, .col-lg-23, .col-xs-24, .col-sm-24, .col-md-24, .col-lg-24 {
+  min-height: initial;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* End Bootstrap Override*/
+
+/* icon css */
+[class^="flaticon-"]::before, [class*=" flaticon-"]::before, [class^="flaticon-"]::after, [class*=" flaticon-"]::after {
+    font-size: 3em;
+}
+.flaticon-web-feed1::before, .flaticon-web-feed1::after {
+    font-size: 25px;
+    margin-left: 0;
+}
+html {
+}
+
+body {
+    background: #fff none repeat scroll 0 0;
+    color: #333;
+    font-family: "pt_sansregular","Arial Narrow",Arial,sans-serif;
+    font-size: 14px !important;
+    height: 100%;
+}
+#dvContent div {
+    font-family: pt_sansregular, 'Arial Narrow', Arial, sans-serif !important;
+    font-size: 1.1em;
+    color: #333;
+    background: #fff;
+}
+
+p, .ektron-aloha p {
+    margin-bottom: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6, .ektron-aloha h1, .ektron-aloha h1, .ektron-aloha h1, .ektron-aloha h1, .ektron-aloha h1, .ektron-aloha h1, {
+    font-weight: normal;
+    color: #333;
+}
+
+h1, .ektron-aloha h1 {
+    font-size: 2.5em;
+    line-height: 1;
+    margin-bottom: 0.5em;
+}
+
+h2, .ektron-aloha h2 {
+    font-size: 2em;
+    margin-bottom: 0.75em;
+}
+
+h3, .ektron-aloha h3 {
+    font-size: 1.5em;
+    line-height: 1.1;
+    margin: 1em 0 .5em;
+}
+
+h4, .ektron-aloha h4 {
+    font-size: 1.2em;
+    line-height: 1;
+    margin: 1.5em 0 .5em;
+}
+
+h5, .ektron-aloha h5 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+}
+
+h6, .ektron-aloha h6 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+    h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
+        margin: 0;
+    }
+hr, .ektron-aloha hr {
+    border-color: #e6e6ec;
+    border-width: 2px;
+} 
+/* Font */
+.fontNarrow {
+    font-family: 'pt_sans_narrowregular', 'Arial Narrow', sans-serif;
+}
+.fontNarrowBold {
+    font-family: 'pt_sans_narrowbold', 'Arial Narrow', sans-serif;
+}
+/* Sizing */
+.em-5 {
+    font-size: 0.5em;
+}
+
+.em-6 {
+    font-size: 0.6em;
+}
+
+.em-7 {
+    font-size: 0.7em;
+}
+
+.em-8 {
+    font-size: 0.8em;
+}
+
+.em-9 {
+    font-size: 0.9em;
+}
+
+.em1_0 {
+    font-size: 1em;
+}
+
+.em1_1 {
+    font-size: 1.1em;
+}
+
+.em1_2 {
+    font-size: 1.2em;
+}
+
+.em1_3 {
+    font-size: 1.3em;
+}
+
+.em1_4 {
+    font-size: 1.4em;
+}
+
+.em1_5 {
+    font-size: 1.5em;
+}
+
+.em1_6 {
+    font-size: 1.6em;
+}
+
+.em1_7 {
+    font-size: 1.7em;
+}
+
+.em1_8 {
+    font-size: 1.8em;
+}
+
+.em1_9 {
+    font-size: 1.9em;
+}
+
+.em2_0 {
+    font-size: 2.0em;
+}
+
+.em2_1 {
+    font-size: 2.1em;
+}
+
+.em2_2 {
+    font-size: 2.2em;
+}
+
+.em2_3 {
+    font-size: 2.3em;
+}
+
+.em2_4 {
+    font-size: 2.4em;
+}
+
+.em2_5 {
+    font-size: 2.5em;
+}
+
+/* text styles */
+.bold {
+    font-weight: bold;
+}
+
+.normal {
+    font-weight: normal;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.smallCaps {
+    font-variant: small-caps;
+}
+.underline {
+    text-decoration: underline;
+}
+    a.underline, a:link.underline, a:visited.underline {
+        text-decoration: underline;
+    }
+.underlineNone {
+    text-decoration: none;
+}
+    a.underlineNone, a:link.underlineNone, a:visited.underlineNone {
+        text-decoration: none;
+    }
+
+.allCaps {
+    text-transform: uppercase;
+}
+
+/* Colors */
+.textWhite {
+    color: #ffffff;
+}
+
+.textBlue {
+    color: #011c4f;
+}
+
+.textGreen {
+    color: #227700;
+}
+.textGold {
+    color: #946e2b;
+}
+
+.textGoldOnLight {
+    color: #946e2b;
+}
+
+.textGoldOnDark {
+    color: #c1a868;
+}
+
+.backgroundWhite {
+    background-color: #ffffff;
+}
+
+.backgroundBlue {
+    background-color: #011c4f;
+}
+
+.backgroundGray {
+    background-color: #e6e6ec;
+}
+
+.backgroundGold {
+    background-color: #c1a868;
+}
+.buttonGray {
+	height: 3em;
+	color:#011c4f;
+	font-size:1.1em;
+	margin-bottom:.4em;
+    width:100%;
+    margin-bottom:.8em;
+    background:#eeedeb;
+}
+
+/* default links */
+
+a, a:link, a:visited {
+    color: #011c4f; /*blue*/
+    text-decoration: none;
+    outline: 0;
+}
+
+    a:hover, a:active {
+        color: #946e2b; /*gold*/
+        text-decoration: underline;
+    }
+
+.ektron-aloha a, .ektron-aloha a:link, .ektron-aloha a:visited {
+    text-decoration: underline;
+}
+#content_divContentHtml a, #content_divContentHtml a:link, #content_divContentHtml a:visited {
+    text-decoration: underline;
+}
+/* Light Blue Links on dark background */
+a.lightBlue, a.lightBlue:link, a.lightBlue:visited {
+    color: #e6e6ec;
+    text-decoration: none;
+}
+
+    a.lightBlue:hover, a.lightBlue:active {
+        color: #e6e6ec;
+        text-decoration: underline;
+    }
+
+/* Links with no underline */
+a.decorateNone:link, a.decorateNone:visited, a.decorateNone:hover, a.decorateNone:active {
+    text-decoration: none;
+}
+
+
+
+/* alignment formatting */
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.tableCell {
+    display: table-cell;
+}
+
+.block {
+    display: inline-block;
+}
+
+.verticalTop {
+    vertical-align: top;
+}
+
+.verticalBottom {
+    vertical-align: bottom;
+}
+/* must have height and line-height of the element equal (i.e. height: 3em; line-height: 3em;*/
+.verticalMiddle {
+    vertical-align: middle;
+}
+
+.floatLeft {
+    float: left !important;
+}
+
+.floatRight {
+    float: right !important;
+}
+.imgLeftPadding {
+    padding: 1em 20px 1em 0;
+}
+.imgRightPadding {
+    padding: 1em 0 1em 20px;
+}
+ 
+.clear {
+    clear: both;
+}
+
+.clearLeft {
+    clear: left;
+}
+
+.clearRight {
+    clear: right;
+}
+.marginTop0 {
+    margin-top: 0;
+}
+.marginBottom0 {
+    margin-bottom: 0;
+}
+.marginTopEm-5 {
+    margin-top: .5em;
+}
+.marginBottomEm-5 {
+    margin-bottom: .5em;
+}
+.marginTopEm1_0 {
+    margin-top: 1em;
+}
+.marginBottomEm1_0 {
+    margin-bottom: 1em;
+}
+.marginTopEm1_5 {
+    margin-top: 1.5em;
+}
+.marginBottomEm1_5 {
+    margin-bottom: 1.5em;
+}
+.marginTopEm2_0 {
+    margin-top: 2.0em;
+}
+.marginBottomEm2_0 {
+    margin-bottom: 2.0em;
+}
+.marginTopEm2_5 {
+    margin-top: 2.5em;
+}
+.marginBottomEm2_5 {
+    margin-bottom: 2.5em;
+}
+.paddingLeftEm-5 {
+    padding-left: .5em;
+}
+
+
+/* end alignment */
+
+/* display element */
+.displayNone {
+    display: none;
+}
+.displayBlock {
+    display: block;
+}
+displayTable {
+    display: table;
+}
+
+/*
+td
+{
+    vertical-align: top;
+}*/
+
+/* Page Framework
+----------------------------------
+.ektron-ui-master
+{
+    background: #eeedeb repeat-x 50% top;
+}
+.ektron-ui-header-container
+{
+}
+.ektron-ui-header
+{
+    background: #011c4f url('../images/blueBackground.jpg') repeat-x left top; 
+}
+   
+
+.headerTopBarContent
+{
+    margin: 0 auto;
+    padding: 0;
+}
+.header
+{
+    margin: 0 auto;
+    padding: 0;
+    background: #ffffff;
+    border-bottom: thin solid #c8c8c6;
+}
+.headerContent
+{
+    margin: 0 auto;
+    padding: 0;
+}
+.ektron-ui-body-container
+{
+}
+.ektron-ui-body
+{
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+    clear: both;
+}
+.ektron-ui-channel {
+    padding: 0 20px;
+}
+.ektron-ui-footer
+{
+    background: #011c4f url('../images/blueBackground.jpg') repeat left top;
+    margin: 0 auto;
+    padding: 0;
+}
+     
+.footerContent
+{
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+}
+.blockSeparator
+{
+    height: 5px;
+    background: #946E2B url('../images/blockSeparator.jpg') repeat-x left top; 
+    clear: both;
+}
+.contentSeparator
+{
+    margin: 0;
+    font-size: .7em;
+}*/
+/* Start Emergency Alert */
+.emergencyAlert {
+    background-color: #cc0000;
+    padding: 1em auto;
+    /*height: 6em;*/
+}
+
+.emergencyAlertContainer {
+    margin: auto;
+    color: #ffffff;
+    text-align: center;
+    /*height: 6em;*/
+}
+
+.emergencyAlertContainer a {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.emergencyAlertHeader {
+    font-weight: bold;
+}
+
+.emergencyAlertHeader h2 {
+    font-family: Rockwell, Georgia, "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3em;
+}
+
+.emergencyAlertHeader a {
+    color: #ffffff;
+}
+
+.emergencyAlertHeader a:hover {
+    text-decoration: none;
+}
+
+.emergencyAlertMore {
+    color: #cc0000;
+    font-weight: bold;
+    background: #ffffff;
+    border-radius: 5px;
+    line-height: 1em;
+    padding: 2px;
+    margin-top: 0;
+    margin-bottom: .5em;
+}
+
+.emergencyAlertMore h4 {
+    color: #cc0000;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.emergencyAlertMore a {
+    color: #cc0000;
+    font-weight: bold;
+    margin: 0;
+}
+
+.emergencyAlertContent {
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    text-align: left;
+    margin: .5em 0 0 0;
+    height: 100%;
+    overflow: hidden;
+}
+    .emergencyAlertContent p {
+        margin-bottom: 0;
+    }
+
+.emergencyAlertContent a {
+    text-decoration: underline;
+}
+/* End Emergency Alert */
+
+/* Start Announcement */
+.announcement {
+    background-color: #c1a868;
+    padding: 1em auto;
+}
+
+.announcementContainer {
+    margin: auto;
+    color: #ffffff;
+    text-align: center;
+}
+
+.announcementContainer a {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.announcementHeader {
+    height: 5em;
+    padding: .5em 0;
+}
+
+.announcementHeader, .announcementHeader h2, .announcementHeader h3, .announcementHeader h4 {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.announcementHeader h2 {
+    font-family: Rockwell, Georgia, "Times New Roman", Times, serif;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.3em;
+}
+
+.announcementHeader h3 {
+    margin: 0;
+    line-height: 2em;
+}
+
+.announcementHeader h4 {
+    font-size: 1.3em;
+}
+
+.announcementHeader a {
+    color: #ffffff;
+}
+
+.announcementHeader a:hover {
+    text-decoration: none;
+}
+
+.announcementContent {
+    color: #000033;
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    text-align: left;
+    margin: .5em 0;
+    height: 5em;
+    overflow: hidden;
+}
+
+.announcementContent a {
+    text-decoration: underline;
+}
+/* End Announcement */
+
+/* Start Header CSS
+----------------------------------*/
+.contentHeader {
+    border-bottom: #eeedeb solid 1em;
+}
+.headerTopBar {
+    height: 3.3em;
+}
+
+.headerTagline {
+    color: #ffffff;
+    font-style: italic;
+    font-size: 1.3em;
+    text-align: center;
+    padding-top: .7em;
+}
+
+.topNav {
+    text-align: center;
+    padding-top: .9em;
+}
+
+.topNav a:link, .topNav a:visited, .topNav a:active {
+    color: #c1a868; /*gold*/
+    text-decoration: none;
+}
+
+.topNav a:hover {
+    color: #ffffff; /*white*/
+    text-decoration: underline;
+}
+
+.topNav ul {
+    list-style: none;
+    font-family: "pt_sans_narrowbold","Arial Narrow",sans-serif;
+    font-size: 1.3em;
+}
+
+.topNav li {
+    padding: 0 10px;
+    display: inline;
+}
+
+.topNav li.last {
+}
+
+.topNavSmall {
+    padding: .5em 0;
+}
+
+.topNavSmall ul {
+    margin: 0 5px;
+    padding: 0;
+    text-align: center;
+}
+
+.topNavSmall li {
+    padding: 0 5px;
+}
+
+/* Top Bar Toggle Form */
+
+.toggleMenuIcon {
+    color: #c1a868;
+    font-size: 1.3em;
+    position: relative;
+    top: .2em;
+    width: 20px;
+}
+
+.toggleSearchIcon {
+    color: #c1a868;
+    font-size: 1.3em;
+    position: relative;
+    top: .2em;
+    width: 20px;
+}
+
+/* Top Bar Toggle Menu*/
+.toggleMenu {
+    margin: 10px;
+    font-size: 1.1em;
+}
+
+    .toggleMenu ul {
+        width: 100%;
+        background: #ffffff;
+        padding: .5em;
+        margin: .5em 0 1.1em 0;
+    }
+
+        .toggleMenu ul ul {
+            margin: 0;
+        }
+
+        .toggleMenu ul li {
+            list-style: none;
+            font-weight: bold;
+            color: #011c4f;
+            margin: 0 15px;
+            padding: .1em 0;
+            border-bottom: 1px dotted #aaa;
+        }
+
+            .toggleMenu ul li.current {
+                color: #298e21;
+            }
+
+            .toggleMenu ul li.last {
+                border: none;
+            }
+
+    .toggleMenu a, .toggleMenu a:link, .toggleMenu a:visited {
+        color: #011c4f; /*blue*/
+        text-decoration: none;
+    }
+
+        .toggleMenu a:hover, .toggleMenu a:active {
+            color: #946e2b; /*gold*/
+            text-decoration: underline;
+        }
+
+    .toggleMenu .current a, .toggleMenu ul li.current ul li.current a {
+        color: #298e21; /*green*/
+    }
+
+    .toggleMenu .current ul a {
+        color: #011c4f; /*blue*/
+    }
+
+    .toggleMenu ul li ul li a {
+        color: #011c4f; /*blue*/
+    }
+
+
+/* Top Bar search */
+
+.searchGroup {
+    margin: .5em 0;
+}
+
+.searchGlyphicon {
+    font-size: 1.2em;
+    color: #ffffff;
+}
+.searchButton {
+    background-color: #c1a868;
+    top: -1px;
+    position: relative;    
+}
+
+
+/* Logo and Branding */
+
+.branding {
+    margin: 1em 0;
+}
+
+.logoSmall {
+     margin-top: .5em;
+     width: 260px;
+     height: 57px;
+}
+
+.textLogo {
+    font-size: 4em;    
+    font-weight: bold;
+    line-height: 1.3;
+}
+    a.textLogo:hover {
+        color: #011c4f;
+    } 
+.sdMines {
+    color: #946e2b;
+    font-family: Rockwell, 'pt_sans_regular', Arial, sans-serif;
+    font-size: 2.0em;
+    margin-bottom: 0;
+}
+.sdMinesMobile {
+    font-size: 1.1em;
+    margin-bottom: .5em;
+}
+
+.tradition {
+    font-size: 1.3em;
+    color: #011c4f;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/*  Begin MainMenu css  */
+.mainMenuContainer {
+    padding-top: .5em;
+    border-top: #aaaaaa dotted .1em;
+    border-bottom: #cccccc solid 1px;
+    font-weight: bold;
+}
+
+.mainMenu ul {
+    font-size: 1.3em;
+    padding: 0;
+}
+
+.mainMenu ul li {
+    font-family: "pt_sans_captionregular", Arial,Helvetica, sans-serif;
+    display: inline-block;
+    padding-right: 20px;
+}
+
+/* Content css */
+.contentBody {
+    padding: 0;
+}
+
+/* Start Page Header CSS
+----------------------------------*/
+.pageHeader {
+    /*    height: 2.4em;*/
+    background-color: #c1a868;
+    color: #ffffff;
+    padding: .3em 0;
+}
+.pageHeader .toggleMenuIcon {
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-right: 10px;
+}
+
+.pageSection {
+    font-size: 1.2em;
+    color: #ffffff;
+    font-family: 'pt_sans_narrowregular', 'arial narrow', arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+    .pageSection .toggleMenuIcon {
+        font-size: 1.2em;
+    }
+
+    .pageSection a, .pageSection a:link, .pageSection a:active, .pageSection a:hover {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+        .pageSection a:focus {
+            outline: none;
+        }
+
+.pageTitle {
+    padding-top: .37em;
+    font-size: 1em;
+}
+
+.titleBar {
+    padding-top: .25em;
+    font-family: Rockwell, Georgia, "Times New Roman", Times, serif;
+    font-size: 1.9em;
+}
+/* End Header CSS */
+
+/* Start Content CSS
+----------------------------------*/
+
+/*.ektron-ui-content {
+    padding: 0 7.5px;
+    background-color: #ffffff;
+    /*    background-image: url('../images/contentBackground.gif');
+}*/
+.homeContentSection {
+    padding-top: 2.3em;
+    font-size: 1.2em;
+}
+.homeAdmissionsBannerFull {
+    padding: 9em 0 9em;
+    background-color: rgba(123, 104, 87, 0.1);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    width: 100%;    
+}
+.homeAdmissionsMarqueeMessage {
+    background-color: rgba(18, 18, 25, 0.6);
+    max-width: 35em;
+    padding: 0.2em 1.5em 1.5em;
+}
+.homeAdmissionsCaption {
+    color: #ffffff;
+}
+.homeAdmissionsButton {
+    background: #000 none repeat scroll 0 0;
+    opacity: 0.8;
+    color: #fff;
+    font-weight: bold;
+}
+/*  Start Rototor CSS  */
+.homeRotator input[type=image] {
+    width: 100%;
+}
+.homeRotatorImage {
+    width: 100%;
+}
+.homeRotator .bannerLink {
+    text-align: right;
+    font-weight: bold;
+    margin: -4em 15px 3em 0 ;
+}
+
+.homeRotator .buttonReadMore {
+    background: #000 none repeat scroll 0 0;
+    opacity: 0.8;
+    color: #fff;
+    font-weight: bold;
+    /*width: 140px;*/
+    padding: 6px 40px;
+    border: none;
+    top: 2em;
+}
+.homeRotator .jshowoff p.jshowoff-slidelinks {
+    top: 1em;
+    margin-right: 10px;
+}
+
+.homeRotator h3 {
+    margin-top: 1em;
+}
+
+.homeRotator .headlineLarge {
+    margin: 0;
+    padding: 10px 40px;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    font-size: 1.75em;
+    font-weight: bold;
+    color: #011c4f;
+}
+
+.homeRotator .headlineMedium {
+    margin: -59px 0 0 0;
+    padding: 10px 40px;
+    background-color: #eeedeb;
+    opacity: 0.85;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #011c4f;
+}
+
+.homeRotator .headlineXSmall {
+    margin: -59px 0 0 0;
+    padding: 10px 40px;
+    background-color: #eeedeb;
+    opacity: 0.85;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #011c4f;
+}
+
+.homeRotator .caption {
+/*    background-color: #ffffff;
+    padding: 10px 40px;
+    margin-bottom: 1em;*/
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+
+.siteRotator .jshowoff p.jshowoff-slidelinks {
+    bottom: 1em;
+}
+.rotator {
+    /*    height: 304px;*/
+}
+
+.rotatorFull {
+    /*    margin: 12px 0 12px 8px;*/
+    /*    height: 280px;*/
+    padding: 0 20px 0 0;
+    overflow: hidden;
+}
+
+.jshowoff p.jshowoff-slidelinks {
+    position: absolute;
+/*    bottom: 120px;*/
+    right: 20px;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    color: #ffffff;
+    z-index: 1;
+}
+
+
+.rotatorFull2Column .jshowoff p.jshowoff-slidelinks {
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    color: #ffffff;
+}
+
+.rotatorFull img {
+    width: 100%;
+}
+
+.rotator2 {
+    margin-bottom: 0;
+}
+
+.rotator2Column {
+    /*    height: 232px;*/
+    margin: 0;
+    padding-bottom: 0;
+}
+
+.rotator2Column {
+    margin-top: 16em;
+}
+
+.rotator2Columnlanding {
+    /*    height: 232px;*/
+    margin: 0;
+    padding-bottom: 0;
+}
+
+.rotatorFull2Column {
+    margin: 0 0 0 8px;
+    /*    height: 232px;*/
+    padding: 0;
+    overflow: hidden;
+}
+
+    .rotatorFull2Column img {
+        width: 100%;
+        /*   height: 232px;
+    width: 760px;*/
+    }
+
+.rotatorNav {
+    color: #FFFFFF;
+    float: right;
+    margin-top: 16em;
+    text-align: right;
+}
+
+    .rotatorNav ul li {
+        background: none repeat scroll 0 0 #011C4F;
+        border: 1px solid #9292A5;
+        color: #E6E6EC;
+        display: block;
+        float: left;
+        font-size: 0.75em;
+        height: 16px;
+        list-style-type: none;
+        margin-right: 5px;
+        padding-top: 3px;
+        text-align: center;
+        width: 16px;
+    }
+
+.rotator2 .major {
+    background: url('../images/rotatorFYM1.jpg') transparent no-repeat;
+}
+
+p.jshowoff-slidelinks a:before {
+  content: "";
+  display: block;
+/*  background: #fff;
+  border-top: 2px solid #ddd;
+  position: absolute;*/
+  top: -1px;
+  left: -1px;
+  bottom: -1px;
+  right: -1px;
+  z-index: -1;
+  border-radius: 50%;
+/*  box-shadow: inset 0px 8px 48px #999;*/
+}
+
+p.jshowoff-slidelinks a {
+  display: inline-block;
+  background-color: #fff;
+/*  background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
+  background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7); 
+  background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7); */
+  color: #a7a7a7;
+  margin: 5px;
+  width: 8px;
+  height: 8px;
+  position: relative;
+  text-align: center;
+  line-height: 8px;
+  border-radius: 50%;
+/*  box-shadow: 0px 3px 8px #333, inset 0px 1px 3px #666;*/
+}
+
+p.jshowoff-slidelinks .jshowoff-active {
+  background: #298e21; /*green*/
+}
+/*  End Rototor CSS  */
+
+.bannerFull {
+    margin: 1px 0 0 8px;
+    /*    height: 280px;*/
+    padding: 0;
+    overflow: hidden;
+}
+
+.banner {
+    /*    max-height: 232px;*/
+    padding: 0;
+}
+
+    .banner img {
+        width: 100%;
+    }
+
+
+
+
+.audienceNav {
+    margin: 2.5em auto 0;
+}
+
+
+/*.audienceVideoSection {
+    margin: 1.85em 1.1em;
+    text-align: center;
+    padding: 0;
+}*/
+
+.audienceVideoReplacement {
+    margin: 1.85em 0;
+    text-align: center;
+    padding: 0;
+}
+
+.wrapVideo {
+    background: #011c4f; /*blue*/
+    border-top-right-radius: 5% 5%;
+    border-top-left-radius: 5% 5%;
+    border-bottom-right-radius: 5% 5%;
+    border-bottom-left-radius: 5% 5%;
+    height: 225px;
+    width: 227px;
+    color: #e6e6ec; /*gray*/
+    margin-left: -7px;
+}
+
+.audienceVideo {
+    padding: 5px 0 10px 0;
+}
+
+.wrapVideo h1 {
+    font-family: Rockwell, Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #c1a868; /*gold*/
+    padding: 10px 0 0 0;
+}
+/*  End Home Page Audience Panel CSS  */
+
+.fbHeading {
+    margin: .3em 0;
+    color: #946e2b;
+    font-family: "pt_sans_narrowbold",Arial,Helvetica,sans-serif;
+    font-size: 1.5em;
+}
+
+.moreLink {
+    text-align: left;
+}
+
+    .moreLink a {
+        font-size: .9em;
+    }
+
+.wrapContentNewsEvents {
+    margin: .5em 0 0 0;
+    padding: 0 0 10px 0;
+}
+
+.wrapNewsEvent {
+    display: table;
+    width: 100%;
+    border-bottom: 1px dotted #946e2b;
+    margin-bottom: 1em;
+    text-align: left;
+    clear: both;
+}
+
+.headerNewsEvents {
+font-size:2.6em; color:#946e2b; margin:0;padding-bottom:0;text-align:center;
+}
+
+    .headerNewsEvents img {
+        text-align: left;
+        float: left;
+    }
+
+    .headerNewsEvents h1 {
+        font: bold 1.2em Rockwell, Georgia, "Times New Roman", Times, serif;
+        color: #c1a868;
+        float: left;
+        margin-left: 10px;
+    }
+
+.headerEvents {
+    margin-left: 50px;
+    padding: 0 10px;
+    width: 60px;
+    font: 1.7em Rockwell, Georgia, "Times New Roman", Times, serif;
+    color: #946e2b;
+    background: #ffffff;
+}
+
+.footerEvents {
+    height: 2em;
+    margin: 10px 0 1em 60px;
+}
+
+.wrapNewsEvent .eventDate {
+    height: 5em;
+}
+
+.eventDate {
+    width: 5em;
+    float: left;
+    clear: left;
+    margin: 0;
+}
+
+.eventInfo {
+    margin: 0;
+    clear: right;
+}
+
+.eventDateMM {
+    color: #946e2b;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.eventDateDD {
+     color: #946e2b;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 3.3em;
+    line-height: 1;
+    margin: 0 0 0.3em;
+    padding: 0;
+    text-align: center;
+}
+
+.eventTitle {
+    font-size: 1.2em;
+    text-align: left;
+    max-height: 3em;
+    overflow: hidden;
+}
+
+.eventLocation {
+    text-align: left;
+}
+
+.eventTime {
+    text-transform: lowercase;
+}
+
+.headerNews {
+    margin-left: 80px;
+    padding: 0 10px;
+    width: 45px;
+    font: 1.7em Rockwell, Georgia, "Times New Roman", Times, serif;
+    color: #946e2b;
+    background: #ffffff;
+    float: left;
+    clear: left;
+}
+
+.newsItem {
+    margin-bottom: 1em;
+}
+
+.footerNews {
+    height: 2em;
+    margin: auto 0 auto 90px;
+}
+
+.iconRSS {
+    margin-bottom: 1em;
+}
+    .iconRSS a, .iconRSS a:link, iconRSS a:visited {
+        color: #946e2b;
+        text-decoration: none;
+    }
+        .iconRSS a:active, .iconRSS a:hover {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+.newsIcon {
+    width: 7.5em;
+    float: left;
+    clear: left;
+    margin: 0;
+}
+
+.newsHeadlineHome {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    max-height: 3em;
+    overflow: hidden;
+}
+.newsHeadline {
+    overflow: hidden;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    max-height: 3em;
+    /*line-height: 1.1;*/
+}
+.newsHeadlineHeight {
+    height: 3.1em;
+}
+.newsList .newsPhoto input {
+    width: 100%;
+}
+.newsList .newsHeadline {
+    font-size: 1.5em;
+    line-height: 1.1;
+    font-weight: 500;
+    margin: 0;
+}
+.newsList .newsFeatured .newsHeadline {
+    margin-top: 1em;
+}
+.newsList .newsMore .newsHeadline {
+    font-size: 1.2em;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+}
+.newsList .newsTeaser {
+    font-size: 1em;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-top: 0.2em;
+}
+.newsList .newsRecent .newsTeaser {
+    margin-bottom: 1.5em;
+    font-size: 1em;
+}
+
+.siteHeader img {
+    width: 100%;
+}
+.leftRail {
+    text-align: left;
+    float: left;
+    font-size: 1.1em;
+}
+
+.leftRailNav {
+    margin: 0 0 .5em 0;
+    font-family: "pt_sans_narrowregular","arial narrow",arial,sans-serif;
+    font-size: 1.1em;
+}
+
+    .leftRailNav ul {
+        list-style: none outside none;
+        margin: 0;
+        padding: 0.5em 0;
+    }
+
+        .leftRailNav ul li {
+            border-bottom: 1px dotted #aaa;
+            color: #011c4f;
+            line-height: 1.2;
+            margin: 0.2em 0;
+            padding: 0 0 0.3em;
+        }
+
+            .leftRailNav ul li.last {
+                /* border: none; */
+            }
+
+            .leftRailNav ul li ul li {
+                padding: 0 20px;
+                margin: .3em 0 ;
+                border-bottom: none;
+                line-height: 1.1em;
+            }
+
+.horizontalNav {
+    padding: 1em 0 0 0;
+}
+
+    .horizontalNav ul {
+        list-style: none;
+        display: inline;
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .horizontalNav li {
+        display: inline;
+        padding: 0 5px;
+        border-right: 1px solid #011c4f;
+    }
+
+        .horizontalNav li.first {
+            padding-left: 0;
+        }
+
+        .horizontalNav li.last {
+            border-right: none;
+        }
+
+    .horizontalNav ul ul {
+        display: none;
+    }
+
+    .horizontalNav a {
+        text-decoration: underline;
+    }
+
+    .leftRailNav .current .egSelected, .horizontalNav .current .egSelected {
+        color: #298e21; /*green*/
+    }
+    /*
+.leftRailNav li.current ul li:before {
+	content: "\00BB \0020";
+}
+*/
+    .leftRailNav .current a, .leftRailNav li.egSelected a, .horizontalNav .current a, .horizontalNav li.egSelected a {
+        color: #298e21; /*green*/
+    }
+
+    .leftRailNav .current ul a, .horizontalNav .current ul a {
+        color: #011c4f; /*blue*/
+    }
+
+    .leftRailNav ul li ul li a, .horizontalNav ul li ul li a {
+        color: #011c4f; /*blue*/
+    }
+
+    .leftRailNav ul li.current ul li.current a, .horizontalNav ul li.current ul li.current {
+        color: #298e21; /*green*/
+    }
+
+.leftRail .facebookLink {
+    text-align: right;
+    height: 4em;
+}
+
+.mainContent {
+    text-align: left;
+    font-size: 1.1em;
+    margin: 0 0 1em 0;
+}
+
+    .mainContent a, .mainContent a:link, .mainContent a:visited {
+        text-decoration: underline;
+    }
+
+    .mainContent .banner {
+        padding: 0;
+        margin: 0;
+    }
+
+.mainContent .newsHeadline a, .mainContent .newsHeadline a:link, .mainContent .newsHeadline a:visited {
+    text-decoration: none;
+}
+h3.contentTitle {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+/*  Start Breadcrumb CSS  */
+.ektron-ui-breadcrumb {
+    margin: .5em 0 0 0;
+    padding: 0 0 0 25px;
+    font-size: .9em;
+    color: #ffffff; /*white*/
+}
+
+    /* remove link css if the links should be blue  Start link css  */
+    .ektron-ui-breadcrumb a:link {
+        color: #ffffff; /*white*/
+        text-decoration: none;
+    }
+
+    .ektron-ui-breadcrumb a:visited {
+        color: #ffffff; /*white*/
+        text-decoration: none;
+    }
+
+    .ektron-ui-breadcrumb a:active {
+        color: #ffffff; /*white*/
+        text-decoration: none;
+    }
+
+    .ektron-ui-breadcrumb a:hover {
+        color: #ffffff; /*gold*/
+        text-decoration: underline;
+    }
+    /* End link css */
+
+    .ektron-ui-breadcrumb ul li.currentPage {
+        color: #298e21; /*green*/
+    }
+
+    .ektron-ui-breadcrumb ul li span.separator {
+        width: 8px;
+        height: 9px;
+        color: #011c4f; /*blue*/
+        font-weight: normal;
+    }
+/*  End Breadcrumb CSS  */
+
+/* Start Left Nav accordion */
+.accordionLeftNav {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #222;
+    margin-bottom: 1em;
+}
+
+    .accordionLeftNav h3 {
+        font-size: 1.2em;
+    }
+
+        .accordionLeftNav h3.ui-state-active {
+            background: #ffffff; /*#e6e6ed*/
+            font-weight: bold;
+        }
+
+            .accordionLeftNav h3.ui-state-active a {
+                color: #946e2b;
+            }
+
+    .accordionLeftNav .ui-widget-content {
+        background: #ffffff; /*#e6e6ed*/
+        color: #011c4f;
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .accordionLeftNav .ui-accordion, .accordionLeftNav .ui-accordion-content {
+        padding: .2em 1em;
+        height: auto;
+    }
+
+    .accordionLeftNav .intro {
+        font-weight: bold;
+        color: #946e2b; /*#298e21; green*/
+        border-top: 1px #946e2b dotted;
+        border-bottom: 1px #946e2b dotted;
+        padding: .5em 0;
+    }
+
+    .accordionLeftNav div h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    .accordionLeftNav div ul {
+        list-style: none;
+        list-style-image: url('../images/audienceAccordionArrow.png');
+        margin-left: 12px;
+        padding-left: 0;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    .accordionLeftNav div a {
+        color: #011c4f; /*blue*/
+        text-decoration: none;
+    }
+
+        .accordionLeftNav div a:hover {
+            color: #946e2b; /*gold*/
+            text-decoration: underline;
+        }
+/* End Find Major accordion */
+
+/* Start Find Major accordion */
+
+.accordionMajor h3 a, .accordionMajor h3 a:link, .accordionMajor h3 a:visited {
+    text-decoration: none;
+}
+
+.accordionMajor {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: #222;
+}
+
+    .accordionMajor div h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    .accordionMajor div ul li {
+        list-style: none;
+    }
+
+    .accordionMajor div a {
+        color: #011c4f; /*blue*/
+        text-decoration: none;
+    }
+
+        .accordionMajor div a:hover {
+            color: #946e2b; /*gold*/
+            text-decoration: underline;
+        }
+
+.accordion h3 a, .accordion h3 a:link, .accordion h3 a:visited {
+    text-decoration: none;
+}
+
+.accordion {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: #222;
+}
+
+    .accordion div h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    .accordion div ul li {
+        list-style: none;
+    }
+
+    .accordion div a {
+        color: #011c4f; /*blue*/
+        text-decoration: none;
+    }
+
+        .accordion div a:hover {
+            color: #946e2b; /*gold*/
+            text-decoration: underline;
+        }
+
+.accordionLight .ui-state-default, .accordionLight .ui-state-default, .accordionLight .ui-widget-header, .accordionLight .ui-state-default {
+    background: #e6e6ec none repeat scroll 0 0;
+    color: #011c4f;
+}
+.accordionLight .ui-state-default a, .accordionLight .ui-state-default a:link, .accordionLight .ui-state-default a:visited {
+    color: #011c4f;
+}
+.accordionLight .ui-state-active, .accordionLight .ui-widget-content .ui-state-active, .accordionLight .ui-widget-header .ui-state-active {
+    background: #e6e6ec none repeat scroll 0 0;
+    color: #011c4f;
+}
+.accordionLight .ui-state-active a, .accordionLight .ui-state-active a:link, .accordionLight .ui-state-active a:visited {
+    color: #011c4f;
+}
+
+/* End Find Major accordion */
+
+/* Start Accordion Right Nav */
+
+.accordionRightNav .ui-icon {
+    display: none;
+}
+.accordionRightNav .ui-accordion-icons .ui-accordion-header a {
+    padding-left: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #ffffff;
+}
+.accordionRightNav .ui-accordion .ui-accordion-content {
+    padding: .5em 0 0;
+}
+.accordionRightNav {
+    margin: 10px;
+}
+
+    .accordionRightNav {
+        width: 100%;
+        padding: .5em;
+        margin: .5em 0 1.1em 0;
+    }
+
+        .accordionRightNav ul {
+            padding-left: 0;
+        }
+        .accordionRightNav ul ul {
+            margin: 0;
+        }
+
+        .accordionRightNav ul li {
+            list-style: none;
+            color: #011c4f;
+            margin: 0 15px;
+            padding: .1em 0;
+            border-bottom: 1px dotted #aaaaaa;
+        }
+
+            .accordionRightNav ul li.current {
+                color: #298e21;
+            border-bottom: 1px dotted #aaaaaa;
+            }
+
+            .accordionRightNav ul li.last {
+                border: none;
+            }
+
+    .accordionRightNav a, .accordionRightNav a:link, .accordionRightNav a:visited {
+        color: #011c4f; /*blue*/
+        text-decoration: none;
+    }
+
+        .accordionRightNav a:hover, .accordionRightNav a:active {
+            color: #946e2b; /*gold*/
+            text-decoration: underline;
+        }
+
+    .accordionRightNav .current a, .accordionRightNav ul li.current ul li.current a {
+        color: #298e21; /*green*/
+    }
+
+    .accordionRightNav .current ul a {
+        color: #011c4f; /*blue*/
+    }
+
+    .accordionRightNav ul li ul li a {
+        color: #011c4f; /*blue*/
+    }
+
+
+/* End Accordion Right Nav */
+
+.rightRailSearch {
+}
+    .rightRailSearch .searchButton {
+        border-color: #ebebeb;
+    }
+
+.searchOther {
+    margin-top: 1.5em;
+    font-size: .9em;
+}
+
+    .searchOther a {
+        font-weight: bold;
+    }
+
+.ektron-ui-search-results h3 {
+    font-size: 1.2em;
+}
+
+.rightRailHome {
+    width: 240px;
+}
+
+.rightRail {
+    text-align: left;
+    margin-top: .5em;
+    padding-bottom: .5em;
+    font-size: 1.1em;
+}
+
+.relatedLinks {
+    clear: both;
+    margin-bottom: 1.5em;
+}
+
+    .relatedLinks .current a {
+        color: #999999; /*gray*/
+    }
+
+        .relatedLinks .current a:hover {
+            text-decoration: none;
+        }
+
+    .relatedLinksHeader {
+        color: #946e2b;
+        font-family: "pt_sans_narrowbold","Arial Narrow",sans-serif;
+        font-size: 1.4em;
+        text-transform: uppercase;
+    }
+
+.relatedLinksGlyphicon {
+    color: #946e2b;
+    font-size: 1em;
+    padding-top: .1em;
+    padding-left: 10px;
+}
+
+    .relatedLinks ul {
+        list-style: none outside none;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+        .relatedLinks ul li {
+            border-top: 1px dotted #aaaaaa;
+            color: #011c4f;
+            /*font-size: 1.15em;*/
+            line-height: 1.2;
+            margin: 0.2em 0;
+            padding: 0.2em 0;
+        }
+
+            .relatedLinks ul li.last {
+                border-bottom: 1px dotted #aaaaaa;
+            }
+/* Start CTA formatting */
+.clickCTA img {
+    width: 100%;
+}
+
+.transparentCTA {
+    margin-bottom: 1.5em;
+    text-align: left;
+}
+
+    .transparentCTA img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .transparentCTA h2 {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 0;
+        padding: .4em 0;
+    }
+
+.wrapCTA {
+    background: #eeedeb; /*light blue*/
+    text-align: left;
+    /*    padding: .9em;*/
+    /*border: 6px #fff double;*/
+    margin-bottom: 1.5em;
+    padding: .5em;
+    line-height: 1.3em;
+}
+
+    .wrapCTA img, .wrapCTA a img {
+        /*    margin-left: -.9em;
+    margin-top: -.9em;*/
+        width: 100%;
+    }
+    .wrapCTA a img {
+        margin-right: 7.5em;
+    }
+
+    .wrapCTA h2 {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 0;
+        padding: .4em 0;
+        text-align: center;
+    }
+
+    .wrapCTA a {
+    }
+    .wrapCTA .moreLink {
+        text-align: center;
+    }
+
+.homeHorizontalCTA {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.homeHorizontalCTA {
+    text-align: center;
+    font-weight: bold;
+}
+
+    .homeHorizontalCTA img {
+        width: 100%;
+    }
+
+.homeContentCTA {
+    background: #e6e6ed;
+    text-align: left;
+    padding: .5em;
+    border: 6px #fff double; /*light blue*/
+    margin: 0 -6px 8px -6px;
+}
+
+.leftHomeCTA {
+    width: 100%;
+}
+
+.centerHomeCTA {
+    width: 100%;
+}
+
+.rightHomeCTA {
+    width: 100%;
+}
+
+.homeContentCTA div.imageColumn {
+    width: 100%;
+    padding-right: 10px;
+}
+
+    .homeContentCTA div.imageColumn img {
+        width: 100%;
+    }
+
+.homeContentCTA div.textColumn {
+    max-width: 100%;
+}
+
+.homeContentCTA h2 {
+    color: #011c4f; /*blue*/
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.rightRailHome .wrapCTA img {
+    width: 100%;
+}
+
+.contactCTA p {
+    margin: .3em 0;
+}
+
+.contactCTA a {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.contactCTA {
+    margin-bottom: 1em;
+}
+
+.mainContentCTA {
+    background: #fff;
+    width: 50%;
+    text-align: left;
+    padding: .5em;
+    border: 6px #e6e6ed double; /*light blue*/
+    margin: 0 -6px 8px -6px;
+}
+
+    .mainContentCTA div.imageColumn, div.imageColumn img {
+        width: 80px;
+        padding-right: 10px;
+    }
+
+    .mainContentCTA div.textColumn {
+        width: 60%;
+    }
+
+    .mainContentCTA h2 {
+        color: #011c4f; /*blue*/
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 0;
+    }
+.searchCTAArea {
+    margin-top: 1em;
+}
+.searchCTA {
+    vertical-align: middle;
+    height: 3em;
+}
+.searchCTA input[type=text] {
+    background: none repeat scroll 0% 0% #e6e6ec;
+    width: 75%;
+    height: 21px;
+    vertical-align: middle;
+}
+.searchCTA input[type=image] {
+    float: right;
+    margin-top: 7px;
+    vertical-align: middle;
+    max-width: 65px;
+
+}
+/* End CTA formatting */
+
+/* End Content CSS */
+.tabNewsEvents {
+    margin-top: 1em;
+    padding: 0 2px 3px 3px;
+    min-height: 150px;
+}
+
+    .tabNewsEvents p {
+        font-size: .9em;
+        line-height: 1.2em;
+        margin-bottom: 6px;
+        padding-bottom: 3px;
+        border-bottom: 1px dotted #011c4f; /*blue*/
+    }
+
+    .tabNewsEvents ul li {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-align: left;
+        text-transform: uppercase;
+        list-style-type: none;
+        display: inline;
+        padding: 5px 10px;
+        position: relative;
+        background-color: #011c4f !important; /*blue*/
+        z-index: 7;
+        border-top-right-radius: 10% 20%;
+        border-top-left-radius: 10% 20%;
+        cursor: pointer;
+    }
+
+        .tabNewsEvents ul li.selected {
+            color: #011c4f; /*blue*/
+            background-color: #ffffff !important;
+        }
+
+    .tabNewsEvents ul {
+        float: left;
+        text-align: left;
+        display: inline-block;
+        margin: auto 0;
+        padding: 7px 0 0 0;
+        position: relative; /*height: 2em;*/
+    }
+
+    .tabNewsEvents div {
+        background-color: #fff;
+        margin: 28px 0 0 0;
+        padding: 10px;
+        position: relative;
+        z-index: 7;
+        min-height: 150px;
+    }
+
+        .tabNewsEvents div h4 {
+            color: #011c4f; /*blue*/
+            font-size: 1.2em;
+            border-bottom: 1px dotted #011c4f; /*blue*/
+            padding-top: 5px;
+            margin-top: 0;
+        }
+
+.tblEvent {
+    padding: 0;
+    font-size: .9em;
+    line-height: 1.2em;
+}
+
+    .tblEvent td {
+        border-bottom: 1px #011c4f dotted; /*blue*/
+    }
+
+    .tblEvent tbody tr:nth-child(2n) td, tbody tr.even td {
+        background: none repeat scroll 0 0 #fff;
+    }
+
+    .tblEvent td.eventDate {
+        text-align: center;
+        vertical-align: top;
+        width: 30px;
+        padding-left: 0;
+        padding-right: 5px;
+        font-weight: bold;
+    }
+
+.bottomLine {
+    height: 2px;
+    background: url('../images/contentBottomLine.gif');
+}
+
+/* Start Footer CSS
+----------------------------------*/
+
+.footerContainer {
+    width: 970px;
+    margin: 0 0 2.9em 2em;
+    text-align: left;
+    overflow: hidden;
+    line-height: 1.3em;
+    padding-bottom: .9em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: .92em;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top-style: none;
+    border-top-color: inherit;
+    border-top-width: medium;
+}
+
+.footerDirectory {
+    float: left;
+    width: 98%;
+    margin-top: 1em;
+}
+
+    .footerDirectory .footerColumn {
+        float: left;
+        width: 9em;
+        margin: 0 1.5em 1.2em 0;
+    }
+
+        .footerDirectory .footerColumn.first {
+            margin-left: 2.8em;
+        }
+
+        .footerDirectory .footerColumn.final {
+            margin-right: 0;
+        }
+
+    .footerDirectory h4, .footerDirectory h4 a {
+        font-size: .92em;
+        text-transform: uppercase;
+        color: #c1a868; /*gold*/
+        text-decoration: none;
+        margin-bottom: .3em;
+        margin-top: 1em;
+    }
+
+        .footerDirectory h4 a:hover {
+            text-decoration: underline;
+        }
+
+    .footerDirectory ul, .footerDirectory li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        list-style-image: none;
+    }
+
+    .footerDirectory li {
+        padding-bottom: .5em;
+    }
+
+        .footerDirectory li a {
+            color: #e6e6ec; /*gray*/
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+        }
+
+    .footerDirectory a {
+        text-decoration: underline;
+    }
+
+        .footerDirectory a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+.footerContainer .footerBottom {
+    float: left;
+    width: 100%;
+    border: none;
+}
+
+.footerIcons {
+    margin-left: 2.5em;
+}
+
+    .footerIcons ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        list-style-image: none;
+    }
+
+    .footerIcons li {
+        display: inline;
+        padding-bottom: .3em;
+    }
+
+        .footerIcons li a img {
+            margin-right: 1px;
+            border: none;
+        }
+
+.footerText {
+    color: #e6e6ec; /*gray*/
+    font-size: 1.1em;
+}
+
+    .footerText .copy {
+        color: #e6e6ec; /*gray*/
+        font-size: .9em;
+        padding-top: .8em;
+    }
+/* End Footer CSS */
+
+/* Start Contact Us Template CSS */
+.tabContent {
+    margin-top: 1em;
+    padding: 0 2px 3px 3px;
+    min-height: 150px;
+    background: #fff; /*light blue*/
+    text-align: left;
+    border: 6px #e6e6ed double;
+}
+
+    .tabContent p {
+        font-size: .9em;
+        line-height: 1.2em;
+        margin-bottom: 6px;
+        padding-bottom: 3px;
+        border-bottom: 1px dotted #011c4f; /*blue*/
+    }
+
+    .tabContent ul li {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-align: left;
+        text-transform: uppercase;
+        list-style-type: none;
+        display: inline;
+        padding: 5px 10px;
+        position: relative;
+        background-color: #011c4f !important; /*blue*/
+        z-index: 10;
+        border-top-right-radius: 10% 20%;
+        border-top-left-radius: 10% 20%;
+    }
+
+        .tabContent ul li.selected {
+            color: #fff; /*blue*/
+            background-color: #298e21 !important;
+        }
+
+    .tabContent ul {
+        float: left;
+        text-align: left;
+        display: inline-block;
+        margin: auto 0;
+        padding: 6px 0 0 0;
+        position: relative;
+        height: 2em;
+    }
+
+    .tabContent div {
+        background-color: #fff;
+        margin: 28px 0 0 0;
+        padding: 10px;
+        position: relative;
+        z-index: 9;
+        min-height: 150px;
+        border-top: 6px #e6e6ed double;
+    }
+
+        .tabContent div h4 {
+            color: #011c4f; /*blue*/
+            font-size: 1.2em;
+            border-bottom: 6px dotted #011c4f; /*blue*/
+            padding-top: 5px;
+            margin-top: 0;
+        }
+
+.contactUs label {
+    width: 100px;
+}
+
+.contactUs input, .contactUs select {
+    /*width: 100%;
+    margin-left: 70px;*/
+}
+
+.contactUs .contactName {
+    width: 100%;
+}
+
+/*.contactUs .contactEmail {
+    width: 350px;
+}
+
+.contactUs .contactComments {
+    width: 480px;
+    height: 10em;
+}
+*/
+.contactUs .requiredField {
+    color: #000000;
+}
+/* Contact Form */
+.contactForm div.design_content, .contactForm div.design_content {
+    background-color: #e6e6ec;
+}
+/* to wrap an item that indicated the form field is required */
+/* End Contact Us Template CSS */
+
+/* Start Directory Template CSS */
+.directoryNav {
+    padding-top: 10px;
+    width: 100%;
+}
+
+    .directoryNav ul.alphaNav {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .directoryNav .alphaNav li {
+        color: #011c4f; /*blue*/
+        font-weight: bold;
+        font-size: 1.1em;
+        display: inline;
+        list-style-image: none;
+    }
+
+        .directoryNav .alphaNav li.disable {
+            color: #999; /*gray*/
+        }
+
+.directoryFilter {
+    clear: both;
+}
+
+    .directoryFilter input[type="radio"] {
+        margin: 0 3px 0 15px;
+    }
+
+.directoryFilterList select {
+    margin-left: 5px;
+    min-width: 185px;
+    padding-left: 5px;
+}
+
+.directoryFilterList option {
+    padding-left: 5px;
+}
+
+ul.alphaList {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #946e2b; /*gold*/
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.alphaList ul {
+    list-style: none;
+    margin-left: 0;
+    padding: .3em 0 1em 0;
+    font-weight: normal;
+}
+/* End Directory Template CSS */
+
+/* Start A-Z List styling */
+ul.azList {
+    list-style: none;
+    margin-left: 0;
+    padding: 0;
+}
+.azList li {
+    margin-bottom: 1em;
+}
+/* End A-Z List styling */
+
+/* Start Library Resources CSS */
+.resourceNav ul.alphaNav
+{
+    margin-left: 0;
+    padding-left: 0;
+    margin-right: 0;
+}
+.resourceNav .alphaNav li
+{
+    color: #011c4f; /*blue*/
+    font-weight: normal;
+    font-size: 1.3em;
+    display: inline;
+    list-style-image: none;
+    padding-right: 25px;
+}
+.resourceNav .alphaNav li.disable
+{
+    color: #999; /*gray*/
+}
+.resourceFilter select
+{
+    padding: 0;
+    margin: 0;
+}
+
+.resourceList ul
+{
+    color: #222222; 
+    margin-left: 0;
+    margin-bottom: 1em;
+    padding-left: 0;
+    list-style: none;
+}
+.resourceList ul.resourceListGroup li.resourceGroup {
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 2.5;
+}
+.resourceList ul.resourceListItems {
+    font-size: .9em;
+    font-weight: normal;
+    line-height: 1.25;
+}
+.resourceList .resourceTitle {
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1.50;
+    padding-bottom: .5em;
+}
+.resourceList .resourceBy {
+    font-style: italic;
+}
+.resourceList .resourceMore {
+    margin-bottom: 1em;
+}
+.resourceList ul.resourceSubjects {
+    line-height: 2.5;
+}
+
+/* Start Pager Button CSS for resources */
+.resourcePager li {
+    color: #ffffff;
+    display: inline;
+    list-style-image: none;    
+}
+.resourcePager a:link, .resourcePager a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+.resourcePager a:hover {
+    color: #c1a868;
+}
+.resourcePagerButton
+{
+    background-color: #011c4f;
+    border-radius: 5px;
+    border: thin solid #b5bac0;
+    color: #ffffff;
+    padding: .5em .8em;
+    font-size: 1em;
+    font-weight: bold;
+}
+.resourcePagerCurrent
+{
+    background-color: #298e21;
+    border-radius: 5px;
+    border: thin solid #b5bac0;
+    color: #ffffff;
+    padding: .5em .8em;
+    opacity: 0.50;
+}
+.resourcePagerDisabled {
+    pointer-events: none;
+    cursor: default;
+}
+/* End Resource Pager Button CSS */
+
+/* End Library Resource CSS */
+
+/* Start Faculty/Staff Bio Template CSS */
+.personRecord {
+    margin: 1em 0;
+    line-height: 1.2em;
+    width: 100%;
+    float: left;
+    clear: left;
+}
+
+    .personRecord .header {
+        font-size: 1em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #011c4f; /*blue*/
+        border: none;
+        margin-bottom: 1em;
+    }
+
+    .personRecord img {
+        float: left;
+        padding-right: 1em;
+        width: 135px;
+    }
+
+    .personRecord div {
+        margin-bottom: 1em;
+    }
+
+    .personRecord p {
+        margin: 0 0 .4em 0;
+    }
+
+.personPhoto {
+    float: left;
+}
+.personActionPhoto {
+    width: 100%;
+    margin: 1em 0;
+}
+.personName {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+/* Used in the Personnel Profile template*/
+.personProfileRecord {
+    margin: 1em 0 0;
+    line-height: 1.2em;
+    width: 100%;
+    float: left;
+    clear: left;
+}
+    .personProfileRecord img {
+        float: left;
+        padding-right: 1em;
+        width: 135px;
+    }
+    .personProfileRecord div {
+        margin-bottom: 0;
+    }
+
+    .personProfileRecord p {
+        margin: 0 0 .4em 0;
+    }
+.personProfileName {
+    font-size: 2.5em;
+    line-height: 1;
+    margin-bottom: 0;
+}
+.personProfileAppointment {
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom:.2em;
+}
+    .personProfileAppointment a {
+        text-decoration: underline;
+    }
+.personDetail {
+    margin: .5em 0;
+    width: 100%;
+    float: left;
+    clear: left;
+}
+
+    .personDetail h5 {
+        border-bottom: 2px solid #c7cbd1;
+        line-height: 1em;
+        margin: 1em 0 .5em 0;
+    }
+.personDetailHeader {
+    font-size: 1.5em;
+    line-height: 1.1;
+    background: #c1a868;
+    margin: 1em 0 0.5em;
+    color: white;
+    padding: 5px 10px;
+}
+.personRightRail {
+    margin: 0 0 2em;
+    padding-left: 0;
+}
+.personRightRail li {
+    background: #07285b none repeat scroll 0 0;
+    color: #ffffff;
+    display: block;
+    font-size: 1.3em;
+    margin: 0.3em 0;
+    padding: 0.2em 0;
+    text-align: center;
+}
+.personRightRail a {
+    color: #ffffff;
+}
+.personSmIcon {
+    padding: 0 5px;
+}
+
+/* End Faculty Bio Template CSS */
+
+/* Start User Landing Template CSS */
+.landingHeader {
+    background: transparent url('../images/contentBlue.gif') repeat left top; /*blue*/
+    color: #fff;
+}
+.landingHeader img {
+    width: 100%;
+}
+
+.landingRotator {
+    width: 100%;
+}
+
+    .landingRotator img {
+        width: 100%;
+    }
+
+    .landingRotator .images {
+        background: url('../images/rotatorProspStudents.jpg') transparent no-repeat right;
+    }
+
+.landingRight {
+    text-align: center;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+    .landingRight div.socialBar img {
+        padding: 0 .5em;
+    }
+
+    .landingRight .video {
+        height: 160px;
+    }
+
+        .landingRight .video img {
+            border: 1px #e6e6ec solid;
+        }
+/* End User Landing Template CSS */
+
+/* Start Filtered Calendar Template CSS */
+.currentEventHeader {
+    background-color: #e6e6ec;
+    padding: 0 .5em;
+}
+
+.currentEventDetail {
+    margin: 0 0 .5em .5em;
+}
+
+.currentEventTitle {
+    font-weight: bold;
+}
+
+.calendarHeader {
+    margin-top: .7em;
+}
+
+    .calendarHeader h3 {
+        margin: .5em 0 .7em 0;
+    }
+
+    .calendarHeader a {
+        color: #011c4f;
+        text-decoration: none;
+        padding: 6px 15px;
+    }
+
+        .calendarHeader a:hover {
+            color: #946e2b;
+        }
+
+.checkBoxListWrap {
+}
+
+.calendar {
+    margin: 0 0 1em 0;
+}
+.calendarFilter {
+    background-color: #e6e6ec;
+    margin: 0 0 1em 0;
+}
+
+.calendarFilterAll {
+    margin: 1.9em 0 0 1em;
+}
+
+.calendarFilterList table {
+    margin-bottom: 0;
+}
+
+.calendarFilterList tr td {
+    vertical-align: top;
+    padding: .5em;
+}
+
+.checkBoxListWrap {
+    width: 100%;
+}
+
+    .checkBoxListWrap input {
+    }
+
+    .checkBoxListWrap label {
+        position: absolute;
+        height: 20px;
+        margin-left: 5px;
+        text-align: left;
+    }
+
+.filtered {
+    color: Green;
+}
+
+.eventDetailTitle {
+    margin-top: 1em;
+}
+
+    .eventDetailTitle h3 {
+        margin-bottom: 0;
+    }
+
+.eventDetailContent {
+    clear: left;
+}
+
+.eventDetailHeader {
+    margin-top: 1em;
+    background-color: #011c4f;
+    color: #c1a868; /* gold */
+    font-size: 1.3em;
+    padding: .5em .5em .5em 1em;
+}
+
+.eventDetail {
+    border: .5em solid #e6e6ec;
+    padding: .5em;
+}
+
+.eventDetailLabel {
+    clear: both;
+    text-align: right;
+}
+
+.eventDetailItem {
+    margin: 1em 0;
+}
+
+.eventDetailDescription p {
+    margin: 0 15px 1em 0;
+}
+
+.eventDetailDescription a, .eventDetailDescription a:link, .eventDetailDescription a:active, .eventDetailDescription a:hover, .eventDetailDescription a:visited {
+    text-decoration: underline;
+}
+
+.eventFutureHeader {
+    background: #e6e6ec;
+    font-weight: bold;
+    padding-left: 96px;
+}
+
+.eventFutureList ul li {
+    margin: 0 0 0 66px;
+    list-style: none;
+}
+
+.eventToolBar {
+    background-color: #e6e6ec;
+    height: 3.5em;
+}
+
+.eventLinks {
+    padding-left: 25px;
+}
+
+.eventLike {
+    padding-top: .6em;
+    text-align: right;
+}
+
+.eventTweet {
+    padding-top: .7em;
+}
+
+.eventEmail, .eventPrint, .eventGoogleCal, .eventICal {
+    padding-top: .4em;
+}
+
+.RadScheduler_Vista .rsSpacerCell, .RadScheduler_Vista .rsAllDayHeader, .RadScheduler_Vista .rsVerticalHeaderWrapper, .RadScheduler_Vista .rsVerticalHeaderTable, rsSatCol, rsSunCol {
+    background: none repeat scroll 0 0 #e6e6ec;
+}
+
+.RadScheduler_Vista .rsAptContent, .RadScheduler_Vista .rsAptIn, .RadScheduler_Vista .rsAptMid, .RadScheduler_Vista .rsAptOut {
+    height: 1.5em;
+}
+
+.RadScheduler_Vista .rsSunCol, .RadScheduler_Vista .rsSatCol, .RadScheduler_Vista .rsAptCreate {
+    background-color: #e6e6ec;
+}
+
+.RadScheduler_Vista .rsContentTable td.rsTodayCell {
+    background-color: #eddfc3;
+}
+
+.RadScheduler_Vista .rsAptCreate, .RadScheduler_Vista .rsMonthView .rsAptCreate {
+    background-color: #f5f5f5;
+}
+
+.RadScheduler .rsCategoryRed .rsAptContent, .RadScheduler .rsCategoryRed .rsAptMid .rsAptIn, .RadScheduler .rsCategoryRed .rsAptMid, .RadScheduler .rsCategoryRed .rsAptOut {
+    background-image: url("/WorkArea/WebCalendar/View/images/rsAppointmentBg.png");
+}
+
+.calendar table {
+    float: left;
+    width: 100%;
+}
+/* End Filtered Calendar Template CSS */
+
+/* Start News Detail Template CSS */
+
+.newsRelease {
+}
+
+.newsReleaseMenu {
+    padding: 0;
+}
+.newsReleaseMenu div {
+    display: inline;
+    margin: 1em 0 0 0;
+}
+.newsReleaseMenu a {
+    background-color: #c1a868;
+    color: white;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+.mainContent .newsReleaseMenu a {
+    text-decoration: none;
+}
+.newsReleaseMenu div a:hover {
+    background-color: #946e2b;
+}
+    .newsReleaseMenu .newsReaseAddThis div {
+    }
+
+.newsReleaseAddThis div {
+    margin: -10px 0 0 0;
+}
+.newsReleaseMenu div.newsReleaseAddThis div a {
+    background-color: #fe6d4c;
+    height: auto;
+}
+    .newsReleaseMenu div.newsReleaseAddThis div a:hover {
+        background-color: #e75a3a;
+    }
+ul.newsReleaseMoreHeadlines {
+    padding-left: 1em;
+}
+ul.newsReleaseMoreHeadlines li {
+    margin-bottom: 0.5em;
+}
+    ul.newsReleaseMoreHeadlines a {
+        text-decoration: underline;
+    }
+.newsReleaseIcon {
+    width: 80px;
+    margin-top: 1.5em;
+}
+
+ /*.newsReleaseHeadline {
+       width: 650px;
+    font-weight: bold;
+}
+*/
+.articleHeadline {
+    margin-bottom: .1em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.articleContent {
+    margin: 1em 0 2em 0;
+}
+
+    .articleContent a {
+        text-decoration: underline;
+    }
+
+.articleImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.articlePhotoCaption {
+    padding: .5em;
+    font-style: italic;
+    font-size: 0.9em;
+    width: 100%;
+    background-color: #eeedeb;
+}
+    .articlePhotoCaption p {
+        margin: 0;
+    }
+.articleText {
+    margin-top: 1.5em;
+}
+
+.newsList table, .newsList th {
+    border: none;
+}
+
+.newsList td {
+    vertical-align: top;
+    padding-bottom: 1.5em;
+    border: none;
+    padding-right: 10px;
+}
+
+.newsPager, .newsPager table {
+    /*margin-left: 90px;*/
+    margin-top: 2.5em;
+    width: auto;
+}
+
+    .newsPager a {
+        text-decoration: none;
+    }
+
+        .newsPager a:hover {
+            text-decoration: underline;
+        }
+
+        .newsPager a:link {
+            font-size: 15px;
+            padding: 2px 6px;
+            margin-right: 6px;
+            background-color: #EBECEE;
+            border: 1px solid #B5BAC0;
+        }
+
+    .newsPager span {
+        margin-right: 6px;
+    }
+
+    .newsPager span span {
+        font-size: 15px;
+        padding: 2px 6px;
+        background-color: #298e21;
+        border: 1px solid #B5BAC0;
+        color: #FFFFFF;
+    }
+/* End News Detail Template CSS */
+
+/* Start Search Results CSS */
+.searchPageTitle {
+    margin: 1em 0 0 0;
+}
+
+.suggestedTitle {
+    color: #946e2b;
+    font-size: 1.3em;
+}
+
+.searchResults {
+    margin: 1em 0;
+}
+
+    .searchResults h3.title, .suggestedResults h3.title {
+        font-size: 1.3em;
+        margin: .5em 0;
+    }
+
+        .searchResults h3.title a, .suggestedResults h3.title a {
+            text-decoration: underline;
+        }
+
+        .searchResults h3.title .fileType {
+            display: inline-block;
+            height: 1.3em;
+            font-size: .6em;
+            margin: 0 5px 0 0;
+            vertical-align: middle;
+        }
+
+    .searchResults ul {
+        padding-left: 0;
+    }
+
+        .searchResults ul li, .suggestedResults ul li {
+            list-style: none;
+            color: #298e21;
+        }
+
+    .searchResults .summary, .suggestedResults .summary {
+        color: #222222;
+    }
+
+.suggestedResults {
+    border: 1px solid #946e2b;
+    padding: 10px;
+    width: 100%;
+}
+
+/* End Search Results CSS */
+/* Start ASP Pager Button CSS for search */
+.errorTextBlock {
+    margin: 1em 20px 1em 0;
+}
+/* Start ASP Pager Button CSS for search */
+/* Start ASP Pager Button CSS for search */
+.searchPager a:link {
+    color: #e6e6ec;
+    text-decoration: none;
+}
+
+.aspPagerButton {
+    background-color: #011c4f;
+    border-radius: 5px;
+    border: thin solid #b5bac0;
+    color: #ffffff;
+    padding: .5em .8em;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.searchResults .aspNetDisabled {
+    opacity: 0.50;
+}
+
+.aspPagerCurrent {
+    background-color: #298e21;
+    border-radius: 5px;
+    border: thin solid #b5bac0;
+    color: #ffffff;
+    padding: .5em .8em;
+    opacity: 0.50;
+}
+/* End ASP Pager Button CSS */
+
+/* Start Search Results CSS */
+.personnelBios {
+    margin-top: 1em;
+}
+
+    .personnelBios a {
+        text-decoration: underline;
+    }
+
+secondarycontent a {
+    text-decoration: underline;
+}
+/* End Search Results CSS */
+/* Start Facebook Feed styling for Rails*/
+.railFacebookFeed html#facebook .actorPhoto {
+    visibility: hidden;
+}
+
+/* End Facebook Feed styling */
+
+/* Start Conference Template Styling */
+.conferenceHomeLink {
+    text-align: right;
+    padding-left: 9px;
+    margin: .5em 0;
+}
+
+    .conferenceHomeLink a {
+        text-decoration: underline;
+    }
+
+.conferenceBanner {
+    /*    height: 286px;*/
+    padding-left: 9px;
+    margin-bottom: 1em;
+}
+
+    .conferenceBanner img {
+        width: 100%;
+    }
+
+.conferenceDocs ul {
+    margin: 0 0 2em 0;
+    padding-left: 0;
+}
+
+    .conferenceDocs ul li {
+        display: block;
+        margin: .3em 0;
+        background: #07285b;
+        font-size: 1.3em;
+        color: #ffffff;
+        text-align: center;
+        padding: .2em 0;
+    }
+
+.conferenceDocs a {
+    color: #ffffff;
+}
+
+.conferenceSponsor {
+    margin: 1em 0 1em 0;
+    padding: 1em 0;
+    background-color: #ffffff;
+}
+
+/* End Conference Template Styling */
+
+/* Bug fixes Ektron overrides*/
+#__MapTab td.tab_last {
+    background-color: transparent;
+    border: none;
+}
+
+/* Start UR styling */
+.urButtonGray {
+    -moz-box-shadow: inset 0px 1px 1px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 1px 0px #ffffff;
+    box-shadow: inset 0px 1px 1px 0px #ffffff;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+    background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+    background-color: #ededed;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    color: #011c4f;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 55px;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #ffffff;
+}
+
+    .urButtonGray:hover {
+        background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+        background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+        background-color: #dfdfdf;
+    }
+
+    .urButtonGray:active {
+        position: relative;
+        top: 1px;
+    }
+
+iframe.urFrame75 {
+    -moz-transform: scale(0.75, 0.75);
+    -webkit-transform: scale(0.75, 0.75);
+    -o-transform: scale(0.75, 0.75);
+    -ms-transform: scale(0.75, 0.75);
+    transform: scale(0.75, 0.75);
+    -moz-transform-origin: top left;
+    -webkit-transform-origin: top left;
+    -o-transform-origin: top left;
+    -ms-transform-origin: top left;
+    transform-origin: top left;
+}
+/* Class for responsive video */
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+    .embed-container iframe, .embed-container object, .embed-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+/* End UR styling */
+
+/* Start Mobile styling for RWD */
+.mobileLogo {
+    text-align: center;
+}
+
+.mobileQuickLinks {
+    padding: 1em 10px 0 20px;
+}
+
+    .mobileQuickLinks select {
+        width: 100%;
+        border: solid 2px #011c4f;
+    }
+
+.mobileSearch {
+    padding-right: 10px;
+}
+
+.mobileSearchForm {
+    border: solid 2px #011c4f;
+}
+
+input.mobileSearchField {
+    color: #c1a868;
+    font-weight: bold;
+}
+
+.mobileSearchSubmit {
+    background: #011c4f url("../images/header/searchButton.png") no-repeat right;
+}
+
+.mobileMenu {
+    padding: 0 15px .5em 20px;
+}
+
+    .mobileMenu select {
+        width: 100%;
+        border: solid 2px #011c4f;
+        /*    text-indent: 10px;
+    padding-right: 10px;*/
+    }
+
+.mobileLeftRail {
+    text-align: left;
+    float: left;
+    padding: 1em 15px;
+    width: 100%;
+}
+/* Start Mobile (iPhone) Styling -DTH*/
+@media screen and (max-device-width: 480px) {
+    body {
+        -webkit-text-size-adjust: none;
+        padding: 5px;
+    }
+
+    div {
+        /*        clear:both!important;
+        display:block!important;
+        width:100%!important;
+        float:none!important;
+        margin:0!important;
+        padding:0!important;*/
+    }
+
+    .headerTopBar {
+        display: none;
+    }
+}
+/* End Mobile Styling */
+
+/* Start Streaming Video styling */
+.streamingVideo table {
+    border: 1px solid #000000;
+}
+
+.streamingVideo th {
+    text-align: center;
+    background-color: #e6e6ec;
+    color: #011c4f;
+    border: 1px solid #011c4f;
+}
+
+.streamingVideo td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #011c4f;
+}
+
+.streamingVideo table td p {
+    margin: 4px 0;
+}
+/* End Streaming Video styling */
+
+/* Drop Down Styling*/
+.dropdownNav {
+    font-family: 'pt_sans_narrowregular', 'Arial Narrow', sans-serif;
+    font-size: 1.3em;
+    display: table;
+}
+
+/* LEVEL ONE  */
+ul.dropdown {
+    background-color: #011c4f;
+    display: table;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 100;
+    margin-bottom: 0;
+}
+
+    ul.dropdown li {
+        float: left;
+        zoom: 1;
+        background: #011c4f;
+        list-style: none;
+        padding: .5em 0;
+    }
+
+    ul.dropdown a:hover {
+        color: #C1A868;
+        text-decoration: underline;
+    }
+
+    ul.dropdown a:active {
+        color: #C1A868;
+    }
+
+    ul.dropdown li a {
+        display: block;
+        padding: 4px 8px; /*border-right: 1px solid #333;*/
+        color: #eeedeb;
+    }
+
+        ul.dropdown li a.current {
+            color: #c1a868;
+        }
+
+    ul.dropdown li:last-child a {
+        border-right: none;
+    }
+    /* Doesn't work in IE */
+    ul.dropdown li.hover,
+    ul.dropdown li:hover {
+        background: #eeedeb;
+        color: #C1A868;
+        position: relative;
+    }
+
+        ul.dropdown li.hover a {
+            color: #011c4f;
+        }
+
+
+    /* LEVEL TWO */
+    ul.dropdown ul {
+        width: 220px;
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-left: -18px;
+    }
+
+        ul.dropdown ul li {
+            font-weight: normal;
+            background: #eeedeb;
+            color: #011c4f;
+            float: none;
+            padding: 0 8px;
+        }
+
+            /* IE 6 & 7 Needs Inline Block */
+            ul.dropdown ul li a {
+                border-right: none;
+                width: 100%;
+                display: inline-block;
+                color: #011c4f;
+                border-bottom: 1px dotted #ccc;
+                margin: 0;
+                padding: .3em 3px;
+            }
+
+        /* LEVEL THREE */
+        ul.dropdown ul ul {
+            left: 100%;
+            top: 0;
+        }
+
+    ul.dropdown li:hover > ul {
+        visibility: visible;
+    }
+
+    ul.dropdown li.hover a.selected {
+        color: #c1a868;
+    }
+
+/* Begin Blog Styling */
+.blogTitle {
+    font-size: 3.3em;
+    line-height: .5em;
+    color: #946e2b;
+}
+    .blogTitle a, .blogTitle a:link, .blogTitle a:visited {
+        font-size: .75em;
+        color: #946e2b;
+        text-decoration: none;
+    }
+        .blogTitle a:hover {
+            color: #000000;
+        }
+.blogTitleXS {
+    font-size: 2em;
+    color: #946e2b;
+}
+.blogTagline {
+    margin-top: 1.5em;
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+
+.blogFilterTitleContainer {
+    color: #946e2b;
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid #c1a868;
+}
+.blogFilterTitle {
+    font-size: 1.5em;
+}
+    .blogFilterTitle a, .blogFilterTitle a:link, .blogFilterTitle a:visited {
+        color: #946e2b;
+        text-decoration: none;
+    }
+        .blogFilterTitle a:hover {
+            color: #000000;
+        }
+.blogFilterSubTitle {
+    color: #946e2b;
+    font-weight: bold;
+    font-size: 2.5em;
+}
+.blogArticleTitle {
+    font-weight: bold;
+}
+    .blogArticleTitle a, .blogArticleTitle a:link, .blogArticleTitle a:visited {
+        text-decoration: none;
+        color: #011c4f;
+    }
+        .blogArticleTitle a:hover {
+            color: #946e2b;
+        }
+.blogCommentName, .blogComment {
+    width: 100%;
+}
+.blogArticleTagline {
+    font-style: italic;
+    margin-top: .5em; 
+}
+.blogRotator {
+    padding: 0 25px;
+}
+.blogRotatorImage {
+    width: 100%;
+    padding: .3em;
+}
+.blogRotatorImage p.flex-caption {
+    margin: .5em 0 .7em 0;
+    font-family: helvetica;
+    font-size: .9em;
+    line-height: 1.2;
+}
+    .blogRotatorImage p.flex-caption a {
+        text-decoration: none;
+    }
+.blogArticleSeperator {
+    padding-bottom: 2em;
+    border-bottom: 2px solid #c1a868;
+}
+div.last div.blogArticleSeperator {
+    border-bottom: none;
+}
+.blogRail h4 {
+    font-weight: bold;
+    border-bottom: 2px solid #c1a868;
+    padding-bottom: 4px;
+}
+.blogRail ul.posts {
+    list-style-position: outside;
+    padding-left: 1.5em;
+}
+.blogRail ul.subjects {
+    list-style: none;
+    display: inline;
+}
+.blogRotator .slick-prev::before, .blogRotator .slick-next::before {
+    color: black;
+}
+.blogRotator .slick-dots li {
+    margin: 0;
+}
+.blogRotator .slick-dots li button::before {
+    color: #946e2b;
+    font-size: 10px;
+    opacity: 1;
+}
+.blogRotator .slick-dots li button {
+    background: white none repeat scroll 0 0;
+    color: #946e2b;
+}
+.blogRotator .slick-dots li.slick-active button::before {
+    color: #011c4f;
+    font-size: 10px;
+}
+.blogRotator .slick-dots li.slick-active button::before {
+    color: #011c4f;
+    opacity: 1;
+}
+.blogRotator .slick-prev::before {
+    content: "\00ab";
+}
+.blogRotator .slick-next::before {
+    content: "\00bb";
+}
+.blogRotator .slick-prev::before, .slick-next::before {
+    color: #222222;
+    font-size: 35px;
+}
+
+/* End Blog Styling */
+
+/* End Blog Styling */
+.contactForm {
+    background-color: #e6e6ec;
+    margin: 1em 0;
+    padding: 1em 0;
+}
+</style><script src="/WorkArea/FrameworkUI/js/ektron.javascript.ashx?id=-569449246+-1939951303+-1080527330+-1687560804+-1388997516+2009761168+27274999+1979897163+-422906301+-1818005853+-1008700845+-1793043690+1338359439+1628691364+495475556" type="text/javascript"></script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+    'gtm.start':
+    new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NSGBFT');</script>
+<!-- End Google Tag Manager -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="en-us" http-equiv="Content-Language"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><link href="/css/bootstrap/bootstrap.css" rel="Stylesheet" type="text/css"/><link href="/css/flaticon.css" rel="Stylesheet" type="text/css"/><link href="/images/favicon.ico" rel="Shortcut Icon" type="image/x-icon"/>
+<!--    <link href="/css/ektron.ui.framework.css" rel="stylesheet" type="text/css" />  -->
+
+<script src="/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/js/jquery-migrate-1.2.1.js" type="text/javascript"></script>
+<script src="/js/jquery.sdmines.js" type="text/javascript"></script>
+<script src="/js/jquery-iu/js/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
+<script src="/js/jquery-iu/ui/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="/js/jquery-iu/ui/jquery.ui.accordion.js" type="text/javascript"></script>
+<!--    <script async="async" defer="defer" src="//www.youvisit.com/tour/Embed/js2" type="text/javascript"></script> -->
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://www.sdsmt.edu",
+      "logo": "http://www.sdsmt.edu/uploadedImages/Content/SDMinesLogoGoogle_med.png"
+    }
+    </script>
+<meta content="sdsmt" name="fb:admins"/><meta content="South Dakota School of Mines and Technology" name="og:title"/><meta content="website" name="og:type"/><meta content="http://www.sdsmt.edu/uploadedImages/Content/Global/small-graphic-academics.jpg" name="og:image"/><meta content="http://www.sdsmt.edu/uploadedImages/Content/Global/SDSMT-Logo-BLUE.jpg" name="og:image"/><meta content="http://www.sdsmt.edu/uploadedImages/Content/Global/SDSMT-Logo-WEB.jpg" name="og:image"/><meta content="http://www.sdsmt.edu/uploadedImages/Content/Global/SDSMT-Logo.jpg" name="og:image"/><meta content="http://www.sdsmt.edu/uploadedImages/Content/Global/SDSMT-Social-Media.jpg" name="og:image"/><meta content="https://www.sdsmt.edu/news" name="og:url"/><meta content="South Dakota School of Mines and Technology" name="og:site_name"/><meta content="Science and engineering university in Rapid City, South Dakota known for personal attention, affordability, research, and placement in top paying jobs." name="description"/><meta content="LXNX7_l_6zf1EOoed1jQo6pCzr67IkepPRwaxIDN6wY" name="google-site-verification"/><meta content="177E0297A7B6D7248BD51E807E9A10BA" name="msvalidate.01"/>
+<!-- Facebook Pixel Code -->
+<script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            }; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        }(window,
+        document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '1573276756333122');
+        fbq('track', "PageView");
+        
+    </script>
+<noscript><img height="1" src="https://www.facebook.com/tr?id=1573276756333122&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
+<!-- End Facebook Pixel Code -->
+<title>
+	South Dakota School of Mines and Technology
+</title></head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NSGBFT" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- ADA Compliance Monsido Tool -->
+<script type="text/javascript">
+        var _monsido = _monsido || [];
+        _monsido.push(['_setDomainToken', 'DO3haM43oe2yrofV6_Vj8Q']);
+        _monsido.push(['_withStatistics', 'true']);
+    </script>
+<script src="//cdn.monsido.com/tool/javascripts/monsido.js"></script>
+<!-- End ADA Compliance Monsido Tool -->
+<form action="/" id="aspnetForm" method="post">
+<div class="aspNetHidden">
+<input id="EktronClientManager" name="EktronClientManager" type="hidden" value="-1759591071,-569449246,-1939951303,-1080527330,-1687560804,-1388997516,2009761168,27274999,1979897163,-422906301,-1818005853,-1008700845,-1793043690,646986939,1338359439,1628691364,495475556"/>
+<input id="__VIEWSTATE" name="__VIEWSTATE" type="hidden" value="/wEPDwUJMjc2OTM0NzUzD2QWAmYPZBYCAgMQZGQWBAIFD2QWAmYPZBYEAg8PZBYCAgEPFgIeC18hSXRlbUNvdW50AggWEAIBD2QWAmYPFQMABy9BYm91dC8FQWJvdXRkAgIPZBYCZg8VAwAML0FkbWlzc2lvbnMvCkFkbWlzc2lvbnNkAgMPZBYCZg8VAwALL0FjYWRlbWljcy8JQWNhZGVtaWNzZAIED2QWAmYPFQMADS9DYW1wdXMtTGlmZS8LQ2FtcHVzIExpZmVkAgUPZBYCZg8VAwAYaHR0cDovL3d3dy5nb3JvY2tlcnMuY29tCUF0aGxldGljc2QCBg9kFgJmDxUDAA8vTmV3cy9SZWxlYXNlcy8ETmV3c2QCBw9kFgJmDxUDABUvSG9tZS9FdmVudC1DYWxlbmRhci8GRXZlbnRzZAIID2QWAmYPFQMEbGFzdAovUmVzZWFyY2gvCFJlc2VhcmNoZAIZDxYCHwACCBYQAgEPZBYCZg8VAwcvQWJvdXQvAAVBYm91dGQCAg9kFgJmDxUDDC9BZG1pc3Npb25zLwAKQWRtaXNzaW9uc2QCAw9kFgJmDxUDCy9BY2FkZW1pY3MvAAlBY2FkZW1pY3NkAgQPZBYCZg8VAw0vQ2FtcHVzLUxpZmUvAAtDYW1wdXMgTGlmZWQCBQ9kFgJmDxUDGGh0dHA6Ly93d3cuZ29yb2NrZXJzLmNvbQZfYmxhbmsJQXRobGV0aWNzZAIGD2QWAmYPFQMPL05ld3MvUmVsZWFzZXMvAAROZXdzZAIHD2QWAmYPFQMVL0hvbWUvRXZlbnQtQ2FsZW5kYXIvAAZFdmVudHNkAggPZBYCZg8VAwovUmVzZWFyY2gvAAhSZXNlYXJjaGQCBw9kFg4CAQ8PFgYeBVRpdGxlBQE4HhNDYXRhbG9nSWNvbkltYWdlVXJsBS4vV29ya0FyZWEvaW1hZ2VzL2FwcGxpY2F0aW9uL2ljb25fZG9jdW1lbnQuZ2lmHhFUaXRsZUljb25JbWFnZVVybGVkZAIDD2QWAgIBDxYCHwACARYCZg9kFgQCAQ8WAh4Fc3R5bGUFjgFiYWNrZ3JvdW5kLWltYWdlOiB1cmwoL3VwbG9hZGVkSW1hZ2VzL0NvbnRlbnQvSG9tZS9fQWRtaXNzaW9uc19CYW5uZXIvU0QtTWluZXMtSGlnaC1BdmVyYWdlLVN0YXJ0aW5nLVNhbGFyeS1UaHJlZS1TdHVkZW50cy1BdC1DYXJlZXItRmFpci5qcGcpFgQCAQ8WAh4EVGV4dAV4DQogIDxoMSBzdHlsZT0ibGluZS1oZWlnaHQ6IDEuMjsiPiMxIEVuZ2luZWVyaW5nIFNjaG9vbCBmb3IgPGJyIC8+UmV0dXJuIG9uIEludmVzdG1lbnQ8YnIgLz5hbmQgU3RhcnRpbmcgU2FsYXJpZXM8L2gxPg0KZAIDD2QWAmYPFQIpL05ld3MvU0QtTWluZXMtUmFua3MtSGlnaC1pbi1ST0ktZm9yLTIwMjAKTGVhcm4gTW9yZWQCAw8WAh8EBY4BYmFja2dyb3VuZC1pbWFnZTogdXJsKC91cGxvYWRlZEltYWdlcy9Db250ZW50L0hvbWUvX0FkbWlzc2lvbnNfQmFubmVyL1NELU1pbmVzLUhpZ2gtQXZlcmFnZS1TdGFydGluZy1TYWxhcnktVGhyZWUtU3R1ZGVudHMtQXQtQ2FyZWVyLUZhaXIuanBnKRYEAgEPFgIfBQV4DQogIDxoMSBzdHlsZT0ibGluZS1oZWlnaHQ6IDEuMjsiPiMxIEVuZ2luZWVyaW5nIFNjaG9vbCBmb3IgPGJyIC8+UmV0dXJuIG9uIEludmVzdG1lbnQ8YnIgLz5hbmQgU3RhcnRpbmcgU2FsYXJpZXM8L2gxPg0KZAIDD2QWAmYPFQIpL05ld3MvU0QtTWluZXMtUmFua3MtSGlnaC1pbi1ST0ktZm9yLTIwMjAKTGVhcm4gTW9yZWQCCw8WAh8AAgYWDGYPZBYCZg8VAgUvQS1aLwhBLVogTGlzdGQCAQ9kFgJmDxUCFy9EaXJlY3Rvcmllcy9QZXJzb25uZWwvC0RpcmVjdG9yaWVzZAICD2QWAmYPFQIsL0F1ZGllbmNlL0N1cnJlbnQtU3R1ZGVudHMvQ3VycmVudC1TdHVkZW50cy8QQ3VycmVudCBTdHVkZW50c2QCAw9kFgJmDxUCDS9NaW5lc0ZhbWlseS8QUGFyZW50cy9GYW1pbGllc2QCBA9kFgJmDxUCJi9BdWRpZW5jZS9GYWN1bHR5LVN0YWZmL0ZhY3VsdHktU3RhZmYvDUZhY3VsdHkvU3RhZmZkAgUPZBYCZg8VAh0vQWJvdXQvQWx1bW5pLWFuZC1Gb3VuZGF0aW9uLw1BbHVtbmkvRG9ub3JzZAINDw8WBh8BBQIxNx8CBS4vV29ya0FyZWEvaW1hZ2VzL2FwcGxpY2F0aW9uL2ljb25fZG9jdW1lbnQuZ2lmHwNlZGQCDw8WAh8AAgQWCAIBD2QWAgIBD2QWCgIBDw8WBB4ISW1hZ2VVcmwFbC91cGxvYWRlZEltYWdlcy9Db250ZW50L0hvbWUvX0hlYWRsaW5lX1JvdGF0b3IvMTIxNzE5LVNELU1pbmVzLVBoeXNpY3MtU3R1ZGVudHMtV2luLU5hdGlvbmFsLVJlY29nbml0aW9uLmpwZx4LUG9zdEJhY2tVcmwFQy9OZXdzL1NvdXRoLURha290YS1NaW5lcy1QaHlzaWNzLVN0dWRlbnRzLVdpbi1OYXRpb25hbC1SZWNvZ25pdGlvbi9kZAIDDw8WBB8GBWwvdXBsb2FkZWRJbWFnZXMvQ29udGVudC9Ib21lL19IZWFkbGluZV9Sb3RhdG9yLzEyMTcxOS1TRC1NaW5lcy1QaHlzaWNzLVN0dWRlbnRzLVdpbi1OYXRpb25hbC1SZWNvZ25pdGlvbi5qcGcfBwVDL05ld3MvU291dGgtRGFrb3RhLU1pbmVzLVBoeXNpY3MtU3R1ZGVudHMtV2luLU5hdGlvbmFsLVJlY29nbml0aW9uL2RkAgUPFgIeBXZhbHVlBUMvTmV3cy9Tb3V0aC1EYWtvdGEtTWluZXMtUGh5c2ljcy1TdHVkZW50cy1XaW4tTmF0aW9uYWwtUmVjb2duaXRpb24vFgJmDxUBCVJlYWQgTW9yZWQCBw9kFgYCAQ8PFgIfBQVRPEhlYWRsaW5lPlNvdXRoIERha290YSBNaW5lcyBQaHlzaWNzIFN0dWRlbnRzIFdpbiBOYXRpb25hbCBSZWNvZ25pdGlvbjwvSGVhZGxpbmU+ZGQCAw8PFgIfBQVRPEhlYWRsaW5lPlNvdXRoIERha290YSBNaW5lcyBQaHlzaWNzIFN0dWRlbnRzIFdpbiBOYXRpb25hbCBSZWNvZ25pdGlvbjwvSGVhZGxpbmU+ZGQCBQ8PFgIfBQVRPEhlYWRsaW5lPlNvdXRoIERha290YSBNaW5lcyBQaHlzaWNzIFN0dWRlbnRzIFdpbiBOYXRpb25hbCBSZWNvZ25pdGlvbjwvSGVhZGxpbmU+ZGQCCQ8WAh8FBe0BDQogIDxwPlRoZSBTb3V0aCBEYWtvdGEgTWluZXMgY2hhcHRlciBvZiB0aGUgU29jaWV0eSBvZiBQaHlzaWNzIFN0dWRlbnRzIChTUFMpIGhhcyB3b24gYW4gT3V0c3RhbmRpbmcgQ2hhcHRlciBBd2FyZCBmcm9tIHRoZSBTUFMgTmF0aW9uYWwgT2ZmaWNlLiBUaGlzIGlzIHRoZSBmb3VydGggeWVhciBpbiBhIHJvdyB0aGUgY2hhcHRlciBoYXMgYmVlbiByZWNvZ25pemVkIGZvciBpdHMgZXhjZWxsZW5jZS4gPC9wPg0KZAICD2QWAgIBD2QWCgIBDw8WBB8GBWcvdXBsb2FkZWRJbWFnZXMvQ29udGVudC9Ib21lL19IZWFkbGluZV9Sb3RhdG9yLzEyMTIxOS1GZW1hbGUtU3R1ZGVudC1XaW5zLTIwMTktQ0VPLUJ1c2luZXNzLUNvbnRlc3QuanBnHwcFIC9OZXdzLzIwMTktQ0VPLUJ1c2luZXNzLUNvbnRlc3QvZGQCAw8PFgQfBgVnL3VwbG9hZGVkSW1hZ2VzL0NvbnRlbnQvSG9tZS9fSGVhZGxpbmVfUm90YXRvci8xMjEyMTktRmVtYWxlLVN0dWRlbnQtV2lucy0yMDE5LUNFTy1CdXNpbmVzcy1Db250ZXN0LmpwZx8HBSAvTmV3cy8yMDE5LUNFTy1CdXNpbmVzcy1Db250ZXN0L2RkAgUPFgIfCAUgL05ld3MvMjAxOS1DRU8tQnVzaW5lc3MtQ29udGVzdC8WAmYPFQEJUmVhZCBNb3JlZAIHD2QWBgIBDw8WAh8FBXA8SGVhZGxpbmU+V29tZW4gU3R1ZGVudCBFbnRyZXByZW5ldXJzIFRha2UgSG9tZSBUb3AgUHJpemVzIGluIDIwMTkg4oCcU2hhcmsgVGFua+KAnSBTdHlsZSBDb21wZXRpdGlvbjwvSGVhZGxpbmU+ZGQCAw8PFgIfBQVwPEhlYWRsaW5lPldvbWVuIFN0dWRlbnQgRW50cmVwcmVuZXVycyBUYWtlIEhvbWUgVG9wIFByaXplcyBpbiAyMDE5IOKAnFNoYXJrIFRhbmvigJ0gU3R5bGUgQ29tcGV0aXRpb248L0hlYWRsaW5lPmRkAgUPDxYCHwUFcDxIZWFkbGluZT5Xb21lbiBTdHVkZW50IEVudHJlcHJlbmV1cnMgVGFrZSBIb21lIFRvcCBQcml6ZXMgaW4gMjAxOSDigJxTaGFyayBUYW5r4oCdIFN0eWxlIENvbXBldGl0aW9uPC9IZWFkbGluZT5kZAIJDxYCHwUFqwINCiAgPHA+VGhlIHNpeHRoIGFubnVhbCBDRU8gQnVzaW5lc3MgUGxhbiBDb21wZXRpdGlvbiBhdCB0aGUgU291dGggRGFrb3RhIFNjaG9vbCBvZiBNaW5lcyAmYW1wOyBUZWNobm9sb2d5IHdyYXBwZWQgdXAgU2F0dXJkYXkgd2l0aCBmZW1hbGUgc3R1ZGVudHMgd2lubmluZyBhbGwgYnV0IG9uZSBvZiB0aGUgdG9wIHByaXplcy4gVGhlIHdpbm5lcnMgdG9vayBob21lIG1vcmUgdGhhbiAkNywwMDAgaW4gdG90YWwgcHJpemUgbW9uZXkgdGhhdCBjYW4gYmUgdXNlZCB0b3dhcmQgdGhlaXIgYnVzaW5lc3MgaWRlYXMuIDwvcD4NCmQCAw9kFgICAQ9kFgoCAQ8PFgQfBgVbL3VwbG9hZGVkSW1hZ2VzL0NvbnRlbnQvSG9tZS9fSGVhZGxpbmVfUm90YXRvci9NYWxlLVNjaWVudGlzdC1Jbi1MYWItU2hvd2luZy1OYW5vZmliZXJzLmpwZx8HBUkvUmVzZWFyY2gvUmVzZWFyY2hATWluZXMvTmFub3BhcmVpbCwtV2hlcmUtVGlueS1GaWJlcnMtUmVhcC1IdWdlLVJld2FyZHMvZGQCAw8PFgQfBgVbL3VwbG9hZGVkSW1hZ2VzL0NvbnRlbnQvSG9tZS9fSGVhZGxpbmVfUm90YXRvci9NYWxlLVNjaWVudGlzdC1Jbi1MYWItU2hvd2luZy1OYW5vZmliZXJzLmpwZx8HBUkvUmVzZWFyY2gvUmVzZWFyY2hATWluZXMvTmFub3BhcmVpbCwtV2hlcmUtVGlueS1GaWJlcnMtUmVhcC1IdWdlLVJld2FyZHMvZGQCBQ8WAh8IBUkvUmVzZWFyY2gvUmVzZWFyY2hATWluZXMvTmFub3BhcmVpbCwtV2hlcmUtVGlueS1GaWJlcnMtUmVhcC1IdWdlLVJld2FyZHMvFgJmDxUBCVJlYWQgTW9yZWQCBw9kFgYCAQ8PFgIfBQVEPEhlYWRsaW5lPk5hbm9wYXJlaWw6IFdoZXJlIFRpbnkgRmliZXJzIFJlYXAgSHVnZSBSZXdhcmRzPC9IZWFkbGluZT5kZAIDDw8WAh8FBUQ8SGVhZGxpbmU+TmFub3BhcmVpbDogV2hlcmUgVGlueSBGaWJlcnMgUmVhcCBIdWdlIFJld2FyZHM8L0hlYWRsaW5lPmRkAgUPDxYCHwUFRDxIZWFkbGluZT5OYW5vcGFyZWlsOiBXaGVyZSBUaW55IEZpYmVycyBSZWFwIEh1Z2UgUmV3YXJkczwvSGVhZGxpbmU+ZGQCCQ8WAh8FBeYBDQogIDxwPlRoZSB0ZWNobm9sb2d5IGF0IHRoZSBoZWFydCBvZiBOYW5vcGFyZWlsIHdhcyBkZXZlbG9wZWQgYXQgU0QgTWluZXMuIEl0IHJldm9sdmVzIGFyb3VuZCBuYW5vZmliZXJzIGEgdGhvdXNhbmQgdGltZXMgc21hbGxlciB0aGFuIGEgaHVtYW4gaGFpciwgYnV0IGl0cyBwb3RlbnRpYWwgaW1wYWN0IG9uIHRoZSBwaGFybWFjZXV0aWNhbCBpbmR1c3RyeSBjb3VsZCBiZSBtYXNzaXZlLiA8L3A+DQpkAgQPZBYCAgEPZBYKAgEPDxYEHwYFQC91cGxvYWRlZEltYWdlcy9Db250ZW50L05ld3MvUmFua2luZ3MtU0QtTWluZXMtZm9yd2ViLmpwZz9uPTM4MDEfBwU3L05ld3MvU0QtTWluZXMtUmFua3MtSGlnaC1pbi1ST0ktZm9yLTIwMjAvIy5YYWh3UUdaN250NWRkAgMPDxYEHwYFQC91cGxvYWRlZEltYWdlcy9Db250ZW50L05ld3MvUmFua2luZ3MtU0QtTWluZXMtZm9yd2ViLmpwZz9uPTM4MDEfBwU3L05ld3MvU0QtTWluZXMtUmFua3MtSGlnaC1pbi1ST0ktZm9yLTIwMjAvIy5YYWh3UUdaN250NWRkAgUPFgIfCAU3L05ld3MvU0QtTWluZXMtUmFua3MtSGlnaC1pbi1ST0ktZm9yLTIwMjAvIy5YYWh3UUdaN250NRYCZg8VAQlSZWFkIE1vcmVkAgcPZBYGAgEPDxYCHwUFcDxIZWFkbGluZT5TRCBNaW5lcyBBZ2FpbiBSYW5rcyBhcyB0aGUgQmVzdCBFbmdpbmVlcmluZyBTY2hvb2wgaW4gdGhlIENvdW50cnkgZm9yIFJldHVybiBvbiBJbnZlc3RtZW50PC9IZWFkbGluZT5kZAIDDw8WAh8FBXA8SGVhZGxpbmU+U0QgTWluZXMgQWdhaW4gUmFua3MgYXMgdGhlIEJlc3QgRW5naW5lZXJpbmcgU2Nob29sIGluIHRoZSBDb3VudHJ5IGZvciBSZXR1cm4gb24gSW52ZXN0bWVudDwvSGVhZGxpbmU+ZGQCBQ8PFgIfBQVwPEhlYWRsaW5lPlNEIE1pbmVzIEFnYWluIFJhbmtzIGFzIHRoZSBCZXN0IEVuZ2luZWVyaW5nIFNjaG9vbCBpbiB0aGUgQ291bnRyeSBmb3IgUmV0dXJuIG9uIEludmVzdG1lbnQ8L0hlYWRsaW5lPmRkAgkPFgIfBQXwAQ0KICA8cD5JbiBpdHMgMjAyMCByYW5raW5ncywgdGhlIG9yZ2FuaXphdGlvbiBDb2xsZWdlIEZhY3R1YWwgDQpwbGFjZXMgU291dGggRGFrb3RhIFNjaG9vbCBvZiBNaW5lcyAmYW1wOyBUZWNobm9sb2d5IGFzIHRoZSBiZXN0IA0KZW5naW5lZXJpbmcgc2Nob29sIGZvciB0aGUgbW9uZXkgb3V0IG9mIDMwMiBzaW1pbGFyIGluc3RpdHV0aW9ucyBhY3Jvc3MgDQp0aGUgVW5pdGVkIFN0YXRlcy48L3A+DQogIDxwPjwvcD4NCmQCFQ8WAh8AAgYWDGYPZBYCAgEPDxYEHwUFNlNEIE1pbmVzIE5hbWVzIDYxNiBTdHVkZW50cyB0byBGYWxsIDIwMTkgRGVhbuKAmXMgTGlzdB4LTmF2aWdhdGVVcmwFHC9OZXdzL0ZhbGwtMjAxOS1EZWFuLXMtTGlzdC9kZAIBD2QWAgIBDw8WBB8FBUFTb3V0aCBEYWtvdGEgTWluZXMgTW9iaWxpemVzIFN0dWRlbnRzIHRvIFNlcnZlIG9uIE1MSyBKci4gSG9saWRheR8JBTgvTmV3cy9Tb3V0aC1EYWtvdGEtTWluZXMtU3R1ZGVudHMtU2VydmUtb24tMjAyMC1NTEstRGF5L2RkAgIPZBYCAgEPDxYEHwUFYlNwcmluZyBTVEVBTSBDYWbDqSBUYWxrcyBEZWx2ZSBJbnRvIHRoZSBIaXN0b3J5IG9mIFBpLCBXaWxkZmlyZXMgYW5kIFdlYXRoZXIsIDNEIFByaW50aW5nIGFuZCBNb3JlHwkFLi9OZXdzL1NwcmluZy0yMDIwLVNwcmluZy1TVEVBTS1DYWbDqS1TY2hlZHVsZS9kZAIDD2QWAgIBDw8WBB8FBS9NaW5lcyBOYW1lcyBOZXcgVlAgZm9yIEZpbmFuY2UgJiBBZG1pbmlzdHJhdGlvbh8JBSgvTmV3cy9CaWxsLVNwaW5kbGUtTmFtZWQtTmV3LVZQLUZpbmFuY2UvZGQCBA9kFgICAQ8PFgQfBQVFU291dGggRGFrb3RhIE1pbmVzIFJlY2VpdmVzIExhcmdlc3QgRXN0YXRlIEdpZnQgaW4gVW5pdmVyc2l0eSBIaXN0b3J5HwkFMC9OZXdzL0xhcmdlc3QtRXN0YXRlLUdpZnQtaW4tVW5pdmVyc2l0eS1IaXN0b3J5L2RkAgUPZBYCAgEPDxYEHwUFPFNvdXRoIERha290YSBNaW5lcyBQaHlzaWNzIFN0dWRlbnRzIFdpbiBOYXRpb25hbCBSZWNvZ25pdGlvbh8JBUMvTmV3cy9Tb3V0aC1EYWtvdGEtTWluZXMtUGh5c2ljcy1TdHVkZW50cy1XaW4tTmF0aW9uYWwtUmVjb2duaXRpb24vZGQCFw8WAh8AAgUWCmYPZBYGZg8VBANGZWICMDInL0V2ZW50cy5hc3B4P2lkPTM4NjU0NzA5NjM3JmR0PTIvMi8yMDIwI05vc3RhbGdpYSBOaWdodCBGaWxtIFNlcmllcyAtIEZlYiAyZAIBDw8WAh8FBQc3OjE1IFBNZGQCBQ8PFgIfBQUHOToxNSBQTWRkAgEPZBYGZg8VBANGZWICMDknL0V2ZW50cy5hc3B4P2lkPTM4NjU0NzA5NjM5JmR0PTIvOS8yMDIwI05vc3RhbGdpYSBOaWdodCBGaWxtIFNlcmllcyAtIEZlYiA5ZAIBDw8WAh8FBQc3OjE1IFBNZGQCBQ8PFgIfBQUHOToxNSBQTWRkAgIPZBYGZg8VBANGZWICMTYoL0V2ZW50cy5hc3B4P2lkPTM4NjU0NzA5NjQxJmR0PTIvMTYvMjAyMCROb3N0YWxnaWEgTmlnaHQgRmlsbSBTZXJpZXMgLSBGZWIgMTZkAgEPDxYCHwUFBzc6MTUgUE1kZAIFDw8WAh8FBQc5OjE1IFBNZGQCAw9kFghmDxUEA0ZlYgIxNygvRXZlbnRzLmFzcHg/aWQ9Mzg2NTQ3MDgzNDcmZHQ9Mi8xNy8yMDIwG1ByZXNpZGVudHMmIzM5OyBEYXkgSG9saWRheWQCAQ8PFgIfBQUHQWxsIERheWRkAgMPDxYCHgdWaXNpYmxlaGRkAgUPDxYEHwUFCDEyOjAwIEFNHwpoZGQCBA9kFgZmDxUEA0ZlYgIyMCgvRXZlbnRzLmFzcHg/aWQ9Mzg2NTQ3MDk4MTgmZHQ9Mi8yMC8yMDIwGEUtV2VlayBKYXp6IEJhbmQgQ29uY2VydGQCAQ8PFgIfBQUIMTI6MDAgUE1kZAIFDw8WAh8FBQcxOjAwIFBNZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFggFOmN0bDAwJE1hc3RlckJvZHkkVXhSb3RhdG9ySXRlbXMkY3RsMDEkSW1hZ2VCdXR0b25GdWxsSW1hZ2UFPGN0bDAwJE1hc3RlckJvZHkkVXhSb3RhdG9ySXRlbXMkY3RsMDEkSW1hZ2VCdXR0b25Nb2JpbGVJbWFnZQU6Y3RsMDAkTWFzdGVyQm9keSRVeFJvdGF0b3JJdGVtcyRjdGwwMiRJbWFnZUJ1dHRvbkZ1bGxJbWFnZQU8Y3RsMDAkTWFzdGVyQm9keSRVeFJvdGF0b3JJdGVtcyRjdGwwMiRJbWFnZUJ1dHRvbk1vYmlsZUltYWdlBTpjdGwwMCRNYXN0ZXJCb2R5JFV4Um90YXRvckl0ZW1zJGN0bDAzJEltYWdlQnV0dG9uRnVsbEltYWdlBTxjdGwwMCRNYXN0ZXJCb2R5JFV4Um90YXRvckl0ZW1zJGN0bDAzJEltYWdlQnV0dG9uTW9iaWxlSW1hZ2UFOmN0bDAwJE1hc3RlckJvZHkkVXhSb3RhdG9ySXRlbXMkY3RsMDQkSW1hZ2VCdXR0b25GdWxsSW1hZ2UFPGN0bDAwJE1hc3RlckJvZHkkVXhSb3RhdG9ySXRlbXMkY3RsMDQkSW1hZ2VCdXR0b25Nb2JpbGVJbWFnZaBlsv7EeMa3jSZ59yjV+0VOcvFOjmgTkgrTxX/QtIqa"/>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+__$BubbleCloseIconPath='/WorkArea/';fbq('track','ViewContent')//]]>
+</script>
+<div class="aspNetHidden">
+<input id="__VIEWSTATEGENERATOR" name="__VIEWSTATEGENERATOR" type="hidden" value="CA0B0334"/>
+<input id="__PREVIOUSPAGE" name="__PREVIOUSPAGE" type="hidden" value="LgXqy6T9jvTSxLbQyCA-5wJSLslqXYAgHGNzvMbjG_P-fJL40Og2jrQOrTnu7n9HQoNsqfWMLv-w4KDwKynU2Rqd-UekZIG8qsvU2Fp71L81"/>
+<input id="__EVENTVALIDATION" name="__EVENTVALIDATION" type="hidden" value="/wEdAA80AAhKhEt9qeOkv2d7Ya5WqB5GZqFlXksXFCf/e84CKvDRES2UXMFqszQZXs8Zp7R6xyvI+xar8GR2YG3bMACU6b+JXHxBkA1UqbExF0tMWzvC47qb1CQ2L43tI2GZ99g3DJ+KZIJ7K0bRoEUCwZWqjr4ECkB8AZ27Cbcg1yPGXd3NchWFYOmzDKdlcFgNP1eaaIr3n5sAdO5bq8gzWaSWJGltyMoLu+FaN6wDbdzGzHYGxaLBzMJxCH60I9VQvYTT/O/AweTMuXCeVTdJeR4Q/fQI3W1NTbkn9JB4ZzILXr5nLI6XO6Xu3UTXDYZn0pAbMR006SsSkynocO/rof+TCmxCqXdZ8iu/yYOY4dykeg=="/>
+</div>
+<!-- startHeader -->
+<div class="contentHeader">
+<div class="container-fluid backgroundBlue">
+<div class="container visible-lg visible-md">
+<div class="row headerTopBar">
+<div class="col-md-6 headerTagline">
+<!-- tagline goes here -->
+</div>
+<div class="col-md-12 topNav">
+<span id="ctl00_Header1_topNav"><ul class="egNav_topNav"><li class=" egMenu_608 egMenuLevel_0"><a class=" egMenuLevel_0" href="/Admissions/Apply/" onclick="ga('send','event','Apply','Click','Apply');" target="_self">Apply</a></li><li class=" egMenu_34359739355 egMenuLevel_0"><a class=" egMenuLevel_0" href="/visit/" onclick="ga('send','event','Visit','Click','Visit');" target="_self">Visit</a></li><li class=" egMenu_30064771354 egMenuLevel_0"><a class=" egMenuLevel_0" href="https://apply.sdsmt.edu/register/ug-info-request" onclick="ga('send','event','Inquire','Click','Inquire');" target="_blank">Inquire</a></li><li class=" egMenu_30064771277 last egMenuLevel_0 last"><a class=" egMenuLevel_0 last" href="/Degrees/" onclick="ga('send','event','Degrees','Click','Degrees');" target="_self">Degrees</a></li></ul></span>
+</div>
+<div class="col-md-6 floatRight">
+<div class="input-group searchGroup" id="ctl00_Header1_UxSearchForm">
+<input class="form-control" id="ctl00_Header1_TextBoxHeaderSearch" name="ctl00$Header1$TextBoxHeaderSearch" onclick="this.value=''" onfocus="javascript:this.select()" type="text" value="Search . . ."/>
+<span class="input-group-btn">
+<a class="btn btn-primary searchButton" href="javascript:__doPostBack('ctl00$Header1$UxSearchSubmit','')" id="ctl00_Header1_UxSearchSubmit" usesubmitbehavior="false"><i aria-hidden="true" class="glyphicon glyphicon-search searchGlyphicon"></i></a>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="visible-sm visible-xs">
+<div class="row col-sm-24 center" style="margin-left: -20px; margin-right: -20px;">
+<input id="ctl00_Header1_HiddenFieldMenuState" name="ctl00$Header1$HiddenFieldMenuState" type="hidden" value="false"/>
+<a class="decorateNone" href="Controls/#" id="btnMobileMenuToggle">
+<div class="glyphicon glyphicon-menu-hamburger toggleMenuIcon block"></div>
+</a>
+<div class="topNav topNavSmall block">
+<span id="ctl00_Header1_FlexMenu1"><ul class="egNav_FlexMenu1"><li class=" egMenu_608 egMenuLevel_0"><a class=" egMenuLevel_0" href="/Admissions/Apply/" onclick="ga('send','event','Apply','Click','Apply');" target="_self">Apply</a></li><li class=" egMenu_34359739355 egMenuLevel_0"><a class=" egMenuLevel_0" href="/visit/" onclick="ga('send','event','Visit','Click','Visit');" target="_self">Visit</a></li><li class=" egMenu_30064771354 egMenuLevel_0"><a class=" egMenuLevel_0" href="https://apply.sdsmt.edu/register/ug-info-request" onclick="ga('send','event','Inquire','Click','Inquire');" target="_blank">Inquire</a></li><li class=" egMenu_30064771277 last egMenuLevel_0 last"><a class=" egMenuLevel_0 last" href="/Degrees/" onclick="ga('send','event','Degrees','Click','Degrees');" target="_self">Degrees</a></li></ul></span>
+</div>
+<div class="block">
+<div class="left">
+<input id="ctl00_Header1_HiddenFiendSearchState" name="ctl00$Header1$HiddenFiendSearchState" type="hidden" value="false"/>
+<a href="Controls/#" id="btnMobileSearchToggle">
+<span class="glyphicon glyphicon-search toggleSearchIcon"></span>
+</a>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-24">
+<div class="displayNone toggleMenu" id="UxPanelMobileMainMenu">
+<ul>
+<li class=""><a href="/About/">
+                                    About</a>
+</li>
+<li class=""><a href="/Admissions/">
+                                    Admissions</a>
+</li>
+<li class=""><a href="/Academics/">
+                                    Academics</a>
+</li>
+<li class=""><a href="/Campus-Life/">
+                                    Campus Life</a>
+</li>
+<li class=""><a href="http://www.gorockers.com">
+                                    Athletics</a>
+</li>
+<li class=""><a href="/News/Releases/">
+                                    News</a>
+</li>
+<li class=""><a href="/Home/Event-Calendar/">
+                                    Events</a>
+</li>
+<li class="last"><a href="/Research/">
+                                    Research</a>
+</li>
+</ul>
+</div>
+<div class="displayNone input-group searchGroup" id="UxMobileSearchForm">
+<input class="form-control" id="ctl00_Header1_TextBoxMobileSearch" name="ctl00$Header1$TextBoxMobileSearch" onclick="this.value=''" onfocus="javascript:this.select()" type="text" value="Search . . ."/>
+<span class="input-group-btn">
+<a class="btn btn-primary searchButton" href="javascript:__doPostBack('ctl00$Header1$UxMobileSearchSubmit','')" id="ctl00_Header1_UxMobileSearchSubmit" usesubmitbehavior="false"><i aria-hidden="true" class="glyphicon glyphicon-search searchGlyphicon"></i></a>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- start White -->
+<div class="container-fluid backgroundWhite">
+<div class="container visible-md visible-lg">
+<div class="row branding">
+<div class="col-md-8 col-lg-6 logo">
+<a class="textLogo decorateNone" href="/" id="ctl00_Header1_logoText">SD MINES</a>
+</div>
+<div class="col-md-16 col-lg-18 center">
+<p class="sdMines">South Dakota School of Mines &amp; Technology</p>
+<p class="tradition">
+<em>— Science and Engineering since 1885 —</em>
+</p>
+</div>
+</div>
+</div>
+<div class="visible-xs visible-sm">
+<div class="row">
+<div class="col-xs-24 col-sm-24 center">
+<a class="textLogo decorateNone" href="/" id="ctl00_Header1_logoTextMobile">SD MINES</a>
+<p class="sdMines sdMinesMobile">South Dakota School of Mines &amp; Technology</p>
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid visible-md visible-lg mainMenuContainer">
+<div class="container center">
+<div class="mainMenu row">
+<ul>
+<li><a href="/About/" target="">
+                            About</a>
+</li>
+<li><a href="/Admissions/" target="">
+                            Admissions</a>
+</li>
+<li><a href="/Academics/" target="">
+                            Academics</a>
+</li>
+<li><a href="/Campus-Life/" target="">
+                            Campus Life</a>
+</li>
+<li><a href="http://www.gorockers.com" target="_blank">
+                            Athletics</a>
+</li>
+<li><a href="/News/Releases/" target="">
+                            News</a>
+</li>
+<li><a href="/Home/Event-Calendar/" target="">
+                            Events</a>
+</li>
+<li><a href="/Research/" target="">
+                            Research</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- endHeader -->
+<!-- #BeginEditable "body" -->
+<div class="contentBody">
+<!-- Home Admissions Banner goes in the following div -->
+<div id="ctl00_MasterBody_CollectionHomeAdmissionsBanner">
+</div>
+<div id="ctl00_MasterBody_HomeAdmissionsBannerDiv" tabindex="-1">
+<div class="visible-md visible-lg homeAdmissionsBannerFull" id="ctl00_MasterBody_RepeaterHomeAdmissionsBanner_ctl00_divAdmissionsBannerFull" style="background-image: url(/uploadedImages/Content/Home/_Admissions_Banner/SD-Mines-High-Average-Starting-Salary-Three-Students-At-Career-Fair.jpg)">
+<div class="container">
+<div class="homeAdmissionsMarqueeMessage">
+<div class="visible-md visible-lg homeAdmissionsCaption">
+<h1 style="line-height: 1.2;">#1 Engineering School for <br/>Return on Investment<br/>and Starting Salaries</h1>
+</div>
+<div class="center" id="ctl00_MasterBody_RepeaterHomeAdmissionsBanner_ctl00_divBannerButtonFull">
+<button class="btn btn-default homeAdmissionsButton jsNavButtonClick" value="/News/SD-Mines-Ranks-High-in-ROI-for-2020">
+                                    Learn More
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<div class="visible-sm visible-xs homeAdmissionsBannerFull" id="ctl00_MasterBody_RepeaterHomeAdmissionsBanner_ctl00_divAdmissionsBannerMobile" style="background-image: url(/uploadedImages/Content/Home/_Admissions_Banner/SD-Mines-High-Average-Starting-Salary-Three-Students-At-Career-Fair.jpg)">
+<div class="container">
+<div class="homeAdmissionsMarqueeMessage">
+<div class="visible-xs visible-sm homeAdmissionsCaption">
+<h1 style="line-height: 1.2;">#1 Engineering School for <br/>Return on Investment<br/>and Starting Salaries</h1>
+</div>
+<div class="center" id="ctl00_MasterBody_RepeaterHomeAdmissionsBanner_ctl00_divBannerButtonMobile">
+<button class="btn btn-default homeAdmissionsButton jsNavButtonClick" value="/News/SD-Mines-Ranks-High-in-ROI-for-2020">
+                                    Learn More
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid" id="ctl00_MasterBody_ContentSection1Div">
+<div class="container homeContentSection">
+<div id="ctl00_MasterBody_contentSection1">
+<div class="row" style="margin-top:2em;">
+<div class="col-sm-12 col-md-6">
+<a href="/Home/Admissions/" title="Undergraduate Admissions">
+<img alt="CTAundergradAdm2" class="img-responsive" src="/uploadedImages/Content/Home/CTA/hmUndergradAdmissions2.jpg" style="height: 200px; width: 263px;" title="CTAundergradAdm2"/> </a>
+<h4 class="fbHeading">Undergraduate Admissions</h4>
+<p class="featureBox marginBottom0">SD Mines is a STEM university, with curriculum that allows you to jump into your major from day one. At Mines, we expect you to break things, build things, explore your passions, and invent tomorrow.</p>
+<p class="moreLink">
+<a href="/Home/Admissions/"><b>Read more &gt;&gt;</b> </a>   |                                                                                                                                                                                                                    
+                                                                                                                                                     
+            <a href="/Admissions/Apply/" onclick="ga('send','event','Apply','Click','Apply');" title="Apply"><b>                                                                                                                                                                                                                                     
+            Apply &gt;&gt;</b> </a> </p> </div>
+<div class="col-sm-12 col-md-6">
+<a href="/Academics/Graduate-Education/Prospective-Graduate-Students/" title="Prospective Graduate Students">
+<img alt="CTAGradAdmissions2" class="img-responsive" src="/uploadedImages/Content/Home/CTA/hmGradAdmissions2.jpg" style="height: 200px; width: 263px;" title="CTAGradAdmissions2"/> </a>
+<h4 class="fbHeading">Graduate Admissions</h4>
+<p class="featureBox marginBottom0">Gain access to renowned faculty, high-tech facilities, challenging projects, and the resources you need to advance your career and research what matters - here and around the globe.</p>
+<p class="moreLink">
+<a href="/GraduateAdmissions/" title="Graduate Admissions"><b>Read more &gt;&gt;</b> </a>   |                                                                                                                                                                                                                                                      <b><a href="/Grad-Apply/" target="_blank">Apply &gt;&gt;</a></b> </p> </div>
+<div class="col-sm-12 col-md-6">
+<a class="img-responsive" href="/About/Why-Mines/Great-Value/" title="Great Value">
+<img alt="CTAEducationValueJP" class="img-responsive" src="/uploadedImages/Content/Home/hmEducationValue2.jpg" style="height: 200px; width: 263px;" title="CTAEducationValueJP"/> </a>
+<h4 class="fbHeading">Best Engineering University</h4>
+<p class="featureBox marginBottom0">SD Mines was ranked as the #1 engineering university in the country by College Factual. Our affordable price, competitive scholarships, high placement rate and starting salary make our university a great return on investment.</p>
+<p class="moreLink">
+<a href="/News/SD-Mines-Ranks-High-in-ROI-for-2020/" title="Great Value"><b>Read more &gt;&gt;</b> </a>
+<br/> </p> </div>
+<div class="col-sm-12 col-md-6">
+<a href="/SummerCamps/" title="Register today for Summer Camps">
+<img alt="CTA South Dakota Mines Summer Camps Scholarships Available" class="img-responsive" src="/uploadedImages/Content/Home/South-Dakota-Mines-Summer-Camps-Scholarships-Available.jpg" style="width: 262px; height: 200px;" title="CTA South Dakota Mines Summer Camps Scholarships Available"/> </a>
+<h4 class="fbHeading">2020 Summer Camps<br/></h4>
+<p class="featureBox marginBottom0">Our summer camps are designed to be fun and hands-on, and are for high school students (grades 9 - 12). Registration is available now for our 2020 Camps!</p>
+<p class="moreLink">
+<a href="/SummerCamps" title="Apply Today &gt;&gt; "><b>Register Today &gt;&gt;</b></a>
+<br/> </p> </div> </div>
+</div>
+</div>
+</div>
+<div class="container-fluid backgroundGray" id="ctl00_MasterBody_ContentSection2Div">
+<div class="container homeContentSection">
+<div id="ctl00_MasterBody_contentSection2">
+<div class="col-24 col-lg-24">
+<a class="thumbnail" href="/SURF/"> <span class="carousel-caption">
+<p class="homeAdmissionsMarqueeMessage">SANFORD UNDERGROUND RESEARCH FACILITY<br/> LEARN MORE &gt;&gt;</p></span>
+<img alt="SD Mines SURF Sanford Underground Research Facility" class="img-responsive" src="/uploadedImages/Content/Home/_Admissions_Banner/SD-Mines-SURF-Sanford-Underground-Research-Facility.jpg" style="width: 100%;" title="SD Mines SURF Sanford Underground Research Facility"/> </a> </div>
+<!--<div class="row">                                                                     
+    <div class=" col-xs-24 col-sm-20 col-sm-offset-1">                                                                                                                             
+        <p style="font-size:160%;text-align:center;margin: 0;line-height:1.2;padding:.2em .2em .6em .2em;">16 undergraduate degrees/majors, 23 graduate degrees, 18 minors plus certificate options help you prepare for the future you envision         </p>    </div>
+</div>
+<div class="row">                                                                     
+    <div class="col-md-6 col-sm-12">                                                                                                                                  
+        <h4 class="degrees"  style="line-height: 1.6; margin: 0px; padding: 0px;">
+<a href="/Academics/Degrees/Atmospheric-Sciences/" title="Atmospheric Sciences">Atmospheric Sciences</a><br/>
+<a href="/Academics/Degrees/Appl--Biological-Sciences/" title="Appl. Biological Sciences">Biological Sciences</a><br/>
+<a href="/Academics/Degrees/Chemical-Engineering/" title="Chemical Engineering">Chem/Bio Engineering</a><br/> 
+<a href="/Academics/Degrees/Chemistry/" title="Chemistry">Chemistry</a></h4>
+    </div>                                                                     
+    <div class="col-md-6 col-sm-12">                                                                                                                                      
+        <h4 class="degrees"  style="line-height: 1.6; margin: 0px; padding: 0px;">
+<a href="/Academics/Degrees/Civil-Engineering/" title="Civil Engineering">Civil Engineering</a><br/>
+<a href="/Academics/Degrees/Computer-Engineering/" title="Computer Engineering">Computer Engineering</a><br/>
+<a href="/Academics/Degrees/Computer-Science/" title="Computer Science">Computer Science</a><br/> 
+<a href="/Academics/Degrees/Electrical-Engineering/" title="Electrical Engineering">Electrical Engineering</a></h4>                                                                                                                    
+        <h4 class="degrees"  style="line-height: 1.6; margin: 0px; padding: 0px;"><a href="/Academics/Departments/Geology-and-Geological-Engineering/Undergraduate-Education/Geological-Engineering-Major/" title="Geological Engineering Major">Geological Engineering</a><br/>
+    </h4>    </div>                                                                     
+    <div class="col-md-6 col-sm-12"  style="margin-right.5em;padding-right:0;">                                                                                                                                  
+        <h4 class="degrees"  style="line-height: 1.6; margin: 0px; padding: 0px;">
+<a href="/Academics/Departments/Geology-and-Geological-Engineering/Undergraduate-Education/Geology-Major/" title="Geology Major">Geology</a><br/>
+<a href="/Academics/Degrees/Industrial-Engineering/" title="Industrial Engineering">Industrial Engineering</a><br/>
+<a href="/Academics/Degrees/Mathematics/" title="Mathematics">Mathematics</a><br/> 
+<a href="/Academics/Degrees/Mechanical-Engineering/" title="Mechanical Engineering">Mechanical Engineering</a></h4>                                                                                                                    
+        <h4 class="degrees"  style="line-height: 1.6; margin: 0px; padding: 0px;"><a href="/Academics/Degrees/Metallurgical-Engineering/" title="Metallurgical Engineering">Metallurgical Engineering</a><br/>
+    </h4>    </div>                                                                     
+    <div class="col-md-6 col-sm-12">                                                                                                                                  
+        <h4 class="degrees"  style="line-height: 1.6; margin: 0px; padding: 0px;">
+<a href="/Academics/Degrees/Mining-Engineering-and-Management/" title="Mining Engineering">Mining Engineering</a><br/>
+<a href="/Academics/Degrees/Physics/" title="Physics">Physics</a><br/>
+<a href="/Academics/Degrees/Prelaw/" title="Prelaw">Pre-Law (IS)</a><br/> 
+<a href="/Academics/Degrees/PreMed/" title="PreMed">Pre-Med (IS)</a><br/>
+    </h4>    </div>
+</div>
+<p style="text-align:center;color:#011c4f;margin:1em 0 0 0"><i class="flaticon-microscope4"></i><i class="flaticon-beaker5"></i><i class="flaticon-gearwheels"></i><i class="flaticon-cube9"></i>
+</p>
+--->
+</div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="container audienceNav">
+<div class="row">
+<!-- startHomeAudienceNav -->
+<div class="col-md-4">
+<button class="btn btn-default buttonGray jsNavButtonClick" value="/A-Z/">A-Z List</button>
+</div>
+<div class="col-md-4">
+<button class="btn btn-default buttonGray jsNavButtonClick" value="/Directories/Personnel/">Directories</button>
+</div>
+<div class="col-md-4">
+<button class="btn btn-default buttonGray jsNavButtonClick" value="/Audience/Current-Students/Current-Students/">Current Students</button>
+</div>
+<div class="col-md-4">
+<button class="btn btn-default buttonGray jsNavButtonClick" value="/MinesFamily/">Parents/Families</button>
+</div>
+<div class="col-md-4">
+<button class="btn btn-default buttonGray jsNavButtonClick" value="/Audience/Faculty-Staff/Faculty-Staff/">Faculty/Staff</button>
+</div>
+<div class="col-md-4">
+<button class="btn btn-default buttonGray jsNavButtonClick" value="/About/Alumni-and-Foundation/">Alumni/Donors</button>
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="container marginTopEm1_0">
+<div class="row">
+<!-- startRotator -->
+<div class="homeRotator col-md-12">
+<div class="headerNewsEvents">MINES HEADLINES</div>
+<div id="ctl00_MasterBody_UxRotator">
+</div>
+<div id="UxRotatorList">
+<div id="ctl00_MasterBody_UxRotatorItems_ctl01_divBannerItem" title="">
+<div class="visible-md visible-lg" style="padding-bottom: 0">
+<input class="homeRotatorImage" id="ctl00_MasterBody_UxRotatorItems_ctl01_ImageButtonFullImage" name="ctl00$MasterBody$UxRotatorItems$ctl01$ImageButtonFullImage" onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MasterBody$UxRotatorItems$ctl01$ImageButtonFullImage", "", false, "", "/News/South-Dakota-Mines-Physics-Students-Win-National-Recognition/", false, false))' src="/uploadedImages/Content/Home/_Headline_Rotator/121719-SD-Mines-Physics-Students-Win-National-Recognition.jpg" type="image"/>
+</div>
+<div class="visible-xs visible-sm">
+<input id="ctl00_MasterBody_UxRotatorItems_ctl01_ImageButtonMobileImage" name="ctl00$MasterBody$UxRotatorItems$ctl01$ImageButtonMobileImage" onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MasterBody$UxRotatorItems$ctl01$ImageButtonMobileImage", "", false, "", "/News/South-Dakota-Mines-Physics-Students-Win-National-Recognition/", false, false))' src="/uploadedImages/Content/Home/_Headline_Rotator/121719-SD-Mines-Physics-Students-Win-National-Recognition.jpg" type="image"/>
+</div>
+<div class="bannerLink">
+<button class="btn btn-default buttonReadMore jsNavButtonClick" id="ctl00_MasterBody_UxRotatorItems_ctl01_buttonBannerLink" type="button" value="/News/South-Dakota-Mines-Physics-Students-Win-National-Recognition/">Read More</button>
+</div>
+<div class="headline" id="ctl00_MasterBody_UxRotatorItems_ctl01_divHeadline">
+<div>
+<h3 class="visible-xs visible-sm visible-md visible-lg homeRotatorHeadline">
+<span id="ctl00_MasterBody_UxRotatorItems_ctl01_LabelBannerHeadlineLarge"><headline>South Dakota Mines Physics Students Win National Recognition</headline></span></h3>
+</div>
+<!--                                    <div class="visible-md visible-sm headlineMedium">
+                                        <span id="ctl00_MasterBody_UxRotatorItems_ctl01_LabelBannerHeadlineMedSmall"><Headline>South Dakota Mines Physics Students Win National Recognition</Headline></span>
+                                    </div>
+                                    <div class="visible-xs headlineXSmall">
+                                        <span id="ctl00_MasterBody_UxRotatorItems_ctl01_LabelBannerHeadlineXSmall"><Headline>South Dakota Mines Physics Students Win National Recognition</Headline></span>
+                                    </div>-->
+</div>
+<div class="visible-xs visible-sm visible-md visible-lg caption">
+<p>The South Dakota Mines chapter of the Society of Physics Students (SPS) has won an Outstanding Chapter Award from the SPS National Office. This is the fourth year in a row the chapter has been recognized for its excellence. </p>
+</div>
+</div>
+<div id="ctl00_MasterBody_UxRotatorItems_ctl02_divBannerItem" title="">
+<div class="visible-md visible-lg" style="padding-bottom: 0">
+<input class="homeRotatorImage" id="ctl00_MasterBody_UxRotatorItems_ctl02_ImageButtonFullImage" name="ctl00$MasterBody$UxRotatorItems$ctl02$ImageButtonFullImage" onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MasterBody$UxRotatorItems$ctl02$ImageButtonFullImage", "", false, "", "/News/2019-CEO-Business-Contest/", false, false))' src="/uploadedImages/Content/Home/_Headline_Rotator/121219-Female-Student-Wins-2019-CEO-Business-Contest.jpg" type="image"/>
+</div>
+<div class="visible-xs visible-sm">
+<input id="ctl00_MasterBody_UxRotatorItems_ctl02_ImageButtonMobileImage" name="ctl00$MasterBody$UxRotatorItems$ctl02$ImageButtonMobileImage" onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MasterBody$UxRotatorItems$ctl02$ImageButtonMobileImage", "", false, "", "/News/2019-CEO-Business-Contest/", false, false))' src="/uploadedImages/Content/Home/_Headline_Rotator/121219-Female-Student-Wins-2019-CEO-Business-Contest.jpg" type="image"/>
+</div>
+<div class="bannerLink">
+<button class="btn btn-default buttonReadMore jsNavButtonClick" id="ctl00_MasterBody_UxRotatorItems_ctl02_buttonBannerLink" type="button" value="/News/2019-CEO-Business-Contest/">Read More</button>
+</div>
+<div class="headline" id="ctl00_MasterBody_UxRotatorItems_ctl02_divHeadline">
+<div>
+<h3 class="visible-xs visible-sm visible-md visible-lg homeRotatorHeadline">
+<span id="ctl00_MasterBody_UxRotatorItems_ctl02_LabelBannerHeadlineLarge"><headline>Women Student Entrepreneurs Take Home Top Prizes in 2019 “Shark Tank” Style Competition</headline></span></h3>
+</div>
+<!--                                    <div class="visible-md visible-sm headlineMedium">
+                                        <span id="ctl00_MasterBody_UxRotatorItems_ctl02_LabelBannerHeadlineMedSmall"><Headline>Women Student Entrepreneurs Take Home Top Prizes in 2019 “Shark Tank” Style Competition</Headline></span>
+                                    </div>
+                                    <div class="visible-xs headlineXSmall">
+                                        <span id="ctl00_MasterBody_UxRotatorItems_ctl02_LabelBannerHeadlineXSmall"><Headline>Women Student Entrepreneurs Take Home Top Prizes in 2019 “Shark Tank” Style Competition</Headline></span>
+                                    </div>-->
+</div>
+<div class="visible-xs visible-sm visible-md visible-lg caption">
+<p>The sixth annual CEO Business Plan Competition at the South Dakota School of Mines &amp; Technology wrapped up Saturday with female students winning all but one of the top prizes. The winners took home more than $7,000 in total prize money that can be used toward their business ideas. </p>
+</div>
+</div>
+<div id="ctl00_MasterBody_UxRotatorItems_ctl03_divBannerItem" title="">
+<div class="visible-md visible-lg" style="padding-bottom: 0">
+<input class="homeRotatorImage" id="ctl00_MasterBody_UxRotatorItems_ctl03_ImageButtonFullImage" name="ctl00$MasterBody$UxRotatorItems$ctl03$ImageButtonFullImage" onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MasterBody$UxRotatorItems$ctl03$ImageButtonFullImage", "", false, "", "/Research/Research@Mines/Nanopareil,-Where-Tiny-Fibers-Reap-Huge-Rewards/", false, false))' src="/uploadedImages/Content/Home/_Headline_Rotator/Male-Scientist-In-Lab-Showing-Nanofibers.jpg" type="image"/>
+</div>
+<div class="visible-xs visible-sm">
+<input id="ctl00_MasterBody_UxRotatorItems_ctl03_ImageButtonMobileImage" name="ctl00$MasterBody$UxRotatorItems$ctl03$ImageButtonMobileImage" onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MasterBody$UxRotatorItems$ctl03$ImageButtonMobileImage", "", false, "", "/Research/Research@Mines/Nanopareil,-Where-Tiny-Fibers-Reap-Huge-Rewards/", false, false))' src="/uploadedImages/Content/Home/_Headline_Rotator/Male-Scientist-In-Lab-Showing-Nanofibers.jpg" type="image"/>
+</div>
+<div class="bannerLink">
+<button class="btn btn-default buttonReadMore jsNavButtonClick" id="ctl00_MasterBody_UxRotatorItems_ctl03_buttonBannerLink" type="button" value="/Research/Research@Mines/Nanopareil,-Where-Tiny-Fibers-Reap-Huge-Rewards/">Read More</button>
+</div>
+<div class="headline" id="ctl00_MasterBody_UxRotatorItems_ctl03_divHeadline">
+<div>
+<h3 class="visible-xs visible-sm visible-md visible-lg homeRotatorHeadline">
+<span id="ctl00_MasterBody_UxRotatorItems_ctl03_LabelBannerHeadlineLarge"><headline>Nanopareil: Where Tiny Fibers Reap Huge Rewards</headline></span></h3>
+</div>
+<!--                                    <div class="visible-md visible-sm headlineMedium">
+                                        <span id="ctl00_MasterBody_UxRotatorItems_ctl03_LabelBannerHeadlineMedSmall"><Headline>Nanopareil: Where Tiny Fibers Reap Huge Rewards</Headline></span>
+                                    </div>
+                                    <div class="visible-xs headlineXSmall">
+                                        <span id="ctl00_MasterBody_UxRotatorItems_ctl03_LabelBannerHeadlineXSmall"><Headline>Nanopareil: Where Tiny Fibers Reap Huge Rewards</Headline></span>
+                                    </div>-->
+</div>
+<div class="visible-xs visible-sm visible-md visible-lg caption">
+<p>The technology at the heart of Nanopareil was developed at SD Mines. It revolves around nanofibers a thousand times smaller than a human hair, but its potential impact on the pharmaceutical industry could be massive. </p>
+</div>
+</div>
+<div id="ctl00_MasterBody_UxRotatorItems_ctl04_divBannerItem" title="">
+<div class="visible-md visible-lg" style="padding-bottom: 0">
+<input class="homeRotatorImage" id="ctl00_MasterBody_UxRotatorItems_ctl04_ImageButtonFullImage" name="ctl00$MasterBody$UxRotatorItems$ctl04$ImageButtonFullImage" onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MasterBody$UxRotatorItems$ctl04$ImageButtonFullImage", "", false, "", "/News/SD-Mines-Ranks-High-in-ROI-for-2020/#.XahwQGZ7nt5", false, false))' src="/uploadedImages/Content/News/Rankings-SD-Mines-forweb.jpg?n=3801" type="image"/>
+</div>
+<div class="visible-xs visible-sm">
+<input id="ctl00_MasterBody_UxRotatorItems_ctl04_ImageButtonMobileImage" name="ctl00$MasterBody$UxRotatorItems$ctl04$ImageButtonMobileImage" onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MasterBody$UxRotatorItems$ctl04$ImageButtonMobileImage", "", false, "", "/News/SD-Mines-Ranks-High-in-ROI-for-2020/#.XahwQGZ7nt5", false, false))' src="/uploadedImages/Content/News/Rankings-SD-Mines-forweb.jpg?n=3801" type="image"/>
+</div>
+<div class="bannerLink">
+<button class="btn btn-default buttonReadMore jsNavButtonClick" id="ctl00_MasterBody_UxRotatorItems_ctl04_buttonBannerLink" type="button" value="/News/SD-Mines-Ranks-High-in-ROI-for-2020/#.XahwQGZ7nt5">Read More</button>
+</div>
+<div class="headline" id="ctl00_MasterBody_UxRotatorItems_ctl04_divHeadline">
+<div>
+<h3 class="visible-xs visible-sm visible-md visible-lg homeRotatorHeadline">
+<span id="ctl00_MasterBody_UxRotatorItems_ctl04_LabelBannerHeadlineLarge"><headline>SD Mines Again Ranks as the Best Engineering School in the Country for Return on Investment</headline></span></h3>
+</div>
+<!--                                    <div class="visible-md visible-sm headlineMedium">
+                                        <span id="ctl00_MasterBody_UxRotatorItems_ctl04_LabelBannerHeadlineMedSmall"><Headline>SD Mines Again Ranks as the Best Engineering School in the Country for Return on Investment</Headline></span>
+                                    </div>
+                                    <div class="visible-xs headlineXSmall">
+                                        <span id="ctl00_MasterBody_UxRotatorItems_ctl04_LabelBannerHeadlineXSmall"><Headline>SD Mines Again Ranks as the Best Engineering School in the Country for Return on Investment</Headline></span>
+                                    </div>-->
+</div>
+<div class="visible-xs visible-sm visible-md visible-lg caption">
+<p>In its 2020 rankings, the organization College Factual 
+places South Dakota School of Mines &amp; Technology as the best 
+engineering school for the money out of 302 similar institutions across 
+the United States.</p>
+<p></p>
+</div>
+</div>
+</div>
+<script id="EktronScriptBlockhwcly" type="text/javascript">
+
+Ektron.ready(function(event, eventName){
+
+                            $ektron('#UxRotatorList').jshowoff({ controls:false, hoverPause:false }); 
+                        
+});
+
+
+</script>
+</div>
+<div class="col-md-6">
+<!-- startNews/Events/CTA -->
+<div class="headerNewsEvents">NEWS</div>
+<div class="center">
+<button class="btn btn-default buttonGray jsNavButtonClick" id="buttonMoreNews" value="/News/Releases">MORE: Mines Newsroom   <span class="glyphicon glyphicon-edit" style="color: #011c4f; font-size: 1.6em"></span></button>
+</div>
+<div class="newsHeadline">
+<a href="/News/Fall-2019-Dean-s-List/" id="ctl00_MasterBody_UxNews_ctl00_HyperLinkNews">SD Mines Names 616 Students to Fall 2019 Dean’s List</a>
+</div>
+<div class="newsHeadline">
+<a href="/News/South-Dakota-Mines-Students-Serve-on-2020-MLK-Day/" id="ctl00_MasterBody_UxNews_ctl01_HyperLinkNews">South Dakota Mines Mobilizes Students to Serve on MLK Jr. Holiday</a>
+</div>
+<div class="newsHeadline">
+<a href="/News/Spring-2020-Spring-STEAM-Caf%c3%a9-Schedule/" id="ctl00_MasterBody_UxNews_ctl02_HyperLinkNews">Spring STEAM Café Talks Delve Into the History of Pi, Wildfires and Weather, 3D Printing and More</a>
+</div>
+<div class="newsHeadline">
+<a href="/News/Bill-Spindle-Named-New-VP-Finance/" id="ctl00_MasterBody_UxNews_ctl03_HyperLinkNews">Mines Names New VP for Finance &amp; Administration</a>
+</div>
+<div class="newsHeadline">
+<a href="/News/Largest-Estate-Gift-in-University-History/" id="ctl00_MasterBody_UxNews_ctl04_HyperLinkNews">South Dakota Mines Receives Largest Estate Gift in University History</a>
+</div>
+<div class="newsHeadline">
+<a href="/News/South-Dakota-Mines-Physics-Students-Win-National-Recognition/" id="ctl00_MasterBody_UxNews_ctl05_HyperLinkNews">South Dakota Mines Physics Students Win National Recognition</a>
+</div>
+<div class="iconRSS">
+<a href="NewsRSS.aspx" target="_blank">
+<i class="flaticon-web-feed1"></i>
+</a>
+</div>
+</div>
+<div class="col-md-6">
+<div class="headerNewsEvents">EVENTS</div>
+<div class="center">
+<button class="btn btn-default buttonGray jsNavButtonClick" id="buttonMoreEvents" value="/Events/">MORE: Mines Calendar   <span class="glyphicon glyphicon-calendar" style="color: #011c4f; font-size: 1.6em"></span><span class="glyphicon glyphicon-rss" style="color: #444444; font-size: 1.6em"></span></button>
+</div>
+<div class="wrapNewsEvent">
+<div class="eventDate">
+<div class="eventDateMM">
+                                        Feb
+                                    </div>
+<div class="eventDateDD">
+                                        02
+                                    </div>
+</div>
+<div class="eventInfo">
+<div class="eventTitle">
+<a href="/Events.aspx?id=38654709637&amp;dt=2/2/2020">Nostalgia Night Film Series - Feb 2</a>
+</div>
+<div class="eventTime">
+<span id="ctl00_MasterBody_UxEvents_ctl00_LabelEventStart">7:15 PM</span>
+<span id="ctl00_MasterBody_UxEvents_ctl00_LabelEventHyphen"> - </span>
+<span id="ctl00_MasterBody_UxEvents_ctl00_LabelEventEnd">9:15 PM</span>
+</div>
+</div>
+</div>
+<div class="wrapNewsEvent">
+<div class="eventDate">
+<div class="eventDateMM">
+                                        Feb
+                                    </div>
+<div class="eventDateDD">
+                                        09
+                                    </div>
+</div>
+<div class="eventInfo">
+<div class="eventTitle">
+<a href="/Events.aspx?id=38654709639&amp;dt=2/9/2020">Nostalgia Night Film Series - Feb 9</a>
+</div>
+<div class="eventTime">
+<span id="ctl00_MasterBody_UxEvents_ctl01_LabelEventStart">7:15 PM</span>
+<span id="ctl00_MasterBody_UxEvents_ctl01_LabelEventHyphen"> - </span>
+<span id="ctl00_MasterBody_UxEvents_ctl01_LabelEventEnd">9:15 PM</span>
+</div>
+</div>
+</div>
+<div class="wrapNewsEvent">
+<div class="eventDate">
+<div class="eventDateMM">
+                                        Feb
+                                    </div>
+<div class="eventDateDD">
+                                        16
+                                    </div>
+</div>
+<div class="eventInfo">
+<div class="eventTitle">
+<a href="/Events.aspx?id=38654709641&amp;dt=2/16/2020">Nostalgia Night Film Series - Feb 16</a>
+</div>
+<div class="eventTime">
+<span id="ctl00_MasterBody_UxEvents_ctl02_LabelEventStart">7:15 PM</span>
+<span id="ctl00_MasterBody_UxEvents_ctl02_LabelEventHyphen"> - </span>
+<span id="ctl00_MasterBody_UxEvents_ctl02_LabelEventEnd">9:15 PM</span>
+</div>
+</div>
+</div>
+<div class="wrapNewsEvent">
+<div class="eventDate">
+<div class="eventDateMM">
+                                        Feb
+                                    </div>
+<div class="eventDateDD">
+                                        17
+                                    </div>
+</div>
+<div class="eventInfo">
+<div class="eventTitle">
+<a href="/Events.aspx?id=38654708347&amp;dt=2/17/2020">Presidents' Day Holiday</a>
+</div>
+<div class="eventTime">
+<span id="ctl00_MasterBody_UxEvents_ctl03_LabelEventStart">All Day</span>
+</div>
+</div>
+</div>
+<div class="wrapNewsEvent">
+<div class="eventDate">
+<div class="eventDateMM">
+                                        Feb
+                                    </div>
+<div class="eventDateDD">
+                                        20
+                                    </div>
+</div>
+<div class="eventInfo">
+<div class="eventTitle">
+<a href="/Events.aspx?id=38654709818&amp;dt=2/20/2020">E-Week Jazz Band Concert</a>
+</div>
+<div class="eventTime">
+<span id="ctl00_MasterBody_UxEvents_ctl04_LabelEventStart">12:00 PM</span>
+<span id="ctl00_MasterBody_UxEvents_ctl04_LabelEventHyphen"> - </span>
+<span id="ctl00_MasterBody_UxEvents_ctl04_LabelEventEnd">1:00 PM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- endNews/Events/CTA -->
+<div class="container-fluid backgroundGray">
+<div class="container homeContentSection">
+<div id="ctl00_MasterBody_contentSection3">
+<div class="row">
+<div class="col-md-6 col-sm-12">
+<a href="https://sdsmt.collegiatelink.net/" target="_blank" title="Get Involved">
+<img alt="CTA Get Involved" class="img-responsive" src="/uploadedImages/Content/Home/hmStudentOrganizations.jpg" style="height: 200px; width: 263px;" title="CTA Get Involved"/> </a>
+<h4 class="fbHeading">Get Involved<br/></h4>
+<p>100+ student clubs and organizations offer opportunities to meet new people and learn new things, and begin friendships that can last a lifetime. Explore the options at our Mines Link website.                                                                                                
+                                                                                                                                                                                                                                
+            <br/>
+<a href="https://sdsmt.collegiatelink.net/" target="_blank" title="Get Involved"><b>Learn More &gt;&gt;</b> </a>      </p> </div>
+<div class="col-md-6 col-sm-12">
+<a href="https://alumni.sdsmt.edu/events/5-year-reunion" target="_self" title="Register Today">
+<img alt="South Dakota Mines Alumni Group" class="img-responsive" src="/uploadedImages/Content/Home/CTA/South-Dakota-Mines-Alumni-Group.jpg" style="height: 200px; width: 262px;" title="South Dakota Mines Alumni Group"/> </a>
+<h4 class="fbHeading">Alumni Reunion<br/></h4>
+<p class="featureBox">The five-year reunion for all Mines alumni will be held on campus and around the Black Hills July 8-12, 2020. Early registration ends May 31.  
+                                                                                                                                                                                                                                                                                                                      
+                                                                          
+            <br/>
+<strong><a href="https://alumni.sdsmt.edu/events/5-year-reunion" title="Register Today! &gt;&gt;">Register Today! &gt;&gt;</a></strong> </p> </div>
+<div class="col-md-6 col-sm-12">
+<a href="/News/Fall-2019-STEAM-Cafe/#.XYElUGZ7nt6" target="_new" title="Learn More">
+<img alt="STEAM Cafe Series" class="img-responsive" src="/uploadedImages/Content/Home/CTA/STEAMCafeSeries.jpg" style="height: 200px; width: 263px;" title="STEAM Cafe Series"/> </a>
+<h4 class="fbHeading">Steam Café Series</h4>
+<p class="featureBox">SD Mines continues its partnership with South Dakota Public Broadcasting and Hay Camp Brewing Company to host the STEAM Café, a series of free informal talks on topics ranging from cutting edge research to history.                                        
+                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                            
+            <br/>
+<a href="/News/Spring-2020-Spring-STEAM-Caf%c3%a9-Schedule/#.Xicd0iNlDV8" title="Learn More             &gt;&gt;"><strong>Learn More </strong></a> <a href="http://" title="Learn More             &gt;&gt;"><strong>&gt;&gt;</strong></a> </p> </div>
+<div class="col-md-6 col-sm-12">
+<a href="/VirtualTour/" title="Virtual Tour">
+<img alt="Virtual Tour CTA" class="img-responsive" src="/uploadedImages/Content/Home/CTA/Virtual_Tour_CTA.jpg" title="Virtual Tour CTA"/> </a>
+<h4 class="fbHeading">Visit our Campus Virtually!</h4>
+<p>The SD Mines virtual tour captures our unique campus using vibrant imagery, VR360 tours, and video and allows you to enjoy 360° panoramic views of our beautiful campus from the convenience of your own computer or mobile device.                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                              
+                        
+            <br/>
+<a href="/VirtualTour/" target="_self" title="Virtual Tour"><strong>Learn More &gt;&gt;</strong> </a>
+<br/> </p> </div> </div>
+</div>
+</div>
+</div>
+<!-- not being used
+    <div class="container-fluid backgroundGray">
+        <div class="container homeContentSection">
+            <div id="ctl00_MasterBody_contentSection4">
+	
+</div>
+        </div>
+    </div>
+    <div class="container-fluid backgroundGray">
+        <div class="container homeContentSection">
+            <div id="ctl00_MasterBody_contentSection5">
+	
+</div>
+        </div>
+    </div>
+-->
+<!-- #EndEditable -->
+</div>
+<!-- startFooter -->
+<div class="blockSeparator">
+</div>
+<div class="container-fluid backgroundBlue">
+<!-- this displays the original footer content item ID 80 -->
+<div class="container visible-lg visible-md">
+<div class="row footerContent">
+<div id="ctl00_Footer1_ContentBlock1">
+<!--Footer-->
+<div class="container-fluid" style="background: #011c4f;color:#e6e6ec; padding-top:4em;">
+<div class="container">
+<!-- Two Column Row -->
+<div class="row">
+<div class="col-md-8">
+<a href="https://www.facebook.com/sdsmt" style="color:#011c4f; target=">
+<img alt="" border="0" class="left" src="/uploadedImages/Content/Global/_Images/iconFacebook.png" style="height: 45px; width: 31px;"/> </a>
+<a href="http://twitter.com/sdsmt" style="color:#011c4f; target=">
+<img alt="" border="0" class="left" src="/uploadedImages/Content/Global/_Images/iconTwitter.png"/> </a>
+<a href="https://www.flickr.com/photos/sdsmt" style="color:#011c4f; target=">
+<img alt="" border="0" class="left" src="/uploadedImages/Content/Global/_Images/iconFlickr.png"/> </a>
+<a href="http://www.youtube.com/user/gotomines" style="color:#011c4f; target=">
+<img alt="" border="0" class="left" src="/uploadedImages/Content/Global/_Images/iconYouTube.png"/> </a>
+<a href="http://instagram.com/sdsmt" style="color:#011c4f; target=">
+<img alt="" border="0" class="left" src="/uploadedImages/Content/Global/_Images/iconInstagram.png"/> </a>
+<a href="/social-media" style="color:#011c4f; target=">
+<img alt="" border="0" class="left" src="/uploadedImages/Content/Global/_Images/iconAllSocialMedia.png"/> </a>
+<div class="clear">
+<br/> </div>
+<img alt="South Dakota School of Mines &amp; Technology Logo" class="footer-logo" src="/uploadedImages/Content/Global/_Images/footerLogo.png" style="float: left; padding: .6em 1.5em 0 0; margin-bottom:1em;"/>
+<p class="caption">South Dakota School of Mines &amp; Technology                                                                                                         
+                    <br/>
+<a class="lightBlue" href="https://goo.gl/maps/YwBXtbkyZdv" title="Google Address 501 E. Saint Joseph St., Rapid City, SD 57701">501 E. Saint Joseph St.                                                                                                                             
+                        <br/>                    Rapid City, SD 57701</a>
+<br/> </p>
+<p>
+<a class="lightBlue" href="tel:605-394-2511">605-394-2511</a>
+<br/>
+<a class="lightBlue" href="tel:800-544-8162">800-544-8162</a> (toll free)                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+                    <br/><strong><a class="lightBlue" href="/Contact-Us/" style="color:white" title="Contact Us">Contact Us</a></strong> </p>
+<p style="font-size: 0.9em;">                                                                                                                                                                                                                     Copyright 2019.  All rights reserved. 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+                    <br/>
+<br/>The South Dakota School of Mines &amp; Technology is an equal opportunity educator &amp; employer.                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                     
+                    <br/>
+<br/>Accreditation: <strong><a class="lightBlue" href="https://www.hlcommission.org/" target="_blank" title="https://www.hlcommission.org/">The Higher Learning Commission</a></strong>
+<br/>
+<br/><strong><a class="lightBlue" href="/privacy" title="Privacy">Privacy</a> | <strong><a class="lightBlue" href="/sitemap.aspx" title="Sitemap">Sitemap</a></strong> </strong> </p> </div><strong>
+<div class="col-md-16">
+<!-- first Four Column Row -->
+<div class="row">
+<div class="col-md-6">
+<p>
+<a class="lightBlue" href="/About/" title="About"><strong>ABOUT</strong> </a>
+<br/>
+<a class="lightBlue" href="/A-Z/" title="A-Z Index">A-Z Index</a>
+<br/>
+<a class="lightBlue" href="/About/Alumni-and-Foundation/" target="_self" title="Alumni">Alumni &amp; Foundation</a>
+<br/>
+<a class="lightBlue" href="/Academics/Registrar/Consumer-Information/" title="Consumer Information">Consumer Information</a>
+<br/>
+<a class="lightBlue" href="/PersonnelDirectory.aspx?id=4007" title="Directories">Directories</a>
+<br/>
+<a class="lightBlue" href="/Employment/" title="Employment">Employment</a>
+<br/>
+<a class="lightBlue" href="/About/University-Leadership/" title="University Leadership">Leadership</a>
+<br/>
+<a class="lightBlue" href="/About/Why-Mines/Great-Value/" title="Great Value">Recognition</a>
+<br/> </p>
+<p> <strong><a class="lightBlue" href="http://www.gorockers.com" title="ATHLETICS">ATHLETICS</a></strong>
+<br/>
+<a class="lightBlue" href="http://www.gorockers.com" target="_blank" title="Hardrocker Athletics">Hardrocker Athletics</a>
+<br/>
+<a class="lightBlue" href="http://www.hardrockclub.org/" target="_blank" title="The Hardrock Club">The Hardrock Club</a>
+<br/> </p> </div>
+<div class="col-md-6">
+<p> <strong><a class="lightBlue" href="/Admissions/" target="_self" title="ADMISSIONS">ADMISSIONS</a></strong>
+<br/>
+<a class="lightBlue" href="/Admissions/Accepted-Students/" title="International Students">Accepted Students</a>
+<br/>
+<a class="lightBlue" href="/Admissions/Apply/" onclick="ga('send','event','Apply','Click','Apply');" title="Apply">Apply</a>
+<br/>
+<a class="lightBlue" href="/Academics/Degrees/Degrees-and-Majors/" title="Degrees and Majors">Degrees &amp; Majors</a>
+<br/>
+<a class="lightBlue" href="/FinAid/" title="Financial Aid and Scholorships">Fin.Aid &amp; Scholarships</a>
+<br/>
+<a class="lightBlue" href="/GraduateAdmissions/" title="Graduate Admissions">Graduate Students</a>
+<br/>
+<a class="lightBlue" href="/Admissions/Housing-and-Dining/" title="Housing &amp; Dining">Housing &amp; Dining</a>
+<br/>
+<a class="lightBlue" href="/Admissions/International-Students/" title="International Students">International Students</a>
+<br/>
+<a class="lightBlue" href="https://apply.sdsmt.edu/register/ug-info-request" onclick="ga('send','event','Inquire','Click','Inquire');" target="_blank" title="Request Information">Request Information</a>
+<br/>
+<a class="lightBlue" href="/Admissions/Tuition-and-Fees/" title="Tuition &amp; Fees">Tuition &amp; Fees</a>
+<br/>
+<a class="lightBlue" href="/Admissions/" title="Undergraduate Students">Undergraduate Students</a>
+<br/>
+<a class="lightBlue" href="/visit/" onclick="ga('send','event','Visit','Click','Visit');" title="Visit">Visit</a>
+<br/> </p> </div>
+<div class="col-md-6">
+<p class="lightBlue"> <strong><a class="lightBlue" href="/ThreeColumn.aspx?id=1680" title="ACADEMICS">ACADEMICS</a></strong>
+<br/>
+<a class="lightBlue" href="/Academics/Academic-Calendar/" title="Academic Calendar">Academic Calendar</a>
+<br/>
+<a class="lightBlue" href="/CAMP/" title="CAMP">CAMP</a>
+<br/>
+<a class="lightBlue" href="http://ecatalog.sdsmt.edu/" target="_blank" title="Course Catalog">Course Catalog</a>
+<br/>
+<a class="lightBlue" href="https://d2l.sdbor.edu/" target="_blank" title="D2L">D2L</a>
+<br/>
+<a class="lightBlue" href="/Academics/Degrees/All-SD-Mines-Degrees/" title="All SD Mines Degrees">Degrees</a>
+<br/>
+<a class="lightBlue" href="/Academics/Departments/Academic-Departments/" title="Departments">Departments</a>
+<br/>
+<a class="lightBlue" href="/Library/" title="Devereaux Library">Devereaux Library</a>
+<br/>
+<a class="lightBlue" href="/GraduateEducation/" title="Graduate Education">Graduate Education</a>
+<br/>
+<a class="lightBlue" href="/DistanceEducation/" title="SD Mines Online">Online Degrees</a>
+<br/>
+<a class="lightBlue" href="/Pre-Health/" title="Pre-Health Program">Pre-Health Pathways</a>
+<br/>
+<a class="lightBlue" href="/registrar/" title="Registrar &amp; Enrollment">Registrar &amp; Enrollment</a>
+<br/>
+<a class="lightBlue" href="https://snap.sdbor.edu" target="_blank" title="Self-Service Banner">Self-Service Banner</a>
+<br/>
+<a class="lightBlue" href="/Academics/Registrar/Student/Transcript-Requests/" title="Transcript Request">Transcripts</a>
+<br/>
+<br/> </p> </div>
+<div class="col-md-6">
+<p class="lightBlue"><strong><a class="lightBlue" href="/ThreeColumn.aspx?id=721" title="CAMPUS LIFE">CAMPUS LIFE</a></strong>
+<br/>
+<a class="lightBlue" href="/Campus-Life/Career-Center/Career-Center-Placement/" title="Career Center-Placement">Career Center</a>
+<br/>
+<a class="lightBlue" href="/Campus-Life/Center-For-Inclusion/" title="Multicultural Affairs">Center for Inclusion</a>
+<br/>
+<a class="lightBlue" href="/Emergency/" title="Emergency">Emergency</a>
+<br/>
+<a class="lightBlue" href="/Campus-Life/Health-and-Safety/" title="Health &amp; Safety">Health &amp; Safety</a>
+<br/>
+<a class="lightBlue" href="/International/" title="International Center">International Center</a>
+<br/>
+<a class="lightBlue" href="/MinesAdvantage/" title="Mines Advantage">Mines Advantage</a>
+<br/>
+<a class="lightBlue" href="/Audience/Parents-Families/Parents-Families/" title="Parents-Families">Parent Resources</a>
+<br/>
+<a class="lightBlue" href="/ResLife/" title="Residence Life">Residence Life</a>
+<br/>
+<a class="lightBlue" href="https://sdsmt.collegiatelink.net/" target="_blank" title="Student Organizations">Student Organizations</a>
+<br/>
+<a class="lightBlue" href="/Campus-Life/The-Campus/Surbeck-Center/" title="Surbeck Center">Surbeck Center</a>
+<br/>
+<a class="lightBlue" href="/Campus-Life/Veterans-Resource-Center/" title="Veterans Resource Center">Veterans Center</a>
+<br/> </p> </div> </div>
+<!-- second Four Column Row -->
+<div class="row">
+<div class="col-md-6">
+<p>
+<a class="lightBlue" href="/Campus-Services/" title="Campus Services"><strong>CAMPUS SERVICES</strong> </a>
+<br/>
+<a class="lightBlue" href="/Campus-Services/Facilities/" title="Facilities &amp; Parking">Facilities &amp; Parking</a>
+<br/>
+<a class="lightBlue" href="/Campus-Services/Finance-and-Administration/" title="Finance &amp; Admin.">Finance &amp; Admin.</a>
+<br/>
+<a class="lightBlue" href="/Campus-Services/Human-Resources/" title="Human Resources">Human Resources</a>
+<br/>
+<a class="lightBlue" href="/its/" title="Info. Technology">Info. Technology</a>
+<br/>
+<a class="lightBlue" href="/MC/" title="Marketing and Communications">Marketing and Communications</a> </p> </div>
+<a class="lightBlue" href="/MC/" title="Marketing and Communications">
+</a>
+<div class="col-md-6">
+<a class="lightBlue" href="/MC/" title="Marketing and Communications">
+</a>
+<p>
+<a class="lightBlue" href="/MC/" title="Marketing and Communications">
+</a>
+<a class="lightBlue" href="/Research/" title="Research"><strong>RESEARCH</strong> </a>
+<br/>
+<a class="lightBlue" href="/EconomicDevelopment/" title="Economic Development">Economic Development</a>
+<br/>
+<a class="lightBlue" href="/Research/Labs-and-Centers/" title="Labs and Centers">Labs and Centers</a>
+<br/>
+<a class="lightBlue" href="/Research/" title="Research at SD Mines">Research at SD Mines</a>
+<br/> </p> </div>
+<div class="col-md-6">
+<p> <strong><a class="lightBlue" href="/NewsList.aspx?id=4131" title="NEWS &amp; EVENTS">NEWS &amp; EVENTS</a></strong>
+<br/>
+<a class="lightBlue" href="/Events/" title="Events Calendar">Events Calendar</a>
+<br/>
+<a class="lightBlue" href="/News/releases" title="News">News</a>
+<br/>
+<a class="lightBlue" href="/MC/" title="Marketing and Communications">Marketing and Communications</a> </p> </div>
+<div class="col-md-6">
+<p>
+<a class="lightBlue" href="/Campus-Life/The-Campus/" title="OUR CAMPUS"><strong>OUR CAMPUS</strong> </a>
+<br/>
+<a class="lightBlue" href="/About/APEX/APEX-Gallery/" title="Apex Gallery">Apex Gallery</a>
+<br/>
+<a class="lightBlue" href="/Campus-Life/The-Campus/Interactive-Campus-Map/" title="Campus Map">Campus Map</a>
+<br/>
+<a class="lightBlue" href="/Academics/Museum-of-Geology/Museum/" title="Museum of Geology">Museum of Geology</a>
+<br/>
+<a class="lightBlue" href="http://www.viewbook.sdsmt.edu/" target="_blank" title="Online Viewbook">Online Viewbook</a>
+<br/>
+<a class="lightBlue" href="http://www.sdsmtbookstore.com/" target="_blank" title="Rocker Shop Bookstore">Rocker Shop Bookstore</a>
+<br/>
+<a class="lightBlue" href="/VirtualTour/" title="Virtual Tour">Virtual Tour</a> </p>
+<br/> </div> </div> </div> </strong>
+</div><strong>
+<!--second Four Column row ends here--> </strong>
+</div><strong>
+</strong>
+</div><strong>
+<!--Footer--></strong>
+</div>
+</div>
+</div>
+<!-- this displays the mobile footer content item ID 10283 -->
+<div class="container visible-sm visible-xs">
+<div class="row footerContent">
+<div id="ctl00_Footer1_ContentBlock2">
+<br/>
+<div class="center" style="display:table; margin: 0 auto; padding-left:1.1em;">
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="http://www.sdsmt.edu/" target="_self" title="Home">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconHome.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a href="http://www.sdsmt.edu/" style="color:white;" target="_self" title="Home">HOME</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="/Apply/" onclick="ga('send','event','Apply','Click','Apply');" title="Apply">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconApply.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a href="/Admissions/Apply/" onclick="ga('send','event','Apply','Click','Apply');" style="color:white;" title="Apply">APPLY</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="/Visit/" onclick="ga('send','event','Visit','Click','Visit');" title="Visit">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconVisit.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a href="/Visit/" onclick="ga('send','event','Visit','Click','Visit');" style="color:white;" title="Visit">VISIT</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="http://www.viewbook.sdsmt.edu/" target="_blank" title="Online Viewbook">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconTour.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="http://www.viewbook.sdsmt.edu/" style="color:white;" target="_blank">VIEWBOOK</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="/Degrees/" onclick="ga('send','event','Degrees','Click','Degrees');" title="Degrees">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconDegrees.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="/Degrees/" onclick="ga('send','event','Degrees','Click','Degrees');" style="color:white;">DEGREES</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="/Research/" title="Research">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconResearch.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="/Research/" style="color:white;">RESEARCH</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="/PersonnelDirectory.aspx?id=4007" title="Directories">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconPeople.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="/PersonnelDirectory.aspx?id=4007" style="color:white;">PEOPLE</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="/Events/" title="Events">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconEvents.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="/Events/" style="color:white;">EVENTS</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="/Library/" title="Campus Map">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconLibrary.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="/Library/" style="color:white;">LIBRARY</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="http://gorockers.com" target="_blank" title="Hardrocker Athletics">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconSports.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="http://www.gorockers.com" style="color:white;" target="_blank">SPORTS</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="https://www.facebook.com/sdsmt" target="_blank" title="School of Mines Facebook">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconFacebook.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="https://www.facebook.com/sdsmt" style="color:white;" target="_blank">FACEBOOK</a> </p> </div>
+<div class="marginBottom0" style="padding-right:.7em;float:left;">
+<a href="https://twitter.com/sdsmt" target="_blank" title="School of Mines Twitter">
+<img alt="" draggable="false" src="/uploadedImages/Content/Global/_Images/footerIconTwitter.png"/> </a>
+<br/>
+<p class="fontNarrow" style="font-size:.9em;margin-top:.2em;">
+<a draggable="false" href="https://twitter.com/sdsmt" style="color:white;" target="_blank">TWITTER</a> </p> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- endFooter -->
+<div class="container-fluid backgroundBlue">
+<div class="container">
+<div class="col-sm-4">
+</div>
+</div>
+</div>
+</form>
+<script src="/js/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>
+
