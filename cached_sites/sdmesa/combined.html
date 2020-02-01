@@ -1,0 +1,5015 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head><style>/*
+Implementations Skeletor v3 - 5/10/2014
+
+oustyles.css
+
+Add styles to overwrite customer CSS, USE WITH CAUTION.
+
+Contributors: Your Name Here
+Last Updated: Enter Date Here
+*/
+
+/*import font awesome for alert boxes*/
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
+
+/*style datatables */
+.dataTables_wrapper div.dataTables_length{
+	float:right;
+
+}
+.dataTables_wrapper div.dataTables_length label{
+	color: #00559C !important;
+}
+.dataTables_wrapper div.dataTables_filter{
+	float:left
+}
+.dataTables_wrapper div.dataTables_info{
+	font-weight:bold;
+	color:#595959;
+}
+
+div#faculties_paginate, div#faculties_paginate * {
+	background: #fff;
+	border: none;
+	color: #757575 !important;
+	padding: 0.5em .25em;
+}
+
+div#faculties_paginate a:hover {
+	color: black !important;
+}
+
+#faculties_paginate > span > a.paginate_button.current {
+	color: black !important;
+	text-decoration: underline !important;
+}
+
+#faculties > tbody > tr > td{
+	padding: 20px 10px;
+	color: #00559C;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+	border-bottom:1px solid #005594;
+}
+
+input[aria-controls="faculties"]{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 6px 10px;
+	width: 275px;
+}
+
+
+/*alert boxes */
+.isa_info, .isa_success, .isa_warning, .isa_error {
+	margin: 10px 0px;
+	padding:12px;
+}
+.isa_info {
+	color: #00529B;
+	background-color: #BDE5F8;
+}
+.isa_success {
+	color: #4F8A10;
+	background-color: #DFF2BF;
+}
+.isa_warning {
+	color: #9F6000;
+	background-color: #FEEFB3;
+}
+.isa_error {
+	color: #D8000C;
+	background-color: #FFBABA;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+	margin:10px 22px;
+	font-size:2em;
+	vertical-align:middle;
+}
+.program-header h2{color:#fff;}
+div.center{
+	width: 200px;
+	margin: 0 auto;
+}
+
+/*loading spinner on profile page*/
+div#spinner{width:100%}
+
+/*faculty checkbox on main index */
+
+div#filters label {
+	float: left;
+	color:#00559C !important
+}
+
+/* hides datatables filters when width is smaller than tablet */
+@media (max-width:770px){
+div#filters {
+	display:none !important;
+}
+
+}
+
+div#filters {
+	margin-right: 50px;
+	float: right;
+	width: 250px;
+	display: block;
+}
+#view_faculty_only, #view_staff_only, #view_administration_only {
+	
+	
+	color: #00559C;
+}
+
+/* flex slider [START] */
+.flexslider{
+	margin-bottom: 75px !important;
+}
+
+.flex-direction-nav a {
+    height: 30px !important;
+    padding-top: 10px;
+}
+
+.flex-direction-nav li {
+    list-style: none;
+}
+
+.flexslider ul.slides > li {
+	overflow: hidden;
+}
+
+/* flex slider [END] */
+.cse .gsc-search-button input.gsc-search-button-v2, input.gsc-search-button-v2{
+height:38% !important; width:auto !important; min-width:16px;
+}
+input.gsc-search-button.gsc-search-button-v2{ right:12px !important;}
+
+
+/*
+===========================
+CONTENTS:
+01 Reset and Sensible Defaults
+02 Grid
+03 Layout
+04 Media queries 
+===========================
+*/
+
+/* ---------------------------------------------------------------------------------------------------------- 
+01 Reset and Sensible Defaults ------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------- */
+
+/* RESET
+-----------------------------*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, acronym, address, big, cite, del, dfn, font, img, ins, kbd, q, s, samp, tt, var, ol, ul, li, fieldset, form, label, legend { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+:focus { outline: 0; }
+ol, ul { list-style: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+section, header, footer, nav, article, aside, main { display:block; }
+
+/* TYPOGRAPHY 
+---------------------------*/
+a { transition: all .1s linear; -o-transition: all .1s linear; -moz-transition: all .1s linear; -webkit-transition: all .1s linear; color:#023867;}
+a:hover { color:#FDBB30; }
+a:active { color:#000; }
+p { padding:0 0 1.5em 0; text-align: left;}
+ol, ul { margin:0 0 1.5em 0; padding:0 0 0 1.5em; }
+ul li, ol ul li { list-style:disc outside; padding:0 0 2px; }
+ol li { list-style:decimal; padding:0 0 2px; }
+.site-cont{
+	overflow-x:hidden;
+}
+h1, h2, h3, h4, h5, h6 { padding:0 0 .75em; margin:0 0 0 0; line-height:normal; font-weight:normal; text-transform:uppercase; color:#023867; font-family:'HelveticaNeueW01-75Bold', Helvetica, Arial, sans-serif; }
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span { font-family: 'HelveticaNeueW01-45Ligh', Helvetica, Arial, sans-serif; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { text-decoration: none; }
+h1 { font-size:51px; padding-bottom:.25em; }
+h2 { font-size:21px; }
+h3 { font-size:19px; }
+h4 { font-size:17px; }
+h5 { font-size:16px; }
+h6 { font-size:14px; }
+
+/* PAGE ELEMENTS
+-------------------------*/
+hr { height:1px; background:none; border:0; border-bottom:1px solid #ccc;  margin:0 0 1.5em; }
+strong { font-weight:bold; }
+em { font-style:italic; }
+pre, code { font-family:"Courier New", Courier, monospace; line-height:1.5em; margin:0 0 1.5em 0; }
+blockquote { padding:0px 15px 15px 0px; margin:0 0 .5em 0; font-style:italic; clear:both; }
+blockquote p { margin:0; padding:5px 0 5px; }
+blockquote cite { padding-left:25px; }
+blockquote img { float:left; padding:0 15px 0 0; }
+legend { font-size:1.2em; font-weight:bold; padding:0 10px;  }
+fieldset { border:1px solid #ddd; padding:10px 20px; }
+label { /*font-weight:bold;*/ }
+table { width: 100%; margin-bottom:1.5em; }
+th { font-weight: bold; text-align: left; }
+img { max-width: 100%; }
+#popular-nav a:hover font {
+  color: #fff!important;
+}
+
+/* ---------------------------------------------------------------------------------------------------------- 
+02 Grid ---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------- */
+.row:before, .row:after, .row-fluid:before, .row-fluid:after { content: " "; display: table; }
+.row:after, .row-fluid:after { clear: both; }
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 { float: left; margin-right: 1.69492%; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.span1 { width: 6.77966%; }
+.span2 { width: 15.25424%; }
+.span3 { width: 23.72881%; }
+.span4 { width: 32.20339%; }
+.span5 { width: 40.67797%; }
+.span6 { width: 49.15254%; }
+.span7 { width: 57.62712%; }
+.span8 { width: 66.10169%; }
+.span9 { width: 74.57627%; }
+.span10 { width: 83.05085%; }
+.span11 { width: 91.52542%; }
+.span12 { width: 100%; }
+@media (max-width:769px){
+.span1{width:33%;}
+.span2{width:66%;}
+.span3{width:100%;}
+.span4{width:100%;}
+.span5{width:100%;}
+.span6{width:100%!important;}
+.span7{width:100%!important;}
+.span8{width:100%!important;}
+.span9{width:100%!important;}
+.span10{width:100%!important;}
+.span11{width:100%!important;}
+}
+
+.row [class*="span"]:last-child, .row-fluid [class*="span"]:last-child { margin-right:0; }
+.last { margin-right: 0; }
+#grid-samples .row { margin-bottom: 15px; }
+#grid-samples .row [class*="span"] { background: #ddd; text-align: center; padding:5px 0; }
+
+/* ---------------------------------------------------------------------------------------------------------- 
+03 Layout ---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------- */
+body { font-family: Helvetica, Arial, sans-serif; font-size:14px; background: #023867; color:#222; line-height: 1.5em; overflow-x:hidden; padding-top: 142px;}
+.container { max-width:986px; margin: 0 auto; }
+.top-bar__container { max-width: 976px; margin: 0 auto;} /* black top bar */
+header {
+  position: fixed;
+  z-index: 1000;
+  background: #023867;
+  width: 100%;
+  top: 0px;
+}
+@media (max-width:767px){
+	header{
+		position:relative;
+	}
+	body{
+		padding-top:0;
+	}
+}
+
+/* Top Navigation
+----------------------------*/
+#top-bar { background:#000; }
+
+#user-nav { float:left; }
+#popular-nav { float:right; }
+
+#top-bar ul { margin:0; padding:0; }
+#top-bar ul li { display:inline; float:left; padding:0; list-style: none; }
+#top-bar a {
+  display: block;
+  line-height: 33px;
+  font-size: 11px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0px 8.5px;
+}
+#top-bar a:hover { color:#ccc; }
+#top-bar ul li:first-child a { padding-left:0; }
+#top-bar ul li:last-child a { padding-right:0; }
+
+#logo {
+  float: left;
+  padding: 3px 0 0px;
+}
+#logo img { width:262px; height: 74px; }
+#mobile-menu-main, #mobile-search,#main-menu-drop,#search-drop{display:none;}
+
+@media (max-width:1000px){
+#main-nav > ul > li > a{  font-size: 13px!important;padding: 0 11px!important;}
+}
+
+@media (max-width:1025px){
+	#top-bar, #search-social, #main-nav ul{display:none;}
+	.head-cont{text-align:center;padding:20px 0 0;}
+	#logo{float:none;}
+	#logo img{width:43%;height:auto;margin-top:10px;max-width: 187px;}
+	#mobile-menu-main{display:block;float:left;padding:10px 5px;width:15%;}
+	#mobile-search{display:block;float:right;padding:10px 0px;width:15%;}
+	.btn-main{padding:10px!important;}
+	#mobile-search i,#mobile-menu-main i{font-size:30px;color:#fff;}
+	#mobile-search i:hover,#mobile-menu-main i:hover{color:#ffb718;}
+	#mobile-leftnav{float:left;width: 49%;text-align:right;}
+	#mobile-rightnav{float:right;width: 49.7%;text-align:left;border-left:1px solid rgba(203, 210, 216, 0.4);}
+	#mobile-rightnav ul{margin:0;}
+	#main-menu-drop ul li a{color:#ffb718;}	
+	#mobile-rightnav ul li a{color:#fff;}
+	#main-menu-drop ul li{list-style:none;}
+	#menu-target{width:100%;}
+	#mobile-leftnav ul{padding:0 1.5em;}
+	#mobile-leftnav ul li a, #mobile-rightnav ul li a{text-transform:uppercase;}
+	#main-menu-drop, #search-drop{display:block;}
+	#main-menu-drop, #search-drop{margin-top: 10px;margin-bottom: 5px;  padding-top: 10px;}
+	#main-menu-drop .collapse,#search-drop .collapse{display:none;}
+	#main-menu-drop .collapse.in,#search-drop .collapse.in{display:block;}
+	.collapse.in {overflow: hidden;}
+	.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height .35s ease;
+    -o-transition: height .35s ease;
+    transition: height .35s ease;
+}
+#search-target form{text-align: left;margin-left: 20px;}
+#search-field input[type=text] {
+	width: 90%!important;}
+#search-field input[type=submit] {
+	right:20px!important;	
+}
+label{color:#fff!important;}
+#breadcrumb,.learnmorelinks{display:none;}
+}
+.social-menu img {
+  width: 28px;
+}
+#imesa{width:47px;}
+
+.nav-hover img{display:none;position:absolute;right:0;top:0;width:360px;}
+.nav-hover{position:relative;}
+.nav-hover ul li{list-style:none;}
+.nav-hover a{text-decoration:none;}
+.nav-hover li{margin-bottom:0px;}
+.nav-hovertitle{position: absolute;top: 103px;right: 322px;}
+.nav-hoverblock{float:left;width:200px;}
+.hover-base{display:block!important;}
+.hover-test ul{padding:0;}
+.imgshow{display:block!important;}
+
+/* Side Navigation 
+-----------------------------*/
+.sidenav-button{display:none!important;}
+.mobile-contact-info .contact-title, .mobile-contact-info .contact-list{display:none;}
+.contact-info{border-bottom: 1px solid #b6c3cc;
+width: 75%;
+padding-bottom: 8px;
+margin-bottom: 8px;
+margin-top: 40px;}
+@media (max-width:1000px){
+	#main-content{padding:0!important;}
+}
+@media(max-width:769px){
+	.sidenav-button{
+		display:block!important;
+		width:111%;
+		margin-left:-20px;
+		background:#ebebeb!important;
+		background: #ebebeb!important;
+  		color: #092f57!important;
+  		text-align: left!important;
+  		font-size: 24px!important;
+	}
+	.contact-title, .contact-list{display:none;}
+	.mobile-contact-info .contact-title, .mobile-contact-info .contact-list{display:block;}
+	.navtitle{
+		display:none;
+	}
+	#main-content{padding:0!important;}
+	.collapse{display:none;}
+	.span3 .collapse{display:block;}
+	.collapse.in{display:block;}
+	.sub-list-nav{}
+	.main-side-nav li a{
+  		font-size: 18px;
+  		font-weight: 300;
+  		color: #023867!important;
+	}
+	.main-side-nav li{
+		margin-top:8px;
+		padding-bottom:8px;
+		border-bottom: 1px solid rgba(0, 85, 156, 0.2);
+		width:90%;
+	}
+	.main-side-nav li:last-of-type{
+		border:none;
+	}
+	.main-side-nav{
+		background:#ebebeb;
+		padding-left: 20px!important;
+	}
+	#sidenav-target{
+		width: 111%;
+  		margin-left: -20px;
+  		padding-top: 0px;
+  		background: #ebebeb;
+  	}
+  	.program-header{margin-top: 20px;}
+  	.main-side-nav li:before{display:none!important;}
+  	.sidenav-arrow{
+  		float: right;
+		font-size: 44px;
+		margin-top: -7px;
+		margin-bottom: -4px;
+		margin-right:20px;
+  	}
+	.department-header{
+		margin-top: 20px;
+	}
+	.side-nav-contact {
+		margin-left: 20px;
+	}
+}
+@media (min-width:769){
+.span3 .collapse{display:block;}
+}
+@media (max-width:550px){
+	.sidenav-arrow{margin-right:0px;}
+}
+
+
+/* Social and Search
+-----------------------------*/
+#search-social { float:right; width:300px; text-align: right; color:#fff; padding:15px 0 0; }
+#search-social form { padding-bottom: 5px; }
+#search-field input[type=text] { width:100%; box-sizing:border-box; border:0; margin: 0; padding:3px 10px; }
+#search-field { position: relative; padding-bottom:5px; }
+#search-field input[type=submit] { background:#fff url(../images/search-icon.png) no-repeat center; cursor: pointer; display: block; width:25px; height: 22px; border:0; font-size:0; position:absolute; top:0; right:0; }
+
+ul.social-menu { padding:0; margin:0; }
+ul.social-menu li { display:inline; list-style: none; /* margin: 0 3px; */ padding: 0; }
+ul.social-menu li a:hover { opacity: .5; }
+#search-social ul.social-menu { margin-right:-3px; }
+
+/* Main Navigation
+-----------------------------*/
+#main-nav { width:1024px; margin: 0 auto; clear:both; }
+#main-nav > ul { margin:0; padding:0; }
+#main-nav > ul > li { margin:0 0 0 -1px; padding:0; display:inline; float:left; }
+#main-nav > ul > li > a { position: relative; display:block; float:left; text-transform:uppercase; color: #FFBf00; text-decoration:none; line-height: 26px; padding: 0 23px; transition:none; -o-transition:none; -moz-transition:none; -webkit-transition:none; }
+#main-nav > ul > li > a:after { content: "|"; position: absolute; right: -2px; }
+#main-nav > ul > li:last-child > a:after { display: none; }
+#main-nav > ul > li:hover > a { background:#fff; color:#023867;  }
+#main-nav > ul > li:hover > a:after { display: none; }
+
+.subnav { display: none; position: absolute; left:0; width:100%; border-bottom: 1px solid #ccc; background:#fff; margin-top:26px; padding:30px 0 0; box-shadow:0 5px 5px rgba(0,0,0,.2); }
+#main-nav > ul > li:hover .subnav { display:block; }
+.subnav ul { margin:0; padding:0 0 30px; float:left; width: 22%; }
+.subnav.extra ul { width: 16%; }
+.subnav ul li { padding:0; margin:0; list-style: none; }
+.subnav ul li a { display: block; padding: 5px 30px 5px 0; text-decoration:none; }
+.subnav ul li a.btn { padding:10px 20px; margin: 0 20px 0px 0;  background:#FBAE26; }
+.subnav ul li a.btn:hover { color: #023867 }
+.subnav ul li a:hover { color:#FDBB30; }
+.subnav ul.apply { width:48%; padding-bottom:15px; }
+.admissions-info { float:right; width:50%; background:#EBEBEB; padding:20px 20px 0; box-sizing:border-box; margin-bottom:30px; }
+
+.menu-preview { float:right; }
+
+/* Content Area
+-----------------------------*/
+main { background:#fff; }
+#main-content { max-width:986px; margin: 0 auto; padding:20px 0;}
+#main-content:before, #main-content:after { content: " "; display: table; }
+#main-content:after { clear: both; }
+
+#sidebar { width: 23.72881%; float: left; margin-right: 1.69492%; padding:20px 0; }
+#sidebar nav h3 { border-bottom: 1px solid #ccc; }
+#sidebar nav ul { padding: 0; margin: 0; }
+#sidebar nav ul ul { display: none; padding-left: 36px; }
+#sidebar nav ul li { list-style: none; padding:0; margin: 0; }
+#sidebar nav ul li a { color: #000; text-decoration:none; }
+#sidebar nav ul li.active ul { display: block; }
+
+#content { width: 72%; float:right; padding:20px 0 0; }
+.course-dropdown a{color:rgba(253, 185, 48, 1.0);}
+
+
+/* Footer
+-----------------------------*/
+footer { /*background:url(../images/mesa-seal.png)*/ /*background:url(../images/mesa-logo-footer-3.png) no-repeat center 21px;*/  background-size: 277px; padding: 21px 0 10px; color:#fff; font-size:12px; }
+footer a { color:#fff; text-decoration: none; }
+footer a:hover { color:#fff; opacity:.5; }
+#footer-content { min-height: 200px; }
+
+ul.footer-menu { float:left; margin: 0; padding: 0; width:180px; }
+ul.footer-menu li { margin: 0; padding: 0; list-style: none; }
+ul.footer-menu li a { display:block; line-height: 2.7em; }
+ul.footer-menu.space { padding-left:300px; width:100px; }
+
+footer address { line-height:2.7em; float:right; }
+
+#lower-footer { border-top:1px solid #fff; text-align: center; padding: 10px 0 0; }
+#lower-footer p { padding-bottom: 0; }
+#lower-footer ul.social-menu { float:none; }
+
+
+@media (max-width:1024px){
+ul.footer-menu{display:none;}
+footer address{float: right;width: 48%;margin-top:200px;}
+ul.footer-menu.space{width:46%;text-align:right;margin-top:200px;padding-right:3%;border-right:1px solid  rgba(203, 210, 216, 0.4);display:block;padding-left: 0;}
+#lower-footer p {
+  text-align: center;
+}
+}
+
+/* ---------------------------------------------------------------------------------------------------------- 
+04 Modules --------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------- */
+.bleed-title { background: #455660; padding:10px 0 0 3000px; margin:20px 0 30px -3000px; }
+.bleed-title h1 { text-align: right; padding: 0; margin: 0; line-height:.75; color: #fff; padding-right:10px; position: relative; }
+
+/* Breadcrumbs
+-----------------------------*/
+ol.breadcrumb { padding:0; margin: 0 0 15px 0; color:#ABABAB; }
+ol.breadcrumb li { padding: 0; margin: 0; list-style: none; display: inline-block; }
+ol.breadcrumb li:before { content: ">"; padding: 0 5px; color:#ABABAB; }
+ol.breadcrumb li:first-child:before { content:none; padding: 0; }
+ol.breadcrumb li.active { color:#00529c!important; font-weight:bold; }
+/* ol.breadcrumb li a { color: #ABABAB; text-decoration:none; } */
+ol.breadcrumb li a:hover, ol.breadcrumb li a:active { color:#023867; }
+ol.breadcrumb li a {color:#49182d!important; text-decoration:none; font-size:14px!important;}
+/* Pagination
+------------------------------*/
+ul.pagination { margin: 0; padding: 0; }
+ul.pagination li { list-style: none; display: inline-block; }
+ul.pagination li a { color: #ABABAB; text-decoration:none; padding: 0 3px; }
+ul.pagination li.active a { text-decoration: underline; color:#023867; }
+ul.pagination li a:hover, ul.pagination li a:active { color:#023867; }
+
+
+/* Search
+------------------------------*/
+.search-field { position: relative; }
+.search-field input[type=text] { width:100%; box-sizing:border-box; margin: 0; padding:6px 10px; }
+.search-field input[type=submit] { background:#fff url(../images/search-icon.png) no-repeat center; cursor: pointer; display: block; width:26px; height: 26px; border:0; font-size:0; position:absolute; top:1px; right:1px; }
+
+
+/* Buttons
+-----------------------------*/
+.btn, input[type="submit"], input[type="button"], input[type="reset"], button { background:#023867; font-family:'HelveticaNeueW01-75Bold', Helvetica, Arial, sans-serif; text-transform: uppercase; color: #fff; text-align: center; display: inline-block; border:none; cursor: pointer; font-size: 16px; padding: 10px 20px; line-height: auto; white-space:nowrap; }
+.btn:hover, input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hover, button:hover { color:#FDBB30; }  
+.btn.btn-secondary { background:#FBAE26; }
+
+/* Form Elements
+-----------------------------*/
+input, select, textarea { font-size:14px; font-family:Arial, Helvetica, sans-serif; color:#000; background:#fff; border:1px solid #999; padding: 5px 10px; }
+
+/* Tables
+-----------------------------*/
+table { border-collapse: collapse; border-spacing:0; }
+table th { border-bottom: 1px solid #00559C; font-size: 20px; padding: 5px 10px; font-weight:normal; text-transform:uppercase; color:#023867; font-family:'HelveticaNeueW01-75Bold', Helvetica, Arial, sans-serif; }
+table td { padding: 10px; }
+table tr:nth-child(even) td { background:#EBEBEB; }
+.table-container { width:100%; overflow: auto; }
+
+/* ---------------------------------------------------------------------------------------------------------- 
+05 Helpers --------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------- */
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-justify { text-align: justify; }
+.text-nowrap { white-space: nowrap; }
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize { text-transform: capitalize; }
+
+span.bold {	font-weight:bold; }
+
+.pull-left { float: left !important; }
+.pull-right { float: right !important; }
+
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+.clear { clear:both; }
+.clear-left { clear:left; }
+.clear-right { clear:right; }
+
+/* ---------------------------------------------------------------------------------------------------------- 
+06 Page Specific Styles -------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------- */
+
+/* Faculty Directory */
+table.directory td { padding: 20px 10px; color:#00559C; }
+table.directory td a { color:#00559C; text-decoration: none; }
+table.directory td a:hover { text-decoration: underline; color:#FDBB30; }
+.directory-filter { margin-bottom:20px; }
+.directory-filter .search-field { width: 275px; }
+.directory-filter label { color:#00559C; }
+.directory-filter label:first-child { padding-right: 20px; }
+.directory-footer { margin-bottom: 20px; }
+.directory-footer .details { font-weight: bold; color:#ABABAB; }
+
+/* Faculty Profiles */
+.profile-title { background: #33001F; margin-bottom:50px; }
+.profile-image { text-align: right; padding-right: 10px; box-sizing:border-box; }
+.profile-image img { display: block; margin: 0 auto 10px; }
+.profile-image h3, .profile-content h3 { border-bottom: 1px solid #00559C; padding-bottom: 7px; margin-bottom:10px; }
+.profile-content h3 { max-width: 260px; }
+a.profile-back { text-decoration: none; color: #ABABAB; }
+a.profile-back:hover, a.profile-back:active { color:#023867; }
+.profile-image .social-menu img { display: inline; } 
+
+/*Programs Pages*/
+.program-header h2{color:#fff;}
+
+/*Department Faculty Pages*/
+ul.department-faculty-list li {	list-style:none !important; }
+.department-header{min-height:0!important;}
+.department-header img{height:auto;}
+.side-img{position:relative;}
+.dept-side{position:absolute!important;bottom:6px;width:94%;}
+
+@media (max-width:767px){
+.side-img img{width:100%;height:auto;}
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------- 
+03 Media queries --------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------- */
+@media all and (max-width: 1023px) {
+    main {
+        padding: 0 20px;
+    }
+}
+
+@media all and (max-width: 960px) {
+    .profile-image ul.social-menu li { margin: 0; } 
+}
+
+	
+@media all and (max-width: 769px) {
+    #sidebar, #content, .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
+        width:auto;
+        float:none;
+        margin:0;
+    }
+    .profile-image { text-align: left; }
+    .profile-content h3 { max-width: 100%; }
+    .directory-filter .search-field { width: 100%; padding-bottom: 10px;}
+    .directory-footer .details { padding-bottom: 10px; }
+    .directory-footer .span6 { text-align: center; }
+	.home-vid{display:none !important;}
+	.info-image{display:none !important;}
+	.group{
+		text-align:center;
+		padding:0 !important;
+		font-size:20px !important;
+	}
+	.group h2{
+		width: 100% !important;
+		border-bottom: 2px solid #023867!important;
+		border-top: 2px solid #023867!important;
+		padding: 7px 0 7px 7px !important;
+		text-align: left;
+		background-color: rgba(2,56,103,1)!important;
+		color: #fff !important;
+	}
+	.announcements{margin-bottom:0!important;padding:10px 10px !important;}
+	.announcements p{text-align:center !important;padding:6px 0 !important;}
+	.faculty{background-color:inherit !important;border:none !important;}
+	.list-group-item{padding:10px 0 !important;border-bottom:1px solid rgba(0,0,0,.5);background-color:rgba(0,0,0,.08);margin:0!important;}
+	.latest-news,.campus-events{line-height:.8!important;}
+	.banner{display:block!important;}
+	.list-group{margin-bottom:0!important;}
+	.social-mobile{margin:15px 4% !important;}
+	.inv-7{width:100%!important; margin:25px 0!important;padding:0!important;}
+	.show{display:block!important;}
+}
+
+/* Top Nav */
+
+.nav-hover ul {
+  width: auto;
+}
+.nav-hovertitle2 {
+  position: absolute;
+  top: 103px;
+  right: 291px;
+}
+
+/* Hover for Buttons */
+
+.apply-bar:hover {
+    opacity: 0.9;
+}
+
+.acad-bar:hover {
+    opacity: 0.9;
+}
+
+.lib-bar:hover {
+    opacity: 0.9;
+}
+
+.full-calendar:hover {
+    opacity: 0.9;
+}
+
+.q-submit:hover {
+    opacity: 0.9;
+}
+
+btn-social:hover {
+    opacity: 0.9;
+}
+.core-blue:hover, .core-yellow:hover, .core-red:hover, .core-grey:hover, .core-lgrey:hover {
+    opacity: 0.9;
+}
+.user-red:hover, .user-lgrey:hover, .user-yellow:hover, .user-dblue:hover, .user-grey:hover, .user-blue:hover, .user-red2:hover, .user-lgrey2:hover, .user-yellow2:hover, .user-dblue2:hover, .user-grey2:hover, .user-blue2:hover {
+    opacity: 0.9;
+}
+
+.tb-one:hover, .tb-two:hover {
+    opacity: 0.9;
+}
+
+/* Footer NEW */
+.logos{text-align:right;}
+.new-foot{
+	min-height:270px;
+}
+.left-foot{
+	font-family:arial;
+	font-size:10px;
+	line-height: 1.5;
+}
+.left-foot span{
+	font-weight:bold;
+}
+.right-foot{
+	font-family:arial;
+	font-size:10px;
+	line-height: 1.5;
+}
+.soc-foot{
+	margin: 50px 0px 0;
+	text-align: right;
+}
+.foot-copy{
+	margin: 15px 10px 10px 0;
+}
+.foot-links{
+	width: 93%;
+	margin-left: 10%;
+}
+.f-span12, .f-span6, .f-span3{
+	  float: left;
+}
+.f-span12{
+	width:100%;
+}
+.f-span6{
+	width:50%;
+}
+.f-span3{
+	width:33%;
+	
+}
+.f-span3__last {
+	margin-bottom: 15px;
+}
+.imesa-head{
+	float:right;
+	padding:10px;
+}
+@media (max-width:1000px){
+	.new-foot{
+		padding:20px 20px;
+	}
+	.imesa-head{
+	display:none;
+}
+}
+@media (max-width:767px){
+	.logos{text-align:center;}
+	.f-span3{
+		width:100%;
+	}
+	.f-span6{
+		width:100%;
+	}
+	.new-foot{
+		text-align:center;
+		padding:20px 0;
+	}
+	.foot-links{
+		width:100%;
+		margin-left:0;
+	}
+	.soc-foot {
+  		text-align: center;
+	}
+	
+}
+
+.gsc-adBlock{
+	display:none!important;
+}
+
+.gsc-adBlockVertical {
+    display: none !important;
+}
+
+input.gsc-search-button.gsc-search-button-v2{top:7px !important; color:#023867 !important;}
+.gsc-input-box {border:1px solid rgba(2,56,103,.5) !important;}
+input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {background-color:#445660 !important;}
+
+.sub-mobile-nav{
+    padding: 0!important;
+    margin: 0;
+    color: #FDBB30;
+    font-weight: normal;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+.foundation{border:1px solid #fff;padding:3px 10px;font-weight:bold;}
+.foundation:hover{color:#fdb930!important; border-color:#fdb930; background-color:#fff!important;}
+
+table td {
+	padding: 7px 0px !important;} /*search box alignment */
+.anchor{display:block;height:165px;margin-top:-165px;visibility:hidden;}
+
+.subheader{font-size: 66%;white-space:nowrap;}
+		h1{line-height: .9;margin-bottom: 25px;}
+
+.span8.standard a {color:#023b67!important;}
+/* .span8.standard h2 a {color:#fff!important;} */
+.standard a.eg-droplink {
+	color: #FDBB30!important; /* course-dropdown links fix */
+}
+.span8.standard a:hover{color:#fdb930 !important;}
+.span8.standard h2.heading a {
+	color: #023867!important;
+}
+.standard a.eg-droplink:hover {
+	color: #fff!important; /* course-dropdown links fix */
+}
+.span8.standard h2.heading a:hover {
+	color: #fdb930!important;
+}
+
+.arrow{width: 0; 
+			height: 0; 
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			border-left: 10px solid #023867;
+			display:inline-block;
+			margin-right:5px;
+			margin-bottom:-3px;}
+
+		.arrow-top{width: 0; 
+			height: 0; 
+			border-right: 10px solid transparent;
+			border-left: 10px solid transparent;
+			border-bottom: 10px solid #337ab7;
+			margin: 0 auto;}
+.important{font-weight:bold;text-decoration:underline;}
+.main-link{font-size:18px;}
+hr{margin:20px 0 2px;}
+			
+.main-side-nav li:hover{background:#f0f0f0;}
+.sub-list-nav li a:hover{text-decoration:underline;padding:0;padding-bottom:6px;}
+.sub-list-nav{padding:0;padding-left:6px !important;border-left:1px solid #AAA;}
+
+img.gsc-branding-img, td.gsc-branding-text, td.gsc-clear-button{display:none!important;}
+td.gsc-search-button, td.gsc-search-button input, td.gsc-input input{padding:6px!important;}
+#search-social form{padding:0;margin:0;}
+table.gsc-branding{padding:0!important;margin:0!important;}
+
+li.double{line-height:1.2;padding:3px 0;}
+li.double span{font-style:italic;font-size:105%;}
+p#subcommittee{padding:0;padding-bottom:5px;}
+p.member-group:hover{text-decoration:underline;}
+a:focus, button:focus {outline: thin dotted;}
+
+#skiptocontent a {
+    position: absolute;
+    top: -45px;
+    left: 0px;
+    color: white;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    border-bottom-right-radius: 12px;
+    background: transparent;
+	-o-transition:  top 1s ease-out, background 1s linear;
+    -moz-transition:  top 1s ease-out, background 1s linear;
+	-webkit-transition: top 1s ease-out, background 1s linear;
+    transition: top 1s ease-out, background 1s linear;
+    z-index: 100;
+	color: #023867;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#skiptocontent a:focus {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: #f7f7f7;
+    outline: 0;
+	-o-transition: top .1s ease-in, background .5s linear;
+	-moz-transition: top .1s ease-in, background .5s linear;
+    -webkit-transition: top .1s ease-in, background .5s linear;
+    transition: top .1s ease-in, background .5s linear;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+
+.skiptosection a#totop {
+    position: absolute;
+    right:0px;
+	bottom:0px;
+    color: #023867;
+    background: transparent;
+	-o-transition:   background 1s linear;
+    -moz-transition:  background 1s linear;
+	-webkit-transition: background 1s linear;
+    transition: background 1s linear;
+    z-index: 100;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 10px;
+    font-size: 16px;
+			text-transform:none;
+			    padding-right: 45px;
+    border-top-left-radius: 12px;
+}
+
+.skiptosection a#totop:focus {
+   
+    background: #fff;
+    outline: thin dotted;
+	outline-color: red;
+	-o-transition: background .5s linear;
+	-moz-transition: background .5s linear;
+    -webkit-transition: background .5s linear;
+    transition: background .5s linear;
+}
+
+.dept-title{vertical-align: -webkit-baseline-middle !important;}
+
+
+.ou-form .form-group fieldset legend{font-size:14px;}
+
+.span8.standard button a {color:#fff !important;}
+.span8.standard button a:hover {color:#fdb930 !important;}
+
+div.tableauPlaceholder{margin-top:25px;}
+
+ol.main-side-nav.main-event-nav li.item{
+	border-left: 2px solid #023867;
+    padding-left: 5px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;}
+li.item span.date{font-weight:bold;}
+
+div.span3 h2.navtitle{font-size:19px!important;color:#023867!important;}
+div.span3 h2.navtitle a{color:#023867;}
+
+.ou-form label {color:#000 !important;}
+input:focus, textarea:focus, select:focus, th:focus {
+	outline: thin dotted;
+	outline-color: red;
+}
+
+/* Social Media Icons */
+/* Footer */
+
+.icons-social {
+  margin: 50px 0 0 0;
+  text-align: right;
+}
+.icons-social__icon-link {
+  display: inline-block;
+  width: 57px;
+  height: 57px;
+  margin-right: 10px;
+}
+.icons-social__icon {
+  display: inline-block;
+  width: 57px;
+  height: 57px;
+  fill: #fff;
+}
+.icons-social__icon:hover {
+  opacity: 0.5;
+}
+@media (max-width: 767px) {
+	.icons-social {
+  		text-align: center;
+	}
+}
+.program-header h2{color:#fff;}
+
+.span1 {
+	width: 8.33333333%;
+}
+.span2 {
+	width: 16.6666667%;
+}
+.span3 {
+	width: 25%;
+}
+.span4 {
+	width: 33.33333333%;
+}
+.span5 {
+	width: 41.666666667%;
+}
+.span6 {
+	width: 50%;
+}
+.span7 {
+	width: 58.33333333%;
+}
+.span8 {
+	width: 66.66666667%;
+}
+.span9 {
+	width: 75%;
+}
+.span10 {
+	width: 83.33333333%;
+}
+.span11 {
+	width: 91.66666667%;
+}
+.span12 {
+	width: 100%;
+}
+.span1,
+.span2,
+.span3,
+.span4,
+.span5,
+.span6,
+.span7,
+.span8,
+.span9,
+.span10,
+.span11,
+.span12 {
+	margin-right: 0;
+	padding-right: 20px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@media screen and (max-width:1000px){
+	.span4,.span5,.span8,.span7{width:100%;}	
+}
+
+@media screen and (max-width: 768px) {
+	.span1,
+	.span2,
+	.span3,
+	.span4,
+	.span5,
+	.span6,
+	.span7,
+	.span8,
+	.span9,
+	.span10,
+	.span11,
+	.span12 {
+		float: left;
+	}
+	.span1 {
+		width: 12.5%;
+	}
+	.span2 {
+		width: 25%;
+	}
+	.span3 {
+		width: 37.5%;
+	}
+	.span4 {
+		width: 50%;
+	}
+	.span5 {
+		width: 62.5%;
+	}
+	.span6 {
+		width: 75%;
+	}
+	.span7 {
+		width: 87.5%;
+	}
+	.span8 {
+		width: 100%;
+	}
+	.span9 {
+		width: 100%;
+	}
+	.span10 {
+		width: 100%;
+	}
+	.span11 {
+		width: 100%;
+	}
+	.span12 {
+		width: 100%;
+	}
+	.group{width:100%!important;}
+}
+/* End Grid */
+
+h2 {
+	padding: 0;
+	display: inline-block;
+}
+.nomargin li {
+	list-style: none;
+}
+.learnmorelinks li {
+	list-style: none;
+}
+h4 {
+	font-size: 14px;
+}
+.program-header {
+	background: #fdb930;
+	width: 113%;
+	min-height: 30px;
+	padding-top: 18px;
+	padding-left: 15px;
+	min-height: 30px;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+.program-header h2 {
+	color: #fff;
+}
+.main-title {
+	font-family: helvetica;
+	font-size: 25px;
+	color: #fff;
+}
+.learnmorelinks li,
+.learnmorelinks ul {
+	background: #ebebeb;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	padding-left: 10px;
+	border-top: 1px solid #b6c3cc;
+	text-transform: uppercase;
+}
+.learnmorelinks {
+	padding-left: 0px;
+	padding-right: 25px;
+	margin-top: 20px;
+}
+.learnmorelinks>li>h2 {
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+.noborder {
+	border: none !important;
+}
+.navtitle {
+	border-bottom: 1px solid #b6c3cc;
+	width: 85%;
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+	margin-top: 40px;
+}
+.middlenav {
+	padding-left: 0px;
+	margin: 0;
+}
+.middlenav li {
+	list-style: none;
+}
+.titlestrong {
+	font-weight: 700;
+	font-size: 25px;
+	color: #fff;
+	margin-right: 15px;
+}
+.title-header {
+	margin-bottom: 10px;
+}
+.nomargin {
+	margin: 0;
+}
+.nopadding {
+	padding: 0;
+}
+table tr:nth-child(2n) td {
+	background: none!important;
+}
+.cert_degree>tbody>tr:last-of-type {
+	/*border-top:3px solid #000!important;*/
+
+	border-bottom: none;
+}
+table td {
+	padding: 0px;
+	font-size: 13px;
+}
+/*.cert_degree>tbody>tr:first-of-type{border-bottom:3px solid #000;}*/
+
+.cert_degree>tbody>tr {
+	border-bottom: 1px solid #d7d7d7;
+}
+.right {
+	text-align: center;
+	font-weight: bold;
+}
+.float-right {
+	float: right;
+}
+table th {
+	padding: 0;
+}
+/* Programs Page */
+
+.fiveboxes {
+	display: none
+}
+.sixboxes {
+	display: none;
+}
+.yellow-five,
+.blue-five,
+.grey-five,
+.red-five,
+.darkblue-five {
+	height: 33px;
+	padding-top: 7px;
+	float: left;
+}
+.yellow-five h2,
+.blue-five h2,
+.grey-five h2,
+.red-five h2,
+.darkblue-five h2 {
+	color: #fff;
+	text-transform: uppercase;
+}
+.yellow-five {
+	background: #fdb930;
+	text-align: right;
+	margin-right: 2%;
+	width: 36%;
+	padding-right: 10px;
+}
+.blue-five {
+	background: #00529c;
+	text-align: center;
+	width: 20%;
+}
+.grey-five {
+	background: #ababab;
+	text-align: left;
+	margin-left: 2%;
+	width: 36%;
+	padding-left: 10px;
+}
+.red-five {
+	background: #49182d;
+	text-align: right;
+	width: 54%;
+	padding-right: 10px;
+}
+.darkblue-five {
+	background: #013668;
+	text-align: left;
+	margin-left: 2%;
+	width: 40%;
+	padding-left: 10px;
+}
+.tech-bot-bar {
+	margin-top: 10px;
+	margin-bottom: 60px;
+}
+.yellow-six,
+.blue-six,
+.grey-six,
+.red-six,
+.darkblue-six,
+.green-six {
+	height: 33px;
+	padding-top: 7px;
+	float: left;
+}
+.yellow-six h2,
+.blue-six h2,
+.grey-six h2,
+.red-six h2,
+.darkblue-six h2,
+.green-six h2 {
+	color: #fff;
+}
+.yellow-six {
+	background: #fdb930;
+	text-align: right;
+	margin-right: 2%;
+	width: 47%;
+	padding-right: 10px;
+}
+.blue-six {
+	background: #00529c;
+	text-align: left;
+	width: 47%;
+	padding-left: 10px;
+}
+.grey-six {
+	background: #ababab;
+	text-align: right;
+	margin-right: 2%;
+	width: 39%;
+	padding-right: 10px;
+}
+.red-six {
+	background: #49182d;
+	text-align: left;
+	width: 55%;
+	padding-left: 10px;
+}
+.darkblue-six {
+	background: #013668;
+	text-align: right;
+	margin-right: 2%;
+	width: 55%;
+	padding-right: 10px;
+}
+.green-six {
+	background: #445660;
+	text-align: left;
+	width: 39%;
+	padding-left: 10px;
+}
+.tech-row-1 {} .tech-row-2 {
+	margin-top: 50px;
+}
+.tech-row-3 {
+	margin-top: 100px;
+	margin-bottom: 160px;
+}
+.span-divider {
+	margin-left: 1.4%;
+	border-left: 1px solid #cbd2d8;
+	padding-left: 1.4%;
+	width: 45%;
+}
+h2 {
+	font-size: 19px;
+	padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 0 0;
+	line-height: normal;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #023867;
+	font-family: 'HelveticaNeueW01-75Bold', Helvetica, Arial, sans-serif;
+}
+.cert_degree>tbody>tr>td:first-of-type {
+	width: 12%!important;
+}
+.arrow-right {
+	font-weight: bold;
+	color: #023867;
+}
+.arrow-right::before {
+	content: "";
+	width: 0px;
+	height: 0px;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 9px solid #00559C;
+	float: left;
+	margin-left: -15px;
+	padding-right: 5px;
+	margin-top: 5px;
+}
+div.span12 ul li {
+	margin-bottom: 5px;
+}
+.table_subtitle {
+	font-weight: bold;
+}
+.main-side-nav,
+.main-side-nav li,
+.main-side-nav li ul,
+.main-side-nav li ul li {
+	list-style: none;
+}
+.main-side-nav a,
+.main-side-nav li a,
+.main-side-nav li ul a,
+.main-side-nav li ul li a {
+	color: #000;
+}
+.main-side-nav {
+	padding: 0;
+}
+.sub-list-nav {
+	margin: 0;
+	display: none;
+}
+.main-side-nav li ul li a {
+	font-weight: initial;
+}
+.contact-list li {
+	list-style: none;
+	margin-bottom: 10px;
+}
+.contact-list {
+	padding: 0
+}
+.contact-title {
+	border-bottom: 1px solid #B6C3CC;
+	margin-bottom: 8px;
+	padding-bottom: 8px;
+}
+/* Department Template */
+
+.department-header {
+	min-height: 20px;
+	margin-bottom: 15px;
+}
+.dept-title {
+	background: rgba(253, 185, 48, 0.7);
+	width: 100%;
+	margin-top: -6.6%;
+	float: left;
+	z-index: 100;
+	position: relative;
+	padding: 13px 0 0 0;
+	text-align: right;
+	text-transform: uppercase;
+}
+.dept-links h2 {
+	text-align: right;
+	color: #fff;
+	padding: 10px 10px;
+	font-size: 18px;
+}
+.dept-links h2 a,
+.dept-links h2 a:visited {
+	color: #fff;
+}
+.dept-links {
+	margin-bottom: 20px;
+}
+.dept-links2 h2 {
+	text-align: left;
+	color: #fff;
+	padding: 10px 10px;
+	font-size: 18px;
+}
+.dept-links2 h2 a,
+.dept-links h2 a:visited {
+	color: #fff;
+}
+.dept-links2 {
+	margin-bottom: 20px;
+}
+.side-img {
+	margin-bottom: 20px;
+}
+.grey-link,
+.blue-link,
+.red-link {
+	margin-bottom: 23px;
+}
+.grey-link {
+	background: #ABABAB;
+}
+.blue-link {
+	background: #00529C;
+}
+.red-link {
+	background: #49182D;
+}
+.dark-link {
+	background: #445660;
+}
+.side-img {
+	min-height: 242px;
+	margin-right: 0;
+}
+.dept-side {
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	padding: 35px, 0, 15px, 15px;
+	margin-top: -25%;
+	position: relative;
+	z-index: 100;
+	font-size: 20px;
+	padding: 36px 0 15px 15px;
+}
+.second-content {
+	width: 50%;
+	border-bottom: 1px solid #CBD2D8;
+	padding-bottom: 7px;
+	margin-bottom: 7px;
+}
+.content-left {
+	float: left;
+	width: 47%;
+	padding-right: 3%;
+	margin-right: 2%;
+	border-right: 1px solid #B6C3CC;
+}
+.content-right {
+	float: right;
+	width: 47%;
+}
+.content-left-noborder {
+	float: left;
+	width: 47%;
+	padding-right: 3%;
+	margin-right: 2%;
+}
+.content-three-left {
+	width: 31%;
+	float: left;
+	margin-right: 3%;
+	border-right: 1px solid #B6C3CC;
+}
+.content-three-right {
+	width: 31%;
+	float: right;
+}
+.content-three-middle {
+	width: 31%;
+	float: left;
+	margin-right: 2%;
+	border-right: 1px solid #B6C3CC;
+}
+.content-three-left-nb {
+	width: 31%;
+	float: left;
+	margin-right: 3%;
+}
+.content-three-middle-nb {
+	width: 31%;
+	float: left;
+	margin-right: 2%;
+}
+.multi-program {
+	color: #023867!important;
+	border-bottom: 1px solid #B6C3CC;
+	margin-bottom: 6px;
+	padding-bottom: 6px;
+	width: 75%;
+	padding-right: 0px!important;
+	float: right;
+	text-align: right!important;
+}
+.dept-links ul li {
+	list-style: none;
+	text-align: right;
+}
+.dept-links2 ul li {
+	list-style: none;
+	text-align: right;
+}
+.grey-link2 {
+	background: #ABABAB;
+}
+.blue-link2 {
+	background: #00529C;
+}
+.red-link2 {
+	background: #49182D;
+}
+.grey-link2,
+.blue-link2,
+.red-link2 {
+	margin-bottom: 23px;
+	float: right;
+}
+.grey-link2 a,
+.blue-link2 a,
+.red-link2 a {
+	text-align: left;
+}
+.collapse.in {
+	display: block;
+}
+.collapse {
+	display: none;
+}
+.collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	-webkit-transition: height .35s ease;
+	-o-transition: height .35s ease;
+	transition: height .35s ease;
+}
+.course-dropdown {
+	background: #003768;
+	padding: 10px 40px;
+	color: #fff;
+	margin-bottom: 10px;
+}
+.drop-top {
+	font-weight: bold;
+}
+.drop-break {
+	background: #356991;
+	margin: 5px 0px!important;
+}
+.drop-title {
+	font-weight: bold;
+	font-style: italic
+}
+.btn-drop {
+	background: #033766;
+	color: #fabb46;
+	font-size: 14px;
+	padding: 2px 15px 2px 10px;
+	text-transform: none;
+}
+.collapsed {
+	background: none;
+	color: #033766;
+}
+.down-arrow {
+	content: '';
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 8px solid #fabb46;
+	top: -11px;
+	left: 11px;
+	position: relative;
+	float: right;
+}
+.collapsed .down-arrow {
+	display: none;
+}
+.collapse.in {
+	overflow: hidden;
+}
+.course-dropdown .span2 {
+	text-align: center;
+	font-weight: bold;
+}
+.yital {
+	font-style: italic;
+	color: rgba(253, 185, 48, 1);
+}
+.offset2 {
+	margin-left: 16.94912%;
+}
+.offset7 {
+	margin-left: 59.32204%;
+}
+.offset8 {
+	margin-left: 67.79661%;
+}
+.certlast {
+	text-align: right;
+	font-weight: bold;
+}
+.courses-list {
+	font-weight: bold;
+}
+.cnumber {
+	width: 16%;
+}
+table td {
+	padding: 7px 0px;
+}
+.yellowital {
+	color: rgba(253, 185, 48, 1);
+	font-style: italic;
+}
+/*.right{color:#fff;font-style:initial;}
+.right strong{color:#fff;font-style:initial;}*/
+
+.bottom-links {
+	text-align: right;
+	font-weight: bold;
+	color: #fff;
+}
+.bottom-links a,
+.bottom-links a:visited {
+	color: #fff;
+}
+.spanrow {
+	margin-top: 30px;
+}
+.left-text {
+	margin-right: 30px;
+	float: right;
+	text-align: right;
+}
+.right-text {
+	margin-left: 30px;
+	float: left;
+	text-align: left;
+}
+.left-text h2,
+.right-text h2 {
+	border-bottom: 1px solid #b6c3cc;
+	margin-bottom: 7px;
+	padding-bottom: 7px;
+}
+.schools-itext {
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	margin-top: -18%;
+	position: relative;
+	z-index: 100;
+	font-size: 20px;
+	padding: 36px 0 15px 15px;
+	width: 93.7%;
+	font-weight: bold;
+}
+.schools-title {
+	color: #fff;
+	background: rgba(52, 14, 45, 0.7);
+	width: 94.5%;
+	margin-top: -43px;
+	float: left;
+	z-index: 100;
+	position: relative;
+	padding: 13px 0 0 0;
+	text-align: right;
+	text-transform: uppercase;
+}
+h2 {
+	padding: 0px;
+}
+.namebottomb {
+	width: 100%;
+	border-bottom: 1px solid #00529b;
+}
+/* Academics Template */
+
+.top-title {
+	background: rgba(0, 82, 156, 0.7);
+	margin-top: -57px;
+	position: relative;
+	width: 98.5%;
+	font-size: 48px;
+	padding-right: 10px;
+	font-weight: bold;
+	padding-top: 29px;
+	margin-bottom: 30px;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: right;
+}
+.core-i1 div {
+	background: rgba(0, 0, 0, 0.7);
+	margin-top: -65px;
+	position: relative;
+	color: white;
+	font-size: 24px;
+	padding-top: 29px;
+	padding-left: 10px;
+	margin-bottom: 44px;
+	padding-bottom: 8px;
+}
+.core-i2 div {
+	background: rgba(0, 0, 0, 0.7);
+	margin-top: -65px;
+	position: relative;
+	color: white;
+	font-size: 24px;
+	padding-top: 29px;
+	padding-left: 10px;
+	margin-bottom: 20px;
+	width: 67%;
+	padding-bottom: 8px;
+}
+.core-i2 div a,
+.core-i3 div a,
+.core-i1 div a {
+	color: #fff;
+}
+.core-i3 div {
+	background: rgba(0, 0, 0, 0.7);
+	margin-top: -67px;
+	position: relative;
+	color: white;
+	font-size: 24px;
+	padding-top: 11px;
+	width: 83%;
+	padding-left: 10px;
+	margin-bottom: 40px;
+	padding-bottom: 8px;
+}
+.core-i2,
+.core-i3 {
+	margin-top: -125px;
+}
+.core-i4 div {
+	background: rgba(0, 0, 0, 0.7);
+	margin-top: -65px;
+	position: relative;
+	color: white;
+	font-size: 24px;
+	padding-top: 29px;
+	padding-left: 10px;
+	margin-bottom: 44px;
+	padding-bottom: 8px;
+	width: 95%;
+}
+.core-blue {
+	background: #00529C;
+}
+.core-yellow {
+	background: rgba(253, 185, 48, 1);
+}
+.core-red {
+	background: #49182D;
+}
+.core-grey {
+	background: #445660;
+}
+.core-blue a,
+.core-yellow a,
+.core-red a,
+.core-grey a {
+	color: #fff;
+}
+.core-blue,
+.core-yellow,
+.core-red,
+.core-grey {
+	padding: 12px 15px;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: right;
+	margin-bottom: 19px;
+}
+.core-i3 {
+	margin-left: -5%;
+	margin-right: 5%;
+}
+.span3 h2 {
+	border-bottom: 1px solid #b6c3cc;
+	margin-bottom: 7px;
+	padding-bottom: 7px;
+}
+.span3 ul li {
+	list-style
+}
+.first-content {
+	padding: 0px 25px 20px 0px;
+}
+.first-content h2 {
+	border-bottom: 1px solid #b6c3cc;
+	width: 95%;
+	margin-bottom: 7px;
+	padding-bottom: 7px;
+}
+.home-section-text {
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	color: #fff;
+	font-size: 24px;
+	padding-top: 29px;
+	padding-left: 10px;
+	padding-bottom: 8px;
+	bottom: 6px;
+}
+.sec-s3 {
+	width: 87.7%;
+}
+.sec-s4 {
+	width: 90.7%;
+}
+.sec-s5 {
+	width: 92.5%;
+}
+.sec-s9 {
+	width: 89.7%;
+}
+.home-section-text2 {
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	bottom: 6px;
+	color: #fff;
+	font-size: 24px;
+	padding-top: 29px;
+	padding-left: 10px;
+	width: 77.7%;
+	padding-bottom: 8px;
+	float: left;
+}
+.home-section-box {
+	position: relative;
+	float:left;
+}
+.latest-news {
+	background: #fdbb31;
+	color: #fff;
+	font-size: 50px;
+	padding: 65px 15px 6px 25px;
+	margin-bottom: 35px;
+	/* margin-left: -227px; */
+	width: 100%;
+	text-transform: uppercase;
+	position: relative;
+}
+@media (max-width:767px){
+	.latest-news{font-size:40px;}
+}
+.campus-events {
+	background: #023867;
+	color: #fff;
+	font-size: 50px;
+	padding: 65px 80px 6px 15px;
+	margin-bottom: 35px;
+	text-transform: uppercase;
+	text-align: right;
+	/* margin-left: -227px; */   
+	width: 100%;
+	position: relative;
+}
+.get-involved {
+	background: #420628;
+	color: #fff;
+	font-size: 50px;
+	width: 100%;
+	padding: 65px 15px 6px 25px;
+	margin-bottom: 35px;
+	text-transform: uppercase;
+	/* margin-left: -227px; */   
+	width: 100%;
+	position: relative;
+}
+.ask-mesa-bar {
+	background: #445660;
+	color: #fff;
+	font-size: 50px;
+	width: 100%;
+	padding: 65px 60px 6px 15px;
+	margin-bottom: 35px;
+	text-transform: uppercase;
+	text-align: right;
+	/* margin-left: -227px; */   
+	/* width: 157%; */
+	position: relative;
+}
+@media (max-width:1000px){
+	.campus-events,.ask-mesa-bar{padding: 65px 366px 7px 15px;}
+}
+@media (max-width:769px){
+	.campus-events, .ask-mesa-bar{padding: 65px 252px 7px 15px;}
+}
+@media (max-width:767px){
+	.get-involved{font-size:43px;}
+	.campus-events, .ask-mesa-bar{/*padding: 65px 25px 7px 15px;*/font-size: 37px;}
+	.get-involved {
+		font-size: 32px;
+		margin-left: 0px;
+		padding: 65px 70px 7px 20px;
+	}
+}
+
+@media (max-width:400px){
+	.latest-news{
+		margin-left:0px;
+		font-size:32px;
+		padding: 65px 15px 7px 20px;
+	}
+
+	.campus-events, .ask-mesa-bar {
+		padding: 65px 25px 7px 15px;
+		font-size: 32px;
+		margin-left: 0px;
+	}
+}
+/* Latest News */
+.ln-1,.ln-2,.ln-3,.ln-4,.ln-5,.ln-6{float:left;position:relative;}
+.ln-1{margin-right:15px;}
+.ln-2{margin-right:15px;}
+.ln-3{}
+.ln-4{margin-right:15px;margin-top:-257px;}
+.ln-5{margin-right:15px;margin-top:-257px;height: auto;}
+.ln-6{margin-top: 8px;}
+.more-news{
+	text-align: right;
+	padding-right: 37px;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 40px;
+}
+.more-news a{
+	color:#fdbb31;
+}
+.ln-1 div, .ln-2 div, .ln-3 div, .ln-4 div, .ln-5 div, .ln-6 div{
+	position: absolute;
+	bottom: 6px;
+	width: 310px;
+	background: rgba(0,0,0,0.4);
+	padding: 16px 10px 8px 10px;
+	padding-left: 10px;
+	padding-bottom: 8px;
+	color: #fff;
+	font-size: 22px;
+}
+
+
+.ln-1 div{width: 300px;} 
+.ln-2 div{width: 297px;}
+.ln-3 div{width: 246px;}
+.ln-4 div{width: 224px;}
+.ln-5 div{width: 373px;}
+.ln-6 div{width: 651px;}
+
+.ln-1hover, .ln-2hover, .ln-3hover, .ln-4hover, .ln-5hover, .ln-6hover{background:none!important;z-index:100;}
+
+.ln-1hover{height: 213px!important;}
+.ln-2hover{height: 213px!important;}
+.ln-3hover{height: 474px!important;}
+.ln-4hover{height: 410px!important;}
+.ln-5hover{height: 227px!important;}
+.ln-6hover{height: 146px!important;}			
+
+
+.ln-1hover:hover, .ln-2hover:hover, .ln-3hover:hover, .ln-4hover:hover, .ln-5hover:hover, .ln-6hover:hover{
+	background: #fdbb31!important;  transition: all 1.0s ease;
+}
+.ln-1 span, .ln-2 span, .ln-3 span, .ln-4 span, .ln-5 span, .ln-6 span{z-index:101;width: 93%;position:relative;}	
+
+@media (min-width:1001px){
+	.ln-1 div, .ln-2 div, .ln-3 div, .ln-4 div, .ln-5 div, .ln-6 div{height: 65px;}
+	.ln-1 span, .ln-2 span, .ln-3 span, .ln-4 span, .ln-5 span, .ln-6 span{position: absolute;bottom: 10px;}
+}
+
+@media (max-width:1000px){
+	.ln-1,.ln-2,.ln-3,.ln-4,.ln-5,.ln-6{margin-top:10px;}
+	.ln-1{width:317px;margin-left:40px;margin-right:0;}
+	.ln-2,.ln-5,.ln-6{width:317px;margin-left:10px;margin-right:0;}
+	.ln-3{width: 152px;margin-left:40px;}
+	.ln-4{width: 160px;margin-left: 9px;margin-right: 0;}
+	.ln-5{width: 313px;height: 205px;}
+	.ln-6{margin-top: 1px;width: 313px;}
+	main{padding: 0;}
+	.latest-section{max-width:800px;}
+	.ln-1 div{width: 297px;} 
+	.ln-2 div{width: 297px;}
+	.ln-3 div{width: 132px;}
+	.ln-4 div{width: 140px;}
+	.ln-5 div{width: 293px;bottom: 5px;}
+	.ln-6 div{width: 293px;}
+
+	.ln-1hover, .ln-2hover, .ln-3hover, .ln-4hover, .ln-5hover, .ln-6hover{display:none;}
+
+}
+@media (max-width:769px){
+	.more-news{padding-right: 48px;margin-left: 0px;}
+}
+@media (max-width:735px){
+	.latest-section{max-width:500px;}
+	.ln-1,.ln-2,.ln-5,.ln-6{width:317px;margin-left:40px;margin-right:0;}
+	.ln-3{width: 150px;margin-left:40px;}
+	.ln-4{width: 158px;margin-left: 9px;margin-right: 0;}
+	.ln-5{height: auto;}
+	.ln-6{margin-top: 10px;}
+	.ln-1 div{width: 297px;} 
+	.ln-2 div{width: 297px;}
+	.ln-3 div{width: 130px;}
+	.ln-4 div{width: 138px;}
+	.ln-5 div{width: 297px;}
+	.ln-6 div{width: 297px;}
+}
+@media (max-width:400px){
+	.ln-1, .ln-2, .ln-5, .ln-6 {
+		margin-left: 4px;
+	}
+	.ln-3 {
+		width: 150px;
+		margin-left: 4px;
+	}
+}
+
+/* Campus Events */
+.evn-1,.evn-2,.evn-3,.evn-4,.evn-5{float:left;position:relative;}
+.evn-1{margin-right:15px;}
+.evn-2{}
+.evn-3{margin-right:15px;margin-top: 10px;}
+.evn-4{
+	margin-top: 10px;
+}
+.evn-5{
+	margin-top: 10px;
+	margin-bottom: 60px;
+}
+
+.evn-1 div, .evn-2 div, .evn-3 div, .evn-4 div, .evn-5 div, .evn-6 div{
+	position: absolute;
+	bottom: 6px;
+	width: 310px;
+	background: rgba(0,0,0,0.6);
+	padding: 16px 10px 8px 10px;
+	padding-left: 10px;
+	padding-bottom: 8px;
+	color: #fff;
+	font-size: 22px;
+	height: 60px;
+}
+.evn-1 div{width: 370px;} 
+.evn-2 div{width: 198px;}
+.evn-3 div{width: 214px;}
+.evn-4 div{width: 356px;}
+.evn-5 div{width: 603px;}
+
+.events-box{padding:0;}
+
+.up-events{padding-left: 20px;}
+.up-events h2{
+	border-bottom: 1px solid #b6c3cc;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	width: 100%;
+}
+
+.up-events h3{color: #000;padding-bottom:0px;}
+
+.full-calendar{background:#023867;color:#fff;padding: 15px;font-size: 22px;margin-top: 15px;font-weight: bold;text-transform: uppercase;}
+.full-calendar a{color:#fff;}
+
+.evn-1hover, .evn-2hover, .evn-3hover, .evn-4hover, .evn-5hover{background:none!important;z-index:100;}
+
+.evn-1hover{height: 176px!important;}
+.evn-2hover{height: 177px!important;}
+.evn-3hover{height: 227px!important;}
+.evn-4hover{height: 228px!important;}
+.evn-5hover{height: 146px!important;}
+
+
+
+.evn-1hover:hover, .evn-2hover:hover, .evn-3hover:hover, .evn-4hover:hover, .evn-5hover:hover{
+	background-color:#023867!important;  transition: all 1.0s ease;}
+.evn-1 span, .evn-2 span, .evn-3 span, .evn-4 span, .evn-5 span{z-index:101;position: absolute;bottom: 10px;}
+
+@media (max-width:1000px){
+	.evn-1hover, .evn-2hover, .evn-3hover, .evn-4hover, .evn-5hover{display:none;}
+	.events-box{width:700px;padding: 0 0 0 65px;}
+	.evn-1 span, .evn-2 span, .evn-3 span, .evn-4 span, .evn-5 span{z-index:101;position: relative;bottom: 0;}
+	.evn-1 div, .evn-2 div, .evn-3 div, .evn-4 div, .evn-5 div, .evn-6 div{height:auto;}
+}
+@media (max-width:769px){
+	.up-events{margin: -20px 0 20px 6%;}
+}
+
+@media (max-width:767px){
+	.evn-2{width: 155px;margin-right: 11px;}
+	.evn-3{width: 134px;margin-top:0;}
+	.evn-4{width: 300px;}
+	.evn-5{width: 300px;}
+	.evn-1 {margin-bottom:8px;}
+	.evn-1 div, .evn-2 div, .evn-3 div, .evn-4 div, .evn-5 div, .evn-6 div{bottom:5px;}
+	.evn-1 div{width: 280px;}
+	.evn-2 div{width: 135px;}
+	.evn-3 div{width: 114px;}
+	.evn-4 div{width: 280px;}
+	.evn-5 div{width: 280px;}
+	.up-events{margin: -20px 0 20px 26%;}
+}
+
+@media (max-width:400px){
+	.events-box{margin-left:7% !important;padding-right:0;}
+	.evn-1{width:317px;}
+	.evn-2{width:165px;}
+	.evn-3{width:140px;}
+	.evn-4{width:317px;}
+	.evn-5{width:317px;}
+	.evn-1 div {
+		width: 297px;
+	}
+	.evn-2 div {
+		width: 145px;
+	}
+	.evn-3 div {
+		width: 120px;
+	}
+	.evn-4 div {
+		width: 297px;
+	}
+	.evn-5 div {
+		width: 297px;
+	}
+	.evn-1 div, .evn-2 div, .evn-3 div, .evn-4 div, .evn-5 div, .evn-6 div {
+		bottom: 5px;
+	}
+	.up-events {
+		margin: -20px 0px 20px 8%;
+		width: 92%;
+		padding-left: 0;
+	}
+}
+
+/* Get Involved */
+
+.inv-1,.inv-2,.inv-3,.inv-4,.inv-5,.inv-6,.inv-7{float:left;position:relative;margin-bottom: 10px;}
+.inv-1{margin-right:15px;}
+.inv-2{margin-right:15px;}
+.inv-3{}
+.inv-4{margin-right:15px;}
+.inv-5{margin-right:15px;}
+.inv-7{margin-bottom:60px;}
+
+.inv-1 div, .inv-2 div, .inv-3 div, .inv-4 div, .inv-5 div, .inv-6 div, .inv-7 div{
+	position: absolute;
+	bottom: 6px;
+	width: 310px;
+	background: rgba(0,0,0,0.6);
+	padding: 16px 10px 8px 10px;
+	padding-left: 10px;
+	padding-bottom: 8px;
+	color: #fff;
+	font-size: 22px;
+
+	bottom: 4px;
+}
+.inv-1 div{width: 149px;} 
+.inv-2 div{width: 149px;}
+.inv-3 div{width: 147px;}
+.inv-4 div{width: 149px;}
+.inv-5 div{width: 149px;}
+.inv-6 div{width: 147px;}
+.inv-7 div{width: 946px;}
+
+.social-med{color:#420628;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid rgba(66, 6, 40, 0.3);width:90%;}
+.apply-bar{width: 93.2%;background:#fdbb31;}
+.acad-bar{width: 46.2%;margin-right: 3%;background:#00529C;}
+.lib-bar{width: 40.3%;background:#445660;}
+.apply-bar,.acad-bar,.lib-bar{padding:10px;float:left;color:#fff;font-size: 18px;text-transform:uppercase;margin-bottom: 15px;text-align: center;font-weight: bold;}
+.apply-bar a,.acad-bar a,.lib-bar a{color:#fff;}
+
+.social-feed{width:100%;}
+.btn-social{background: none;padding: 0px;}
+
+.inv-1hover, .inv-2hover, .inv-3hover, .inv-4hover, .inv-5hover, .inv-6hover, .inv-7hover{background:none!important;z-index:100;}
+
+.inv-1hover{height: 147px!important;}
+.inv-2hover{height: 147px!important;}
+.inv-3hover{height: 147px!important;}
+.inv-4hover{height: 147px!important;}
+.inv-5hover{height: 147px!important;}
+.inv-6hover{height: 147px!important;}
+.inv-7hover{height: 249px!important;}
+
+
+.inv-1hover:hover, .inv-2hover:hover, .inv-3hover:hover, .inv-4hover:hover, .inv-5hover:hover, .inv-6hover:hover, .inv-7hover:hover{
+	background-color:#420628!important;transition: all 1.0s ease;}
+.inv-1 span, .inv-2 span, .inv-3 span, .inv-4 span, .inv-5 span, .inv-6 span, .inv-7 span{z-index:101;position:relative}
+
+
+@media(min-width:1001px){
+	.inv-1 div, .inv-2 div, .inv-3 div, .inv-4 div, .inv-5 div, .inv-6 div, .inv-7 div{height: 65px;}
+	.inv-1 span, .inv-2 span, .inv-3 span, .inv-4 span, .inv-5 span, .inv-6 span, .inv-7 span{position: absolute;bottom: 10px;}
+}
+
+@media (max-width:1000px){
+	.involved-box{width: 681px!important;padding-left: 14%;}
+	.inv-3 {
+		margin-right: 15px;
+	}
+	.inv-1hover, .inv-2hover, .inv-3hover, .inv-4hover, .inv-5hover, .inv-6hover, .inv-7hover{display:none;}
+	.inv-7 div {
+		width: 660px;
+		bottom: 4px;
+	}
+	.inv-7 {
+		width: 700px;
+		margin-left: 5%;
+	}
+	.social-mobile{margin: 15px 0px 15px 20%;}
+}
+}
+@media (max-width:769px){
+	.involved-box{padding-left: 16%;width: 700px!important;}
+	.events-box {
+		padding: 0 0 0 65px;
+	}
+	.latest-section {
+		padding-left: 15px;
+	}
+	.inv-7 div {
+		width: 560px;
+		bottom: 5px;
+	}
+	.inv-7{float:none;width: 600px;margin-left: 13%;}
+	.social-mobile{margin: 15px 0px 15px 24%;}
+}
+@media (max-width:767px){
+	.involved-box{padding-left:6%;width:418px!important;}
+	.apply-bar, .acad-bar, .lib-bar{font-size:13px;}
+	.lib-bar {
+		width: 34.5%;}
+	.events-box{margin-left: -15px;}
+	.social-mobile {
+		margin: 15px 0px 15px 7%;
+		width: 100%;
+	}
+	.inv-7{width: 400px;margin-left: 10px;}
+	.inv-7 div {
+		width: 360px;}
+	.apply-bar {
+		width: 89%;}
+}        
+.latest-section{padding-left:3px;}
+@media (max-width:769px){
+	.latest-section{padding-left:20px;}
+}
+@media (max-width:400px){
+	.latest-section {
+		padding-right: 0;
+	}
+	.involved-box {
+		width: 335px !important;
+		padding-left: 7px;
+		padding-right:0px;
+	}
+
+	.apply-bar,.acad-bar,.lib-bar{
+		width: 300px;
+	}
+	.inv-1,.inv-2,.inv-3,.inv-4,.inv-5,.inv-6{width:151px;}
+	.inv-1,.inv-3,.inv-5{margin-right:17px;}
+	.inv-2,.inv-4,.inv-6{margin-right:0px;}
+	.inv-1 div, .inv-2 div, .inv-3 div, .inv-4 div, .inv-5 div, .inv-6 div{width:131px;}		
+	.events-box{margin-left: 7px;padding:0;}
+	.no-padding{padding:0;}
+	.inv-7{width:340px;margin-left:7px;}
+	.inv-7 div{width:300px;}
+	#social-feeds button img{width:30px;}
+}
+
+/* Have Questions */
+.have-questions{text-align:right;padding-right: 25px;}
+.have-questions h2{margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid #b6c3cc;color:#445660;font-weight:bold;}
+.have-questions a{color:#000;text-decoration:underline;}
+.ask-questions{margin-top: 34px;padding-left: 25px;}
+.ask-questions strong,.have-questions strong{font-size:14px;text-transform:uppercase;}
+.q-submit{float:right;padding:10px;background-color:#445660;font-size:18px;text-transform:uppercase;font-weight:bold;margin-bottom:10px;}
+.q-submit a{color:#fff;}
+.ask-box{width:415px;height:150px;background:#efefef;border:none;margin-top:10px;}
+
+@media (max-width:769px){
+	.have-questions{text-align: center;}
+	.ask-questions{width: 64%!important;margin-left: 16.5%;margin-bottom: 10px;}
+}
+@media (max-width:767px){
+	.ask-questions{width:100%!important;margin-left:-1.5%;}
+	.ask-box{width:340px;}
+	.have-questions{margin-left: 22px;}
+}
+@media (max-width:400px){
+	.ask-box {
+		width: 275px;
+	}
+}
+#main-content{padding:0;}
+ol.breadcrumb{display:none;}
+.slick-slider {margin-bottom: 0px!important;}
+.slider-header{padding:0;}
+
+#main-content {
+	max-width: none;
+}
+.slick-slide img {
+	display: block;
+	margin: 0 auto;
+}
+.home-container{max-width: 986px;margin: 0 auto;padding: 20px 0;}
+
+.slick-dots li button:before{font-size:68px!important;color:#420628!important;}
+.slick-dots{bottom:-14px!important;right:29%;}
+.slick-prev{left:10%!important;text-shadow: 2px 2px 8px rgba(0,0,0,0.8);width: 40px!important;
+	height: 60px!important;top: 45%!important;}
+.slick-next{right:10%!important;text-shadow: 2px 2px 8px rgba(0,0,0,0.8);width: 40px!important;
+	height: 60px!important;top: 45%!important;}
+.slick-prev:before, .slick-next:before{font-size:75px!important;}
+.slick-prev:before{font-family:FontAwesome!important;}
+.slick-next:before{font-family:FontAwesome!important;}
+
+@media(max-width:767px){
+	.slick-prev,.slick-next{top: 30%!important;}
+}
+
+
+.latest-news:before {
+	position: absolute;   content: " ";   display: block;   
+	background: #fdbb31;   left: -100%;   height: 100%;   width: 100%;   z-index: 0;
+	top: 0;
+}
+
+.latest-news:after {
+	position: absolute;   content: " ";   display: block;   background: #fdbb31;   
+	right: -100%;   height: 100%;   width: 100%;   z-index: 0;   top: 0;
+}
+.campus-events:before {
+	position: absolute;   content: " ";   display: block;   
+	background: #023867;   left: -100%;   height: 100%;   width: 100%;   z-index: 0;
+	top: 0;
+}
+
+.campus-events:after {
+	position: absolute;   content: " ";   display: block;   
+	background: #023867;   
+	right: -100%;   height: 100%;   width: 100%;   z-index: 0;   top: 0;
+}
+.get-involved:before {
+	position: absolute;   content: " ";   display: block;   
+	background: #420628;   left: -100%;   height: 100%;   width: 100%;   z-index: 0;
+	top: 0;
+}
+
+.get-involved:after {
+	position: absolute;   content: " ";   display: block;   
+	background: #420628;   
+	right: -100%;   height: 100%;   width: 100%;   z-index: 0;   top: 0;
+}
+.ask-mesa-bar:before {
+	position: absolute;   content: " ";   display: block;   
+	background: #445660;   left: -100%;   height: 100%;   width: 100%;   z-index: 0;
+	top: 0;
+}
+
+.ask-mesa-bar:after {
+	position: absolute;   content: " ";   display: block;   
+	background: #445660;   
+	right: -100%;   height: 100%;   width: 100%;   z-index: 0;   top: 0;
+}
+@media(max-width:767px){
+	.latest-news:before, .latest-news:after, .campus-events:before, .campus-events:after, .get-involved:before, .get-involved:after, .ask-mesa-bar:before, .ask-mesa-bar:after{
+		display:none;
+	}
+}
+
+.admissions-info a.link-title
+{
+	margin: 0 0 0 0;
+	line-height: normal;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #023867;
+	font-family: 'HelveticaNeueW01-75Bold', Helvetica, Arial, sans-serif;
+	font-size: 19px;
+	padding: 0 0 .75em;
+	display: block;
+}
+
+#skiptocontent a {
+	position: absolute;
+	top: -45px;
+	left: 0px;
+	color: white;
+	border-right: 1px solid white;
+	border-bottom: 1px solid white;
+	border-bottom-right-radius: 12px;
+	background: transparent;
+	-o-transition:  top 1s ease-out, background 1s linear;
+	-moz-transition:  top 1s ease-out, background 1s linear;
+	-webkit-transition: top 1s ease-out, background 1s linear;
+	transition: top 1s ease-out, background 1s linear;
+	z-index: 100;
+	color: #023867;
+	font-weight: bold;
+	text-decoration: underline;
+	padding: 10px;
+	font-size: 16px;
+}
+
+#skiptocontent a:focus {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background: #f7f7f7;
+	outline: 0;
+	-o-transition: top .1s ease-in, background .5s linear;
+	-moz-transition: top .1s ease-in, background .5s linear;
+	-webkit-transition: top .1s ease-in, background .5s linear;
+	transition: top .1s ease-in, background .5s linear;
+}
+.home-button{z-index:100 !important;font-size:25px;text-transform:uppercase;text-align:center;margin:20px 0;border:3px solid #fff;padding:15px 0;color:#fff;background-color:rgba(0,0,0,.5);}
+.home-link{color:inherit !important;}
+.home-button:hover{color:#fdb930;border:3px solid #fdb930;background-color:#023867;}
+#header .feed_title{font-size:19px!important;}
+.arrow {
+	color:#fff;
+	width: 0; 
+	height: 0; 
+	border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+	border-top: 40px solid #fff;}
+.highlight{font-size:110%;font-weight:bold;}
+.list-group{padding:0;}
+.list-group li{list-style-type:none;padding:0;}
+.group{padding:15px 0 0 15px;}
+.faculty{background-color:#f7f7f7;border:1px solid #023867;}
+.latest-news{margin-top:-50px;}
+.arrow:hover{border-top-color:#023867;}
+.anchor{display:block;height:165px;margin-top:-165px;visibility:hidden;}
+.year{	-ms-transform: rotate(-90deg); /* IE 9 */
+	-webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+	transform: rotate(-90deg);
+	transform-origin: right center;
+	float:left;
+	margin-top: 10px;
+	margin-left: -305px;
+	padding:0;}
+.semester{letter-spacing:8px;}
+
+.year2{-ms-transform: rotate(-90deg); /* IE 9 */
+	-webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+	transform: rotate(-90deg);
+	transform-origin: right center;
+	float:left;
+	margin-top: -10px;
+	padding:0;}
+.spring{margin-left: -400px;}
+.summer{margin-left: -430px;}
+.fall{margin-left: -305px;}
+.semester2{letter-spacing:3px;}
+.announcements{
+	background: #d6d6d6 none repeat scroll 0% 0%;
+	color: #023867;
+	font-size: 20px;
+	padding: 10px 15px;
+
+	width: 100%;
+	min-height:82px;
+	position: relative;
+}
+.announcements::before{
+	position: absolute;
+	content: " ";
+	display: block;
+	background: #d6d6d6 none repeat scroll 0% 0%;
+	left: -100%;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	top: 0px;
+
+
+}
+.announcements::after{
+	position: absolute;
+	content: " ";
+	display: block;
+	background: #d6d6d6 none repeat scroll 0% 0%;
+	right: -100%;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	top: 0px;
+
+}
+.announcements p{padding:5px 0;}
+.announcements p a{color:#00529c!important;}
+.announcements p a:hover {color:#fdb930;text-decoration:underline;}
+.light-blue, .light-blue::before, .light-blue::after{background:rgba(68,86,96,.1)!important;margin-bottom:10px;}
+.a-title{color:#023867; border:3px solid #fdb930; padding:15px;margin-right:20px;font-weight:bold;font-family:serif;}
+.a-msg{font-size: 28px;
+	padding: 15px;
+	margin: 30px 0 0 -80px;
+	white-space: nowrap;}
+/* @media (max-width:1300px){
+	#next-btn{display:none;}
+} */
+.evn-2{width:218px;height:206px;}
+@media screen and (max-width: 768px){
+	.announcements{font-size:14px;}
+	.accred{padding:20px;}
+
+}
+.text-center{text-align:center;}
+
+.info-image{position:absolute;
+	left: -66px;
+	top: 12.5%;
+	height: 66px;
+
+
+	width: auto;
+}
+.latest-news{margin-bottom:0;}
+.new{font-weight: bold; padding: 3px; background-color:#fdb930; color:#023867;}
+.group h2{width: 95%;}
+.no-padding{padding:0 !important;}
+.banner{display:none;}
+.underline{text-decoration:underline;}
+.idea2{color:#07308a;}
+.idea2:hover{color:#80bd00 !important;}
+#nav-arrow{background-image: url("http://www.sdmesa.edu/images/down-arrow-white-75x75.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	height:77px;
+	width:77px;
+}
+#nav-arrow:hover{background-image: url("http://www.sdmesa.edu/images/down-arrow-yellow-clear.png");}
+.clear{font-size:50px;
+	color:rgba(255,255,255,.6);
+	background: rgba(0,0,0,0);
+	position: absolute;
+
+	right:0;
+	padding: 15px 25px;
+	letter-spacing:-3px;
+	top:18%;
+}
+.slider-main{border-right:10px #023867 solid;border-left:10px #023867 solid;}
+
+.accred td{padding:10px;}
+#scholarship img{width:500px; margin-right:10px; float:left;border:3px solid #fff;}
+#scholarship img:hover{border-color:#FFDE16;}
+p#scholarship {
+	font-size: 18px;
+	line-height: 1.4;}
+p#scholarship a{font-weight:bold;text-decoration:underline;}
+
+@media (max-width:861px){
+	p#scholarship{margin:20px;text-align:center;}
+	p#scholarship img{width:100%;} 
+}
+#message.show{
+	font-size: 35px;
+	background: rgba(0, 0, 0, 0.75) none repeat scroll 0% 0%;
+	z-index: 100;
+	position: absolute;
+	margin-top: 10px;
+	padding: 20px;
+	min-height: 100px;
+	border: 2px solid #023867;
+	border-radius: 5px;
+	left: 0;
+	right: 0;
+	color: #fdb930;
+}
+a:focus, button:focus {outline: thin dotted;}
+
+.skiptosection a#welcome {
+	position: absolute;
+	right:0px;
+	bottom:0px;
+	color: #fdb930;
+	background: transparent;
+	-o-transition:   background 1s linear;
+	-moz-transition:  background 1s linear;
+	-webkit-transition: background 1s linear;
+	transition: background 1s linear;
+	z-index: 100;
+	font-weight: bold;
+	text-decoration: underline;
+	padding: 10px;
+	font-size: 16px;
+	text-transform:none;
+}
+
+.skiptosection a#welcome:focus {
+	color:#023867;
+	background: #fff;
+	outline: 0;
+	-o-transition: background .5s linear;
+	-moz-transition: background .5s linear;
+	-webkit-transition: background .5s linear;
+	transition: background .5s linear;
+}
+
+.skiptosection a#events {
+	position: absolute;
+	left:0px;
+	bottom:0px;
+	color: #023867;
+	background: transparent;
+	-o-transition:   background 1s linear;
+	-moz-transition:  background 1s linear;
+	-webkit-transition: background 1s linear;
+	transition: background 1s linear;
+	z-index: 100;
+	font-weight: bold;
+	text-decoration: underline;
+	padding: 10px;
+	font-size: 16px;
+	text-transform:none;
+}
+
+.skiptosection a#events:focus {
+	color:#023867;
+	background: #fff;
+	outline: 0;
+	-o-transition: background .5s linear;
+	-moz-transition: background .5s linear;
+	-webkit-transition: background .5s linear;
+	transition: background .5s linear;
+}
+
+.skiptosection a#last {
+	position: absolute;
+	right:0px;
+	bottom:0px;
+	color: #49182d;
+	background: transparent;
+	-o-transition:   background 1s linear;
+	-moz-transition:  background 1s linear;
+	-webkit-transition: background 1s linear;
+	transition: background 1s linear;
+	z-index: 100;
+	font-weight: bold;
+	text-decoration: underline;
+	padding: 10px;
+	font-size: 16px;
+	text-transform:none;
+}
+
+.skiptosection a#last:focus {
+
+	background: #fff;
+	outline: 0;
+	-o-transition: background .5s linear;
+	-moz-transition: background .5s linear;
+	-webkit-transition: background .5s linear;
+	transition: background .5s linear;
+}	
+
+.skiptosection a#totop {
+	position: absolute;
+	right:0px;
+	bottom:74px;
+	color: #023867;
+	background: transparent;
+	-o-transition:   background 1s linear;
+	-moz-transition:  background 1s linear;
+	-webkit-transition: background 1s linear;
+	transition: background 1s linear;
+	z-index: 100;
+	font-weight: bold;
+	text-decoration: underline;
+	padding: 10px;
+	font-size: 16px;
+	text-transform:none;
+	padding-right: 45px;
+	border-top-left-radius: 12px;
+}
+
+.skiptosection a#totop:focus {
+
+	background: #fff;
+	outline: 0;
+	-o-transition: background .5s linear;
+	-moz-transition: background .5s linear;
+	-webkit-transition: background .5s linear;
+	transition: background .5s linear;
+}
+#particles-js{position:absolute;top:0;bottom:-230px;right:0;left:0;}
+#holidays{position: absolute;
+	top: 230px;
+	left: 70px;
+	color: #fff;
+	padding: 5px;
+	font-family: 'Great Vibes', cursive;
+	font-size: 3vw;
+	text-shadow: 4px 4px 2px rgba(255, 255, 255, 0.85);
+	opacity:0;
+	-o-transition:   opacity 1s linear;
+	-moz-transition:  opacity 1s linear;
+	-webkit-transition: opacity 1s linear;
+	transition: opacity 1s linear;
+}
+
+#holidays:hover, #next:hover{opacity:1;
+	-o-transition:   opacity .2s linear;
+	-moz-transition:  opacity .2s linear;
+	-webkit-transition: opacity .2s linear;
+	transition: opacity .2s linear;
+}
+@media (max-width:769px)
+{
+	.mobile{display:block!important;}
+	.desktop{display:none;}
+	#welcome{display:none;}
+	.span8.events-box.row{width:100%!important;position:relative;}
+	.event{width:90%;display:block;margin:10px auto; padding:0; height:200px;overflow:hidden;position:relative;}
+	.event div{position:absolute;right:0;left:0;width:100%;box-sizing:border-box;}
+	div.evn-2.event, div.evn-3.event{width:42%;}
+	div.evn-3.event{margin-left:10px;}
+	.event img{width:100%;}
+	.span4.up-events{width:100%;position:relative;padding:0;margin:0;}
+	.span4.up-events .frame{width:325px;margin:0 auto;}
+}
+.feed_item_description img{max-width:250px;}
+.marquee{background:#49182d;color:#fff;}
+.headline{font-size:18px;color:#023867;font-weight:bold;}
+.mobile{display:none;}
+.mobile-note{background:#fff;}
+@media screen and (max-width: 1000px){
+	.newsPost.span4{width:49%;}
+}
+@media screen and (max-width: 600px){
+	.newsPost.span4{width:100%;}
+}
+
+.newsImage{transition: transform .2s;}
+.newsArticle:hover{-webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.75);
+	box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.75);}
+.newsArticle:hover .newsImage{transform: scale(1.2);}
+
+.more-news{text-align:right;margin-bottom:0;margin-top:10px;padding-right:0;}
+.more-events{text-align:right;margin-bottom:50px;margin-top:10px;color:#023867;}
+.more-events a{font-size:20px;font-weight:bold;text-transform:uppercase;}
+.more-news a{color:#023867;padding-right:0;}
+.more-news a:hover{color:#fdb930;}
+
+@media screen and (max-width: 600px){
+	.more-news{width:100%;text-align:center;margin:3px 0;}
+	.more-events{width:100%;text-align:center;}
+}
+a .tag{background: #f0f0f0;
+	font-weight: bold;
+	padding: 2px 5px;
+	border-radius: 10px;
+	margin: 2px;
+	display: inline-block;
+	font-size: 12px;
+	letter-spacing: -1px;
+	flex:0 0 auto;
+	color:#023867;}
+li.span3{
+	padding: 0;
+	margin: 5px;
+	width: 23%;
+}
+.displaystart{color:#023867;overflow:hidden; max-height:0;opacity:0;
+	transition: opacity 1.3s ease-in, max-height 1.5s ease;
+	-moz-transition: opacity 1.3s ease-in, max-height 1.5s ease;
+	-webkit-transition: opacity 1.3s ease-in, max-height 1.5s ease;
+	padding:5px 10px;}
+.displaystart.displayblock{opacity:1;max-height:500px;
+	transition: opacity 2s ease-out, max-height 2s ease-in;
+	-moz-transition: opacity 2s ease-out, max-height 2s ease-in;
+	-webkit-transition: opacity 2s ease-out, max-height 2s ease-in;
+}
+ul.ouCalendarView li{list-style:none!important;} 
+.calendarCard{position:relative; padding:0; height:250px; overflow:hidden;border: 1px solid #eaeaea;} 
+.cardHover::after{content:"";height:1px;width:100%;left:0;top:0;position:absolute; background:#023867; transition:all 0.2s ease-out;-webkit-transition:all 0.2s ease-out;-moz-transition:all 0.2s ease-out;} 
+.border-blue{border: 1px solid rgba(0,0,0,0.2);padding:10px; position:relative;} 
+.cardHover:hover::after{height:15px;} 
+.cover{ display:block!important; height:100%; width:100%; left:0; position:absolute; text-indent:-999em; top:0;}
+.ouCalendarView{display: inline-flex;
+	flex-direction:row;
+	-webkit-flex-direction: row;
+	flex-wrap:wrap;
+	-webkit-flex-wrap: wrap;
+	justify-content:space-evenly;
+	align-content:flex-start;
+	display: -webkit-inline-flex;
+
+
+
+
+	width: 100%;
+}
+.event{-webkit-flex-grow: 1;
+	flex-grow: 1;
+	-webkit-flex-basis: 200px;
+	flex-basis: 200px;
+	align-self: stretch;
+	margin:10px;
+	min-height:250px;
+	padding:0;
+
+	border-radius: 1px;
+	box-shadow: 0 3px 0 0 #d8d7d5;
+
+}
+.card-date{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #023867;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 0.9;
+	padding: 10px;
+}
+.card-date-num{
+	font-weight: bold;
+	font-size: 26px;
+}
+em{font-style:normal!important;}
+.date{margin-bottom:0;  
+	color: #000;
+	font-family: Helvetica, Arial, sans-serif; display:block;
+	padding:9px 10px;
+	line-height:1.0;}
+.title{
+	color: #023867;
+	font-family: 'HelveticaNeueW01-75Bold', Helvetica, Arial, sans-serif;
+	display: block;
+	padding: 5px 10px;
+	line-height: 1.1;
+	letter-spacing: -1px;
+	font-size: 18px;
+}
+.category{position: absolute;
+	bottom: 0;
+	display: flex;
+	flex-wrap: wrap-reverse;
+	padding: 10px 6px;
+	justify-content: flex-end;
+	flex-direction: row-reverse;
+	left: 0;
+	right: 0;}
+.day{font-weight:bold;
+	font-size:1.2em;
+	text-transform:uppercase;}
+.time{padding:0 2px;}
+.local{padding: 0 2px;}
+.event:hover span.title{text-decoration:underline;}
+.event:hover .calendarCard{border-color:#fdb930;}
+.event:hover{box-shadow: 0 3px 0 0 #fdb930, 0px 0px 10px 0px #fdb930;}
+.filter{position:relative;}
+.filter-toggle::before{
+	position: absolute;
+	content: " ";
+	display: block;
+	background: #023867;
+	left: -100%;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	top: 0;
+}
+.live{display:block;width:90%;margin:20px auto;text-align:center;}
+.live p{text-align:center;}
+.mesaLive{line-height: .9;margin-bottom: 25px;display: inline-block;border: 4px solid #023867;padding: 0 20px 20px;border-radius: 6px;}
+.flext{display:flex; justify-content:center; align-items:center; flex-direction:row; margin-bottom:25px;}
+.flex-item{display:flex;justify-content:left; align-items:center; padding-right:12px;}
+.flex-item span{padding-right:3px;}
+div.span12 ul.top10 li{list-style-type:none;}
+.ask-mesa-bar{text-align:left;}
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Great Vibes'), local('GreatVibes-Regular'), url(https://fonts.gstatic.com/s/greatvibes/v7/RWmMoKWR9v4ksMfaWd_JN9XFiaE.ttf) format('truetype');
+}
+
+</style>
+
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="" name="description"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+
+
+<link href="/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+<link href="/apple-touch-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+<link href="/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+<link href="/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+<link href="/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+<link href="/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+<link href="/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+<link href="/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/manifest.json" rel="manifest"/>
+<link color="#023867" href="/safari-pinned-tab.svg" rel="mask-icon"/>
+<meta content="#da532c" name="msapplication-TileColor"/>
+<meta content="/mstile-144x144.png" name="msapplication-TileImage"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="http://www.sdmesa.edu/_resources/images/involved-7.png" property="og:image"/>
+<meta content="San Diego Mesa College" property="og:image:alt"/>
+<meta content="San Diego Mesa College" property="og:title"/>
+<meta content="San Diego Mesa College offers 196 associate degree and certificate programs and a four-year baccalaureate degree. As the leading college of equity and excellence, Mesa ranks as San Diego’s top transfer institution." property="og:description"/>
+<script src="/_resources/js/vendor/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="/_resources/js/collapse.js" type="text/javascript"></script>
+<script src="/_resources/js/transition.js" type="text/javascript"></script>
+<!-- Full Story Code -->
+<script>
+window['_fs_debug'] = false;
+window['_fs_host'] = 'fullstory.com';
+window['_fs_org'] = 'KM96S';
+window['_fs_namespace'] = 'FS';
+(function(m,n,e,t,l,o,g,y){
+    if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
+    g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[];
+    o=n.createElement(t);o.async=1;o.crossOrigin='anonymous';o.src='https://'+_fs_host+'/s/fs.js';
+    y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+    g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)};
+    g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
+    g.log = function(a,b) { g("log", [a,b]) };
+    g.consent=function(a){g("consent",!arguments.length||a)};
+    g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+    g.clearUserCookie=function(){};
+})(window,document,window['_fs_namespace'],'script','user');
+</script>
+<!-- End Full Story Code -->
+
+<style>
+			#next-btn a img {
+			border:2px solid transparent;
+			box-shadow: 5px 5px 0px rgba(253,185,48,0.6);
+			width:25%;
+			}
+			#next-btn a:hover img{
+			
+			border-color: #fdb930;
+			box-shadow: 10px 10px 0px rgba(253,185,48,1);
+			}
+			.mobile-only {display: none;}
+			.mobile-only .row .span6 {
+			position:relative;
+			padding-right:0;
+			}
+			.mobile-only .msg {
+			text-align: center;
+			display: block;
+			padding: .5em;
+			font-size: 2.5em;
+			line-height: 1;
+			background: #023867;
+			color: #fff;
+			padding-bottom: 110px;
+			}
+			.mobile-only .msg a{
+			color: #fdb930;
+			font-weight: bold;
+			}
+			.mobile-only .msg p {
+			text-align: center;
+			padding: 15px;
+			}
+			
+			#holidays {
+			font-family: 'Great Vibes', cursive;
+			}
+			
+			@media (max-width: 800px) {
+				#next-btn {
+					display: none;
+				}
+				.mobile-only {
+			display:block;
+			}
+			}
+		</style>
+<script type="application/ld+json"> {
+			"@context": "http://schema.org",
+			"@type": "Organization",
+			"url": "http://www.sdmesa.edu",
+			"logo": "http://www.sdmesa.edu/_resources/images/mesa_logo_white.png"
+			} </script>
+<script src="/_resources/js/new-script/particles.js" type="text/javascript"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68121801-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<title>San Diego Mesa College</title>
+<meta content="San Diego Mesa College" name="author"/>
+</head>
+<body>
+<div class="site-cont">
+<header role="banner">
+<div id="skiptocontent"><a href="#main-content" id="skip">skip to main content</a></div>
+<div id="top-bar">
+<div class="top-bar__container clearfix">
+<nav aria-label="Quick Link Navigation Menu" id="user-nav">
+<ul>
+<li>
+<a href="http://classschedule.sdccd.edu" onclick="ga('send','event','schedule','click','class-schedule',0);" target="_blank">Class Schedule</a>
+</li>
+<li>
+<a href="https://myportal.sdccd.edu/psp/IHPRD/EMPLOYEE/EMPL/?cmd=login" onclick="ga('send','event','register','click','mySDCCD',0);" target="_blank">MySDCCD</a>
+</li>
+<li>
+<a href="https://sdccd.instructure.com/login/canvas">Canvas</a>
+</li>
+<!-- 						<li>
+							<a href="https://sdccd.blackboard.com/">Blackboard</a>
+						</li> -->
+<!-- 						<li>
+							<a href="https://studentweb.sdccd.edu/reg-e/" onclick="ga('send','event','regE','click','old-registration',0);">Reg-e</a>
+						</li> -->
+<li>
+<a href="http://www.sdmesa.edu/faculty-staff/index.shtml">Faculty/Staff</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/alumni/index.shtml">Alumni</a>
+</li>
+</ul>
+</nav>
+<nav aria-label="Resources Navigation Menu" id="popular-nav">
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/_resources/newsroom/news.php">Newsroom</a>
+</li>
+<li>
+<a href="https://www.sdmesa.edu/calendar/index.php">Calendar</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/faculty/index.shtml">Directory</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/maps/">Map</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/library/index.shtml">Library</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/admissions/index.shtml" style="background:#023867;padding:0 12px;font-weight:bold;">
+								Admissions
+							</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="container head-cont">
+<div id="mobile-menu-main">
+<button class="btn btn-info btn-main collapsed" data-target="#menu-target" data-toggle="collapse" type="button"> <icon class="fa fa-bars" style="color:#fff; font-size:30px;"></icon>
+</button>
+</div>
+<a href="http://www.sdmesa.edu/" id="logo">
+<img alt="San Diego Mesa College" src="/_resources/images/mesa_logo_white.png"/></a>
+<div aria-label="Open Google Site Search" id="mobile-search">
+<button class="btn btn-info collapsed btn-main" data-target="#search-target" data-toggle="collapse" type="button"> <icon class="fa fa-search" style="color:#fff; font-size:30px;"></icon>
+</button>
+</div>
+<div id="search-social">
+<!-- <form action="">
+
+<div id="search-field">
+<input type="text" name="keywords" placeholder="Search Temporarily Unavailable">
+<input type="submit" value="Search">
+<input type="hidden" name="newSearch" value="true"/>
+<input type="hidden" name="display" value="search"/>
+<input type="hidden" name="nocache" value="1"/>
+</div>-->
+<style>
+
+					td.gsc-search-button > input{
+						top: 7px;
+					}
+
+
+					.gsc-control-cse.gsc-control-cse-en {
+						background: none;
+						border: none;
+						padding-left: 0;
+						padding-right: 0;
+					}
+					.gsc-control-cse.gsc-control-cse-en {
+						padding-bottom: 0;
+					}
+					input.gsc-search-button.gsc-search-button-v2 {
+						border: none;
+						color: #000;
+						padding: 7px 7px;
+						position: absolute;
+						margin: 0px;
+
+						top: 7px;
+						bottom: 0px;
+						right: 4px;
+					}
+					td.gsc-search-button {
+						position: relative;
+					}
+					.gsc-control-cse-en {
+						width: 103%!important;
+					}
+					.gsc-control-cse.gsc-control-cse-en {
+						padding-top: 0;
+						margin-top: -5px;
+						margin-bottom: -11px;
+					}
+					#search-social {
+						padding: 15px 5px 0 0;
+					}
+					.gsc-input-box {
+						border-top-left-radius: 0 !important;
+						border-bottom-left-radius: 0 !important;
+					}
+					.gsc-search-button-v2 {
+						border-top-right-radius: 0 !important;
+						border-bottom-right-radius: 0 !important;
+					}
+/* 					.gsc-input-box input{
+						background:url(/_resources/images/mesa-searchimg.jpg)!important;
+						background-repeat:no-repeat!important;
+					} */
+					.gsc-input-box-focus input{
+						background:#fff!important;
+					}
+					.gsc-input:focus {
+						outline: thin dotted #fff !important;
+					} /* test for accessibility */
+/* 					.gsib_a {
+						padding-top: 5px;
+					} */
+					#gs_tti50 {
+						padding: 0 !important;
+					}
+					td.gsib_b {
+						display: none;
+					}
+					.gs-title {
+						text-align: left;
+					}
+					.gs-bidi-start-align.gs-snippet {
+						padding-left: 10px;
+					}
+					.sub-mobile-nav{
+						padding: 0!important;
+						margin: 0;
+						color: #FDBB30;
+						font-weight: normal;
+						font-family: Helvetica, Arial, sans-serif;
+						font-size: 14px;
+					}
+					.sub-mnav-link a {
+						color: #fff!important;
+						font-size: 10px;
+						width: 100%;
+						float: right;
+					}
+					div#gsc-iw-id1{
+						height:25px !important;
+					}
+					input#gsc-i-id1 {
+						height: 13px !important;
+						width: 95% !important;
+						background: none !important;
+						text-indent: 0 !important;
+						margin: 0 !important;
+					}
+					input#gsc-i-id1::placeholder {
+						opacity: .6 !important;
+					}
+					.search-contain {
+						max-width: 90%;
+					}
+				</style>
+<!--<script>
+(function() {
+var cx = '009456663269999703337:dp0y8daqmfs';
+var gcse = document.createElement('script');
+gcse.type = 'text/javascript';
+gcse.async = true;
+gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+'//cse.google.com/cse.js?cx=' + cx;
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(gcse, s);
+})();
+</script>
+<gcse:search></gcse:search>-->
+<script>
+					(function() {
+						var cx = '009456663269999703337:n8kqhe2p5cs';
+						var gcse = document.createElement('script');
+						gcse.type = 'text/javascript';
+						gcse.async = true;
+						gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+							'//cse.google.com/cse.js?cx=' + cx;
+						var s = document.getElementsByTagName('script')[0];
+						s.parentNode.insertBefore(gcse, s);
+					})();
+					
+					window.onload = function() { 
+				   var searchBox =  document.getElementById("gsc-i-id1");
+				   searchBox.placeholder="Search";
+				   searchBox.title="Search";
+
+				   var searchBox2 =  document.getElementById("gsc-i-id2");
+				   searchBox2.placeholder="Search";
+				   searchBox2.title="Search";
+     }
+				</script>
+<div aria-label="Google Site Search" role="search">
+<gcse:search></gcse:search>
+</div>
+<p style="white-space:nowrap;margin-top:5px;padding: 0 0 5px 0;height:1px;
+						  text-align: right;"> </p>
+<p style="text-align:right !important;padding:0 0 5px 0;"><a class="foundation" href="http://www.sdmesa.edu/about-mesa/mesa-foundation" style="color: white;">GIVE TO MESA</a></p>
+<!-- <input type="radio" id="ask-mesa" name="search-type" value="Ask Mesa">
+<label for="ask-mesa">Ask Mesa</label>
+<input type="radio" id="site-search" name="search-type" value="Site Search">
+<label for="site-search">Site Search</label>-->
+<ul class="social-menu" style="
+											   width: 300px;
+											   margin-right: 67px;
+											   padding-right: 91px;
+											   ">
+<li class=""></li>
+</ul>
+</div>
+<!-- <div class="imesa-head">
+<a href="http://www.sdmesa.edu/imesa.shtml" title="get the i-Mesa Mobile App">
+<img src="/_resources/images/imesa-foot.jpg" alt="i-Mesa mobile application"/>
+</a>
+</div>-->
+<div aria-label="Main Navigation Mobile Menu" id="main-menu-drop" role="navigation">
+<div class="collapse" id="menu-target">
+<div id="mobile-leftnav">
+<ul>
+<li>
+<button aria-label="About Mesa Mobile" class="btn btn-info btn-main collapsed sub-mobile-nav" data-target="#about-link" data-toggle="collapse" role="navigation" type="button">About</button>
+<div class="sub-mnav-link collapse" id="about-link">
+<a href="http://www.sdmesa.edu/about-mesa/accreditation">Accreditation</a>
+<a href="/about-mesa/administration/index.shtml">
+										Administration</a>
+<a href="http://www.sdccd.edu/consumer/" target="_blank">
+										Consumer Information</a>
+<a href="http://www.sdmesa.edu/about-mesa/contact-mesa">
+										Contact Mesa</a>
+<a href="http://www.sdmesa.edu/about-mesa/current-initiatives">
+										College Initiatives</a>
+<a href="http://www.sdmesa.edu/about-mesa/faculty-staff-resources">
+										Faculty and Staff Resources</a>
+<a href="http://www.sdmesa.edu/campus-life/galleries-and-attractions/">
+										Galleries &amp; Attractions</a>
+<a href="http://www.sdmesa.edu/about-mesa/gainful-employment.shtml" target="_blank">
+										Gainful Employment</a>
+<a href="http://www.sdmesa.edu/about-mesa/governance">
+										Governance</a>
+<a href="http://www.sdmesa.edu/about-mesa/institutional-effectiveness">
+										Institutional Effectiveness</a>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/mesa-foundation">
+										Mesa Foundation</a>
+<a href="http://www.sdmesa.edu/about-mesa/mission-vision-values">
+										Mission/Vision/Values</a>
+<a href="http://www.sdmesa.edu/about-mesa/office-of-communications">
+										Office of Communications</a>
+<a href="http://www.sdmesa.edu/about-mesa/office-of-the-president">
+										Office of the President</a>
+<a href="http://www.sdmesa.edu/about-mesa/professional-learning">
+										Professional Learning</a>
+<a href="http://www.sdmesa.edu/about-mesa/institutional-effectiveness/program-review">
+										Program Review</a>
+</div>
+</li>
+<li>
+<button aria-label="Academics Mobile" class="btn btn-info btn-main collapsed sub-mobile-nav" data-target="#academics-link" data-toggle="collapse" role="navigation" type="button">Academics</button>
+<div class="sub-mnav-link collapse" id="academics-link">
+<a href="http://www.sdmesa.edu/academics/academic-programs">
+										Academic Programs</a>
+<a href="http://www.sdmesa.edu/academics/schools-departments">
+										Academic Schools/Departments</a>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs">
+										Academic Support Programs</a>
+<a href="http://www.sdmesa.edu/academics/courses">
+										All Courses</a>
+<a href="http://www.sdmesa.edu/academics/bachelors-degree/">
+										Bachelor's Degree Program</a>
+<a href="http://www.sdmesa.edu/academics/career-technical-education">
+										Career Technical Education</a>
+<a href="http://www.sdmesa.edu/academics/catalog">
+										Catalog</a>
+<a href="http://classschedule.sdccd.edu" onclick="ga('send','event','schedule','click','class-schedule',0);">
+										Class Schedule</a>
+<a href="/academics/dual-enrollment/index.shtml">
+										Dual Enrollment</a>
+<a href="http://www.sdmesa.edu/library">
+										Library</a>
+<a class="hover-link" href="http://www.sdmesa.edu/student-services">
+										Student Services</a>
+<a href="/academics/study-abroad/index.shtml">
+										Study Abroad</a>
+<a href="http://www.sdmesa.edu/student-services/career-center/work-experience/index.shtml">
+										Work Experience</a>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/work-based-learning/index.shtml">
+										Work-Based Learning</a>
+</div>
+</li>
+<li>
+<button aria-label="Financial Aid Mobile" class="btn btn-info btn-main collapsed sub-mobile-nav" data-target="#financialaid-link" data-toggle="collapse" role="navigation" type="button">Financial Aid</button>
+<div class="sub-mnav-link collapse" id="financialaid-link">
+<a href="http://www.sdmesa.edu/financial-aid/application-process.shtml">Apply for Financial Aid</a>
+<a href="http://www.sdmesa.edu/financial-aid/cost-of-attendance.shtml">Cost of Attendance</a>
+<a href="http://www.sdmesa.edu/financial-aid/deadline-dates.shtml">Deadline Dates</a>
+<a href="http://www.sdmesa.edu/financial-aid/documents/employee-code-conduct.pdf">Employee Code of Conduct</a>
+<a href="http://www.sdmesa.edu/financial-aid/forms.shtml">Financial Aid Forms</a>
+<a href="http://www.sdmesa.edu/financial-aid/information-eligibility.shtml">Information/Eligibility</a>
+<a href="http://www.sdmesa.edu/financial-aid/online-resources.shtml">Online Resources</a>
+<a href="http://www.sdmesa.edu/financial-aid/payment-disbursement-dates.shtml">Payment Disbursement Dates</a>
+<a href="http://www.sdmesa.edu/financial-aid/programs-available">Programs Available</a>
+<a href="http://www.sdmesa.edu/financial-aid/return-to-title-IV-policy.html">Return to Title IV Policy</a>
+<a href="http://www.sdmesa.edu/financial-aid/staff.shtml">Staff</a>
+<a href="http://www.sdmesa.edu/financial-aid/terms-of-agreement.shtml">Terms of Agreement</a>
+<a href="http://www.sdmesa.edu/financial-aid/verification.shtml">Verification Guidelines</a>
+</div>
+</li>
+<li>
+<button aria-label="Athletics Mobile" class="btn btn-info btn-main collapsed sub-mobile-nav" data-target="#athletics-link" data-toggle="collapse" role="navigation" type="button">Athletics</button>
+<div class="sub-mnav-link collapse" id="athletics-link">
+<a href="/student-services/student-athlete-support-services/index.shtml">Academics &amp; Athletics</a>
+<a href="http://www.gosdmesa.com/landing/index">Mesa Athletics Website</a>
+<a href="http://gosdmesa.com/information/Athletic_Training1/BN_2018_PPE_EXAM_FORM.pdf">Physical Paperwork</a>
+</div>
+</li>
+<li>
+<button aria-label="Campus Life Mobile" class="btn btn-info btn-main collapsed sub-mobile-nav" data-target="#campuslife" data-toggle="collapse" role="navigation" type="button">Campus Life</button>
+<div class="sub-mnav-link collapse" id="campuslife">
+<a href="http://www.sdmesa.edu/campus-life/associated-student-government">Associated Students</a>
+<a href="http://www.gosdmesa.com/landing/index">Athletics</a>
+<a href="/campus-life/canyon-day/index.shtml">Canyon Day</a>
+<a href="http://www.sdmesa.edu/student-services/commencement">Commencement</a>
+<a href="http://www.sdmesa.edu/campus-life/dining">Dining</a>
+<a href="https://www.sdmesa.edu/calendar/link.php?l=1">Events</a>
+<a href="http://www.sdmesa.edu/campus-life/galleries-and-attractions">Galleries &amp; Attractions</a>
+<a href="http://www.sdmesa.edu/campus-life/get-involved">Get Involved</a>
+<a href="/campus-life/lgbtq.shtml">LGBTQ</a>
+<a href="http://www.sdmesa.edu/maps/">Maps</a>
+<a href="http://www.sdmesa.edu/_resources/newsroom/news.php">News</a>
+<a href="http://www.sdmesa.edu/campus-life/performing-arts">Performing Arts</a>
+<a href="http://www.sdmesa.edu/student-services/outreach/request-a-campus-tour/index.shtml">Request A Campus Tour</a>
+<a href="http://www.sdmesa.edu/campus-life/get-involved/student-clubs">Student Clubs</a>
+<a href="https://www.sdccd.edu/community-and-alumni/index.aspx">We Are Community</a>
+</div>
+</li>
+<li>
+<button aria-label="Student Services Mobile" class="btn btn-info btn-main collapsed sub-mobile-nav" data-target="#studentservices" data-toggle="collapse" role="navigation" type="button">Student Services</button>
+<div class="sub-mnav-link collapse" id="studentservices">
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/tutoring/index.shtml">Mesa Tutoring &amp; Computing Center</a>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/index.shtml">Academic Support Programs</a>
+<a href="http://www.sdmesa.edu/admissions">Admissions</a>
+<!-- 									<a href="https://sdccd.blackboard.com/">Blackboard</a> -->
+<a href="https://www.bookstore.sdccd.edu/mesa/" target="_blank">Bookstore</a>
+<a href="http://www.sdmesa.edu/student-services/career-center">Career Center</a>
+<a href="http://classschedule.sdccd.edu" onclick="ga('send','event','schedule','click','class-schedule',0);">Class Schedule</a>
+<a href="http://www.sdmesa.edu/student-services/commencement">Commencement</a>
+<a href="http://www.sdmesa.edu/student-services/counseling">Counseling</a>
+<a href="http://www.sdmesa.edu/student-services/disability-services">Disability Services</a>
+<a href="http://www.sdmesa.edu/student-services/eops-care">EOPS</a>
+<a href="http://www.sdmesa.edu/student-services/evaluations">Evaluations</a>
+<a href="http://www.sdmesa.edu/financial-aid">Financial Aid</a>
+<a href="https://www.sdmesa.edu/student-services/eops-care/fast-scholars">Foster Youth</a>
+<a href="http://www.sdmesa.edu/student-services/health-services">Student Health Services</a>
+<a href="http://www.sdmesa.edu/student-services/international-students">International Students</a>
+<a href="http://www.sdmesa.edu/student-services/outreach">Outreach</a>
+<a href="https://myportal.sdccd.edu/psp/IHPRD/EMPLOYEE/EMPL/?cmd=login" onclick="ga('send','event','register','click','mySDCCD',0);">mySDCCD</a>
+<!-- 									<a href="https://studentweb.sdccd.edu/reg-e/">Registration<br/>(Reg-E)</a> -->
+<a href="/college-services/administrative-services/student-accounting/index.shtml">Student Accounting</a>
+<a href="http://www.sdmesa.edu/student-services/student-affairs">Student Affairs</a>
+<a href="http://www.sdmesa.edu/student-services/student-athlete-support-services">Student Athlete Support Services</a>
+<!-- 									<a href="http://www.sdmesa.edu/student-services/online-services">Student Online Services</a> -->
+<a href="http://www.sdmesa.edu/student-services/student-success-equity">Student Success &amp; Equity</a>
+<a href="http://www.sdmesa.edu/student-services/star-trio">STAR Trio</a>
+<a href="http://www.sdmesa.edu/student-services/testing-center">Testing Center</a>
+<a href="http://www.sdmesa.edu/student-services/student-success-equity/the-stand.shtml">The Stand</a>
+<a href="http://www.sdmesa.edu/student-services/transfer-center">Transfer Center</a>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/tutoring">Tutoring</a>
+<a href="http://www.sdmesa.edu/student-services/veterans-services">Veterans Services</a>
+<a href="http://www.sdmesa.edu/student-services/career-center/work-experience/index.shtml">
+										Work Experience</a>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/work-based-learning/index.shtml">
+										Work-Based Learning</a>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/tutoring/Writing-Center.shtml">Writing Center</a>
+</div>
+</li>
+<li>
+<button aria-label="College Services Mobile" class="btn btn-info btn-main collapsed sub-mobile-nav" data-target="#collegeservices" data-toggle="collapse" role="navigation" type="button">College Services</button>
+<div class="sub-mnav-link collapse" id="collegeservices">
+<a href="http://www.sdmesa.edu/college-services/administrative-services">Administrative Services</a>
+<a href="https://www.bookstore.sdccd.edu/mesa/" target="_blank">Bookstore</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/business-services/">Business Services</a>
+<a href="http://www.sdmesa.edu/campus-life/dining/">Dining</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/employment-payroll">Business Office Support</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/event-planning">Event Planning</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/facilities-rental/">Facilities/Rental</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/forms/index.shtml">Admin Forms</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/people-soft">PeopleSoft</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/print-mail-services">Printing &amp; Mail Services</a>
+<a href="https://www.sdccd.edu/about/departments-and-offices/police-department/" target="_blank">Police</a>
+<a href="http://www.sdmesa.edu/college-services/parking">Parking</a>
+<a href="http://www.sdmesa.edu/college-services/safety/">Safety</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/stockroom">Stockroom</a>
+<a href="/college-services/administrative-services/student-accounting/index.shtml">Student Accounting</a>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/tech-support">Tech Support</a></div>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/admissions">Apply &amp; Register</a>
+</li>
+</ul>
+</div>
+<div aria-label="Quick Links Navigation Mobile Menu" id="mobile-rightnav" role="navigation">
+<ul>
+<!-- <li>
+<a href="http://www.sdmesa.edu/imesa/">iMesa</a>
+</li>-->
+<li>
+<a href="http://classschedule.sdccd.edu" onclick="ga('send','event','schedule','click','class-schedule',0);">Class Schedule</a>
+</li>
+<li>
+<a href="https://myportal.sdccd.edu/psp/IHPRD/EMPLOYEE/EMPL/?cmd=login" onclick="ga('send','event','register','click','mySDCCD',0);">mySDCCD</a>
+</li>
+<li>
+<a href="https://sdccd.instructure.com/login/canvas">Canvas</a>
+</li>
+<!-- 							<li>
+								<a href="https://sdccd.blackboard.com/">Blackboard</a>
+							</li> -->
+<!-- 							<li>
+								<a href="https://studentweb.sdccd.edu/reg-e/" onclick="ga('send','event','regE','click','old-registration',0);">Reg-e</a>
+							</li> -->
+<li>
+<a href="http://www.sdmesa.edu/faculty-staff">Faculty/Staff</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/alumni">Alumni</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/_resources/newsroom/news.php">Newsroom</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/faculty">Directory</a>
+</li>
+<li>
+<a href="https://www.sdmesa.edu/calendar">Calendar</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/maps/">Map</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/library">Library</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div aria-label="Mobile Google Site Search" id="search-drop" role="search">
+<div class="collapse" id="search-target">
+<style>.search-mobi .gsc-control-cse-en {
+						width: 97%!important;
+						margin-left: 2%;
+					}
+						.search-mobi #search-target form {
+							margin-left: 0;
+						}  
+						div#gsc-iw-id2 {
+							height: 31px !important;
+							width: 95% !important;
+						}
+						input#gsc-i-id2 {
+							width: 96% !important;
+							margin: 0 !important;
+							height: 19px !important;
+							text-indent: 0 !important;
+							background: none !important;
+						}
+						input#gsc-i-id2::placeholder {
+							opacity: .6 !important;
+						}
+						#gs_tti51 {
+							padding: 0 !important;
+						}
+						@media only screen and (max-width: 1025px){
+							.gsc-search-button.gsc-search-button-v2 {
+								height: 33px;
+							}
+						}
+					</style>
+<!--<form action="http://www.sdmesa.edu/search">-->
+<div class="search-mobi span6" style="margin-bottom: 25px;">
+<!-- <script>
+(function() {
+var cx = '009304528961635210049:-sbcjx6xnfu';
+var gcse = document.createElement('script');
+gcse.type = 'text/javascript';
+gcse.async = true;
+gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+'//cse.google.com/cse.js?cx=' + cx;
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(gcse, s);
+})();
+</script>
+<gcse:search></gcse:search>-->
+<script>
+							(function() {
+								var cx = '009456663269999703337:n8kqhe2p5cs';
+								var gcse = document.createElement('script');
+								gcse.type = 'text/javascript';
+								gcse.async = true;
+								gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+									'//cse.google.com/cse.js?cx=' + cx;
+								var s = document.getElementsByTagName('script')[0];
+								s.parentNode.insertBefore(gcse, s);
+							})();
+						</script>
+<div class="search-contain">
+<gcse:search></gcse:search>
+</div>
+</div>
+<!--<div id="search-field">
+<input type="text" name="keywords" placeholder="Search">
+<input type="submit" value="Search">
+<input type="hidden" name="newSearch" value="true"/>
+<input type="hidden" name="display" value="search"/>
+<input type="hidden" name="nocache" value="1"/>
+</div>
+-->
+<!--<input type="radio" id="ask-mesa" name="search-type" value="Ask Mesa">
+<label for="ask-mesa">Ask Mesa</label>
+<input type="radio" id="site-search" name="search-type" value="Site Search">
+<label for="site-search">Site Search</label>-->
+<!--</form>-->
+</div>
+</div>
+</div>
+<nav aria-label="Main Navigation Menu" class="clearfix" id="main-nav">
+<ul>
+<li aria-label="About Mesa" role="navigation">
+<a href="http://www.sdmesa.edu/about-mesa/index.shtml/">About</a>
+<div class="subnav">
+<div class="container">
+<div class="nav-hover">
+<ul>
+<!--<img src="/about-mesa/images/meet-the-president-header.jpg" class="hover-base" alt="about san diego mesa"/>-->
+<div class="nav-hoverblock">
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/accreditation/index.shtml/">
+												Accreditation
+												<!--<img src="/about-mesa/images/accreditation-header.jpg" class="hover-img" alt="accreditation"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="/about-mesa/administration/index.shtml">
+												Administration
+												<!--<img src="/about-mesa/images/administration-header.jpg" class="hover-img" alt="administration"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdccd.edu/consumer/" target="_blank">
+												Consumer Information
+												<!--<img src="/about-mesa/images/mission-vision-values-header.jpg" class="hover-img" alt="consumer inforamtion"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/contact-mesa/index.shtml/">
+												Contact Mesa
+												<!--<img src="/about-mesa/images/contact-mesa-header.jpg" class="hover-img" alt="contact mesa"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/current-initiatives//index.shtml/">
+												College Initiatives
+												<!--<img src="/about-mesa/images/current-initiatives-header.jpg" class="hover-img" alt="college initiatives"/>-->
+</a>
+</li>
+</div>
+<div class="nav-hoverblock">
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/faculty-staff-resources/index.shtml/">
+												Faculty and Staff Resources
+												<!--<img src="/about-mesa/images/meet-the-president-header.jpg" class="hover-img" alt="faculty staff resources"/>-->
+</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/campus-life/galleries-and-attractions/">Galleries &amp; Attractions
+												<!--<img src="/about-mesa/images/current-initiatives-header.jpg" class="hover-img" alt="galleries and attractions"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/gainful-employment.shtml" target="_blank">
+												Gainful Employment
+												<!--<img src="/about-mesa/images/mission-vision-values-header.jpg" class="hover-img" alt="gainful employment"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/governance/index.shtml/">
+												Governance
+												<!--<img src="/about-mesa/images/governance-header.jpg" class="hover-img" alt="governance"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/institutional-effectiveness/index.shtml/">
+												Institutional Effectiveness
+												<!--<img src="/about-mesa/images/institutional-effectiveness-header.jpg" class="hover-img" alt="institutional effectiveness"/>-->
+</a>
+</li>
+</div>
+<div class="nav-hoverblock">
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/mesa-foundation/index.shtml">
+												Mesa Foundation
+												<!--<img src="/about-mesa/images/mesa-foundation-header.jpg" class="hover-img" alt="mesa foundation"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/mission-vision-values/index.shtml/">
+												Mission/Vision/Values
+												<!--<img src="/about-mesa/images/mission-vision-values-header.jpg" class="hover-img" alt="mission vision and values"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/office-of-communications/index.shtml/">
+												Office of Communications
+												<!--<img src="/about-mesa/images/news-community-header.jpg" class="hover-img" alt="office of communications"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/office-of-the-president/index.shtml/">
+												Office of the President
+												<!--<img src="/about-mesa/images/meet-the-president-header.jpg" class="hover-img" alt="office of the president"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/about-mesa/professional-learning/index.shtml/">
+												Professional Learning
+												<!--<img src="/about-mesa/images/current-initiatives-header.jpg" class="hover-img" alt="faculty and staff development"/>-->
+</a>
+</li>
+<li> <a href="http://www.sdmesa.edu/about-mesa/institutional-effectiveness/program-review">
+											Program Review</a> </li>
+</div>
+</ul>
+</div>
+</div>
+</div>
+</li>
+<li aria-label="Academics" role="navigation">
+<a href="http://www.sdmesa.edu/academics/index.shtml/">Academics</a>
+<div class="subnav">
+<div class="container">
+<div class="nav-hover">
+<ul>
+<!--<img src="/academics/schools-departments/images/schools-header.jpg" class="hover-base" alt="academics"/>-->
+<div class="nav-hoverblock">
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/academics/academic-programs/">
+												Academic Programs
+												<!--<img src="/academics/schools-departments/images/schools-header.jpg" class="hover-img" alt="academic programs"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/academics/schools-departments/index.shtml/">
+												Academic Schools/Departments
+												<!--<img src="/academics/schools-departments/images/schools-header.jpg" class="hover-img" alt="academic schools and departments"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/academics/academic-support-programs/index.shtml/">
+												Academic Support Programs
+												<!--<img src="/about-mesa/images/governance-header.jpg" class="hover-img" alt="academic support programs"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/academics/courses/index.shtml/">
+												All Courses
+												<!--<img src="/about-mesa/images/governance-header.jpg" class="hover-img" alt="all courses"/>-->
+</a>
+</li>
+</div>
+<div class="nav-hoverblock">
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/academics/bachelors-degree/">
+												Bachelor's Degree Program
+												<!--<img src="/about-mesa/images/mission-vision-values-header.jpg" class="hover-img" alt="bachelors degree program"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/academics/career-technical-education/index.shtml/">
+												Career Technical Education
+												<!--<img src="/about-mesa/images/current-initiatives-header.jpg" class="hover-img" alt="career technical education"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/academics/catalog/index.shtml/">
+												Catalog
+												<!--<img src="/about-mesa/images/contact-mesa-header.jpg" class="hover-img" alt="catalog"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://classschedule.sdccd.edu" onclick="ga('send','event','schedule','click','class-schedule',0);">
+												Class Schedule
+												<!--<img src="/about-mesa/images/mesa-foundation-header.jpg" class="hover-img" alt="class schedule"/>-->
+</a>
+</li>
+<li>
+<a href="/academics/dual-enrollment/index.shtml">
+										Dual Enrollment</a>
+</li>
+</div>
+<div class="nav-hoverblock">
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/library/index.shtml/">
+												Library
+												<!--<img src="/about-mesa/images/news-community-header.jpg" class="hover-img" alt="library"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/student-services/index.shtml/">
+												Student Services
+												<!--<img src="/about-mesa/images/accreditation-header.jpg" class="hover-img" alt="student services"/>-->
+</a>
+</li>
+<li>
+<a class="hover-link" href="http://www.sdmesa.edu/academics/study-abroad/index.shtml">
+												Study Abroad
+												<!--<img src="/about-mesa/images/contact-mesa-header.jpg" class="hover-img" alt="study abroad"/>-->
+</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/career-center/work-experience/index.shtml">
+												Work Experience</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/work-based-learning/index.shtml">
+												Work-Based Learning</a>
+</li>
+</div>
+</ul>
+</div>
+</div>
+</div>
+</li>
+<li aria-label="Financial Aid" role="navigation">
+<a href="http://www.sdmesa.edu/financial-aid/index.shtml">Financial Aid</a>
+<div class="subnav extra">
+<div class="container">
+<ul class="apply">
+<li>
+<a class="btn" href="http://www.sdmesa.edu/financial-aid/application-process.shtml" style="color:#00529c;">Apply for Financial Aid</a>
+</li>
+</ul>
+<div class="admissions-info">
+<a class="link-title" href="/financial-aid/index.shtml">Financial Aid</a>
+<p style="background-color:#EBEBEB;">
+									Financial Aid and EOPS Offices at Mesa College are dedicated to offering financial assistance to as many students as possible through a variety of programs. <!--We know that each individualâ€™s situation is unique and weâ€™ll work with you so you can  obtain maximum benefit from the educational opportunities available. We encourage you to contact our office and apply for aid as soon as possible.-->
+</p>
+<a class="link-title" href="/student-services/student-affairs/scholarships/index.shtml">Scholarships</a>
+<p style="background-color:#EBEBEB;">
+									Since 1993, students have been provided the opportunity to apply for and receive scholarships through the San Diego Mesa College Foundation. <!--and the generosity of faculty and staff, industries, businesses, professional organizations, civic clubs, and individual philanthropists. Nearly 100 individual scholarships, totaling  nearly $140,000 are offered. -->
+</p>
+</div>
+<ul class="clear-left">
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/cost-of-attendance.shtml">Cost of Attendance</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/deadline-dates.shtml">Deadline Dates</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/documents/employee-code-conduct.pdf">Employee Code of Conduct</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/forms.shtml">Financial Aid Forms</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/information-eligibility.shtml">Information/Eligibility</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/online-resources.shtml">Online Resources</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/payment-disbursement-dates.shtml">Payment Disbursement Dates</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/programs-available/index.shtml">Programs Available</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/staff.shtml">Staff</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/terms-of-agreement.shtml">Terms of Agreement</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/return-to-title-IV-policy.shtml">Title IV Policy</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/verification.shtml">Verification Guidelines</a>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li aria-label="Athletics" role="navigation">
+<a href="http://www.gosdmesa.com/landing/index">Athletics</a>
+<div class="subnav">
+<div class="container">
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/student-services/student-athlete-support-services/index.shtml">Academics &amp; Athletics</a>
+</li>
+<li>
+<a href="http://www.gosdmesa.com/landing/index">Mesa Athletics Website</a>
+</li>
+<li>
+<a href="http://gosdmesa.com/information/Athletic_Training1/BN_2018_PPE_EXAM_FORM.pdf">Physical Paperwork</a>
+</li>
+<li>
+<p> </p>
+</li>
+<li>
+<p> </p>
+</li>
+</ul>
+<div class="menu-preview">
+<img alt="san diego mesa athletics" src="/_resources/images/athletics.jpg"/></div>
+</div>
+</div>
+</li>
+<li aria-label="Campus Life" role="navigation">
+<a href="http://www.sdmesa.edu/campus-life">Campus Life</a>
+<div class="subnav">
+<div class="container">
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/campus-life/associated-student-government/index.shtml">Associated Students</a>
+</li>
+<li>
+<a href="http://www.gosdmesa.com/landing/index">Athletics</a>
+</li>
+<li>
+<a href="/campus-life/canyon-day/index.shtml">Canyon Day</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/commencement/index.shtml">Commencement</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/campus-life/dining/index.shtml">Dining</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="https://www.sdmesa.edu/calendar/link.php">Events</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/campus-life/galleries-and-attractions/index.shtml">Galleries &amp; Attractions</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/campus-life/get-involved/index.shtml">Get Involved</a>
+</li>
+<li>
+<a href="/campus-life/lgbtq.shtml">LGBTQ</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/maps/">Maps</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/_resources/newsroom/news.php">News</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/campus-life/performing-arts/index.shtml">Performing Arts</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/outreach/request-a-campus-tour/index.shtml">Request A Campus Tour</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/campus-life/get-involved/student-clubs/index.shtml">Student Clubs</a>
+</li>
+<li>
+<a href="https://www.sdccd.edu/community-and-alumni/index.aspx">We Are Community</a>
+</li>
+</ul>
+<div class="menu-preview">
+<!--<img src="/_resources/images/campus-life.jpg" alt="campus life">-->
+</div>
+</div>
+</div>
+</li>
+<li aria-label="Student Services" role="navigation">
+<a href="http://www.sdmesa.edu/student-services">Student Services</a>
+<div class="subnav extra">
+<div class="container">
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/index.shtml">Academic Support Programs</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/admissions/index.shtml">Admissions</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/about-mesa/hsi/hsi-programs/avanza-center.shtml">Avanza Center</a>
+</li>
+<!-- 								<li>
+									<a href="https://sdccd.blackboard.com">Blackboard</a>
+								</li> -->
+<li>
+<a href="https://www.bookstore.sdccd.edu/mesa/" target="_blank">Bookstore</a>
+</li>
+<li>
+<a href="/student-services/eops-care/borderless-scholars/index.shtml">Borderless Scholars</a>
+</li>
+<li>
+<a href="/student-services/calworks/index.shtml">CalWORKs</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/career-center/index.shtml">Career Center</a>
+</li>
+<li>
+<a href="http://classschedule.sdccd.edu" onclick="ga('send','event','schedule','click','class-schedule',0);">Class Schedule</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/commencement/index.shtml">Commencement</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/counseling/index.shtml">Counseling</a>
+</li>
+<li>
+<a href="/academics/dual-enrollment/index.shtml">
+										Dual Enrollment</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/student-services/disability-services/index.shtml">Disability Services</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/eops-care/index.shtml">EOPS</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/evaluations/index.shtml">Evaluations</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/financial-aid/index.shtml">Financial Aid</a>
+</li>
+<li>
+<a href="https://www.sdmesa.edu/student-services/eops-care/fast-scholars">Foster Youth</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/international-students/index.shtml">International Students</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/tutoring/index.shtml">Mesa Tutoring &amp; Computing Center</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/outreach/index.shtml">Outreach</a>
+</li>
+<li>
+<a href="/student-services/eops-care/project-restart/index.shtml">Project Restart</a>
+</li>
+</ul>
+<ul>
+<!-- 								<li>
+<a href="https://studentweb.sdccd.edu/reg-e/">
+Registration
+<br/>
+(Reg-E)
+</a>
+</li> -->
+<li>
+<a href="https://myportal.sdccd.edu/psc/CSGUEST/EMPLOYEE/EMPL/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?Page=PT_LANDINGPAGE&amp;Action=U&amp;LP=EMPL.EMPLOYEE.X_IH_CS_GUEST_FLUID" onclick="ga('send','event','register','click','mySDCCD',0);">
+										MySDCCD
+									</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/promise/index.shtml">San Diego Promise</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/student-accounting/index.shtml">Student Accounting</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/student-affairs/index.shtml">Student Affairs</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/student-athlete-support-services/index.shtml">Student Athlete Support Services</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/student-development/index.shtml">Student Development</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/health-services/index.shtml">Student Health Services</a>
+</li>
+<!-- 								<li>
+<a href="http://www.sdmesa.edu/student-services/online-services/index.shtml">Student Online Services</a>
+</li> -->
+</ul>
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/student-services/student-success-equity/index.shtml">Student Success &amp; Equity</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/star-trio/index.shtml">STAR Trio</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/testing-center/index.shtml">Testing Center</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/student-success-equity/the-stand.shtml">The Stand</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/transfer-center/index.shtml">Transfer Center</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/tutoring/index.shtml">Tutoring</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/veterans-services/index.shtml">Veterans Services</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/student-services/career-center/work-experience/index.shtml">
+										Work Experience</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/work-based-learning/index.shtml">
+										Work-Based Learning</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/academics/academic-support-programs/tutoring/Writing-Center.shtml">Writing Center</a>
+</li>
+</ul>
+<div class="menu-preview">
+<!--<img src="/_resources/images/student-services.jpg" alt="student services">-->
+</div>
+</div>
+</div>
+</li>
+<li aria-label="College Services" role="navigation">
+<a href="http://www.sdmesa.edu/college-services">College Services</a>
+<div class="subnav extra">
+<div class="container">
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/index.shtml">Administrative Services</a>
+</li>
+<li>
+<a href="https://www.bookstore.sdccd.edu/mesa/" target="_blank">Bookstore</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/business-services/index.shtml">Business Services</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/campus-life/dining/index.shtml">Dining</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/employment-payroll/index.shtml">Business Office Support</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/event-planning/index.shtml">Event Planning</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/facilities-rental/index.shtml">Facilities/Rental</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/forms/index.shtml">Admin Forms</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/people-soft/index.shtml">PeopleSoft</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/print-mail-services/index.shtml">Printing &amp; Mail Services</a>
+</li>
+<li>
+<a href="https://www.sdccd.edu/about/departments-and-offices/police-department/" target="_blank">Police</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/parking/index.shtml">Parking</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="http://www.sdmesa.edu/college-services/safety/">Safety</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/stockroom/index.shtml">Stockroom</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/student-accounting/index.shtml">Student Accounting</a>
+</li>
+<li>
+<a href="http://www.sdmesa.edu/college-services/administrative-services/tech-support/index.shtml">Tech Support</a>
+</li>
+</ul>
+<div class="menu-preview">
+<!--<img src="/_resources/images/college-services.jpg" alt="college services">-->
+</div>
+</div>
+</div>
+</li>
+</ul>
+</nav>
+</header>
+<main>
+<div id="main-content">
+<div id="breadcrumb">
+<ol class="breadcrumb">
+<li class="active">Home</li>
+</ol>
+</div>
+<!-- emergency msg -->
+<div class="home-container" id="message"></div>
+<div class="span12 home-vid" style="margin-top: -100px; padding: 0;  background-size:cover;background-image: url('/images/poster-SBSB.jpg');display:block;height:100%;">
+<div class="home-vid" style="margin:12% auto 53%;width:100%;">
+<div class="span12" style="padding:0;">
+<div style="width:50%;margin:0 auto;z-index:100;position:relative;">
+<img alt="we are mesa the leading college of equity and excellence" src="/images/web%20we%20are%20mesa2.png" style="display:block;width:100%;height:100%;margin:0 auto;"/>
+<!--class="fa-spin"-->
+<div class="row">
+<a alt="apply to mesa college" href="/apply/index.shtml" onclick="ga('send','event','apply','click','ApplyPage',0);">
+<div class="span6 home-button">Apply Now</div></a>
+<a alt="register for mesa college" href="https://myportal.sdccd.edu/psp/IHPRD/EMPLOYEE/EMPL/?cmd=login" onclick="ga('send','event','register','click','mySDCCD',0);" target="_blank">
+<div class="span6 home-button">Register</div></a>
+</div>
+<!--<div id="next-btn">
+<div style="width:20%;margin:0 auto; text-align:center; color:#fff;font-size:18px;margin-top:25px;">
+<span id="start-arrow" style="font-size:75%;">MORE</span> <br/><span style="letter-spacing:2px;">INFORMATION</span>
+</div>
+<div style="width:76px;margin:10px auto;text-align:center;color:#fff;">
+<a href="#start" aria-labelledby="start-arrow"><div id="nav-arrow"></div></a>
+</div>
+</div>-->
+<div id="next-btn">
+<div style="margin:0 auto; text-align:center; color:#fff;font-size:24px;line-height: 1.25;">
+<span id="start-arrow" style="font-size:75%;">Need any help with registration or MySDCCD?</span><br/>
+<a href="https://mysdccd.atlassian.net/wiki/spaces/MYS/pages/244514900/Student+Support+Center" onclick="ga('send','event','help','click','mySDCCD_support',0);" style="width:33%;" target="_blank"><img alt="sdccd support center" src="/images/MySDCCD_LOGO.png"/></a>
+</div>
+</div>
+<!-- 						<div id="next-btn">
+							<div style="margin:0 auto; text-align:center; color:#fff;font-size:24px;margin-top:28px;line-height: 1.25;">
+								<span id="start-arrow" style="font-size:75%;">Need help with</span> <span style="letter-spacing:2px;">MySDCCD?</span>
+								<br/><strong><a href="https://mysdccd.atlassian.net/wiki/spaces/MYS/pages/244514900/Student+Support+Center" target="_blank">STUDENT SUPPORT CENTER</a></strong>
+							</div>
+						</div> -->
+</div>
+<!-- snow -->
+<!-- 					<div id="particles-js"><p id="holidays">Happy Holidays</p></div> -->
+</div>
+</div>
+</div>
+<div class="mobile-only">
+<div class="row">
+<div class="span6">
+<img alt="mySDCCD help" src="/images/admit_type_ss_not_updating-01.png" style="max-width:100%;"/>
+</div>
+<div class="span6">
+<div class="msg">
+<p>Need any help with mySDCCD?</p>
+<p>Visit the<br/><a href="https://mysdccd.atlassian.net/wiki/spaces/MYS/pages/244514900/Student+Support+Center" onclick="ga('send','event','help','click','mySDCCD_support',0);" target="_blank">STUDENT SUPPORT CENTER</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="home-container" style="margin-top:-10%;">
+<!--<div id="buttonbar"><button id="play" class="clear" onclick="vidplay()">PAUSE</button></div>-->
+<div class="span12 latest-news" style="color:#023867;">
+<span class="anchor" id="start"></span>
+                  
+                  
+                  				Welcome to <strong>Mesa</strong>
+<div class="skiptosection"><a href="#news" id="welcome">skip to news/events</a></div>
+</div>
+<div class="span12 announcements mobile-note mobile">
+<p>Using a mobile device?<br/>Download the <span class="headline">iMesa Mobile App</span> for the best experience.<br/>
+<strong><a href="http://bit.ly/imesaandroid">ANDROID</a> | <a href="http://bit.ly/imesaapple">APPLE</a></strong>
+</p>
+</div>
+<!--	<div class="span12">
+<div class="live">
+<h2 style='font-size:2rem;color:#023867; text-shadow: #fdb930 2px 2px 2px;padding-bottom:5px;'>Commencement Countdown</h2>
+<p><strong>We will be live streaming the Commencement Ceremony on May 19th @ 3:00pm! <a href="/mesalive">sdmesa.edu/mesaLive</a></strong></p>
+<div id="clock" style="width:100%; height:100%; position:relative;"></div>
+</div>
+</div> -->
+<div class="span12 announcements">
+<img alt="information and annoucements" class="info-image" src="/images/annoucements-icon.png"/>
+<p>
+                     								Spring 2020 starts <strong>Monday, Feb. 3rd</strong>, don't miss out on <strong><a href="/campus-life/welcome-week.shtml" target="_blank">Welcome Week!</a></strong>
+</p>
+<!--<p>
+<strong>!IMPORTANT</strong> We are experiencing a campus wide power outage.  <strong>Classes will be CANCELED for the remainder of the day.</strong>  Please do not come to campus, all buildings will be closed for the remainder of the day.  Updates will be posted via social media.
+</p>-->
+<!--<p><span class="text-center">Don't Miss the <strong>PEP RALLY</strong> today @ 12:30pm in the Mesa Commons <strong><em><a href="http://www.sdmesa.edu/campus-life/associated-student-government/2016_spirit_week_flyer_fnl.pdf">View Details</a></em></strong> </span></p>
+
+<p><span class="text-center">Mesa College Art Gallery Reception Today @ 4:30 pm - <strong>'Why We Collect'</strong> - <strong><em><a href="http://www.sdmesa.edu/_resources/newsroom/posts/Art%20Gallery%20to%20Show%20Why%20We%20Collect.php">More Information</a></em></strong> </span></p>-->
+<!--			<p><span class="text-center">Welcome to <strong>Spring 2019</strong>! Don't miss <strong>Welcome Week</strong> | <strong><a href="/campus-life/welcome-week.shtml">View Schedule</a></strong></span></p> -->
+<!-- 				<p class=""><span class="text-center">Fall classes are still available | <strong><a href="https://www.sdccd.edu/mysdccd/open-classes.aspx" target="blank">View Open Classes</a></strong> |  <strong><a href="http://www.sdmesa.edu/calendar-documents/Wednesday_2197_Mesa_Cap%205.pdf" target="_blank">Crash List</a></strong><br/><strong><a href="http://www.sdmesa.edu/fall" target="_blank">View Fall Schedule</a></strong> (<a href="/calendar-documents/SDMesaCollege%20Fall%202019%20Schedule.pdf" target="_blank">PDF Version</a>)</span></p> -->
+<!-- 				<p><span class="text-center">March is <strong>Women's History Month</strong>, join the celebration at one of many events this month! <strong><a href="http://www.sdmesa.edu/academics/schools-departments/humanities/womens-history-month.shtml">VIEW EVENTS</a></strong></span></p> -->
+<p class=""><span class="text-center">Need help with <strong>mySDCCD student portal?</strong>  | <strong><a href="https://mysdccd.atlassian.net/wiki/spaces/MYS/pages/244514900/Student+Support+Center" target="_blank"> mySDCCD support Center</a></strong></span></p>
+<!--             <p class="mobile"><span class="text-center"><strong>Need Classes?</strong> There are still classes available. <strong><a href="http://www.sdmesa.edu/campus-life/open-classes.shtml" target="_blank">VIEW OPEN CLASSES</a></strong></span></p> -->
+<!--<p class="desktop"><span class="text-center"><strong>Fall classes are still available!</strong><strong> <a href="/campus-life/open-classes.shtml" target="_blank">VIEW CRASH LIST</a></strong></span></p>
+<p class="mobile"><span class="text-center"><strong>Fall classes are still available!</strong><strong> <a href="/campus-life/open-classes.shtml" target="_blank">VIEW CRASH LIST</a></strong></span></p>-->
+<!--<p><span class="text-center"><strong>San Diego Mesa college will be closed for winter break (closed 12/21/18-01/01/19)</strong>.<br/>The campus will reopen on Wednesday, January 2, 2019. </span></p>-->
+<p><span class="text-center"><strong>GET CONNECTED</strong> #sdmesacollege <strong><a href="https://www.facebook.com/SanDiegoMesaCollege">FACEBOOK</a></strong> | <strong><a href="https://twitter.com/SDMesaCollege">TWITTER</a></strong> | <strong><a href="https://www.instagram.com/sdmesacollege/">INSTAGRAM</a></strong> </span></p>
+<p><span class="text-center">Find what programs and services you may be eligible for at Mesa with the <strong>NEW</strong> Mesa Journeys tool.  Start <strong><a href="http://bit.ly/2zL9KYd">Your Mesa Journey</a></strong> today.</span></p>
+<!--<p><span class="text-center"><strong>SUMMER CLASS SCHEDULE</strong> is online <strong><a href="http://bit.ly/mesaschedule"><em>here!</em></a></strong> (<a href="/events/SDCCD%20Summer%202016%20Class%20Schedule.pdf">PDF Version</a>)</span></p>-->
+<!--<p><span class="text-center"><strong>REGISTER TO VOTE!</strong> The future depends on your voice! Click <strong><a href="http://bit.ly/mesaVote"><em>here</em></a></strong> for details.</span></p>-->
+</div>
+<!-- 			<div class="span12 announcements light-blue"> -->
+<!-- 				<img src="/images/info-icon-white-blue.png" class="info-image" alt="advisories"/> -->
+<!-- 				<p><span class="text-center"><strong>Fall <a href="/calendar-documents/spring_Matrix_2019.pdf"><em>Academic Deadlines</em></a></strong></span></p> -->
+<!--<p><span class="text-center">Get all the latest info, map, walking directions and ask mesa for FREE on the <strong> iMESA MOBILE APP </strong><br/>Download: <strong><a href="http://bit.ly/imesaapple">APPLE</a></strong> | <strong><a href="http://bit.ly/imesaandroid">ANDROID</a></strong></span></p>-->
+<!-- 				<p><span style="text-align:center;"><strong>Important! Keep your BOG Waiver!</strong> Eligibility requirements have changed.  <a href="http://bit.ly/BOGWaiver" ><em><strong>View Requirements</strong></em></a> </span></p> -->
+<!--<p><span style="text-align:center;"><strong>Keep your BOG Waiver!</strong> Eligibility requirements have changed. <a href="http://bit.ly/BOGWaiver"><strong><em>More Information</em></strong></a> </span></p>-->
+<!-- 			</div>  -->
+<div class="banner span12 no-padding">
+<div>
+<img alt="Mesa Homepage" src="/_resources/images/hompage-banner1-2.jpg"/>
+</div>
+</div>
+<div class="span12 no-padding" style="position:relative;">
+<!-- <h1 class="year2 spring"><span class="semester">Spring</span> 2019</h1>" -->
+<h1 class="year2 spring"><span class="semester">Spring</span> 2020
+                  </h1>
+<!-- <span class="new">NEW</span> -->
+<div class="row">
+<div class="span3 group">
+<h2 class="span12">Getting Started</h2>
+<ul class="list-group">
+<li class="list-group-item"><strong><a href="/calendar-documents/poster-student-checklist-18-fnl-V01.pdf" target="_blank">Let's Begin Let's Finish</a></strong>
+<!--| <a href="https://www.youtube.com/watch?v=0Hwx7C5i39A"><em>Video</em></a>)-->
+</li>
+<li class="list-group-item"><a class="highlight" href="http://www.sdmesa.edu/apply/" onclick="ga('send','event','apply','click','ApplyPage',0);">Apply</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/admissions/index.shtml">Admissions</a></li>
+<li class="list-group-item"><a href="http://orientation.sdmesa.edu">Orientation</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/admissions/current-students/college-student-id.shtml">College Student ID</a></li>
+<li class="list-group-item"><a href="http://bit.ly/mesabookstore">Bookstore</a></li>
+</ul>
+</div>
+<div class="span3 group">
+<h2 class="span12">Academics</h2>
+<ul class="list-group">
+<li class="list-group-item"><a class="highlight" href="https://sdccd.instructure.com/login/canvas">Canvas</a></li>
+<li class="list-group-item"><a class="highlight" href="http://www.sdmesa.edu/academics/academic-programs/index.shtml">All Programs</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/academics/courses/index.shtml/">All Courses</a></li>
+<!--<li class="list-group-item"><a href="/calendar-documents/sdccd-academic-year.pdf" target="_blank">2017-2018 Calendar</a></li>-->
+<li class="list-group-item"><a href="http://www.sdmesa.edu/academics/calendars/index.shtml">All Academic/Semester Calendars</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/academics/academic-support-programs/tutoring/index.shtml">Mesa Tutoring &amp; Computing Center</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/academics/catalog/index.shtml/">Catalog</a></li>
+</ul>
+</div>
+<div class="span3 group">
+<h2 class="span12" style="padding-right:0;">Paying for College</h2>
+<ul class="list-group">
+<li class="list-group-item"><a href="http://www.sdmesa.edu/financial-aid/cost-of-attendance.shtml">Cost of Attendance</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/student-services/student-affairs/scholarships/index.shtml">Scholarships</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/financial-aid/index.shtml">Financial Aid</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/financial-aid/payment-disbursement-dates.shtml">Disbursement Dates</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/financial-aid/deadline-dates.shtml">Deadlines</a><br/></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/student-services/veterans-services/checklists/index.shtml">Using your GI Bill</a></li>
+</ul>
+</div>
+<div class="span3 faculty group">
+<h2 class="span12">Faculty/Staff</h2>
+<ul class="list-group">
+<li class="list-group-item"><a class="highlight" href="https://mail.sdccd.edu/owa/auth/logon.aspx?replaceCurrent=1&amp;url=https%3a%2f%2fmail.sdccd.edu%2fowa%2f">Outlook Webmail</a></li>
+<li class="list-group-item"><a class="highlight" href="https://faculty.sdccd.edu/index.cfm">Faculty Web Services</a></li>
+<li class="list-group-item"><a href="https://myportal.sdccd.edu/psp/IHPRD/?cmd=login">PeopleSoft</a></li>
+<li class="list-group-item"><a href="http://mesacollegerepro.myprintdesk.net/DSF/SmartStore.aspx?6xni2of2cF3Mh0eix3t2d939XbT5HNUltYcjo+AUWRC2b5k75E9g8LE9X/oprxmv#!/Storefront?utm_source=homepage&amp;utm_medium=links-section&amp;utm_campaign=links-section">Print Services</a></li>
+<li class="list-group-item"><a href="/college-services/administrative-services/forms/index.shtml">Form Finder</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/about-mesa/professional-learning/index.shtml">Professional Learning</a></li>
+<li class="list-group-item"><a href="/about-mesa/institutional-effectiveness/program-review/index.shtml">Program Review</a></li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="span3 group">
+<h2 class="span12">Registration</h2>
+<ul class="list-group">
+<li class="list-group-item"><a class="highlight" href="http://schedule.sdccd.edu/">Online Schedule</a></li>
+<li class="list-group-item"><a class="highlight" href="https://myportal.sdccd.edu/psc/CSGUEST/EMPLOYEE/EMPL/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?Page=PT_LANDINGPAGE&amp;Action=U&amp;LP=EMPL.EMPLOYEE.X_IH_CS_GUEST_FLUID">mySDCCD</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/student-services/counseling/index.shtml">Counseling</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/academics/calendars/index.shtml">Add/Drop Deadlines</a></li>
+<li class="list-group-item"><a class="highlight" href="http://bit.ly/mesatranscripts">Transcripts</a></li>
+</ul>
+</div>
+<div class="span3 group">
+<h2 class="span12">Research</h2>
+<ul class="list-group">
+<li class="list-group-item"><a href="http://www.sdmesa.edu/library/index.shtml">Library</a></li>
+<li class="list-group-item"><a class="highlight" href="http://sdmesa.edu/library/article-and-reference-databases/all-databases_a-z.shtml">Databases</a></li>
+<li class="list-group-item"><a href="http://libcat.sdccd.edu.libraryproxy.sdmesa.edu/ipac20/ipac.jsp?&amp;profile=ms">Catalog</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/library/services/course-reserves.shtml">Course Reserves</a></li>
+<li class="list-group-item"><a href="http://sdmesa.edu/library/ask-a-librarian/">Ask-A-Librarian</a></li>
+</ul>
+</div>
+<div class="span3 group">
+<h2 class="span12">Support</h2>
+<ul class="list-group">
+<li class="list-group-item"><a href="http://www.sdmesa.edu/student-services/disability-services/index.shtml">Disability Services</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/student-services/eops-care/">Extended Opportunity &amp; Services</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/student-services/career-center/">Career Center</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/student-services/transfer-center/">Transfer Center</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/academics/academic-support-programs/tutoring/">Tutoring</a></li>
+</ul>
+</div>
+<div class="span3 group">
+<h2 class="span12">Information</h2>
+<ul class="list-group">
+<!-- 							<li class="list-group-item"><a href="http://bit.ly/1UsFyVP"><strong>Ask Mesa</strong></a> </li> -->
+<li class="list-group-item"><a href="https://www.sdmesa.edu/calendar/index.php">Campus Calendar</a></li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/faculty/index.shtml">Directory</a></li>
+<li class="list-group-item"><a href="/about-mesa/gainful-employment.shtml">Gainful Employment</a>
+</li>
+<li class="list-group-item"><a href="http://www.sdmesa.edu/maps/">Map</a>
+</li>
+</ul>
+</div>
+</div>
+<a href="https://get.adobe.com/reader/" style="margin-left:10px;">Get ADOBE Reader</a>
+</div>
+<!-- *********************************************************************************** -->
+<!-- ******************************** Ask Mesa ***************************************** -->
+<!-- *********************************************************************************** -->
+<!--	<div class="span12 ask-mesa-bar">
+Ask
+<strong>Mesa</strong>
+</div
+<div class="span12">
+<div class="span6 have-questions">
+<ouc:div label="ask-mesa1" group="COM" button-text="Edit Content" break="break" button="862">
+<ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="mainheader"/>
+<h2>Have Questions? We Have Answers</h2>
+<br />
+<strong>Frequently Asked Questions</strong>
+</ouc:div>
+<br />
+<br />
+<ouc:div label="ask-mesa2" group="COM" button-text="Edit Content" break="break" button="862">
+<ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="mainheader"/>
+
+<ul class="top10">
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=35&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=How+do+I+apply" class="table">How do I apply?</a></li>
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=55&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=How+do+I+apply+for+financial+aid" class="table">How do I apply for financial aid?</a></li>
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=510&amp;sessionId=2220cfa2-1081-11e6-9a50-d5b69783fb0a&amp;question=Where+can+I+park+on+campus" class="table">Where can I park on campus?</a></li>
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=558&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=How+and+when+will+I+receive+my+financial+aid" class="table">How and when will I receive my financial aid?</a></li>
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=1324&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=What+is+academic+advising" class="table">What is academic advising?</a></li>
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=697&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=How+do+I+contact+the+Admissions+Office" class="table">How do I contact the Admissions Office?</a></li>
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=679&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=How+do+I+contact+a+student%2C+staff+member+or+department" class="table">How do I contact a student, staff member or department?</a></li>
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=648&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=How+do+I+register+for+classes" class="table">How do I register for classes?</a></li>
+
+
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=664&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=How+do+I+get+a+copy+of+my+transcript" class="table">How do I get a copy of my transcript?</a></li>
+
+<li><a href="http://sdmesa.intelliresponse.com?requestType=NormalRequest&amp;source=4&amp;id=520&amp;sessionId=65e65c73-c5b8-11e8-accb-259c6bdcb55a&amp;question=How+do+I+declare+or+change+my+major+or+minor" class="table">How do I declare or change my major or minor?</a></li>
+
+
+
+
+</ul>
+
+</ouc:div>
+</div>
+<div class="span6 ask-questions">
+<strong>Ask Your Question Here</strong>
+<br />
+<div>
+
+<form class="form-bar span12" id="questionForm" method="post" action="http://sdmesa.intelliresponse.com/index.jsp">	
+<input name="interfaceID" value="1" type="hidden"/>
+<input name="sessionId" value="2220cfa2-1081-11e6-9a50-d5b69783fb0a" type="hidden"/>
+<input id="respId" name="id" value="-1" type="hidden"/>
+<input name="requestType" type="hidden"/>
+<input id="sourceId" name="source" value="1" type="hidden"/>
+<textarea autocomplete="off" id="question" class="ask ui-autocomplete-input ask-box" name="question" placeholder="Type your complete question here" required="" type="text"/>
+<div class="q-submit" style="background-color:#fff;">
+<input id="ask-btn" class="" value="ask mesa" type="submit"/>
+</div>
+</form>
+
+
+</div>
+
+</div>
+</div> -->
+<!-- *********************************************************************************** -->
+<!-- ******************************** News Stories ************************************* -->
+<!-- *********************************************************************************** -->
+<div class="span12 campus-events">
+<span class="anchor" id="news"></span>
+<div class="skiptosection"><a href="#involved" id="events">skip to get involved</a></div>
+                  				News/<strong>Events</strong>
+</div>
+<div class="span12 no-padding">
+<div id="ouNewsView"></div>
+<div class="more-news span12">
+<a href="http://www.sdmesa.edu/_resources/newsroom/news.php">More News</a>
+</div>
+<div id="ouCalendarFeedView"></div>
+<div class="more-events span12">
+<a href="https://www.sdmesa.edu/calendar/index.php">View Full Calendar</a>
+</div>
+</div>
+<!-- ********************** END NEWS **************************************** -->
+<!--headline event -->
+<!--<a href="https://www.sdmesa.edu/calendar/index.php?eID=1225" class="idea2"><div style="margin-bottom:10px;"><img src="/images/grad-image.png" class="img-responsive" alt="San Diego Mesa Commencement Class of 2016" style=""/><p style="text-align: center;padding:0;"></p></div></a>-->
+<!--<h2>Upcoming Events</h2>-->
+<div class="span12 get-involved">
+<span class="anchor" id="involved"></span>
+                  
+                  				Get
+                  				<strong>Involved</strong>
+<div class="skiptosection"><a href="#sdccd" id="last">skip to footer</a></div>
+</div>
+<div class="span7 involved-box">
+<div class="apply-bar" style="background:#023867;">
+<a href="http://www.sdmesa.edu/student-services/international-students/future-international-students.shtml?utm_source=homepage&amp;utm_medium=get-invovledn&amp;utm_campaign=intlStdnts">International Students</a>
+</div>
+<div class="acad-bar">
+<a href="/student-services/commencement/petition-to-graduate.shtml?utm_source=homepage&amp;utm_medium=get-invovledn&amp;utm_campaign=petition">Petition to Graduate</a>
+</div>
+<div class="lib-bar">
+<a href="http://www.sdmesa.edu/campus-life/get-involved/student-clubs/index.shtml?utm_source=homepage&amp;utm_medium=get-invovledn&amp;utm_campaign=stdntClubs">Student Clubs</a>
+</div>
+<div class="inv-1">
+<a href="/campus-life/galleries-and-attractions/index.shtml">
+<div class="inv-1hover"></div>
+<img alt="galleries and attractions link" src="/images/get-involved1.png"/>
+</a>
+<div>
+<span>Galleries &amp; Attractions</span>
+</div>
+</div>
+<div class="inv-2">
+<a href="http://www.gosdmesa.com/landing/index">
+<div class="inv-2hover"></div>
+<img alt="mesa college athletics link" src="/_resources/images/involved-2.png"/>
+</a>
+<div>
+<span>Athletics</span>
+</div>
+</div>
+<div class="inv-3">
+<a href="/about-mesa/current-initiatives/diversity/index.shtml">
+<div class="inv-3hover"></div>
+<img alt="mesa college diversity link" src="/_resources/images/involved-3.png"/>
+</a>
+<div>
+<span>Diversity</span>
+</div>
+</div>
+<div class="inv-4">
+<a href="/campus-life/canyon-day/index.shtml">
+<div class="inv-4hover"></div>
+<img alt="mesa college canyon day link" src="/images/get-involved4.png"/>
+</a>
+<div>
+<span>Canyon Day</span>
+</div>
+</div>
+<div class="inv-5">
+<a href="/campus-life/performing-arts/index.shtml">
+<div class="inv-5hover"></div>
+<img alt="mesa college performing arts link" src="/images/Dance%20Program%20Leg-crp.jpg"/>
+</a>
+<div>
+<span>Performing Arts</span>
+</div>
+</div>
+<div class="inv-6">
+<a href="/campus-life/dining">
+<div class="inv-6hover"></div>
+<img alt="mesa college dining link" src="/images/get-involved6.png"/>
+</a>
+<div>
+<span>Dining</span>
+</div>
+</div>
+</div>
+<div class="span5 social-mobile">
+<h2 class="social-med">Social Media</h2>
+<div class="span12" id="social-feeds" style="padding-right: 0;">
+<button class="btn btn-info btn-social collapsed" data-parent="#social-feeds" data-target="#facebook-feed" data-toggle="collapse" style="margin-left: -15px;">
+<img alt="facebook link" src="/_resources/images/facebook-ico.png"/>
+</button>
+<button class="btn btn-info btn-social collapsed" data-parent="#social-feeds" data-target="#twitter-p" data-toggle="collapse">
+<img alt="presidents twitter link" src="/_resources/images/twitterp-ico.png"/>
+</button>
+<button class="btn btn-info btn-social collapsed" data-parent="#social-feeds" data-target="#twitter-m" data-toggle="collapse">
+<img alt="mesa college twitter link" src="/_resources/images/twitterm-ico.png"/>
+</button>
+<a href="https://instagram.com/sdmesacollege/" target="_blank">
+<button class="btn btn-info btn-social collapsed" data-parent="#social-feeds" data-target="#instagram-feed" data-toggle="collapse">
+<img alt="instagram link" src="/_resources/images/instagram-ico.png"/>
+</button>
+</a>
+<button class="btn btn-info btn-social collapsed" data-parent="#social-feeds" data-target="#youtube-feed" data-toggle="collapse">
+<img alt="youtube link" src="/_resources/images/youtube-ico.png"/>
+</button>
+<a href="https://www.linkedin.com/edu/san-diego-mesa-college-20971" target="_blank;">
+<button class="btn btn-info btn-social collapsed" data-parent="#social-feeds" data-target="#linkedin-feed" data-toggle="collapse">
+<img alt="linked in link" src="/_resources/images/linkedin-ico.png"/>
+</button>
+</a>
+<button class="btn btn-info btn-social collapsed" data-parent="#social-feeds" data-target="#imesa-feed" data-toggle="collapse">
+<img alt="i-mesa mobile application link" src="/_resources/images/imesa-ico.png"/>
+</button>
+<div class="panel">
+<div class="collapse in social-feed" id="facebook-feed">
+<div class="fb-page" data-height="380" data-hide-cover="false" data-href="https://www.facebook.com/SanDiegoMesaCollege" data-show-facepile="false" data-show-posts="true" data-width="350">
+<div class="fb-xfbml-parse-ignore">
+<blockquote cite="https://www.facebook.com/SanDiegoMesaCollege">
+<a href="https://www.facebook.com/SanDiegoMesaCollege">San Diego Mesa College</a>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="panel">
+<div class="collapse social-feed" id="twitter-p">
+<a class="twitter-timeline" data-widget-id="626141064768794624" href="https://twitter.com/SDMesaPrez">Tweets by @SDMesaPrez</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+</div>
+<div class="panel">
+<div class="collapse social-feed" id="twitter-m">
+<a class="twitter-timeline" data-widget-id="626139841860743168" href="https://twitter.com/sdmesacollege">Tweets by @sdmesacollege</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+</div>
+<div class="panel">
+<div class="collapse social-feed" id="instagram-feed">Instagram Feed</div>
+</div>
+<div class="panel">
+<div class="collapse social-feed" id="youtube-feed">
+<a href="https://www.youtube.com/sdmesacollege">
+<img alt="San Diego Mesa College youTube feed" src="/images/youtube.jpg"/>
+</a>
+</div>
+</div>
+<div class="panel">
+<div class="collapse social-feed" id="linkedin-feed">Linkedin Feed</div>
+</div>
+<div class="panel">
+<div class="collapse social-feed" id="imesa-feed">iMesa Feed</div>
+</div>
+<!--<div class="panel">
+<div>San Diego Mesa College President</div>
+</div>
+-->
+</div>
+</div>
+<div class="span12 inv-7" style="margin-top: 25px;">
+<a href="/maps/">
+<div class="inv-7hover"></div>
+<img alt="san diego mesa college campus" src="/_resources/images/involved-7.png"/>
+</a>
+<div><span>Explore Mesa College</span></div>
+</div>
+<!--<div class="span12 ask-mesa-bar">
+Ask
+<strong>Mesa</strong>
+</div>
+<div class="span12">
+<div class="span6 have-questions">
+<ouc:div label="ask-mesa1" group="COM" button-text="Edit Content" break="break" button="862">
+<ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="mainheader"/>
+<h2>Have Questions? We Have Answers</h2>
+<br />
+<strong>Frequently Asked Questions</strong>
+</ouc:div>
+<br />
+<br />
+<ouc:div label="ask-mesa2" group="COM" button-text="Edit Content" break="break" button="862">
+<ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="mainheader"/>
+
+<ul class="top10">
+
+
+
+<li><a href="/?requestType=NormalRequest&amp;source=4&amp;id=1355&amp;sessionId=2220cfa2-1081-11e6-9a50-d5b69783fb0a&amp;question=Where+can+I+get+information+on+athletics" class="table">Where can I get information on athletics?</a></li>
+
+<li><a href="/?requestType=NormalRequest&amp;source=4&amp;id=510&amp;sessionId=2220cfa2-1081-11e6-9a50-d5b69783fb0a&amp;question=Where+can+I+park+on+campus" class="table">Where can I park on campus?</a></li>
+
+<li><a href="/?requestType=NormalRequest&amp;source=4&amp;id=22&amp;sessionId=2220cfa2-1081-11e6-9a50-d5b69783fb0a&amp;question=How+do+I+apply+for+graduation" class="table">How do I apply for graduation?</a></li>
+
+<li><a href="/?requestType=NormalRequest&amp;source=4&amp;id=35&amp;sessionId=2220cfa2-1081-11e6-9a50-d5b69783fb0a&amp;question=How+do+I+apply" class="table">How do I apply?</a></li>
+
+<li><a href="/?requestType=NormalRequest&amp;source=4&amp;id=51&amp;sessionId=2220cfa2-1081-11e6-9a50-d5b69783fb0a&amp;question=Is+there+a+cafeteria+or+restaurant+on+campus" class="table">Is there a cafeteria or restaurant on campus?</a></li>
+
+<li><a href="/?requestType=NormalRequest&amp;source=4&amp;id=556&amp;sessionId=2220cfa2-1081-11e6-9a50-d5b69783fb0a&amp;question=Do+I+have+to+complete+an+exit+interview+for+financial+aid" class="table">Do I have to complete an exit interview for financial aid?</a></li>
+
+<li><a href="/?requestType=NormalRequest&amp;source=4&amp;id=128&amp;sessionId=2220cfa2-1081-11e6-9a50-d5b69783fb0a&amp;question=Are+you+a+public+or+private+institution" class="table">Are you a public or private institution?</a></li>
+</ul>
+
+</ouc:div>
+</div>
+<div class="span6 ask-questions">
+<strong>Ask Your Question Here</strong>
+<br />
+<div>
+
+<form class="form-bar span12" id="questionForm" method="post" action="index.jsp">	
+<input name="interfaceID" value="1" type="hidden"/>
+<input name="sessionId" value="2220cfa2-1081-11e6-9a50-d5b69783fb0a" type="hidden"/>
+<input id="respId" name="id" value="-1" type="hidden"/>
+<input name="requestType" type="hidden"/>
+<input id="sourceId" name="source" value="1" type="hidden"/>
+<textarea autocomplete="off" id="question" class="ask ui-autocomplete-input ask-box" name="question" placeholder="Type your complete question here" required="" type="text"/>
+</form>
+
+
+</div>
+<div class="q-submit" style="background-color:#fff;">
+<input id="ask-btn" class="" value="ask mesa" type="submit"/>
+</div>
+</div>
+</div> -->
+<span class="anchor" id="footer"></span>
+</div>
+</div>
+</main>
+<footer aria-label="Footer" class="new-foot" style="position:relative;">
+<div class="container">
+<div aria-label="college designations" class="f-span12" role="complementary">
+<div class="f-span6">
+<a href="http://www.sdccd.edu" id="sdccd"><img alt="San Diego Community College District" src="/_resources/images/_sdccd-logos/mesaWithDO_white1.png" width="300"/></a>
+</div>
+<div class="f-span6">
+<div class="logos">
+<a href="/about-mesa/hsi/index.shtml"><img alt="Hispanic Serving Institution" src="/_resources/images/_sdccd-logos/HSI-website-logo_white.png" width="200"/></a>
+<br/><a href="/student-services/veterans-services/index.shtml"><img alt="Military Friendly" src="/_resources/images/MF_whtout.Logo2.png" width="300"/></a>
+</div>
+</div>
+</div>
+<div aria-label="Address" class="f-span6">
+<div class="left-foot"><span>San Diego Mesa College<br/> 7250 Mesa College Drive<br/> San Diego, CA 92111-4998<br/> 619.388.2600</span><br/><br/> <a href="http://www.sdccd.edu/" target="_blank">San Diego Community College District</a><br/> <a href="http://www.sdcity.edu/" target="_blank">San Diego City College</a><br/> <a href="/">San Diego Mesa College</a><br/> <a href="http://www.sdmiramar.edu/" target="_blank">San Diego Miramar College</a><br/> <a href="http://www.sdce.edu/" target="_blank">San Diego Continuing Education</a></div>
+</div>
+<div class="f-span6 right-foot">
+<div aria-label="Footer Quick Navigation Menu" class="foot-links" role="navigation">
+<div class="f-span3"><a href="/about-mesa/contact-mesa">Contact Us</a></div>
+<div class="f-span3"><a href="http://www.sdmesa.edu/_resources/newsroom/news.php">Newsroom</a></div>
+<div class="f-span3"><a href="http://www.sdmesa.edu/_resources/newsroom/documents/fact_sheet_mesacollege2019_V10.pdf">Facts Sheet</a></div>
+<br/>
+<div class="f-span3"><a href="/faculty">Directory</a></div>
+<div class="f-span3"><a href="https://www.sdccd.edu/about/accessibility-statement.aspx">Accessibility</a></div>
+<div class="f-span3"><a href="http://www.sdccd.edu/consumer/">Consumer Information</a></div>
+<br/>
+<div class="f-span3"><a href="/maps">Map</a></div>
+<div class="f-span3"><a href="/college-services/administrative-services/tech-support">Technical Support</a></div>
+<div class="f-span3 f-span3__last"><a href="http://scorecard.cccco.edu/scorecardrates.aspx?CollegeID=072">Student Success Scorecard</a></div>
+</div>
+<!-- New SVG Social Media Icons -->
+<div aria-label="Social Media Navigation Menu" class="icons-social">
+<a aria-label="icon to get i mesa mobile app" class="icons-social__icon-link" href="/imesa.shtml" title="Get iMesa App">
+<svg class="icons-social__icon">
+<use xlink:href="/_resources/images/sprite-sheet-social-icons.svg#svg-imesa"></use>
+</svg>
+</a>
+<a aria-label="icon to visit mesa college face book" class="icons-social__icon-link" href="https://www.facebook.com/SanDiegoMesaCollege" target="_blank" title="Visit our Facebook">
+<svg class="icons-social__icon">
+<use xlink:href="/_resources/images/sprite-sheet-social-icons.svg#svg-facebook"></use>
+</svg>
+</a>
+<a aria-label="icon to visit mesa college twitter" class="icons-social__icon-link" href="https://twitter.com/SDMesaPrez" target="_blank" title="Visit our Twitter">
+<svg class="icons-social__icon">
+<use xlink:href="/_resources/images/sprite-sheet-social-icons.svg#svg-twitter"></use>
+</svg>
+</a>
+<a aria-label="icon to visit mesa college instagram" class="icons-social__icon-link" href="https://instagram.com/sdmesacollege/" target="_blank" title="Visit our Instagram">
+<svg class="icons-social__icon">
+<use xlink:href="/_resources/images/sprite-sheet-social-icons.svg#svg-instagram"></use>
+</svg>
+</a>
+<a aria-label="icon to visit mesa college you tube" class="icons-social__icon-link" href="https://www.youtube.com/channel/UCwg-TLCrbfc85OKn_iP6bfA" target="_blank" title="Visit our YouTube">
+<svg class="icons-social__icon">
+<use xlink:href="/_resources/images/sprite-sheet-social-icons.svg#svg-youtube"></use>
+</svg>
+</a>
+<a aria-label="icon to visit mesa college linked in" class="icons-social__icon-link" href="https://www.linkedin.com/edu/san-diego-mesa-college-20971" target="_blank" title="Visit our LinkedIn">
+<svg class="icons-social__icon">
+<use xlink:href="/_resources/images/sprite-sheet-social-icons.svg#svg-linkedin"></use>
+</svg>
+</a>
+<a aria-label="icon to open mesa college snap chat code" class="icons-social__icon-link" href="/_resources/images/snapcode.png" target="_blank" title="Get our Snapcode">
+<svg class="icons-social__icon">
+<use xlink:href="/_resources/images/sprite-sheet-social-icons.svg#svg-snapchat"></use>
+</svg>
+</a>
+<div aria-label="Copyright and Disclaimer" class="foot-copy" role="contentinfo"><span id="directedit">©</span> San Diego Mesa College 2015 | <a href="/disclaimer.shtml">Disclaimer</a></div>
+</div> <!-- END New SVG Social Media Icons -->
+<!-- <div class="soc-foot" aria-label="Social Media Navigation Menu" role="navigation">
+	<a href="/imesa.shtml"><img class="new-botsoc" src="/_resources/images/imesa-foot.jpg" alt="i-mesa mobile application" /></a>
+	<a href="https://www.facebook.com/SanDiegoMesaCollege" target="_blank"><img class="new-botsoc" src="/_resources/images/facebook-foot.jpg" alt="san diego mesa college facebook" /></a>
+	<a href="https://twitter.com/SDMesaPrez" target="_blank"><img class="new-botsoc" src="/_resources/images/twitter-foot.jpg" alt="san diego mesa college presidents twitter" /></a>
+	<a href="https://instagram.com/sdmesacollege/" target="_blank"><img class="new-botsoc" src="/_resources/images/insta-foot.jpg" alt="san diego mesa college instagram" /></a>
+	<a href="https://www.youtube.com/channel/UCwg-TLCrbfc85OKn_iP6bfA" target="_blank"><img class="new-botsoc" src="/_resources/images/youtube-foot.jpg" alt="san diego mesa college youtube channel" /></a>
+	<a href="https://www.linkedin.com/edu/san-diego-mesa-college-20971" target="_blank"><img class="new-botsoc" src="/_resources/images/linkedin-foot.jpg" alt="san deigo mesa college linked in" /></a> <br />
+	<div class="foot-copy" aria-label="Copyright and Disclaimer" role="contentinfo"><span id="directedit">©</span> San Diego Mesa College 2015 | <a href="/disclaimer.shtml">Disclaimer</a></div> 
+</div> -->
+</div>
+</div>
+<div class="skiptosection"><a href="#skip" id="totop">back to top</a></div>
+</footer><!-- the following should be replaced with real direct-edit stuff -->
+<script src="/_resources/js/scripts.js"></script>
+<script src="/_resources/js/jquery.fittext.js"></script>
+<script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+<script src="/_resources/js/vendor/jquery.xml2json.js"></script>
+<script src="/_resources/js/vendor/defiant.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+<!--<script src="/_resources/js/ou.js"></script>-->
+<script src="/_resources/js/direct-edit.js"></script>
+<script>jQuery(".title-header").fitText(2.8, { minFontSize: '14px', maxFontSize: '34px' });jQuery(".dept-title").fitText(2.7, { minFontSize: '14px', maxFontSize: '34px' });jQuery(".top-title").fitText(1.3, { minFontSize: '32px', maxFontSize: '48px' });
+
+</script>
+<script src="/_resources/js/smoothscroll.js" type="text/javascript"></script>
+<script src="/_resources/js/instafeed.js" type="text/javascript"></script>
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1617346788321713'); 
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" src="https://www.facebook.com/tr?id=1617346788321713&amp;ev=PageView
+&amp;noscript=1" width="1"/>
+</noscript>
+<!-- End Facebook Pixel Code -->
+<!-- Insert google analytics here -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68121801-1', 'auto');
+  ga('send', 'pageview');
+	
+
+</script>
+<div id="hidden" style="display:none;">
+<a href="http://omniupdate.sdccd.edu/10?skin=oucampus&amp;account=mesa&amp;site=sdmesa&amp;action=de&amp;path=/index.pcf" id="de">©</a>
+</div>
+<!-- 		<script type="text/javascript" src="/_resources/js/slick.js"></script> -->
+<!-- snow -->
+<!-- 		<script type="text/javascript">
+particlesJS.load('particles-js', '/_resources/js/new-script/particles.json', function() {
+console.log('callback - particles.js config loaded');
+});
+</script> -->
+<!-- 		<script src="/sandbox/javascript-dev/ouNewsFeed-transpiled.js"></script> -->
+<script src="/sandbox/mobile-banner/banerscript-transpiled.js" type="text/javascript"></script>
+<script src="/sandbox/javascript-dev/ouCalendar-flex-transpiled.js" type="text/javascript"></script>
+<script>$(document).ready(function(){
+			//alert('ok');
+			$( "#message" ).load( "/msg/notice1.php" );
+
+			$(window).load(function(){
+			var text = $("#message").text();
+			var test = text.includes("function");
+			console.log('Text:', text);
+			console.log('test:', test);
+			if(!test){
+			if($("#message").text() != "")
+			{
+			$("#message").addClass('show');
+			}
+			}
+			});
+
+
+			});</script>
+<!--<script>
+
+var commencementday = new Date ('May 19, 2018 15:00:00').getTime();
+
+// update countdown every 1 second
+var x = setInterval(function(){
+
+// Get todays date
+var now = new Date().getTime();
+
+// Find the distance
+var distance = commencementday - now;
+
+// time calulation
+var days = Math.floor(distance/(1000*60*60*24));
+var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var min = Math.floor((distance%(1000*60*60))/(1000*60));
+var sec = Math.floor((distance%(1000*60))/1000);
+
+// display
+document.querySelector('#clock').innerHTML = 
+`  <div>
+
+<div class='flext'>
+<div class='flex-item'>
+<span style="font-size:3rem;color:#023867;">${days}</span>
+<span>Days</span>
+</div>
+<div class='flex-item'>
+<span style="font-size:3rem;color:#023867;">${hours}</span>
+<span>Hours</span>
+</div>
+<div class='flex-item'>
+<span style="font-size:3rem;color:#023867;">${min}</span>
+<span>Minutes</span>
+</div>
+<div class='flex-item'>
+<span style="font-size:3rem;color:#023867;">${sec}</span>
+<span>Seconds</span>
+</div>
+</div>
+</div>
+
+
+`;
+
+},1000);
+
+</script>-->
+
+<script>
+/*Button Code in OU <a id="de" href="^0">&copy;</a>*/
+// Completely revised 20140401 due to scripting errors in IE 9
+
+// for #57586 added code that will explicitly change http: to https:
+//  this was done because of OX-9150
+
+if (!window.jQuery) { // Added by DJ to check for jQuery lib 20140717
+	window.onload = function() {
+		if(document.getElementById("de") != null && document.getElementById("directedit")) {
+			var link = document.getElementById("de").href;
+
+			// #57586 replace with https:
+			link=link.replace('http://','https://');
+
+			document.getElementById("de").href = "";
+			document.getElementById("directedit").href = link;
+			document.getElementById("directedit").style.color = 'white';
+		}
+	};
+} else {
+	$(document).ready(function() {
+		$("#directedit").html(jQuery("#de"));
+		// since have replaced the #directedit replace the attribute string correctly
+		let link=$("#de").attr('href').replace('http://','https://');
+		$("#de").attr('href',link);
+	});
+}
+
+</script>
+</div></body>
+</html>

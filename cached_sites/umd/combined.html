@@ -1,0 +1,790 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head><style>#autocomplete{border:1px solid;overflow:hidden;position:absolute;z-index:100;}#autocomplete ul{list-style:none;list-style-image:none;margin:0;padding:0;}#autocomplete li{background:#fff;color:#000;cursor:default;white-space:pre;zoom:1;}html.js input.form-autocomplete{background-image:url(/misc/throbber-inactive.png);background-position:100% center;background-repeat:no-repeat;}html.js input.throbbing{background-image:url(/misc/throbber-active.gif);background-position:100% center;}html.js fieldset.collapsed{border-bottom-width:0;border-left-width:0;border-right-width:0;height:1em;}html.js fieldset.collapsed .fieldset-wrapper{display:none;}fieldset.collapsible{position:relative;}fieldset.collapsible .fieldset-legend{display:block;}.form-textarea-wrapper textarea{display:block;margin:0;width:100%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}.resizable-textarea .grippie{background:#eee url(/misc/grippie.png) no-repeat center 2px;border:1px solid #ddd;border-top-width:0;cursor:s-resize;height:9px;overflow:hidden;}body.drag{cursor:move;}.draggable a.tabledrag-handle{cursor:move;float:left;height:1.7em;margin-left:-1em;overflow:hidden;text-decoration:none;}a.tabledrag-handle:hover{text-decoration:none;}a.tabledrag-handle .handle{background:url(/misc/draggable.png) no-repeat 6px 9px;height:13px;margin:-0.4em 0.5em;padding:0.42em 0.5em;width:13px;}a.tabledrag-handle-hover .handle{background-position:6px -11px;}div.indentation{float:left;height:1.7em;margin:-0.4em 0.2em -0.4em -0.4em;padding:0.42em 0 0.42em 0.6em;width:20px;}div.tree-child{background:url(/misc/tree.png) no-repeat 11px center;}div.tree-child-last{background:url(/misc/tree-bottom.png) no-repeat 11px center;}div.tree-child-horizontal{background:url(/misc/tree.png) no-repeat -11px center;}.tabledrag-toggle-weight-wrapper{text-align:right;}table.sticky-header{background-color:#fff;margin-top:0;}.progress .bar{background-color:#fff;border:1px solid;}.progress .filled{background-color:#000;height:1.5em;width:5px;}.progress .percentage{float:right;}.ajax-progress{display:inline-block;}.ajax-progress .throbber{background:transparent url(/misc/throbber-active.gif) no-repeat 0px center;float:left;height:15px;margin:2px;width:15px;}.ajax-progress .message{padding-left:20px;}tr .ajax-progress .throbber{margin:0 2px;}.ajax-progress-bar{width:16em;}.container-inline div,.container-inline label{display:inline;}.container-inline .fieldset-wrapper{display:block;}.nowrap{white-space:nowrap;}html.js .js-hide{display:none;}.element-hidden{display:none;}.element-invisible{position:absolute !important;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);overflow:hidden;height:1px;}.element-invisible.element-focusable:active,.element-invisible.element-focusable:focus{position:static !important;clip:auto;overflow:visible;height:auto;}.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}* html .clearfix{height:1%;}*:first-child + html .clearfix{min-height:1%;}
+ul.menu{border:none;list-style:none;text-align:left;}ul.menu li{margin:0 0 0 0.5em;}ul li.expanded{list-style-image:url(/misc/menu-expanded.png);list-style-type:circle;}ul li.collapsed{list-style-image:url(/misc/menu-collapsed.png);list-style-type:disc;}ul li.leaf{list-style-image:url(/misc/menu-leaf.png);list-style-type:square;}li.expanded,li.collapsed,li.leaf{padding:0.2em 0.5em 0 0;margin:0;}li a.active{color:#000;}td.menu-disabled{background:#ccc;}ul.inline,ul.links.inline{display:inline;padding-left:0;}ul.inline li{display:inline;list-style-type:none;padding:0 0.5em;}.breadcrumb{padding-bottom:0.5em;}ul.primary{border-bottom:1px solid #bbb;border-collapse:collapse;height:auto;line-height:normal;list-style:none;margin:5px;padding:0 0 0 1em;white-space:nowrap;}ul.primary li{display:inline;}ul.primary li a{background-color:#ddd;border-color:#bbb;border-style:solid solid none solid;border-width:1px;height:auto;margin-right:0.5em;padding:0 1em;text-decoration:none;}ul.primary li.active a{background-color:#fff;border:1px solid #bbb;border-bottom:1px solid #fff;}ul.primary li a:hover{background-color:#eee;border-color:#ccc;border-bottom-color:#eee;}ul.secondary{border-bottom:1px solid #bbb;padding:0.5em 1em;margin:5px;}ul.secondary li{border-right:1px solid #ccc;display:inline;padding:0 1em;}ul.secondary a{padding:0;text-decoration:none;}ul.secondary a.active{border-bottom:4px solid #999;}
+div.messages{background-position:8px 8px;background-repeat:no-repeat;border:1px solid;margin:6px 0;padding:10px 10px 10px 50px;}div.status{background-image:url(/misc/message-24-ok.png);border-color:#be7;}div.status,.ok{color:#234600;}div.status,table tr.ok{background-color:#f8fff0;}div.warning{background-image:url(/misc/message-24-warning.png);border-color:#ed5;}div.warning,.warning{color:#840;}div.warning,table tr.warning{background-color:#fffce5;}div.error{background-image:url(/misc/message-24-error.png);border-color:#ed541d;}div.error,.error{color:#8c2e0b;}div.error,table tr.error{background-color:#fef5f1;}div.error p.error{color:#333;}div.messages ul{margin:0 0 0 1em;padding:0;}div.messages ul li{list-style-image:none;}
+fieldset{margin-bottom:1em;padding:0.5em;}form{margin:0;padding:0;}hr{border:1px solid gray;height:1px;}img{border:0;}table{border-collapse:collapse;}th{border-bottom:3px solid #ccc;padding-right:1em;text-align:left;}tbody{border-top:1px solid #ccc;}tr.even,tr.odd{background-color:#eee;border-bottom:1px solid #ccc;padding:0.1em 0.6em;}th.active img{display:inline;}td.active{background-color:#ddd;}.item-list .title{font-weight:bold;}.item-list ul{margin:0 0 0.75em 0;padding:0;}.item-list ul li{margin:0 0 0.25em 1.5em;padding:0;}.form-item,.form-actions{margin-top:1em;margin-bottom:1em;}tr.odd .form-item,tr.even .form-item{margin-top:0;margin-bottom:0;white-space:nowrap;}.form-item .description{font-size:0.85em;}label{display:block;font-weight:bold;}label.option{display:inline;font-weight:normal;}.form-checkboxes .form-item,.form-radios .form-item{margin-top:0.4em;margin-bottom:0.4em;}.form-type-radio .description,.form-type-checkbox .description{margin-left:2.4em;}input.form-checkbox,input.form-radio{vertical-align:middle;}.marker,.form-required{color:#f00;}.form-item input.error,.form-item textarea.error,.form-item select.error{border:2px solid red;}.container-inline .form-actions,.container-inline.form-actions{margin-top:0;margin-bottom:0;}.more-link{text-align:right;}.more-help-link{text-align:right;}.more-help-link a{background:url(/misc/help.png) 0 50% no-repeat;padding:1px 0 1px 20px;}.item-list .pager{clear:both;text-align:center;}.item-list .pager li{background-image:none;display:inline;list-style-type:none;padding:0.5em;}.pager-current{font-weight:bold;}#autocomplete li.selected{background:#0072b9;color:#fff;}html.js fieldset.collapsible .fieldset-legend{background:url(/misc/menu-expanded.png) 5px 65% no-repeat;padding-left:15px;}html.js fieldset.collapsed .fieldset-legend{background-image:url(/misc/menu-collapsed.png);background-position:5px 50%;}.fieldset-legend span.summary{color:#999;font-size:0.9em;margin-left:0.5em;}tr.drag{background-color:#fffff0;}tr.drag-previous{background-color:#ffd;}.tabledrag-toggle-weight{font-size:0.9em;}body div.tabledrag-changed-warning{margin-bottom:0.5em;}tr.selected td{background:#ffc;}td.checkbox,th.checkbox{text-align:center;}.progress{font-weight:bold;}.progress .bar{background:#ccc;border-color:#666;margin:0 0.2em;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}.progress .filled{background:#0072b9 url(/misc/progress.gif);}
+
+#aggregator .feed-source .feed-title{margin-top:0;}#aggregator .feed-source .feed-image img{margin-bottom:0.75em;}#aggregator .feed-source .feed-icon{float:right;display:block;}#aggregator .feed-item{margin-bottom:1.5em;}#aggregator .feed-item-title{margin-bottom:0;font-size:1.3em;}#aggregator .feed-item-meta,#aggregator .feed-item-body{margin-bottom:0.5em;}#aggregator .feed-item-categories{font-size:0.9em;}#aggregator td{vertical-align:bottom;}#aggregator td.categorize-item{white-space:nowrap;}#aggregator .categorize-item .news-item .body{margin-top:0;}#aggregator .categorize-item h3{margin-bottom:1em;margin-top:0;}
+#comments{margin-top:15px;}.indented{margin-left:25px;}.comment-unpublished{background-color:#fff4f4;}.comment-preview{background-color:#ffffea;}
+.field .field-label{font-weight:bold;}.field-label-inline .field-label,.field-label-inline .field-items{float:left;}form .field-multiple-table{margin:0;}form .field-multiple-table th.field-label{padding-left:0;}form .field-multiple-table td.field-multiple-drag{width:30px;padding-right:0;}form .field-multiple-table td.field-multiple-drag a.tabledrag-handle{padding-right:.5em;}form .field-add-more-submit{margin:.5em 0 0;}
+.google-appliance-search-form{margin-bottom:1em;}.google-appliance-search-form input{margin-top:0;margin-bottom:4px;}.google-appliance-results,.google-appliance-keymatch-results{list-style:none;}.search-gooogle-appliance-results p{margin-top:0;}.google-appliance-result .title{margin-bottom:0px;font-size:1.2em;}.google-appliance-result .google-appliance-snippet{margin-bottom:0px;}.google-appliance-result li{margin-bottom:1em;}.google-appliance-results .google-appliance-snippet-info{padding-left:0;}.google-appliance-results .google-appliance-info,.google-appliance-keymatch-results{font-size:0.85em;color:#888;}.google-appliance-keymatch-results{padding-left:0;}.google-appliance-keymatch-results li{background:#f1f1ed;border-bottom:1px solid #e7e7e3;padding:10px 10px;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;margin-bottom:10px;}.google-appliance-keymatch-results h3{margin:0;}.google-appliance-keymatch-results p{margin:0;}form.search-google-appliance-search-form{margin-bottom:2px;}#search-results-heading{margin-top:1em;}.google-appliance-synonyms ul,.google-appliance-synonyms li{display:inline;list-style-type:none;}.google-appliance-results-control-bar{border:1px solid #ddd;background-color:#F6F6F2;border-color:#eee;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;padding:4px 6px;margin-top:15px;margin-bottom:15px;}.google-appliance-results-control-bar .google-appliance-search-stats{float:left;}.google-appliance-results-control-bar .google-appliance-sort-headers{float:right;}.google-appliance-sort-headers .google-appliance-sorter{padding-right:14px;display:block;float:left;}.google-appliance-sort-headers .google-appliance-sorter:last-child{padding-right:4px;}.google-appliance-sorter .active-sort{font-weight:bold;}.google-appliance-level2{}
+.node-unpublished{background-color:#fff4f4;}.preview .node{background-color:#ffffea;}td.revision-current{background:#ffc;}
+#permissions td.module{font-weight:bold;}#permissions td.permission{padding-left:1.5em;}#permissions tr.odd .form-item,#permissions tr.even .form-item{white-space:normal;}#user-admin-settings fieldset .fieldset-description{font-size:0.85em;padding-bottom:.5em;}#user-admin-roles td.edit-name{clear:both;}#user-admin-roles .form-item-name{float:left;margin-right:1em;}.password-strength{width:17em;float:right;margin-top:1.4em;}.password-strength-title{display:inline;}.password-strength-text{float:right;font-weight:bold;}.password-indicator{background-color:#C4C4C4;height:0.3em;width:100%;}.password-indicator div{height:100%;width:0%;background-color:#47C965;}input.password-confirm,input.password-field{width:16em;margin-bottom:0.4em;}div.password-confirm{float:right;margin-top:1.5em;visibility:hidden;width:17em;}div.form-item div.password-suggestions{padding:0.2em 0.5em;margin:0.7em 0;width:38.5em;border:1px solid #B4B4B4;}div.password-suggestions ul{margin-bottom:0;}.confirm-parent,.password-parent{clear:left;margin:0;width:36.3em;}.profile{clear:both;margin:1em 0;}.profile .user-picture{float:right;margin:0 1em 1em 0;}.profile h3{border-bottom:1px solid #ccc;}.profile dl{margin:0 0 1.5em 0;}.profile dt{margin:0 0 0.2em 0;font-weight:bold;}.profile dd{margin:0 0 1em 0;}
+div.user-alert{width:100%;height:100%;background:yellow;line-height:35px;}div.user-alert div.user-alert-close{width:15px;text-align:right;float:right;overflow:visible;margin-right:10px;text-decoration:none;}div.user-alert span.user-label{background:black;color:#fff;padding:10px;font-size:14px;text-transform:uppercase;}div.user-alert div.user-alert-message{width:100%;overflow:visible;font-weight:bold;}
+.views-exposed-form .views-exposed-widget{float:left;padding:.5em 1em 0 0;}.views-exposed-form .views-exposed-widget .form-submit{margin-top:1.6em;}.views-exposed-form .form-item,.views-exposed-form .form-submit{margin-top:0;margin-bottom:0;}.views-exposed-form label{font-weight:bold;}.views-exposed-widgets{margin-bottom:.5em;}.views-align-left{text-align:left;}.views-align-right{text-align:right;}.views-align-center{text-align:center;}.views-view-grid tbody{border-top:none;}.view .progress-disabled{float:none;}
+.rteindent1{margin-left:40px;}.rteindent2{margin-left:80px;}.rteindent3{margin-left:120px;}.rteindent4{margin-left:160px;}.rteleft{text-align:left;}.rteright{text-align:right;}.rtecenter{text-align:center;}.rtejustify{text-align:justify;}.ibimage_left{float:left;}.ibimage_right{float:right;}
+
+.ctools-locked{color:red;border:1px solid red;padding:1em;}.ctools-owns-lock{background:#ffffdd none repeat scroll 0 0;border:1px solid #f0c020;padding:1em;}a.ctools-ajaxing,input.ctools-ajaxing,button.ctools-ajaxing,select.ctools-ajaxing{padding-right:18px !important;background:url(/sites/umd.edu/modules/ctools/images/status-active.gif) right center no-repeat;}div.ctools-ajaxing{float:left;width:18px;background:url(/sites/umd.edu/modules/ctools/images/status-active.gif) center center no-repeat;}
+
+.accordion .panel{border:none;border-radius:0;border-bottom:#979797 solid 1px;box-shadow:none;}.accordion .panel-heading{background:none;border:none;padding:15px 0;}.accordion .panel-title a{font-size:18px;font-weight:bold;position:relative;display:block;color:#424b52;padding-right:3em;}.accordion .panel-title a:after{font-family:umd;content:"\e90c";position:absolute;right:6px;top:0;-ms-transform:rotate(-90deg);-webkit-transform:rotate(-90deg);transform:rotate(-90deg);color:#434A4F;transition:all 0.3s ease-in-out;}.accordion .panel-title a:hover,.accordion .panel-title a:active,.accordion .panel-title a:focus{text-decoration:none;}.accordion .panel-title a[aria-expanded=true]{color:#E21833;}.accordion .panel-title a[aria-expanded=true]:after{-ms-transform:rotate(-90deg);-webkit-transform:rotate(-90deg);transform:rotate(90deg);color:#E21833;}.accordion .panel-body.panel-body.panel-body{border-top:none;padding:10px 0;}@font-face{font-family:'umd';src:url(/sites/umd.edu/themes/umd/build/fonts/umd.ttf?9yhlum) format('truetype'),url(/sites/umd.edu/themes/umd/build/fonts/umd.woff?9yhlum) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/umd.svg?9yhlum#umd) format('svg');font-weight:normal;font-style:normal;}[class^="icon-"],[class*=" icon-"]{font-family:'umd' !important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.icon-m-circle:before{content:"\e900";}.icon-facebook:before{content:"\e903";}.icon-youtube-play:before{content:"\e904";}.icon-envelope:before{content:"\e905";}.icon-flag:before{content:"\e906";}.icon-star:before{content:"\e907";}.icon-bars:before{content:"\e909";}.icon-search:before{content:"\e90a";}.icon-twitter:before{content:"\e90b";}.icon-chevron-left:before{content:"\e90c";}.icon-instagram:before{content:"\ea92";}.icon-size-lg{font-size:1.2857142857142858em;}.icon-size-xl{font-size:1.7142857142857142em;}@font-face{font-family:'Crimson';src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-roman-webfont.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-roman-webfont.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-roman-webfont.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-roman-webfont.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-roman-webfont.ttf) format('truetype');font-weight:400;font-style:normal;}@font-face{font-family:'Crimson';src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-italic-webfont.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-italic-webfont.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-italic-webfont.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-italic-webfont.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-italic-webfont.ttf) format('truetype');font-weight:400;font-style:italic;}@font-face{font-family:'Crimson';src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibold-webfont.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibold-webfont.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibold-webfont.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibold-webfont.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibold-webfont.ttf) format('truetype');font-weight:600;font-style:normal;}@font-face{font-family:'Crimson';src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibolditalic-webfont.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibolditalic-webfont.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibolditalic-webfont.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibolditalic-webfont.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-semibolditalic-webfont.ttf) format('truetype');font-weight:600;font-style:italic;}@font-face{font-family:'Crimson';src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-bold-webfont.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-bold-webfont.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-bold-webfont.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-bold-webfont.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-bold-webfont.ttf) format('truetype');font-weight:700;font-style:normal;}@font-face{font-family:'Crimson';src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-bolditalic-webfont.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/crimson-bolditalic-webfont.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-bolditalic-webfont.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-bolditalic-webfont.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/crimson-bolditalic-webfont.ttf) format('truetype');font-weight:700;font-style:italic;}@font-face{font-family:'source sans';src:url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-regular.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-regular.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-regular.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-regular.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-regular.ttf) format('truetype'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-regular.svg#source_sans_proregular) format('svg');font-weight:400;font-style:normal;}@font-face{font-family:'source sans';src:url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-semibold.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-semibold.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-semibold.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-semibold.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-semibold.ttf) format('truetype'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-semibold.svg#source_sans_prosemibold) format('svg');font-weight:600;font-style:normal;}@font-face{font-family:'source sans';src:url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-bold.eot);src:url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-bold.eot?#iefix) format('embedded-opentype'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-bold.woff2) format('woff2'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-bold.woff) format('woff'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-bold.ttf) format('truetype'),url(/sites/umd.edu/themes/umd/build/fonts/sourcesanspro-bold.svg#source_sans_probold) format('svg');font-weight:700;font-style:normal;}body{padding-top:70px;}@media (min-width:992px){body{padding-top:0;}}body.front.hidescroll:after{opacity:0;-webkit-transform:rotate(270deg) translate3d(5px,-50%,0);transform:rotate(270deg) translate3d(5px,-50%,0);}@media (min-width:992px){body.front:after{content:"\e90c";font-family:'umd' !important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;position:fixed;bottom:30px;left:50%;color:#fff;z-index:2;transition:0.3s;-webkit-transform:rotate(270deg) translate3d(0,-50%,0);transform:rotate(270deg) translate3d(0,-50%,0);-webkit-animation:bounce 1.2s infinite;animation:bounce 1.2s infinite;font-size:24px;}}@-webkit-keyframes bounce{0%,100%{-webkit-transform:rotate(270deg) translate3d(0,-50%,0);transform:rotate(270deg) translate3d(0,-50%,0);}50%{-webkit-transform:rotate(270deg) translate3d(-10px,-50%,0);transform:rotate(270deg) translate3d(-10px,-50%,0);}}@keyframes bounce{0%,100%{-webkit-transform:rotate(270deg) translate3d(0,-50%,0);transform:rotate(270deg) translate3d(0,-50%,0);}50%{-webkit-transform:rotate(270deg) translate3d(-10px,-50%,0);transform:rotate(270deg) translate3d(-10px,-50%,0);}}html{font-size:16px;}@media (min-width:768px){html{font-size:14px;}}body{color:#434A4F;line-height:1.3;font-family:"source sans",Helvetica,Arial,sans-serif;font-size:16px;}@media (min-width:768px){body{font-size:14px;}}a{color:#E21833;}a:hover{color:#E21833;}hr{border-color:#ccc;}h1,h2{font-family:"Crimson",serif;font-weight:400;color:#E21833;}h3,h4{font-weight:700;color:#434A4F;font-size:15px;}h4{font-size:14px;margin-bottom:0;}.main-nav{max-height:100vh;overflow-y:scroll;background:#E21833;}@media (min-width:992px){.main-nav{position:fixed;top:50%;z-index:100;width:240px;height:455px;max-height:none;margin-top:-225px;background:#E21833;overflow-y:visible;}}.main-nav .identity{display:block;padding:1.1428571428571428em 1.4285714285714286em;float:left;width:70%;}@media (min-width:992px){.main-nav .identity{float:none;width:auto;padding-top:1.7142857142857142em;padding-bottom:1.6428571428571428em;border-bottom:1px solid #951022;}}.main-nav .identity img{max-width:240px;}@media (min-width:992px){.main-nav .identity img{max-width:100%;width:200px;height:33px;}}.main-nav a:hover{color:#E21833;text-decoration:none;}.main-nav .nav-pills{clear:both;}.main-nav .nav-pills > li{border-bottom:1px solid #E21833;}@media (min-width:992px){.main-nav .nav-pills > li{border-bottom-color:#951022;}}.main-nav .nav-pills > li > a{color:#fff;font-size:1.4285714285714286em;line-height:1.4;padding:0.6em 1em;font-family:"Crimson",serif;background:#951022;}@media (min-width:992px){.main-nav .nav-pills > li > a{padding-top:1.2em;padding-bottom:1.05em;background:#E21833;}}.main-nav .nav-pills > li > a .icon{margin-right:.5em;}.main-nav .nav-pills > li.parent{position:static;}.main-nav .nav-pills > li:last-child{border:0;}.main-nav .nav-pills.nav-stacked > li+li{margin-top:0;}@media (min-width:992px){.main-nav .nav-pills.collapse{display:block;height:auto !important;}}.main-nav .sub-nav{display:none;}.main-nav .sub-nav.menu-visible{display:block;}@media (min-width:992px){.main-nav .sub-nav.menu-visible{box-shadow:2px 2px 1px rgba(0,0,0,.15);}}@media (min-width:992px){.main-nav .sub-nav{position:absolute;top:0;left:240px;width:200px;height:455px;z-index:101;}}.main-nav .sub-nav li .sub-nav{left:200px;}.main-nav .sub-nav li:hover{background:#f1f1f1;}@media (min-width:992px){.main-nav .sub-nav li:hover .sub-nav{display:block;}}.main-nav .sub-nav li:hover:before{display:block;}.main-nav .navbar-toggle{padding:28px 20px;margin:0;border-radius:0;background:#951022;}@media (min-width:768px){.main-nav .navbar-toggle{display:block;}}@media (min-width:992px){.main-nav .navbar-toggle{display:none;}}.main-nav .navbar-toggle.collapsed{background:transparent;}.main-nav .navbar-toggle .icon-bar{background:#fff;}.main-nav .social-links{padding-top:1em;}.main-nav .social-links a{position:relative;display:inline-block;background:#f0c;width:40px;height:40px;border-radius:50%;color:#fff;background:rgba(0,0,0,.5);}.main-nav .social-links a:hover{background:#951022;}.main-nav .social-links a i{position:absolute;left:50%;top:50%;-webkit-transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);}.sub-nav{background:#fff;font-size:1.1428571428571428em;font-family:"Crimson",serif;}.sub-nav li+li{border-top:1px solid #ddd;}.sub-nav a{display:block;padding:1.125em 1.875em;color:#434A4F;}.sub-nav .sub-nav{background:#f1f1f1;padding-top:1.2307692307692308em;font-size:0.8125em;font-family:"source sans",Helvetica,Arial,sans-serif;}.sub-nav .sub-nav li+li{border-top:0;}.sub-nav .sub-nav a{padding:0.38461538461538464em 1.1538461538461537em;}.nav-pills > li > a{border-radius:0;}.nav-pills > li > a:hover,.nav-pills > li > a.active{background:#951022;}.contextual-nav.contextual-nav a{display:block;color:#434A4F;}.contextual-nav.contextual-nav ul li{border-bottom:1px solid #eee;padding:0;}.contextual-nav.contextual-nav ul li > a{padding:.5em 0;}.contextual-nav.contextual-nav ul li:before{display:none;}.contextual-nav.contextual-nav ul li ul{padding:0;margin:0;}.contextual-nav.contextual-nav ul li ul li{padding-left:1em;}.contextual-nav.contextual-nav ul li ul li > a{padding:.5em 0 .5em 1em;}.contextual-nav.contextual-nav ul li ul li:before{position:absolute;top:12px;left:0;font-family:'umd';content:"\e90c";display:block;-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg);font-size:6px;color:#E21833;}.contextual-nav.contextual-nav ul li ul li:last-child{border-bottom:0px;}.card{display:none;}.card--inner{padding:20px;background:#fff;}@media (min-width:992px){.card--inner{overflow-y:hidden;}}@media (min-width:992px){.card-visible .card--inner{box-shadow:2px 2px 1px rgba(0,0,0,.15);}}@media (min-width:992px){.card{display:block;background-color:#ddd;position:relative;max-width:100%;overflow:hidden;}.js .card{background-color:none;}.card--inner{position:relative;height:455px;width:780px;padding:30px;left:240px;}.js .card--inner{position:fixed;margin-top:-225px;top:50%;z-index:20;-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%);transition:-webkit-transform .5s ease-out;transition:transform .5s ease-out;transition:transform .5s ease-out,-webkit-transform .5s ease-out;}}@media (min-width:992px){.card--inner-hasnav{padding-left:230px;}}@media (min-width:992px){.card--inner-hassidebar .card--inner-content{float:left;width:520px;font-size:15px;}.card--inner-hassidebar .card--inner-sidebar{float:right;width:180px;padding-left:20px;border-left:1px solid #ccc;height:100%;}.card--inner-hassidebar.card--inner-hasnav .card--inner-content{width:320px;}}.card--inner-title{margin:0 0 .25em;padding:0;}.card--inner h2{margin-top:0;}.card--inner h3{margin-top:0;color:#E21833;}.card--inner-nav{margin-bottom:1em;border-bottom:1px solid #ccc;}@media (min-width:992px){.card--inner-nav{border:0;margin:0;background:#f1f1f1;}}.card--inner-nav .sub-nav{display:none;font-size:0.9285714285714286em;background:transparent;font-family:"source sans",Helvetica,Arial,sans-serif;}@media (min-width:992px){.card--inner-nav .sub-nav{display:block;border:0;padding-top:1em;padding-bottom:1em;}}.card--inner-nav .sub-nav li+li{border-top:0;}.card--inner-nav .sub-nav a{padding:0.38461538461538464em 0;}@media (min-width:992px){.card--inner-nav .sub-nav a{padding-left:1.1538461538461537em;padding-right:1.1538461538461537em;}}.card--inner-nav .sub-nav a.sub-nav--back{display:none;background:#ddd;margin-bottom:0.75em;padding-top:1.5em;padding-bottom:1.5em;font-weight:700;text-transform:uppercase;}@media (min-width:992px){.card--inner-nav .sub-nav a.sub-nav--back{display:block;margin-top:-1em;}}.card--inner-nav .sub-nav a.sub-nav--back:hover{text-decoration:none;background:#ccc;}.card--inner-nav .sub-nav a.sub-nav--back .icon{margin-right:.5em;}.card--inner-nav .sub-nav--trigger{position:relative;cursor:pointer;}.card--inner-nav .sub-nav--trigger:after{position:absolute;top:5px;right:0;font-family:'umd';content:"\e90c";display:block;-webkit-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg);font-size:18px;color:#434A4F;}@media (min-width:992px){.card--inner-nav .sub-nav--trigger{display:none;}}.card--inner-nav.visible .sub-nav{display:block;}.card--inner-nav.visible .sub-nav--trigger:after{-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);}@media (min-width:992px){.card--inner-nav{position:absolute;left:0;top:0;width:200px;height:100%;}}.card-visible{display:block;}@media (min-width:992px){.card-visible .card--inner{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}}@media (min-width:992px){.card-scrollable{background-position:center center;background-size:cover;background-repeat:none;height:auto;min-height:100vh;}}.card--inner-sidebar{border-top:1px solid #ccc;margin-top:2em;padding-top:2em;}@media (min-width:992px){.card--inner-sidebar{border:0;margin-top:0;padding-top:0;font-size:0.9285714285714286em;}}.mobile-card-active .mobile-card-active--hidden{display:none;}@media (min-width:992px){.mobile-card-active .mobile-card-active--hidden{display:block;}}.interstitial{padding:50px 20px;background:#f1f1f1;}.interstitial--yellow{background:#FFD200;color:#2B2E30;}.interstitial--yellow h3,.interstitial--yellow a{color:#2B2E30;}.interstitial--yellow a{text-decoration:underline;}.interstitial .img-circle{border:5px solid #fff;}.interstitial-title{margin-top:0;margin-bottom:2em;color:#2B2E30;text-align:center;font-family:"source sans",Helvetica,Arial,sans-serif;font-size:24px;text-transform:uppercase;}.interstitial-content--above{margin-bottom:1em;}.interstitial-content--below{margin-top:1em;}.interstitial.mobile-carousel{padding-left:0;padding-right:0;}@media (min-width:992px){.interstitial.mobile-carousel{padding-left:270px;padding-right:30px;}}@media (min-width:992px){.interstitial{padding-left:270px;padding-right:30px;}}#mobile-carousel-1 .social-card:hover{cursor:default;border-color:#ddd;}.btn{border:0;}.btn-primary{background:#E21833;border-radius:20px;text-transform:uppercase;font-size:0.8571428571428571em;padding:0.6666666666666666em 1.6666666666666667em 0.5833333333333334em;transition:0.2s background ease-in-out;}.btn-primary:link,.btn-primary:visited{background:#E21833;}.btn-primary:hover{background:#951022;}.btn-primary:focus,.btn-primary:active{background:#E21833;}.carousel-cta{border:1px solid #fff;color:#fff;font-weight:bold;padding:10px;display:inline-block;text-decoration:none !important;transition:0.2s background ease-in-out;}.carousel-cta:hover{color:#fff;background:#E21833;text-decoration:none;}.carousel-cta:visited{color:#fff;}.embed-responsive{margin-bottom:1em;}.img-responsive{margin-bottom:1em;}.media-meta{color:#4c4c4c;}.media-heading a{color:#2B2E30;}.media-heading a:hover{color:#2B2E30;}.media-heading--huge{font-size:56px;font-family:"Crimson",serif;font-weight:400;}.media-image{margin:0 1em 1em;}@media(max-width:768px){.media-image{float:none!important;display:block;margin:1em !important;}}.media--small img{width:90px !important;height:90px !important;}.media--xsmall{margin-top:.25em;}.media--xsmall img{width:45px !important;height:45px !important;}.media--round img{border-radius:50%;border:3px solid #fff;}.interstitial .media{text-align:center;}@media (min-width:992px){.interstitial .media{text-align:left;}}.media-pro{text-align:center;}@media (min-width:1200px){.media-pro{text-align:left;}}.media-pro .media-pro-image{margin-bottom:1em;}@media (min-width:1200px){.media-pro .media-pro-image{float:left;margin-bottom:0;margin-right:1em;}}.media-pro .media-pro-heading a{color:#2B2E30;text-decoration:none;}.carousel-hero > .carousel-indicators{display:none;}.carousel-hero{margin-top:-70px;}@media (min-width:992px){.carousel-hero{margin-top:0;}}.carousel-hero .item{background-size:cover;background-repeat:none;background-position:50% 50%;height:100vh;}.carousel-hero .item.active .carousel-caption{background:rgba(0,0,0,0.6);}.carousel-hero .item.active .carousel-caption--above{-webkit-animation:slideIn 0.4s 0.2s forwards;animation:slideIn 0.4s 0.2s forwards;}.carousel-hero .item.active .carousel-caption--title{-webkit-animation:slideIn 0.4s 0.3s forwards;animation:slideIn 0.4s 0.3s forwards;}.carousel-hero .item.active .carousel-caption--below{-webkit-animation:slideIn 0.4s 0.4s forwards;animation:slideIn 0.4s 0.4s forwards;}.carousel-hero .item.active .carousel-indicators{-webkit-animation:slideIn 0.4s 0.5s forwards;animation:slideIn 0.4s 0.5s forwards;}.carousel-hero .carousel-caption--above{opacity:0;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px);}.carousel-hero .carousel-caption--title{opacity:0;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px);}.carousel-hero .carousel-caption--below{opacity:0;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px);}.carousel-hero .carousel-indicators{opacity:0;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px);}.carousel-hero .carousel-caption--below a,.carousel-hero .carousel-caption--above a{color:#fff;text-decoration:underline;}.carousel-hero .carousel-indicators{text-align:left;position:static;margin-left:0;margin-top:20px;}.carousel-hero .carousel-indicators li{width:15px;height:15px;}.carousel-hero .carousel-indicators li.active-nobs{background-color:#fff;}.carousel-hero .carousel-caption{text-align:left;bottom:50%;left:5%;right:5%;-webkit-transform:translateY(50%);-ms-transform:translateY(50%);transform:translateY(50%);max-width:750px;background:rgba(0,0,0,0.0);padding:15px;transition:0.2s;}.carousel-hero .carousel-caption--title{font-size:1.4285714285714286em;color:#fff;font-family:"source sans",Helvetica,Arial,sans-serif;font-weight:700;}@media (min-width:992px){.carousel-hero .carousel-caption--title{font-size:4em;}}.carousel-hero .carousel-caption--title a{color:#fff;}.carousel-hero .carousel-caption--title a:hover{text-decoration:none;}@media (min-width:992px){.carousel-hero .carousel-caption{left:300px;padding:30px;}}.carousel-hero .carousel-link{display:block;height:100%;}.carousel-standard{padding-bottom:25px;}.carousel-standard.carousel-pagination-hidden{padding-bottom:0;}.card--inner-content .carousel-standard.carousel-flush{margin-left:-30px;margin-right:-30px;}.carousel-standard .carousel-indicators{bottom:0;margin-bottom:0;}.carousel-standard .carousel-indicators li{border-color:#ccc;height:10px;width:10px;}.carousel-standard .carousel-indicators li.active{background-color:#E21833;}.carousel-standard .carousel-caption{position:static;padding:.5em 0 0;text-align:left;}.carousel-standard .carousel-caption--title{margin:0;font-size:1em;font-family:"source sans",Helvetica,Arial,sans-serif;font-weight:700;color:#434A4F;}.carousel-standard .carousel-caption--above{font-family:"Crimson",serif;color:#E21833;}.carousel-standard .carousel-caption--below{color:#434A4F;}.carousel-standard .carousel-caption--above *,.carousel-standard .carousel-caption--below *{margin:0;}.carousel-control{opacity:.6;}.carousel-control.left,.carousel-control.right{background-image:none;}.carousel-caption{text-shadow:none;}.carousel-link:hover{text-decoration:none;}.carousel-indicators li{margin-top:0 !important;margin-bottom:0 !important;}.carousel-indicators li+li{margin-left:.25em !important;}.mobile-carousel{position:relative;overflow-x:hidden;}@media (min-width:992px){.mobile-carousel{overflow-x:auto;}}.mobile-carousel .row{position:relative;margin:0;}@media (min-width:992px){.mobile-carousel .row{position:static;width:auto !important;}}.mobile-carousel .row > [class^="col-"]{padding:0 50px;}@media (min-width:992px){.mobile-carousel .row > [class^="col-"]{padding:0 15px;}}.mobile-carousel a.mobile-carousel--control{position:absolute;top:50%;display:inline-block;padding:10px;background:#666;color:#fff;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);height:40px;text-decoration:none;}@media (min-width:992px){.mobile-carousel a.mobile-carousel--control{display:none;}}.mobile-carousel a.mobile-carousel--control:hover,.mobile-carousel a.mobile-carousel--control:focus{text-decoration:none;color:#fff;}.mobile-carousel a.mobile-carousel--control.left{left:0;padding:13px 10px 8px;}.mobile-carousel a.mobile-carousel--control.right{right:0;padding:12px 10px 10px;-webkit-transform:translateY(-50%) rotate(180deg);-ms-transform:translateY(-50%) rotate(180deg);transform:translateY(-50%) rotate(180deg);}.carousel-nonav .mobile-carousel a.mobile-carousel--control{display:none;}.mobile-carousel .media-left{display:none;}@media (min-width:768px){.mobile-carousel .media-left{display:table-cell;}}@-webkit-keyframes slideIn{0%{opacity:0;-webkit-transform:translateY(20px);transform:translateY(20px);}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);}}@keyframes slideIn{0%{opacity:0;-webkit-transform:translateY(20px);transform:translateY(20px);}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);}}.mobile-carousel--control.disabled{display:none !important;}.view-feeds{margin-bottom:1em;}.page{background-repeat:no-repeat;background-size:cover;background-position:50% 0;background-image:url(/sites/umd.edu/themes/umd/build/images/testudo.jpg);background-attachment:fixed;}@media (min-width:992px){.page{display:-webkit-flex;display:-ms-flexbox;display:flex;padding:1px 0;min-height:100vh;font-size:15px;}}.page--inner{padding:20px;background:#fff;}@media (min-width:992px){.page--inner{margin:100px 60px 100px 300px;padding:60px;max-width:900px;width:100%;}}.page--inner ul{list-style:none;padding:0;margin:0;}.page--inner ul li{position:relative;padding-left:12px;}.page--inner ul li:before{position:absolute;top:5px;left:0;font-family:'umd';content:"\e90c";display:block;-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg);font-size:6px;color:#E21833;}.page--inner h2{font-family:"source sans",Helvetica,Arial,sans-serif;font-weight:700;font-size:20px;}.page--inner-sidebar{border-top:1px solid #ccc;margin-top:2em;padding-top:2em;z-index:99;}@media (min-width:992px){.page--inner-sidebar{border:0;margin-top:0;padding-top:0;}}.page--title{margin:0 0 .5em;}.page .item-list ul li{margin:0;}@media (min-width:992px){.page .page--inner-hassidebar{display:-webkit-flex;display:-ms-flexbox;display:flex;}.page .page--inner-hassidebar .page--inner-sidebar{padding-left:20px;border-left:1px solid #ccc;width:25%;}.page-umd-search .page .page--inner-hassidebar .page--inner-sidebar{width:35%;}.page .page--inner-hassidebar .page--inner-content{width:75%;padding-right:20px;}.page-umd-search .page .page--inner-hassidebar .page--inner-content{width:65%;}}.footer{background:#f1f1f1;color:#40484d;}.footer a{color:#40484d;}.footer a:hover{text-decoration:none;color:#E21833;}.footer hr{border-top:5px solid #fff;}@media (min-width:768px){.footer--inner{padding:20px;}}@media (min-width:992px){.footer--inner{padding:30px 20px;margin-left:280px;margin-right:50px;}}.footer-logo{margin-top:3px;}.footer .list-inline--divided li{line-height:1.2;border-right:1px solid #40484d;padding-right:8px;}.footer .list-inline--divided li:last-child{padding-right:0;border-right:0;}@media (max-width:600px){.footer--inner{padding:15px;}.footer .row *[class^="col-"]{position:static;width:100%;padding:0;text-align:left;}.footer .row .footer-logo{padding:2em 0;margin-bottom:1em;border:1px solid #434A4F;border-width:1px 0;}.footer .row .footer-logo .img-responsive{margin:0 auto;max-width:300px;}.footer .row .footer-social{margin:1em 0;}}.list-links li{margin:.25em 0;}.list-links a{color:#434A4F;}.card--inner-sidebar .list-links{}.breadcrumb{background:none;padding-left:0;font-family:"Crimson",serif;}.breadcrumb>li+li:before{font-family:'Glyphicons Halflings';content:"\00bb"}dl dt{font-weight:400;}.alert-box-wrap{position:fixed;top:0;left:0;height:100%;width:100%;z-index:2000;background:rgba(0,0,0,.5);}.alert-box{position:absolute;left:50%;top:50%;width:90%;margin-left:-45%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);border:5px solid #fff;background:#f4f4f4;color:#434A4F;padding:20px;transition-duration:0.4s;}@media (min-width:992px){.alert-box{width:300px;margin-left:-150px;}}.alert-box--open{background:#FFD200;}.alert-box--closed{background:#70EBD6;}.alert-box--inner{width:100%;vertical-align:middle;}.alert-box--title{font-family:"Crimson",serif;color:#434A4F;padding-bottom:10px;border-bottom:1px solid #fff;}.alert-box--desc{margin:1em 0;}.alert-box .close-btn{display:inline-block;padding:10px 20px;background:#fff;border:1px solid #434A4F;color:#434A4F;text-transform:uppercase;font-weight:700;}.alert-box .close-btn:hover{text-decoration:none;color:#fff;background:#434A4F;}form[id^=umd-search-search-form]{text-align:center;}form[id^=umd-search-search-form] .form-text{padding:10px;width:100%;}form[id^=umd-search-search-form] .form-item{display:inline-block;margin:0;}form[id^=umd-search-search-form] .form-submit{padding:12px;background:#a51125;border:none;color:#fff;margin-left:-5px;transition:background 0.3s ease-in-out;width:73px;}form[id^=umd-search-search-form] .form-submit:hover{background:#951022;}form[id^=umd-search-search-form] .umd_search_form_radio{text-align:center;font-size:0.8571428571428571em;font-weight:700;color:#aaa;margin-top:1em;}form[id^=umd-search-search-form] .umd_search_form_radio .form-type-radio{display:inline-block;}form[id^=umd-search-search-form] .umd_search_form_radio.form-radio{display:inline-block;margin:0;}form[id^=umd-search-search-form] .umd_search_form_radio input:checked + label{text-decoration:none;}@media (min-width:992px){form[id^=umd-search-search-form] .form-item-search-query{width:84%;}}@media (min-width:992px){.card form[id^=umd-search-search-form]{-webkit-transform:translateY(-100%);-ms-transform:translateY(-100%);transform:translateY(-100%);margin-top:40%;}}.page-umd-search .page--inner{-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}.page-umd-search .page--inner #umd-search-search-form{width:calc(100% + 80px);padding:60px 60px 0;margin-top:-60px;margin-left:-60px;margin-bottom:60px;background:#f1f1f1;text-align:left;}@media (min-width:992px){.page-umd-search .page--inner #umd-search-search-form{width:200%;margin:-60px -60px 60px;padding:60px 60px 0;}}.page-umd-search .page--inner #umd-search-search-form .form-item-search-query{width:calc(100% - 80px);}.page-umd-search .page--inner #umd-search-search-form .umd_search_form_radio{text-align:left;margin-top:2em;}.page-umd-search .page--inner #umd-search-search-form .umd_search_form_radio label{display:block;margin-right:20px !important;margin-bottom:0;border-bottom:5px solid transparent;padding-bottom:5px;font-weight:700;}.page-umd-search .page--inner #umd-search-search-form .umd_search_form_radio label:hover{border-color:#E21833;color:#E21833;}.page-umd-search .page--inner #umd-search-search-form .umd_search_form_radio input:checked + label{color:#E21833;border-bottom-color:#E21833;}.page-umd-search .page--inner #umd-search-search-form .umd_search_form_radio.form-radio{display:none;}.page-umd-search .pager li:before{display:none !important;}.page-umd-search .pager li > a{border:0;padding:0;border-radius:0;}.page-umd-search .pager li > a:hover{background:none;text-decoration:underline;}.umd_search ol{margin:0;padding:0;}.umd_search h1,.umd_search h2,.umd_search #search-results-heading{margin-top:0;font-family:"Crimson",serif;font-size:30px;font-weight:400;}.umd_search #map{position:relative;padding-bottom:56.25%;padding-top:35px;height:0;overflow:hidden;width:auto;height:auto;}.umd_search #map > div{position:absolute;left:0;top:0;width:100%;height:100%;}.umd_search .map-right{width:auto;padding-left:0;}.umd_search .map-results{display:block;}.umd_search .search-results .search-snippet-info{padding-left:0;}.umd_search .search-info{}.umd_search .results-bar,.umd_search .google-appliance-results-control-bar{border-radius:0;border:0;background:#f1f1f1;}.card .umd_search{display:none;}.social-card{border:1px solid #ddd;border-radius:3px;background:#fff;padding:1em;font-size:14px;line-height:1.3;margin-bottom:.5em;margin-top:.5em;transition:0.2s box-shadow ease-in-out;}.social-card:hover{cursor:pointer;border-color:#E21833;}.social-card a{text-decoration:none;}.social-card a:hover,.social-card a:active{text-decoration:none;}.social-card a:hover p,.social-card a:active p{text-decoration:none;}.social-card--header{margin-bottom:1em;}.social-card--header h2,.social-card--header h3,.social-card--header h4{font-size:1em;color:#2B2E30;margin:0;font-weight:700;}.social-card--header img{float:left;max-width:75px;margin-right:.5em;}.social-card--content a{color:#E21833;}.social-card--footer{color:#4c4c4c;margin-top:.5em;}@media (max-width:992px){.facebook-header{padding:1em;}}.img-twitter{max-width:70%;}.webform-client-form .form-item label{display:block;font-weight:400;}.webform-client-form .form-item .form-checkboxes label{display:inline-block;margin:0;}.webform-client-form input[type="checkbox"],.webform-client-form input[type="radio"]{margin:0 3px 0 0;vertical-align:baseline;}.webform-client-form .form-required{color:#E21833;}.webform-client-form .form-submit{padding:0.6666666666666666em 1.6666666666666667em 0.5833333333333334em;border:0;font-family:inherit;color:#fff;text-transform:uppercase;background:#E21833;border-radius:20px;font-size:0.8571428571428571em;}.webform-client-form .form-submit:hover{background:#951022;}.view-more-feed{color:#464b50;font-weight:bold;text-transform:uppercase;display:block;margin-top:1.5em;}@media (min-width:992px){.row.flex-dividers{display:-webkit-flex;display:-ms-flexbox;display:flex;}}@media (min-width:992px){.row.flex-dividers [class^="col-"]{border-left:1px solid #434A4F;padding-left:25px;padding-right:25px;}}@media (min-width:992px){.interstitial--yellow .row.flex-dividers [class^="col-"]{border-color:#fff;}}@media (min-width:992px){.row.flex-dividers [class^="col-"]:first-child{border-left:0;}}.page-user .tabs.primary,.page-user form,.page-user-password .tabs.primary,.page-user-password form,.page-user-password .tabs.primary,.page-user-password form{padding:20px 20px 0;}@media (min-width:992px){.page-user .tabs.primary,.page-user form,.page-user-password .tabs.primary,.page-user-password form,.page-user-password .tabs.primary,.page-user-password form{margin-left:300px;}.page-user form,.page-user-password form,.page-user-password form{padding-bottom:50px;}}.background-video{position:fixed;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;z-index:-100;-webkit-transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);}.background-video-card{position:absolute;top:0;left:0;min-width:100%;width:auto;z-index:0;min-height:100%;height:auto;}.year-jump{list-style-type:none;padding-left:0;margin-bottom:3em;}.year-jump li{display:inline-block;padding-right:5px;}.year-jump li:after{content:'|';padding-left:8px;}.year-jump li:last-of-type:after{display:none;}.year-jump li a{text-decoration:underline;color:#E21833;}.year-jump li a:hover{color:#951022;}.president-semicent .year-label{font-size:1.1em;padding-bottom:1em;color:#E21833;font-weight:bold;border-bottom:1px solid #000;}.president-grid{padding-top:1.8em;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}@media (min-width:600px){.president-grid{margin-left:-10px;margin-right:-10px;}}.president-grid .president-single{width:100%;margin-bottom:2em;text-align:center;}@media (min-width:600px){.president-grid .president-single{width:50%;padding-left:10px;padding-right:10px;}}@media (min-width:900px){.president-grid .president-single{width:33.3%;}}.president-grid .president-img{height:247px;width:100%;display:inline-block;margin-bottom:5px;position:relative;}.president-grid .president-img:after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0);transition:0.2s;}.president-grid .president-img:hover:after{background-color:rgba(0,0,0,.3);}.president-grid .president-name{color:#E21833;font-weight:bold;margin-bottom:5px;}.page--inner ul.year-jump li:before{display:none;}.page--inner ul.year-jump li{padding-left:0;}.modal{text-align:center;padding:0!important;}.modal .embed-responsive{margin-bottom:0px;}.modal:before{content:'';display:inline-block;height:100%;vertical-align:middle;margin-right:-4px;}.modal-content{background-color:#000;}.modal-dialog{display:inline-block;text-align:left;vertical-align:middle;min-width:300px;}button.modal_close{position:absolute;margin:0;top:-15px;right:-15px;font-size:2em;line-height:0px;border:none;text-align:center;width:30px;height:30px;border-radius:50%;overflow:hidden;color:#fff;background-color:#E21833;padding:0px;}button.modal_close:hover{background-color:#951022;}.modal_play{width:20px;margin-left:5px;height:auto;}
+
+nav,.nav,header,footer,.tabs,.card{display:none !important;}
+
+</style>
+<title>The University of Maryland | A Preeminent Public Research University</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link href="https://umd.edu/sites/umd.edu/files/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+<meta content="Drupal 7 (http://drupal.org)" name="generator"/>
+<link href="https://umd.edu/" rel="canonical"/>
+<link href="https://umd.edu/" rel="shortlink"/>
+<meta content="https://umd.edu/sites/umd.edu/files/UMD_Logo-white.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="600" property="og:image:height"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="x-ua-compatible"/>
+
+
+
+
+
+
+<script src="https://umd.edu/sites/umd.edu/files/js/js_xKaMcsalN2ZbCJJKP0aUi_hZKFteZEEyiyq3AYPAHh4.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/umd.edu/modules/jquery_update/replace/jquery/1.10/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script src="https://umd.edu/sites/umd.edu/files/js/js_dWhBODswdXXk1M5Z5nyqNfGljmqwxUwAK9i6D0YSDNs.js" type="text/javascript"></script>
+<script src="https://umd.edu/sites/umd.edu/files/js/js_9GJVAL6TiJaIkPuGRXUHChz9U8Gz7q8n6n4eY3Zpr9c.js" type="text/javascript"></script>
+<script src="https://umd.edu/sites/umd.edu/files/js/js_gPqjYq7fqdMzw8-29XWQIVoDSWTmZCGy9OqaHppNxuQ.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-48344270-2", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"umd","theme_token":"oH1xI-FL66pDQ8jMMf0I_rDMVWi9_1ihVpsH62dwc_U","js":{"sites\/umd.edu\/themes\/umd\/build\/js\/main.min.js":1,"\/\/maxcdn.bootstrapcdn.com\/bootstrap\/3.3.7\/js\/bootstrap.min.js":1,"public:\/\/google_tag\/google_tag.script.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.10.2\/jquery.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/umd.edu\/modules\/admin_menu\/admin_devel\/admin_devel.js":1,"sites\/umd.edu\/modules\/user_alert\/js\/user-alert.js":1,"sites\/umd.edu\/modules\/google_analytics\/googleanalytics.js":1,"1":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/aggregator\/aggregator.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"sites\/umd.edu\/modules\/google_appliance\/theme\/google_appliance.css":1,"modules\/node\/node.css":1,"modules\/user\/user.css":1,"sites\/umd.edu\/modules\/user_alert\/css\/user-alert.css":1,"sites\/umd.edu\/modules\/views\/css\/views.css":1,"sites\/umd.edu\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/umd.edu\/modules\/ctools\/css\/ctools.css":1,"\/\/maxcdn.bootstrapcdn.com\/bootstrap\/3.3.7\/css\/bootstrap.min.css":1,"sites\/umd.edu\/themes\/umd\/build\/css\/styles.css":1,"sites\/umd.edu\/themes\/umd\/build\/css\/print.css":1}},"user_alert":{"url_prefix":""},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"}});
+//--><!]]>
+</script>
+<meta content="xB84MS4MilJyEq7UXQeTjMmGYlSxgX7KwewZ0sigZ9Y" name="google-site-verification"/>
+<meta content="4xWtIb--uwnpTd6HhREuPfkZyh2Tek2hFuTCfeXQ3Cc" name="google-site-verification"/>
+</head>
+<body class="html front not-logged-in no-sidebars page-node page-node- page-node-1 node-type-home-page home">
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-KKDTNDW" style="display:none;visibility:hidden" width="0"></iframe></noscript> <div class="tabs"></div>
+<a class="sr-only" href="#main-content">Skip to main content</a>
+<nav class="main-nav clearfix navbar navbar-fixed-top">
+<a class="identity" href="/"><img alt="University of Maryland" src="/sites/umd.edu/themes/umd/build/images/logo.svg"/></a>
+<button aria-controls="main-nav--nav" aria-expanded="false" class="navbar-toggle collapsed" data-target="#main-nav--nav" data-toggle="collapse" type="button">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<ul class="nav nav-pills nav-stacked collapse" id="main-nav--nav">
+<li><a data-taxonomy="tid-7" href="#card-7-search"><i class="icon icon-search"></i> Search</a></li>
+<li><a data-taxonomy="tid-2" href="#card-2-inside-umd"><i class="icon icon-bars"></i> Inside UMD</a></li>
+<li><a data-taxonomy="tid-3" href="#card-3-news-events"><i class="icon icon-star"></i> News &amp; Events</a></li>
+<li><a data-taxonomy="tid-4" href="#card-4-admissions"><i class="icon icon-flag"></i> Admissions</a></li>
+<li><a data-taxonomy="tid-6" href="#card-6-support-umd"><i class="icon icon-m-circle"></i> Support UMD</a></li>
+</ul>
+<ul class="list-inline social-links text-center hidden-xs hidden-sm">
+<li><a href="https://www.youtube.com/user/UMD2101"><i class="icon icon-youtube-play icon-size-lg"><!-- YouTube --></i><span class="sr-only">YouTube</span></a></li>
+<li><a href="https://www.facebook.com/UnivofMaryland"><i class="icon icon-facebook icon-size-lg"><!-- Facebook --></i><span class="sr-only">Facebook</span></a></li>
+<li><a href="https://twitter.com/UofMaryland"><i class="icon icon-twitter icon-size-lg"><!-- Twitter --></i><span class="sr-only">Twitter</span></a></li>
+<li><a href="https://www.instagram.com/univofmaryland/"><i class="icon icon-instagram icon-size-lg"><!-- Instagram --></i><span class="sr-only">Instagram</span></a></li>
+</ul>
+</nav>
+<div class="sr" id="main-content"></div>
+<h1 class="sr-only">A Preeminent Public Research University</h1>
+<div class="block block-user-alert" id="block-user-alert-user-alert">
+</div>
+<div class="carousel slide carousel-hero mobile-card-active--hidden" data-interval="7000" data-ride="carousel">
+<div class="carousel-inner" role="listbox">
+<div class="item">
+<img alt="UMD and UMB Demonstrate Achievements at MPower Day in Annapolis" src="https://umd.edu/sites/umd.edu/files/MainAdmin_Baltimore-Composite_1920x1080.jpg" typeof="foaf:Image"/> <div class="carousel-caption">
+<a href="https://today.umd.edu/articles/balance-mpower-ba6d894a-43bf-415e-9197-92cba0d50cf7" target="_blank">
+<h2 class="carousel-caption--title">MPowering the State</h2>
+</a>
+<div class="carousel-caption--below">
+<p>UMD and UMB Demonstrate Achievements at MPower Day in Annapolis</p>
+</div>
+<div class="carousel-caption--below">
+<a class="carousel-cta" href="https://today.umd.edu/articles/balance-mpower-ba6d894a-43bf-415e-9197-92cba0d50cf7" target="_blank">Read More</a>
+</div>
+</div>
+</div>
+<div class="item">
+<img alt="Ethan Brown M.P.M. ’97 Sets Out to Change America’s Eating Habits" src="https://umd.edu/sites/umd.edu/files/EthanBrown.jpg" typeof="foaf:Image"/> <div class="carousel-caption">
+<a href="https://terp.umd.edu/growing-beyond-meat/#.XiHQM5JKh0u" target="_blank">
+<h2 class="carousel-caption--title">Growing Beyond Meat</h2>
+</a>
+<div class="carousel-caption--below">
+<p>Ethan Brown M.P.M. ’97 Sets Out to Change America’s Eating Habits</p>
+</div>
+<div class="carousel-caption--below">
+<a class="carousel-cta" href="https://terp.umd.edu/growing-beyond-meat/#.XiHQM5JKh0u" target="_blank">Read More</a>
+</div>
+</div>
+</div>
+<div class="item">
+<img alt="Report Shows Student Voting at UMD Doubled From 2014 to 2018 Elections" src="https://umd.edu/sites/umd.edu/files/Vote.jpg" typeof="foaf:Image"/> <div class="carousel-caption">
+<a href="https://today.umd.edu/articles/turnout-turnaround-2a16f2e3-761d-4050-bd62-c30eb8562c4b" target="_blank">
+<h2 class="carousel-caption--title">Turnout Turnaround</h2>
+</a>
+<div class="carousel-caption--below">
+<p>Report Shows Student Voting at UMD Doubled From 2014 to 2018 Elections</p>
+</div>
+<div class="carousel-caption--below">
+<a class="carousel-cta" href="https://today.umd.edu/articles/turnout-turnaround-2a16f2e3-761d-4050-bd62-c30eb8562c4b" target="_blank">Read More</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="interstitial interstitial--gray mobile-card-active--hidden ">
+<h2 class="interstitial-title">Coronavirus Update</h2>
+<div class="interstitial-content--above text-center">
+<style type="text/css">
+<!--/*--><![CDATA[/* ><!--*/
+
+.interstitial-title { text-align: left; margin-bottom: 1em; } .interstitial--gray { border-bottom: 1px solid #e1e1e1; }
+/*--><!]]>*/
+</style><div style="max-width: 1200px;">
+<p style="text-align: left;">The University Health Center is actively monitoring the outbreak of respiratory illness caused by a novel (new) coronavirus (termed “2019-nCoV”) that was first detected in Wuhan City, Hubei Province, China. The coronavirus is a new virus for humans and was first identified in China.</p>
+<hr/><p style="text-align: left;"><strong><a href="https://health.umd.edu/coronavirus">LATEST CORONAVIRUS INFORMATION</a></strong></p>
+</div>
+</div>
+<div class="row">
+</div>
+</div>
+<div class="card card-scrollable" data-taxonomy-parent="tid-2" id="card-2-about" style="background-image:url(https://umd.edu/sites/umd.edu/files/Aerials_MCircle_04302010_003_tiltShift-fix_Optimiz.jpg)">
+<div class="card--inner card--inner-hasnav card--inner-hassidebar">
+<!-- Navigation -->
+<div class="card--inner-nav">
+<ul class="sub-nav list-unstyled">
+<li><a href="https://president.umd.edu/administration" target="_blank">Administration</a></li>
+<li><a href="https://alumni.umd.edu">Alumni Association</a></li>
+<li><a href="https://www.diversity.umd.edu" target="_blank">Diversity &amp; Inclusion</a></li>
+<li><a href="https://prepare.umd.edu/" target="_blank">Emergency Management</a></li>
+<li><a href="https://www.umd.edu/history-and-mission">History &amp; Mission</a></li>
+<li><a href="https://www.umd.edu/faqs-heoaconsumer-information">HEOA/Consumer Information (FAQs)</a></li>
+<li><a href="http://shop.umterps.com" target="_blank">Maryland Merchandise</a></li>
+<li><a href="http://mpower.maryland.edu/" target="_blank">MPowering the State </a></li>
+<li><a href="https://www.umd.edu/rankings-and-fast-facts">Rankings and Fast Facts </a></li>
+<li><a href="https://sustainability.umd.edu/" target="_blank">Sustainability</a></li>
+<li><a href="https://umd.edu/commitment">UMD Commitment to Student Athletes</a></li>
+<li><a href="https://www.umd.edu/virtual-tour">Virtual Tour </a></li>
+<li><a href="https://www.umd.edu/information-visitors-parents-and-families">Visitors, Parents and Families</a></li>
+</ul>
+</div>
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title">About</h2>
+<p>The University of Maryland, College Park is the state's flagship university and one of the nation's preeminent public research universities. A global leader in research, entrepreneurship and innovation, the university is home to more than 41,000 students, 14,000 faculty and staff, and 377,000 alumni all dedicated to the pursuit of Fearless Ideas. Located just outside Washington, D.C., we discover and share new knowledge every day through our renowned research enterprise and programs in academics, the arts and athletics. And we are committed to social entrepreneurship as the nation’s first “Do Good” campus.</p>
+</div>
+<!-- Sidebar Content -->
+<div class="card--inner-sidebar">
+<img alt="" class="img-responsive" src="https://umd.edu/sites/umd.edu/files/Do_Good_0_0_0.png"/>
+<h3>
+	DO GOOD </h3>
+<p>Introducing The Nation's First <a aria-label="Do Good" href="http://dogood.umd.edu" target="_blank">Do Good</a> Campus Transforming Idealism into Impact </p>
+</div>
+</div>
+</div>
+<div class="interstitial interstitial--gray mobile-card-active--hidden ">
+<h2 class="interstitial-title">Presidential Search</h2>
+<div class="interstitial-content--above text-center">
+<style type="text/css">
+<!--/*--><![CDATA[/* ><!--*/
+
+.interstitial-title { text-align: left; margin-bottom: 1em; } .interstitial--gray { border-bottom: 1px solid #e1e1e1; }
+/*--><!]]>*/
+</style><div style="max-width: 1200px;">
+<p style="text-align: left;"><strong>UMD, the flagship, land-grant university of the state of Maryland, seeks a visionary and inclusive leader to serve as its 34th President.</strong> The Board of Regents has appointed a 20-member Presidential Search Committee. The Search Committee is dedicated to building a strong, diverse pool of candidates to recommend for the presidency of the institution. Isaacson, Miller has been retained to provide executive search consulting services.</p>
+<p style="text-align: left;"><strong><a href="https://umd.edu/presidential-search">Learn More</a></strong></p>
+</div>
+</div>
+<div class="row">
+</div>
+</div>
+<div class="card card-scrollable" data-taxonomy-parent="tid-2" id="card-2-academics" style="background-image:url(https://umd.edu/sites/umd.edu/files/JamesVictore_Workshop_03012013_0001_optimized_0.jpg)">
+<div class="card--inner card--inner-hasnav card--inner-hassidebar">
+<!-- Navigation -->
+<div class="card--inner-nav">
+<ul class="sub-nav list-unstyled">
+<li><a href="http://www.provost.umd.edu/calendar/" target="_blank">Academic Calendar</a></li>
+<li><a href="https://tltc.umd.edu">Teaching &amp; Learning Transformation Center</a></li>
+<li><a href="http://www.scholars.umd.edu" target="_blank">College Park Scholars</a></li>
+<li><a href="http://globalmaryland.umd.edu/">Global Maryland</a></li>
+<li><a href="http://www.honors.umd.edu" target="_blank">Honors College</a></li>
+<li><a href="http://www.lib.umd.edu/" target="_blank">Libraries</a></li>
+<li><a href="http://www.admissions.umd.edu/academics/majors.cfm" target="_blank">Majors and Minors</a></li>
+<li><a href="http://oes.umd.edu/">Office of Extended Studies</a></li>
+<li><a href="http://www.provost.umd.edu" target="_blank">Provost</a></li>
+<li><a href="http://www.registrar.umd.edu" target="_blank">Registrar</a></li>
+<li><a href="https://www.admissions.umd.edu/learn/specialexperiences.php" target="_blank">Special Academic Programs</a></li>
+<li><a href="http://www.testudo.umd.edu" target="_blank">Testudo (Student Portal)</a></li>
+<li><a href="https://catalogundergraduate.umd.edu" target="_blank">Undergraduate Catalog</a></li>
+</ul>
+</div>
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title">Academics</h2>
+<p>Spanning 12 schools and colleges, Maryland offers more than 200 degree-granting programs, many of them ranked among the best in the country. Our faculty includes three Nobel laureates, two Pulitzer Prize winners, 60 members of the national academies and scores of Fulbright scholars. And our students, who include the highest achievers in the state and nation, enjoy experiences unique to our location just outside the nation’s capital, including internships, research, and leadership and service opportunities.</p>
+</div>
+<!-- Sidebar Content -->
+<div class="card--inner-sidebar">
+<h3>
+	Schools and Colleges</h3>
+<ul class="list-unstyled list-links">
+<li><a href="http://agnr.umd.edu/" target="1">Agriculture and Natural Resources</a></li>
+<li><a href="http://www.arch.umd.edu/" target="1">Architecture, Planning and Preservation</a></li>
+<li><a href="http://www.arhu.umd.edu/" target="1">Arts and Humanities</a></li>
+<li><a href="http://www.bsos.umd.edu/" target="1">Behavioral and Social Sciences</a></li>
+<li><a href="http://www.smith.umd.edu/" target="1">Business (Robert H. Smith) </a></li>
+<li><a href="http://www.cmns.umd.edu/" target="1">Computer, Mathematical, and Natural Sciences</a></li>
+<li><a href="http://www.education.umd.edu/" target="1">Education</a></li>
+<li><a href="https://eng.umd.edu/" target="1">Engineering (A. James Clark) </a></li>
+<li><a href="http://www.gradschool.umd.edu/" target="1">Graduate School</a></li>
+<li><a href="http://www.journalism.umd.edu/" target="1">Journalism (Philip Merrill)</a></li>
+<li><a href="http://www.ischool.umd.edu/" target="1">Information Studies</a></li>
+<li><a href="http://www.sph.umd.edu/" target="1">Public Health</a></li>
+<li><a href="https://spp.umd.edu" target="1">Public Policy</a></li>
+<li><a href="http://www.ugst.umd.edu/" target="1">Undergraduate Studies</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="interstitial interstitial--gray mobile-card-active--hidden mobile-carousel ">
+<div class="row">
+<div class="col-xs-6">
+<div class="media social-card">
+<div class="media-left">
+<img alt="UofMaryland" src="https://pbs.twimg.com/profile_images/998977611144445953/hknvMM_W_normal.jpg"/>
+</div>
+<div class="media-body">
+<h4 class="media-heading"><a href="https://twitter.com/UofMaryland">Univ. of Maryland @UofMaryland</a></h4>
+<p>Welcome back and have a great semester, Terps! 🐢 <a href="https://t.co/gyyNb0AfKO">https://t.co/gyyNb0AfKO</a></p>
+<img alt="Image shared by UofMaryland" class="img-twitter img-responsive" src="https://pbs.twimg.com/media/EPTuTafWAAcITxy.jpg"/>
+<p class="media-meta">1:31 pm - Jan 27</p>
+<p>
+<a class="btn btn-primary btn-xs" href="https://twitter.com/UofMaryland">
+<i class="icon icon-twitter"></i>
+          Follow UofMaryland        </a>
+</p>
+</div>
+</div>
+</div>
+<div class="col-xs-6">
+<div class="media social-card">
+<div class="media-left">
+<img alt="presidentloh" src="https://pbs.twimg.com/profile_images/971165358097928192/Yeg53WsN_normal.jpg"/>
+</div>
+<div class="media-body">
+<h4 class="media-heading"><a href="https://twitter.com/presidentloh">Wallace D. Loh @presidentloh</a></h4>
+<p>Congratulations new Terps of #UMD2024, surprised today by a #NowATerp celebration on their doorsteps <a href="https://t.co/bH1tEVIXJT">https://t.co/bH1tEVIXJT</a></p>
+<p class="media-meta">8:48 pm - Jan 25</p>
+<p>
+<a class="btn btn-primary btn-xs" href="https://twitter.com/presidentloh">
+<i class="icon icon-twitter"></i>
+          Follow presidentloh        </a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card card-scrollable" data-taxonomy-parent="tid-2" id="card-2-research-and-innovation" style="background-image:url(https://umd.edu/sites/umd.edu/files/UMIACS_09252014_0617_upscale-fixed_optimized_0.jpg)">
+<div class="card--inner card--inner-hasnav">
+<!-- Navigation -->
+<div class="card--inner-nav">
+<ul class="sub-nav list-unstyled">
+<li><a href="http://innovation.umd.edu" target="_blank">Academy for Innovation and Entrepreneurship</a></li>
+<li><a href="https://www.umd.edu/colleges-and-schools">Colleges and Schools</a></li>
+<li><a href="http://www.research.umd.edu" target="_blank">Division of Research</a></li>
+<li><a href="http://www.mtech.umd.edu/innovation_gateway/student.html" target="_blank">Entrepreneur Resources</a></li>
+<li><a href="https://fire.umd.edu" target="_blank">FIRE: The First-Year Innovation &amp; Research Experience</a></li>
+</ul>
+</div>
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title">Research and Innovation</h2>
+<p>The University of Maryland is one of the world’s premier research institutions. With our strategic location and scores of partnerships with government and businesses, UMD conducts groundbreaking research on some of the biggest challenges facing our global community, including cybersecurity and terrorism, bioengineering, public health equity, food safety and climate change. We strive to discover new knowledge and put it to work through innovation and entrepreneurship, advancing economic development and transforming lives. </p>
+</div>
+<!-- Sidebar Content -->
+</div>
+</div>
+<div class="interstitial interstitial--yellow mobile-card-active--hidden mobile-carousel ">
+<h2 class="interstitial-title"><strong>UMD Rankings</strong></h2>
+<div class="row flex-dividers">
+<div class="col-xs-3">
+<div class="media">
+<div class="media-body">
+<h3 class="media-heading media-heading--huge">#22</h3>
+<p><strong>Top public national university</strong></p>
+<p>Source: 2018 <em>U.S. News &amp; World Report</em></p>
+</div>
+</div>
+</div>
+<div class="col-xs-3">
+<div class="media">
+<div class="media-body">
+<h3 class="media-heading media-heading--huge">#8</h3>
+<p><strong>For in-state students</strong></p>
+<p>Source: <em>Kiplinger’s Personal Finance</em></p>
+</div>
+</div>
+</div>
+<div class="col-xs-3">
+<div class="media">
+<div class="media-body">
+<h3 class="media-heading media-heading--huge">#50</h3>
+<p><strong>In best global universities</strong></p>
+<p>Source: 2018 <em>U.S. News &amp; World Report</em></p>
+</div>
+</div>
+</div>
+<div class="col-xs-3">
+<div class="media">
+<div class="media-body">
+<h3 class="media-heading media-heading--huge">#9</h3>
+<p><strong>Undergraduate program for entrepreneurship</strong></p>
+<p>Source: The Princeton Review / <em>Entrepreneurship</em> magazine </p>
+</div>
+</div>
+</div>
+</div>
+<div class="interstitial-content--below text-center">
+<p><strong><a href="/rankings-and-fast-facts">Rankings and Fast Facts</a></strong></p>
+</div>
+</div>
+<div class="card card-scrollable" data-taxonomy-parent="tid-2" id="card-2-arts" style="background-image:url(https://umd.edu/sites/umd.edu/files/MidsummerFairies_optimized_0.jpg)">
+<div class="card--inner card--inner-hasnav card--inner-hassidebar">
+<!-- Navigation -->
+<div class="card--inner-nav">
+<ul class="sub-nav list-unstyled">
+<li><a href="https://www.arhu.umd.edu" target="_blank">College of Arts and Humanities</a></li>
+<li><a href="https://www.music.umd.edu" target="_blank">School of Music</a></li>
+<li><a href="http://tdps.umd.edu" target="_blank">School of Theatre, Dance, and Performance Studies</a></li>
+<li><a href="http://theclarice.umd.edu" target="_blank">The Clarice Smith Performing Arts Center</a></li>
+<li><a href="http://www.lib.umd.edu/mspal" target="_blank">Michelle Smith Performing Arts Library</a></li>
+<li><a href="http://www.arch.umd.edu/" target="_blank">School of Architecture, Planning &amp; Preservation</a></li>
+<li><a href="https://umd-phillips.umd.edu/index.html" target="_blank">University of Maryland Center for Art and Knowledge at The Phillips Collection</a></li>
+<li><a href="http://www.driskellcenter.umd.edu" target="_blank">David C. Driskell Center</a></li>
+<li><a href="http://devosinstitute.umd.edu" target="_blank">DeVos Institute of Arts Management</a></li>
+<li><a href="https://www.umd.edu/galleries">Galleries</a></li>
+<li><a href="http://thestamp.umd.edu/art_learning_center">The Art &amp; Learning Center at Stamp</a></li>
+</ul>
+</div>
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title">Arts</h2>
+<p>At the University of Maryland, the arts, the humanities and the sciences intersect to address important societal issues and shed new light on the human experience. Our vibrant campus arts community collaborates with local and national cultural organizations such as the Phillips Collection, Kennedy Center and Folger Shakespeare Library. Student and faculty artists, designers, historians, writers and performers are exploring new media, presenting new perspectives, investigating new techniques and engaging new audiences.</p>
+</div>
+<!-- Sidebar Content -->
+<div class="card--inner-sidebar">
+<h3>
+	Events</h3>
+<div class="media">
+<div class="media-body">
+<div class="media-meta">
+                                January 31<br/>
+                7:30pm                                                      - 7:00pm                                                              </div>
+<div class="media-heading">
+<a href="http://umd.bwcs-hosting.com/cal/event/eventView.do?calPath=%2Fpublic%2Fcals%2FMainCal&amp;guid=CAL-ff808081-6ed54bcf-016e-d6e62959-00001843demobedework%40mysite.edu&amp;recurrenceId="><strong>"I AM WOMB" and "Champagne Party for Time Travelers"</strong></a>
+</div>
+</div>
+</div>
+<div class="media">
+<div class="media-body">
+<div class="media-meta">
+                                January 31<br/>
+                8:00pm                                            </div>
+<div class="media-heading">
+<a href="http://umd.bwcs-hosting.com/cal/event/eventView.do?calPath=%2Fpublic%2Fcals%2FMainCal&amp;guid=CAL-ff808081-6ed54bcf-016e-d6e900f5-00001876demobedework%40mysite.edu&amp;recurrenceId="><strong>Leyla McCalla Quartet (USA)</strong></a>
+</div>
+</div>
+</div>
+<div class="media">
+<div class="media-body">
+<div class="media-meta">
+                                February 1<br/>
+                12:00am                                                      - 12:00am                                                                  (All day)
+                            </div>
+<div class="media-heading">
+<a href="http://umd.bwcs-hosting.com/cal/event/eventView.do?calPath=%2Fpublic%2Fcals%2FMainCal&amp;guid=CAL-ff808081-6f89743f-016f-8b5718c2-0000047fdemobedework%40mysite.edu&amp;recurrenceId="><strong>Black History Month 2020: The Blackprint</strong></a>
+</div>
+</div>
+</div>
+<div class="media">
+<div class="media-body">
+<div class="media-meta">
+                                February 4<br/>
+                5:30pm                                                      - 7:00pm                                                              </div>
+<div class="media-heading">
+<a href="http://umd.bwcs-hosting.com/cal/event/eventView.do?calPath=%2Fpublic%2Fcals%2FMainCal&amp;guid=CAL-ff808081-6ed54bcf-016e-d6ed5779-000018addemobedework%40mysite.edu&amp;recurrenceId="><strong>ACTnow Conversation: On Being Mixed Race</strong></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="interstitial interstitial--yellow mobile-card-active--hidden ">
+<h2 class="interstitial-title">Summer Session at UMD</h2>
+<div class="interstitial-content--above text-center">
+<style type="text/css">
+<!--/*--><![CDATA[/* ><!--*/
+
+.interstitial-title { text-align: left; margin-bottom: 1em; } .interstitial--gray { border-bottom: 1px solid #e1e1e1; }
+/*--><!]]>*/
+</style><div style="max-width: 1200px;">
+<p style="text-align: left;">Summer planning starts now! Make progress toward graduation and satisfy requirements with our convenient 3 or 6-week sessions. Classes meet morning, afternoon, and evenings at UMD, and anywhere online June 1 - August 21, 2020.</p>
+<p style="text-align: left;">Summer Session is open enrollment. Visiting students may apply starting February 18, 2020. Current and incoming UMD students may simply register. Registration for undergraduate and graduate courses opens February 25, 2020.</p>
+<p style="text-align: left;"><a href="https://oes.umd.edu/incoming-current-visiting-students/summer-session"><b>Learn More</b></a></p>
+</div>
+<p> </p>
+</div>
+<div class="row">
+</div>
+</div>
+<div class="card card-scrollable" data-taxonomy-parent="tid-2" id="card-2-athletics" style="background-image:url(https://umd.edu/sites/umd.edu/files/022415mbb18_fixed_optimized.jpg)">
+<div class="card--inner card--inner-hasnav card--inner-hassidebar">
+<!-- Navigation -->
+<div class="card--inner-nav">
+<ul class="sub-nav list-unstyled">
+<li><a href="http://www.umterps.com" target="_blank">Intercollegiate Athletics</a></li>
+<li><a href="http://www.terpgolf.umd.edu" target="_blank">University of Maryland Golf Course</a></li>
+<li><a href="http://recwell.umd.edu" target="_blank">University Recreation and Wellness</a></li>
+</ul>
+</div>
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title">Athletics</h2>
+<p>Home of the Terrapins, the University of Maryland has one of the nation’s most recognizable and successful athletics programs. More than 550 student-athletes compete each year in 20 intercollegiate sports—12 for women and eight for men. Since 2005 alone, Maryland has won 19 national championships, including NCAA titles in women’s basketball, men’s soccer, men's lacrosse, women’s lacrosse, and field hockey. Since joining the Big Ten Conference in 2014, UMD has won a combined 32 regular season and tournament championships. Fear the Turtle!</p>
+</div>
+<!-- Sidebar Content -->
+<div class="card--inner-sidebar">
+<p><strong>Our Commitment to Student-Athletes</strong></p>
+<p><strong>At the University of Maryland, our commitment to the safety and well-being of our students is paramount and resolute.</strong> For our student-athletes, that means both on and off the field.<br/>
+	The University of Maryland is committed to accountability, transparency, and fairness and is working to ensure our program upholds the values of our University.<br/><a href="node/152">Learn more about our commitment</a>.</p>
+</div>
+</div>
+</div>
+<div class="card card-scrollable" data-taxonomy-parent="tid-2" id="card-2-student-life" style="background-image:url(https://umd.edu/sites/umd.edu/files/Students_Outdoors_06052013_7331_optimized.jpg)">
+<div class="card--inner card--inner-hasnav">
+<!-- Navigation -->
+<div class="card--inner-nav">
+<ul class="sub-nav list-unstyled">
+<li><a href="http://thestamp.umd.edu/shops_services/university_book_center" target="_blank">Book Center</a></li>
+<li><a href="http://www.careercenter.umd.edu" target="_blank">Career Center</a></li>
+<li><a href="http://www.counseling.umd.edu/">Counseling Center</a></li>
+<li><a href="http://dining.umd.edu" target="_blank">Dining Services</a></li>
+<li><a href="http://www.greek.umd.edu" target="_blank">Fraternity and Sorority Life</a></li>
+<li><a href="http://health.umd.edu" target="_blank">Health Center</a></li>
+<li><a href="http://thestamp.umd.edu/memorial_chapel" target="_blank">Memorial Chapel</a></li>
+<li><a href="http://och.umd.edu" target="_blank">Off-Campus Housing</a></li>
+<li><a href="http://reslife.umd.edu/">Resident Life </a></li>
+<li><a href="http://thestamp.umd.edu" target="_blank">Stamp Student Union</a></li>
+<li><a href="http://studentaffairs.umd.edu" target="_blank">Student Affairs</a></li>
+<li><a href="http://orgsync.umd.edu/browse_student_organizations" target="_blank">Student Clubs</a></li>
+<li><a href="http://transportation.umd.edu" target="_blank">Transportation Services</a></li>
+<li><a href="http://recwell.umd.edu" target="_blank">University Recreation and Wellness</a></li>
+</ul>
+</div>
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title">Student Life</h2>
+<p>The Terp experience extends beyond classrooms, labs and studios. It encompasses residence halls and dining halls, clubs and sports, fraternities and sororities, campus events and performances, and countless off-campus destinations. Maryland touts 800-plus student organizations, dozens of prestigious living and learning communities, and countless other ways to get involved. Students here can create a unique identity and grow as individuals, even as they’re part of a close-knit and diverse community. </p>
+<p><a href="https://health.umd.edu/coronavirus"><strong>Latest information on Coronavirus</strong></a></p>
+</div>
+<!-- Sidebar Content -->
+</div>
+</div>
+<div class="card card-scrollable" data-taxonomy-parent="tid-2" id="card-2-on-campus-" style="background-image:url(https://umd.edu/sites/umd.edu/files/testudo.jpg)">
+<div class="card--inner card--inner-hasnav">
+<!-- Navigation -->
+<div class="card--inner-nav">
+<ul class="sub-nav list-unstyled">
+<li><a href="http://calendar.umd.edu/cal/main/showEventList.rdo;jsessionid=DD2DEB2AF697FAA02D54A3CBF268BF93" target="_blank">Calendar</a></li>
+<li><a href="https://www.umd.edu/directories">Directories</a></li>
+<li><a href="http://maps.umd.edu/map/" target="_blank">Map</a></li>
+</ul>
+</div>
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title">On Campus </h2>
+<div class="carousel slide carousel-standard carousel-pagination-hidden" data-interval="7000" data-ride="carousel">
+<div class="carousel-inner" role="listbox">
+<div class="item">
+<img alt="UMD Reflects" src="https://umd.edu/sites/umd.edu/files/UMD17_OnCampus_UMDreflects.jpg" typeof="foaf:Image"/> <div class="carousel-caption">
+<div class="carousel-caption--below">
+<p><a href="https://umd.edu/umdreflects"><strong>UMD Reflects </strong>/ University Gathers Resources, Provides Updates And Takes Action To Combat Hate</a></p>
+</div>
+<div class="carousel-caption--below">
+<a class="carousel-cta" href="https://umd.edu/umdreflects" target="_blank">Read More</a>
+</div>
+</div>
+</div>
+<div class="item">
+<img alt="Register Now for UMD's Winter Session" src="https://umd.edu/sites/umd.edu/files/UMD-OES_20-WinterSession_RegisterNow_600x350-WebsiteImage.jpg" typeof="foaf:Image"/> <div class="carousel-caption">
+<a href="https://oes.umd.edu/incoming-current-visiting-students/winter-session" target="_blank">
+<h2 class="carousel-caption--title">Winter Session</h2>
+</a>
+<div class="carousel-caption--below">
+<p>January 2-22, 2020</p>
+</div>
+<div class="carousel-caption--below">
+<a class="carousel-cta" href="https://oes.umd.edu/incoming-current-visiting-students/winter-session" target="_blank">Read More</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Content -->
+</div>
+</div>
+<div class="card" data-taxonomy-parent="tid-3" id="card-3-news-events">
+<div class="card--inner card--inner-hasnav card--inner-hassidebar">
+<!-- Navigation -->
+<div class="card--inner-nav">
+<ul class="sub-nav list-unstyled">
+<li><a href="https://alert.umd.edu" target="_blank">Campus Alerts</a></li>
+<li><a href="http://calendar.umd.edu/" target="_blank">Campus Calendar</a></li>
+<li><a href="https://www.umdrightnow.umd.edu/resources-news-media">Resources for News Media</a></li>
+<li><a href="http://www.terp.umd.edu" target="_blank">Terp Magazine</a></li>
+<li><a href="http://www.umdrightnow.umd.edu" target="_blank">UMD Right Now</a></li>
+<li><a href="https://www.umd.edu/weareumd">We Are UMD</a></li>
+<li><a href="https://umd.edu/weather" target="_blank">Weather Alerts</a></li>
+</ul>
+</div>
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title hidden-md hidden-lg">News &amp; Events</h2>
+<h2>
+	News</h2>
+<p>Latest news at <a href="https://today.umd.edu">Maryland Today</a></p>
+<p>For media releases visit <a href="https://www.umdrightnow.umd.edu/latest-news">UMD Right Now</a></p>
+<hr/><p><strong>Presidential Search: </strong><br/>
+	UMD seeks a visionary and inclusive leader to serve as its 34th President. <a href="https://umd.edu/presidential-search">Learn More</a></p>
+</div>
+<!-- Sidebar Content -->
+<div class="card--inner-sidebar">
+<h2>
+	Events</h2>
+<div class="media">
+<div class="media-body">
+<div class="media-meta">
+                                January 28<br/>
+                10:00am                                                      - 11:30am                                                              </div>
+<div class="media-heading">
+<a href="http://umd.bwcs-hosting.com/cal/event/eventView.do?calPath=%2Fpublic%2Fcals%2FMainCal&amp;guid=CAL-ff808081-6fb28a09-016f-b48ee45a-00000706demobedework%40mysite.edu&amp;recurrenceId="><strong>Evaluating Your ELMS Course for Accessibility</strong></a>
+</div>
+</div>
+</div>
+<div class="media">
+<div class="media-body">
+<div class="media-meta">
+                                January 30<br/>
+                10:00am                                                      - 11:30am                                                              </div>
+<div class="media-heading">
+<a href="http://umd.bwcs-hosting.com/cal/event/eventView.do?calPath=%2Fpublic%2Fcals%2FMainCal&amp;guid=CAL-ff808081-6fb28a09-016f-b577d5ea-00000b9bdemobedework%40mysite.edu&amp;recurrenceId="><strong>Feedback on the Fly: Clickers in Your Classroom</strong></a>
+</div>
+</div>
+</div>
+<div class="media">
+<div class="media-body">
+<div class="media-meta">
+                                January 30<br/>
+                5:00pm                                                      - 7:00pm                                                              </div>
+<div class="media-heading">
+<a href="http://umd.bwcs-hosting.com/cal/event/eventView.do?calPath=%2Fpublic%2Fcals%2FMainCal&amp;guid=CAL-ff808081-6f7f3d8b-016f-8193ab97-00002669demobedework%40mysite.edu&amp;recurrenceId="><strong>Transfer &amp; Off-Campus New Student Welcome Spring 2020</strong></a>
+</div>
+</div>
+</div>
+<p><a class="view-more-feed" href="http://calendar.umd.edu" target="_blank">All Events</a></p>
+</div>
+</div>
+</div>
+<div class="card" data-taxonomy-parent="tid-4" id="card-4-admissions">
+<div class="card--inner card--inner-hassidebar">
+<!-- Navigation -->
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title hidden-md hidden-lg">Admissions</h2>
+<div class="embed-responsive embed-responsive-16by9">
+<iframe allowfullscreen="" class="embed-responsive-item" src="https://www.youtube.com/embed/sN4ynr6QbtA?rel=0"></iframe>
+</div>
+<p><strong>Terps are bold, smart, curious and proud.</strong> We do good, in our communities and out in the world. We are fearless. And we are always looking to expand our ranks. Interested in becoming a University of Maryland student? This is where to start.</p>
+<p> </p>
+</div>
+<!-- Sidebar Content -->
+<div class="card--inner-sidebar">
+<h3>
+<a href="https://www.admissions.umd.edu/" target="_blank">Undergraduate Admissions</a></h3>
+<ul class="list-unstyled list-links">
+<li><a href="https://www.admissions.umd.edu/apply/requirements.php">Requirements</a></li>
+<li><a href="https://www.admissions.umd.edu/explore/faqs.php">Frequently Asked Questions</a></li>
+<li><a href="https://www.admissions.umd.edu/learn/majors.php">90+ Undergraduate Majors</a></li>
+</ul>
+<hr/>
+<h3>
+<a href="https://www.gradschool.umd.edu/" target="_blank">Graduate Admissions</a></h3>
+<ul class="list-unstyled list-links">
+<li><a href="https://gradschool.umd.edu/admissions" target="1">Admissions Process</a></li>
+<li><a href="http://apps.gradschool.umd.edu/Catalog/public-programs.php" target="1">Graduate Programs</a></li>
+</ul>
+<hr/>
+<ul class="list-unstyled list-links">
+<li><a href="http://www.financialaid.umd.edu/" target="1">Financial Aid </a></li>
+<li><a href="https://www.admissions.umd.edu/visit/" target="1">Visit</a></li>
+<li><a href="https://www.umd.edu/contact-us">Contact Us </a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="card" data-taxonomy-parent="tid-7" id="card-7-search">
+<div class="card--inner card--inner-hassidebar">
+<!-- Navigation -->
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title hidden-md hidden-lg">Search</h2>
+<form accept-charset="UTF-8" action="https://search.umd.edu" id="umd-search-search-form" method="get" target="_blank">
+<div>
+<label class="sr-only" for="edit-search-query">Search keyword or phrase</label>
+<div class="form-item form-type-textfield form-item-search-query">
+<input class="form-text" id="search-query" maxlength="128" name="q" size="20" type="text" value=""/>
+</div>
+<input class="form-submit" id="submit" type="submit" value="submit"/>
+</div>
+</form> </div>
+<!-- Sidebar Content -->
+<div class="card--inner-sidebar">
+<h3>
+	Campus Resources</h3>
+<ul class="list-unstyled list-links">
+<li><a href="https://www.umd.edu/policies-and-procedures/accessibility">Accessibility</a></li>
+<li><a href="http://calendar.umd.edu/" target="1">Campus Calendar</a></li>
+<li><a href="http://maps.umd.edu/map/" target="1">Campus Map</a></li>
+<li><a href="https://www.umd.edu/directories">Directories</a></li>
+<li><a href="https://uhr.umd.edu" target="1">Human Resources</a></li>
+<li><a href="https://www.umd.edu/policies-and-procedures">Policies and Procedures</a></li>
+</ul>
+<hr/>
+<h3>
+	Student Resources</h3>
+<ul class="list-unstyled list-links">
+<li><a href="https://www.provost.umd.edu/calendar/" target="1">Academic Calendar</a></li>
+<li><a href="http://www.registrar.umd.edu/" target="1">Registrar</a></li>
+<li><a href="http://www.testudo.umd.edu" target="1">Testudo (Student Portal)</a></li>
+</ul>
+<hr/>
+<h3>
+	Technical Support</h3>
+<ul class="list-unstyled list-links">
+<li><a href="https://identity.umd.edu/password/changepassword" target="1">Change Password</a></li>
+<li><a href="http://it.umd.edu" target="1">Division of IT</a></li>
+<li><a href="https://umd.service-now.com/itsc" target="1">Get IT Support</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="card" data-taxonomy-parent="tid-6" id="card-6-support-umd">
+<div class="card--inner card--inner-hassidebar">
+<!-- Navigation -->
+<!-- Main Content -->
+<div class="card--inner-content">
+<h2 class="card--inner-title hidden-md hidden-lg">Support UMD</h2>
+<div class="embed-responsive embed-responsive-16by9">
+<iframe allowfullscreen="" class="embed-responsive-item" src="https://www.youtube.com/embed/yvNdt3mY1es?rel=0"></iframe>
+</div>
+<p><strong>Inspiration. Boldness. Curiosity. Passion.</strong> Your support is critical to helping Terps make world-changing discoveries, launch successful startups and do good around the globe.</p>
+<p><a class="btn btn-primary btn-default" href="http://giving.umd.edu">Give Now</a></p>
+</div>
+<!-- Sidebar Content -->
+<div class="card--inner-sidebar">
+<img alt="" class="img-responsive" src="https://umd.edu/sites/umd.edu/files/Gallery_Riggs_TO_FIXED_20flat_20w_20clouds_fixedv2.jpg"/>
+<p><strong><a href="https://alumni.umd.edu">University of Maryland Alumni Association</a></strong></p>
+<p>As a Terp, you’re always ready to take the next bold step. The University of Maryland Alumni Association can help, from offering professional networking to reconnecting you with fellow Terps.</p>
+<p><a class="btn btn-primary btn-default" href="http://alumni.umd.edu/join">Join Today!</a></p>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="footer--inner">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-4 footer-logo">
+<img alt="University of Maryland" class="img-responsive" src="/sites/umd.edu/themes/umd/build/images/logo-inverted.svg"/>
+</div>
+<div class="block block-block" id="block-block-1">
+<div class="col-xs-3 col-xs-push-5 text-right footer-social">
+<ul class="list-unstyled list-inline"><li>
+<a href="https://www.youtube.com/user/UMD2101"><i aria-hidden="true" class="icon icon-youtube-play icon-size-xl" title="University of Maryland on YouTube">
+<!-- YouTube --></i><p><span class="sr-only">University of Maryland on YouTube</span></p></a></li>
+<li>
+<a href="https://www.facebook.com/UnivofMaryland"><i aria-hidden="true" class="icon icon-facebook icon-size-xl" title="University of Maryland on Facebook">
+<!-- Facebook --></i><p><span class="sr-only">University of Maryland on Facebook</span></p></a></li>
+<li>
+<a href="https://twitter.com/UofMaryland"><i aria-hidden="true" class="icon icon-twitter icon-size-xl" title="University of Maryland on Twitter">
+<!-- Twitter --></i><p><span class="sr-only">University of Maryland on Twitter</span></p></a></li>
+<li>
+<a href="https://www.instagram.com/univofmaryland/"><i aria-hidden="true" class="icon icon-instagram icon-size-xl" title="University of Maryland on Instagram">
+<!-- Instagram --></i><p><span class="sr-only">University of Maryland on Instagram</span></p></a></li>
+</ul></div>
+<div class="col-xs-5 col-xs-pull-3">
+<div>
+<a href="http://www.usmd.edu"><strong class="nobreak">The Flagship Institution of the State of Maryland</strong></a><br/>
+		College Park, <span class="nobreak">MD 20742, USA</span> · 301.405.1000</div>
+</div>
+<p> </p>
+</div>
+</div>
+</div>
+<hr/>
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-8">
+<ul class="list-inline list-inline--divided"><li class="menu-651 first"><a href="/information-visitors-parents-and-families">Information for Visitors, Parents and Families</a></li>
+<li class="menu-646"><a href="/faqs-heoaconsumer-information" title="">FAQs (HEOA/Consumer Information)</a></li>
+<li class="menu-649"><a href="/contact-us">Contact Us</a></li>
+<li class="menu-647"><a href="http://www.ejobs.umd.edu" title="">Careers</a></li>
+<li class="menu-2411"><a href="https://form.asana.com?hash=f91df217c75378193f344df2348a7506fbd1288579ff8f54892bc6c5fff0c1fc&amp;id=1126975427269659" title="Experiencing a bug or website issues?">Issues</a></li>
+<li class="menu-1446"><a href="https://www.ocrsm.umd.edu" title="">Office of Civil Rights &amp; Sexual Misconduct</a></li>
+<li class="menu-648"><a href="http://www.umpd.umd.edu" title="">UMD Police Department</a></li>
+<li class="menu-1044"><a href="/web-accessibility" title="Information about web accessibility at UMD">Web Accessibility</a></li>
+<li class="menu-652"><a href="/policies-and-procedures">Policies and Procedures</a></li>
+<li class="menu-650"><a href="/administration/public-information-request" title="">Public Records Request</a></li>
+<li class="menu-2410 last"><a href="/privacy-notice" title="">Privacy Notice</a></li>
+</ul> </div>
+<div class="col-xs-4 text-right">
+<a href="http://mpower.maryland.edu/"><strong>MPowering the State</strong></a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Blank modal to populate -->
+<div aria-hidden="true" aria-labelledby="videoModal" class="modal fade" id="videoModal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<button aria-hidden="true" class="modal_close" data-dismiss="modal" type="button">×</button>
+<div class="modal-body">
+<div class="embed-responsive embed-responsive-16by9">
+<iframe allowfullscreen="" class="embed-responsive-item" src=""></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://umd.edu/sites/umd.edu/files/js/js_kiWAyGF78GOw7mFsesNjdUffg4dPGAYD3wLPbUCQmuU.js" type="text/javascript"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Washington Post Digital Ad -->
+<div id="ttdUniversalPixelTagd2d2a670faa64fdba5f5c506640b0002" style="display:none">
+<script src="https://js.adsrvr.org/up_loader.1.1.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+        (function(global) {
+            if (typeof TTDUniversalPixelApi === 'function') {
+                var universalPixelApi = new TTDUniversalPixelApi();
+                universalPixelApi.init("das0vmi", ["f792jbh"], "https://insight.adsrvr.org/track/up", "ttdUniversalPixelTagd2d2a670faa64fdba5f5c506640b0002");
+            }
+        })(this);
+    </script>
+</div>
+</body>
+</html>
+

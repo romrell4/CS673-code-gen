@@ -1,0 +1,1156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html dir="ltr" version="XHTML+RDFa 1.0" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head profile="http://www.w3.org/1999/xhtml/vocab"><style>/**
+ * Swiper 3.1.7
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ * 
+ * http://www.idangero.us/swiper/
+ * 
+ * Copyright 2015, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ * 
+ * Licensed under MIT
+ * 
+ * Released on: October 10, 2015
+ */
+.swiper-container {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  /* Fix of Webkit flickering */
+  z-index: 1;
+}
+.swiper-container-no-flexbox .swiper-slide {
+  float: left;
+}
+.swiper-container-vertical > .swiper-wrapper {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
+  transition-property: transform;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.swiper-container-android .swiper-slide,
+.swiper-wrapper {
+  -webkit-transform: translate3d(0px, 0, 0);
+  -moz-transform: translate3d(0px, 0, 0);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate3d(0px, 0, 0);
+  transform: translate3d(0px, 0, 0);
+}
+.swiper-container-multirow > .swiper-wrapper {
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.swiper-container-free-mode > .swiper-wrapper {
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  margin: 0 auto;
+}
+.swiper-slide {
+  -webkit-flex-shrink: 0;
+  -ms-flex: 0 0 auto;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* a11y */
+.swiper-container .swiper-notification {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: -1000;
+}
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+}
+.swiper-wp8-vertical {
+  -ms-touch-action: pan-x;
+  touch-action: pan-x;
+}
+/* Arrows */
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  width: 27px;
+  height: 44px;
+  margin-top: -22px;
+  z-index: 10;
+  cursor: pointer;
+  -moz-background-size: 27px 44px;
+  -webkit-background-size: 27px 44px;
+  background-size: 27px 44px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: auto;
+  pointer-events: none;
+}
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+  left: 10px;
+  right: auto;
+}
+.swiper-button-prev.swiper-button-black,
+.swiper-container-rtl .swiper-button-next.swiper-button-black {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+}
+.swiper-button-prev.swiper-button-white,
+.swiper-container-rtl .swiper-button-next.swiper-button-white {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+}
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+  right: 10px;
+  left: auto;
+}
+.swiper-button-next.swiper-button-black,
+.swiper-container-rtl .swiper-button-prev.swiper-button-black {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+}
+.swiper-button-next.swiper-button-white,
+.swiper-container-rtl .swiper-button-prev.swiper-button-white {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+}
+/* Pagination Styles */
+.swiper-pagination {
+  position: absolute;
+  text-align: center;
+  -webkit-transition: 300ms;
+  -moz-transition: 300ms;
+  -o-transition: 300ms;
+  transition: 300ms;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+}
+.swiper-pagination.swiper-pagination-hidden {
+  opacity: 0;
+}
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 100%;
+  background: #000;
+  opacity: 0.2;
+}
+button.swiper-pagination-bullet {
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.swiper-pagination-clickable .swiper-pagination-bullet {
+  cursor: pointer;
+}
+.swiper-pagination-white .swiper-pagination-bullet {
+  background: #fff;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #007aff;
+}
+.swiper-pagination-white .swiper-pagination-bullet-active {
+  background: #fff;
+}
+.swiper-pagination-black .swiper-pagination-bullet-active {
+  background: #000;
+}
+.swiper-container-vertical > .swiper-pagination {
+  right: 10px;
+  top: 50%;
+  -webkit-transform: translate3d(0px, -50%, 0);
+  -moz-transform: translate3d(0px, -50%, 0);
+  -o-transform: translate(0px, -50%);
+  -ms-transform: translate3d(0px, -50%, 0);
+  transform: translate3d(0px, -50%, 0);
+}
+.swiper-container-vertical > .swiper-pagination .swiper-pagination-bullet {
+  margin: 5px 0;
+  display: block;
+}
+.swiper-container-horizontal > .swiper-pagination {
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
+.swiper-container-horizontal > .swiper-pagination .swiper-pagination-bullet {
+  margin: 0 5px;
+}
+/* 3D Container */
+.swiper-container-3d {
+  -webkit-perspective: 1200px;
+  -moz-perspective: 1200px;
+  -o-perspective: 1200px;
+  perspective: 1200px;
+}
+.swiper-container-3d .swiper-wrapper,
+.swiper-container-3d .swiper-slide,
+.swiper-container-3d .swiper-slide-shadow-left,
+.swiper-container-3d .swiper-slide-shadow-right,
+.swiper-container-3d .swiper-slide-shadow-top,
+.swiper-container-3d .swiper-slide-shadow-bottom,
+.swiper-container-3d .swiper-cube-shadow {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.swiper-container-3d .swiper-slide-shadow-left,
+.swiper-container-3d .swiper-slide-shadow-right,
+.swiper-container-3d .swiper-slide-shadow-top,
+.swiper-container-3d .swiper-slide-shadow-bottom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+.swiper-container-3d .swiper-slide-shadow-left {
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Opera 11.10-12.00 */
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Firefox 16+, IE10, Opera 12.50+ */
+}
+.swiper-container-3d .swiper-slide-shadow-right {
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Opera 11.10-12.00 */
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Firefox 16+, IE10, Opera 12.50+ */
+}
+.swiper-container-3d .swiper-slide-shadow-top {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Opera 11.10-12.00 */
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Firefox 16+, IE10, Opera 12.50+ */
+}
+.swiper-container-3d .swiper-slide-shadow-bottom {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Opera 11.10-12.00 */
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  /* Firefox 16+, IE10, Opera 12.50+ */
+}
+/* Coverflow */
+.swiper-container-coverflow .swiper-wrapper {
+  /* Windows 8 IE 10 fix */
+  -ms-perspective: 1200px;
+}
+/* Fade */
+.swiper-container-fade.swiper-container-free-mode .swiper-slide {
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.swiper-container-fade .swiper-slide {
+  pointer-events: none;
+}
+.swiper-container-fade .swiper-slide .swiper-slide {
+  pointer-events: none;
+}
+.swiper-container-fade .swiper-slide-active,
+.swiper-container-fade .swiper-slide-active .swiper-slide-active {
+  pointer-events: auto;
+}
+/* Cube */
+.swiper-container-cube {
+  overflow: visible;
+}
+.swiper-container-cube .swiper-slide {
+  pointer-events: none;
+  visibility: hidden;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.swiper-container-cube.swiper-container-rtl .swiper-slide {
+  -webkit-transform-origin: 100% 0;
+  -moz-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+.swiper-container-cube .swiper-slide-active,
+.swiper-container-cube .swiper-slide-next,
+.swiper-container-cube .swiper-slide-prev,
+.swiper-container-cube .swiper-slide-next + .swiper-slide {
+  pointer-events: auto;
+  visibility: visible;
+}
+.swiper-container-cube .swiper-slide-shadow-top,
+.swiper-container-cube .swiper-slide-shadow-bottom,
+.swiper-container-cube .swiper-slide-shadow-left,
+.swiper-container-cube .swiper-slide-shadow-right {
+  z-index: 0;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.swiper-container-cube .swiper-cube-shadow {
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.6;
+  -webkit-filter: blur(50px);
+  filter: blur(50px);
+  z-index: 0;
+}
+/* Scrollbar */
+.swiper-scrollbar {
+  border-radius: 10px;
+  position: relative;
+  -ms-touch-action: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+.swiper-container-horizontal > .swiper-scrollbar {
+  position: absolute;
+  left: 1%;
+  bottom: 3px;
+  z-index: 50;
+  height: 5px;
+  width: 98%;
+}
+.swiper-container-vertical > .swiper-scrollbar {
+  position: absolute;
+  right: 3px;
+  top: 1%;
+  z-index: 50;
+  width: 5px;
+  height: 98%;
+}
+.swiper-scrollbar-drag {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  left: 0;
+  top: 0;
+}
+.swiper-scrollbar-cursor-drag {
+  cursor: move;
+}
+/* Preloader */
+.swiper-lazy-preloader {
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -21px;
+  margin-top: -21px;
+  z-index: 10;
+  -webkit-transform-origin: 50%;
+  -moz-transform-origin: 50%;
+  transform-origin: 50%;
+  -webkit-animation: swiper-preloader-spin 1s steps(12, end) infinite;
+  -moz-animation: swiper-preloader-spin 1s steps(12, end) infinite;
+  animation: swiper-preloader-spin 1s steps(12, end) infinite;
+}
+.swiper-lazy-preloader:after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-position: 50%;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.swiper-lazy-preloader-white:after {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%23fff'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+@-webkit-keyframes swiper-preloader-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes swiper-preloader-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/**
+ * Swiper 3.1.7
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ *
+ * http://www.idangero.us/swiper/
+ *
+ * Copyright 2015, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ *
+ * Licensed under MIT
+ *
+ * Released on: October 10, 2015
+ */
+.swiper-container{margin:0 auto;position:relative;overflow:hidden;z-index:1}.swiper-container-no-flexbox .swiper-slide{float:left}.swiper-container-vertical>.swiper-wrapper{-webkit-box-orient:vertical;-moz-box-orient:vertical;-ms-flex-direction:column;-webkit-flex-direction:column;flex-direction:column}.swiper-wrapper{position:relative;width:100%;height:100%;z-index:1;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-transition-property:-webkit-transform;-moz-transition-property:-moz-transform;-o-transition-property:-o-transform;-ms-transition-property:-ms-transform;transition-property:transform;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}.swiper-container-android .swiper-slide,.swiper-wrapper{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-o-transform:translate(0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.swiper-container-multirow>.swiper-wrapper{-webkit-box-lines:multiple;-moz-box-lines:multiple;-ms-flex-wrap:wrap;-webkit-flex-wrap:wrap;flex-wrap:wrap}.swiper-container-free-mode>.swiper-wrapper{-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out;margin:0 auto}.swiper-slide{-webkit-flex-shrink:0;-ms-flex:0 0 auto;flex-shrink:0;width:100%;height:100%;position:relative}.swiper-container .swiper-notification{position:absolute;left:0;top:0;pointer-events:none;opacity:0;z-index:-1000}.swiper-wp8-horizontal{-ms-touch-action:pan-y;touch-action:pan-y}.swiper-wp8-vertical{-ms-touch-action:pan-x;touch-action:pan-x}.swiper-button-next,.swiper-button-prev{position:absolute;top:50%;width:27px;height:44px;margin-top:-22px;z-index:10;cursor:pointer;-moz-background-size:27px 44px;-webkit-background-size:27px 44px;background-size:27px 44px;background-position:center;background-repeat:no-repeat}.swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled{opacity:.35;cursor:auto;pointer-events:none}.swiper-button-prev,.swiper-container-rtl .swiper-button-next{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");left:10px;right:auto}.swiper-button-prev.swiper-button-black,.swiper-container-rtl .swiper-button-next.swiper-button-black{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E")}.swiper-button-prev.swiper-button-white,.swiper-container-rtl .swiper-button-next.swiper-button-white{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E")}.swiper-button-next,.swiper-container-rtl .swiper-button-prev{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");right:10px;left:auto}.swiper-button-next.swiper-button-black,.swiper-container-rtl .swiper-button-prev.swiper-button-black{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E")}.swiper-button-next.swiper-button-white,.swiper-container-rtl .swiper-button-prev.swiper-button-white{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E")}.swiper-pagination{position:absolute;text-align:center;-webkit-transition:.3s;-moz-transition:.3s;-o-transition:.3s;transition:.3s;-webkit-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);transform:translate3d(0,0,0);z-index:10}.swiper-pagination.swiper-pagination-hidden{opacity:0}.swiper-pagination-bullet{width:8px;height:8px;display:inline-block;border-radius:100%;background:#000;opacity:.2}button.swiper-pagination-bullet{border:none;margin:0;padding:0;box-shadow:none;-moz-appearance:none;-ms-appearance:none;-webkit-appearance:none;appearance:none}.swiper-pagination-clickable .swiper-pagination-bullet{cursor:pointer}.swiper-pagination-white .swiper-pagination-bullet{background:#fff}.swiper-pagination-bullet-active{opacity:1;background:#007aff}.swiper-pagination-white .swiper-pagination-bullet-active{background:#fff}.swiper-pagination-black .swiper-pagination-bullet-active{background:#000}.swiper-container-vertical>.swiper-pagination{right:10px;top:50%;-webkit-transform:translate3d(0,-50%,0);-moz-transform:translate3d(0,-50%,0);-o-transform:translate(0,-50%);-ms-transform:translate3d(0,-50%,0);transform:translate3d(0,-50%,0)}.swiper-container-vertical>.swiper-pagination .swiper-pagination-bullet{margin:5px 0;display:block}.swiper-container-horizontal>.swiper-pagination{bottom:10px;left:0;width:100%}.swiper-container-horizontal>.swiper-pagination .swiper-pagination-bullet{margin:0 5px}.swiper-container-3d{-webkit-perspective:1200px;-moz-perspective:1200px;-o-perspective:1200px;perspective:1200px}.swiper-container-3d .swiper-cube-shadow,.swiper-container-3d .swiper-slide,.swiper-container-3d .swiper-slide-shadow-bottom,.swiper-container-3d .swiper-slide-shadow-left,.swiper-container-3d .swiper-slide-shadow-right,.swiper-container-3d .swiper-slide-shadow-top,.swiper-container-3d .swiper-wrapper{-webkit-transform-style:preserve-3d;-moz-transform-style:preserve-3d;-ms-transform-style:preserve-3d;transform-style:preserve-3d}.swiper-container-3d .swiper-slide-shadow-bottom,.swiper-container-3d .swiper-slide-shadow-left,.swiper-container-3d .swiper-slide-shadow-right,.swiper-container-3d .swiper-slide-shadow-top{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:10}.swiper-container-3d .swiper-slide-shadow-left{background-image:-webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,0)));background-image:-webkit-linear-gradient(right,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-moz-linear-gradient(right,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-o-linear-gradient(right,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:linear-gradient(to left,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-container-3d .swiper-slide-shadow-right{background-image:-webkit-gradient(linear,right top,left top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,0)));background-image:-webkit-linear-gradient(left,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-moz-linear-gradient(left,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-o-linear-gradient(left,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:linear-gradient(to right,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-container-3d .swiper-slide-shadow-top{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.5)),to(rgba(0,0,0,0)));background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-moz-linear-gradient(bottom,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-o-linear-gradient(bottom,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-container-3d .swiper-slide-shadow-bottom{background-image:-webkit-gradient(linear,left bottom,left top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,0)));background-image:-webkit-linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-moz-linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:-o-linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,0));background-image:linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-container-coverflow .swiper-wrapper{-ms-perspective:1200px}.swiper-container-fade.swiper-container-free-mode .swiper-slide{-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out}.swiper-container-fade .swiper-slide{pointer-events:none;position:relative;top:0px;}.swiper-container-fade .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-fade .swiper-slide-active,.swiper-container-fade .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-container-cube{overflow:visible}.swiper-container-cube .swiper-slide{pointer-events:none;visibility:hidden;-webkit-transform-origin:0 0;-moz-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;width:100%;height:100%;z-index:1}.swiper-container-cube.swiper-container-rtl .swiper-slide{-webkit-transform-origin:100% 0;-moz-transform-origin:100% 0;-ms-transform-origin:100% 0;transform-origin:100% 0}.swiper-container-cube .swiper-slide-active,.swiper-container-cube .swiper-slide-next,.swiper-container-cube .swiper-slide-next+.swiper-slide,.swiper-container-cube .swiper-slide-prev{pointer-events:auto;visibility:visible}.swiper-container-cube .swiper-slide-shadow-bottom,.swiper-container-cube .swiper-slide-shadow-left,.swiper-container-cube .swiper-slide-shadow-right,.swiper-container-cube .swiper-slide-shadow-top{z-index:0;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden}.swiper-container-cube .swiper-cube-shadow{position:absolute;left:0;bottom:0;width:100%;height:100%;background:#000;opacity:.6;-webkit-filter:blur(50px);filter:blur(50px);z-index:0}.swiper-scrollbar{border-radius:10px;position:relative;-ms-touch-action:none;background:rgba(0,0,0,.1)}.swiper-container-horizontal>.swiper-scrollbar{position:absolute;left:1%;bottom:3px;z-index:50;height:5px;width:98%}.swiper-container-vertical>.swiper-scrollbar{position:absolute;right:3px;top:1%;z-index:50;width:5px;height:98%}.swiper-scrollbar-drag{height:100%;width:100%;position:relative;background:rgba(0,0,0,.5);border-radius:10px;left:0;top:0}.swiper-scrollbar-cursor-drag{cursor:move}.swiper-lazy-preloader{width:42px;height:42px;position:absolute;left:50%;top:50%;margin-left:-21px;margin-top:-21px;z-index:10;-webkit-transform-origin:50%;-moz-transform-origin:50%;transform-origin:50%;-webkit-animation:swiper-preloader-spin 1s steps(12,end) infinite;-moz-animation:swiper-preloader-spin 1s steps(12,end) infinite;animation:swiper-preloader-spin 1s steps(12,end) infinite}.swiper-lazy-preloader:after{display:block;content:"";width:100%;height:100%;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");background-position:50%;-webkit-background-size:100%;background-size:100%;background-repeat:no-repeat}.swiper-lazy-preloader-white:after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%23fff'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")}@-webkit-keyframes swiper-preloader-spin{100%{-webkit-transform:rotate(360deg)}}@keyframes swiper-preloader-spin{100%{transform:rotate(360deg)}}
+
+.swiper-container {
+    width: 100%;
+    margin: 0;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    width:300px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-slide img {
+    width: 300px;
+    height:250px;
+}
+.swiper-slide.label {
+    width: 40px;
+    height:225px;
+    margin-right: 0px;
+}
+.grid
+{
+    width: 33%;
+    padding: 15px;
+    float:left;
+}
+
+</style>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="Drupal 7 (http://drupal.org)" name="Generator"/>
+<link href="/home-page" rel="canonical"/>
+<link href="/node/4582" rel="shortlink"/>
+<link href="https://wcbc.edu/sites/default/files/favicon.png" rel="shortcut icon" type="image/png"/>
+<link href="https://wcbc.edu/sites/default/files/webclip.png" rel="apple-touch-icon" type="image/png"/>
+<title>Home Page | West Coast Baptist College</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/modules/system/system.base.css?q4fk0u");
+@import url("https://wcbc.edu/modules/system/system.menus.css?q4fk0u");
+@import url("https://wcbc.edu/modules/system/system.messages.css?q4fk0u");
+@import url("https://wcbc.edu/modules/system/system.theme.css?q4fk0u");
+</style>
+<style media="screen" type="text/css">
+@import url("https://wcbc.edu/sites/all/libraries/owl-carousel/owl.carousel.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/libraries/owl-carousel/owl.theme.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/libraries/owl-carousel/owl.transitions.css?q4fk0u");
+</style>
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/sites/all/modules/jquery_update/replace/ui/themes/base/minified/jquery.ui.core.min.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/jquery_update/replace/ui/themes/base/minified/jquery.ui.theme.min.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/jquery_update/replace/ui/themes/base/minified/jquery.ui.menu.min.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/jquery_update/replace/ui/themes/base/minified/jquery.ui.autocomplete.min.css?q4fk0u");
+</style>
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/modules/aggregator/aggregator.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/calendar/css/calendar_multiday.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/date/date_api/date.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/date/date_popup/themes/datepicker.1.7.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/date/date_repeat_field/date_repeat_field.css?q4fk0u");
+@import url("https://wcbc.edu/modules/field/theme/field.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/menu_attach_block/menu_attach_block.css?q4fk0u");
+@import url("https://wcbc.edu/modules/node/node.css?q4fk0u");
+@import url("https://wcbc.edu/modules/search/search.css?q4fk0u");
+@import url("https://wcbc.edu/modules/user/user.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/views/css/views.css?q4fk0u");
+</style>
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/sites/all/modules/contrib/colorbox/styles/default/colorbox_style.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/ctools/css/ctools.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/panels/css/panels.css?q4fk0u");
+</style>
+<style media="all" type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+
+
+
+/*]]>*/-->
+</style>
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/sites/all/modules/contrib/search_autocomplete/css/themes/user-blue.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/modules/contrib/search_autocomplete/css/themes/minimal.css?q4fk0u");
+</style>
+<style media="all" type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+#preloader{background-color:#ffbd5c;}
+
+/*]]>*/-->
+</style>
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/sites/all/modules/contrib/fontello/css/fontello.fix.css?q4fk0u");
+@import url("https://wcbc.edu/sites/default/files/icon/fontello/fontello/css/fontello.css?q4fk0u");
+@import url("https://wcbc.edu/sites/default/files/icon/fontello/fontello/css/animation.css?q4fk0u");
+</style>
+<!--[if IE 7]>
+<style type="text/css" media="all">
+@import url("https://wcbc.edu/sites/default/files/icon/fontello/fontello/css/fontello-ie7.css?q4fk0u");
+</style>
+<![endif]-->
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/loader.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/lib/essentials.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/lib/font-awesome.min.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/lib/backslider.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/lib/ytplayer.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/lib/magnific-popup.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/lib/jquery.bxslider.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/lib/flexslider.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/style.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/futureyou.css?q4fk0u");
+</style>
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/fonts/font-awesome.css?q4fk0u");
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/animate.css?q4fk0u");
+</style>
+<style media="all" type="text/css">
+@import url("https://wcbc.edu/sites/all/themes/md_magnum/css/colors/default.css?q4fk0u");
+</style>
+<!--[if lte IE 7]>
+<link type="text/css" rel="stylesheet" href="https://wcbc.edu/sites/all/themes/md_magnum/css/ie7.css?q4fk0u" media="all" />
+<![endif]-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.10/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script src="https://wcbc.edu/misc/jquery-extend-3.4.0.js?v=1.10.2" type="text/javascript"></script>
+<script src="https://wcbc.edu/misc/jquery.once.js?v=1.2" type="text/javascript"></script>
+<script src="https://wcbc.edu/misc/drupal.js?q4fk0u" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery.ui || document.write("<script src='/sites/all/modules/jquery_update/replace/ui/ui/minified/jquery-ui.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script src="https://wcbc.edu/sites/all/modules/contrib/admin_menu/admin_devel/admin_devel.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/libraries/colorbox/jquery.colorbox-min.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/modules/contrib/colorbox/js/colorbox.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/modules/contrib/colorbox/styles/default/colorbox_style.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/modules/contrib/search_autocomplete/js/jquery.autocomplete.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/modules/google_analytics/googleanalytics.js?q4fk0u" type="text/javascript"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-1766036-6", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery(window).load(function() { // makes sure the whole site is loaded
+            jQuery('#status').delay(350).fadeOut('slow'); // will first fade out the loading animation
+            jQuery('#pre-load-logo').delay(350).fadeOut('slow'); // second fade out the loading animation
+            jQuery('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            jQuery('body').delay(350).css({'overflow-y':'visible'});
+    })
+//--><!]]>
+</script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/modernizr.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.equal.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.fittext.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.magnific-popup.min.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.bxslider.min.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.flexslider.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.easing.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.nav.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.backslider.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.sticky.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.ytplayer.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.touchswipe.min.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.caroufredsel.min.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/iscroll.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/lib/jquery.stellar.min.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/services-slider.js?q4fk0u" type="text/javascript"></script>
+<script src="https://use.typekit.net/izo7jdo.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{Typekit.load();}catch(e){}
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"md_magnum","theme_token":"Uu4E1JFUnXWLBPyqLh41bhLvTRiS3-IBCH66T0oS9Fw","js":{"sites\/all\/libraries\/owl-carousel\/owl.carousel.min.js":1,"sites\/all\/modules\/contrib\/owlcarousel\/includes\/js\/owlcarousel.settings.js":1,"sites\/all\/themes\/md_magnum\/js\/main.js":1,"sites\/all\/themes\/md_magnum\/js\/stellariscroll.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.10.2\/jquery.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jqueryui\/1.10.2\/jquery-ui.min.js":1,"1":1,"sites\/all\/modules\/contrib\/admin_menu\/admin_devel\/admin_devel.js":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/contrib\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/contrib\/colorbox\/styles\/default\/colorbox_style.js":1,"sites\/all\/modules\/contrib\/search_autocomplete\/js\/jquery.autocomplete.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"2":1,"3":1,"sites\/all\/themes\/md_magnum\/js\/lib\/modernizr.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.equal.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.fittext.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.magnific-popup.min.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.bxslider.min.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.flexslider.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.easing.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.nav.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.backslider.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.sticky.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.ytplayer.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.touchswipe.min.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.caroufredsel.min.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/iscroll.js":1,"sites\/all\/themes\/md_magnum\/js\/lib\/jquery.stellar.min.js":1,"sites\/all\/themes\/md_magnum\/js\/services-slider.js":1,"https:\/\/use.typekit.net\/izo7jdo.js":1,"4":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/libraries\/owl-carousel\/owl.carousel.css":1,"sites\/all\/libraries\/owl-carousel\/owl.theme.css":1,"sites\/all\/libraries\/owl-carousel\/owl.transitions.css":1,"misc\/ui\/jquery.ui.core.css":1,"misc\/ui\/jquery.ui.theme.css":1,"misc\/ui\/jquery.ui.menu.css":1,"misc\/ui\/jquery.ui.autocomplete.css":1,"modules\/aggregator\/aggregator.css":1,"sites\/all\/modules\/contrib\/calendar\/css\/calendar_multiday.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/contrib\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/menu_attach_block\/menu_attach_block.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"0":1,"1":1,"sites\/all\/modules\/contrib\/search_autocomplete\/css\/themes\/user-blue.css":1,"sites\/all\/modules\/contrib\/search_autocomplete\/css\/themes\/minimal.css":1,"2":1,"sites\/all\/libraries\/fontawesome\/css\/font-awesome.css":1,"sites\/all\/modules\/contrib\/fontello\/css\/fontello.fix.css":1,"public:\/\/icon\/fontello\/fontello\/css\/fontello.css":1,"public:\/\/icon\/fontello\/fontello\/css\/animation.css":1,"public:\/\/icon\/fontello\/fontello\/css\/fontello-ie7.css":1,"sites\/all\/themes\/md_magnum\/css\/loader.css":1,"sites\/all\/themes\/md_magnum\/css\/lib\/essentials.css":1,"sites\/all\/themes\/md_magnum\/css\/lib\/font-awesome.min.css":1,"sites\/all\/themes\/md_magnum\/css\/lib\/backslider.css":1,"sites\/all\/themes\/md_magnum\/css\/lib\/ytplayer.css":1,"sites\/all\/themes\/md_magnum\/css\/lib\/magnific-popup.css":1,"sites\/all\/themes\/md_magnum\/css\/lib\/jquery.bxslider.css":1,"sites\/all\/themes\/md_magnum\/css\/lib\/flexslider.css":1,"sites\/all\/themes\/md_magnum\/css\/style.css":1,"sites\/all\/themes\/md_magnum\/css\/futureyou.css":1,"sites\/all\/themes\/md_magnum\/css\/sub_custom.css":1,"sites\/all\/themes\/md_magnum\/fonts\/font-awesome.css":1,"sites\/all\/themes\/md_magnum\/css\/animate.css":1,"sites\/all\/themes\/md_magnum\/css\/colors\/default.css":1,"sites\/all\/themes\/md_magnum\/css\/ie7.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"owlcarousel":{"owl-carousel-event_grid56":{"settings":{"items":4,"itemsDesktop":["1199",3],"itemsDesktopSmall":[979,3],"itemsTablet":["768",2],"itemsTabletSmall":[0,0],"itemsMobile":["479",1],"singleItem":false,"itemsScaleUp":false,"slideSpeed":1000,"paginationSpeed":2000,"rewindSpeed":1000,"autoPlay":"5000","stopOnHover":false,"navigation":false,"navigationText":["prev","next"],"rewindNav":true,"scrollPerPage":true,"pagination":false,"paginationNumbers":false,"responsive":true,"responsiveRefreshRate":200,"baseClass":"owl-carousel","theme":"owl-theme mb-30","lazyLoad":true,"lazyFollow":true,"lazyEffect":"fadeIn","autoHeight":true,"jsonPath":false,"jsonSuccess":false,"dragBeforeAnimFinish":true,"mouseDrag":true,"touchDrag":true,"addClassActive":false,"transitionStyle":false},"views":{"ajax_pagination":0}}},"better_exposed_filters":{"views":{"home_upcoming_events":{"displays":{"event_grid":{"filters":[]}}},"about_us":{"displays":{"wcbc_team":{"filters":[]}}},"collegian_intramural_schedule":{"displays":{"block_2":{"filters":[]}}},"bible_concentrations":{"displays":{"block_4":{"filters":[]}}}}},"search_autocomplete":{"form1":{"selector":"#search-form[action=\u0022\/search\/node\u0022] #edit-keys","minChars":"2","max_sug":"10","type":"internal","datas":"https:\/\/wcbc.edu\/search_autocomplete\/autocomplete\/1\/","fid":"1","theme":"minimal","auto_submit":"1","auto_redirect":"1"},"form2":{"selector":"#search-form[action=\u0022\/search\/user\u0022] #edit-keys","minChars":"3","max_sug":"10","type":"internal","datas":"https:\/\/wcbc.edu\/search_autocomplete\/autocomplete\/2\/","fid":"2","theme":"user-blue","auto_submit":"1","auto_redirect":"1"},"form3":{"selector":"#edit-search-block-form--2","minChars":"2","max_sug":"10","type":"internal","datas":"https:\/\/wcbc.edu\/search_autocomplete\/autocomplete\/3\/","fid":"3","theme":"minimal","auto_submit":"1","auto_redirect":"1"}},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":1},"urlIsAjaxTrusted":{"\/":true},"menuStickyEnable":1,"hdBgType":"custom","hdSlideEffect":"linear","hdSlideDelay":"4000","hdEffectTime":"1000","pr1BgType":"color","pr_1_text_slide_delay_time":"7000","pr2BgType":"color","pr_2_text_slide_delay_time":"7000","pr3BgType":"custom","pr_3_text_slide_delay_time":"7000","ftBgType":"color","nfBgType":"video","nfVideoRes":"default"});
+//--><!]]>
+</script>
+<style type="text/css">
+				.main-menu {background-color: #1A1A1A}
+.menu-nav li a {color: #7A7A7A}
+.menu-nav li a:hover {color: #FFFFFF}
+#parallax-1 .header{ background: none repeat scroll 0 0 #333333;}
+#parallax-1 { height: 200px;}
+#parallax-2 .header{ background: none repeat scroll 0 0 #333333;}
+.footer-two { background: none repeat scroll 0 0 #f0f0f0;}
+		body {font-family: "proxima-nova",sans-serif;font-weight: light;text-transform: none;;color: #9d9d9d;}
+a:link, #node-title a {}
+a:hover, #node-title a:hover {}
+a:visited, #node-title a:visited {}
+a:focus, a:active, #node-title a:focus, #node-title a:active {}
+h1 {font-family: "chaparral-pro",sans-serif;font-weight: light;font-size: 63px;text-transform: none;; color: #737373;}
+h2 {font-family: "proxima-nova",sans-serif;font-weight: normal;;}
+h3 {font-family: "proxima-nova",sans-serif;font-weight: normal;;}
+h4 {font-family: "proxima-nova",sans-serif;font-weight: normal;;}
+h5 {font-family: "proxima-nova",sans-serif;font-weight: normal;;}
+h6 {font-family: "proxima-nova",sans-serif;font-weight: normal;;}
+#node-title {font-family: "chaparral-pro",sans-serif;font-weight: light;font-size: 63px;text-transform: none;;}
+.flx-intro-2 h2 {font-family: "proxima-nova",sans-serif;font-weight: normal;;}
+.flx-map-form span.webform-title{font-family: "proxima-nova",sans-serif;font-weight: normal;;}
+		@media screen and (min-width: 1024px) {
+  ul.home-menu li {
+    float: left;
+    display: block;
+    width: 25%;
+    padding: 1%;
+  }
+}
+
+div#block-md-magnum-module-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+ul.home-menu li b {
+  font-size: 200%
+}
+
+ul.home-menu li em {
+  font-size: 120%;
+  margin-top: 5%;
+}
+
+.home-wrap .home-content h6 {
+  margin-top: .75em;
+}
+
+.backslider .bs-overlay {
+  display: inline;
+  background: url('/sites/all/themes/md_magnum/images/pattern.png');
+}
+
+/* FitText headings with css fallback */
+h1.fittext,
+h2.fittext,
+h3.fittext,
+h4.fittext,
+h5.fittext,
+h6.fittext {
+	font-family: proxima-nova, Helvetica, Arial, sans-serif;
+}
+
+/* Bigger headings without using jQuery */
+.bigtext h1,
+.bigtext h2,
+.bigtext h3,
+.bigtext h4,
+.bigtext h5,
+.bigtext h6,
+h1.bigtext,
+h2.bigtext,
+h3.bigtext,
+h4.bigtext,
+h5.bigtext,
+h6.bigtext {
+	font-family: proxima-nova, Helvetica, Arial, sans-serif;
+}
+
+.fourofour h1 {
+	font-family: proxima-nova, Helvetica, Arial, sans-serif;
+}	</style>
+<!-- Global site tag (gtag.js) - Google AdWords: 1014812465 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-1014812465"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-1014812465');
+</script> <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-1766036-6', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$( "#search-button" ).click(function() {
+				$( "#search-block-form" ).slideToggle( "swing");
+				document.getElementById("edit-search-block-form--2").focus();
+			});
+		});
+	</script>
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$( "#site-map-button" ).click(function() {
+				$( "#site-map-section" ).slideToggle( "swing");
+			});
+		});
+	</script>
+</head>
+<body class="html front not-logged-in no-sidebars page-node page-node- page-node-4582 page-type-page" id="top">
+<!-- Menu -->
+<div class="main-menu fixedmenu">
+<div class="menu-wrap">
+<!-- Your symbolic or typographic logo -->
+<a href="https://wcbc.edu"><img alt="magnum logo color" class="menu-logo" height="30" src="https://wcbc.edu/sites/default/files/logo-400-wcbc-current.png" width="38"/></a>
+<!-- The menu toggle -->
+<!-- <li id="site-map-button">MENU <i class="fa fa-bars fa-lg"></i></li> -->
+<!-- <input type="checkbox" id="toggle-menu" />
+                <label for="toggle-menu" class="toggle-menu"></label> --><!-- The menu items -->
+<ul class="menu-nav"><li><a href="/academics">Academics</a></li><li><a href="/admissions">Admissions</a></li><li><a href="/about">About WCBC</a></li><li><a href="/experience">Experience</a></li><li><a href="/connect">Connect</a></li><li><a href="/student-services">Student Services</a></li><li id="site-map-button">MENU <i class="fa fa-bars fa-lg"></i></li><li id="search-button"><i class="fa fa-search"></i></li><li id="apply-button"><a class="apply" href="https://apply.wcbc.edu/" target="_blank">Apply Now</a></li>
+</ul>
+</div>
+</div><section class="menu-block-wrapper menu-block-2 menu-name-main-menu parent-mlid-0 menu-level-1 bg-7" id="site-map-section">
+<div class="row">
+<ul class="menu clearfix"><li class="first expanded menu-mlid-1454"><a href="/academics">Academics</a><ul class="menu clearfix"><li class="first leaf menu-mlid-8746"><a href="/academics/accreditation">Accreditation</a></li>
+<li class="leaf menu-mlid-8732"><a href="/academics/courses">Courses</a></li>
+<li class="leaf menu-mlid-8733"><a href="/academics/faculty">Faculty</a></li>
+<li class="leaf menu-mlid-8734"><a class="smoothscroll" href="/academics#bible-concentrations">Bible</a></li>
+<li class="leaf menu-mlid-8735"><a class="smoothscroll" href="/academics#education-concentrations">Education</a></li>
+<li class="leaf menu-mlid-8736"><a class="smoothscroll" href="/academics#music-concentrations">Music</a></li>
+<li class="leaf menu-mlid-8745"><a href="https://wcbccreativearts.org/" target="_blank">Creative Arts</a></li>
+<li class="leaf menu-mlid-8737"><a href="http://masters.wcbc.edu/">Masters Degree</a></li>
+<li class="leaf menu-mlid-8738"><a class="smoothscroll" href="/academics#proficiencies">Proficiencies</a></li>
+<li class="leaf menu-mlid-19011"><a href="https://wcbc.edu/elearning/bachelors-degree.html">Online Bachelor's</a></li>
+<li class="leaf menu-mlid-19012"><a href="http://masters.wcbc.edu/">Online Master's</a></li>
+<li class="last leaf menu-mlid-8780"><a class="text-color" href="https://wcbc.edu/sites/default/files/2019-2020-wcbc-catalog.pdf">College Catalog</a></li>
+</ul></li>
+<li class="expanded menu-mlid-8709"><a href="/admissions">Admissions</a><ul class="menu clearfix"><li class="first leaf menu-mlid-8708"><a href="/admissions/basic-costs">Basic Costs</a></li>
+<li class="leaf menu-mlid-14860"><a href="/admissions/financial-aid">Financial Aid</a></li>
+<li class="leaf menu-mlid-8730"><a href="/admissions/scholarships">Scholarships</a></li>
+<li class="leaf menu-mlid-9100"><a href="/admissions/tax-benefits">Tax Benefits</a></li>
+<li class="leaf menu-mlid-8731"><a href="/admissions/admissions-policies">Admissions Policies</a></li>
+<li class="last leaf menu-mlid-8757"><a class="apply-button" href="https://wcbc.edu/apply/">Apply Now</a></li>
+</ul></li>
+<li class="expanded menu-mlid-8777"><a href="/about">About WCBC</a><ul class="menu clearfix"><li class="first leaf menu-mlid-10174"><a href="/about/purpose-and-mission">Purpose and Mission</a></li>
+<li class="leaf menu-mlid-8720"><a href="/about/core-values">Core Values</a></li>
+<li class="leaf menu-mlid-8721"><a href="/about/history">History</a></li>
+<li class="last leaf menu-mlid-8722"><a href="/about/dr-paul-chappell-founder-and-president">Dr. Paul Chappell</a></li>
+</ul></li>
+<li class="expanded menu-mlid-7491"><a href="/experience">Experience</a><ul class="menu clearfix"><li class="first leaf menu-mlid-8723"><a href="/experience/spiritual-life">Spiritual Life</a></li>
+<li class="leaf menu-mlid-8724"><a href="/experience/ministry-life">Ministry Life</a></li>
+<li class="leaf menu-mlid-8725"><a href="/experience/social-life">Social Life</a></li>
+<li class="leaf menu-mlid-8726"><a href="/employment">Local Employment</a></li>
+<li class="leaf menu-mlid-8727"><a href="/experience/married-students">Married Students</a></li>
+<li class="leaf menu-mlid-8728"><a href="/experience/area-services">Area Services</a></li>
+<li class="leaf menu-mlid-8729"><a href="/experience/campus">Campus</a></li>
+<li class="leaf has-children menu-mlid-8743"><a href="/athletics">Athletics</a></li>
+<li class="leaf menu-mlid-16946"><a href="/chapel-sermons">Chapel Sermons</a></li>
+<li class="leaf menu-mlid-8744"><a href="/events">Events</a></li>
+<li class="last leaf menu-mlid-19533"><a href="/events/holy-land-tour">Holy Land Tour 2020</a></li>
+</ul></li>
+<li class="expanded menu-mlid-8710"><a href="/connect">Connect</a><ul class="menu clearfix"><li class="first leaf menu-mlid-8739"><a href="/stay-in-touch">Stay in Touch</a></li>
+<li class="leaf menu-mlid-8740"><a href="/schedule-visit">Schedule a Visit</a></li>
+<li class="last leaf menu-mlid-8741"><a href="/donate-now">Donate Now</a></li>
+</ul></li>
+<li class="last expanded menu-mlid-8758"><a class="student-services" href="/student-services">Student Services</a><ul class="menu clearfix"><li class="first leaf menu-mlid-8748"><a href="/airport-shuttle">Airport Shuttles</a></li>
+<li class="leaf menu-mlid-8752"><a href="/experience/campus">Campus</a></li>
+<li class="leaf menu-mlid-8754"><a href="/chapel-sermons">Chapel Sermons</a></li>
+<li class="leaf menu-mlid-19793"><a href="/wcbc-collegians">Collegians</a></li>
+<li class="leaf menu-mlid-14861"><a href="/counseling">Counseling</a></li>
+<li class="leaf menu-mlid-8753"><a href="/events">Events</a></li>
+<li class="leaf menu-mlid-14862"><a href="/admissions/financial-aid">Financial Aid</a></li>
+<li class="leaf menu-mlid-8756"><a href="/job-opportunity-form">Job Opportunities</a></li>
+<li class="leaf menu-mlid-16686"><a href="/library">Library</a></li>
+<li class="leaf menu-mlid-10962"><a href="/private-scholarships">Private Scholarships</a></li>
+<li class="leaf menu-mlid-15648"><a href="/registrar-services">Registrar Services</a></li>
+<li class="leaf menu-mlid-15649"><a href="/student-advocacy">Student Advocacy</a></li>
+<li class="leaf menu-mlid-8751"><a href="http://portal.wcbc.edu/">Student Portal</a></li>
+<li class="leaf menu-mlid-8749"><a href="/student-resources/tuition-payment">Tuition Payment</a></li>
+<li class="leaf menu-mlid-8755"><a href="/vehicle-summer-storage">Vehicle Summer Storage</a></li>
+<li class="last leaf menu-mlid-8750"><a href="/work-study-application">Work Study</a></li>
+</ul></li>
+</ul> </div>
+</section>
+<form accept-charset="UTF-8" action="/" id="search-block-form" method="post"><div><div class="row clearfix">
+<h2 class="element-invisible">Search form</h2>
+<div class="form-item form-type-textfield form-item-search-block-form">
+<label class="element-invisible" for="edit-search-block-form--2">Search </label>
+<input class="form-text" id="edit-search-block-form--2" maxlength="128" name="search_block_form" size="15" title="Enter the terms you wish to search for." type="text" value=""/>
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input class="form-submit" id="edit-submit" name="op" type="submit" value="Search"/></div><input name="form_build_id" type="hidden" value="form-d-niSmBp3_VdB7itAxrbvAN0OVK3vQxAwxMOpLuu5kM"/>
+<input name="form_id" type="hidden" value="search_block_form"/>
+</div>
+</div></form>
+<style type="text/css">
+.year-logo {width:60%;}
+@media (max-width:767px) { .year-logo {width: 40%;}}
+@media (min-width:768px) { .wording {padding-top:2.5rem;}}
+</style>
+<section class="bg-3 fourth">
+<div class="container">
+<div class="row">
+<div class="columns two">
+<img class="img img-responsive year-logo" src="/sites/default/files/25th-year-logo-white.svg"/>
+</div>
+<div class="columns ten wording">
+<h1 class="mb-0 hidden">25th Year</h1>
+<h3 class="mt-10">Celebrating 25 years of training laborers for His harvest.</h3>
+</div>
+</div>
+</div>
+</section><meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport"/>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.1.7/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.1.7/js/swiper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.1.7/js/swiper.jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.1.7/js/swiper.jquery.min.js"></script>
+<section class="parallax darkpic backslider introduction-section with-logo">
+<div class="swiper-container swiper">
+<div class="swiper-wrapper">
+<div class="swiper-slide"><img data-stellar-ratio=".9" src="//wcbc.edu/sites/default/files/header-slide-1.jpg"/></div>
+<div class="swiper-slide"><img data-stellar-ratio=".9" src="//wcbc.edu/sites/default/files/header-slide-02.jpg"/></div>
+<div class="swiper-slide"><img data-stellar-ratio=".9" src="//wcbc.edu/sites/default/files/header-slide-3.jpg"/></div>
+<div class="swiper-slide"><img data-stellar-ratio=".9" src="//wcbc.edu/sites/default/files/student-smile-class.jpg"/></div>
+<div class="swiper-slide"><img data-stellar-ratio=".9" src="//wcbc.edu/sites/default/files/header-slide-5.jpg"/></div>
+</div>
+</div>
+<div class="row clearfix aligncenter bs-overlay">
+<img class="logo" src="/sites/default/files/logo-white-100.png"/>
+<h1>West Coast Baptist College</h1>
+<h3>Training laborers for his harvest since 1995</h3>
+<h4>The destination college for students who want to change <br/>their world with the gospel of Jesus Christ.</h4>
+<div class="swiper-menu">
+<a href="/academics">Academics</a>
+<a href="/admissions">Admissions</a>
+<a href="/about">About WCBC</a>
+<a href="/experience">Experience</a>
+<a href="/connect">Connect</a>
+</div>
+</div>
+</section>
+<script>
+    var swiper = new Swiper('.swiper', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 7777,
+        autoplayDisableOnInteraction: false,
+        effect: 'fade'
+    });
+</script>
+<div class="owl-carousel-event_grid56"><div class="item-0 item-odd">
+<a href="/events/new-years-tip-off-tournament"><img alt="" height="520" src="https://wcbc.edu/sites/default/files/styles/vertical_image/public/headerpics/events/tip-off-tournament.jpg?itok=24SpSUAs" typeof="foaf:Image" width="640"/></a>
+<span class="event-overlay"></span>
+<h2 class="mt-0"><a href="/events/new-years-tip-off-tournament">New Year's Tip-Off Tournament</a></h2>
+<span class="date-display-single" content="2020-02-04T00:00:00-08:00" datatype="xsd:dateTime" property="dc:date">February 04, 2020</span>
+<a href="/events/new-years-tip-off-tournament">Learn More</a> </div><div class="item-1 item-even">
+<a href="/events/youth-conference"><img alt="" height="520" src="https://wcbc.edu/sites/default/files/styles/vertical_image/public/headerpics/events/yc17_0.jpg?itok=DZXcliYm" typeof="foaf:Image" width="640"/></a>
+<span class="event-overlay"></span>
+<h2 class="mt-0"><a href="/events/youth-conference">Youth Conference</a></h2>
+<span class="date-display-single" content="2020-04-01T00:00:00-07:00" datatype="xsd:dateTime" property="dc:date">April 01, 2020</span>
+<a href="/events/youth-conference">Learn More</a> </div><div class="item-2 item-odd">
+<a href="/events/graduation-week"><img alt="" height="520" src="https://wcbc.edu/sites/default/files/styles/vertical_image/public/headerpics/events/senior_photo_2019_4.jpg?itok=5KK4BVN0" typeof="foaf:Image" width="640"/></a>
+<span class="event-overlay"></span>
+<h2 class="mt-0"><a href="/events/graduation-week">Graduation Week</a></h2>
+<span class="date-display-single" content="2020-05-01T00:00:00-07:00" datatype="xsd:dateTime" property="dc:date">May 01, 2020</span>
+<a href="/events/graduation-week">Learn More</a> </div><div class="item-3 item-even">
+<a href="/events/holy-land-tour"><img alt="" height="520" src="https://wcbc.edu/sites/default/files/styles/vertical_image/public/headerpics/events/beattitudes.jpg?itok=ta19LOkE" typeof="foaf:Image" width="640"/></a>
+<span class="event-overlay"></span>
+<h2 class="mt-0"><a href="/events/holy-land-tour">Holy Land Tour</a></h2>
+<span class="date-display-single" content="2020-10-12T00:00:00-07:00" datatype="xsd:dateTime" property="dc:date">October 12, 2020</span>
+<a href="/events/holy-land-tour">Learn More</a> </div></div>
+<a class="button outline color mb-50 mt-50" href="/events">View All Events</a>
+<section>
+<div class="row">
+<div class="twelve columns">
+<h2>Academic Structure</h2>
+<h4 class="text-semidark">Through the West Coast Baptist College undergraduate program, students earn a Bachelor of Religious Education degree. The academic structure allows you to  choose both an area of concentration, and an area of emphasis to help you prepare for your future.</h4>
+<div class="row margin">
+<div class="four columns serviceblock">
+<p><a href="/academics#bible-concentrations"><i aria-hidden="true" class="fa fa-book"></i></a></p>
+<p><a class="button small color" href="/academics#bible-concentrations">Bible</a></p>
+</div>
+<div class="four columns serviceblock">
+<p><a href="/academics#education-concentrations"><i aria-hidden="true" class="fa fa-graduation-cap"></i></a></p>
+<p><a class="button small color" href="/academics#education-concentrations">Education</a></p>
+</div>
+<div class="four columns serviceblock">
+<p><a href="/academics#music-concentrations"><i aria-hidden="true" class="fa fa-music"></i></a></p>
+<p><a class="button small color" href="/academics#music-concentrations">Music</a></p>
+</div>
+</div>
+<div class="row margin">
+<div class="six columns serviceblock">
+<p><a href="https://wcbccreativearts.org/" target="_blank"><i aria-hidden="true" class="fa fa-laptop"></i></a></p>
+<p><a class="button small color" href="https://wcbccreativearts.org/" target="_blank">Creative Arts</a></p>
+</div>
+<div class="six columns serviceblock">
+<p><a href="/academics#masters-degree"><i aria-hidden="true" class="fa fa-university"></i></a></p>
+<p><a class="button small color" href="http://masters.wcbc.edu">Masters Degree</a></p>
+</div>
+</div>
+<a class="button outline" href="/sites/default/files/2019-2020-wcbc-catalog.pdf">Download WCBC Catalog</a>
+</div>
+</div>
+</section><section class="bg-1" style="">
+<div class="row" style="margin-top: -20px;">
+<h1 class="mb-0">Online Learning</h1>
+<h3 class="mt-10">Stay in Ministry…Study Online</h3>
+<p><span class="countdown" deadline="December 30 2019 08:00:00"></span><small> until Winter Term begins</small></p>
+<div class="col-md-4">
+<img class="img-responsive" src="/sites/default/files/masters.jpg" style="min-width: 300px; max-width: 300px; margin-top: 20px; margin-bottom: -20px;" width="300"/>
+<a class="button" href="https://masters.wcbc.edu">Masters</a>
+</div>
+<div class="col-md-4">
+<img class="img-responsive" src="/sites/default/files/Bachelors.jpg" style="min-width: 300px; max-width: 300px; margin-top: 20px; margin-bottom: -20px;" width="300"/>
+<a class="button" href="/elearning/bachelors-degree.html">Bachelors</a>
+</div>
+<div class="col-md-4">
+<img class="img-responsive" src="/sites/default/files/certificate.jpg" style="min-width: 300px; max-width: 300px; margin-top: 20px; margin-bottom: -20px;" width="300"/>
+<a class="button" href="/online-certification-program">Certificates</a>
+</div>
+</div>
+</section>
+<section class="bg-3">
+<div class="row margin">
+<!-- -->
+<div class="row">
+<div class="twelve columns">
+<h2 class="article-title text-dark">Our Team</h2>
+<h4 class="article-subtitle text-semidark">The Administration of West Coast Baptist College is committed to a hands-on approach to the everyday life of the students. Every member of the Administration is involved in teaching on a daily basis in the classroom and mentoring outside the classroom through the activities of student life.</h4>
+</div>
+</div>
+<div class="three columns tablet-six columns medium-six columns small-twelve employeeblock singlefaculty">
+<div class="hoverimg">
+<img alt="employee-4" src="https://wcbc.edu/sites/default/files/avatarphotos/paul-chappell.jpg"/>
+<a href="/academics/faculty/dr-paul-chappell">
+<div class="mask">
+<span>
+</span>
+</div>
+</a>
+</div>
+<h4 class="margin-top"><a href="/academics/faculty/dr-paul-chappell"><span class="field-content"><a href="/academics/faculty/dr-paul-chappell">Dr. Paul Chappell</a></span></a></h4>
+<h6 class="serif italic text-light">Founder and President</h6>
+<p>Pastor Paul Chappell was called to Lancaster Baptist Church in 1986 by twelve members...</p></div>
+<div class="three columns tablet-six columns medium-six columns small-twelve employeeblock singlefaculty">
+<div class="hoverimg">
+<img alt="employee-4" src="https://wcbc.edu/sites/default/files/avatarphotos/john-goetsch.jpg"/>
+<a href="/academics/faculty/dr-john-goetsch">
+<div class="mask">
+<span>
+</span>
+</div>
+</a>
+</div>
+<h4 class="margin-top"><a href="/academics/faculty/dr-john-goetsch"><span class="field-content"><a href="/academics/faculty/dr-john-goetsch">Dr. John Goetsch</a></span></a></h4>
+<h6 class="serif italic text-light">Executive Vice President</h6>
+<p>Dr. John Goetsch was born and raised on a dairy farm near Watertown, Wisconsin and was...</p></div>
+<div class="three columns tablet-six columns medium-six columns small-twelve employeeblock singlefaculty">
+<div class="hoverimg">
+<img alt="employee-4" src="https://wcbc.edu/sites/default/files/avatarphotos/mark-rasmussen.jpg"/>
+<a href="/academics/faculty/dr-mark-rasmussen">
+<div class="mask">
+<span>
+</span>
+</div>
+</a>
+</div>
+<h4 class="margin-top"><a href="/academics/faculty/dr-mark-rasmussen"><span class="field-content"><a href="/academics/faculty/dr-mark-rasmussen">Dr. Mark Rasmussen</a></span></a></h4>
+<h6 class="serif italic text-light">Vice President</h6>
+<p>Dr. Mark Rasmussen has been teaching on the college level for the past thirty years....</p></div>
+<div class="three columns tablet-six columns medium-six columns small-twelve employeeblock singlefaculty">
+<div class="hoverimg">
+<img alt="employee-4" src="https://wcbc.edu/sites/default/files/avatarphotos/jim-schettler.jpg"/>
+<a href="/academics/faculty/dr-jim-schettler">
+<div class="mask">
+<span>
+</span>
+</div>
+</a>
+</div>
+<h4 class="margin-top"><a href="/academics/faculty/dr-jim-schettler"><span class="field-content"><a href="/academics/faculty/dr-jim-schettler">Dr. Jim Schettler</a></span></a></h4>
+<h6 class="serif italic text-light">Vice President/Dean of Students</h6>
+<p>Dr. Jim Schettler is the Vice President of Student Affairs at West Coast Baptist...</p></div>
+<div class="view-footer clearfix">
+<a class="button outline" href="http://wcbc.edu/academics/faculty">View the entire team</a> </div>
+</div>
+</section>
+<section class="parallax darkpic backslider">
+<img alt="" data-stellar-ratio=".9" src="/sites/default/files/chairs-sisk-1.jpg"/>
+<div class="row clearfix aligncenter bs-overlay">
+<h1>Visiting Us</h1>
+<h3>We would be happy to give you a guided tour<br/> of the campus and facilities and introduce you<br/> to some of our key staff and faculty.</h3>
+<a href="/schedule-visit">Learn More</a>
+<a href="https://www.google.com/maps/place/West+Coast+Baptist+College/@34.6953437,-118.0597985,17z/data=!4m12!1m9!4m8!1m0!1m6!1m2!1s0x80c251b1f5dd39d1:0x9a3239297eb17bb0!2sWest+Coast+Baptist+College,+4020+E+Lancaster+Blvd,+Lancaster,+CA+93535,+United+States!2m2!1d-118.0576098!2d34.6953437!3m1!1s0x80c251b1f5dd39d1:0x9a3239297eb17bb0" target="_blank">Get Directions</a>
+</div>
+</section>
+<!-- The footer -->
+<footer>
+<section class="half bg-5">
+<div class="row">
+<h2 class="text-color">What's  Next?</h2>
+<a class="button light big mb-50 mb-xxs-10" href="/stay-in-touch">Connect</a>
+<a class="button light big mb-50 mb-xxs-10" href="/visit">Visit</a>
+<a class="button big color outline mb-50 mb-xxs-10" href="/apply">Apply Now</a>
+</div>
+</section><section class="footer-two backslider">
+<div class="row">
+<div class="twelve columns"><a class="smoothscroll " href="https://wcbc.edu/#top"><i class="icon icon-up-open"></i></a><p class="socials"><a href="https://www.facebook.com/WCBCedu" target="_blank"><i class="icon-facebook icon outline light"></i></a><a href="https://twitter.com/wcbc_today" target="_blank"><i class="icon-twitter icon outline light"></i></a><a href="http://instagram.com/wcbc" target="_blank"><i class="icon-instagramm icon outline light"></i></a><a href="http://www.youtube.com/westcoastbaptist" target="_blank"><i class="icon-youtube icon outline light"></i></a></p><!-- Credits -->
+<p class="text-light"></p></div></div></section>
+<div class="row clearfix alignleft">
+<div class="four columns">
+<h2>Contact</h2>
+<p>West Coast Baptist College<br/>
+4010 E. Lancaster Blvd<br/>
+Lancaster, CA 93535<br/>
+888.694.9222<br/>
+<a href="mailto:info@wcbc.edu">info@wcbc.edu</a></p>
+<a href="/" rel="home" title="Home"><img alt="Home" src="//wcbc.edu/sites/all/themes/md_magnum/images/logo-gold-72.png"/></a> </div>
+<div class="four columns">
+<h2>Links</h2>
+<ul class="menu clearfix"><li class="first leaf"><a href="/chapel-sermons">Chapel Sermons</a></li>
+<li class="leaf"><a href="https://wcbc.edu/sites/default/files/2019-2020-wcbc-catalog.pdf">College Catalog</a></li>
+<li class="leaf"><a href="mailto:info@wcbc.edu">Contact</a></li>
+<li class="leaf"><a href="http://lbc-downloads.com/downloads/wcbc-educational-effectiveness-summary.pdf">Educational Effectiveness</a></li>
+<li class="leaf"><a href="/ministry-placement-services">Ministry Placement Services</a></li>
+<li class="leaf"><a href="/privacy-policy">Privacy Policy</a></li>
+<li class="leaf"><a href="https://wcbc.edu/student-achievement-data">Student Achievement Data</a></li>
+<li class="leaf"><a href="/transcript-request">Transcript Request</a></li>
+<li class="last leaf"><a href="https://donate.wcbc.edu">Donate Now</a></li>
+</ul> </div>
+<div class="four columns">
+<h2>Related Sites</h2>
+<ul class="menu clearfix"><li class="first leaf"><a href="http://www.lancasterbaptist.org/" target="_blank">Lancaster Baptist Church</a></li>
+<li class="leaf"><a href="http://www.ministry127.com/" target="_blank">Ministry127</a></li>
+<li class="leaf"><a href="http://www.paulchappell.com/" target="_blank">The Pastor's Perspective</a></li>
+<li class="leaf"><a href="http://slconference.com/" target="_blank">Spiritual Leadership Conference</a></li>
+<li class="last leaf"><a href="http://www.strivingtogether.com/" target="_blank">Striving Together Publications</a></li>
+</ul> </div>
+</div>
+<div class="footer-end">
+<p>West Coast Baptist College is an integrated auxiliary organization of Lancaster Baptist Church in Lancaster, CA</p>
+<div class="row">
+<a href="http://www.tracs.org" target="_blank"><img src="/sites/default/files/logos/tracs-color.png" style="height:75px;width:196px;"/></a>
+<p style="font-size:8.5pt;line-height:1rem;">West Coast Baptist College is a member of the Transnational Association of Christian Colleges and Schools (TRACS) [15935 Forest Road, Forest, VA 24551; Telephone: 434.525.9539; e-mail: info@tracs.org] having been awarded Accredited status as a Category III institution by the TRACS Accreditation Commission on April 16, 2019. This status is effective for a period of five years. TRACS is recognized by the United States Department of Education, the Council for Higher Education Accreditation and the International Network for Quality Assurance Agencies in Higher Education (INQAAHE).</p></div></div></footer>
+<script src="https://wcbc.edu/sites/all/libraries/owl-carousel/owl.carousel.min.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/modules/contrib/owlcarousel/includes/js/owlcarousel.settings.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/main.js?q4fk0u" type="text/javascript"></script>
+<script src="https://wcbc.edu/sites/all/themes/md_magnum/js/stellariscroll.js?q4fk0u" type="text/javascript"></script>
+<!--<script type="text/javascript" src="https://wcbc.edu/sites/all/themes/md_magnum/js/chat.js"></script>-->
+<script>
+	window.ChatraSetup = {
+			colors: {
+					buttonText: '#fff', // chat button text color
+					buttonBg: '#af9668'    // chat button background color
+			}
+	};
+	</script>
+<!-- Chatra {literal} -->
+<script>
+			(function(d, w, c) {
+					w.ChatraID = 'abRYtv8t2fq5x8AXd';
+					var s = d.createElement('script');
+					w[c] = w[c] || function() {
+							(w[c].q = w[c].q || []).push(arguments);
+					};
+					s.async = true;
+					s.src = (d.location.protocol === 'https:' ? 'https:': 'http:')
+					+ '//call.chatra.io/chatra.js';
+					if (d.head) d.head.appendChild(s);
+			})(document, window, 'Chatra');
+	</script>
+<!-- /Chatra {/literal} -->
+</body>
+</html>
+

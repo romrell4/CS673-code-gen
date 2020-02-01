@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html><head><style>@font-face {
+  font-family: 'BentonSansRegular';
+  src: url("https://fonts.iu.edu/fonts/benton-sans-regular.eot");
+  src: url("https://fonts.iu.edu/fonts/benton-sans-regular.eot?#iefix") format("embedded-opentype"), url("https://fonts.iu.edu/fonts/benton-sans-regular.woff") format("woff"), url("https://fonts.iu.edu/fonts/benton-sans-regular.ttf") format("truetype"), url("https://fonts.iu.edu/fonts/benton-sans-regular.svg#BentonSansRegular") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'BentonSansCondRegular';
+  src: url("https://fonts.iu.edu/fonts/benton-sans-cond-regular.eot");
+  src: url("https://fonts.iu.edu/fonts/benton-sans-cond-regular.eot?#iefix") format("embedded-opentype"), url("https://fonts.iu.edu/fonts/benton-sans-cond-regular.woff") format("woff"), url("https://fonts.iu.edu/fonts/benton-sans-cond-regular.ttf") format("truetype"), url("https://fonts.iu.edu/fonts/benton-sans-cond-regular.svg#BentonSansCondRegular") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'BentonSansCondBold';
+  src: url("https://fonts.iu.edu/fonts/benton-sans-cond-bold.eot");
+  src: url("https://fonts.iu.edu/fonts/benton-sans-cond-bold.eot?#iefix") format("embedded-opentype"), url("https://fonts.iu.edu/fonts/benton-sans-cond-bold.woff") format("woff"), url("https://fonts.iu.edu/fonts/benton-sans-cond-bold.ttf") format("truetype"), url("https://fonts.iu.edu/fonts/benton-sans-cond-bold.svg#BentonSansCondBold") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'GeorgiaProBoldItalic';
+  src: url("https://fonts.iu.edu/fonts/georgia-pro-bold-italic.eot");
+  src: url("https://fonts.iu.edu/fonts/georgia-pro-bold-italic.eot?#iefix") format("embedded-opentype"), url("https://fonts.iu.edu/fonts/georgia-pro-bold-italic.woff") format("woff"), url("https://fonts.iu.edu/fonts/georgia-pro-bold-italic.ttf") format("truetype"), url("https://fonts.iu.edu/fonts/georgia-pro-bold-italic.svg#GeorgiaProBoldItalic") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+#branding-bar,
+#footer {
+  -webkit-font-smoothing: initial;
+  -moz-font-smoothing: initial;
+  font-smoothing: initial;
+}
+
+#branding-bar *,
+#footer * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#branding-bar .row,
+#footer .row {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 64rem;
+  position: relative;
+}
+
+#branding-bar .row:before, #branding-bar .row:after,
+#footer .row:before,
+#footer .row:after {
+  content: " ";
+  display: table;
+}
+
+#branding-bar .row:after,
+#footer .row:after {
+  clear: both;
+}
+
+#branding-bar .row.pad,
+#footer .row.pad {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 100%;
+}
+
+#branding-bar {
+  background-color: #7A1705;
+  border-top: 5px solid #990000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+#branding-bar .show-on-mobile {
+  display: inline;
+}
+
+#branding-bar .show-on-tablet,
+#branding-bar .show-on-desktop {
+  display: none;
+}
+
+#branding-bar:after {
+  content: "";
+  bottom: -3px;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: rgba(74, 61, 48, 0.3);
+  z-index: 8;
+}
+
+#branding-bar img {
+  position: absolute;
+  top: -5px;
+  left: 0.9375rem;
+  width: 43px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  z-index: 9;
+}
+
+#branding-bar h1,
+#branding-bar #iu-campus {
+  font-family: BentonSansCondRegular, Arial, serif;
+  font-weight: normal;
+  color: #fff;
+  font-size: 18px;
+  float: left;
+  line-height: 45px;
+  margin: 0;
+  padding-left: 58px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+#branding-bar h1 a,
+#branding-bar #iu-campus a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#branding-bar h1 span,
+#branding-bar #iu-campus span {
+  font-family: inherit;
+}
+
+#branding-bar h1 .show-on-tablet,
+#branding-bar h1 .show-on-mobile,
+#branding-bar #iu-campus .show-on-tablet,
+#branding-bar #iu-campus .show-on-mobile {
+  font-size: 17px;
+}
+
+#branding-bar a:focus {
+  outline: none;
+}
+
+#branding-bar a:focus span {
+  outline: .125rem solid #fff;
+  outline-offset: .125rem;
+  padding: 2px;
+}
+
+#branding-bar.iupui #iu-campus,
+#branding-bar.iupuc #iu-campus {
+  font-size: 27px;
+}
+
+#branding-bar.iupui #iu-campus .show-on-tablet,
+#branding-bar.iupui #iu-campus .show-on-mobile,
+#branding-bar.iupuc #iu-campus .show-on-tablet,
+#branding-bar.iupuc #iu-campus .show-on-mobile {
+  font-size: 27px;
+}
+
+#footer {
+  padding: 24px 0;
+  text-align: center;
+  position: relative;
+  font-family: BentonSansRegular, Arial, serif;
+  font-weight: normal;
+}
+
+#footer a {
+  color: #990000;
+}
+
+#footer a:focus {
+  outline: .125rem solid #990000;
+  outline-offset: .125rem;
+}
+
+#footer .signature {
+  text-align: center;
+}
+
+#footer .signature-link {
+  background: url("iu-sig-formal.svg") no-repeat left top;
+  background-size: contain;
+  display: inline-block;
+  height: 0;
+  padding-top: 36px;
+  overflow: hidden;
+  width: 240px;
+}
+
+#footer .signature-link.signature-img {
+  background-image: none;
+  height: auto;
+  width: 15rem;
+  padding-top: 0;
+}
+
+#footer p {
+  font-size: 0.75rem;
+  line-height: 24px;
+  margin: 0;
+  clear: left;
+}
+
+#footer .tagline {
+  font-family: BentonSansCondBold, Arial, serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  background: #7A1705;
+  color: #fff;
+  font-size: 1.375rem;
+  line-height: 2.5rem;
+  margin: -24px -0.9375rem 24px -0.9375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+#footer .tagline span {
+  text-transform: lowercase;
+  font-family: GeorgiaProBoldItalic, Georgia, serif;
+  font-size: 1rem;
+  vertical-align: 2px;
+  letter-spacing: 0;
+  margin-left: -4px;
+}
+
+#footer .tagline a:focus {
+  outline-color: #fff;
+}
+
+#footer .tagline.bicentennial {
+  font-family: inherit;
+  letter-spacing: .1em;
+}
+
+#footer .tagline.bicentennial.celebration {
+  font-size: inherit;
+  padding-bottom: 2px;
+}
+
+#footer .tagline.celebration a {
+  text-decoration: none;
+}
+
+#footer .tagline.celebration svg {
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 350px) {
+  #footer .line-break-small {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #footer .line-break {
+    display: block;
+  }
+  #footer .hide-on-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 40em) {
+  /* Campus names */
+  #branding-bar .show-on-tablet {
+    display: inline;
+  }
+  #branding-bar .show-on-mobile,
+  #branding-bar .show-on-desktop {
+    display: none;
+  }
+  #footer {
+    text-align: left;
+    border-top: 6px solid #7A1705;
+    padding: 32px 0 24px;
+  }
+  #footer p {
+    line-height: 2.25rem;
+  }
+  #footer .signature {
+    float: left;
+    text-align: left;
+    height: 36px;
+  }
+  #footer .copyright {
+    float: right;
+    clear: right;
+    text-align: right;
+  }
+  #footer .tagline {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    margin: 0 -200px 0 0;
+    top: -55px;
+    padding: 0 24px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  #footer .tagline.bicentennial {
+    padding: 0 16px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  #branding-bar {
+    margin-bottom: 15px;
+    /* account for trident */
+    position: relative;
+  }
+  #branding-bar:after {
+    height: 0;
+  }
+  #branding-bar img {
+    position: absolute;
+    top: -5px;
+    width: 65px;
+  }
+  #branding-bar h1,
+  #branding-bar #iu-campus {
+    line-height: 52px;
+    padding-left: 80px;
+  }
+  #branding-bar .search {
+    margin-top: 6px;
+    float: right;
+    width: 250px;
+  }
+  #branding-bar input[type='text'] {
+    width: 80%;
+    float: left;
+    margin-bottom: 0;
+  }
+  #branding-bar input[type='submit'].button {
+    width: 20%;
+    float: left;
+    border-radius: 0;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  /* Campus names */
+  #branding-bar .show-on-desktop {
+    display: inline !important;
+  }
+  #branding-bar .show-on-tablet,
+  #branding-bar .show-on-desktop {
+    display: none;
+  }
+}
+
+@font-face {
+  font-family: 'iucomm';
+  src: url('iucomm.eot');
+}
+@font-face {
+  font-family: 'iucomm';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMghjCVYAAAC8AAAAYGNtYXBrAGOPAAABHAAAALxnYXNwAAAAEAAAAdgAAAAIZ2x5ZuBC2QEAAAHgAAA1HGhlYWQPYA7mAAA2/AAAADZoaGVhBF4DEAAANzQAAAAkaG10eHE5Ce8AADdYAAAA8GxvY2FU/0cOAAA4SAAAAHptYXhwAE4BOgAAOMQAAAAgbmFtZaDQK5cAADjkAAABenBvc3QAAwAAAAA6YAAAACAAAwH0AZAABQAAAUwBZgAAAEcBTAFmAAAA9QAZAIQAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADyrAHg/+AAIAHgACAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAoAAAACQAIAAEAAQAAQAg4dXixOLH42zjhuYZ5iXpBPAV8FTxavGL8cXyrP/9//8AAAAAACDh1eLE4sfjbOOF5gDmIOkA8BXwU/Fq8YrxwfKr//3//wAB/+MeLx1BHT8cmxyDGgoaBBcqEBoP3Q7IDqkOdA2PAAMAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAH//wAPAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAMAYP/gAaABwAAZACgAMgAAASM1NCYrASIGHQEjIgYdARQWMyEyNj0BNCYHIzcuATU0NjMyFhUUBgc3IzU0NjsBMhYVAYgIOChAKDgICg4OCgEQCg4OckAOBggTDQ0TCAYugBMNQA0TAQBgKDg4KGAOCvAKDg4K8AoO4EYEDggNExMNCA4EmmANExMNAAAAABEAAP/gAeABwAAbACQALQA0AEAATABTAFsAYQBsAHcAfQCGAJEAmwClALAAABMiBw4BBwYVFBceARcWMzI3PgE3NjU0Jy4BJyYTPgE3Mw4BByMlDgEHIz4BNzMzHgEXIzUzJzUeARceARceARcjJz4BNz4BNxUjPgE3FxUjPgE3MwcuASczHgEXNzMVIy4BFxUuAScuAScuAScXDgEHDgEHNTMOASc1Mw4BBzcuASczHgEXIzcjLgEnHgEXHgEXJT4BNw4BByM+AQczHgEXLgEnLgEFDgEHPgE3Mw4BB/AyKyxBExMTE0EsKzIyKyxBExMTE0EsK1YDBAE/AQgGOP7wAwQBPwEIBjjvBAQBYFdXBQsGChIIBgoETloIEgoGCwVOBAoGOmABBARXsAYIAT8BBAMYYFcEBF8FCwYKEggGCgSoCBIKBgsFTgQKQGABBAQpAQQDOAYIAT8fMAcTCxAcDQgOBv6+DRwQCxMHMAYOFDAHEwsQHA0IDgE8DRwQCxMHMAYOCAHAExNBLCsyMissQRMTExNBLCsyMissQRMT/sAPIBERIA+gDyARESAPDyARQCBeAgUEBxUOCRULKQ4VBwQFAl4LFQlJQBEgD6APIBERIA9AQA8gT14CBQQHFQ4JFQspDhUHBAUCXgsVQEARIA9gESAPDyARYBYmEAgUDQgSCSMNFAgQJhYJEvsWJhAIFA0IEhoNFAgQJhYJEggAAAAAAgAA/+ACAAHgABcAewAAAR4BFRQGBw4BIyImJy4BNTQ2Nz4BMzIWEz4BNw4BJyYGJwYmFxY2Bw4BFxQmJy4BJy4BJyY2NzYWFz4BNyY2Jw4BFwYmBwYmNzYmFz4BJzYWNzYmByY2Nz4BMx4BNy4BIyIGBx4BBw4BJw4BBx4BBw4BBx4BFx4BMzI2NwG1JCcnJCReMzNeJCQnJyQkXjMzXg0YHwcGCQMDJxAQNQYKNRUOMwU9DwoDGhwtCwcYGCMoIQoqAhYxHhARCSAWHgE2IQsfEAgkBw4aDwoUDQgfEgYLBAkaARcwGiVEHQgGBwYoFQsOAxIJAwkLAwYfGh9SLS1SHwGVJF4zM14kJCcnJCReMzNeJCQnJ/6JFzogBwERGwsKCxslECIjGVocKSIOG00OAQ4fFzYFFjkBCwwMBBcIAhkMCD8RGhEFBRQDAQ4GCR4WEgcJCB0IAgMLAQ0LCxcVBAkFEiMDEikVBhIECBUMIj4ZICIiIAAAAAABAHkAWQGHAWcADAAAJQcnByc3JzcXNxcHFwGHLllZLlpaLllZLlpahy5aWi5ZWS5aWi5ZWQAAAAEAYAAgAaABoAACAAATDQFgAUD+wAGgwMAAAAACAEAAIAHAAaAAAwAHAAATMxEjEzMRI0CgoOCgoAGg/oABgP6AAAAAAwAA/+ACAAHgABsALwA7AAABIgcOAQcGFRQXHgEXFjMyNz4BNzY1NCcuAScmAzAnLgEnJjU0NjMyFhUUBw4BBwY3FAYjIiY1NDYzMhYBADUvLkYUFBQURi4vNTUvLkYUFBQURi4vNRQTLxMUSTQ0SRQTLxMUPiQaGiQkGhokAeAUFEYuLzU1Ly5GFBQUFEYuLzU1Ly5GFBT+RR0dUSorGTRJSTQZKypRHR35GSUlGRolJQAAAgAA/+ACAAHgABsALAAAASIHDgEHBhUUFx4BFxYzMjc+ATc2NTQnLgEnJhMxFy8BLgE1NDYzMhYVFAYHAQA1Ly5GFBQUFEYuLzU1Ly5GFBQUFEYuLy0YRjpHYmdJSWYqJAHgFBRGLi81NS8uRhQUFBRGLi81NS8uRhQU/r5KHhoBQy0vQ0UvHTEPAAACAAD/4AIAAeAAGwA7AAABIgcOAQcGFRQXHgEXFjMyNz4BNzY1NCcuAScmFw4BBwYmJy4BJyYGMScwNjc2FhceATMyNjc2Jgc+AQcBADUvLkYUFBQURi4vNTUvLkYUFBQURi4vYA1rFhYjBwgmBgccDD4dIA0IBwsGBxcNDRYaCoMMAeAUFEYuLzU1Ly5GFBQUFEYuLzU1Ly5GFBTCSG4ODhoPEYIICBMRQAYGUR4eIB8YGSIRQBFJAAAAAAYAAP/gAgAB4AAGAAkADgARAC0AMQAANxc/AiEXFzUHBycHMycnFTcTIgcOAQcGFRQXHgEXFjMyNz4BNzY1NCcuAScmEyE1Ie0UEg5q/utqrmAtIV/+X6xeLjUvLkYUFBQURi4vNTUvLkYUFBQURi4vb/64AUjgEA8LVlZgoU0lHFZVV6FVAQEUFEYuLzU1Ly5GFBQUFEYuLzU1Ly5GFBT+iPAAAgAA/+ACAAHgABsATQAAASIHDgEHBhUUFx4BFxYzMjc+ATc2NTQnLgEnJhMOAQcOASMiJicuAScuAScuAT0BIzU+ATc+ATc+ATczFTMVIxUUFhceARceATMyNjcVAQA1Ly5GFBQUFEYuLzU1Ly5GFBQUFEYuLyQKEgkJEQoLEAgIDwYGCAMCAisJFAcHCwQEBgEuSksBAQIHBAUNBwwYDQHgFBRGLi81NS8uRhQUFBRGLi81NS8uRhQU/nIEBwICAgMCAwgFBQsFBxELcS4DCQYFDgkIFA1LOVMOEAQECAIDAwgINQAAAAMAAP/gAgAB4AAbACcAMwAAASIHDgEHBhUUFx4BFxYzMjc+ATc2NTQnLgEnJgMiJjU0NjMyFhUUBjMiJjU0NjMyFhUUBgEANS8uRhQUFBRGLi81NS8uRhQUFBRGLi+XITAwISIuLqghMDAhIi8vAeAUFEYuLzU1Ly5GFBQUFEYuLzU1Ly5GFBT+sC8hIi8vIiEvLyEiLy8iIS8AAAUAAP/gAgAB4AAUACsARwCKAK4AADcyNjc+AScuASsBIgYHDgEXHgEzMRcuAScmIicjIgYVFBYzMjY1PAEnLgEnEyIHDgEHBhUUFx4BFxYzMjc+ATc2NTQnLgEnJgMOASMiJicuAScuATU0Njc+ATMwMjEuATU8ATcuATU0Njc+ATsBMhYVFgYPAQYiKwEeARUUBgcOARUUFhceARUOAQc3FAYrARUUBisBIiY9ASMiJj0BNDY7ATU0NjsBMhYdATMyFhXQBQkDBAUBAhYNAQUIBAUEAgIWDRQCAgEECQUBFB8bFBoaAQIMCRw1Ly5GFBQUFEYuLzU1Ly5GFBQUFEYuL0wIEAkKEgkRFwYDAwMDCSwbAQMBARwmHBYGDgZQAgQBAQISAQICBgYIDgsKAwwHEQ4BHBi1BAIuBAINAgQuAgQEAi4EAg0CBC4CBPMDBAUSChIaAwQGEQoRG0gBAgECARUOEBUSEgEEAgYKBgE1FBRGLi81NS8uRhQUFBRGLi81NS8uRhQU/nUDAgIDAxEKBAoEBgoFFBgECAQCBAIBJBsUIgcCAgMBAgQBDQEIFAwNGAkHBwQCDQUMGhMVIAeJAgQuAgQEAi4EAgwDBC0DBAQDLQQDAAABAAP/4wEYAeAAEwAAEzIWHwEHBiInJjQ/AScmNDc+ATMPAggC/f0EDAUEBOXoAgICCAIB4AEC/f0FBQUMBOXoBA8FAgEAAAABAAD/4AESAd0AEwAABSImLwE3NjIXFhQPARcWFAcUBiMBBgIIAvr9Ag8EBQXo5QUFBwIgAQL9/QICAg8E6OUEDAUEAgAAAAABAFEAVAGwAW8AEAAAJTEXLwEuATU0NjMyFhUUBgcBYhhGOkdiZ0lJZioknkoeGgFDLS9DRS8dMQ8AAAAFAFwAaAGkAVgABAAMABAAFgAaAAATFSE1IQUPAi8CIQUXBzUXNxc3FyMlJzcVXAFI/rgBL2oOEhQNagEV/uleXg1fIR9f/gENYGABWPDwGFYLDxAKVhVMVaGsVhwbVQtUTaEAAQC2AEMBSgGAABoAACUjHAExIzA0NSM1MzU0NjsBFTAiIyIGHQEzBwFELUIfHxopMR8FBAkyBuE1aWg2OCUTLzYGCSI4AAAAAgBNAJABuQExAAsAFwAANyImNTQ2MzIWFRQGMyImNTQ2MzIWFRQGniEwMCEiLi6oIi8vIiIvL5AvISIvLyIhLy8hIi8vIiEvAAAAAAQAbwBQAZ4BXwBAAFQAawCQAAA3LgE1NDY3PgE1NCYnMzoBPwE+ASc0JisBIgYHDgEVFBYXBhQVFBYXIyIGBw4BFRQWFx4BFx4BMzI2Nz4BNzQmJycmNjc+ATsBMhYXFgYHDgEjIiYnFyImNTQ2OwEWMhceARceARcWFBUUBiM3IzU0JisBIgYdASMiBh0BFBY7ARUUFjsBMjY9ATMyNj0BNCYj/wcMAwoLDggGBgICARICAQEEAlAGDgYWHCYcAQEDARssCQMDAwMGFxEJEgoJEAgYHAEOEVQCBAUECAUBDRYCAQUEAwkFDRYCHRQbHxQBBQkEAQICCQwCARoa0C4EAg0CBC4CBAQCLgQCDQIELgIEBALKBQ0CBAcHCRgNDBQIAQ0BBAIBAwICByIUGyQBAgQCBAgEGBQFCgYECgQKEQMDAgIDByAVExoMVQoRBgQDGhIKEgUEAxsRtRUQDhUBAgECAQYKBgIEARIShy0DBAQDLQQDDAIELgIEBAIuBAIMAwQAAAAABAB0AE8BigFnAA8AEwAmAD4AAAEjIgYdARQWOwEyNj0BNCYHMxUjBz4BMzIWFx4BFRQGIyImNTQ2NxcUBisBIiY9ATMOARUUFjMyNjU0JiczFQFUqhcfHxeqFx8fMC8vZAcUDQwUBwUFHRQUHQUEmBALqgsQKQIDLR8fLQMCKQFnHxesFiAgFqwXHyAvIAkMDAkGDggUHR0UCA4GcwoREQpzBg4IHy0tHwgOBnMAAAAEAHEATgGPAW8ADwATAB8AOQAAASMiBh0BFBY7ATI2PQE0JgcjNTMnIiY1NDYzMhYVFAYXIzU0JiMiBgcUBh0BIzA2JzMVPgEzMhYdAQF69AgNDQj0CA0NuiwsFgsNDQsMDA2nLAoMCAsDASoBASoEEhEVHQFvDQj3CA0NCPcIDfKCEQ0KCg0NCgoNk0YNEAoGAgUDSXkJEwgOHB5LAAAAAgCDACUBfQGbABMAHwAAASIGFRQXHgEXFjEwNz4BNzY1NCYHIiY1NDYzMhYVFAYBADRJFBMvExQUEy8TFEk0GiQkGhokJAGbSTQZKypRHR0dHVEqKxk0SbslGRolJRoZJQAAAAEATwAyAbEBlgBOAAAlIiYnPgE3PgExHgEzMjY1NCYjIgYVFBYXFjY3PgE1NiYnLgE1NDYzMhYVFAYjIiY3PgE1NCYjIgYVFBYxMAYHDgEVLgE1NDYzMhYVFAYjAQANGQwFCgMBCwUYDys1PjM/QBITAwUBAQIBAQIFBi8oJCYfGQ4RAwQLCw0OFAUUAwIBLztoSUloaEkyBAMIFAoGKwkNRTUoPkkmFiUIAgMDAgoDAwQDBhELIjQnHSY5FQ4RIQwLEBoUDBBWCwoVCRRYNkpnZ0pJagAAAAEAkABBAVsBhAAyAAAlDgEHDgEjIiYnLgEnLgEnLgE9ASM1PgE3PgE3PgE3MxUzFSMVFBYXHgEXHgEzMjY3FSMBWQoSCQkRCgsQCAgPBgYIAwICKwkUBwcLBAQGAS5KSwEBAgcEBQ0HDBgNAlIEBwICAgMCAwgFBQsFBxELcS4DCQYFDgkIFA1LOVMOEAQECAIDAwgINQAAAQBmAFIBnwFSAD0AAAEcARUUBiMiJicWMjMyNjciJicyFjMyNjMuAT0BHgEzLgE1NDY3HgEXLgE1NDYzMhYXPgE3DgEHPgE3DgEHAYFeWhszFQQIBBYpERUhBwMHAwUIBBYfBw8IDhAFBBhEKQEBJhoOGQgLFAoEDgoKEwgEEQkBEwIEAkB5EA4BDg4ZEwECBSQXAQQECB0RCBEHHiMDBAcEGiYLCQIIBQsTBQEFBAkRBwAAAQBkAFoBlQFcAB8AAAEOAQcGJicuAScmBjEnMDY3NhYXHgEzMjY3NiYHPgEHAZUNaxYWIwcIJgYHHAw+HSANCAcLBgcXDQ0WGgqDDAEeSG4ODhoPEYIICBMRQAYGUR4eIB8YGSIRQBFJAAAACwBnAE0BoQGAAAkAJABFAFUAZQBuAJAArwDbAPUBDwAAEzM1NyMHIycjFxcqAQciBgcVHgEXFjIxMjY1PgE9ATQmJzQmIzcyNjc+ATcVMzUjFQ4BBw4BIzAiJzQmPQEjFRQWFx4BMxciBgcOAR0BMzU0JjUuASM3IyIGHQEUFjsBMjY9ATQmByMVIzUjNTMVFyM1DgEHDgEjIiYnLgE9ATMVHAEXFjIzMjY3PgE1MzUzFTcUBgcOASMiJiciJicVIzUzFT4BNzI2MzIWFx4BHQE3IxUcARceATMyNjc0Nj0BMxUUBgcOASMiJicuAT0BNDY3PgEzMhYXHgEdAScuASMiBgcOAR0BFBYXHgEzMjY3PgE9ATQmBxQGBw4BIyImJy4BPQE8ATM+ATMyFhUyFhW6FBgVDAEOFBhmAQEBAQEBAgEBAgICAgEBAgEDAhUCBgIEBQISEgEDAQIDAQIBARIBAgEFAyIBAwEBAQ8CAQMCEcgXIiIXyBciIrUTEhI3NRACBQICBQIEAwIBAhABAQEBAQIBAgMBEDkCAgIEBAMEAgIDAhAQAgQBAgQCAwYCAgI2HgEBAwECAwECEAMDAwgHBQgDAwQFAwQIBQYIAgMDWQQJBgYKBAQDAwQDCwYGCgMEAwMQAQEBAwICAgEBAQIBAgICBAEBAQoxRTAwSIYBAQEyAQEBAQEBAQMBKgIDAQEBVwECAQUCCVdDAQMBAQEBAQIBREkEBgEDAVgBAQEEAgcHAgQBAQE9IhgtGCIiGC0YIiRcXBAQWwgCBAEBAQECAQUEQz4BAgEBAQEBAgE9Tw4EBgIDAgIBAwIGbCMCAwECBAQCBwUsFg8DAwIBAQEBAgQDBAIHCQMDAwMDAwkFJAUIBAMDAwMECQUVywMDAwMDCAYsBgkDAwMDAwMJBiwGCD0BAwEBAQEBAQMBMAICAQICAQICAAIAewAFAnsBuwBGAHIAACUjIgYHDgEdARQGBw4BKwEiJicuAT0BNDY3PgE7ATI2Nz4BPQE0JicuASsBIgYHDgEdARQWFx4BOwEyNjc+AT0BNCYnLgEjNy4BKwEiBgcOARUUFh8BBw4BFRQWHwEeATMyNj8BFx4BMzI2Nz4BPQE0JicCBBICBAEBAgYHBxAJ7gkRBgcHBwcGEQnJAgMCAQEBAQIDAskRHQwMDAwMDB0R7hEdDAwMAQIBAwJxAgcEkgQGAwIDAwIzuwECAgEhAQQBAgQBujMCBwMEBwIDAwMDuwEBAQQCWwoQBgcHBwcGEAruCRAHBwYCAQEDAhMCAwECAQwMDB0R7hEdDAwMDAwMHRFbAgQBAQH7AwICAwMGBAQGAzK6AgMCAgMBIQECAgG6MgMCAgMDBgSSBAYDAAAAAgAA/+oB9gHgABcAIwAAJSc+ATU0JiMiBhUUFjMyNjcXHgE3NjQnATQ2MzIWFRQGIyImAfaZERJxT09xcU8fORiWCh0JCgr+Sks1NUtLNTVLGpkWOB9PcXFPT3ESEZYKAwoJHQoBBjVLSzU1S0sAAAEAAP/dAkgB4AAUAAABIgYxMCYjIgYVFBYxFzcwNjU2JiMBuDlbWzk2Wkjc3EgDWzgB4FlZQFQ7WNzcWDtUQAACAAD/4AIVAeAADwAgAAAlFRQGIyE1Bxc1ITI2PQEHJTU0NjMhFTcnFSEiBh0BPwEBuQ8J/s1ubgFFKCg5/o8PCQE2bm7+uygoOA/UTQsNTW5uRCkopzkMSgsNTW5uRCkopzkSAAAAAAIAA//mAf0B4AAbAGoAAAEiBw4BBwYVFBceARcWMzI3PgE3NjU0Jy4BJyYDIiYnPgE3PgExHgEzMjY1NCYjIgYVFBYXFjY3PgE1NiYnLgE1NDYzMhYVFAYjIiY3PgE1NCYjIgYVFBYxMAYHDgEVLgE1NDYzMhYVFAYjAQA0Li5FFBQUFEUuLjQ0Li5FFBQUFEUuLjQNGQwFCgMBCwUYDys1PjM/QBITAwUBAQIBAQIFBi8oJCYfGQ4RAwQLCw0OFAUUAwIBLztoSUloaEkB4BQURC8uNDQuLkUUFBQURS4uNDQuL0QUFP5SBAMIFAoGKwkNRTUoPkkmFiUIAgMDAgoDAwQDBhELIjQnHSY5FQ4RIQwLEBoUDBBWCwoVCRRYNkpnZ0pJagAADAAA/+ACAAHgAAcAIgBBAFwAfQCZALoA1QDgAPABHAEsAAA3MxUzNTM1IzcyNjc+AT0BNCYjNCYjIgYHIhQdARQWFx4BMxciBiMOAQc1IxUzNR4BMx4BMzI2Nz4BPQE0JicuASMHFAYVDgEjMCInLgEnNT4BMzYyMzIWFR4BHQEnFAYHDgEjKgEnJjQ9ASMVFBYXHgEzMjY3PgE3FTM1IxUTIgcOAQcGFRQXHgEXFjMyNz4BNzY1NCcuAScmBzMVFBYVFjIxMjY3PgE3NTMVIzUOAQcOASMiJicuAT0BBzQ2Nz4BMzIWFx4BHQEUBgcOASMiJicuAT0BJxczNzMHFSM1JzMXFAYrASImPQE0NjsBMhYVJyIGBw4BHQEUFhceATMyNjc+AT0BIxUUBhUOASMiJicmND0BMzU0JicuASMXIzU0Njc+ATMyFhcUFh0BkxISEzduAgMBAQEBAQQCAgIBAgEBAQICKAIEAgEEAhAQAgMCAgQDBAQCAgICAgIGAwEBAQICAgIBAQIBAQEBAQECAwECOgMCAQIBAQEBARACAQIDBAIFAgIFAhAQETUvLkYUFBQURi4vNTUvLkYUFBQURi4vCxEBAQIBAwIBAwESEgIFBAIGAgMFAQIBQgMEBAoGBgkEBAMDBAMKBgYKAwQDMg4BDBUYFBgU6yIXyBciIhfIFyJJBQgEAwUEAwMIBQcIAwMDEAIBAwIBAwEBHgMDAggGBw8BAQEDAQIDAQLKXFwQPQEBAQMBMAICAQICAQICMAEDAQEBWAIBAwIjbAYCAwECAgMCBgQsBQcCBAQ/AQMBAQEBAQEBMgEBAQEBAQMCKgEBAgEBAQEBAgE+QwQFAQIBAQEBBAIITz0BXxQURi4vNTUvLkYUFBQURi4vNTUvLkYUFH9EAQIBAQEBAQMBQ1cJAgUBAgEBAwEGBEkUBggDAwMDAwMIBiwGCQMDAwMDAwkGLDMwMEUxLkj5GCIiGC0YIiIYDAMEAwgFJAUJAwMDAwMDCQcCBAMEAgEBAQECAwMPFQUJAwQDHwcCBAEBAQEBAQQCBwAAAAIAAP/gAgAB4AAbAFsAAAEiBw4BBwYVFBceARcWMzI3PgE3NjU0Jy4BJyYXHAEVFAYjIiYnFjIzMjY3IiYnMhYzMjYzLgE1MDQxHgEzLgE1NDY3HgEXLgE1NDYzMhYXPgE3DgEHPgE3DgEHAQA1Ly5GFBQUFEYuLzU1Ly5GFBQUFEYuL0xeWhszFQQIBBYpERUhBwMHAwUIBBYfBw8IDhAFBBhEKQEBJhoOGQgLFAoEDgoKEwgEEQkB4BQURi4vNTUvLkYUFBQURi4vNTUvLkYUFM0CBAJAeRAOAQ4OGRMBAgUkFwEEBAgdEQgRBx4jAwQHBBomCwkCCAULEwUBBQQJEQcABQAA/+ACAAHgABsAKwBKAFcAXAAAASIHDgEHBhUUFx4BFxYzMjc+ATc2NTQnLgEnJhMUBisBIiY9ATQ2OwEyFhUHIgYHOQE4ATE1IxYGMTM1NDY1PgEzMhYdATM1NCYjJyIGFRQWMzEyNjU0JgczFSM1AQA1Ly5GFBQUFEYuLzU1Ly5GFBQUFEYuL1oNCPQIDQ0I9AgNXRESBCoBASoBAwsIDAosHRWACw0NCwsNDCIsLAHgFBRGLi81NS8uRhQUFBRGLi81NS8uRhQU/oMIDQ0I9wgNDQhYDggTCXlJAwUCBgoQDUZLHhw8DQoKDQ0KCg0/goIAAAAFAAD/4AIAAeAAAwAWADIARABcAAABNSMVBzI2NTQmJy4BIyIGBw4BFRQWMxMiBw4BBwYVFBceARcWMzI3PgE3NjU0Jy4BJyYXFRQGKwEiJj0BNDY7ATIWHQEHFAYjIiY1NDY3IxUUFjsBMjY9ASMeARUBai88FB0FBAgUDA0UBwQFHRQBNS8uRhQUFBRGLi81NS8uRhQUFBRGLi9VHxeqFx8fF6oXHz8tHx8tAwIpEAuqCxApAgMBGC8vbR0UCA4GCQwMCQYOCBQdATUUFEYuLzU1Ly5GFBQUFEYuLzU1Ly5GFBTocxYgIBasFx8fFzkcHy0tHwgOBnMKEREKcwYOCAAAAAIAAP/gAgAB4AAbADYAAAEiBw4BBwYVFBceARcWMzI3PgE3NjU0Jy4BJyYXIxwBMSMwNDUjNTM1NDY7ARUwIiMiBh0BMwcBADUvLkYUFBQURi4vNTUvLkYUFBQURi4vDy1CHx8aKTEfBQQJMgYB4BQURi4vNTUvLkYUFBQURi4vNTUvLkYUFP81aWg2OCUTLzYGCSI4AAAABQB4AFUBjwFsAAwAGQAlAFYAhwAAJTQmIyIGFRQWMzI2NTMUBiMiJjU0NjMyFhU3FAYjIiY1NDYzMhYnKgEHDgEHDgEHBhQVHAEXHgEXHgEXFjIzOgE3PgE3PgE3NjQ1PAEnLgEnLgEnJiIjFxwBBw4BBw4BByoBIyoBIy4BJy4BJyY0NTwBNz4BNz4BNzoBMzoBMx4BFx4BFxYUFQEyGxQTGxsTFBsZKh4dKiodHioUCgcHCgoHBwpcDzUOBQcEBAUBBgYBBQQEBwUONQ8QNQ4ECAQDBQIGBgIFAwQHBQ41EIwBAQkMDR0RDh0ODx0OER0NDAkBAQEBCQwNHREOHQ4PHQ4RHQ0MCQEB4BMbGxMTGxsTHioqHh4qKh5KBgoKBgcKCiEFAgUEAwgFDTYPDzUOBQgDBAUCBQUCBQQDCAUONQ8PNg0FCAMEBQIFcg4dDxAeDAwKAQEKDAweEA8dDg4dDxAeDAwKAQEKDAweEA8dDgAABgAA/+ACAAHgABsAKAA1AEEAcgCjAAAlFAcOAQcGIyInLgEnJjU0Nz4BNzYzMhceARcWBxQGIyImNTQ2MzIWFTM0JiMiBhUUFjMyNjU3IgYVFBYzMjY1NCYnOgEXHgEXHgEXFhQVHAEHDgEHDgEHBiIjKgEnLgEnLgEnJjQ1PAE3PgE3PgE3NjIzFzwBJy4BJy4BJyoBIyoBIw4BBw4BBwYUFRwBFx4BFx4BFzoBMzoBMz4BNz4BNzY0NQIAFBRGLi81NS8uRhQUFBRGLi81NS8uRhQUzhsUExsbExQbGSoeHSoqHR4qAwcKCgcHCgpSEDUOBAgEAwUCBgYCBQMEBwUONRAPNQ4FBwQEBQEGBgEFBAQHBQ41D4wBAQkMDR0RDh0ODx0OER0NDAkBAQEBCQwNHREOHQ4PHQ4RHQ0MCQEB4DUvLkYUFBQURi4vNTUvLkYUFBQURi4vNRMbGxMTGxsTHioqHh4qKh5bCgYHCgoGBwoXBQIFBAMIBQ02Dw81DgUIAwQFAgUFAgUEAwgFDjUPDzYNBQgDBAUCBXIOHQ8QHgwMCgEBCgwMHhAPHQ4OHQ8QHgwMCgEBCgwMHhAPHQ4AAAADAAD/4AIAAeAAAgAeAFEAAD8BJzciBw4BBwYVFBceARcWMzI3PgE3NjU0Jy4BJyYTDgExDgEjMAYjIiYxLgEnMCYnLgExNTA2Nz4BMT4BMzA2MzEyFjEyFhcwFhcWFDEVMBThUFAfNS8uRhQUFBRGLi81NS8uRhQUFBRGLi9cAQoJEQQ5LzorBRMJCQMCAQECAgoJEQQ5Ly85BBEJCQIDuikq0xQURi4vNTUvLkYUFBQURi4vNTUvLkYUFP7FEA4JAwMDAQIJDw8SHhYeEhAOCQMDAwMJDhASHhYeAAAAAAQAewBrAYUBVAALABgAJQBWAAAlNSMVFBY7ATI2NTEnMycuASMiBhUUFjMxNzQmIyIGDwEzMjY1MRcVFAYrARUUBisBIiY9ASMiJj0BNDY7ASImNTQ2MzIWHwE3PgEzMhYVFAYjMzIWFTEBHDgHBCIEB08hFQIGBAcKCgd3CgcEBgIVIQcKQQMCEQoHvAcKEQIDAwJNERYXEAgQBRYWBRAIERYXEE0CA4t8fAUEBAWSHAIDCQcHChEHCQMCHAoHLTcDA0gHCgoHSAMDNwMDFxAQFgYHHBwHBhYQEBcDAwAABQAA/+ACAAHgAAwAFwAiAD4AbwAAEy4BIyIGFRQWMzEzJxc0JiMiBg8BMzI2BxQWOwEyNjUxNSM3IgcOAQcGFRQXHgEXFjMyNz4BNzY1NCcuAScmExQGKwEVFAYrASImPQEjIiY9ATQ2OwEiJjU0NjMyFh8BNz4BMzIWFRQGIzMyFhUxFd4BBQQGCQkGHRNdCQYEBQETHQYJUwYEHAQGMBg1Ly5GFBQUFEYuLzU1Ly5GFBQUFEYuLz4DAg4JBqIGCQ4CAwMCQg4UFA4HDQUTEwQOBw4UFA5CAgMBLQEDCAYGCBgKBggDARgIhwMEAwRr3xQURi4vNTUvLkYUFBQURi4vNTUvLkYUFP7tAgM+BgkJBj4DAjACAhQODhMGBRkZBQYTDg4TAwIwAAAAAgAHACkB1AGYACcAPwAANzY/ATYzMh8BNTQ3NjsBMhcWHQEXFhUUDwEGByMiLwEHBiMmLwEmNRc1MDE0MTcXMB0BFAcGKwE1IxUjIicmNQcBA80JDQwJRgMCBDcEAwI/AwISAgQBAwPFxgMEBAISAkKlpAUGB25JbgcFBt8EAqsICDo4BAIDAwIEdTQCBAQDFQIBAqWlAgECFQMEpIoBiIgBigcFBm5uBgUHAAEALAAHAVQB1AAaAAABBxcWFRQPAQYjIi8BJjU0PwE2MzIfARYVFAcBT5iYBQUwBQgHBtQFBdQGBwgFMAUFAYWXmAUIBwYvBgbUBQgHBtQFBTAFCAcGAAABABoABwFCAdQAGgAAJQcGIyIvASY1ND8BJyY1ND8BNjMyHwEWFRQHATzUBQgHBTAFBZiYBQUwBQcIBdQGBuHUBgYvBgcIBZiXBgcIBTAFBdQGBwgFAAAAAgBbAGwBpQFUAAMAOAAAPwEnFTcyFjEeARcwFhceATEVMAYHDgExDgEHMAYjMS4BMS4BJzAmJy4BMTUwNjc+ATE+ATcwNjMx3llZIjQ/BRMKCgMCAQECAwoKEwU/NEAwBhUKCgMCAQECAwoKEwU/NLUuL12fAwEDChARFCEaIRQREAkEAQMBAgEECRARFCEaIRQREAoDAQMAAAAABwBtAGkBkgFVABAAHwAwAEUAfwCcAL0AADc2JyYnJgcGBwYXFhcWNzY3NzY1JiciByIHBhcWNzY3FwYHBicmJyY3Njc2FxYXFgc3JicmJyYHBgcGFxYXFhcWNzY3NicXFAcGBwYHBgcGIyInJicmJyY1NDc2NzY3NhcWBwYVFjMWNzIzNzYzMhcWBxQHFBcWFzIXFhcWFxYVJxYXFgcGBwYnJicmNzYnJgciJyYnJjc2NzYXFhc3FhcWBwYHBicmJyY3NicmJyYnJgcGJyYnJjc2NzYXFhfcAwECBgUHBgQDAQIFBgYHBA8BAQICAwIBAwUCAwIBHQgSExISBgcICBERERMHCAczAg0NFRUYJRgYAwENDRUWGCQYGAIzBwYLDBAQFRUYFxYWERIKCwsMFRsdHAwLBwEBAQEBAgEBFhISBwgIAQEBAQECCQgHBgYNBwICAwEEAwQEAQIBAwcHCwQDAwEBAgIECgoJBx4OBQQHAQQEBQQCAgEEAwILCg4ODgUEBAEBAwIFFBQUDqAGBgUDAgICBgUGBQMDAgMFFAIDAgEBAwUCAQEBAhERCAgGBg8PEA8HCAUEDw8QGhAMDAYFAgQTFBgPDA0FBgIEExQYAQsMCwsLCAkFBQUGCgkPDxITFRYVGwsLDAoYAgEBAQEBCQoKEwIBAQEBAQEDBAUJCAtnCAoKCQQCAgECAwQDCwgIAwICBAQDAwECAwMHGg8VFRMEAgIBAQUEBA4ODwsMBAQDAQMCBQUEAwEFBwYQAAAAAAgAAP/gAgAB4AAVAC4ASgChAM0A/wEeATcAADcqASMOARUGFhc6ATM+ATUxNjQ1LgEHLgEnJiIHDgEHDgEXHgEXHgE3PgE3MT4BEyIHDgEHBhUUFx4BFxYzMjc+ATc2NTQnLgEnJhMUBgcOAQcOAQcOAQcOASMiJicuAScuAScuATU0Njc+ATc+ATc2FhceAQccATEUMjMwMjE6ATE3PgEzMhYXFhQHFAYVHAEzFDIzFDIzHgEXHgEXHgEVMSceARcWFAcUBgcGIiMuASc0Jjc2JicuAQciJicuATUmNjc+ATM2MhceARcxFxQGBw4BJy4BJy4BNz4BJy4BJy4BJy4BByImJy4BJzQ2Nz4BMzYWFx4BFzEeARcWBgcHLgEnLgEHDgEHDgEXHgEXHgEXHgE3PgE3PgEnLgEnBw4BBw4BJy4BJyY0Nz4BNz4BFx4BFxYUB+kBAwEBAgIBAwECAgECAQEBDAEEAwMGAwMFAgIBAQEDAwMGAwQFAgEBIjUvLkYUFBQURi4vNTUvLkYUFBQURi4vOAMDAwkFBg4ICBMKCxYMCxcLCxQICQ4GBQUFBgYQCg4cDw4UBgUCBAEBAgEBAQwUCQkMBAQEAQEBAQIBBAkEAwcDAwIMBAQBAQIDAgEEAgIDAQEBAQIDBAkFAgMCAgIBAQEBAwIFCgUECQMuAwICBQICAwEBAQECAQIBBwUFDAcHDgcDBAICAgEBAQEEAgoUCgoRBwcKAgIBBGMGEQsKFwwSHwwMCwEBCAYHEQoLFgwTHgwMCwEBBwckBA0JChIJCQwDAwQEDAkIEggKDAQEA7wBAQEDBAEBAQEBAgIBAQ8CBQEBAQEEAwIGAwMEAQEBAQIEAgMGATcUFEYuLzU1Ly5GFBQUFEYuLzU1Ly5GFBT+3AUMBgYLBQYJBAUHAgMCAwIDCAUEDQcIEAkKFAoLFQsOEwUGAQYFEQwBAgEBBQQFBQUOCgEBAQEBAQECBAICBwQFCgVnBAkFBQoEAgMBAQECAgIEAQYJBAQCAQEBAQMCAgMCAgIBAgEFBDICAwEBAQEBAgIDBAIHDgcIDQUGCAICAQIBAQEEAgIEAgIDAgEDAwsICBIKCxMKGAYJAwMBAQILCgoVDAgOBgYJAwMCAQIMCgkWDAgOBjYJDAQEAQMDCggHEAgHDAMEAgIDCgcIDwgAAAgAAP/gAbcB4AAZACQAYgBoAHUAiQCQAJkAABcRNDc2MyEyFxYfARYXFhURFAcGIyEiJyY1NyERIyInJj0BIxE3Njc2NzYXMBU2NzY3JicmNzY7ATIXFgcGIxYdAQYHFhcWFzYzMhcWBzAxBzEGIyInJicGBwYjIi8BMCcmNxc2NwYHBjc2NzAnJicmJwYHBgc3NDc0NzQ3MDE0MTAxJicUMRUGFzczJi8BJicTFjMyMzQxJiMACAgLAQAMDg0IWQgGBggIDP6ACwgIJQFtdwsICNskAw0OGAQDDxATCwcCAgQDCQYHAwUCAQEBAQMPGgoOEREqCAUEAQISDhMTEj8xLBkFAwcCAwESDxgPCgpKJyoDBAEWDggQCQQjAgIBAQMFBFlrAwNaAwgVFQ4EAQchBQHKCwgIBgUIWggNDgv+tgsICAgICwoBJAgIDHb+SjUMDg8NAwUBGCAnJBgWFg4MBQYNAgECCCMULxUHCQIOBgkBCwYFCgcRSwIEAQMHAQYnDAwNQg8IAgMBEyAZIBAHlwIKAQwBAQEHBAEBDBk0CANaAwP+1QgBBwAABAAA/+ABtwHgABkAJABWAF0AABcRNDc2MyEyFxYfARYXFhURFAcGIyEiJyY1NyERIyInJj0BIxE3MxczNzY3NjUzFxQXFhUXMzczNSMVMwcGDwEjJzQnJjUnIwcGFQYVByM1Ji8BMzUjFTczJi8BJicACAgLAQAMDg0IWQgGBggIDP6ACwgIJQFtdwsICNseFC4uJAIBAQEBAQElLS8UVRkcAQEBAQEBASkhKQEBAQIBARwZVeJrAwNaAwgFAcoLCAgGBQhaCA0OC/62CwgICAgLCgEkCAgMdv5K4b2LBQgEAwcBBQUCi70fH30GBwYGAQUEA5ycAwQFAQYGBwZ9Hx9oCANaAwMABAAA/+ABtwHgABkAJABaAGEAABcRNDc2MyEyFxYfARYXFhURFAcGIyEiJyY1NyERIyInJj0BIxE3MzUjNzY3Njc2OQEWFxQXFhcWHwEjFTM1Iyc3MzUjFTMHBgcGDwExJicmLwEzNSMVMxcHIxUTMyYvASYnAAgICwEADA4NCFkIBgYICAz+gAsICCUBbXcLCAjbVlAWHgECAQEBAQEBAQEBAR4VUxQ3OBNPFR4BAgEBAQEBAQQeFlMTNjcTqmsDA1oDCAUBygsICAYFCFoIDQ4L/rYLCAgICAsKASQICAx2/kokHi4CAwMBAQECAQEBAQECLh4eTlEfHy0CAwMBAQECAwQtHx9OUR4BJQgDWgMDAAAABQAA/+ABtwHgABkAJAA8AEgATwAAFxE0NzYzITIXFh8BFhcWFREUBwYjISInJjU3IREjIicmPQEjETczNSM1MzI3Njc2NTQnJicmKwEVMxUjFTc1MzIXFhUUBwYrATczJi8BJicACAgLAQAMDg0IWQgGBggIDP6ACwgIJQFtdwsICNtSXRonFgwTCwsKCxIOF2kaGkMiDwkQEgkNImtrAwNaAwgFAcoLCAgGBQhaCA0OC/62CwgICAgLCgEkCAgMdv5KJB4wBAcSExcXEREIBh+fHm5NBQoXGQkFtwgDWgMDAAAABQAA/+ABtwHgABkAJAAsAD0ARAAAFxE0NzYzITIXFh8BFhcWFREUBwYjISInJjU3IREjIicmPQEjETc1Nxc3FxUhNTQ3NjMyFxYVFAcGIyInJjU3MyYvASYnAAgICwEADA4NCFkIBgYICAz+gAsICCUBbXcLCAjbJDclbVz+2xAQFxcQEBAQFxcQENxrAwNaAwgFAcoLCAgGBQhaCA0OC/62CwgICAgLCgEkCAgMdv5KJDc3JW5bXMkXEBAQEBcXEBAQEBdcCANaAwMAAgAA/+ACAAHgAFQAcAAAJTQmJy4BJy4BNTQ2NTQmIyIGIyoBIz4BNTQmJy4BIyIGBw4BFRQWFyoBIyImIyIGFRQWFRQGBw4BBw4BFRQWFx4BMzI2MzIWMzI2MzIWMzI2Nz4BNTcUBw4BBwYjIicuAScmNTQ3PgE3NjMyFx4BFxYBqgMEFyEKAQEpDQYFCgYBAgEBAQIEDCwdHy8NBAIBAQEDAQYJBgYMKQEBCiEXAwQmBwMCCQYNBxocHx8cGgcNBgkCAwcmVhQURi4vNTUvLkYUFBQURi4vNTUvLkYUFIwDBQEFHhUCBAILBhAHCAUKEwkJFgcaHRkeBxYJCRMKBQgHDwcLAgQCFR4FAQQEDAkCBhADHx8CEAUCCgtUNS8uRhQUFBRGLi81NS8uRhQUFBRGLi8AAAAAAQBWAEABqgGAAHUAAAEyFhceARUUBgceATMxMjYzMhYVFAYVFBYXHgEXHgEzHgEVMBQ5ARQGBwYUIyImIzAiMSIGIzEOASMiJiciJiMwIjkBIgYjIjQnLgE1MDQxNDY3MT4BNz4BNz4BNTQmNTQ2MzIWMzgBMTI2NzEuATU0Njc+ATMBAxwtCwQCAQEBAwIGCgUGDCoBAQgbEQQIBAMDJgcECAcNBwEDBgMSGR4eGRIDBgMBBw0GCQQHJgMDBAgEERsIAQEqDAUFCgYCAwIBAQIEDS4fAYAdGQgVCQoTCgEBBgcHDwUNAwQCER0HAQMBBAIBCgoBBREDAQMcHAMBAxEFAQoKAQIEAQECAQcdEQIEAw0GDgYHBQEBCRQKCRUIHRkAAAEAAAABGZqguMURXw889QALAgAAAAAA1uLaSQAAAADW4tpJAAD/3QJ7AeAAAAAIAAIAAAAAAAAAAQAAAeD/4AAAAvYAAP/9AnsAAQAAAAAAAAAAAAAAAAAAADwCAAAAAAAAAAAAAAABAAAAAgAAYAIAAAACAAAAAgAAeQIAAGACAABAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAEVAAMBFQAAAgAAUQIAAFwCAAC2AgAATQIAAG8CAAB0AgAAcQIAAIMCAABPAgAAkAIAAGYCAABkAgAAZwL2AHsCAAAAAkwAAAIVAAACAAADAgAAAAIAAAACAAAAAgAAAAIAAAACAAB4AgAAAAIAAAACAAB7AgAAAAHcAAcBbgAsAW4AGgIAAFsCAABtAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAFYAAAAAAAoAFAAeAGYBeAI2AlICYAJ0As4DFANyA8QEOASGBXIFlgW6BdgGCgYuBlQHGAdwB8AH8gheCKoJBAk6Cp4LPgt2C5YLygxeDewObg7qD2wPuBByEVQRxBI0EsoTIBNME3gTxhToFqQXehf+GIgY+hlgGfwajgAAAAEAAAA8ATgAEQAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAGAAAAAQAAAAAAAgAHAFcAAQAAAAAAAwAGADMAAQAAAAAABAAGAGwAAQAAAAAABQALABIAAQAAAAAABgAGAEUAAQAAAAAACgAaAH4AAwABBAkAAQAMAAYAAwABBAkAAgAOAF4AAwABBAkAAwAMADkAAwABBAkABAAMAHIAAwABBAkABQAWAB0AAwABBAkABgAMAEsAAwABBAkACgA0AJhpdWNvbW0AaQB1AGMAbwBtAG1WZXJzaW9uIDEuMQBWAGUAcgBzAGkAbwBuACAAMQAuADFpdWNvbW0AaQB1AGMAbwBtAG1pdWNvbW0AaQB1AGMAbwBtAG1SZWd1bGFyAFIAZQBnAHUAbABhAHJpdWNvbW0AaQB1AGMAbwBtAG1Gb250IGdlbmVyYXRlZCBieSBJY29Nb29uLgBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAC4AAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+a[href$=".pdf"]:before,
+a[href$=".doc"]:before, a[href$=".docx"]:before,
+a[href$=".xls"]:before, a[href$=".xlsx"]:before,
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'iucomm' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pdf:before,
+a[href$=".pdf"]:before {
+    content: "\f1c1";
+}
+.icon-word:before,
+a[href$=".doc"]:before,
+a[href$=".docx"]:before {
+    content: "\f1c2";
+}
+.icon-excel:before,
+a[href$=".xls"]:before,
+a[href$=".xlsx"]:before {
+    content: "\f1c3";
+}
+
+.icon-globe:before {
+  content: "\e2c4";
+}
+.icon-earth:before {
+  content: "\e2c7";
+}
+.icon-lock:before {
+  content: "\e1d5";
+}
+.icon-close:before {
+  content: "\e36c";
+}
+.icon-play:before {
+  content: "\e385";
+}
+.icon-pause:before {
+  content: "\e386";
+}
+.icon-home:before {
+  content: "\f015";
+}
+.icon-pdf:before {
+  content: "\f1c1";
+}
+.icon-word:before {
+  content: "\f1c2";
+}
+.icon-excel:before {
+  content: "\f1c3";
+}
+.icon-powerpoint:before {
+  content: "\f1c4";
+}
+.icon-document:before {
+  content: "\f1c5";
+}
+.icon-search:before {
+  content: "\e617";
+}
+.icon-external-link:before {
+  content: "\e616";
+}
+.icon-right-arrow:before {
+  content: "\e607";
+}
+.icon-left-arrow:before {
+  content: "\e608";
+}
+.icon-favorite:before {
+  content: "\e618";
+}
+.icon-repost:before {
+  content: "\e619";
+}
+.invert .icon-blog:before {
+  content: "\e609";
+}
+.invert .icon-email:before {
+  content: "\e60a";
+}
+.invert .icon-facebook:before {
+  content: "\e60b";
+}
+.invert .icon-flickr:before {
+  content: "\e60c";
+}
+.invert .icon-googleplus:before {
+  content: "\e60d";
+}
+.invert .icon-instagram:before {
+  content: "\e60e";
+}
+.invert .icon-linkedin:before {
+  content: "\e60f";
+}
+.invert .icon-location:before {
+  content: "\e610";
+}
+.invert .icon-pinterest:before {
+  content: "\e611";
+}
+.invert .icon-tumblr:before {
+  content: "\e612";
+}
+.invert .icon-twitter:before {
+  content: "\e613";
+}
+.invert .icon-vimeo:before {
+  content: "\e614";
+}
+.invert .icon-youtube:before {
+  content: "\e615";
+}
+.icon-email:before {
+  content: "\e603";
+}
+.icon-tumblr:before {
+  content: "\e604";
+}
+.icon-flickr:before {
+  content: "\e605";
+}
+.icon-googleplus:before {
+  content: "\e606";
+}
+.icon-location:before {
+  content: "\e600";
+}
+.icon-blog:before {
+  content: "\e601";
+}
+.icon-vimeo:before {
+  content: "\e602";
+}
+.icon-pinterest:before {
+  content: "\e620";
+}
+.icon-youtube:before {
+  content: "\e621";
+}
+.icon-twitter:before {
+  content: "\e622";
+}
+.icon-linkedin:before {
+  content: "\e623";
+}
+.icon-instagram:before {
+  content: "\e624";
+}
+.icon-facebook:before {
+  content: "\e625";
+}
+.icon-chevron-left:before {
+  content: "\f053";
+}
+.icon-chevron-right:before {
+  content: "\f054";
+}
+
+/* New 2017-03-29 */
+.icon-instagram:before {
+  content: "\e901";
+}
+.invert .icon-instagram:before {
+  content: "\e900";
+}
+.invert .icon-weibo:before {
+  content: "\f18a";
+}
+.icon-weibo:before {
+  content: "\f18b";
+}
+/* New 2017-04-24 */
+.icon-youtube:before {
+  content: "\e902";
+}
+.invert .icon-youtube:before {
+  content: "\f16a";
+}
+.icon-gift:before {
+  content: "\e904";
+}
+.invert .icon-gift:before {
+  content: "\e903";
+}
+
+/* New 2018-03-29 */
+.invert .icon-snapchat:before {
+  content: "\f2ac";
+}
+.icon-snapchat:before {
+  content: "\f2ab";
+}
+
+/*!
+ * IU Search
+ * @version v3.0.9
+ * 2019-08-07
+ */
+
+@font-face {
+  font-family: 'BentonSansRegular';
+  src: url("https://fonts.iu.edu/fonts/benton-sans-regular.eot");
+  src: url("https://fonts.iu.edu/fonts/benton-sans-regular.eot?#iefix") format("embedded-opentype"), url("https://fonts.iu.edu/fonts/benton-sans-regular.woff") format("woff"), url("https://fonts.iu.edu/fonts/benton-sans-regular.ttf") format("type"), url("https://fonts.iu.edu/fonts/benton-sans-regular.svg#BentonSansRegular") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'BentonSansBold';
+  src: url("https://fonts.iu.edu/fonts/benton-sans-bold.eot");
+  src: url("https://fonts.iu.edu/fonts/benton-sans-bold.eot?#iefix") format("embedded-opentype"), url("https://fonts.iu.edu/fonts/benton-sans-bold.woff") format("woff"), url("https://fonts.iu.edu/fonts/benton-sans-bold.ttf") format("type"), url("https://fonts.iu.edu/fonts/benton-sans-bold.svg#BentonSansBold") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+body > table.gssb_c {
+  position: fixed !important;
+}
+
+#search *,
+#inline-search *,
+#toggles * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+div[id^=branding-bar],
+section[id^=branding-bar],
+#toggles {
+  -webkit-transition: all 0.42s ease-in-out;
+  -moz-transition: all 0.42s ease-in-out;
+  transition: all 0.42s ease-in-out;
+}
+
+.search-open div[id^=branding-bar],
+.search-open section[id^=branding-bar],
+.search-open #toggles {
+  margin-top: 50px;
+}
+
+#search,
+#toggles {
+  -webkit-font-smoothing: initial;
+  -moz-font-smoothing: initial;
+  font-smoothing: initial;
+}
+
+#search .row,
+#toggles .row {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 64rem;
+  position: relative;
+}
+#search .row:before, #search .row:after,
+#toggles .row:before,
+#toggles .row:after {
+  content: " ";
+  display: table;
+}
+#search .row:after,
+#toggles .row:after {
+  clear: both;
+}
+#search .row.pad,
+#toggles .row.pad {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 100%;
+}
+
+#toggles {
+  position: fixed;
+  text-align: right;
+  top: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 11;
+}
+#toggles a.button {
+  pointer-events: auto;
+  background-color: #990000;
+  color: #fff;
+  font-family: BentonSansBold, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 34px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding: 0 0.5rem;
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  width: auto;
+}
+#toggles .button {
+  float: none;
+}
+#toggles a.button:hover {
+  color: #fff;
+}
+.touch #toggles a.button.hover {
+  background-color: #fff !important;
+  color: #990000 !important;
+}
+#toggles a.search-toggle {
+  background-color: #990000;
+  height: 34px;
+  width: 34px;
+  text-align: center;
+  padding: 0;
+  text-transform: none;
+}
+#toggles a.search-toggle:focus {
+  box-shadow: none;
+  outline: .125rem solid #fff;
+  outline-offset: .125rem;
+}
+#toggles a.search-toggle img {
+  width: 18px;
+  height: 18px;
+}
+.search-open #toggles a.search-toggle img {
+  width: 24px;
+  height: 24px;
+}
+
+.images-off #toggles img,
+.no-js #toggles img {
+  width: auto !important;
+  height: auto !important;
+  line-height: 1;
+}
+
+#search {
+  background-color: #990000;
+  height: 45px;
+  padding-top: 6px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 8;
+  -webkit-transition: height 0.42s ease-in-out;
+  -moz-transition: height 0.42s ease-in-out;
+  transition: height 0.42s ease-in-out;
+}
+.search-open #search {
+  height: 50px;
+}
+
+#search[aria-hidden=""] > .row {
+  display: none;
+}
+
+#search[aria-hidden="false"] > .row {
+  display: block;
+}
+
+#search .gsc-branding, #inline-search .gsc-branding, #off-canvas-search .gsc-branding {
+  display: none;
+}
+#search .gsc-search-button + .gsc-clear-button, #inline-search .gsc-search-button + .gsc-clear-button, #off-canvas-search .gsc-search-button + .gsc-clear-button {
+  display: none;
+}
+
+@media only screen and (min-width: 1025px) {
+  #toggles {
+    position: absolute;
+    top: 5px;
+  }
+
+  #toggles a.button {
+    display: none;
+  }
+
+  #toggles a.search-toggle {
+    display: block;
+    border-radius: 0;
+    background-color: #7A1705;
+    border-left: 1px solid #990000;
+    border-right: 1px solid #990000;
+    border-top: none;
+    border-bottom: none;
+    float: right;
+    margin: 0;
+    line-height: 44px;
+    line-height: 52px;
+    height: 52px;
+    width: 42px;
+    text-align: center;
+  }
+  #toggles a.search-toggle img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+  }
+  #toggles a.search-toggle:hover, #toggles a.search-toggle:focus {
+    color: #fff;
+  }
+
+  .search-open #toggles a.search-toggle img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .search-open .is-sticky nav.main {
+    -webkit-transform: translateY(50px);
+    -moz-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    -o-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+
+  #search {
+    position: absolute;
+    top: 0;
+  }
+
+  .has-sticky #search {
+    position: fixed;
+    top: 0;
+  }
+
+  #search {
+    height: 56px;
+    transform: translateY(-56px);
+    transition: transform .42s;
+    overflow: hidden;
+  }
+
+  .search-open #search {
+    height: 56px;
+    transform: translateY(0);
+    transition: transform .42s;
+  }
+
+  div[id^=branding-bar],
+  section[id^=branding-bar],
+  #toggles {
+    transition: margin-top .3s;
+  }
+
+  .search-open div[id^=branding-bar],
+  .search-open section[id^=branding-bar],
+  .search-open #toggles {
+    margin-top: 50px;
+    transition: margin-top .5s;
+  }
+
+  .search-open.has-sticky div[id^=branding-bar],
+  .search-open.has-sticky section[id^=branding-bar] {
+    margin-top: 0;
+  }
+}
+/* Search Boxes */
+.search-box table {
+  margin-bottom: 0;
+  background: none;
+  border: none;
+  table-layout: auto;
+}
+.search-box table tr th, .search-box table tr td {
+  padding: 0;
+}
+.search-box table.gsc-search-box {
+  margin: 0;
+  background: none;
+}
+.search-box td.gsc-input {
+  vertical-align: top;
+  padding-right: 4px !important;
+}
+.search-box .gsc-input-box {
+  border: 1px solid #EDEBEB;
+  height: auto;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.search-box .gsc-input-box > table {
+  border-right: none;
+}
+.search-box .gsc-input-box ::-ms-clear {
+  display: none;
+}
+.search-box .gsc-input-box.gsc-input-box-focus {
+  box-shadow: none;
+}
+.search-box.no-script .gsc-input-box > table {
+  width: 100% !important;
+}
+.search-box .gsst_a .gscb_a {
+  color: #990000;
+}
+.search-box .gsc-input-box-hover .gsst_a .gscb_a {
+  color: #7A1705;
+}
+.search-box input[type="text"] {
+  margin-bottom: 0;
+  box-shadow: none;
+  line-height: 1 !important;
+  height: 40px !important;
+  padding-left: 8px !important;
+  background-color: #fff !important;
+  background-position: 8px center !important;
+  margin: 0 !important;
+}
+.search-box .gsc-input {
+  background-color: #fff;
+}
+.search-box input[type="text"]:focus {
+  box-shadow: none;
+}
+.text .search-box .gsc-input-box a {
+  background: none;
+}
+.search-box td.gsc-search-button {
+  min-width: 80px !important;
+}
+.search-box button.gsc-search-button-v2 {
+  border-radius: 5px;
+  padding: 6px;
+  background-color: #990000;
+  background-image: none;
+  margin-left: 6px;
+  border: 2px solid #990000;
+  height: 40px;
+  font-size: 16px !important;
+  color: #fff;
+}
+.search-box button.gsc-search-button-v2 svg {
+  width: 20px;
+  height: 20px;
+  fill: #990000;
+}
+.search-box button.gsc-search-button-v2:hover,
+.search-box button.gsc-search-button-v2:focus {
+  cursor: pointer;
+  border-color: #990000;
+  background-color: #fff;
+  color: #990000;
+}
+
+#search.search-box button.gsc-search-button-v2 {
+  border-color: #fff;
+  background-color: #990000;
+  color: #fff;
+}
+#search.search-box button.gsc-search-button-v2 svg {
+  fill: #fff;
+}
+#search.search-box button.gsc-search-button-v2:hover,
+#search.search-box button.gsc-search-button-v2:focus {
+  border-color: #fff;
+  color: #990000;
+  background-color: #fff;
+}
+#search.search-box .gsc-input-box {
+  border: none;
+}
+
+.right-off-canvas-menu .search-box .cse input.gsc-search-button,
+.right-off-canvas-menu .search-box input.gsc-search-button {
+  border: 1px solid #990000;
+}
+
+/* Results */
+.search-results table {
+  margin-bottom: 0;
+  background: none;
+  border: none;
+}
+.search-results table.gcsc-branding {
+  width: auto;
+}
+.search-results .gsc-control-cse {
+  padding: 0;
+  font-family: BentonSansRegular, 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
+}
+.search-results .gsc-selected-option-container {
+  font-family: 'BentonSansBold', Arial, sans-serif;
+  font-weight: normal;
+  width: auto !important;
+}
+.search-results .gsc-option-menu-item-highlighted {
+  background: #eee url("//ssl.gstatic.com/ui/v1/menu/checkmark2.png") no-repeat left center;
+}
+.search-results table.gsc-table-result {
+  table-layout: initial;
+  border-collapse: separate;
+}
+.search-results table.gsc-table-result td {
+  padding: 0;
+}
+.search-results td.gsc-table-cell-thumbnail.gsc-thumbnail {
+  width: 72px;
+}
+.search-results td.gsc-table-cell-thumbnail.gsc-thumbnail .gs-image-box {
+  margin-right: 12px;
+}
+.search-results .gsc-results.gsc-webResult {
+  padding-top: 16px;
+}
+.search-results .gsc-result .gs-title {
+  height: auto;
+  overflow: visible;
+}
+.search-results .gsc-control-cse,
+.search-results .gsc-control-cse .gsc-table-result {
+  font-family: BentonSansRegular, Arial, sans-serif;
+  font-weight: normal;
+}
+.search-results .gsc-control-cse b,
+.search-results .gsc-control-cse .gsc-table-result b,
+.search-results .gsc-control-cse strong,
+.search-results .gsc-control-cse .gsc-table-result strong,
+.search-results .gsc-results .gsc-cursor-box .gsc-cursor-current-page,
+.search-results .gs-promotion em {
+  font-family: BentonSansBold, Arial, sans-serif;
+  font-weight: normal;
+}
+.search-results .gs-result .gs-title,
+.search-results .gs-result .gs-title *,
+.search-results a,
+.search-results a b,
+.search-results a em,
+.search-results .gsc-cursor-page {
+  color: #006298 !important;
+  background-color: transparent !important;
+}
+.search-results .gs-result a.gs-visibleUrl,
+.search-results .gs-result .gs-visibleUrl {
+  color: #80756E;
+}
+.search-results .gsc-webResult.gsc-result.gsc-promotion {
+  border-color: transparent;
+  background: #EDEBEB;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+}
+.search-results .gs-promotion.gs-result table {
+  border-collapse: initial;
+}
+.search-results .gs-promotion.gs-result .gs-promotion-image-cell {
+  width: 60px;
+}
+
+.gsc-completion-container {
+  border: none;
+}
+.gsc-completion-container table,
+.gsc-completion-container table tbody,
+.gsc-completion-container tbody tr:nth-child(even) {
+  background-color: transparent !important;
+}
+.gsc-completion-container tbody td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.gsc-completion-container tbody tr.gsc-completion-selected {
+  background-color: #eee !important;
+}
+.gsc-completion-container tbody {
+  border: none;
+}
+
+</style>
+<meta charset="utf-8"/>
+<title>Indiana University East</title>
+<meta content="Indiana University East leads the region as the premier four-year and master's public institution in eastern Indiana and western Ohio." name="description"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- IU Assets 2.x CSS -->
+
+
+
+<!-- IU Assets 2.x JS -->
+<script src="https://assets.iu.edu/search/3.x/search.js" type="text/javascript"></script>
+<!-- search initialization -->
+<script type="text/javascript">
+          IUSearch.init({
+              dynamicCSS: false,
+              CX : {
+                  site: '000419990245206054579:x3a_p4vxplo',
+                  all: '000419990245206054579:x3a_p4vxplo'
+              },
+              attributes: {
+                  resultsUrl: 'https://www.iue.edu/search-results.php'
+              }
+          });
+    </script>
+<!-- IUE Assets JS -->
+<script>
+    /**
+    * Function that tracks a click on an outbound link in Google Analytics.
+    * This function takes a valid URL string as an argument, and uses that URL string
+    * as the event label.
+    */
+    var trackOutboundLink = function(url) {
+       ga('send', 'event', 'outbound', 'click', url, {'hitCallback':
+         function () {
+         document.location = url;
+         }
+       });
+    }
+    </script>
+<script src="//www.iue.edu/pub/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="//www.iue.edu/pub/js/global2015.js" type="text/javascript"></script>
+<!-- IUE Assets CSS -->
+
+<!-- Google Webmaster Tools -->
+<meta content="whPqe6O4Y0VN4ahrY4SjEJBS9-ywyfOLS_IEKdLAqwk" name="google-site-verification"/>
+<!--Facebook Tags-->
+<meta content="358764380861360" property="fb:app_id"/>
+<meta content="Indiana University East" property="og:title"/>
+<meta content="university" property="og:type"/>
+<meta content="https://iue.edu/" property="og:url"/>
+<meta content="https://iue.edu/" property="og:image"/>
+<meta content="Indiana University East" property="og:site_name"/>
+<meta content="1843648370" property="fb:admins"/>
+<meta content="Indiana University East leads the region as the premier four-year and master's public institution in eastern Indiana and western Ohio." property="og:description"/>
+
+
+
+
+
+<link href="https://plus.google.com/116488352608904118554" rel="publisher"/>
+<style type="text/css">
+        #twitter-widget-0 {
+            float:right;
+            /* min-height:430px; */
+            width:100%;
+			text-align: right;
+			margin-top: 16px;
+        }
+        #twitter-widget-1 {
+			margin-top: 16px;
+        }
+		#___ytsubscribe_0 {
+			margin-left: 3px !important;
+		}
+		#flickr_follow {
+			margin-bottom: 20px;
+			margin-top: 12px;
+			margin-left: 3px;
+		}
+        #twitter-widget-0,
+		#___ytsubscribe_0,
+		#flickr_follow {
+			margin-bottom: 20px;
+		}
+		
+		/*div#campus_alert h3 {
+			border-bottom: 0;
+			margin: 15px 12px 8px;
+		}*/
+		#eAlert {
+			-webkit-transition: margin-top 0.42s ease-in-out; /* Safari */
+ 			transition: margin-top 0.42s ease-in-out;
+		}
+		.search-open #eAlert {
+			margin-top: 50px;
+		}
+		@media only screen and (min-height: 461px) and (min-width: 641px) {
+			#eAlert {
+				position: absolute;
+			}
+		}
+		@media only screen and (min-width: 64.063em) {
+			#eAlert {
+				margin-top: 89px;
+				-webkit-transition: margin-top 0.3s ease; /* Safari */
+ 				transition: margin-top 0.3s ease;
+			}
+			.search-open #eAlert {
+				margin-top: 139px; 
+				-webkit-transition: margin-top 0.5s ease; /* Safari */
+ 				transition: margin-top 0.5s ease; 
+			}
+		}
+		#eAlert h3 {
+			margin: 0 0 .5rem;
+			border: 0;
+		}
+		#eAlert > div {
+			padding: 1.5rem 1rem !important;
+		}
+		/*div#campus_alert.active {*/
+			/*
+			position: absolute;
+			top: 10%;
+			z-index: 15;			
+			*/
+			/*max-width: 1000px;
+			margin: 0 auto;
+			overflow: overlay;
+			background-color: #f89e00;
+			padding: 0 .75em .5em .75em;
+		}*/
+		div#campus_alert.active {
+			max-width: 800px;
+			margin: 8px auto;
+			padding: 0 1rem;
+			overflow: overlay;
+			background-color: #edf1f6;
+			border-left: .25rem solid #006298;
+			color: #134a71;
+		}
+		div#campus_alert.active h2 {
+			border: 0;
+			margin-bottom: .2em;
+			font-size: 1.3em;
+		}
+		div#campus_alert.active p {
+			margin-top: 0;
+		}
+		div#campus_alert.active a {
+			color: #134a71;
+			text-decoration: underline;
+		}
+
+		div#campus_alert.normal {
+			background-color: #093; /* green */
+			color: white;
+		}
+		div#campus_alert.normal a{
+			color: #F3DF4B;
+		}
+		div#campus_alert.minor {
+			background-color: #f5bb17; /* Yellow */
+		}
+		div#campus_alert.moderate {
+			background-color: #f5bb17; /* Yellow */
+		}
+		div#campus_alert.severe {
+			background-color: #f89e00; /* orange? */
+		}
+		div#campus_alert.extreme {
+			background-color: #BD0000; /* red */
+			color: white;
+		}
+		div#campus_alert.extreme a{
+			color:#F3DF4B;
+		}
+		header {
+			z-index: 15;	
+		}
+    </style>
+</head>
+<body class="home">
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1739694579689806');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" src="https://www.facebook.com/tr?id=1739694579689806&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
+<!-- End Facebook Pixel Code -->
+<!--
+	Start of DoubleClick Floodlight Tag: Please do not remove
+	Activity name of this tag: 2017- IUEast- Homepage
+	URL of the webpage where the tag is expected to be placed: http://www.iue.edu/
+	This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+	Creation Date: 06/17/2016
+	-->
+<script type="text/javascript">
+	var axel = Math.random() + "";
+	var a = axel * 10000000000000;
+	document.write('<iframe src="https://4924464.fls.doubleclick.net/activityi;src=4924464;type=retar0;cat=2017-00g;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+	</script>
+<noscript>
+<iframe frameborder="0" height="1" src="https://4924464.fls.doubleclick.net/activityi;src=4924464;type=retar0;cat=2017-00g;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" style="display:none" width="1"></iframe>
+</noscript>
+<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+<img alt="" height="1" src="https://s.amazon-adsystem.com/iui3?d=forester-did&amp;ex-fargs=%3Fid%3Dd45b13ae-50a7-9320-188c-3e3b7350373c%26type%3D55%26m%3D1&amp;ex-fch=416613&amp;ex-src=www.iue.edu&amp;ex-hargs=v%3D1.0%3Bc%3D6900173597746%3Bp%3Dd45b13ae-50a7-9320-188c-3e3b7350373c" style="border-style:none;font-size:0;height:0;width:0;display:block;" width="1"/>
+<div id="fb-root"></div>
+<!-- Header -->
+<header>
+<section id="iue-header">
+<!-- IU Assets 2.x Header -->
+<div aria-labelledby="campus-name" class="iue" id="branding-bar" itemscope="itemscope" itemtype="http://schema.org/CollegeOrUniversity" role="complementary">
+<div class="row pad">
+<img alt="" src="//assets.iu.edu/brand/3.x/trident-large.png"/>
+<p id="iu-campus">
+<a href="http://www.iue.edu" title="Indiana University East">
+<span class="show-on-desktop" id="campus-name" itemprop="name">Indiana University East</span>
+<span class="show-on-tablet" itemprop="name">Indiana University East</span>
+<span class="show-on-mobile" itemprop="name">IU East</span>
+</a>
+</p>
+</div>
+</div>
+<!-- IU Assets 2.x Search -->
+<div id="toggles">
+<div class="row pad">
+<a aria-controls="search" aria-expanded="false" class="button search-toggle" href="/search"><img alt="Open Search" src="//assets.iu.edu/search/3.x/search.png"/></a>
+<button class="button hide-for-large" data-toggle="offCanvas">Menu</button>
+</div>
+</div>
+<div aria-hidden="true" class="search-box" id="search" role="search"></div>
+<!-- IUE Main Nav -->
+<div id="nav-container">
+<nav class="iue-menu" id="iue-menu-header">
+<div class="row pad">
+<ul>
+<li class="first admissions"><a href="https://www.iue.edu/admissions/">Admissions</a></li>
+<li class="academics"><a href="https://www.iue.edu/programs.php">Academics</a></li>
+<li class="campuslife"><a href="https://www.iue.edu/campuslife/">Campus Life</a></li>
+<li class="athletics"><a href="https://www.iueredwolves.com/">Athletics</a></li>
+<li class="offices"><a href="https://www.iue.edu/about/offices.php">Offices</a></li>
+<li class="online"><a href="https://www.iue.edu/online/">Online Programs</a></li>
+<li class="last give"><a href="https://www.iue.edu/development/donate.php">Give</a></li>
+<!--<li class="last pathways"><a href="https://www.iue.edu/pathways/" title="Ivy Tech Pathways">Ivy Tech Pathways</a></li>-->
+</ul>
+<div class="iue-social">
+<ul class="social inline">
+<li class="first"><a class="icon-facebook external" href="https://www.iue.edu/facebook/">Facebook</a></li>
+<li><a class="icon-twitter external" href="https://www.iue.edu/twitter/">Twitter</a></li>
+<li><a class="icon-instagram external" href="https://www.iue.edu/instagram/">Instagram</a></li>
+<li><a class="icon-youtube external" href="https://www.iue.edu/youtube/">YouTube</a></li>
+<li><a class="icon-fa-snapchat external" href="https://www.iue.edu/snapchat/">Snapchat</a></li>
+<li><a class="icon-flickr external" href="https://www.iue.edu/flickr/">Flickr</a></li>
+<li class="last"><a class="icon-blog external" href="https://www.iue.edu/blogs/">Blogs</a></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</section>
+<!--<div id="campus_alert" class="active">
+		<h2>Power on campus has been restored</h2> 
+		<p>IU East Physical Facilities will turn off the power to campus at 9:30 a.m. this morning (Jan. 22) for a minor electrical repair that should take 10-15 minutes. The backup power will come on but it is a good idea to save your work.</p> 
+	</div>-->
+<!--<div id="campus_alert"></div>-->
+<!-- DELETE ON or AFTER 01/14/2018 - KDL<div id="campus_alert" class="minor active"><h3>The Sat, Jan 13th, 2018 Men's and Women's Basketball Games have been postponed.  All other campus classes, programs and activities will continue as scheduled.</h3> </div>  -->
+</header>
+<!-- /Header -->
+<!-- /Focused Container -->
+<section class="featured container">
+<div class="section">
+<div class="actions">
+<ul>
+<!--<li class="getSocial"><a class="getSocial" title="Get Social" tabindex="0"><img src="pub/img/home/callouts/GetSocial.jpg" alt="Get Social Button" /></a></li>-->
+<li class="getSocial"><a href="https://www.iue.edu/scholarships"><img alt="Apply for scholarships" src="/pub/img/home/callouts/apply-scholarships.jpg"/></a></li>
+<li class="applyOnline"><a class="applyOnline" href="/admissions/freshmen/freshmen-apply.php" title="Apply Online"><img alt="Apply Online Button" src="pub/img/home/callouts/ApplyNow.jpg"/></a></li>
+<li class="requestInfo"><a class="requestInfo" href="/admissions/contact/request.php" title="Request Info"><img alt="Request Information Button" src="pub/img/home/callouts/RequestInfo.jpg"/></a></li>
+<!-- Events Rotator -->
+<li class="events">
+<div class="events" id="slideshow">
+<!--	<a href="/sec/"><img src="/pub/img/home/callouts/SEC-Callout.jpg" alt="IU East Student Events and Activities Center"></a> -->
+<!--<a href="https://www.iue.edu/scholarships"><img src="/pub/img/home/callouts/apply-scholarships.jpg" alt="Apply for scholarships"></a>-->
+<a href="https://reportincident.iu.edu"><img alt="Student Incident Reporting" src="/pub/img/home/callouts/WeWillReport.jpg"/></a>
+<a href="/spanish/"><img alt="En Español" src="/pub/img/home/callouts/En-Espanol.jpg"/></a>
+<a href="https://www.myiu.org/one-time-gift?appealid=2f26ea94-c580-4e81-b1df-98bc069f5f7a&amp;account=I380010636"><img alt="Donate to Campus Campaign" src="/pub/img/home/callouts/Give_Now.jpg"/></a>
+</div>
+</li>
+<!-- /Events Rotator -->
+</ul>
+</div>
+</div>
+</section>
+<!-- /Focused Container -->
+<!-- Gallery Controls -->
+<div class="load-item" id="progress-back">
+<div id="progress-bar"></div>
+</div>
+<a id="ssprevslide">previous</a>
+<a id="ssnextslide">next</a>
+<!-- Gallery Controls -->
+<section class="content container">
+<div class="section">
+<div class="eventsnav" id="nav"></div>
+<div class="row group" id="youriu">
+<h2><span class="black">Welcome to the PACK </span><span class="profileName"></span></h2>
+<div id="expContainer">
+<div class="expIUE">
+<div class="photoContainer">
+<div class="profilePic"></div>
+</div>
+<div id="tools">
+<div class="fbConnect">
+<div class="userProfilePic"></div>
+<a class="fbLink logoutbtn" onclick="logout()" tabindex="0">Logout</a>
+<a class="fbLink fbConnectLogin" onclick="login()" tabindex="0" title="Connect With Facebook">Connect With Facebook</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Flickr  - YouTube - Instagram -->
+<div class="media first">
+<h3 class="tabHeading black">See For<span class="red"> Yourself</span></h3>
+<div id="phototabs">
+<ul class="tabs">
+<li><a href="#instagram">Instagram</a></li>
+<li><a href="#youtube">YouTube</a></li>
+<li><a href="#flickr">Flickr</a></li>
+</ul>
+<br class="clear"/>
+<!-- Instagram -->
+<div data-feed="iueast" id="instagram">
+<div class="instaGallery"></div>
+<span class="ig-follow" data-count="true" data-handle="iueast" data-id="42668ea70d" data-size="small" data-username="true" style="margin-left: 3px;"></span>
+</div>
+<!-- /Instagram -->
+<!-- YouTube -->
+<div id="youtube">
+<br class="clear"/>
+</div>
+<!-- /YouTube -->
+<!-- Flickr -->
+<div id="flickr">
+<div class="flickrGallery"></div>
+<a href="http://www.flickr.com/photos/iueast/" id="flickr_follow" title="See my photos on Flickr!"><img alt="" height="26" src="https://s.yimg.com/pw/images/goodies/white-see-my-photos.png" width="147"/></a>
+</div>
+<!-- /Flickr -->
+</div><!--/tabs-->
+</div>
+<!-- /Flickr - Instagram - YouTube -->
+<!-- Twitter - News - Blogs -->
+<div class="media">
+<h3 class="tabHeading black">Campus<span class="red"> Buzz</span></h3>
+<div id="buzztabs">
+<ul class="tabs">
+<li><a href="#events">Events</a></li>
+<li><a href="#twitter">Twitter</a></li>
+<li><a href="#news">News</a></li>
+<li><a href="#blogs">Blogs</a></li>
+</ul>
+<br class="clear"/>
+<!-- Events -->
+<div id="events">
+<div class="feed-item--small" itemscope="itemscope" itemtype="http://schema.org/Event">
+<div class="date-cube">
+<p>
+<span class="month">Jan</span>
+<span class="day">28</span>
+</p>
+</div>
+<div class="event-content" data-datetime="1580250600" data-eventtitle="Women’s Basketball vs. Indiana University Southeast" data-eventtype="summary">
+<p class="title">
+<a class="external" href="https://events.iu.edu/east/view/event/event_id/83452" itemprop="url">
+<span itemprop="name">Women’s Basketball vs. Indiana University Southeast</span>
+</a>
+</p>
+<p class="meta time">
+<span content="2020-01-28T17:30:00-05:00" itemprop="startDate">5:30 p.m.</span>
+<span>—</span>
+<span content="2020-01-28T19:30:00-05:00" itemprop="endDate">7:30 p.m.</span>
+</p>
+</div>
+</div>
+<div class="feed-item--small" itemscope="itemscope" itemtype="http://schema.org/Event">
+<div class="date-cube">
+<p>
+<span class="month">Jan</span>
+<span class="day">28</span>
+</p>
+</div>
+<div class="event-content" data-datetime="1580250600" data-eventtitle="Centerville Night" data-eventtype="summary">
+<p class="title">
+<a class="external" href="https://events.iu.edu/east/view/event/event_id/112044" itemprop="url">
+<span itemprop="name">Centerville Night</span>
+</a>
+</p>
+<p class="meta time">
+<span content="2020-01-28T17:30:00-05:00" itemprop="startDate">5:30 p.m.</span>
+<span>—</span>
+<span content="2020-01-28T21:30:00-05:00" itemprop="endDate">9:30 p.m.</span>
+</p>
+</div>
+</div>
+<div class="feed-item--small" itemscope="itemscope" itemtype="http://schema.org/Event">
+<div class="date-cube">
+<p>
+<span class="month">Jan</span>
+<span class="day">28</span>
+</p>
+</div>
+<div class="event-content" data-datetime="1580250600" data-eventtitle="White Out" data-eventtype="summary">
+<p class="title">
+<a class="external" href="https://events.iu.edu/east/view/event/event_id/119173" itemprop="url">
+<span itemprop="name">White Out</span>
+</a>
+</p>
+<p class="meta time">
+<span content="2020-01-28T17:30:00-05:00" itemprop="startDate">5:30 p.m.</span>
+<span>—</span>
+<span content="2020-01-28T21:30:00-05:00" itemprop="endDate">9:30 p.m.</span>
+</p>
+</div>
+</div>
+<div class="feed-item--small" itemscope="itemscope" itemtype="http://schema.org/Event">
+<div class="date-cube">
+<p>
+<span class="month">Jan</span>
+<span class="day">28</span>
+</p>
+</div>
+<div class="event-content" data-datetime="1580252400" data-eventtitle="Board Game Night" data-eventtype="summary">
+<p class="title">
+<a class="external" href="https://events.iu.edu/east/view/event/event_id/112026" itemprop="url">
+<span itemprop="name">Board Game Night</span>
+</a>
+</p>
+<p class="meta time">
+<span content="2020-01-28T18:00:00-05:00" itemprop="startDate">6 p.m.</span>
+<span>—</span>
+<span content="2020-01-28T21:00:00-05:00" itemprop="endDate">9 p.m.</span>
+</p>
+</div>
+</div>
+<div class="feed-item--small" itemscope="itemscope" itemtype="http://schema.org/Event">
+<div class="date-cube">
+<p>
+<span class="month">Jan</span>
+<span class="day">28</span>
+</p>
+</div>
+<div class="event-content" data-datetime="1580256000" data-eventtitle="Panel Discussion: Stories Of Resistance, Persistence And Empowerment From The Civil Rights Era" data-eventtype="summary">
+<p class="title">
+<a class="external" href="https://events.iu.edu/east/view/event/event_id/112036" itemprop="url">
+<span itemprop="name">Panel Discussion: Stories Of Resistance, Persistence And Empowerment From The Civil Rights Era</span>
+</a>
+</p>
+<p class="meta time">
+<span content="2020-01-28T19:00:00-05:00" itemprop="startDate">7 p.m.</span>
+</p>
+</div>
+</div>
+<p style="clear:both;padding-top:1em;"><a class="more button external" href="https://events.iu.edu/east/">View more events</a></p>
+</div>
+<!-- /Events -->
+<!-- Twitter -->
+<div id="twitter">
+<!--<div id="twtr_widget"></div>-->
+<a class="twitter-timeline" data-chrome="noheader nofooter transparent" data-tweet-limit="3" data-widget-id="346688423068852226" href="https://twitter.com/iueast">Tweets by @iueast</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<br class="clear"/>
+<a class="twitter-follow-button" data-show-count="false" href="https://twitter.com/iueast">Follow @iueast</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<a class="twitter-hashtag-button" data-related="iueast" href="https://twitter.com/intent/tweet?button_hashtag=iueast">Tweet #iueast</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</div>
+<!-- /Twitter -->
+<!-- News -->
+<div id="news">
+<div class="news"></div>
+</div>
+<!-- /News -->
+<!-- Blogs -->
+<div id="blogs">
+<div class="blogs">
+</div>
+</div>
+<!-- /Blogs -->
+</div><!--/tabs-->
+</div>
+<!-- /Twitter - News - Blogs -->
+<!-- Facebook Content -->
+<div class="media">
+<h3 class="tabHeading black">IU East<span class="red"> on Facebook</span></h3>
+<div class="fbFeed">
+<div class="fbFeedColumn">
+<div class="facebookOuter">
+<p><a href="https://www.facebook.com/iueast" target="_blank">Indiana University East</a> on Facebook</p>
+<div class="fb-page" data-adapt-container-width="true" data-hide-cover="false" data-href="https://www.facebook.com/iueast/" data-show-facepile="true" data-show-posts="false" data-small-header="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/iueast/"><a href="https://www.facebook.com/iueast/">Indiana University East</a></blockquote></div></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Facebook Content -->
+</div>
+</section>
+<script src="pub/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<!-- QuickLinks -->
+<!-- IUE Footer -->
+<section class="iue-section" id="iue-footer">
+<div class="top-row-wide">
+<div class="action-area">
+<div class="row pad">
+<div class="action-buttons">
+<ul>
+<li class="apply-button"><a href="//www.iue.edu/admissions/"><span class="verticalalign">Apply</span></a></li>
+<li class="request-button"><a href="//www.iue.edu/admissions/contact/request.php"><span class="verticalalign">Request Info</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- START Contact -->
+<div class="contact container">
+<div class="section">
+<h3><a href="https://www.iue.edu">Indiana University East</a></h3>
+<p>
+                    800-959-EAST • 765-973-8200<br/>
+<a href="mailto:AskEast@iue.edu">AskEast@iue.edu</a> <br/>
+                    2325 Chester Blvd.<br/>
+                    Richmond, IN 47374 <br/>
+<em><a href="https://www.iue.edu/about/maps/driving.php" title="Directions">Directions</a> (<a href="https://www.google.com/maps/dir//Indiana+University+East,+2325+Chester+Boulevard,+Richmond,+IN+47374,+United+States/@39.8688858,-84.8823006,15z/data=!4m12!1m3!3m2!1s0x0000000000000000:0xab9a84924fb79c40!2sIndiana+University+East!4m7!1m0!1m5!1m1!1s0x88400082d40178c7:0xab9a84924fb79c40!2m2!1d-84.88253!2d39.869602" target="_blank">Google</a> | <a href="http://maps.apple.com/?daddr=Indiana+University+East,+2325+Chester+Boulevard,+Richmond,+IN+47374,+United+States/@39.8688858,-84.8823006,15z/data=!4m12!1m3!3m2!1s0x0000000000000000:0xab9a84924fb79c40!2sIndiana+University+East!4m7!1m0!1m5!1m1!1s0x88400082d40178c7:0xab9a84924fb79c40!2m2!1d-84.88253!2d39.869602" target="_blank">iPhone</a>)</em>
+</p>
+</div>
+</div>
+<!-- END Contact -->
+<div id="social-footer">
+<div class="iue-social">
+<ul class="social inline">
+<li class="first"><a class="icon-facebook external" href="https://www.iue.edu/facebook/">Facebook</a></li>
+<li><a class="icon-twitter external" href="https://www.iue.edu/twitter/">Twitter</a></li>
+<li><a class="icon-instagram external" href="https://www.iue.edu/instagram/">Instagram</a></li>
+<li><a class="icon-youtube external" href="https://www.iue.edu/youtube/">YouTube</a></li>
+<li><a class="icon-fa-snapchat external" href="https://www.iue.edu/snapchat/">Snapchat</a></li>
+<li><a class="icon-flickr external" href="https://www.iue.edu/flickr/">Flickr</a></li>
+<li class="last"><a class="icon-blog external" href="https://www.iue.edu/blogs/">Blogs</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- START QuickLinks -->
+<div class="quicklinks container">
+<div class="section">
+<dl id="content-foot-hot">
+<dt>What's Hot</dt>
+<!--<dd><a href="https://www.iue.edu/commencement/">Commencement</a></dd>-->
+<!--<dd><a href="https://www.iue.edu/researchday/">Student Research Day</a></dd>-->
+<!--<dd><a href="https://www.iue.edu/admissions/admitted/nso.php">Orientation</a></dd>-->
+<dd><a href="/red-wolf-central/index.html">Red Wolf Central</a></dd>
+<dd><a href="https://www.iue.edu/360/">360° Tour</a></dd>
+<dd><a href="https://www.iue.edu/legacy/">Alumni Legacy Circle</a></dd>
+<!--<dd><a href="https://www.iue.edu/onebook/">One Book 2017</a></dd>-->
+<dd><a href="https://www.iue.edu/spanish/">Español/Spanish</a></dd>
+<!--<dd><a href="https://www.iue.edu/sec/">Student Events Center</a></dd>-->
+<dd><a href="https://www.iue.edu/online/">Online Programs</a></dd>
+<dd><a href="https://www.iue.edu/pathways/">Pathways</a></dd>
+<!--<dd><a href="https://www.iue.edu/chancellor/strategicplanning/">Strategic Planning</a></dd>-->
+<!--<dd><a href="https://www.iue.edu/admissions/visit">Admissions Visit Days</a></dd>-->
+<dd><a href="https://www.iue.edu/finaid/">Financial Aid &amp; Scholarships</a></dd>
+<dd><a href="/red-wolf-central/register/schedule-classes.html">Schedule of Classes</a></dd>
+<dd><a href="https://www.iue.edu/registrar/calendar.php">Academic Calendar</a></dd>
+<!-- <dd><a href="/education/programs/mose/">M.S. in Education</a></dd> -->
+</dl>
+<dl id="content-foot-infofor">
+<dt>Information For</dt>
+<dd><a href="https://www.iue.edu/admissions/">Future Students</a></dd>
+<dd><a href="https://www.iue.edu/current.php">Current Students</a></dd>
+<dd><a href="https://www.iue.edu/admissions/transfers/">Transfer Students</a></dd>
+<dd><a href="https://www.iue.edu/pathways/">Ivy Tech Students</a></dd>
+<dd><a href="https://www.iue.edu/online/">Online Students</a></dd>
+<!-- NEW Added 08/01/2014 -->
+<dd><a href="https://www.iue.edu/military/">Military Students &amp; Veterans</a></dd>
+<!-- Add later
+                <dd><a href="/wta/">WTA Students</a></dd>
+                <dd><a href="/international/">International Students</a></dd>
+                -->
+<!-- End NEW-->
+<dd><a href="https://www.iue.edu/graduate/">Graduate Students</a></dd>
+<dd><a href="https://www.iue.edu/support/">Student Support Services</a></dd>
+<dd><a href="https://www.iue.edu/facstaff.php">Faculty &amp; Staff</a></dd>
+<dd><a href="https://www.iue.edu/alumni/">Alumni</a></dd>
+<dd><a href="https://www.iue.edu/development/">Donors</a></dd>
+</dl>
+<dl id="content-foot-schools">
+<dt>Schools / Programs</dt>
+<dd><a href="https://www.iue.edu/business/">Business &amp; Economics</a></dd>
+<dd><a href="https://www.iue.edu/education/">Education</a></dd>
+<dd><a href="https://www.iue.edu/gs/">General Studies</a></dd>
+<dd><a href="https://www.iue.edu/honors/">Honors Program</a></dd>
+<dd><a href="https://www.iue.edu/hss/">Humanities &amp; Social Sciences</a></dd>
+<dd><a href="https://www.iue.edu/informatics/">Informatics</a></dd>
+<dd><a href="https://www.iue.edu/nsm/">Natural Science &amp; Mathematics</a></dd>
+<dd><a href="https://www.iue.edu/nursing/">Nursing &amp; Health Sciences</a></dd>
+<dd><a href="http://socialwork.iue.edu/">Social Work</a></dd>
+</dl>
+<dl id="content-foot-aboutiue">
+<dt class="expandable">Campus Information</dt>
+<dd><a href="https://www.iue.edu/about">About IU East</a></dd>
+<dd><a href="https://www.iue.edu/about/disclosures.php">Consumer Information</a></dd>
+<dd><a href="https://www.iue.edu/about/maps/">Maps &amp; Directions</a></dd>
+<dd><a href="https://www.iue.edu/about/hours.php">Campus Hours</a></dd>
+<dd><a href="https://www.iue.edu/about/contact.php">Contact Information</a></dd>
+<dd><a href="https://www.iue.edu/registrar/calendar.php">Academic Calendar</a></dd>
+<dd><a href="https://www.iue.edu/diversity/">Diversity</a></dd>
+<dd><a href="https://www.iue.edu/hr/apply/">Jobs</a></dd>
+<dd><a href="https://www.iue.edu/news/">News</a></dd>
+<dd><a href="https://events.iu.edu/east/">Events</a></dd>
+<dd><a href="https://www.iue.edu/safety/emergency/index.html">Emergency Information</a></dd>
+<dd><a href="https://www.iue.edu/safety/index.html">Safety &amp; Emergency Info</a></dd>
+<dd><a href="https://www.iue.edu/healthy/index.html">Health &amp; Wellness Info</a></dd>
+<dd><a href="https://www.iue.edu/bookstore/">Bookstore</a></dd>
+<dd><a href="https://www.iu.edu/nondiscrimination/index.html">Non-Discrimination Notice</a></dd>
+</dl>
+<dl class="last" id="content-foot-campustools">
+<dt>Campus Tools</dt>
+<dd><a href="http://one.iu.edu">One.IU</a></dd>
+<dd><a href="https://canvas.iu.edu/lms-prd/app">Canvas</a></dd>
+<!--<dd><a href="http://oncourse.iu.edu/">Oncourse</a></dd>-->
+<dd><a href="http://www.exchange.iu.edu/">Exchange</a> / <a href="https://imail.iu.edu/">IMail</a> / <a href="http://umail.iu.edu/">UMail</a></dd>
+<dd><a href="https://uits.iu.edu/google">Gmail at IU</a></dd>
+<dd><a href="https://www.iue.edu/digital/index.html">Technology</a></dd>
+<dd><a href="https://www.iue.edu/library/">Library</a></dd>
+<dd><a href="https://www.iue.edu/sitemap.php">A-Z Index</a></dd>
+<dd><a href="https://www.iue.edu/people/">Find People</a></dd>
+<dd><a href="https://www.iue.edu/safety/behavior/index.html">Concerned about someone's behavior?</a></dd>
+</dl>
+</div>
+</div>
+<!-- END QuickLinks -->
+</section>
+<!-- IU Assets 2.x Footer -->
+<footer id="footer" itemscope="itemscope" itemtype="http://schema.org/CollegeOrUniversity" role="contentinfo">
+<div class="row pad">
+<p class="tagline bicentennial celebration"><a href="https://200.iu.edu"><svg fill="none" height="25" viewbox="0 0 223 25" width="223" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.32813 18.196C7.49813 18.196 8.81413 16.88 9.31813 14.836L8.15613 14.57C7.72213 16.25 6.81213 17.076 5.34213 17.076C3.41013 17.076 2.17813 15.508 2.17813 12.764C2.17813 10.202 3.38213 8.57797 5.31413 8.57797C6.82613 8.57797 7.54013 9.37597 7.98813 10.944L9.16413 10.622C8.68813 8.71797 7.52613 7.44397 5.32813 7.44397C2.73813 7.44397 0.932129 9.54397 0.932129 12.778C0.932129 16.166 2.69613 18.196 5.32813 18.196Z" fill="white"></path>
+<path d="M18.6572 18V16.88H13.2392V13.114H17.0472V12.008H13.2392V8.77397H18.3632V7.63997H12.0072V18H18.6572Z" fill="white"></path>
+<path d="M27.4545 18V16.88H22.4705V7.63997H21.2385V18H27.4545Z" fill="white"></path>
+<path d="M36.5592 18V16.88H31.1412V13.114H34.9492V12.008H31.1412V8.77397H36.2652V7.63997H29.9092V18H36.5592Z" fill="white"></path>
+<path d="M43.1444 18C45.4404 18 46.7284 16.908 46.7284 15.172C46.7284 13.66 45.7484 12.89 44.4744 12.652V12.624C45.5384 12.4 46.3924 11.644 46.3924 10.23C46.3924 8.50797 45.1044 7.63997 42.8504 7.63997H39.1404V18H43.1444ZM40.3584 13.226H42.8084C44.4744 13.226 45.5104 13.786 45.5104 15.088C45.5104 16.278 44.7544 16.922 43.0604 16.922H40.3584V13.226ZM40.3584 8.73197H42.7664C44.4464 8.73197 45.1884 9.23597 45.1884 10.426C45.1884 11.616 44.2924 12.162 42.7384 12.162H40.3584V8.73197Z" fill="white"></path>
+<path d="M50.7381 18V13.534H53.0761L55.5541 18H56.8981L54.3501 13.38C55.8201 13.072 56.7581 12.204 56.7581 10.538C56.7581 8.63397 55.4281 7.63997 53.0761 7.63997H49.5201V18H50.7381ZM50.7381 8.75997H52.9921C54.6441 8.75997 55.5401 9.22197 55.5401 10.58C55.5401 11.994 54.6301 12.442 53.0061 12.442H50.7381V8.75997Z" fill="white"></path>
+<path d="M59.922 18L60.944 15.032H65.06L66.082 18H67.356L63.688 7.59797H62.4L58.732 18H59.922ZM63.002 9.09597H63.03L64.682 13.954H61.322L63.002 9.09597Z" fill="white"></path>
+<path d="M72.2118 18V8.77397H75.5158V7.63997H67.6898V8.77397H70.9798V18H72.2118Z" fill="white"></path>
+<path d="M79.3105 18V7.63997H78.0785V18H79.3105Z" fill="white"></path>
+<path d="M83.861 18V9.58597H83.889L89.531 18H90.637V7.63997H89.475V15.83H89.447L84.001 7.63997H82.699V18H83.861Z" fill="white"></path>
+<path d="M97.7074 18.196C99.3174 18.196 100.227 17.3 100.633 16.446H100.661V18H101.739V13.044H98.1693V14.08H100.549C100.521 15.998 99.4294 17.09 97.8194 17.09C95.9854 17.09 94.6273 15.634 94.6273 12.736C94.6273 9.82397 96.1534 8.57797 97.7774 8.57797C99.2194 8.57797 99.9894 9.27797 100.479 10.944L101.627 10.65C101.081 8.47997 99.7514 7.44397 97.7914 7.44397C95.2014 7.44397 93.3813 9.48797 93.3813 12.778C93.3813 15.914 94.9074 18.196 97.7074 18.196Z" fill="white"></path>
+<path d="M180.417 18V13.464L183.917 7.63997H182.629L179.829 12.414L177.015 7.63997H175.699L179.185 13.464V18H180.417Z" fill="white"></path>
+<path d="M192.847 18V16.88H187.429V13.114H191.237V12.008H187.429V8.77397H192.553V7.63997H186.197V18H192.847Z" fill="white"></path>
+<path d="M195.792 18L196.814 15.032H200.93L201.952 18H203.226L199.558 7.59797H198.27L194.602 18H195.792ZM198.872 9.09597H198.9L200.552 13.954H197.192L198.872 9.09597Z" fill="white"></path>
+<path d="M206.862 18V13.534H209.2L211.678 18H213.022L210.474 13.38C211.944 13.072 212.882 12.204 212.882 10.538C212.882 8.63397 211.552 7.63997 209.2 7.63997H205.644V18H206.862ZM206.862 8.75997H209.116C210.768 8.75997 211.664 9.22197 211.664 10.58C211.664 11.994 210.754 12.442 209.13 12.442H206.862V8.75997Z" fill="white"></path>
+<path d="M219.084 18.196C221.282 18.196 222.78 17.02 222.78 15.312C222.78 13.548 221.548 12.848 219.462 12.204C217.432 11.56 216.732 11.196 216.732 10.09C216.732 9.20797 217.516 8.56397 218.832 8.56397C220.064 8.56397 220.96 9.06797 221.52 10.314L222.5 9.76797C221.968 8.45197 220.82 7.44397 218.846 7.44397C216.872 7.44397 215.514 8.60597 215.514 10.188C215.514 11.98 216.802 12.568 218.958 13.226C221.002 13.87 221.562 14.374 221.562 15.396C221.562 16.488 220.596 17.104 219.14 17.104C217.74 17.104 216.718 16.418 216.2 15.032L215.164 15.494C215.71 17.132 217.11 18.196 219.084 18.196Z" fill="white"></path>
+<path d="M124.83 24.4462H109L109.558 22.1815C110.06 21.3669 110.631 20.5966 111.265 19.8792C112.371 18.4944 114.389 16.7642 117.318 14.6885C119.978 12.8317 121.713 11.2 122.523 9.7933C123.32 8.43571 123.741 6.88989 123.742 5.31536C123.798 4.30106 123.462 3.30399 122.804 2.53013C122.492 2.19358 122.111 1.92812 121.687 1.75175C121.263 1.57539 120.806 1.49224 120.347 1.50795C118.628 1.50795 117.378 2.01123 116.596 3.01778C116.643 3.51169 116.666 4.03685 116.666 4.59327C116.666 6.51573 115.838 7.47696 114.181 7.47696C113.087 7.47696 112.54 6.99713 112.54 6.03746C112.54 4.537 113.387 3.18971 115.081 1.99559C116.697 0.824119 118.642 0.195337 120.638 0.19973C122.729 0.19973 124.37 0.706137 125.561 1.71895C126.154 2.23019 126.622 2.86948 126.93 3.58843C127.239 4.30737 127.38 5.08713 127.343 5.86866C127.352 7.6216 126.787 9.32935 125.735 10.7311C124.659 12.194 122.39 13.882 118.926 15.7951C115.463 17.7082 113.118 19.6197 111.893 21.5297H125.528L124.83 24.4462Z" fill="white"></path>
+<path d="M136.585 25C134.444 25 132.792 24.3155 131.629 22.9463C130.466 21.5771 129.891 19.6375 129.903 17.1273C129.871 13.0379 130.956 9.01734 133.04 5.49875C135.131 1.95704 137.898 0.187755 141.34 0.190881C142.23 0.15022 143.118 0.318592 143.933 0.682534C144.747 1.04648 145.465 1.59589 146.028 2.28684C147.157 3.69039 147.721 5.60504 147.721 8.03078C147.728 12.0429 146.751 15.9955 144.875 19.5421C142.981 23.1807 140.217 25 136.585 25ZM144.148 6.6241C144.148 3.18555 143.176 1.46627 141.232 1.46627C138.884 1.46627 137.009 3.54503 135.605 7.70255C134.201 11.8601 133.493 15.3877 133.481 18.2855C133.481 20.308 133.74 21.7147 134.259 22.5055C134.525 22.9029 134.89 23.2232 135.319 23.434C135.748 23.6447 136.225 23.7385 136.702 23.7059C139.003 23.7059 140.822 21.5396 142.16 17.207C143.498 12.8744 144.161 9.34681 144.148 6.6241Z" fill="white"></path>
+<path d="M157.151 25C155.006 25 153.354 24.3155 152.194 22.9463C151.035 21.5771 150.456 19.6375 150.46 17.1273C150.425 13.0376 151.51 9.01641 153.596 5.49875C155.688 1.95704 158.454 0.187755 161.896 0.190881C162.787 0.15022 163.675 0.318592 164.489 0.682534C165.303 1.04648 166.021 1.59589 166.585 2.28684C167.726 3.68414 168.296 5.59566 168.296 8.0214C168.302 12.0329 167.327 15.9849 165.455 19.5327C163.551 23.1776 160.783 25 157.151 25ZM164.714 6.6241C164.714 3.18555 163.742 1.46627 161.797 1.46627C159.447 1.46627 157.571 3.54503 156.171 7.70255C154.77 11.8601 154.062 15.3877 154.047 18.2855C154.047 20.308 154.308 21.7147 154.83 22.5055C155.094 22.9032 155.458 23.2239 155.887 23.4347C156.315 23.6456 156.792 23.7392 157.268 23.7059C159.569 23.7059 161.388 21.5396 162.726 17.207C164.064 12.8744 164.726 9.34681 164.714 6.6241Z" fill="white"></path>
+</svg>
+<span class="visually-hidden">Celebrating 200 years</span>
+</a>
+</p>
+<p class="signature">
+<a class="signature-link signature-img" href="https://www.iu.edu"><img alt="Indiana University" src="//assets.iu.edu/brand/3.x/iu-sig-formal.svg"/></a>
+</p>
+<p class="copyright">
+<span class="line-break"><a href="https://accessibility.iu.edu/assistance" id="accessibility-link" title="Having trouble accessing this web page content? Please visit this page for assistance.">Accessibility</a> | <a href="/privacy" id="privacy-policy-link">Privacy Notice</a></span>
+<span class="hide-on-mobile"> | </span>
+<a href="https://www.iu.edu/copyright/index.html">Copyright</a> © 2020 <span class="line-break-small">The Trustees of <a href="https://www.iu.edu/" itemprop="url"><span itemprop="name">Indiana University</span></a></span>
+</p>
+</div>
+</footer>
+<!-- IUE Google Code (Analytics, Remarketing, etc...) -->
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7415061-1', 'auto');
+  ga('create', 'UA-64473517-3',{'name':'rollupProperty'});
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+  ga ('rollupProperty.send','pageview');
+
+</script>
+<!-- END Google Analytics -->
+<!-- ScrollDepth -->
+<script src="/pub/js/scrolldepth/jquery.scrolldepth.min.js"></script>
+<script>
+jQuery(function() {
+  jQuery.scrollDepth({
+	userTiming: false,
+	pixelDepth: false
+  });
+});
+</script>
+<!-- END ScrollDepth -->
+<!-- Riveted -->
+<script src="/pub/js/riveted/riveted.min.js"></script>
+<script>riveted.init();</script>
+<!-- END Riveted -->
+<!-- Cox Media Pixel -->
+<script type="text/javascript">var ssaUrl = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'pixel.programmatictrader.com/iap/a181612887a22744';new Image().src = ssaUrl;</script>
+<!-- END Cox Media Pixel -->
+<!-- LiveChat -->
+<!-- Start of LiveChat (www.livechatinc.com) code -->
+<script type="text/javascript">
+window.__lc = window.__lc || {};
+window.__lc.license = 7520851;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+</script>
+<!-- End of LiveChat code -->
+<!-- /Footer -->
+<script src="pub/js/linkify.min.js"></script>
+<script src="pub/js/linkify-jquery.min.js"></script>
+<script src="pub/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="pub/fancybox/helpers/jquery.fancybox-media.js?v=1.0.0" type="text/javascript"></script>
+<script src="pub/js/home/jquery.tweet.js" type="text/javascript"></script>
+<script src="pub/jslider/jquery.easing.min.js" type="text/javascript"></script>
+<script src="pub/jslider/supersized.3.2.7.js" type="text/javascript"></script>
+<script src="pub/jslider/supersized.shutter.js" type="text/javascript"></script>
+<!--<script type="text/javascript" src="https://malsup.github.com/jquery.cycle.all.js"></script>-->
+<script src="pub/js/jquery.cycle.all.js" type="text/javascript"></script>
+<script src="pub/js/general.js" type="text/javascript"></script>
+<script src="pub/js/home/config.js" type="text/javascript"></script>
+<script type="text/javascript">
+        var slideImages = [
+			//{image : 'pub/img/home/rotators/Commencement19_1.jpg'},
+			//{image : 'pub/img/home/rotators/Commencement19_2.jpg'},
+			//{image : 'pub/img/home/rotators/Commencement19_3.jpg'},
+			//{image : 'pub/img/home/rotators/Commencement19_4.jpg'},
+			//*
+			
+			{image : 'pub/img/home/rotators/Marker.jpg'},
+			{image : 'pub/img/home/rotators/Bishop.jpg'},
+			{image : 'pub/img/home/rotators/Elizabeth.jpg'},
+			{image : 'pub/img/home/rotators/Wes.jpg'},
+			{image : 'pub/img/home/rotators/Track.jpg'},
+			/*
+			{image : 'pub/img/home/rotators/Scholarships-2019.jpg'},
+			{image : 'pub/img/home/rotators/Library.jpg'},
+			{image : 'pub/img/home/rotators/Math.jpg'},
+			{image : 'pub/img/home/rotators/Julien.jpg'},
+			{image : 'pub/img/home/rotators/Student.jpg'}, */
+			//*/
+            /*{image : 'pub/img/home/rotators/Summer-3.jpg'},*/
+            /*{image : 'pub/img/home/rotators/Wolf-Wave.jpg'},*/
+            
+        ]
+    </script>
+<script src="//connect.facebook.net/en_US/all.js" type="text/javascript"></script>
+<script src="/pub/js/home/FB.config.js" type="text/javascript"></script>
+<!-- Instagram Follow button from instafollowbutton.com -->
+<script>(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src="//x.instagramfollowbutton.com/follow.js";s.parentNode.insertBefore(g,s);}(document,"script"));</script>
+<script async="" data-interval="5" data-raveurl="//www.getrave.com/cap/iue/channel1" data-spoofurl="https://www.iupuc.edu/_xml/spoof-alert.xml" src="https://www.iue.edu/pub/js/cAlert.js"></script>
+</body>
+</html>
+
