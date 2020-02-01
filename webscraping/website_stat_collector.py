@@ -2,6 +2,12 @@ from webscraping import web_scraper
 import tinycss2
 import json
 
+def parse_website(url):
+    soup = web_scraper.get_soup(url)
+    css_stats = parse_styles(soup)
+    tag_info = join_html_to_css(soup, css_stats)
+    return tag_info
+
 def parse_styles(html_soup):
     def parse_declarations(rule):
         declarations = tinycss2.parse_declaration_list(rule.content, skip_comments = True, skip_whitespace = True)
@@ -70,8 +76,7 @@ def join_html_to_css(html_soup, css_stats):
         tag_info[tag.name].update(css_stats["ids"].get(tag.id, {}))
     return tag_info
 
+
 if __name__ == '__main__':
-    soup, _ = web_scraper.scrape("test.html")
-    css_stats = parse_styles(soup)
-    tag_info = join_html_to_css(soup, css_stats)
+    tag_info = parse_website("combined.html")
     print(json.dumps(tag_info, indent = 2))

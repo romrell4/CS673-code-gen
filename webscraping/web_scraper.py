@@ -1,6 +1,5 @@
 import sys
 
-import requests
 import tinycss2
 from bs4 import BeautifulSoup
 # Need to install the webdriver https://sites.google.com/a/chromium.org/chromedriver/home
@@ -11,10 +10,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 def running_linux():
     return 'linux' in sys.platform
 
+def get_soup(url):
+    return BeautifulSoup(get_html(url), "html.parser")
+
 def scrape(url):
-    html = get_html(url)
+    soup = get_soup(url)
     get_photo(url)
-    soup = BeautifulSoup(html, "html.parser")
     all_css_rules = []
     for styles in soup.select('style'):
         # print(styles)
@@ -42,7 +43,7 @@ def get_html(url):
     """
     Either read the element from a live website, or a local html file - depending on the prefix
 
-    :param url: Either a remote of local url to an html file
+    :param url: Either a full website url or folder name for one of the cached sites
     :return: html text
     """
     if url.startswith("http"):
@@ -58,7 +59,7 @@ def get_html(url):
             wait = WebDriverWait(driver, 1)
             return driver.page_source
     else:
-        with open("test_html/" + url) as f:
+        with open("cached_sites/{}/combined.html".format(url)) as f:
             return f.read()
 
 def parse_children(tag, depth = 0, print_structure = False):
@@ -100,7 +101,7 @@ class Tag:
 if __name__ == '__main__':
     # scrape("https://www.crummy.com/software/BeautifulSoup/bs4/doc/")
     # scrape("https://recipes.twhiting.org")
-    # soup, _ = scrape("test.html")
+    # soup, _ = scrape("test")
     soup, _ = scrape("https://byu.edu")
 
     # print(soup.prettify())

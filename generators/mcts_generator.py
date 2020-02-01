@@ -93,7 +93,7 @@ class Action():
     def __hash__(self):
         return hash((0))
 
-initialState = WebSiteState(url="test.html")
+initialState = WebSiteState(url="test")
 mcts = mcts(timeLimit=1000)
 action = mcts.search(initialState=initialState)
 
