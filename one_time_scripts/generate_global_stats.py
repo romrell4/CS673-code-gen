@@ -31,7 +31,7 @@ class Stats:
 
 def generate():
     stats = Stats.read()
-    stats.calc_tag_freq()
+    # stats.calc_tag_freq()
     stats.write()
 
 
