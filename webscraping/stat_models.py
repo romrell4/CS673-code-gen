@@ -80,8 +80,8 @@ class CSS:
         #                 # TODO: Support other cases?
         #                 if print_issues:
         #                     print("Unsupported prelude size '{}': {}".format(len(prelude), prelude))
-        # # TODO: Set these
-        # self.rule_sets = []
+        # TODO: Set these
+        self.rule_sets = []
 
 class WebPage:
     def __init__(self, url: str):
