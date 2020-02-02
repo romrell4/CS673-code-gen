@@ -23,9 +23,10 @@ class Stats:
         for directory in tqdm(os.listdir("../cached_sites")):
             soup = web_scraper.get_soup(directory)
             for tag in soup.find_all():
-                if tag not in tag_freq:
-                    tag_freq[tag] = 0
-                tag_freq[tag] += 1
+                tag_name = tag.name
+                if tag_name not in tag_freq:
+                    tag_freq[tag_name] = 0
+                tag_freq[tag_name] += 1
         self.data["tag_freq"] = tag_freq
 
 def generate():
