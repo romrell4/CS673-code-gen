@@ -11,13 +11,13 @@ class StatCollectionTest(unittest.TestCase):
 
     def test_css(self):
         css = CSS(web_scraper.get_soup("test"), True)
-        self.assertCountEqual(css.rule_sets, ["body", "#content", "#title", "p", ".center", ".red", ".blue", ".big", "table#test-table", "td.image", "img.icon", "th", "td"])
-        self.assertEqual(css.rule_sets["body"], {
+        self.assertCountEqual(css.selectors, ["body", "#content", "#title", "p", ".center", ".red", ".blue", ".big", "table#test-table", "td.image", "img.icon", "th", "td"])
+        self.assertEqual(css.selectors["body"], {
             "font-size": "18pt",
             "background-image": "url(\"https://www.ezoic.com/wp-content/uploads/2016/05/website-background-min.jpg\")",
             "background-repeat": "no-repeat"
         })
-        self.assertEqual(css.rule_sets["#content"], {
+        self.assertEqual(css.selectors["#content"], {
             "width": "50%",
             "background-color": "#dddddddd",
             "padding": "20px"
@@ -25,11 +25,11 @@ class StatCollectionTest(unittest.TestCase):
 
     def test_css_comma_selectors(self):
         css = CSS(web_scraper.get_soup("test"), True)
-        self.assertEqual(css.rule_sets["th"], {
+        self.assertEqual(css.selectors["th"], {
             "padding": "8px",
             "border": "1px solid #111"
         })
-        self.assertEqual(css.rule_sets["td"], {
+        self.assertEqual(css.selectors["td"], {
             "padding": "8px",
             "border": "1px solid #111"
         })
