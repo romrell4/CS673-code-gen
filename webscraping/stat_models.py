@@ -2,7 +2,6 @@ from typing import Tuple
 
 import tinycss2
 from bs4 import BeautifulSoup
-from tinycss2.ast import Declaration, Node
 
 from webscraping import web_scraper
 
@@ -21,28 +20,19 @@ class CSS:
         for style in html_soup.find_all("style"):
             stylesheet = tinycss2.parse_stylesheet(style.text, skip_comments = True, skip_whitespace = True)
             for rule_set in stylesheet:
-                selector = tinycss2.serialize(rule_set.prelude).strip()
-                if selector not in self.rule_sets:
-                    self.rule_sets[selector] = {}
-                # Update the current dictionary, overwriting conflicting keys
-                self.rule_sets[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)})
+                # If the prelude contains a comma, there are multiple selectors
+                for selector in tinycss2.serialize(rule_set.prelude).split(","):
+                    selector = selector.strip()
+                    if selector not in self.rule_sets:
+                        self.rule_sets[selector] = {}
+                    # Update the current dictionary, overwriting conflicting keys
+                    self.rule_sets[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)})
 
 class WebPage:
     def __init__(self, url: str):
         soup = web_scraper.get_soup(url)
         self.html = HTML(soup)
         self.css = CSS(soup)
-
-    # def join_html_to_css(self, html_soup, css_stats):
-    #     tags = web_scraper.parse_children(html_soup.body)
-    #     tag_info = {}
-    #     for tag in set(tags):
-    #         if tag.name not in tag_info:
-    #             tag_info[tag.name] = {}
-    #         tag_info[tag.name].update(css_stats["tags"].get(tag.name, {}))
-    #         [tag_info[tag.name].update(css_stats["classes"].get(klass, {})) for klass in tag.classes]
-    #         tag_info[tag.name].update(css_stats["ids"].get(tag.id, {}))
-    #     return tag_info
 
     def generate_web_page(self) -> Tuple[str, str]:
         # TODO: Implement this

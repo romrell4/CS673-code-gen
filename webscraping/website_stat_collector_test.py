@@ -11,7 +11,7 @@ class StatCollectionTest(unittest.TestCase):
 
     def test_css(self):
         css = CSS(web_scraper.get_soup("test"), True)
-        self.assertCountEqual(css.rule_sets, ["body", "#content", "#title", "p", ".center", ".red", ".blue", ".big", "table#test-table", "td.image", "img.icon", "th, td"])
+        self.assertCountEqual(css.rule_sets, ["body", "#content", "#title", "p", ".center", ".red", ".blue", ".big", "table#test-table", "td.image", "img.icon", "th", "td"])
         self.assertEqual(css.rule_sets["body"], {
             "font-size": "18pt",
             "background-image": "url(\"https://www.ezoic.com/wp-content/uploads/2016/05/website-background-min.jpg\")",
@@ -23,13 +23,16 @@ class StatCollectionTest(unittest.TestCase):
             "padding": "20px"
         })
 
-    def test_full_web_page(self):
-        web_page = WebPage("test")
-        self.assertIsInstance(web_page, WebPage)
-        self.assertIsNotNone(web_page.html.soup)
-        self.assertCountEqual(web_page.html.tags, ["html", "head", "title", "style", "body", "div", "h1", "p", "table", "thead", "tr", "th", "tbody", "td", "img", "button"])
-        self.assertCountEqual(web_page.html.ids, ["content", "title", "test-table", "awesomeBtn"])
-        self.assertCountEqual(web_page.html.classes, ["center", "red", "image", "icon", "blue", "big"])
+    def test_css_comma_selectors(self):
+        css = CSS(web_scraper.get_soup("test"), True)
+        self.assertEqual(css.rule_sets["th"], {
+            "padding": "8px",
+            "border": "1px solid #111"
+        })
+        self.assertEqual(css.rule_sets["td"], {
+            "padding": "8px",
+            "border": "1px solid #111"
+        })
 
 
 if __name__ == '__main__':
