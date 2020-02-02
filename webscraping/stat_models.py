@@ -2,6 +2,7 @@ from typing import Tuple
 
 import tinycss2
 from bs4 import BeautifulSoup
+from tinycss2.ast import ParseError
 
 from webscraping import web_scraper
 
@@ -43,7 +44,8 @@ class CSS:
                     if selector not in self.selectors:
                         self.selectors[selector] = {}
                     # Update the current dictionary, overwriting conflicting keys
-                    self.selectors[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)})
+                    declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)
+                    self.selectors[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if type(declaration) != ParseError})
 
 class WebPage:
     """
