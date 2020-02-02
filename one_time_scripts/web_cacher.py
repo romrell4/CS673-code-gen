@@ -9,7 +9,7 @@ import urllib.request
 from http.cookiejar import CookieJar
 from bs4 import BeautifulSoup
 
-with open ('webscraping/valid_edu_websites.csv') as url_list_file:
+with open ('../resources/valid_edu_websites.csv') as url_list_file:
     urls = [url.strip() for url in url_list_file.read().split(',')]
 
 for url in urls:
@@ -28,12 +28,12 @@ for url in urls:
         html_string = html_doc.decode('utf-8')
     except:
         continue
-    with open(f'./cached_sites/{name}/index.html', 'w') as html_file:
+    with open(f'../cached_sites/{name}/index.html', 'w') as html_file:
         print(html_string, file=html_file)
 
     soup = BeautifulSoup(html_doc, 'html.parser')
     style_links = soup.findAll('link', {'rel': "stylesheet"})
-    with open(f'./cached_sites/{name}/style.css', 'w') as css_file:
+    with open(f'../cached_sites/{name}/style.css', 'w') as css_file:
         for link in style_links:
             try:
                 css_url = link.get('href')

@@ -59,7 +59,7 @@ def get_html(url):
             wait = WebDriverWait(driver, 1)
             return driver.page_source
     else:
-        with open("cached_sites/{}/combined.html".format(url)) as f:
+        with open("../cached_sites/{}/combined.html".format(url)) as f:
             return f.read()
 
 def parse_children(tag, depth = 0, print_structure = False):

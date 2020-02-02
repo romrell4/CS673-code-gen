@@ -1,6 +1,6 @@
 import requests
 
-with open("webscraping/edu_websites.csv") as f:
+with open("../webscraping/edu_websites.csv") as f:
     websites = f.readline().split(",")
 
 def is_valid(website):
@@ -15,5 +15,5 @@ def is_valid(website):
 valid_websites = list(filter(is_valid, websites))
 print(len(valid_websites))
 
-with open("webscraping/valid_edu_websites.csv", "w") as f:
+with open("../webscraping/valid_edu_websites.csv", "w") as f:
     f.write(",".join(valid_websites))

@@ -1,7 +1,7 @@
 from glob import glob
 from bs4 import BeautifulSoup
 
-folders = glob('./cached_sites/*')
+folders = glob('../cached_sites/*')
 
 for folder in folders:
     with open(f'{folder}/index.html') as html_file:
