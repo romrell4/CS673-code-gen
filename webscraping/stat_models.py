@@ -1,9 +1,9 @@
 from typing import Tuple
-
+from copy import deepcopy, copy
 import tinycss2
 from bs4 import BeautifulSoup
 from tinycss2.ast import ParseError
-
+import random
 from webscraping import web_scraper
 
 class HTML:
@@ -51,6 +51,11 @@ class CSS:
                     # Update the current dictionary, overwriting conflicting keys
                     declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)
                     self.selectors[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if type(declaration) != ParseError})
+    
+    def evaluate(self):
+        # TODO: Actually evaluate the quality of CSS based on global stats or some metrics
+        return 1
+
 
 class WebPage:
     """
@@ -60,12 +65,53 @@ class WebPage:
         html (HTML): info about the HTML of the web page
         css (CSS): info about the CSS of the web page
     """
+    photo_eval_limit = .5
+    css_eval_limit = .7
 
-    def __init__(self, url: str):
-        soup = web_scraper.get_soup(url)
-        self.html = HTML(soup)
-        self.css = CSS(soup)
+    def __init__(self, url=None, html=None):
+        if url is not None:
+            soup = web_scraper.get_soup(url)
+            self.html = HTML(soup)
+            self.css = CSS(soup)
+        elif html is not None:
+            self.html = html
+            self.css = None
+        else:
+            raise ArgumentError("Invalid Arguments")
 
     def generate_web_page(self) -> Tuple[str, str]:
         # TODO: Implement this
         pass
+
+    def gen_photo(self):
+        # TOOD: Generate photo from HTML & the new CSS
+        return None
+
+    def evaluate_photo(self):
+        photo = self.gen_photo()
+        # TODO: Evaluate a photo based on some criteria
+        return 1
+
+    def evaluate_css(self):
+        return self.css.evaluate()
+
+    def evaluate(self):
+        css_evaluation = self.evaluate_css()
+        return random.random()
+        if css_evaluation < WebPage.css_eval_limit:
+            return 0
+        else:
+            photo_evaluation = self.evaluate_photo()
+            return css_evaluation*.2 + photo_evaluation*.8
+
+    def __str__(self):
+        return str((self.html, self.css))
+
+    def __repr__(self):
+        return str(self)
+
+    def __deepcopy__(self, memo): #Pass a reference to the original HTML but create a copy of the css 
+        ws = WebPage(html=self.html)
+        # print("here")
+        ws.css = deepcopy(self.css)
+        return ws
