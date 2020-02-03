@@ -3,14 +3,7 @@ from mcts import mcts
 from functools import reduce
 import operator
 from webscraping.web_scraper import *
-
-class CSS():
-    def __init__(self, rules):
-        self.rules = rules
-    
-    def evaluate(self):
-        # TODO: Evaluate the rules based on some criteria
-        return 1
+from webscraping.stat_models import *
 
 class WebSite():
     photo_eval_limit = .5
@@ -19,10 +12,10 @@ class WebSite():
     def __init__(self, url=None, html=None):
         if html is not None:
             self.html = html
-            self.css = CSS(rules=[])
+            self.css = None
         else:
-            self.html, css = scrape(url)
-            self.css = CSS(rules=css)
+            self.html = HTML(url=url)
+            self.css = CSS(url=url)
 
     def gen_photo(self):
         # TOOD: Generate photo from HTML & the new CSS
@@ -93,7 +86,8 @@ class Action():
     def __hash__(self):
         return hash((0))
 
-initialState = WebSiteState(url="test")
+initialState = WebSiteState(url="byu")
+print(initialState)
 mcts = mcts(timeLimit=1000)
 action = mcts.search(initialState=initialState)
 

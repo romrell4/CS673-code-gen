@@ -17,8 +17,11 @@ class HTML:
         classes ([str]): all unique classes used on the web page
     """
 
-    def __init__(self, soup: BeautifulSoup):
-        self.soup = soup
+    def __init__(self, soup: BeautifulSoup = None, url: str = None):
+        if url is not None:
+            self.soup = web_scraper.get_soup(url)
+        else:
+            self.soup = soup
         all_tags = soup.find_all()
         self.tags = set([tag.name for tag in all_tags])
         self.ids = set([tag["id"] for tag in all_tags if tag.get("id") is not None])
@@ -32,7 +35,9 @@ class CSS:
         selectors ([str: [str: str]): dictionary of selector (e.g. "thead" or "p#some-id") to the key-value pairs of rules (e.g. "font-size": "18pt")
     """
 
-    def __init__(self, html_soup: BeautifulSoup, print_issues = False):
+    def __init__(self, html_soup: BeautifulSoup=None, print_issues = False, url: str = None):
+        if url is not None:
+            html_soup = web_scraper.get_soup(url)
         self.print_issues = print_issues
         self.selectors = {}
         for style in html_soup.find_all("style"):
