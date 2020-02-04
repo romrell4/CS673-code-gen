@@ -25,7 +25,7 @@ def scrape(url):
             all_css_rules.append(rule)
     return soup, all_css_rules
 
-def get_photo(url):
+def get_photo(url, saveLoc="screenshot.png"):
     chrome_options = Options()
     if running_linux():
         chrome_options.binary_location = "/usr/bin/google-chrome-stable"
@@ -36,8 +36,8 @@ def get_photo(url):
         driver.set_window_size(1080,800)
         driver.get(url)
         wait = WebDriverWait(driver, 1)
-        driver.save_screenshot("screenshot.png")
-    return
+        driver.save_screenshot(saveLoc)
+    return saveLoc
 
 def get_html(url):
     """
