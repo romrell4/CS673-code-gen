@@ -79,7 +79,7 @@ class WebPage:
     photo_eval_limit = .5
     css_eval_limit = .7
 
-    def __init__(self, url:str=None, html:HTML=None):
+    def __init__(self, url=None, html=None):
         if url is not None:
             soup = web_scraper.get_soup(url)
             self.html = HTML(soup)
@@ -101,7 +101,7 @@ class WebPage:
             webpage.head.insert(0, style_tag)
         return webpage.encode()
 
-    def gen_photo(self, saveLoc:str) -> str:
+    def gen_photo(self, saveLoc):
         photo = None
        
         with open("index.html", 'wb+') as indexFile:
@@ -114,15 +114,15 @@ class WebPage:
         httpd.server_close()
         return photo
 
-    def evaluate_photo(self) -> float:
+    def evaluate_photo(self):
         photo = self.gen_photo()
         # TODO: Evaluate a photo based on some criteria
         return 1
 
-    def evaluate_css(self) -> float:
+    def evaluate_css(self):
         return self.css.evaluate()
 
-    def evaluate(self) -> float:
+    def evaluate(self):
         css_evaluation = self.evaluate_css()
         # TODO: Actually evaluate a site so that we don't get index errors in MCTS
         return random.random()
