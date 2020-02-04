@@ -124,6 +124,7 @@ class WebPage:
 
     def evaluate(self):
         css_evaluation = self.evaluate_css()
+        # TODO: Actually evaluate a site so that we don't get index errors in MCTS
         return random.random()
         if css_evaluation < WebPage.css_eval_limit:
             return 0
