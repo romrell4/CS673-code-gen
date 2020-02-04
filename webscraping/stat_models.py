@@ -56,6 +56,12 @@ class CSS:
         # TODO: Actually evaluate the quality of CSS based on global stats or some metrics
         return 1
 
+    def generate_css(self) -> str:
+        rules = ""
+        for k,v in self.selectors.items():
+            rules += f"{k} {v}\n"
+        return rules
+
 
 class WebPage:
     """
@@ -79,9 +85,16 @@ class WebPage:
         else:
             raise ArgumentError("Invalid Arguments")
 
-    def generate_web_page(self) -> Tuple[str, str]:
-        # TODO: Implement this
-        pass
+    def generate_web_page(self) -> bytes:
+        webpage = copy(self.html.soup)
+        style_tag = webpage.new_tag('style')
+        style_tag.string = self.css.generate_css()
+        try:
+            webpage.head.insert(0, style_tag)
+        except:
+            webpage.insert(0, soup.new_tag('head'))
+            webpage.head.insert(0, style_tag)
+        return webpage.encode()
 
     def gen_photo(self):
         # TOOD: Generate photo from HTML & the new CSS
