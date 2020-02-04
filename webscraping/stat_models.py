@@ -6,9 +6,7 @@ from tinycss2.ast import ParseError
 import random
 from webscraping import web_scraper
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-import tempfile
 import _thread
-import time
 import argparse
 
 
@@ -89,7 +87,7 @@ class WebPage:
             self.html = html
             self.css = None
         else:
-            raise argparse.ArgumentError("Invalid Arguments")
+            raise argparse.ArgumentError(self, "Invalid Arguments for creating a WebPage")
 
     def generate_web_page(self) -> bytes:
         webpageSoup = copy(self.html.soup)
