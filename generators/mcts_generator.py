@@ -12,11 +12,14 @@ class WebSiteState:
         self.depth = 1
 
     def getPossibleActions(self):
-        possibleActions = [Action()]
+        # TODO: Create different actions based on the level of the tree we are in. (i.e. large changes at the beginning and smaller later on -- temperature based mutations essentially)
+        possibleActions = [Action(), Action(), Action()]
         return possibleActions
 
     def takeAction(self, action):
+        # TODO: Take the action into account here
         newState = deepcopy(self)
+        action(newState)
         newState.depth += 1
         return newState
 
@@ -32,6 +35,9 @@ class WebSiteState:
 class Action:
     # TODO: Define actions we can take in this space, could be genetic or based on the stats we gathered
     def __init__(self):
+        pass
+
+    def __call__(self, state:WebSiteState):
         pass
 
     def __str__(self):
