@@ -37,7 +37,7 @@ class CSS:
         self.selectors = {}
         for style in html_soup.find_all("style"):
             stylesheet = tinycss2.parse_stylesheet(style.text, skip_comments = True, skip_whitespace = True)
-            for rule_set in stylesheet:
+            for rule_set in [rule_set for rule_set in stylesheet if type(rule_set) != ParseError]:
                 # If the prelude contains a comma, there are multiple selectors
                 for selector in tinycss2.serialize(rule_set.prelude).split(","):
                     selector = selector.strip()

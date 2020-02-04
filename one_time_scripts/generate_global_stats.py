@@ -1,13 +1,25 @@
 import json
 import os
+import tinycss2
 from tqdm import tqdm
 from webscraping import web_scraper
+from webscraping.stat_models import CSS
 
 class Stats:
     DEFAULT_FILENAME = "../resources/global_stats.json"
 
     def __init__(self, data):
         self.data = data
+        self.soups = None
+
+    def get_soups(self, limit = None):
+        if self.soups is None:
+            print("Scraping soups...")
+            dir_names = os.listdir("../cached_sites")
+            if limit is not None:
+                dir_names = dir_names[:limit]
+            self.soups = [web_scraper.get_soup(dir_name) for dir_name in tqdm(dir_names)]
+        return self.soups
 
     @staticmethod
     def read(filename = DEFAULT_FILENAME):
@@ -20,8 +32,7 @@ class Stats:
 
     def calc_tag_freq(self):
         tag_freq = {}
-        for directory in tqdm(os.listdir("../cached_sites")):
-            soup = web_scraper.get_soup(directory)
+        for soup in tqdm(self.get_soups()):
             for tag in soup.find_all():
                 tag_name = tag.name
                 if tag_name not in tag_freq:
@@ -29,9 +40,19 @@ class Stats:
                 tag_freq[tag_name] += 1
         self.data["tag_freq"] = tag_freq
 
+    def calc_possible_rule_values(self):
+        rules = {}
+        for soup in tqdm(self.get_soups(limit = 10)):
+            CSS(soup)
+
+        self.data["known_rule_values"] = rules
+
+
+
 def generate():
     stats = Stats.read()
     # stats.calc_tag_freq()
+    stats.calc_possible_rule_values()
     stats.write()
 
 
