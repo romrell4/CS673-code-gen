@@ -47,9 +47,8 @@ class Action:
         return hash((0))
 
 initialState = WebSiteState(url="byu")
-with open("newBYU.html", 'wb+') as newBYU:
-    newBYU.write(initialState.website.generate_web_page())
-    newBYU.flush()
+photo = initialState.website.gen_photo("screenshot.png")
+
 print(str(initialState))
 mcts = mcts(timeLimit=1)
 action = mcts.search(initialState=initialState)

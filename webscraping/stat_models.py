@@ -5,6 +5,11 @@ from bs4 import BeautifulSoup
 from tinycss2.ast import ParseError
 import random
 from webscraping import web_scraper
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+import tempfile
+import _thread
+import time
+
 
 class HTML:
     """
@@ -96,9 +101,18 @@ class WebPage:
             webpage.head.insert(0, style_tag)
         return webpage.encode()
 
-    def gen_photo(self):
-        # TOOD: Generate photo from HTML & the new CSS
-        return None
+    def gen_photo(self, saveLoc):
+        photo = None
+       
+        with open("index.html", 'wb+') as indexFile:
+            indexFile.write(self.generate_web_page())
+            indexFile.flush()
+        httpd = HTTPServer(('',8000), CustomHTTPRequestHandler)
+        thd = _thread.start_new_thread(run_server, (httpd, ) )
+        time.sleep(10)
+        photo = web_scraper.get_photo('http://localhost:8000/index.html', saveLoc)
+        httpd.server_close()
+        return photo
 
     def evaluate_photo(self):
         photo = self.gen_photo()
@@ -128,3 +142,11 @@ class WebPage:
         # print("here")
         ws.css = deepcopy(self.css)
         return ws
+
+
+def run_server(server):
+    server.serve_forever()
+
+class CustomHTTPRequestHandler(SimpleHTTPRequestHandler):
+    def log_message(self, format, *args):
+        return
