@@ -9,6 +9,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 import tempfile
 import _thread
 import time
+import argparse
 
 
 class HTML:
@@ -88,18 +89,18 @@ class WebPage:
             self.html = html
             self.css = None
         else:
-            raise ArgumentError("Invalid Arguments")
+            raise argparse.ArgumentError("Invalid Arguments")
 
     def generate_web_page(self) -> bytes:
-        webpage = copy(self.html.soup)
-        style_tag = webpage.new_tag('style')
+        webpageSoup = copy(self.html.soup)
+        style_tag = webpageSoup.new_tag('style')
         style_tag.string = self.css.generate_css()
         try:
-            webpage.head.insert(0, style_tag)
+            webpageSoup.head.insert(0, style_tag)
         except:
-            webpage.insert(0, soup.new_tag('head'))
-            webpage.head.insert(0, style_tag)
-        return webpage.encode()
+            webpageSoup.insert(0, webpageSoup.new_tag('head'))
+            webpageSoup.head.insert(0, style_tag)
+        return webpageSoup.encode()
 
     def gen_photo(self, saveLoc:str) -> str:
         photo = None
