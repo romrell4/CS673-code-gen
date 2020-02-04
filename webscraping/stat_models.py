@@ -109,7 +109,7 @@ class WebPage:
             indexFile.flush()
         httpd = HTTPServer(('',8000), CustomHTTPRequestHandler)
         thd = _thread.start_new_thread(run_server, (httpd, ) )
-        time.sleep(10)
+        # time.sleep(1)
         photo = web_scraper.get_photo('http://localhost:8000/index.html', saveLoc)
         httpd.server_close()
         return photo
