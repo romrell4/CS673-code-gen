@@ -2,7 +2,7 @@ import json
 import os
 import tinycss2
 from tqdm import tqdm
-from webscraping import web_scraper
+from webscraping.web_scraper import scraper
 from webscraping.stat_models import CSS
 
 class Stats:
@@ -24,7 +24,7 @@ class Stats:
             self.soups = []
             for dir_name in tqdm(dir_names):
                 # print(dir_name)
-                self.soups.append(web_scraper.get_soup(dir_name))
+                self.soups.append(scraper.get_soup(dir_name))
         return self.soups
 
     @staticmethod

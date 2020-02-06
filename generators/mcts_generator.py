@@ -1,7 +1,5 @@
 from copy import deepcopy, copy
 from mcts import mcts
-from functools import reduce
-import operator
 from webscraping.web_scraper import *
 from webscraping.stat_models import *
 

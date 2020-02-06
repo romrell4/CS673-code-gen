@@ -4,9 +4,7 @@ import tinycss2
 from bs4 import BeautifulSoup
 from tinycss2.ast import ParseError
 import random
-from webscraping import web_scraper
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-import _thread
+from webscraping.web_scraper import scraper
 import argparse
 
 
@@ -23,7 +21,7 @@ class HTML:
 
     def __init__(self, soup: BeautifulSoup = None, url: str = None):
         if url is not None:
-            self.soup = web_scraper.get_soup(url)
+            self.soup = scraper.get_soup(url)
         else:
             self.soup = soup
         all_tags = soup.find_all()
@@ -41,7 +39,7 @@ class CSS:
 
     def __init__(self, html_soup: BeautifulSoup=None, print_issues = False, url: str = None):
         if url is not None:
-            html_soup = web_scraper.get_soup(url)
+            html_soup = scraper.get_soup(url)
         self.print_issues = print_issues
         self.selectors = {}
         for style in html_soup.find_all("style"):
@@ -82,7 +80,7 @@ class WebPage:
 
     def __init__(self, url=None, html=None):
         if url is not None:
-            soup = web_scraper.get_soup(url)
+            soup = scraper.get_soup(url)
             self.html = HTML(soup)
             self.css = CSS(soup)
         elif html is not None:
@@ -104,15 +102,10 @@ class WebPage:
 
     def gen_photo(self, saveLoc):
         photo = None
-       
         with open("index.html", 'wb+') as indexFile:
             indexFile.write(self.generate_web_page())
             indexFile.flush()
-        httpd = HTTPServer(('',8000), CustomHTTPRequestHandler)
-        thd = _thread.start_new_thread(run_server, (httpd, ) )
-        # time.sleep(1)
-        photo = web_scraper.get_photo('http://localhost:8000/index.html', saveLoc)
-        httpd.server_close()
+        scraper.get_photo("http://localhost:8000/index.html")
         return photo
 
     def evaluate_photo(self):
@@ -146,9 +139,3 @@ class WebPage:
         return ws
 
 
-def run_server(server):
-    server.serve_forever()
-
-class CustomHTTPRequestHandler(SimpleHTTPRequestHandler):
-    def log_message(self, format, *args):
-        return
