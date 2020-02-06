@@ -18,7 +18,10 @@ class Stats:
             dir_names = os.listdir("../cached_sites")
             if limit is not None:
                 dir_names = dir_names[:limit]
-            self.soups = [web_scraper.get_soup(dir_name) for dir_name in tqdm(dir_names)]
+            self.soups = []
+            for dir_name in tqdm(dir_names):
+                print(dir_name)
+                self.soups.append([web_scraper.get_soup(dir_name)])
         return self.soups
 
     @staticmethod
