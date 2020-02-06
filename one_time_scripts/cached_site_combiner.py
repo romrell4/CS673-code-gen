@@ -1,5 +1,6 @@
 from glob import glob
 from bs4 import BeautifulSoup
+import re
 
 folders = glob('../cached_sites/*')
 
@@ -8,6 +9,8 @@ for folder in folders:
         html = html_file.read()
     with open(f'{folder}/style.css') as css_file:
         css = css_file.read()
+
+    css = re.sub('<!doctype HTML>.*</html>', '', css, flags=re.DOTALL | re.MULTILINE | re.IGNORECASE)
 
     soup = BeautifulSoup(html, "lxml")
     [x.extract() for x in soup.findAll('link', {'rel': "stylesheet"})]
