@@ -47,6 +47,8 @@ class CSS:
         for style in html_soup.find_all("style"):
             stylesheet = tinycss2.parse_stylesheet(style.text, skip_comments = True, skip_whitespace = True)
             for rule_set in [rule_set for rule_set in stylesheet if type(rule_set) != ParseError]:
+                if rule_set.type in ("error", "at-rule"):
+                    continue
                 # If the prelude contains a comma, there are multiple selectors
                 for selector in tinycss2.serialize(rule_set.prelude).split(","):
                     selector = selector.strip()
@@ -54,7 +56,7 @@ class CSS:
                         self.selectors[selector] = {}
                     # Update the current dictionary, overwriting conflicting keys
                     declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)
-                    self.selectors[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if type(declaration) != ParseError})
+                    self.selectors[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if declaration.type not in ("error", "at-rule")})
     
     def evaluate(self):
         # TODO: Actually evaluate the quality of CSS based on global stats or some metrics

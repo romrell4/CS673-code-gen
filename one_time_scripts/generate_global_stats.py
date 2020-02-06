@@ -12,16 +12,19 @@ class Stats:
         self.data = data
         self.soups = None
 
-    def get_soups(self, limit = None):
+    def get_soups(self, limit = None, test_only = False):
         if self.soups is None:
             print("Scraping soups...")
-            dir_names = os.listdir("../cached_sites")
-            if limit is not None:
-                dir_names = dir_names[:limit]
+            if test_only:
+                dir_names = ["test"]
+            else:
+                dir_names = os.listdir("../cached_sites")
+                if limit is not None:
+                    dir_names = dir_names[:limit]
             self.soups = []
             for dir_name in tqdm(dir_names):
-                print(dir_name)
-                self.soups.append([web_scraper.get_soup(dir_name)])
+                # print(dir_name)
+                self.soups.append(web_scraper.get_soup(dir_name))
         return self.soups
 
     @staticmethod
@@ -31,7 +34,7 @@ class Stats:
 
     def write(self, filename = DEFAULT_FILENAME):
         with open(filename, "w") as f:
-            json.dump(self.data, f)
+            json.dump(self.data, f, indent = 2)
 
     def calc_tag_freq(self):
         tag_freq = {}
@@ -45,11 +48,17 @@ class Stats:
 
     def calc_possible_rule_values(self):
         rules = {}
-        for soup in tqdm(self.get_soups(limit = 10)):
-            CSS(soup)
+        for soup in self.get_soups():
+            css = CSS(soup)
+            for rule_set in css.selectors.values():
+                for key, value in rule_set.items():
+                    if key not in rules:
+                        rules[key] = {}
+                    if value not in rules[key]:
+                        rules[key][value] = 0
+                    rules[key][value] += 1
 
         self.data["known_rule_values"] = rules
-
 
 
 def generate():
