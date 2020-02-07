@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+from selenium.webdriver.common.keys import Keys
 import _thread
 
 def running_linux():
@@ -25,15 +26,26 @@ class WebScraper:
         if running_linux():
             self.chrome_options.binary_location = "/usr/bin/google-chrome-stable"
         self.chrome_options.add_argument('--headless')
+        self.chrome_options.add_argument("--incognito")
         self.chrome_options.add_argument('--no-sandbox')
         self.chrome_options.add_argument('--disable-dev-shm-usage')
         self.driver = webdriver.Chrome(options=self.chrome_options)
-        self.driver.set_window_size(1080,800)
+        self.driver.set_window_size(1080,2000)
         self.waitTime = 1
         self.httpd = HTTPServer(('',8000), CustomHTTPRequestHandler)
         self.thd = _thread.start_new_thread(run_server, (self.httpd, ) )
         # time.sleep(1)
         # httpd.server_close()
+    def restartSelenium(self, fullRestart=False):
+        # print("restarting selenium")
+        if fullRestart:
+            self.driver.quit()
+            self.driver = webdriver.Chrome(options=self.chrome_options)
+            self.driver.set_window_size(1080,2000)
+        send_command = ('POST', '/session/$sessionId/chromium/send_command')
+        self.driver.command_executor._commands['SEND_COMMAND'] = send_command
+        self.driver.execute('SEND_COMMAND', dict(cmd='Network.clearBrowserCache', params={}))
+        # self.driver.find_element_by_css_selector("* /deep/ #clearBrowsingDataConfirm").send_keys(Keys.ENTER)
 
     def get_soup(self, url):
         return BeautifulSoup(self.get_html(url), "html.parser")
@@ -51,6 +63,9 @@ class WebScraper:
         return soup, all_css_rules
 
     def get_photo(self, url, saveLoc="screenshot.png"):
+        if "localhost" in url:
+            # TODO: Make sure that the selenium cache is reset between visits
+            self.restartSelenium()
         self.driver.get(url)
         wait = WebDriverWait(self.driver, self.waitTime)
         self.driver.save_screenshot(saveLoc)

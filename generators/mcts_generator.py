@@ -2,6 +2,7 @@ from copy import deepcopy, copy
 from mcts import mcts
 from webscraping.web_scraper import *
 from webscraping.stat_models import *
+import shutil
 from one_time_scripts.generate_global_stats import Stats
 class WebSiteState:
     min_acceptable_evaluation = .5
@@ -14,13 +15,18 @@ class WebSiteState:
         possibleActions = [Action(self.stats, self.website) for _ in range(5)]
         return possibleActions
 
-    def takeAction(self, action):
+    def takeAction(self, action, depthOverride=None):
         newState = deepcopy(self)
         action.modify(newState)
-        newState.depth += 1
+        if depthOverride is not None:
+            newState.depth = depthOverride
+            # print("Override on depth")
+        else:
+            newState.depth += 1
         return newState
 
     def isTerminal(self):
+        return self.depth == 10
         return self.website.evaluate() < WebSiteState.min_acceptable_evaluation
 
     def getReward(self): # Return Number between 0-1 or False
@@ -53,35 +59,38 @@ class Action:
             print(f"Valid selector not found in 500 tries")
 
     def __str__(self):
-        return str((0, 1))
+        return f"{self.selector} {{\n\t{self.ruleName}: {self.ruleValue}\n}}"
 
     def __repr__(self):
         return str(self)
 
     def __eq__(self, other):
-        return False
+        return self.selector == other.selector and self.ruleName == other.ruleName and self.ruleValue == other.ruleValue
 
     def __hash__(self):
-        return hash((0))
+        return hash((self.selector, self.ruleName, self.ruleValue))
 
 
 
 def main(school):
     stats = Stats.read("../resources/global_stats.json")
-    print(stats.data["tag_freq"]["p"])
+    # print(stats.data["tag_freq"]["p"])
     initialState = WebSiteState(url=school, stats=stats)
     # print(stats.rule_frequency)
-    print(stats.selector_freq)
+    # print(stats.selector_freq)
     # photo = initialState.website.gen_photo("screenshot.png")
     depth = 0
     montecarlosearch = mcts(timeLimit=1)
     directory = f"results/{school}"
+    shutil.rmtree(directory)
     os.makedirs(directory, exist_ok=True)
     while depth < 100:
         action = montecarlosearch.search(initialState=initialState)
-        initialState = initialState.takeAction(action)
+        print(action)
+        initialState = initialState.takeAction(action, depthOverride=0)
         initialState.getReward()
-        initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
+        if depth % 10 == 0:
+            initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
     photo = initialState.website.gen_photo(f"{directory}/final_screenshot.png")
     print("Finished")

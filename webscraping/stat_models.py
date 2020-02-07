@@ -81,7 +81,9 @@ class CSS:
         return rules
 
     def addRule(self, selector, rule_name, rule_value):
-        print(f"Adding rule:\n{selector} {{\n\t{rule_name} : {rule_value}\n}}")
+        if selector not in self.selectors:
+            self.selectors[selector] = {}
+        self.selectors[selector].update({rule_name: rule_value})
 
 class WebPage:
     """
@@ -91,7 +93,7 @@ class WebPage:
         html (HTML): info about the HTML of the web page
         css (CSS): info about the CSS of the web page
     """
-    photo_eval_limit = .5
+    photo_eval_limit = .2
     css_eval_limit = .7
 
     def __init__(self, url=None, html=None):
@@ -119,12 +121,12 @@ class WebPage:
             webpageSoup.head.insert(0, style_tag)
         return webpageSoup.encode()
 
-    def gen_photo(self, saveLoc):
+    def gen_photo(self, saveLoc="screenshot.png"):
         photo = None
         with open("index.html", 'wb+') as indexFile:
             indexFile.write(self.generate_web_page())
             indexFile.flush()
-        scraper.get_photo("http://localhost:8000/index.html")
+        scraper.get_photo("http://localhost:8000/index.html",saveLoc=saveLoc)
         os.remove("index.html")
         return photo
 
@@ -139,7 +141,7 @@ class WebPage:
     def evaluate(self):
         css_evaluation = self.evaluate_css()
         # TODO: Actually evaluate a site so that we don't get index errors in MCTS
-        return random.random()
+        return 1
         if css_evaluation < WebPage.css_eval_limit:
             return 0
         else:
