@@ -40,16 +40,18 @@ class Action:
     def __init__(self, stats, website):
         tries = 0
         selector = random.choices(stats.selectors, stats.selector_freq)[0]
+        selector = random.choice(list(website.css.selectors.keys()))
         while not website.containsSelector(selector):
             selector = random.choices(stats.selectors, stats.selector_freq)[0]
+            selector = random.choice(list(website.css.selectors.keys()))
             tries += 1
-            if tries == 10000:
+            if tries == 100:
                 # print(f"{selector}")
                 selector = None
                 break
         self.selector = selector
         self.ruleName = random.choices(stats.rule_names, stats.rule_freqs)[0]
-        self.ruleValue = random.choices(list(stats.rule_values[self.ruleName].keys()), list(stats.rule_values[self.ruleName].values()))[0]
+        self.ruleValue = random.choices(list(stats.rule_values[self.ruleName].keys()), list(stats.rule_values[self.ruleName].values()))[0] + "!important"
 
     def modify(self, websiteState):
         if self.selector is not None:
@@ -84,12 +86,12 @@ def main(school):
     directory = f"results/{school}"
     shutil.rmtree(directory)
     os.makedirs(directory, exist_ok=True)
-    while depth < 100:
+    while depth < 1000:
         action = montecarlosearch.search(initialState=initialState)
-        print(action)
+        # print(action)
         initialState = initialState.takeAction(action, depthOverride=0)
         initialState.getReward()
-        if depth % 10 == 0:
+        if depth % 50 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
     photo = initialState.website.gen_photo(f"{directory}/final_screenshot.png")

@@ -70,6 +70,9 @@ class CSS:
                     declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)
                     self.selectors[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if declaration.type not in ("error", "at-rule")})
     
+    def containsSelector(self, selector):
+        return selector in self.selectors.keys()
+    
     def evaluate(self):
         # TODO: Actually evaluate the quality of CSS based on global stats or some metrics
         return 1
@@ -108,7 +111,7 @@ class WebPage:
             raise argparse.ArgumentError(self, "Invalid Arguments for creating a WebPage")
     
     def containsSelector(self, selector):
-        return self.html.containsSelector(selector)
+        return self.html.containsSelector(selector) or self.css.containsSelector(selector)
 
     def generate_web_page(self) -> bytes:
         webpageSoup = copy(self.html.soup)
@@ -127,7 +130,7 @@ class WebPage:
             indexFile.write(self.generate_web_page())
             indexFile.flush()
         scraper.get_photo("http://localhost:8000/index.html",saveLoc=saveLoc)
-        os.remove("index.html")
+        # os.remove("index.html")
         return photo
 
     def evaluate_photo(self):
