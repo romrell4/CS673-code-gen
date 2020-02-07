@@ -6,6 +6,8 @@ from tinycss2.ast import ParseError
 import random
 from webscraping.web_scraper import scraper
 import argparse
+import os
+import json
 
 
 class HTML:
@@ -28,6 +30,18 @@ class HTML:
         self.tags = set([tag.name for tag in all_tags])
         self.ids = set([tag["id"] for tag in all_tags if tag.get("id") is not None])
         self.classes = set([klass for tag in all_tags if tag.get("class") is not None for klass in tag["class"]])
+    
+    def containsSelector(self, selector):
+        if selector in self.tags:
+            # print(f"Selector {selector} in tags")
+            return True
+        if selector in self.ids:
+            # print(f"Selector {selector} in ids")
+            return True
+        if selector in self.classes:
+            # print(f"Selector {selector} in classes")
+            return True
+        return False
 
 class CSS:
     """
@@ -66,6 +80,8 @@ class CSS:
             rules += f"{k} {v}\n"
         return rules
 
+    def addRule(self, selector, rule_name, rule_value):
+        print(f"Adding rule:\n{selector} {{\n\t{rule_name} : {rule_value}\n}}")
 
 class WebPage:
     """
@@ -88,6 +104,9 @@ class WebPage:
             self.css = None
         else:
             raise argparse.ArgumentError(self, "Invalid Arguments for creating a WebPage")
+    
+    def containsSelector(self, selector):
+        return self.html.containsSelector(selector)
 
     def generate_web_page(self) -> bytes:
         webpageSoup = copy(self.html.soup)
@@ -106,6 +125,7 @@ class WebPage:
             indexFile.write(self.generate_web_page())
             indexFile.flush()
         scraper.get_photo("http://localhost:8000/index.html")
+        os.remove("index.html")
         return photo
 
     def evaluate_photo(self):

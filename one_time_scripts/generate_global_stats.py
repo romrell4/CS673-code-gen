@@ -11,6 +11,17 @@ class Stats:
     def __init__(self, data):
         self.data = data
         self.soups = None
+        if data is not None:
+            self.rule_names = list(data["known_rule_values"].keys())
+            self.rule_freqs = list()
+            for rule_value in data["known_rule_values"].values():
+                num_items = 0
+                for value in rule_value.values():
+                    num_items += 1
+                self.rule_freqs.append(num_items)
+            self.rule_values = data["known_rule_values"]
+            self.selectors = list(data['tag_freq'].keys())
+            self.selector_freq = list(data["tag_freq"].values())
 
     def get_soups(self, limit = None, test_only = False):
         if self.soups is None:
@@ -59,6 +70,9 @@ class Stats:
                     rules[key][value] += 1
 
         self.data["known_rule_values"] = rules
+    
+    def __deepcopy__(self, memo):
+        return self
 
 
 def generate():
