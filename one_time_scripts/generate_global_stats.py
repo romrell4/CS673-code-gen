@@ -5,7 +5,7 @@ from typing import Tuple
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
-from webscraping.dao import Dao, Rule
+from webscraping.dao import Dao, Rule, Tag
 from webscraping.stat_models import CSS, GlobalStats
 from webscraping.web_scraper import scraper
 
@@ -33,34 +33,19 @@ class StatGenerator:
         with open(filename, "w") as f:
             json.dump(self.data, f, indent = 2)
 
-    def calc_tag_freq(self):
-        tag_freq = {}
-        for soup in tqdm(self.get_soups()):
+    def add_tags_to_db(self):
+        self.dao.flush_tags()
+
+        tags: [Tag] = []
+        for web_page, soup in tqdm(self.get_soups()):
             for tag in soup.find_all():
-                tag_name = tag.name
-                if tag_name not in tag_freq:
-                    tag_freq[tag_name] = 0
-                tag_freq[tag_name] += 1
-        self.data["tag_freq"] = tag_freq
-
-    def calc_possible_rule_values(self):
-        rules = {}
-        for _, soup in self.get_soups():
-            css = CSS(soup)
-            for rule_set in css.selectors.values():
-                for key, value in rule_set.items():
-                    if key not in rules:
-                        rules[key] = {}
-                    if value not in rules[key]:
-                        rules[key][value] = 0
-                    rules[key][value] += 1
-
-        self.data["known_rule_values"] = rules
+                tags.append(Tag(None, web_page, tag.name, tag.get("id"), ",".join(tag.get("class", []))))
+        self.dao.add_tags(tags)
 
     def add_rules_to_db(self):
         self.dao.flush_rules()
 
-        rules = []
+        rules: [Rule] = []
         for web_page, soup in tqdm(self.get_soups(), desc = "Gathering rules"):
             css = CSS(soup)
             for selector, rule_set in css.selectors.items():
@@ -71,9 +56,8 @@ class StatGenerator:
 
 def generate():
     generator = StatGenerator()
-    # generator.calc_tag_freq()
-    # generator.calc_possible_rule_values()
-    generator.add_rules_to_db()
+    # generator.add_rules_to_db()
+    generator.add_tags_to_db()
     generator.write()
 
 

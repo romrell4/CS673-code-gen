@@ -21,6 +21,16 @@ class ValueCount:
     def __repr__(self):
         return self.__str__()
 
+class Tag:
+    def __init__(self, db_id: int or None, web_page: str, name: str, id: str or None, classes: str or None):
+        self.db_id, self.web_page, self.name, self.id, self.classes = db_id, web_page, name, id, classes
+
+    def __str__(self):
+        return f"Tag({self.db_id}, {self.web_page}, {self.name}, {self.id}, {self.classes}"
+
+    def __repr__(self):
+        return self.__str__()
+
 # noinspection SqlResolve
 class Dao:
     def __init__(self):
@@ -32,10 +42,18 @@ class Dao:
     def add_rules(self, rules: [Rule]):
         self.execute_many("insert into rules (web_page, selector, rule_key, rule_value) values (?, ?, ?, ?)", [(rule.web_page, rule.selector, rule.rule_key, rule.rule_value) for rule in rules])
 
-    # noinspection SqlWithoutWhere
+    def add_tags(self, tags: [Tag]):
+        self.execute_many("insert into tags (web_page, name, id, classes) values (?, ?, ?, ?)", [(tag.web_page, tag.name, tag.id, tag.classes) for tag in tags])
+
     def flush_rules(self):
         cur = self.conn.cursor()
+        # noinspection SqlWithoutWhere
         cur.execute("delete from rules")
+
+    def flush_tags(self):
+        cur = self.conn.cursor()
+        # noinspection SqlWithoutWhere
+        cur.execute("delete from tags")
 
     # Used for actual stat model
 
