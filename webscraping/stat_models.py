@@ -9,7 +9,6 @@ import argparse
 import os
 import json
 
-
 class HTML:
     """
     Class used to represent the DOM of a web page
@@ -30,7 +29,7 @@ class HTML:
         self.tags = set([tag.name for tag in all_tags])
         self.ids = set([tag["id"] for tag in all_tags if tag.get("id") is not None])
         self.classes = set([klass for tag in all_tags if tag.get("class") is not None for klass in tag["class"]])
-    
+
     def containsSelector(self, selector):
         if selector in self.tags:
             # print(f"Selector {selector} in tags")
@@ -51,7 +50,7 @@ class CSS:
         selectors ([str: [str: str]): dictionary of selector (e.g. "thead" or "p#some-id") to the key-value pairs of rules (e.g. "font-size": "18pt")
     """
 
-    def __init__(self, html_soup: BeautifulSoup=None, print_issues = False, url: str = None):
+    def __init__(self, html_soup: BeautifulSoup = None, print_issues = False, url: str = None):
         if url is not None:
             html_soup = scraper.get_soup(url)
         self.print_issues = print_issues
@@ -69,17 +68,17 @@ class CSS:
                     # Update the current dictionary, overwriting conflicting keys
                     declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)
                     self.selectors[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if declaration.type not in ("error", "at-rule")})
-    
+
     def containsSelector(self, selector):
         return selector in self.selectors.keys()
-    
+
     def evaluate(self):
         # TODO: Actually evaluate the quality of CSS based on global stats or some metrics
         return 1
 
     def generate_css(self) -> str:
         rules = ""
-        for k,v in self.selectors.items():
+        for k, v in self.selectors.items():
             rules += f"{k} {v}\n"
         return rules
 
@@ -99,7 +98,7 @@ class WebPage:
     photo_eval_limit = .2
     css_eval_limit = .7
 
-    def __init__(self, url=None, html=None):
+    def __init__(self, url = None, html = None):
         if url is not None:
             soup = scraper.get_soup(url)
             self.html = HTML(soup)
@@ -109,7 +108,7 @@ class WebPage:
             self.css = None
         else:
             raise argparse.ArgumentError(self, "Invalid Arguments for creating a WebPage")
-    
+
     def containsSelector(self, selector):
         return self.html.containsSelector(selector) or self.css.containsSelector(selector)
 
@@ -124,12 +123,12 @@ class WebPage:
             webpageSoup.head.insert(0, style_tag)
         return webpageSoup.encode()
 
-    def gen_photo(self, saveLoc="screenshot.png"):
+    def gen_photo(self, saveLoc = "screenshot.png"):
         photo = None
         with open("index.html", 'wb+') as indexFile:
             indexFile.write(self.generate_web_page())
             indexFile.flush()
-        scraper.get_photo("http://localhost:8000/index.html",saveLoc=saveLoc)
+        scraper.get_photo("http://localhost:8000/index.html", saveLoc = saveLoc)
         # os.remove("index.html")
         return photo
 
@@ -149,7 +148,7 @@ class WebPage:
             return 0
         else:
             photo_evaluation = self.evaluate_photo()
-            return css_evaluation*.2 + photo_evaluation*.8
+            return css_evaluation * .2 + photo_evaluation * .8
 
     def __str__(self):
         return str((self.html, self.css))
@@ -157,10 +156,27 @@ class WebPage:
     def __repr__(self):
         return str(self)
 
-    def __deepcopy__(self, memo): #Pass a reference to the original HTML but create a copy of the css 
-        ws = WebPage(html=self.html)
+    def __deepcopy__(self, memo):  # Pass a reference to the original HTML but create a copy of the css
+        ws = WebPage(html = self.html)
         # print("here")
         ws.css = deepcopy(self.css)
         return ws
 
+class GlobalStats:
+    DEFAULT_FILENAME = "../resources/global_stats.json"
 
+    def __init__(self, filename: str = DEFAULT_FILENAME):
+        data = GlobalStats.read(filename)
+        self.rule_names = list(data["known_rule_values"].keys())
+        self.rule_freqs = [len(rule_value.values()) for rule_value in data["known_rule_values"]]
+        self.rule_values = data["known_rule_values"]
+        self.selectors = list(data['tag_freq'].keys())
+        self.selector_freq = list(data["tag_freq"].values())
+
+    @staticmethod
+    def read(filename: str = DEFAULT_FILENAME):
+        with open(filename) as f:
+            return json.load(f)
+
+    def __deepcopy__(self, memo):
+        return self

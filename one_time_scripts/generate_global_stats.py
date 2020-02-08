@@ -3,26 +3,13 @@ import os
 
 from tqdm import tqdm
 
-from webscraping.stat_models import CSS
+from webscraping.stat_models import CSS, GlobalStats
 from webscraping.web_scraper import scraper
 
-class Stats:
-    DEFAULT_FILENAME = "../resources/global_stats.json"
-
-    def __init__(self, data):
-        self.data = data
+class StatGenerator:
+    def __init__(self):
+        self.data = GlobalStats.read()
         self.soups = None
-        if data is not None:
-            self.rule_names = list(data["known_rule_values"].keys())
-            self.rule_freqs = list()
-            for rule_value in data["known_rule_values"].values():
-                num_items = 0
-                for value in rule_value.values():
-                    num_items += 1
-                self.rule_freqs.append(num_items)
-            self.rule_values = data["known_rule_values"]
-            self.selectors = list(data['tag_freq'].keys())
-            self.selector_freq = list(data["tag_freq"].values())
 
     def get_soups(self, limit = None, test_only = False):
         if self.soups is None:
@@ -39,12 +26,7 @@ class Stats:
                 self.soups.append(scraper.get_soup(dir_name))
         return self.soups
 
-    @staticmethod
-    def read(filename = DEFAULT_FILENAME):
-        with open(filename) as f:
-            return Stats(json.load(f))
-
-    def write(self, filename = DEFAULT_FILENAME):
+    def write(self, filename = GlobalStats.DEFAULT_FILENAME):
         with open(filename, "w") as f:
             json.dump(self.data, f, indent = 2)
 
@@ -71,16 +53,13 @@ class Stats:
                     rules[key][value] += 1
 
         self.data["known_rule_values"] = rules
-    
-    def __deepcopy__(self, memo):
-        return self
 
 
 def generate():
-    stats = Stats.read()
-    # stats.calc_tag_freq()
-    stats.calc_possible_rule_values()
-    stats.write()
+    generator = StatGenerator()
+    generator.calc_tag_freq()
+    # stats.calc_possible_rule_values()
+    generator.write()
 
 
 if __name__ == '__main__':
