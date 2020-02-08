@@ -4,6 +4,8 @@ import tinycss2
 from bs4 import BeautifulSoup
 from tinycss2.ast import ParseError
 import random
+
+from webscraping.dao import Dao
 from webscraping.web_scraper import scraper
 import argparse
 import os
@@ -166,10 +168,11 @@ class GlobalStats:
     DEFAULT_FILENAME = "../resources/global_stats.json"
 
     def __init__(self, filename: str = DEFAULT_FILENAME):
+        dao = Dao()
+
         data = GlobalStats.read(filename)
-        self.rule_names = list(data["known_rule_values"].keys())
-        self.rule_freqs = [len(rule_value.values()) for rule_value in data["known_rule_values"]]
-        self.rule_values = data["known_rule_values"]
+        self.rule_counts = dao.get_rule_key_counts()
+        self.rule_values = dao.get_rule_values_by_rule_key()
         self.selectors = list(data['tag_freq'].keys())
         self.selector_freq = list(data["tag_freq"].values())
 
