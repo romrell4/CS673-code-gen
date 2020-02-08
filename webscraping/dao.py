@@ -22,6 +22,9 @@ class Dao:
         rule.id = new_id
         return rule
 
+    def add_rules(self, rules: [Rule]):
+        self.execute_many("insert into rules (web_page, selector, rule_key, rule_value) values (?, ?, ?, ?)", [(rule.web_page, rule.selector, rule.rule_key, rule.rule_value) for rule in rules])
+
     # noinspection SqlWithoutWhere
     def flush_rules(self):
         cur = self.conn.cursor()
@@ -31,6 +34,11 @@ class Dao:
         return self.get_all(Rule, "select * from rules")
 
     # Utility functions
+
+    def execute_many(self, sql: str, params: [Tuple]):
+        cur = self.conn.cursor()
+        cur.executemany(sql, params)
+        self.conn.commit()
 
     def execute(self, sql: str, params: Tuple = None) -> int:
         cur = self.conn.cursor()

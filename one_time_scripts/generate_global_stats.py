@@ -17,7 +17,6 @@ class StatGenerator:
 
     def get_soups(self, limit = None, test_only = False) -> [Tuple[str, BeautifulSoup]]:
         if self.soups is None:
-            print("Scraping soups...")
             if test_only:
                 dir_names = ["test"]
             else:
@@ -25,7 +24,7 @@ class StatGenerator:
                 if limit is not None:
                     dir_names = dir_names[:limit]
             self.soups = []
-            for dir_name in tqdm(dir_names):
+            for dir_name in tqdm(dir_names, desc = "Scraping soups"):
                 # print(dir_name)
                 self.soups.append((dir_name, scraper.get_soup(dir_name)))
         return self.soups
@@ -60,11 +59,14 @@ class StatGenerator:
 
     def add_rules_to_db(self):
         self.dao.flush_rules()
-        for web_page, soup in self.get_soups():
+
+        rules = []
+        for web_page, soup in tqdm(self.get_soups(), desc = "Gathering rules"):
             css = CSS(soup)
             for selector, rule_set in css.selectors.items():
                 for key, value in rule_set.items():
-                    self.dao.add_rule(Rule(None, web_page, selector, key, value))
+                    rules.append(Rule(None, web_page, selector, key, value))
+        self.dao.add_rules(rules)
 
 
 def generate():
