@@ -171,10 +171,9 @@ class GlobalStats:
         dao = Dao()
 
         data = GlobalStats.read(filename)
-        self.rule_counts = dao.get_rule_key_counts()
-        self.rule_values = dao.get_rule_values_by_rule_key()
-        self.selectors = list(data['tag_freq'].keys())
-        self.selector_freq = list(data["tag_freq"].values())
+        self.rule_key_counts = dao.get_rule_key_counts()
+        self.rule_key_value_counts = dao.get_rule_values_by_rule_key()
+        self.tag_counts = dao.get_tag_counts()
 
     @staticmethod
     def read(filename: str = DEFAULT_FILENAME):

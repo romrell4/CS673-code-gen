@@ -3,7 +3,7 @@ from mcts import mcts
 from webscraping.web_scraper import *
 from webscraping.stat_models import *
 import shutil
-from one_time_scripts.generate_global_stats import Stats
+from one_time_scripts.generate_global_stats import GlobalStats
 class WebSiteState:
     min_acceptable_evaluation = .5
     def __init__(self, url, stats):
@@ -75,7 +75,7 @@ class Action:
 
 
 def main(school):
-    stats = Stats.read("../resources/global_stats.json")
+    stats = GlobalStats()
     # print(stats.data["tag_freq"]["p"])
     initialState = WebSiteState(url=school, stats=stats)
     # print(stats.rule_frequency)

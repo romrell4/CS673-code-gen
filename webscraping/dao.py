@@ -62,10 +62,10 @@ class Dao:
         params = []
         if website is not None:
             sql += " and website = ?"
-            params += website
+            params.append(website)
         if selector is not None:
             sql += " and selector = ?"
-            params += selector
+            params.append(selector)
         sql += " group by rule_key order by rule_key"
         return self.get_all(ValueCount, sql, params)
 
@@ -77,6 +77,14 @@ class Dao:
                 result[key] = []
             result[key].append(ValueCount(value, count))
         return result
+
+    def get_tag_counts(self, website: str or None = None) -> List[ValueCount]:
+        sql = "select name from tags where true"
+        params = []
+        if website is not None:
+            sql += " and website = ?"
+            params += website
+        return self.get_all(ValueCount, sql, params)
 
     # Utility functions
 
