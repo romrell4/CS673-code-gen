@@ -1,8 +1,11 @@
 import json
 import os
+from typing import Tuple
 
+from bs4 import BeautifulSoup
 from tqdm import tqdm
 
+from webscraping.dao import Dao, Rule
 from webscraping.stat_models import CSS, GlobalStats
 from webscraping.web_scraper import scraper
 
@@ -10,8 +13,9 @@ class StatGenerator:
     def __init__(self):
         self.data = GlobalStats.read()
         self.soups = None
+        self.dao = Dao()
 
-    def get_soups(self, limit = None, test_only = False):
+    def get_soups(self, limit = None, test_only = False) -> [Tuple[str, BeautifulSoup]]:
         if self.soups is None:
             print("Scraping soups...")
             if test_only:
@@ -23,7 +27,7 @@ class StatGenerator:
             self.soups = []
             for dir_name in tqdm(dir_names):
                 # print(dir_name)
-                self.soups.append(scraper.get_soup(dir_name))
+                self.soups.append((dir_name, scraper.get_soup(dir_name)))
         return self.soups
 
     def write(self, filename = GlobalStats.DEFAULT_FILENAME):
@@ -42,7 +46,7 @@ class StatGenerator:
 
     def calc_possible_rule_values(self):
         rules = {}
-        for soup in self.get_soups():
+        for _, soup in self.get_soups():
             css = CSS(soup)
             for rule_set in css.selectors.values():
                 for key, value in rule_set.items():
@@ -54,11 +58,20 @@ class StatGenerator:
 
         self.data["known_rule_values"] = rules
 
+    def add_rules_to_db(self):
+        self.dao.flush_rules()
+        for web_page, soup in self.get_soups():
+            css = CSS(soup)
+            for selector, rule_set in css.selectors.items():
+                for key, value in rule_set.items():
+                    self.dao.add_rule(Rule(None, web_page, selector, key, value))
+
 
 def generate():
     generator = StatGenerator()
-    generator.calc_tag_freq()
-    # stats.calc_possible_rule_values()
+    # generator.calc_tag_freq()
+    # generator.calc_possible_rule_values()
+    generator.add_rules_to_db()
     generator.write()
 
 
