@@ -1,9 +1,10 @@
 import json
 import os
-import tinycss2
+
 from tqdm import tqdm
-from webscraping.web_scraper import scraper
+
 from webscraping.stat_models import CSS
+from webscraping.web_scraper import scraper
 
 class Stats:
     DEFAULT_FILENAME = "../resources/global_stats.json"
