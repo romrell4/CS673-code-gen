@@ -1,11 +1,12 @@
 import argparse
 from copy import deepcopy, copy
+from typing import List
 
 import tinycss2
 from bs4 import BeautifulSoup
 from tinycss2.ast import ParseError
 
-from webscraping.dao import Dao
+from webscraping.dao import Dao, ValueCount
 from webscraping.web_scraper import scraper
 
 class HTML:
@@ -166,8 +167,13 @@ class GlobalStats:
         dao = Dao()
 
         self.rule_key_counts = dao.get_rule_key_counts()
+        self.rule_key_counts_tuple = self.convert_to_lists(self.rule_key_counts)
         self.rule_key_value_counts = dao.get_rule_values_by_rule_key()
         self.tag_counts = dao.get_tag_counts()
+
+    @staticmethod
+    def convert_to_lists(value_counts: List[ValueCount]):
+        return map(list, zip(*[(value_count.value, value_count.count) for value_count in value_counts]))
 
     def __deepcopy__(self, memo):
         return self

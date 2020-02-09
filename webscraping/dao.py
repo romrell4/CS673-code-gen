@@ -57,7 +57,7 @@ class Dao:
 
     # Used for actual stat model
 
-    def get_rule_key_counts(self, website: str or None = None, selector: str or None = None) -> [ValueCount]:
+    def get_rule_key_counts(self, website: str or None = None, selector: str or None = None) -> List[ValueCount]:
         sql = "select rule_key, count(*) from rules where true"
         params = []
         if website is not None:
