@@ -1,6 +1,6 @@
 import argparse
 from copy import deepcopy, copy
-from typing import List
+from typing import List, Iterable
 
 import tinycss2
 from bs4 import BeautifulSoup
@@ -172,7 +172,7 @@ class GlobalStats:
         self.tag_counts = dao.get_tag_counts()
 
     @staticmethod
-    def convert_to_lists(value_counts: List[ValueCount]):
+    def convert_to_lists(value_counts: List[ValueCount]) -> Iterable[List[str], List[int]]:
         return map(list, zip(*[(value_count.value, value_count.count) for value_count in value_counts]))
 
     def __deepcopy__(self, memo):
