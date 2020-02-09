@@ -1,4 +1,3 @@
-import json
 import os
 from typing import Tuple
 
@@ -6,12 +5,11 @@ from bs4 import BeautifulSoup
 from tqdm import tqdm
 
 from webscraping.dao import Dao, Rule, Tag
-from webscraping.stat_models import CSS, GlobalStats
+from webscraping.stat_models import CSS
 from webscraping.web_scraper import scraper
 
 class StatGenerator:
     def __init__(self):
-        self.data = GlobalStats.read()
         self.soups = None
         self.dao = Dao()
 
@@ -28,10 +26,6 @@ class StatGenerator:
                 # print(dir_name)
                 self.soups.append((dir_name, scraper.get_soup(dir_name)))
         return self.soups
-
-    def write(self, filename = GlobalStats.DEFAULT_FILENAME):
-        with open(filename, "w") as f:
-            json.dump(self.data, f, indent = 2)
 
     def add_tags_to_db(self):
         self.dao.flush_tags()
@@ -56,9 +50,8 @@ class StatGenerator:
 
 def generate():
     generator = StatGenerator()
-    # generator.add_rules_to_db()
+    generator.add_rules_to_db()
     generator.add_tags_to_db()
-    generator.write()
 
 
 if __name__ == '__main__':

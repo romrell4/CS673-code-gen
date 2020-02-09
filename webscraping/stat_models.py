@@ -1,15 +1,12 @@
-from typing import Tuple
+import argparse
 from copy import deepcopy, copy
+
 import tinycss2
 from bs4 import BeautifulSoup
 from tinycss2.ast import ParseError
-import random
 
 from webscraping.dao import Dao
 from webscraping.web_scraper import scraper
-import argparse
-import os
-import json
 
 class HTML:
     """
@@ -165,20 +162,12 @@ class WebPage:
         return ws
 
 class GlobalStats:
-    DEFAULT_FILENAME = "../resources/global_stats.json"
-
-    def __init__(self, filename: str = DEFAULT_FILENAME):
+    def __init__(self):
         dao = Dao()
 
-        data = GlobalStats.read(filename)
         self.rule_key_counts = dao.get_rule_key_counts()
         self.rule_key_value_counts = dao.get_rule_values_by_rule_key()
         self.tag_counts = dao.get_tag_counts()
-
-    @staticmethod
-    def read(filename: str = DEFAULT_FILENAME):
-        with open(filename) as f:
-            return json.load(f)
 
     def __deepcopy__(self, memo):
         return self
