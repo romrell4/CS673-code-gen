@@ -170,6 +170,7 @@ class GlobalStats:
         self.rule_key_counts_tuple = self.convert_to_lists(self.rule_key_counts)
         self.rule_key_value_counts = dao.get_rule_values_by_rule_key()
         self.tag_counts = dao.get_tag_counts()
+        self.tag_rule_key_counts = dao.get_tag_rule_key_counts()
 
     @staticmethod
     def convert_to_lists(value_counts: List[ValueCount]) -> Iterable[List[str], List[int]]:

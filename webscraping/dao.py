@@ -71,12 +71,7 @@ class Dao:
 
     def get_rule_values_by_rule_key(self) -> Dict[str, List[ValueCount]]:
         sql = "select rule_key, rule_value, count(*) as count from rules group by rule_key, rule_value order by rule_key, count"
-        result = {}
-        for key, value, count in self.get_all(None, sql):
-            if key not in result:
-                result[key] = []
-            result[key].append(ValueCount(value, count))
-        return result
+        return self.group_by(self.get_all(None, sql))
 
     def get_tag_counts(self, website: str or None = None) -> List[ValueCount]:
         sql = "select name from tags where true"
@@ -85,6 +80,30 @@ class Dao:
             sql += " and website = ?"
             params += website
         return self.get_all(ValueCount, sql, params)
+
+    def get_tag_rule_key_counts(self) -> Dict[str, List[ValueCount]]:
+        sql = """
+            select tag_name, rule_key, count(*) as count from (
+                select t.name as tag_name, r.rule_key
+                from (select distinct name from tags) t
+                join rules r
+                    on t.name = r.selector
+            
+                union all
+            
+                select t.tag_name, r.rule_key from (
+                    select web_page, id, max(name) as tag_name
+                    from tags
+                    where id is not null and id != ''
+                    group by web_page, id
+                ) t
+                join rules r
+                    on r.web_page = t.web_page and r.selector = '#' || t.id
+            ) f
+            group by f.tag_name, f.rule_key
+            order by tag_name, count desc
+        """
+        return self.group_by(self.get_all(None, sql))
 
     # Utility functions
 
@@ -107,6 +126,16 @@ class Dao:
         else:
             return rows
 
+    @staticmethod
+    def group_by(result_set: List, key_getter = lambda row: row[0], mapping = lambda row: ValueCount(row[1], row[2])) -> Dict[str, List[ValueCount]]:
+        result = {}
+        for row in result_set:
+            key = key_getter(row)
+            if key not in result:
+                result[key] = []
+            result[key].append(mapping(row))
+        return result
+
 
 if __name__ == '__main__':
-    print(Dao().get_rule_values_by_rule_key())
+    print(Dao().get_tag_rule_key_counts())
