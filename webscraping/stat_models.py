@@ -173,7 +173,7 @@ class GlobalStats:
         self.tag_rule_key_counts = dao.get_tag_rule_key_counts()
 
     @staticmethod
-    def convert_to_lists(value_counts: List[ValueCount]) -> Iterable[List[str], List[int]]:
+    def convert_to_lists(value_counts: List[ValueCount]) -> Iterable[List]:
         return map(list, zip(*[(value_count.value, value_count.count) for value_count in value_counts]))
 
     def __deepcopy__(self, memo):

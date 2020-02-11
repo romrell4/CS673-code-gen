@@ -47,8 +47,8 @@ class WebScraper:
         self.driver.execute('SEND_COMMAND', dict(cmd='Network.clearBrowserCache', params={}))
         # self.driver.find_element_by_css_selector("* /deep/ #clearBrowsingDataConfirm").send_keys(Keys.ENTER)
 
-    def get_soup(self, url):
-        return BeautifulSoup(self.get_html(url), "html.parser")
+    def get_soup(self, url, cached_site_dir = "../resources/cached-sites"):
+        return BeautifulSoup(self.get_html(url, cached_site_dir), "html.parser")
 
     def scrape(self, url):
         soup = self.get_soup(url)
@@ -71,11 +71,12 @@ class WebScraper:
         self.driver.save_screenshot(saveLoc)
         return saveLoc
 
-    def get_html(self, url):
+    def get_html(self, url: str, cached_site_dir: str):
         """
         Either read the element from a live website, or a local html file - depending on the prefix
 
         :param url: Either a full website url or folder name for one of the cached sites
+        :param cached_site_dir: the directory where the cached sites are stored. No trailing "/"
         :return: html text
         """
         if url.startswith("http"):
@@ -83,7 +84,7 @@ class WebScraper:
             wait = WebDriverWait(self.driver, self.waitTime)
             return self.driver.page_source
         else:
-            with open("../cached_sites/{}/combined.html".format(url)) as f:
+            with open("{}/{}/combined.html".format(cached_site_dir, url)) as f:
                 return f.read()
 
     def parse_children(self, tag, depth = 0, print_structure = False):

@@ -33,9 +33,9 @@ class Tag:
 
 # noinspection SqlResolve
 class Dao:
-    def __init__(self):
+    def __init__(self, sqlfile: str = "../resources/stats.sqlite"):
         """ create a database connection to a SQLite database """
-        self.conn = sqlite3.connect("../resources/stats.sqlite")
+        self.conn = sqlite3.connect(sqlfile)
 
     # Used by stat generator
 

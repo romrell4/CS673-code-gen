@@ -18,7 +18,7 @@ class StatGenerator:
             if test_only:
                 dir_names = ["test"]
             else:
-                dir_names = os.listdir("../cached_sites")
+                dir_names = os.listdir("../resources/cached_sites")
                 if limit is not None:
                     dir_names = dir_names[:limit]
             self.soups = []
@@ -31,7 +31,7 @@ class StatGenerator:
         self.dao.flush_tags()
 
         tags: [Tag] = []
-        for web_page, soup in tqdm(self.get_soups()):
+        for web_page, soup in tqdm(self.get_soups(), desc = "Gathering tags"):
             for tag in soup.find_all():
                 tags.append(Tag(None, web_page, tag.name, tag.get("id"), ",".join(tag.get("class", []))))
         self.dao.add_tags(tags)
@@ -50,8 +50,8 @@ class StatGenerator:
 
 def generate():
     generator = StatGenerator()
-    generator.add_rules_to_db()
     generator.add_tags_to_db()
+    generator.add_rules_to_db()
 
 
 if __name__ == '__main__':
