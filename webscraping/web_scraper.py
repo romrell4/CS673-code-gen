@@ -47,7 +47,7 @@ class WebScraper:
         self.driver.execute('SEND_COMMAND', dict(cmd='Network.clearBrowserCache', params={}))
         # self.driver.find_element_by_css_selector("* /deep/ #clearBrowsingDataConfirm").send_keys(Keys.ENTER)
 
-    def get_soup(self, url, cached_site_dir = "../resources/cached-sites"):
+    def get_soup(self, url, cached_site_dir = "../resources/cached_sites"):
         return BeautifulSoup(self.get_html(url, cached_site_dir), "html.parser")
 
     def scrape(self, url):
