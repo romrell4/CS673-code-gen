@@ -50,10 +50,9 @@ class CSS:
         selectors ([str: [str: str]): dictionary of selector (e.g. "thead" or "p#some-id") to the key-value pairs of rules (e.g. "font-size": "18pt")
     """
 
-    def __init__(self, html_soup: BeautifulSoup = None, print_issues = False, url: str = None):
+    def __init__(self, html_soup: BeautifulSoup = None, url: str = None):
         if url is not None:
             html_soup = scraper.get_soup(url)
-        self.print_issues = print_issues
         self.selectors = {}
         for style in html_soup.find_all("style"):
             stylesheet = tinycss2.parse_stylesheet(style.text, skip_comments = True, skip_whitespace = True)
@@ -75,6 +74,23 @@ class CSS:
     def evaluate(self):
         # TODO: Actually evaluate the quality of CSS based on global stats or some metrics
         return 1
+
+    # TODO: Should we include border colors? (e.g. border-top-color, border-bottom-color, border-color)
+    COLOR_KEYS = ["background-color", "color", "background", "fill"]
+
+    def evaluate_colors(self):
+        colors = []
+        other_color_keys_to_consider = []
+        for rules in self.selectors.values():
+            for key, value in rules.items():
+                if key in self.COLOR_KEYS:
+                    # TODO: Convert all colors into a similar space (hex, text, rgba, hsla, var, etc)
+                    colors.append(value)
+                elif value.startswith("#"):
+                    other_color_keys_to_consider.append(key)
+        print("Unique colors:", len(colors), set(colors))
+        print("Other color keys:", set(other_color_keys_to_consider))
+        # TODO: Come up with a metric that returns a range from 0 (bad color scheme) to 1 (great color scheme)
 
     def generate_css(self) -> str:
         rules = ""
