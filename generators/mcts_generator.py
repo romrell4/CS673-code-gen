@@ -4,6 +4,9 @@ from webscraping.web_scraper import *
 from webscraping.stat_models import *
 import shutil
 from one_time_scripts.generate_global_stats import GlobalStats
+import random
+import os
+
 class WebSiteState:
     min_acceptable_evaluation = .5
     def __init__(self, url, stats):
