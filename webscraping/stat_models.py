@@ -47,6 +47,7 @@ class HTML:
             return True # Assume selectors that can't be parsed by BeautifulSoup are valid
         return False
 
+
 class CSS:
     """
     Class used to represent the style of a web page
@@ -54,7 +55,6 @@ class CSS:
     Attributes:
         selectors ([str: [str: str]): dictionary of selector (e.g. "thead" or "p#some-id") to the key-value pairs of rules (e.g. "font-size": "18pt")
     """
-
     def __init__(self, html_soup: BeautifulSoup = None, url: str = None):
         if url is not None:
             html_soup = scraper.get_soup(url)
@@ -95,7 +95,6 @@ class CSS:
                 return True
         return selector in self.selectors.keys()
         
-
     def removeSelector(self, selector):
         if selector in self.selectors:
             del self.selectors[selector]
@@ -158,10 +157,10 @@ class WebPage:
     photo_eval_limit = .2
     css_eval_limit = .7
 
-    def __init__(self, url = None, html = None):
+    def __init__(self, url = None, html = None, cleaned=False):
         if url is not None:
-            soup = scraper.get_soup(url)
-            self.html = HTML(soup)
+            soup = scraper.get_soup(url, cleaned)
+            self.html = HTML(soup) 
             self.css = CSS(soup)
         elif html is not None:
             self.html = html

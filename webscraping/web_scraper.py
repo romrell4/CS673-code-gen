@@ -47,11 +47,11 @@ class WebScraper:
         self.driver.execute('SEND_COMMAND', dict(cmd='Network.clearBrowserCache', params={}))
         # self.driver.find_element_by_css_selector("* /deep/ #clearBrowsingDataConfirm").send_keys(Keys.ENTER)
 
-    def get_soup(self, url, cached_site_dir = "../resources/cached_sites"):
-        return BeautifulSoup(self.get_html(url, cached_site_dir), "html.parser")
+    def get_soup(self, url, cached_site_dir = "../resources/cached_sites", cleaned=False):
+        return BeautifulSoup(self.get_html(url, cached_site_dir, cleaned), "html.parser")
 
-    def scrape(self, url):
-        soup = self.get_soup(url)
+    def scrape(self, url, cleaned: bool=False):
+        soup = self.get_soup(url, cleaned)
         self.get_photo(url)
         all_css_rules = []
         for styles in soup.select('style'):
@@ -71,7 +71,7 @@ class WebScraper:
         self.driver.save_screenshot(saveLoc)
         return saveLoc
 
-    def get_html(self, url: str, cached_site_dir: str):
+    def get_html(self, url: str, cached_site_dir: str, cleaned: bool=False):
         """
         Either read the element from a live website, or a local html file - depending on the prefix
 
@@ -84,8 +84,12 @@ class WebScraper:
             wait = WebDriverWait(self.driver, self.waitTime)
             return self.driver.page_source
         else:
-            with open("{}/{}/combined.html".format(cached_site_dir, url)) as f:
-                return f.read()
+            if cleaned:
+                with open("{}/{}/cleaned.html".format(cached_site_dir, url)) as f:
+                    return f.read()
+            else:
+                with open("{}/{}/combined.html".format(cached_site_dir, url)) as f:
+                    return f.read()
 
     def parse_children(self, tag, depth = 0, print_structure = False):
         """

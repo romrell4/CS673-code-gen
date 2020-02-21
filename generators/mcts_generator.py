@@ -3,14 +3,13 @@ from mcts import mcts
 from webscraping.web_scraper import *
 from webscraping.stat_models import *
 import shutil
-from one_time_scripts.generate_global_stats import GlobalStats
 import random
 import os
 
 class WebSiteState:
     min_acceptable_evaluation = .5
-    def __init__(self, url, stats):
-        self.website = WebPage(url=url)
+    def __init__(self, url, stats, cleaned=False):
+        self.website = WebPage(url=url, cleaned=cleaned)
         self.stats = stats
         self.depth = 1
 
@@ -42,10 +41,10 @@ class Action:
     # TODO: Define actions we can take in this space, could be genetic or based on the stats we gathered
     def __init__(self, stats, website):
         tries = 0
-        selector = random.choices(stats.selectors, stats.selector_freq)[0]
+        # selector = random.choices(stats.selectors, stats.selector_freq)[0]
         selector = random.choice(list(website.css.selectors.keys()))
         while not website.containsSelector(selector):
-            selector = random.choices(stats.selectors, stats.selector_freq)[0]
+            # selector = random.choices(stats.selectors, stats.selector_freq)[0]
             selector = random.choice(list(website.css.selectors.keys()))
             tries += 1
             if tries == 100:
