@@ -40,6 +40,11 @@ class HTML:
         if selector in self.classes:
             # print(f"Selector {selector} in classes")
             return True
+        try:
+            if len(self.soup.select(selector)) > 0:
+                return True
+        except:
+            return True # Assume selectors that can't be parsed by BeautifulSoup are valid
         return False
 
 class CSS:
@@ -50,36 +55,91 @@ class CSS:
         selectors ([str: [str: str]): dictionary of selector (e.g. "thead" or "p#some-id") to the key-value pairs of rules (e.g. "font-size": "18pt")
     """
 
-    def __init__(self, html_soup: BeautifulSoup = None, print_issues = False, url: str = None):
+    def __init__(self, html_soup: BeautifulSoup = None, url: str = None):
         if url is not None:
             html_soup = scraper.get_soup(url)
-        self.print_issues = print_issues
         self.selectors = {}
+        self.scope = {}
         for style in html_soup.find_all("style"):
             stylesheet = tinycss2.parse_stylesheet(style.text, skip_comments = True, skip_whitespace = True)
             for rule_set in [rule_set for rule_set in stylesheet if type(rule_set) != ParseError]:
                 if rule_set.type in ("error", "at-rule"):
+                    if rule_set.type == "at-rule" and rule_set.at_keyword == "media":
+                        # print(rule_set.content)
+                        rule = tinycss2.parse_one_rule(rule_set.content)
+                        if type(rule) != ParseError: # TODO: Figure out why there are parse errors here
+                            prelude = "@media" + tinycss2.serialize(rule_set.prelude)
+                            self.scope[prelude] = {}
+                            # print(prelude)
+                            self.parse_rule_set(rule, self.scope[prelude])
+                            # self.parse_rule_set(rule.content, self.scope[prelude])
                     continue
                 # If the prelude contains a comma, there are multiple selectors
-                for selector in tinycss2.serialize(rule_set.prelude).split(","):
-                    selector = selector.strip()
-                    if selector not in self.selectors:
-                        self.selectors[selector] = {}
-                    # Update the current dictionary, overwriting conflicting keys
-                    declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)
-                    self.selectors[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if declaration.type not in ("error", "at-rule")})
+                else:
+                    self.parse_rule_set(rule_set, self.selectors)
+        # print(self.scope)
+
+    def parse_rule_set(self, rule_set, scope):
+        for selector in tinycss2.serialize(rule_set.prelude).split(","):
+            selector = selector.strip()
+            if selector not in scope:
+                scope[selector] = {}
+            # Update the current dictionary, overwriting conflicting keys
+            declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)
+            scope[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if declaration.type not in ("error", "at-rule")})
+
 
     def containsSelector(self, selector):
+        for scope in self.scope.values():
+            if selector in scope.keys():
+                return True
         return selector in self.selectors.keys()
+        
+
+    def removeSelector(self, selector):
+        if selector in self.selectors:
+            del self.selectors[selector]
+        for scope in self.scope.values():
+            if selector in scope.keys():
+                del scope[selector]
 
     def evaluate(self):
         # TODO: Actually evaluate the quality of CSS based on global stats or some metrics
         return 1
 
+    # TODO: Should we include border colors? (e.g. border-top-color, border-bottom-color, border-color)
+    COLOR_KEYS = ["background-color", "color", "background", "fill"]
+
+    def evaluate_colors(self):
+        colors = []
+        other_color_keys_to_consider = []
+        for rules in self.selectors.values():
+            for key, value in rules.items():
+                if key in self.COLOR_KEYS:
+                    # TODO: Convert all colors into a similar space (hex, text, rgba, hsla, var, etc)
+                    colors.append(value)
+                elif value.startswith("#"):
+                    other_color_keys_to_consider.append(key)
+        print("Unique colors:", len(colors), set(colors))
+        print("Other color keys:", set(other_color_keys_to_consider))
+        # TODO: Come up with a metric that returns a range from 0 (bad color scheme) to 1 (great color scheme)
+
     def generate_css(self) -> str:
         rules = ""
+        # print(len(self.selectors.items()))
         for k, v in self.selectors.items():
-            rules += f"{k} {v}\n"
+            rules += f"{k} {{\n"
+            for k1, v1 in v.items():
+                rules += f"\t{k1}: {v1};\n"
+            rules += f"}}\n"
+        for k, v in self.scope.items():
+            rules += f"{k} {{\n"
+            for k1, v1 in v.items():
+                rules += f"\t{k1} {{\n"
+                for k2, v2 in v1.items():
+                    rules += f"\t\t{k2}: {v2};\n"
+                rules += f"}}\n"
+            rules += f"}}\n"
         return rules
 
     def addRule(self, selector, rule_name, rule_value):
@@ -112,8 +172,17 @@ class WebPage:
     def containsSelector(self, selector):
         return self.html.containsSelector(selector) or self.css.containsSelector(selector)
 
+    def removeCSS(self, soup):
+        # for tag in soup.findAll(True):
+        #     for attr in [attr for attr in tag.attrs if attr in ["style"]]:
+        #         del tag[attr]
+        for s in soup.head.style:
+            s.extract() # Extract the first style tag which is our header
+            return
+
     def generate_web_page(self) -> bytes:
         webpageSoup = copy(self.html.soup)
+        self.removeCSS(webpageSoup)
         style_tag = webpageSoup.new_tag('style')
         style_tag.string = self.css.generate_css()
         try:
@@ -122,6 +191,11 @@ class WebPage:
             webpageSoup.insert(0, webpageSoup.new_tag('head'))
             webpageSoup.head.insert(0, style_tag)
         return webpageSoup.encode()
+
+    def save(self, saveLoc):
+        with open(saveLoc, 'wb') as wfile:
+            wfile.write(self.generate_web_page())
+            wfile.flush()
 
     def gen_photo(self, saveLoc = "screenshot.png"):
         photo = None

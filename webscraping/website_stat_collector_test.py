@@ -10,7 +10,7 @@ class StatCollectionTest(unittest.TestCase):
         self.assertCountEqual(html.classes, ["center", "red", "image", "icon", "blue", "big"])
 
     def test_css(self):
-        css = CSS(scraper.get_soup("test"), True)
+        css = CSS(scraper.get_soup("test"))
         self.assertCountEqual(css.selectors, ["body", "#content", "#title", "p", ".center", ".red", ".blue", ".big", "table#test-table", "td.image", "img.icon", "th", "td"])
         self.assertEqual(css.selectors["body"], {
             "font-size": "18pt",
@@ -24,7 +24,7 @@ class StatCollectionTest(unittest.TestCase):
         })
 
     def test_css_comma_selectors(self):
-        css = CSS(scraper.get_soup("test"), True)
+        css = CSS(scraper.get_soup("test"))
         self.assertEqual(css.selectors["th"], {
             "padding": "8px",
             "border": "1px solid #111"
