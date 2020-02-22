@@ -40,7 +40,7 @@ class WebSiteState:
 
 def main(school):
     depth = 0
-    montecarlosearch = mcts(timeLimit=1)
+    montecarlosearch = mcts(timeLimit=.5)
     directory = f"results/{school}"
     shutil.rmtree(directory)
     os.makedirs(directory, exist_ok=True)
