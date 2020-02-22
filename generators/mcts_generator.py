@@ -8,7 +8,7 @@ from generators.actions import *
 
 class WebSiteState:
     min_acceptable_evaluation = .5
-    def __init__(self, url, stats, cleaned=False):
+    def __init__(self, url, stats, cleaned=True):
         self.website = WebPage(url=url, cleaned=cleaned)
         self.stats = stats
         self.depth = 1
@@ -53,7 +53,7 @@ def main(school):
         # print(action)
         initialState = initialState.takeAction(action, depthOverride=0)
         initialState.getReward()
-        if depth % 5 == 0:
+        if depth % 10 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
     photo = initialState.website.gen_photo(f"{directory}/final_screenshot.png")

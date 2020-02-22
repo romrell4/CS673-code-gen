@@ -31,7 +31,7 @@ class WebFonts:
 
     @staticmethod
     def get_random_rule() -> str:
-        return random.sample(WebFonts.rules, WebFonts.rule_probs)[0]
+        return random.choices(WebFonts.rules, WebFonts.rule_probs)[0]
 
     @staticmethod
     def get_random_value(rule: str) -> str:
