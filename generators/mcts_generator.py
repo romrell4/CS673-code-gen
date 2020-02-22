@@ -3,14 +3,13 @@ from mcts import mcts
 from webscraping.web_scraper import *
 from webscraping.stat_models import *
 import shutil
-from one_time_scripts.generate_global_stats import GlobalStats
 import random
 import os
 
 class WebSiteState:
     min_acceptable_evaluation = .5
-    def __init__(self, url, stats):
-        self.website = WebPage(url=url)
+    def __init__(self, url, stats, cleaned=False):
+        self.website = WebPage(url=url, cleaned=cleaned)
         self.stats = stats
         self.depth = 1
 
@@ -30,7 +29,7 @@ class WebSiteState:
 
     def isTerminal(self):
         return self.depth == 10
-        return self.website.evaluate() < WebSiteState.min_acceptable_evaluation
+        # return self.website.evaluate() < WebSiteState.min_acceptable_evaluation
 
     def getReward(self): # Return Number between 0-1 or False
         return self.website.evaluate()
@@ -38,63 +37,70 @@ class WebSiteState:
     def __str__(self):
         return f"Depth: {self.depth} Website: {self.website}"
 
+
 class Action:
     # TODO: Define actions we can take in this space, could be genetic or based on the stats we gathered
-    def __init__(self, stats, website):
+    def __init__(self, stats: GlobalStats, website: WebPage):
         tries = 0
-        selector = random.choices(stats.selectors, stats.selector_freq)[0]
-        selector = random.choice(list(website.css.selectors.keys()))
-        while not website.containsSelector(selector):
-            selector = random.choices(stats.selectors, stats.selector_freq)[0]
+        # selector = random.choices(stats.selectors, stats.selector_freq)[0]
+        while True:
             selector = random.choice(list(website.css.selectors.keys()))
-            tries += 1
-            if tries == 100:
-                # print(f"{selector}")
-                selector = None
+            while not website.contains_selector(selector):
+                # selector = random.choices(stats.selectors, stats.selector_freq)[0]
+                selector = random.choice(list(website.css.selectors.keys()))
+                tries += 1
+                if tries == 100:
+                    # print(f"{selector}")
+                    selector = None
+                    break
+            self.selector = selector
+            if selector in stats.tag_rule_key_map:
+                self.rule_name = random.choices(stats.tag_rule_key_map[selector][0],
+                                                stats.tag_rule_key_map[selector][1])[0]
+                self.rule_value = random.choices(stats.rule_key_value_map[self.rule_name][0],
+                                                 stats.rule_key_value_map[self.rule_name][1])[0]
                 break
-        self.selector = selector
-        self.ruleName = random.choices(stats.rule_names, stats.rule_freqs)[0]
-        self.ruleValue = random.choices(list(stats.rule_values[self.ruleName].keys()), list(stats.rule_values[self.ruleName].values()))[0] + "!important"
+            else:
+                continue
 
-    def modify(self, websiteState):
+    def modify(self, website_state: WebSiteState):
         if self.selector is not None:
             # print(f"Valid selector found")
-            websiteState.website.css.addRule(self.selector, self.ruleName, self.ruleValue)
+            website_state.website.css.add_rule(self.selector, self.rule_name, self.rule_value)
         else:
             print(f"Valid selector not found in 500 tries")
 
     def __str__(self):
-        return f"{self.selector} {{\n\t{self.ruleName}: {self.ruleValue}\n}}"
+        return f"{self.selector} {{\n\t{self.rule_name}: {self.rule_value}\n}}"
 
     def __repr__(self):
         return str(self)
 
     def __eq__(self, other):
-        return self.selector == other.selector and self.ruleName == other.ruleName and self.ruleValue == other.ruleValue
+        return self.selector == other.selector and self.rule_name == other.rule_name and self.rule_value == other.rule_value
 
     def __hash__(self):
-        return hash((self.selector, self.ruleName, self.ruleValue))
+        return hash((self.selector, self.rule_name, self.rule_value))
 
 
 
 def main(school):
-    stats = GlobalStats()
-    # print(stats.data["tag_freq"]["p"])
-    initialState = WebSiteState(url=school, stats=stats)
-    # print(stats.rule_frequency)
-    # print(stats.selector_freq)
-    # photo = initialState.website.gen_photo("screenshot.png")
+
     depth = 0
     montecarlosearch = mcts(timeLimit=1)
     directory = f"results/{school}"
-    shutil.rmtree(directory)
+    # shutil.rmtree(directory)
     os.makedirs(directory, exist_ok=True)
+    stats = GlobalStats()
+    # print(stats.data["tag_freq"]["p"])
+    initialState = WebSiteState(url=school, stats=stats)
+    # photo = initialState.website.gen_photo("screenshot.png")
     while depth < 1000:
         action = montecarlosearch.search(initialState=initialState)
         # print(action)
         initialState = initialState.takeAction(action, depthOverride=0)
         initialState.getReward()
-        if depth % 50 == 0:
+        if depth % 5 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
     photo = initialState.website.gen_photo(f"{directory}/final_screenshot.png")
