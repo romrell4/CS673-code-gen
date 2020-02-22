@@ -48,6 +48,9 @@ class HTML:
             return True  # Assume selectors that can't be parsed by BeautifulSoup are valid
         return False
 
+    def get_tags(self):
+        return self.tags
+
 
 class CSS:
     """
