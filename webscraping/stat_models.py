@@ -160,9 +160,9 @@ class WebPage:
     photo_eval_limit = .2
     css_eval_limit = .7
 
-    def __init__(self, url = None, html = None, cleaned=False):
+    def __init__(self, url=None, html=None, cleaned=False):
         if url is not None:
-            soup = scraper.get_soup(url, cleaned)
+            soup = scraper.get_soup(url, cleaned=cleaned)
             self.html = HTML(soup) 
             self.css = CSS(soup)
         elif html is not None:
@@ -246,20 +246,20 @@ class GlobalStats:
         self.rule_key_counts_tuple: Iterable[List] = self.convert_to_lists(self.rule_key_counts)
         self.rule_key_value_counts: Dict[str, List[ValueCount]] = dao.get_rule_values_by_rule_key()
         self.rule_key_value_map: Dict[str, Tuple[List[str], List[int]]] = \
-            self.convert_to_dict_to_tuple_lists(self.rule_key_value_counts)
+            self.convert_to_dict_of_tuple_lists(self.rule_key_value_counts)
         self.tag_counts: List[ValueCount] = dao.get_tag_counts()
         self.tag_map: Tuple[List[str], List[int]] = ([value.value for value in self.tag_counts],
                                                      [value.count for value in self.tag_counts])
         self.tag_rule_key_counts: Dict[str, List[ValueCount]] = dao.get_tag_rule_key_counts()
         self.tag_rule_key_map: Dict[str, Tuple[List[str], List[int]]] = \
-            self.convert_to_dict_to_tuple_lists(self.tag_rule_key_counts)
+            self.convert_to_dict_of_tuple_lists(self.tag_rule_key_counts)
 
     @staticmethod
     def convert_to_lists(value_counts: List[ValueCount]) -> Iterable[List]:
         return map(list, zip(*[(value_count.value, value_count.count) for value_count in value_counts]))
 
     @staticmethod
-    def convert_to_dict_to_tuple_lists(count_map: Dict[str, List[ValueCount]]) -> Dict[str, Tuple[List[str], List[int]]]:
+    def convert_to_dict_of_tuple_lists(count_map: Dict[str, List[ValueCount]]) -> Dict[str, Tuple[List[str], List[int]]]:
         return {key: ([value.value for value in value_counts],
                       [value.count for value in value_counts]) for key, value_counts in count_map.items()}
 

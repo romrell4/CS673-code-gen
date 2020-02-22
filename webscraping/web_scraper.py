@@ -77,7 +77,7 @@ class WebScraper:
         self.driver.save_screenshot(save_loc)
         return save_loc
 
-    def get_html(self, url: str, cached_site_dir: str, cleaned: bool=False):
+    def get_html(self, url: str, cached_site_dir: str, cleaned: bool = False):
         """
         Either read the element from a live website, or a local html file - depending on the prefix
 

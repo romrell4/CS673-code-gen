@@ -43,20 +43,25 @@ class Action:
     def __init__(self, stats: GlobalStats, website: WebPage):
         tries = 0
         # selector = random.choices(stats.selectors, stats.selector_freq)[0]
-        selector = random.choice(list(website.css.selectors.keys()))
-        while not website.contains_selector(selector):
-            # selector = random.choices(stats.selectors, stats.selector_freq)[0]
+        while True:
             selector = random.choice(list(website.css.selectors.keys()))
-            tries += 1
-            if tries == 100:
-                # print(f"{selector}")
-                selector = None
+            while not website.contains_selector(selector):
+                # selector = random.choices(stats.selectors, stats.selector_freq)[0]
+                selector = random.choice(list(website.css.selectors.keys()))
+                tries += 1
+                if tries == 100:
+                    # print(f"{selector}")
+                    selector = None
+                    break
+            self.selector = selector
+            if selector in stats.tag_rule_key_map:
+                self.rule_name = random.choices(stats.tag_rule_key_map[selector][0],
+                                                stats.tag_rule_key_map[selector][1])[0]
+                self.rule_value = random.choices(stats.rule_key_value_map[self.rule_name][0],
+                                                 stats.rule_key_value_map[self.rule_name][1])[0]
                 break
-        self.selector = selector
-        self.rule_name = random.choices(stats.tag_rule_key_map[selector][0],
-                                        stats.tag_rule_key_map[selector][1])[0]
-        self.rule_value = random.choices(stats.rule_key_value_map[self.rule_name][0],
-                                         stats.rule_key_value_map[self.rule_name][1])[0]
+            else:
+                continue
 
     def modify(self, website_state: WebSiteState):
         if self.selector is not None:
@@ -80,23 +85,22 @@ class Action:
 
 
 def main(school):
-    stats = GlobalStats()
-    # print(stats.data["tag_freq"]["p"])
-    initialState = WebSiteState(url=school, stats=stats)
-    # print(stats.rule_frequency)
-    # print(stats.selector_freq)
-    # photo = initialState.website.gen_photo("screenshot.png")
+
     depth = 0
     montecarlosearch = mcts(timeLimit=1)
     directory = f"results/{school}"
-    shutil.rmtree(directory)
+    # shutil.rmtree(directory)
     os.makedirs(directory, exist_ok=True)
+    stats = GlobalStats()
+    # print(stats.data["tag_freq"]["p"])
+    initialState = WebSiteState(url=school, stats=stats)
+    # photo = initialState.website.gen_photo("screenshot.png")
     while depth < 1000:
         action = montecarlosearch.search(initialState=initialState)
         # print(action)
         initialState = initialState.takeAction(action, depthOverride=0)
         initialState.getReward()
-        if depth % 50 == 0:
+        if depth % 5 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
     photo = initialState.website.gen_photo(f"{directory}/final_screenshot.png")

@@ -80,7 +80,7 @@ class Dao:
         return self.group_by(self.get_all(None, sql))
 
     def get_tag_counts(self, website: str or None = None) -> List[ValueCount]:
-        sql = "select name from tags"
+        sql = "select name, count(*) from tags"
         params = []
         if website is not None:
             if not params:
