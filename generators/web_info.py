@@ -6,7 +6,7 @@ class WebColors:
         pass
 
     @staticmethod
-    def get_random_rule(self) -> str:
+    def get_random_rule() -> str:
         return random.choice(WebColors.rules)
 
     @staticmethod
@@ -19,7 +19,7 @@ class WebColors:
 
 
 class WebFonts:
-    rules = ["font-family", 'font-size', 'font-style', 'font-weight']
+    rules = ["font-family", 'font-size', 'font-style', 'font-weight', 'font-variant']
     rule_probs = [.35, .35, .15, .1, .05]
     rule_values = {'font-family': ['"Times New Roman"', 'Times', 'serif', 'sans-serif', 'Arial', 'Verdana', '"Courier New"', 'Georgia', 'Lucida Console'],
                     'font-size': ['18px', '14px', '38px', '24px', '14px', '30px', '1.8em', '.9em', '1.2em', '1.5em'],

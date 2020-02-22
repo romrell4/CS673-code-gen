@@ -34,7 +34,7 @@ class WebScraper:
         self.chrome_options.add_argument('--no-sandbox')
         self.chrome_options.add_argument('--disable-dev-shm-usage')
         self.driver = webdriver.Chrome(options=self.chrome_options)
-        self.driver.set_window_size(1080,2000)
+        self.driver.set_window_size(1920,1080)
         self.waitTime = 1
         self.httpd = HTTPServer(('',8000), CustomHTTPRequestHandler)
         self.thd = _thread.start_new_thread(run_server, (self.httpd, ) )
@@ -46,7 +46,7 @@ class WebScraper:
         if full_restart:
             self.driver.quit()
             self.driver = webdriver.Chrome(options=self.chrome_options)
-            self.driver.set_window_size(1080, 2000)
+            self.driver.set_window_size(1920,1080)
 
         send_command = ('POST', '/session/$sessionId/chromium/send_command')
         self.driver.command_executor._commands['SEND_COMMAND'] = send_command

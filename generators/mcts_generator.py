@@ -14,7 +14,7 @@ class WebSiteState:
         self.depth = 1
 
     def getPossibleActions(self):
-        possibleActions = [Action(self.stats, self.website) for _ in range(5)]
+        possibleActions = [getRandomAction(self.stats, self.website) for _ in range(5)]
         return possibleActions
 
     def takeAction(self, action, depthOverride=None):
@@ -42,18 +42,18 @@ def main(school):
     depth = 0
     montecarlosearch = mcts(timeLimit=1)
     directory = f"results/{school}"
-    # shutil.rmtree(directory)
+    shutil.rmtree(directory)
     os.makedirs(directory, exist_ok=True)
     stats = GlobalStats()
     # print(stats.data["tag_freq"]["p"])
     initialState = WebSiteState(url=school, stats=stats)
     # photo = initialState.website.gen_photo("screenshot.png")
-    while depth < 1000:
+    while depth < 400:
         action = montecarlosearch.search(initialState=initialState)
-        # print(action)
+        action.save(f"results/{school}/actions.txt")
         initialState = initialState.takeAction(action, depthOverride=0)
         initialState.getReward()
-        if depth % 10 == 0:
+        if depth % 25 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
     photo = initialState.website.gen_photo(f"{directory}/final_screenshot.png")

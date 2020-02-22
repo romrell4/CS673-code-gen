@@ -15,7 +15,7 @@ def getRandomAction(stats: GlobalStats, website: WebPage):
     elif value == 2:
         return WebSiteSpecificSelectorModifier(stats, website)
     else:
-        return PureStatisticalAction(stats, website)
+        return WebSiteSpecificSelectorModifier(stats, website)
 
 class Action:
     # TODO: Define actions we can take in this space, could be genetic or based on the stats we gathered
@@ -34,13 +34,17 @@ class Action:
             print(f"Valid selector not found in {self.max_tries} tries")
 
     def __str__(self):
-        return f"{self.selector} {{\n\t{self.rule_name}: {self.rule_value}\n}}"
+        return f"{self.selector} {{\n\t{self.rule_name}: {self.rule_value};\n}}"
 
     def __repr__(self):
         return str(self)
 
     def __eq__(self, other):
         return self.selector == other.selector and self.rule_name == other.rule_name and self.rule_value == other.rule_value
+
+    def save(self, filename):
+        with open(filename, 'a+') as f:
+            f.write(str(self))
 
     def __hash__(self):
         if self.selector is None:
@@ -50,13 +54,13 @@ class Action:
 
 class PureStatisticalAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
-        super.__init__(stats, website)
+        super().__init__(stats, website)
         while True:
-            selector = random.choice(list(website.css.selectors.keys()))
-            # selector = random.choices(stats.selectors, stats.selector_freq)[0]
+            # selector = random.choice(list(website.css.selectors.keys()))
+            selector = random.choices(stats.tag_map[0], stats.tag_map[1])[0]
             while not website.contains_selector(selector):
-                selector = random.choice(list(website.css.selectors.keys()))
-                # selector = random.choices(stats.selectors, stats.selector_freq)[0]
+                # selector = random.choice(list(website.css.selectors.keys()))
+                selector = random.choices(stats.tag_map[0], stats.tag_map[1])[0]
                 self.tries += 1
                 if self.tries == self.max_tries:
                     # print(f"{selector}")
@@ -75,7 +79,7 @@ class PureStatisticalAction(Action):
 
 class WebSiteSpecificSelectorModifier(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
-        super.__init__(stats, website)
+        super().__init__(stats, website)
         while True:
             selector = random.choice(list(website.css.selectors.keys()))
             while not website.contains_selector(selector):
@@ -97,7 +101,7 @@ class WebSiteSpecificSelectorModifier(Action):
 
 class RandomColorAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
-        super.__init__(stats, website)
+        super().__init__(stats, website)
         selector = random.choice(list(website.css.selectors.keys()))
         while not website.contains_selector(selector):
             selector = random.choice(list(website.css.selectors.keys()))
@@ -112,7 +116,7 @@ class RandomColorAction(Action):
                   
 class RandomFontAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
-        super.__init__(stats, website)
+        super().__init__(stats, website)
         selector = random.choice(list(website.css.selectors.keys()))
         while not website.contains_selector(selector):
             selector = random.choice(list(website.css.selectors.keys()))
