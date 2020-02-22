@@ -42,7 +42,7 @@ class WebScraper:
         # httpd.server_close()
 
     def set_window_size(self):
-        self.driver.set_window_size(1920,1080)
+        self.driver.set_window_size(600,1500)
 
     def restart_selenium(self, full_restart=False):
         # print("restarting selenium")

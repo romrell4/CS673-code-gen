@@ -42,6 +42,7 @@ def main(school):
     depth = 0
     montecarlosearch = mcts(timeLimit=.5)
     directory = f"results/{school}"
+    os.makedirs(directory, exist_ok=True)
     shutil.rmtree(directory)
     os.makedirs(directory, exist_ok=True)
     stats = GlobalStats()
@@ -61,6 +62,6 @@ def main(school):
 
 
 if __name__ == '__main__':
-    school = "byu"
+    school = "mit"
     main(school)
     
