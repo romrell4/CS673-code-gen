@@ -10,15 +10,19 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 from selenium.webdriver.common.keys import Keys
 import _thread
 
+
 def running_linux():
     return 'linux' in sys.platform
+
 
 def run_server(server):
     server.serve_forever()
 
+
 class CustomHTTPRequestHandler(SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         return
+
 
 class WebScraper:
     def __init__(self):
@@ -36,22 +40,24 @@ class WebScraper:
         self.thd = _thread.start_new_thread(run_server, (self.httpd, ) )
         # time.sleep(1)
         # httpd.server_close()
-    def restartSelenium(self, fullRestart=False):
+
+    def restart_selenium(self, full_restart=False):
         # print("restarting selenium")
-        if fullRestart:
+        if full_restart:
             self.driver.quit()
             self.driver = webdriver.Chrome(options=self.chrome_options)
-            self.driver.set_window_size(1080,2000)
+            self.driver.set_window_size(1080, 2000)
+
         send_command = ('POST', '/session/$sessionId/chromium/send_command')
         self.driver.command_executor._commands['SEND_COMMAND'] = send_command
         self.driver.execute('SEND_COMMAND', dict(cmd='Network.clearBrowserCache', params={}))
         # self.driver.find_element_by_css_selector("* /deep/ #clearBrowsingDataConfirm").send_keys(Keys.ENTER)
 
-    def get_soup(self, url, cached_site_dir = "../resources/cached_sites", cleaned=False):
+    def get_soup(self, url, cached_site_dir="../resources/cached_sites", cleaned=False):
         return BeautifulSoup(self.get_html(url, cached_site_dir, cleaned), "html.parser")
 
-    def scrape(self, url, cleaned: bool=False):
-        soup = self.get_soup(url, cleaned)
+    def scrape(self, url, cleaned: bool = False):
+        soup: BeautifulSoup = self.get_soup(url, cleaned=cleaned)
         self.get_photo(url)
         all_css_rules = []
         for styles in soup.select('style'):
@@ -62,14 +68,14 @@ class WebScraper:
                 all_css_rules.append(rule)
         return soup, all_css_rules
 
-    def get_photo(self, url, saveLoc="screenshot.png"):
+    def get_photo(self, url, save_loc: str = "screenshot.png"):
         if "localhost" in url:
             # TODO: Make sure that the selenium cache is reset between visits
-            self.restartSelenium()
+            self.restart_selenium()
         self.driver.get(url)
         wait = WebDriverWait(self.driver, self.waitTime)
-        self.driver.save_screenshot(saveLoc)
-        return saveLoc
+        self.driver.save_screenshot(save_loc)
+        return save_loc
 
     def get_html(self, url: str, cached_site_dir: str, cleaned: bool=False):
         """
@@ -77,6 +83,7 @@ class WebScraper:
 
         :param url: Either a full website url or folder name for one of the cached sites
         :param cached_site_dir: the directory where the cached sites are stored. No trailing "/"
+        :param cleaned whether to get the cleaned site or not
         :return: html text
         """
         if url.startswith("http"):
@@ -107,6 +114,7 @@ class WebScraper:
                 tags += self.parse_children(child, depth + 1, print_structure)
         return tags
 
+
 class Tag:
     def __init__(self, bs4_tag):
         self.id = bs4_tag.get("id")
@@ -126,6 +134,7 @@ class Tag:
     def __eq__(self, other):
         return isinstance(other, Tag) and self.id == other.id and self.classes == other.classes and self.name == other.name
 
+
 scraper = WebScraper()
 
 
@@ -137,5 +146,5 @@ if __name__ == '__main__':
     soup, _ = scraper.scrape("https://byu.edu")
 
     # print(soup.prettify())
-    all_tags = scraper.parse_children(soup.body, print_structure = True)
+    all_tags = scraper.parse_children(soup.body, print_structure=True)
     # [print(tag) for tag in all_tags]

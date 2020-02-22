@@ -29,7 +29,7 @@ class WebSiteState:
 
     def isTerminal(self):
         return self.depth == 10
-        return self.website.evaluate() < WebSiteState.min_acceptable_evaluation
+        # return self.website.evaluate() < WebSiteState.min_acceptable_evaluation
 
     def getReward(self): # Return Number between 0-1 or False
         return self.website.evaluate()
@@ -37,13 +37,14 @@ class WebSiteState:
     def __str__(self):
         return f"Depth: {self.depth} Website: {self.website}"
 
+
 class Action:
     # TODO: Define actions we can take in this space, could be genetic or based on the stats we gathered
-    def __init__(self, stats, website):
+    def __init__(self, stats: GlobalStats, website: WebPage):
         tries = 0
         # selector = random.choices(stats.selectors, stats.selector_freq)[0]
         selector = random.choice(list(website.css.selectors.keys()))
-        while not website.containsSelector(selector):
+        while not website.contains_selector(selector):
             # selector = random.choices(stats.selectors, stats.selector_freq)[0]
             selector = random.choice(list(website.css.selectors.keys()))
             tries += 1
@@ -52,27 +53,29 @@ class Action:
                 selector = None
                 break
         self.selector = selector
-        self.ruleName = random.choices(stats.rule_names, stats.rule_freqs)[0]
-        self.ruleValue = random.choices(list(stats.rule_values[self.ruleName].keys()), list(stats.rule_values[self.ruleName].values()))[0] + "!important"
+        self.rule_name = random.choices(stats.tag_rule_key_map[selector][0],
+                                        stats.tag_rule_key_map[selector][1])[0]
+        self.rule_value = random.choices(stats.rule_key_value_map[self.rule_name][0],
+                                         stats.rule_key_value_map[self.rule_name][1])[0]
 
-    def modify(self, websiteState):
+    def modify(self, website_state: WebSiteState):
         if self.selector is not None:
             # print(f"Valid selector found")
-            websiteState.website.css.addRule(self.selector, self.ruleName, self.ruleValue)
+            website_state.website.css.add_rule(self.selector, self.rule_name, self.rule_value)
         else:
             print(f"Valid selector not found in 500 tries")
 
     def __str__(self):
-        return f"{self.selector} {{\n\t{self.ruleName}: {self.ruleValue}\n}}"
+        return f"{self.selector} {{\n\t{self.rule_name}: {self.rule_value}\n}}"
 
     def __repr__(self):
         return str(self)
 
     def __eq__(self, other):
-        return self.selector == other.selector and self.ruleName == other.ruleName and self.ruleValue == other.ruleValue
+        return self.selector == other.selector and self.rule_name == other.rule_name and self.rule_value == other.rule_value
 
     def __hash__(self):
-        return hash((self.selector, self.ruleName, self.ruleValue))
+        return hash((self.selector, self.rule_name, self.rule_value))
 
 
 

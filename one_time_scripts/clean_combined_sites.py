@@ -10,8 +10,8 @@ def main():
       keys = list(page.css.selectors.keys())
       print(len(page.css.selectors.items()))
       for selector in keys:
-        if not page.html.containsSelector(selector):
-          page.css.removeSelector(selector)
+        if not page.html.contains_selector(selector):
+          page.css.remove_selector(selector)
           num_removed += 1
         else:
           num_kept += 1      

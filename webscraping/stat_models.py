@@ -1,6 +1,6 @@
 import argparse
 from copy import deepcopy, copy
-from typing import List, Iterable
+from typing import List, Iterable, Dict, Tuple
 
 import tinycss2
 from bs4 import BeautifulSoup
@@ -8,6 +8,7 @@ from tinycss2.ast import ParseError
 
 from webscraping.dao import Dao, ValueCount
 from webscraping.web_scraper import scraper
+
 
 class HTML:
     """
@@ -30,7 +31,7 @@ class HTML:
         self.ids = set([tag["id"] for tag in all_tags if tag.get("id") is not None])
         self.classes = set([klass for tag in all_tags if tag.get("class") is not None for klass in tag["class"]])
 
-    def containsSelector(self, selector):
+    def contains_selector(self, selector):
         if selector in self.tags:
             # print(f"Selector {selector} in tags")
             return True
@@ -44,7 +45,7 @@ class HTML:
             if len(self.soup.select(selector)) > 0:
                 return True
         except:
-            return True # Assume selectors that can't be parsed by BeautifulSoup are valid
+            return True  # Assume selectors that can't be parsed by BeautifulSoup are valid
         return False
 
 
@@ -67,7 +68,7 @@ class CSS:
                     if rule_set.type == "at-rule" and rule_set.at_keyword == "media":
                         # print(rule_set.content)
                         rule = tinycss2.parse_one_rule(rule_set.content)
-                        if type(rule) != ParseError: # TODO: Figure out why there are parse errors here
+                        if type(rule) != ParseError:  # TODO: Figure out why there are parse errors here
                             prelude = "@media" + tinycss2.serialize(rule_set.prelude)
                             self.scope[prelude] = {}
                             # print(prelude)
@@ -85,17 +86,19 @@ class CSS:
             if selector not in scope:
                 scope[selector] = {}
             # Update the current dictionary, overwriting conflicting keys
-            declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments = True, skip_whitespace = True)
-            scope[selector].update({declaration.lower_name: tinycss2.serialize(declaration.value).strip() for declaration in declarations if declaration.type not in ("error", "at-rule")})
+            declarations = tinycss2.parse_declaration_list(rule_set.content, skip_comments=True, skip_whitespace=True)
+            scope[selector].update(
+                {declaration.lower_name: tinycss2.serialize(declaration.value).strip()
+                 for declaration in declarations if declaration.type not in ("error", "at-rule")
+                })
 
-
-    def containsSelector(self, selector):
+    def contains_selector(self, selector):
         for scope in self.scope.values():
             if selector in scope.keys():
                 return True
         return selector in self.selectors.keys()
         
-    def removeSelector(self, selector):
+    def remove_selector(self, selector):
         if selector in self.selectors:
             del self.selectors[selector]
         for scope in self.scope.values():
@@ -141,7 +144,7 @@ class CSS:
             rules += f"}}\n"
         return rules
 
-    def addRule(self, selector, rule_name, rule_value):
+    def add_rule(self, selector, rule_name, rule_value):
         if selector not in self.selectors:
             self.selectors[selector] = {}
         self.selectors[selector].update({rule_name: rule_value})
@@ -168,10 +171,10 @@ class WebPage:
         else:
             raise argparse.ArgumentError(self, "Invalid Arguments for creating a WebPage")
 
-    def containsSelector(self, selector):
-        return self.html.containsSelector(selector) or self.css.containsSelector(selector)
+    def contains_selector(self, selector):
+        return self.html.contains_selector(selector) or self.css.contains_selector(selector)
 
-    def removeCSS(self, soup):
+    def remove_css(self, soup):
         # for tag in soup.findAll(True):
         #     for attr in [attr for attr in tag.attrs if attr in ["style"]]:
         #         del tag[attr]
@@ -180,28 +183,28 @@ class WebPage:
             return
 
     def generate_web_page(self) -> bytes:
-        webpageSoup = copy(self.html.soup)
-        self.removeCSS(webpageSoup)
-        style_tag = webpageSoup.new_tag('style')
+        webpage_soup = copy(self.html.soup)
+        self.remove_css(webpage_soup)
+        style_tag = webpage_soup.new_tag('style')
         style_tag.string = self.css.generate_css()
         try:
-            webpageSoup.head.insert(0, style_tag)
+            webpage_soup.head.insert(0, style_tag)
         except:
-            webpageSoup.insert(0, webpageSoup.new_tag('head'))
-            webpageSoup.head.insert(0, style_tag)
-        return webpageSoup.encode()
+            webpage_soup.insert(0, webpage_soup.new_tag('head'))
+            webpage_soup.head.insert(0, style_tag)
+        return webpage_soup.encode()
 
-    def save(self, saveLoc):
-        with open(saveLoc, 'wb') as wfile:
+    def save(self, save_loc):
+        with open(save_loc, 'wb') as wfile:
             wfile.write(self.generate_web_page())
             wfile.flush()
 
-    def gen_photo(self, saveLoc = "screenshot.png"):
+    def gen_photo(self, save_loc: str = "screenshot.png"):
         photo = None
-        with open("index.html", 'wb+') as indexFile:
-            indexFile.write(self.generate_web_page())
-            indexFile.flush()
-        scraper.get_photo("http://localhost:8000/index.html", saveLoc = saveLoc)
+        with open("index.html", 'wb+') as index_file:
+            index_file.write(self.generate_web_page())
+            index_file.flush()
+        scraper.get_photo("http://localhost:8000/index.html", save_loc = save_loc)
         # os.remove("index.html")
         return photo
 
@@ -217,11 +220,11 @@ class WebPage:
         css_evaluation = self.evaluate_css()
         # TODO: Actually evaluate a site so that we don't get index errors in MCTS
         return 1
-        if css_evaluation < WebPage.css_eval_limit:
-            return 0
-        else:
-            photo_evaluation = self.evaluate_photo()
-            return css_evaluation * .2 + photo_evaluation * .8
+        # if css_evaluation < WebPage.css_eval_limit:
+        #     return 0
+        # else:
+        #     photo_evaluation = self.evaluate_photo()
+        #     return css_evaluation * .2 + photo_evaluation * .8
 
     def __str__(self):
         return str((self.html, self.css))
@@ -235,19 +238,30 @@ class WebPage:
         ws.css = deepcopy(self.css)
         return ws
 
+
 class GlobalStats:
     def __init__(self):
         dao = Dao()
-
-        self.rule_key_counts = dao.get_rule_key_counts()
-        self.rule_key_counts_tuple = self.convert_to_lists(self.rule_key_counts)
-        self.rule_key_value_counts = dao.get_rule_values_by_rule_key()
-        self.tag_counts = dao.get_tag_counts()
-        self.tag_rule_key_counts = dao.get_tag_rule_key_counts()
+        self.rule_key_counts: List[ValueCount] = dao.get_rule_key_counts()
+        self.rule_key_counts_tuple: Iterable[List] = self.convert_to_lists(self.rule_key_counts)
+        self.rule_key_value_counts: Dict[str, List[ValueCount]] = dao.get_rule_values_by_rule_key()
+        self.rule_key_value_map: Dict[str, Tuple[List[str], List[int]]] = \
+            self.convert_to_dict_to_tuple_lists(self.rule_key_value_counts)
+        self.tag_counts: List[ValueCount] = dao.get_tag_counts()
+        self.tag_map: Tuple[List[str], List[int]] = ([value.value for value in self.tag_counts],
+                                                     [value.count for value in self.tag_counts])
+        self.tag_rule_key_counts: Dict[str, List[ValueCount]] = dao.get_tag_rule_key_counts()
+        self.tag_rule_key_map: Dict[str, Tuple[List[str], List[int]]] = \
+            self.convert_to_dict_to_tuple_lists(self.tag_rule_key_counts)
 
     @staticmethod
     def convert_to_lists(value_counts: List[ValueCount]) -> Iterable[List]:
         return map(list, zip(*[(value_count.value, value_count.count) for value_count in value_counts]))
+
+    @staticmethod
+    def convert_to_dict_to_tuple_lists(count_map: Dict[str, List[ValueCount]]) -> Dict[str, Tuple[List[str], List[int]]]:
+        return {key: ([value.value for value in value_counts],
+                      [value.count for value in value_counts]) for key, value_counts in count_map.items()}
 
     def __deepcopy__(self, memo):
         return self

@@ -58,13 +58,19 @@ class Dao:
     # Used for actual stat model
 
     def get_rule_key_counts(self, website: str or None = None, selector: str or None = None) -> List[ValueCount]:
-        sql = "select rule_key, count(*) from rules where true"
+        sql = "select rule_key, count(*) from rules"
         params = []
         if website is not None:
-            sql += " and website = ?"
+            if not params:
+                sql += " where website = ?"
+            else:
+                sql += " and website = ?"
             params.append(website)
         if selector is not None:
-            sql += " and selector = ?"
+            if not params:
+                sql += " where selector = ?"
+            else:
+                sql += " and selector = ?"
             params.append(selector)
         sql += " group by rule_key order by rule_key"
         return self.get_all(ValueCount, sql, params)
@@ -74,10 +80,13 @@ class Dao:
         return self.group_by(self.get_all(None, sql))
 
     def get_tag_counts(self, website: str or None = None) -> List[ValueCount]:
-        sql = "select name from tags where true"
+        sql = "select name from tags"
         params = []
         if website is not None:
-            sql += " and website = ?"
+            if not params:
+                sql += " where website = ?"
+            else:
+                sql += " website = ?"
             params += website
         return self.get_all(ValueCount, sql, params)
 
