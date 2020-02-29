@@ -1,4 +1,6 @@
 import random
+import os
+import json
 
 class WebColors:
     rules = ['background-color', 'color']
@@ -18,6 +20,7 @@ class WebColors:
         return f"rgb({r},{g},{b})"
 
 
+
 class WebFonts:
     rules = ["font-family", 'font-size', 'font-style', 'font-weight', 'font-variant']
     rule_probs = [.35, .35, .15, .1, .05]
@@ -27,7 +30,13 @@ class WebFonts:
                     'font-weight': ['normal', 'bold'],
                     'font-variant': ['normal', 'small-caps']}
     def __init__(self):
-        pass
+        with open(os.path.join('../', 'resources', 'fonts.json')) as file:
+            fonts = json.load(file)
+            for item in fonts['items']:
+                if ' ' in item['family']:
+                    print(f"\"{item['family']}\"")
+                else:
+                    print(item['family'])
 
     @staticmethod
     def get_random_rule() -> str:
@@ -36,3 +45,6 @@ class WebFonts:
     @staticmethod
     def get_random_value(rule: str) -> str:
         return random.choice(WebFonts.rule_values[rule])
+
+
+webFonts = WebFonts()
