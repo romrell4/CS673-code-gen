@@ -29,14 +29,30 @@ class WebFonts:
                     'font-style': ['normal', 'italic', 'oblique'],
                     'font-weight': ['normal', 'bold'],
                     'font-variant': ['normal', 'small-caps']}
+
+    
+
     def __init__(self):
+        self.fonts = {}
         with open(os.path.join('../', 'resources', 'fonts.json')) as file:
             fonts = json.load(file)
+            count = 0
             for item in fonts['items']:
                 if ' ' in item['family']:
-                    print(f"\"{item['family']}\"")
-                else:
-                    print(item['family'])
+                    item['family'] = f"\"{item['family']}\""
+                if 'latin' in item['subsets']:
+                    count += 1
+                    # print(item['family'] + str(count))
+                    # print(self.link_tag(item['family']))
+                    self.fonts[item['family']] = self.link_tag(item['family'])
+        # print(self.fonts)
+        self.rule_values['font-family'] = list(self.fonts.keys())
+        self.rule_values['font-family'].extend(['serif', 'sans-serif'])
+
+    @staticmethod
+    def link_tag(family:str) -> str:
+        familyFormatted = family.replace(' ', '%20').replace('"','')
+        return [f'https://fonts.googleapis.com/css?family={familyFormatted}',f'https://fonts.googleapis.com/css?family={familyFormatted}:bold',f'https://fonts.googleapis.com/css?family={familyFormatted}:italic']            
 
     @staticmethod
     def get_random_rule() -> str:
@@ -45,6 +61,9 @@ class WebFonts:
     @staticmethod
     def get_random_value(rule: str) -> str:
         return random.choice(WebFonts.rule_values[rule])
+
+    def get_rule_links(self, font: str)-> str:
+        return self.fonts.get(font, None)
 
 
 webFonts = WebFonts()

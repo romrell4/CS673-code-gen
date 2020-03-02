@@ -25,11 +25,13 @@ class Action:
         self.selector = None
         self.rule_name = ""
         self.rule_value = ""
+        self.rule_links = None
 
     def modify(self, website_state: WebSiteState):
         if self.selector is not None:
             # print(f"Valid selector found")
             website_state.website.css.add_rule(self.selector, self.rule_name, self.rule_value)
+            website_state.website.html.add_link(self.rule_links)
         else:
             print(f"Valid selector not found in {self.max_tries} tries")
 
@@ -125,7 +127,9 @@ class RandomFontAction(Action):
                 selector = None
                 break
         self.selector = selector
-        self.rule_name = WebFonts.get_random_rule()
-        self.rule_value = WebFonts.get_random_value(self.rule_name)
+        self.rule_name = webFonts.get_random_rule()
+        self.rule_value = webFonts.get_random_value(self.rule_name)
+        self.rule_links = webFonts.get_rule_links(self.rule_value)
+        
             
   

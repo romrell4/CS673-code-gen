@@ -8,7 +8,7 @@ from generators.actions import *
 
 class WebSiteState:
     min_acceptable_evaluation = .5
-    def __init__(self, url, stats, cleaned=True):
+    def __init__(self, url, stats, cleaned=False):
         self.website = WebPage(url=url, cleaned=cleaned)
         self.stats = stats
         self.depth = 1
@@ -62,6 +62,6 @@ def main(school):
 
 
 if __name__ == '__main__':
-    school = "mit"
+    school = "byu"
     main(school)
     

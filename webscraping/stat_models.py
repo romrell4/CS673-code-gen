@@ -51,6 +51,16 @@ class HTML:
     def get_tags(self):
         return self.tags
 
+    def add_link(self, rule_links):
+        if rule_links is not None:
+            try:
+                for link in rule_links:
+                    self.soup.head.insert(0, self.soup.new_tag('link', href=link, rel="stylesheet"))
+            except:
+                self.soup.insert(0, self.soup.new_tag('head'))
+                for link in rule_links:
+                    self.soup.head.insert(0, self.soup.new_tag('link', href=link, rel="stylesheet"))
+
 
 class CSS:
     """
@@ -151,6 +161,8 @@ class CSS:
         if selector not in self.selectors:
             self.selectors[selector] = {}
         self.selectors[selector].update({rule_name: rule_value})
+    
+
 
 class WebPage:
     """
