@@ -49,12 +49,12 @@ def main(school):
     # print(stats.data["tag_freq"]["p"])
     initialState = WebSiteState(url=school, stats=stats)
     # photo = initialState.website.gen_photo("screenshot.png")
-    while depth < 400:
+    while depth < 2:
         action = montecarlosearch.search(initialState=initialState)
-        action.save(f"results/{school}/actions.txt")
+        action.save(f"{directory}/actions.txt")
         initialState = initialState.takeAction(action, depthOverride=0)
         initialState.getReward()
-        if depth % 25 == 0:
+        if depth % 1 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
     photo = initialState.website.gen_photo(f"{directory}/final_screenshot.png")

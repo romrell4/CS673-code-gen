@@ -6,7 +6,9 @@ from generators.mcts_generator import WebSiteState
 import random
 
 
+
 def getRandomAction(stats: GlobalStats, website: WebPage):
+    return MutateColorSchemeAction(stats, website)
     value = random.choices(range(4), [.5,.3,.2,.1])[0]
     if value == 0:
         return RandomColorAction(stats, website)
@@ -26,12 +28,19 @@ class Action:
         self.rule_name = ""
         self.rule_value = ""
         self.rule_links = None
+        self.mutations = None
 
     def modify(self, website_state: WebSiteState):
-        if self.selector is not None:
+        if self.selector is not None: # An add action
             # print(f"Valid selector found")
+            # Add rule just mutates any existing rule
             website_state.website.css.add_rule(self.selector, self.rule_name, self.rule_value)
             website_state.website.html.add_link(self.rule_links)
+        elif self.mutations is not None:
+            for mutation, links in self.mutations:
+                scope, selector, rule, value = mutation
+                website_state.website.css.add_rule(selector, rule, value, scope=scope)
+                website_state.website.html.add_link(links)
         else:
             print(f"Valid selector not found in {self.max_tries} tries")
 
@@ -132,4 +141,28 @@ class RandomFontAction(Action):
         self.rule_links = webFonts.get_rule_links(self.rule_value)
         
             
+
+class MutateColorSchemeAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        colors = {}
+        for scope, selector, rule, color in website.css.colors():
+            colors[color] = None
+        
+        # Assign each color to a new color that is interesting
+        for color, newColor in colors.items():
+            print(f'Colors: {color}')
+            colors[color] = WebColors.get_random_value()
+
+        # Make them into variables or some way to mutate all of them at once
+        self.mutations = []
+        for scope, selector, rule, color in website.css.colors():
+            newcolor = colors[color]
+            self.mutations.append(((scope, selector, rule, newcolor), []))
+
+        # TODO: Merge the concept of foreground & background contrast
+        # Possible Ideas: 
+        #  Always have foreground be Black and White & Background changes
+
   

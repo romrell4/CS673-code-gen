@@ -157,11 +157,30 @@ class CSS:
             rules += f"}}\n"
         return rules
 
-    def add_rule(self, selector, rule_name, rule_value):
-        if selector not in self.selectors:
-            self.selectors[selector] = {}
-        self.selectors[selector].update({rule_name: rule_value})
-    
+    def add_rule(self, selector, rule_name, rule_value, scope=None):
+        selectors = self.selectors
+        if scope is not None:
+            selectors = self.scope[scope]
+        if selector not in selectors:
+            selectors[selector] = {}
+        selectors[selector].update({rule_name: rule_value})
+
+
+    def colors(self):
+        # TODO: Figure out more rules such as border, etc
+        for scope, selector, rule, value in self.get_rules(['color', 'background-color']): 
+            yield scope, selector, rule, value
+
+    def get_rules(self, rule_set):
+        for selector, values in self.selectors.items():
+            for key, value in values.items():
+                if key in rule_set:
+                    yield None, selector, key, value
+        for scope, selectors in self.scope.items():
+            for selector, values in selectors.items():
+                for key, value in values.items():
+                    if key in rule_set:
+                        yield scope, selector, key, value
 
 
 class WebPage:
