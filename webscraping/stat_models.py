@@ -168,7 +168,7 @@ class CSS:
 
     def colors(self):
         # TODO: Figure out more rules such as border, etc
-        for scope, selector, rule, value in self.get_rules(['color', 'background-color']): 
+        for scope, selector, rule, value in self.get_rules(['color', 'background-color', 'background']): 
             yield scope, selector, rule, value
 
     def get_rules(self, rule_set):

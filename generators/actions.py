@@ -152,7 +152,7 @@ class MutateColorSchemeAction(Action):
         
         # Assign each color to a new color that is interesting
         for color, newColor in colors.items():
-            print(f'Colors: {color}')
+            # print(f'Colors: {color}')
             colors[color] = WebColors.get_random_value()
 
         # Make them into variables or some way to mutate all of them at once
