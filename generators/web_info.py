@@ -12,6 +12,14 @@ class WebColors:
         return random.choice(WebColors.rules)
 
     @staticmethod
+    def get_random_value_array() -> str:
+        r = random.randint(0, 25)*10
+        g = random.randint(0, 25)*10
+        b = random.randint(0, 25)*10
+        a = abs(random.random())
+        return [r,g,b]
+
+    @staticmethod
     def get_random_value() -> str:
         r = random.randint(0, 25)*10
         g = random.randint(0, 25)*10

@@ -4,7 +4,8 @@ from webscraping.stat_models import *
 from generators.web_info import *
 from generators.mcts_generator import WebSiteState
 import random
-
+import requests
+import time
 
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
@@ -150,12 +151,31 @@ class MutateColorSchemeAction(Action):
         for scope, selector, rule, color in website.css.colors():
             colors[color] = None
         
+        num_colors= len(colors.items())
+        new_color = WebColors.get_random_value_array()
+        inputs = [new_color]
+        new_colors = None
+        print(inputs)
+        while new_colors is None:
+            r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
+            if r.status_code != 200:
+                time.sleep(1000) # Don't spam the API
+                print("No Color response")
+                continue
+            else:
+                print(r.text)
+                new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
         # Assign each color to a new color that is interesting
+        i = 0
         for color, newColor in colors.items():
             # print(f'Colors: {color}')
-            colors[color] = WebColors.get_random_value()
+            n = i % 5
+            colors[color] = new_colors[n]
+            i += 1
 
         # Make them into variables or some way to mutate all of them at once
+        # TODO: Ensure good color scheme
+        # TODO: Maybe make a second version of this that chooses color based on Images (or alters images)
         self.mutations = []
         for scope, selector, rule, color in website.css.colors():
             newcolor = colors[color]
