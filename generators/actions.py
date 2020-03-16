@@ -9,7 +9,7 @@ import time
 
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
-    return MutateColorSchemeAction(stats, website)
+    return BrandArchetypeAction(stats, website)
     value = random.choices(range(4), [.5,.3,.2,.1])[0]
     if value == 0:
         return RandomColorAction(stats, website)
@@ -32,7 +32,7 @@ class Action:
         self.mutations = None
 
     def modify(self, website_state: WebSiteState):
-        if self.selector is not None: # An add action
+        if self.selector is not None:  # An add action
             # print(f"Valid selector found")
             # Add rule just mutates any existing rule
             website_state.website.css.add_rule(self.selector, self.rule_name, self.rule_value)
@@ -46,13 +46,23 @@ class Action:
             print(f"Valid selector not found in {self.max_tries} tries")
 
     def __str__(self):
-        return f"{self.selector} {{\n\t{self.rule_name}: {self.rule_value};\n}}"
+        if self.selector is not None:
+            return f"{self.selector} {{\n\t{self.rule_name}: {self.rule_value};\n}}\n"
+        elif self.mutations is not None:
+            string = ""
+            for mutation, links in self.mutations:
+                scope, selector, rule, value = mutation
+                string += f"{selector} {{\n\t{rule}: {value};\n}}\n"
+            return string
+        else:
+            return "No mutation\n"
 
     def __repr__(self):
         return str(self)
 
     def __eq__(self, other):
-        return self.selector == other.selector and self.rule_name == other.rule_name and self.rule_value == other.rule_value
+        return self.selector == other.selector and self.rule_name == other.rule_name and \
+               self.rule_value == other.rule_value
 
     def save(self, filename):
         with open(filename, 'a+') as f:
@@ -83,7 +93,7 @@ class PureStatisticalAction(Action):
                 self.rule_name = random.choices(stats.tag_rule_key_map[selector][0],
                                                 stats.tag_rule_key_map[selector][1])[0]
                 self.rule_value = random.choices(stats.rule_key_value_map[self.rule_name][0],
-                                                  stats.rule_key_value_map[self.rule_name][1])[0]
+                                                 stats.rule_key_value_map[self.rule_name][1])[0]
                 break
             else:
                 continue
@@ -105,7 +115,7 @@ class WebSiteSpecificSelectorModifier(Action):
                 self.rule_name = random.choices(stats.tag_rule_key_map[selector][0],
                                                 stats.tag_rule_key_map[selector][1])[0]
                 self.rule_value = random.choices(stats.rule_key_value_map[self.rule_name][0],
-                                                  stats.rule_key_value_map[self.rule_name][1])[0]
+                                                 stats.rule_key_value_map[self.rule_name][1])[0]
                 break
             else:
                 continue
@@ -140,8 +150,7 @@ class RandomFontAction(Action):
         self.rule_name = webFonts.get_random_rule()
         self.rule_value = webFonts.get_random_value(self.rule_name)
         self.rule_links = webFonts.get_rule_links(self.rule_value)
-        
-            
+
 
 class MutateColorSchemeAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
@@ -185,4 +194,46 @@ class MutateColorSchemeAction(Action):
         # Possible Ideas: 
         #  Always have foreground be Black and White & Background changes
 
-  
+
+class BrandArchetypeAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        colors = {}
+        for scope, selector, rule, color in website.css.colors():
+            colors[color] = None
+
+        num_colors = len(colors.items())
+        # TODO: Pass in website name somehow
+        new_color = archetypes.get_color('byu')
+        inputs = [new_color]
+        new_colors = None
+        print(inputs)
+        while new_colors is None:
+            r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
+            if r.status_code != 200:
+                time.sleep(1000)  # Don't spam the API
+                print("No Color response")
+                continue
+            else:
+                print(r.text)
+                new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
+        # Assign each color to a new color that is interesting
+        i = 0
+        for color, newColor in colors.items():
+            # print(f'Colors: {color}')
+            n = i % 5
+            colors[color] = new_colors[n]
+            i += 1
+
+        # Make them into variables or some way to mutate all of them at once
+        # TODO: Ensure good color scheme
+        # TODO: Maybe make a second version of this that chooses color based on Images (or alters images)
+        self.mutations = []
+        for scope, selector, rule, color in website.css.colors():
+            newcolor = colors[color]
+            self.mutations.append(((scope, selector, rule, newcolor), []))
+
+        # TODO: Merge the concept of foreground & background contrast
+        # Possible Ideas:
+        #  Always have foreground be Black and White & Background changes

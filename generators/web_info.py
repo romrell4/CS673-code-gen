@@ -1,6 +1,9 @@
 import random
 import os
 import json
+import csv
+from typing import Dict
+
 
 class WebColors:
     rules = ['background-color', 'color']
@@ -75,3 +78,34 @@ class WebFonts:
 
 
 webFonts = WebFonts()
+
+
+class Archetypes:
+    def __init__(self):
+        self.websites: Dict[str, str] = {}
+        with open(os.path.join('../', 'resources', 'website_archetypes.csv')) as csv_file:
+            csv_reader = csv.reader(csv_file)
+            for line in csv_reader:
+                self.websites[line[0]] = line[1]
+        
+        self.archetypes = {}
+        with open(os.path.join('../', 'resources', 'archetype_schemes.json')) as json_file:
+            for item in json.load(json_file)['archetypes']:
+                self.archetypes[item['name']] = item
+    
+    def get_font(self, school):
+        archetype = self.websites[school]
+        features = self.archetypes[archetype]
+        return features['font-groups'][0]
+
+    def get_color(self, school):
+        archetype = self.websites[school]
+        features = self.archetypes[archetype]
+        hexcolor = features['colorschemes'][0]
+        r = int(hexcolor[1:3], 16)
+        g = int(hexcolor[3:5], 16)
+        b = int(hexcolor[5:7], 16)
+        return [r, g, b]
+
+
+archetypes = Archetypes()

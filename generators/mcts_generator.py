@@ -14,7 +14,7 @@ class WebSiteState:
         self.depth = 1
 
     def getPossibleActions(self):
-        possibleActions = [getRandomAction(self.stats, self.website) for _ in range(5)]
+        possibleActions = [getRandomAction(self.stats, self.website) for _ in range(2)]
         return possibleActions
 
     def takeAction(self, action, depthOverride=None):
