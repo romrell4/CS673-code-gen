@@ -183,16 +183,15 @@ class MutateColorSchemeAction(Action):
             i += 1
 
         # Make them into variables or some way to mutate all of them at once
-        # TODO: Ensure good color scheme
         # TODO: Maybe make a second version of this that chooses color based on Images (or alters images)
         self.mutations = []
         for scope, selector, rule, color in website.css.colors():
             newcolor = colors[color]
             self.mutations.append(((scope, selector, rule, newcolor), []))
 
-        # TODO: Merge the concept of foreground & background contrast
+        # TODO: Add the concept of foreground & background contrast
         # Possible Ideas: 
-        #  Always have foreground be Black and White & Background changes
+        # * Always have foreground be Black and White & Background changes
 
 
 class BrandArchetypeAction(Action):
@@ -227,13 +226,12 @@ class BrandArchetypeAction(Action):
             i += 1
 
         # Make them into variables or some way to mutate all of them at once
-        # TODO: Ensure good color scheme
         # TODO: Maybe make a second version of this that chooses color based on Images (or alters images)
         self.mutations = []
         for scope, selector, rule, color in website.css.colors():
             newcolor = colors[color]
             self.mutations.append(((scope, selector, rule, newcolor), []))
 
-        # TODO: Merge the concept of foreground & background contrast
+        # TODO: Add the concept of foreground & background contrast
         # Possible Ideas:
-        #  Always have foreground be Black and White & Background changes
+        # * Always have foreground be Black and White & Background changes
