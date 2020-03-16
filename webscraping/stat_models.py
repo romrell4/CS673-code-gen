@@ -165,6 +165,14 @@ class CSS:
             selectors[selector] = {}
         selectors[selector].update({rule_name: rule_value})
 
+    def foreground_colors(self):
+        for scope, selector, rule, value in self.get_rules(['color', 'text-color']):
+            yield scope, selector, rule, value
+
+    def background_colors(self):
+        # TODO: Figure out more rules such as border, etc
+        for scope, selector, rule, value in self.get_rules(['background-color', 'background']):
+            yield scope, selector, rule, value
 
     def colors(self):
         # TODO: Figure out more rules such as border, etc
@@ -181,6 +189,10 @@ class CSS:
                 for key, value in values.items():
                     if key in rule_set:
                         yield scope, selector, key, value
+
+    def fonts(self):
+        for scope, selector, rule, value in self.get_rules(['font-family']):
+            yield scope, selector, rule, value
 
 
 class WebPage:

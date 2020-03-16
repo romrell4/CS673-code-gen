@@ -45,6 +45,7 @@ class WebFonts:
 
     def __init__(self):
         self.fonts = {}
+        self.groups = {'serif': [], 'sans-serif': [], 'display': [], 'handwriting': [], 'monospace': []}
         with open(os.path.join('../', 'resources', 'fonts.json')) as file:
             fonts = json.load(file)
             count = 0
@@ -56,13 +57,16 @@ class WebFonts:
                     # print(item['family'] + str(count))
                     # print(self.link_tag(item['family']))
                     self.fonts[item['family']] = self.link_tag(item['family'])
+                    category = item['category']
+                    self.groups[category].append(item['family'])
+
         # print(self.fonts)
         self.rule_values['font-family'] = list(self.fonts.keys())
         self.rule_values['font-family'].extend(['serif', 'sans-serif'])
 
     @staticmethod
     def link_tag(family:str) -> str:
-        familyFormatted = family.replace(' ', '%20').replace('"','')
+        familyFormatted = family.replace(' ', '%20').replace('"', '')
         return [f'https://fonts.googleapis.com/css?family={familyFormatted}',f'https://fonts.googleapis.com/css?family={familyFormatted}:bold',f'https://fonts.googleapis.com/css?family={familyFormatted}:italic']            
 
     @staticmethod
@@ -73,7 +77,10 @@ class WebFonts:
     def get_random_value(rule: str) -> str:
         return random.choice(WebFonts.rule_values[rule])
 
-    def get_rule_links(self, font: str)-> str:
+    def get_random_category_font(self, category):
+        return random.choice(self.groups[category])
+
+    def get_rule_links(self, font: str) -> str:
         return self.fonts.get(font, None)
 
 
@@ -93,10 +100,11 @@ class Archetypes:
             for item in json.load(json_file)['archetypes']:
                 self.archetypes[item['name']] = item
     
-    def get_font(self, school):
+    def get_font_and_link(self, school):
         archetype = self.websites[school]
         features = self.archetypes[archetype]
-        return features['font-groups'][0]
+        font = webFonts.get_random_category_font(features['font-groups'][0])
+        return font, webFonts.get_rule_links(font)
 
     def get_color(self, school):
         archetype = self.websites[school]

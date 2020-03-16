@@ -157,7 +157,7 @@ class MutateColorSchemeAction(Action):
         super().__init__(stats, website)
         # Get all of the colors in the page
         colors = {}
-        for scope, selector, rule, color in website.css.colors():
+        for scope, selector, rule, color in website.css.background_colors():
             colors[color] = None
         
         num_colors= len(colors.items())
@@ -185,7 +185,7 @@ class MutateColorSchemeAction(Action):
         # Make them into variables or some way to mutate all of them at once
         # TODO: Maybe make a second version of this that chooses color based on Images (or alters images)
         self.mutations = []
-        for scope, selector, rule, color in website.css.colors():
+        for scope, selector, rule, color in website.css.background_colors():
             newcolor = colors[color]
             self.mutations.append(((scope, selector, rule, newcolor), []))
 
@@ -199,7 +199,7 @@ class BrandArchetypeAction(Action):
         super().__init__(stats, website)
         # Get all of the colors in the page
         colors = {}
-        for scope, selector, rule, color in website.css.colors():
+        for scope, selector, rule, color in website.css.background_colors():
             colors[color] = None
 
         num_colors = len(colors.items())
@@ -228,10 +228,15 @@ class BrandArchetypeAction(Action):
         # Make them into variables or some way to mutate all of them at once
         # TODO: Maybe make a second version of this that chooses color based on Images (or alters images)
         self.mutations = []
-        for scope, selector, rule, color in website.css.colors():
+        for scope, selector, rule, color in website.css.background_colors():
             newcolor = colors[color]
             self.mutations.append(((scope, selector, rule, newcolor), []))
 
         # TODO: Add the concept of foreground & background contrast
         # Possible Ideas:
         # * Always have foreground be Black and White & Background changes
+
+        # Fonts
+        newfont, link = archetypes.get_font_and_link('byu')
+        for scope, selector, rule, font in website.css.fonts():
+            self.mutations.append(((scope, selector, rule, newfont), link))
