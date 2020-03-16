@@ -103,13 +103,13 @@ class Archetypes:
     def get_font_and_link(self, school):
         archetype = self.websites[school]
         features = self.archetypes[archetype]
-        font = webFonts.get_random_category_font(features['font-groups'][0])
+        font = webFonts.get_random_category_font(random.choice(features['font-groups']))
         return font, webFonts.get_rule_links(font)
 
     def get_color(self, school):
         archetype = self.websites[school]
         features = self.archetypes[archetype]
-        hexcolor = features['colorschemes'][0]
+        hexcolor = random.choice(features['colorschemes'])
         r = int(hexcolor[1:3], 16)
         g = int(hexcolor[3:5], 16)
         b = int(hexcolor[5:7], 16)

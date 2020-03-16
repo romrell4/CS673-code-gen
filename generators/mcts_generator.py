@@ -9,6 +9,7 @@ from generators.actions import *
 class WebSiteState:
     min_acceptable_evaluation = .5
     def __init__(self, url, stats, cleaned=False):
+        self.school_name = url  # TODO: Refactor assumption that url is name of school
         self.website = WebPage(url=url, cleaned=cleaned)
         self.stats = stats
         self.depth = 1
@@ -62,6 +63,7 @@ def main(school):
 
 
 if __name__ == '__main__':
-    school = "byu"
+    scraper.set_desktop_view()
+    school = "mit"
     main(school)
     

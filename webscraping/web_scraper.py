@@ -26,6 +26,9 @@ class CustomHTTPRequestHandler(SimpleHTTPRequestHandler):
 
 class WebScraper:
     def __init__(self):
+        self.width = 0
+        self.height = 0
+        self.set_long_mobile_view()
         self.chrome_options = Options()
         if running_linux():
             self.chrome_options.binary_location = "/usr/bin/google-chrome-stable"
@@ -41,8 +44,20 @@ class WebScraper:
         # time.sleep(1)
         # httpd.server_close()
 
+    def set_desktop_view(self):
+        self.width = 1024
+        self.height = 800
+
+    def set_mobile_view(self):
+        self.width = 600
+        self.height = 800
+
+    def set_long_mobile_view(self):
+        self.width = 600
+        self.height = 1500
+
     def set_window_size(self):
-        self.driver.set_window_size(600,1500)
+        self.driver.set_window_size(self.width, self.height)
 
     def restart_selenium(self, full_restart=False):
         # print("restarting selenium")

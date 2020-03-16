@@ -204,8 +204,8 @@ class BrandArchetypeAction(Action):
             colors[color] = None
 
         num_colors = len(colors.items())
-        # TODO: Pass in website name somehow
-        new_color = archetypes.get_color('byu')
+        print(f'Website name: {website.school_name}')
+        new_color = archetypes.get_color(website.school_name)
         inputs = [new_color]
         new_colors = None
         print(inputs)
@@ -238,6 +238,6 @@ class BrandArchetypeAction(Action):
         # * Always have foreground be Black and White & Background changes
 
         # Fonts
-        newfont, link = archetypes.get_font_and_link('byu')
+        newfont, link = archetypes.get_font_and_link(website.school_name)
         for scope, selector, rule, font in website.css.fonts():
             self.mutations.append(((scope, selector, rule, newfont), link))

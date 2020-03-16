@@ -208,6 +208,7 @@ class WebPage:
 
     def __init__(self, url=None, html=None, cleaned=False):
         if url is not None:
+            self.school_name = url  # TODO: Refactor assumption that url is name of school
             soup = scraper.get_soup(url, cleaned=cleaned)
             self.html = HTML(soup) 
             self.css = CSS(soup)
@@ -280,6 +281,7 @@ class WebPage:
 
     def __deepcopy__(self, memo):  # Pass a reference to the original HTML but create a copy of the css
         ws = WebPage(html = self.html)
+        ws.school_name = self.school_name
         # print("here")
         ws.css = deepcopy(self.css)
         return ws
