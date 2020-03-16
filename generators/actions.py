@@ -1,5 +1,5 @@
 
-
+import typing
 from webscraping.stat_models import *
 from generators.web_info import *
 from generators.mcts_generator import WebSiteState
@@ -10,7 +10,7 @@ import time
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
     return BrandArchetypeAction(stats, website)
-    value = random.choices(range(4), [.5,.3,.2,.1])[0]
+    value = random.choices(range(4), [.5, .3, .2, .1])[0]
     if value == 0:
         return RandomColorAction(stats, website)
     elif value == 1:
@@ -19,6 +19,7 @@ def getRandomAction(stats: GlobalStats, website: WebPage):
         return WebSiteSpecificSelectorModifier(stats, website)
     else:
         return WebSiteSpecificSelectorModifier(stats, website)
+
 
 class Action:
     # TODO: Define actions we can take in this space, could be genetic or based on the stats we gathered
@@ -160,7 +161,7 @@ class MutateColorSchemeAction(Action):
         for scope, selector, rule, color in website.css.background_colors():
             colors[color] = None
         
-        num_colors= len(colors.items())
+        num_colors = len(colors.items())
         new_color = WebColors.get_random_value_array()
         inputs = [new_color]
         new_colors = None
