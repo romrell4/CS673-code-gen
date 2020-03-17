@@ -39,7 +39,7 @@ class WebScraper:
         self.driver = webdriver.Chrome(options=self.chrome_options)
         self.set_window_size()
         self.waitTime = 1
-        self.httpd = HTTPServer(('',8000), CustomHTTPRequestHandler)
+        self.httpd = HTTPServer(('', 8000), CustomHTTPRequestHandler)
         self.thd = _thread.start_new_thread(run_server, (self.httpd, ) )
         # time.sleep(1)
         # httpd.server_close()

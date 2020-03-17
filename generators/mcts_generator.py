@@ -9,7 +9,6 @@ from generators.actions import *
 class WebSiteState:
     min_acceptable_evaluation = .5
     def __init__(self, url, stats, cleaned=False):
-        self.school_name = url  # TODO: Refactor assumption that url is name of school
         self.website = WebPage(url=url, cleaned=cleaned)
         self.stats = stats
         self.depth = 1
@@ -32,7 +31,7 @@ class WebSiteState:
         return self.depth == 10
         # return self.website.evaluate() < WebSiteState.min_acceptable_evaluation
 
-    def getReward(self): # Return Number between 0-1 or False
+    def getReward(self):  # Return Number between 0-1 or False
         return self.website.evaluate()
 
     def __str__(self):
@@ -49,7 +48,7 @@ def main(school):
     stats = GlobalStats()
     # print(stats.data["tag_freq"]["p"])
     initialState = WebSiteState(url=school, stats=stats)
-    # photo = initialState.website.gen_photo("screenshot.png")
+    initialState.website.gen_photo(f"{directory}/initial_screenshot.png")
     while depth < 2:
         action = montecarlosearch.search(initialState=initialState)
         action.save(f"{directory}/actions.txt")
@@ -58,7 +57,7 @@ def main(school):
         if depth % 1 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
-    photo = initialState.website.gen_photo(f"{directory}/final_screenshot.png")
+    initialState.website.gen_photo(f"{directory}/final_screenshot.png")
     print("Finished")
 
 
