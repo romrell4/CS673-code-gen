@@ -8,6 +8,7 @@ from tinycss2.ast import ParseError
 
 from webscraping.dao import Dao, ValueCount
 from webscraping.web_scraper import scraper
+from classifier.classification import evaluate_image as cnn_eval, ScreenshotClassifier
 
 
 class HTML:
@@ -256,22 +257,19 @@ class WebPage:
         return photo
 
     def evaluate_photo(self):
-        photo = self.gen_photo()
-        # TODO: Evaluate a photo based on some criteria
-        return 1
+        self.gen_photo(save_loc='screenshot.png')
+        return cnn_eval('screenshot.png')
 
     def evaluate_css(self):
         return self.css.evaluate()
 
     def evaluate(self):
         css_evaluation = self.evaluate_css()
-        # TODO: Actually evaluate a site so that we don't get index errors in MCTS
-        return 1
-        # if css_evaluation < WebPage.css_eval_limit:
-        #     return 0
-        # else:
-        #     photo_evaluation = self.evaluate_photo()
-        #     return css_evaluation * .2 + photo_evaluation * .8
+        if css_evaluation < WebPage.css_eval_limit:
+            return 0
+        else:
+            photo_evaluation = self.evaluate_photo()
+            return max(0., min(1., css_evaluation * .2 + photo_evaluation * .8))
 
     def __str__(self):
         return str((self.html, self.css))

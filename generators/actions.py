@@ -9,16 +9,16 @@ import time
 
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
-    return BrandArchetypeAction(stats, website)
-    value = random.choices(range(4), [.5, .3, .2, .1])[0]
-    if value == 0:
-        return RandomColorAction(stats, website)
-    elif value == 1:
-        return RandomFontAction(stats, website)
-    elif value == 2:
-        return WebSiteSpecificSelectorModifier(stats, website)
-    else:
-        return WebSiteSpecificSelectorModifier(stats, website)
+    # return StrategicColorSchemeAction(stats, website)
+    action_types = [
+        RandomColorAction,
+        RandomFontAction,
+        WebSiteSpecificSelectorModifier,
+        StrategicColorSchemeAction,
+        MutateColorSchemeAction
+    ]
+    action = random.choices(action_types, [.1, .1, .2, .2, 0.4])[0]
+    return action(stats, website)
 
 
 class Action:
@@ -165,7 +165,6 @@ class MutateColorSchemeAction(Action):
         new_color = WebColors.get_random_value_array()
         inputs = [new_color]
         new_colors = None
-        print(inputs)
         while new_colors is None:
             r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
             if r.status_code != 200:
@@ -173,7 +172,6 @@ class MutateColorSchemeAction(Action):
                 print("No Color response")
                 continue
             else:
-                print(r.text)
                 new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
         # Assign each color to a new color that is interesting
         i = 0
@@ -204,11 +202,9 @@ class BrandArchetypeAction(Action):
             colors[color] = None
 
         num_colors = len(colors.items())
-        print(f'Website name: {website.school_name}')
         new_color = archetypes.get_color(website.school_name)
         inputs = [new_color]
         new_colors = None
-        print(inputs)
         while new_colors is None:
             r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
             if r.status_code != 200:
@@ -241,3 +237,41 @@ class BrandArchetypeAction(Action):
         newfont, link = archetypes.get_font_and_link(website.school_name)
         for scope, selector, rule, font in website.css.fonts():
             self.mutations.append(((scope, selector, rule, newfont), link))
+
+
+class StrategicColorSchemeAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        colors = {}
+        for scope, selector, rule, color in website.css.background_colors():
+            colors[color] = None
+
+        num_colors = len(colors.items())
+        # print(f'Website name: {website.school_name}')
+        new_color = archetypes.get_color(website.school_name)
+        inputs = [new_color]
+        new_colors = None
+        # print(inputs)
+        while new_colors is None:
+            r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
+            if r.status_code != 200:
+                time.sleep(1000)  # Don't spam the API
+                print("No Color response")
+                continue
+            else:
+                primary = r.json()['result'][0]
+                accent = r.json()['result'][1]
+                new_colors = [f"rgb({primary[0]},{primary[1]},{primary[2]})",
+                              f"rgb({accent[0]},{accent[1]},{accent[2]})",
+                              f"rgb({primary[0] // 2},{primary[1] // 2},{primary[2] // 2})",
+                              f"rgb({(primary[0] + 255) // 2},{(primary[1] + 255) // 2},{(primary[2] + 255) // 2})",
+                              "rgb(0,0,0)", "rgb(255,255,255"]
+        # Assign each color to a new color that is interesting
+        for color, newColor in colors.items():
+            colors[color] = random.choice(new_colors)
+
+        self.mutations = []
+        for scope, selector, rule, color in website.css.background_colors():
+            newcolor = colors[color]
+            self.mutations.append(((scope, selector, rule, newcolor), []))

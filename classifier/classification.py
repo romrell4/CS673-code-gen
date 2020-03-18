@@ -2,14 +2,22 @@ import torch
 import torch.nn as nn
 import torchvision
 from torchvision import transforms, datasets
+from shutil import copyfile
 
 
 #### INTERFACE ####
+def evaluate_image(image_location):
+    copyfile(image_location, '../classifier/data/data/screenshot.png')
+    scores = batch_classify('../classifier/data/')['screenshot.png']
+    print('classifying image as', (scores[0] + scores[1]) / 2)
+    return (scores[0] + scores[1]) / 2
+
+
 def batch_classify(image_location):
     images = datasets.ImageFolder(image_location, transform=image_transforms)
     image_tensor = torch.stack([image[0] for image in images])
     image_names = [name.split('/')[-1] for name, _ in images.imgs]
-    scores = model(image_tensor.cuda()).tolist()
+    scores = model(image_tensor).tolist()
     return {name: score for name, score in zip(image_names, scores)}
 
 
@@ -82,7 +90,8 @@ class ScreenshotClassifier(nn.Module):
         return output
 
 try:
-    model = torch.load('screenshot_classifier.pt')
+    model = ScreenshotClassifier()
+    model.load_state_dict(torch.load('../classifier/screenshot_classifier_sd.pt'))
+    model.eval()
 except:
-    print('Could not load screenshot classification model. Did you download screenshot_classifier.pt from Box?')
-# print(batch_classify('data'))
+    print('Could not load screenshot classification model. Did you download screenshot_classifier_sd.pt from Box?')
