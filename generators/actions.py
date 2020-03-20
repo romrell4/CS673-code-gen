@@ -166,13 +166,17 @@ class MutateColorSchemeAction(Action):
         inputs = [new_color]
         new_colors = None
         while new_colors is None:
-            r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
-            if r.status_code != 200:
-                time.sleep(1000) # Don't spam the API
-                print("No Color response")
+            try:
+                r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
+                if r.status_code != 200:
+                    time.sleep(3) # Don't spam the API
+                    print("No Color response")
+                    continue
+                else:
+                    new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
+            except:
+                time.sleep(3)
                 continue
-            else:
-                new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
         # Assign each color to a new color that is interesting
         i = 0
         for color, newColor in colors.items():
@@ -206,14 +210,18 @@ class BrandArchetypeAction(Action):
         inputs = [new_color]
         new_colors = None
         while new_colors is None:
-            r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
-            if r.status_code != 200:
-                time.sleep(1000)  # Don't spam the API
-                print("No Color response")
+            try:
+                r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
+                if r.status_code != 200:
+                    time.sleep(3)  # Don't spam the API
+                    print("No Color response")
+                    continue
+                else:
+                    print(r.text)
+                    new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
+            except:
+                time.sleep(3)
                 continue
-            else:
-                print(r.text)
-                new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
         # Assign each color to a new color that is interesting
         i = 0
         for color, newColor in colors.items():
@@ -256,7 +264,7 @@ class StrategicColorSchemeAction(Action):
         while new_colors is None:
             r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
             if r.status_code != 200:
-                time.sleep(1000)  # Don't spam the API
+                time.sleep(3)  # Don't spam the API
                 print("No Color response")
                 continue
             else:
