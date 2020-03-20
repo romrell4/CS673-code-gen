@@ -120,8 +120,23 @@ class CSS:
                 del scope[selector]
 
     def evaluate(self):
-        # TODO: Actually evaluate the quality of CSS based on global stats or some metrics
-        return 1
+        cur_score = 1
+        unique_rgb_colors = list(set([el[3] for el in self.colors() if el[3].startswith('rgb')]))
+        try:
+            parsed_rgb_colors = [[int(item1) for item1 in item[4:-1].split(',')] for item in unique_rgb_colors]
+        except:
+            parsed_rgb_colors = []
+        if len(unique_rgb_colors) < 2 or len(unique_rgb_colors) > 8:
+            cur_score *= 0.8
+        for color in parsed_rgb_colors:
+            for color2 in parsed_rgb_colors:
+                if color == color2:
+                    continue
+                max_dist = max(abs(color[0] - color2[0]), abs(color[1] - color2[1]), abs(color[2] - color2[2]))
+                tot_dist = abs(color[0] - color2[0]) + abs(color[1] - color2[1]) + abs(color[2] - color2[2])
+                if max_dist < 20 and tot_dist < 30:
+                    cur_score *= 0.8
+        return cur_score
 
     # TODO: Should we include border colors? (e.g. border-top-color, border-bottom-color, border-color)
     COLOR_KEYS = ["background-color", "color", "background", "fill"]
@@ -266,7 +281,8 @@ class WebPage:
     def evaluate(self):
         css_evaluation = self.evaluate_css()
         if css_evaluation < WebPage.css_eval_limit:
-            return 0
+            print('Skipping screenshot evaluation')
+            return 0.2 * css_evaluation
         else:
             photo_evaluation = self.evaluate_photo()
             return max(0., min(1., css_evaluation * .2 + photo_evaluation * .8))
