@@ -1,4 +1,4 @@
-
+import re
 import typing
 from webscraping.stat_models import *
 from generators.web_info import *
@@ -15,9 +15,10 @@ def getRandomAction(stats: GlobalStats, website: WebPage):
         RandomFontAction,
         WebSiteSpecificSelectorModifier,
         StrategicColorSchemeAction,
-        MutateColorSchemeAction
+        MutateColorSchemeAction,
+        MutateLayout
     ]
-    action = random.choices(action_types, [.1, .1, .2, .2, 0.4])[0]
+    action = random.choices(action_types, [.05, .05, .2, .4, .2, 0.1])[0]
     return action(stats, website)
 
 
@@ -283,3 +284,24 @@ class StrategicColorSchemeAction(Action):
         for scope, selector, rule, color in website.css.background_colors():
             newcolor = colors[color]
             self.mutations.append(((scope, selector, rule, newcolor), []))
+
+
+def get_mutated_number(old_number):
+    old_number = float(old_number.group())
+    # If number is really small, don't mess with it.
+    if abs(old_number) <= 1:
+        return str(old_number)
+    # If the number is kind of small, shift it a few units
+    if abs(old_number) <= 8:
+        return str(old_number + random.randint(-3, 3))
+    return str(old_number * random.uniform(0.85, 1.15))
+
+
+class MutateLayout(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        self.mutations = []
+        for scope, selector, rule, size in website.css.get_layout_sizes():
+            new_size = re.sub('-?\\d+', get_mutated_number, size)
+            self.mutations.append(((scope, selector, rule, new_size), []))

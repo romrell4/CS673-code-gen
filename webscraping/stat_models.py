@@ -195,6 +195,13 @@ class CSS:
         for scope, selector, rule, value in self.get_rules(['color', 'background-color', 'background']): 
             yield scope, selector, rule, value
 
+    def get_layout_sizes(self):
+        layout_rules = ['padding', 'padding-top', 'padding-bottom', 'padding-left', 'padding-right', 'margin',
+                        'margin-top', 'margin-bottom', 'margin-left', 'margin-right', 'height', 'min-height',
+                        'max-height', 'width', 'min-width', 'max-width', 'border-radius']
+        for scope, selector, rule, value in self.get_rules(layout_rules):
+            yield scope, selector, rule, value
+
     def get_rules(self, rule_set):
         for selector, values in self.selectors.items():
             for key, value in values.items():
