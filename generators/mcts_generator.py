@@ -42,12 +42,18 @@ def main(school):
     depth = 0
     montecarlosearch = mcts(timeLimit=.5)
     directory = f"results/{school}"
+    images_dir = f"images/html_images"
     os.makedirs(directory, exist_ok=True)
+    os.makedirs(images_dir, exist_ok=True)
     shutil.rmtree(directory)
+    shutil.rmtree(images_dir)
     os.makedirs(directory, exist_ok=True)
+    os.makedirs(images_dir, exist_ok=True)
+
     stats = GlobalStats()
     # print(stats.data["tag_freq"]["p"])
     initialState = WebSiteState(url=school, stats=stats)
+    initialState.website.download_imgs()
     initialState.website.gen_photo(f"{directory}/initial_screenshot.png")
     while depth < 2:
         action = montecarlosearch.search(initialState=initialState)

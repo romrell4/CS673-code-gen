@@ -3,12 +3,14 @@ import typing
 from webscraping.stat_models import *
 from generators.web_info import *
 from generators.mcts_generator import WebSiteState
+from generators.palette_generator import generate_pallete_from_imgs
 import random
 import requests
 import time
-
+import shutil
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
+    return ColorSchemeFromImageAction(stats, website)
     # return StrategicColorSchemeAction(stats, website)
     action_types = [
         RandomColorAction,
@@ -186,8 +188,38 @@ class MutateColorSchemeAction(Action):
             colors[color] = new_colors[n]
             i += 1
 
-        # Make them into variables or some way to mutate all of them at once
-        # TODO: Maybe make a second version of this that chooses color based on Images (or alters images)
+        # TODO: Make them into variables or some way to mutate all of them at once (unify css colors)
+        self.mutations = []
+        for scope, selector, rule, color in website.css.background_colors():
+            newcolor = colors[color]
+            self.mutations.append(((scope, selector, rule, newcolor), []))
+
+        # TODO: Add the concept of foreground & background contrast
+        # Possible Ideas: 
+        # * Always have foreground be Black and White & Background changes
+
+
+
+class ColorSchemeFromImageAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        colors = {}
+        for scope, selector, rule, color in website.css.background_colors():
+            colors[color] = None
+        
+        num_colors = len(colors.items())
+        new_colors = generate_pallete_from_imgs()
+        print(f"New Colors: {new_colors}")
+        # Assign each color to a new color that is interesting
+        i = 0
+        for color, newColor in colors.items():
+            # print(f'Colors: {color}')
+            n = i % 5
+            colors[color] = new_colors[n]
+            i += 1
+
+        # TODO: Make them into variables or some way to mutate all of them at once (unify css colors)
         self.mutations = []
         for scope, selector, rule, color in website.css.background_colors():
             newcolor = colors[color]
