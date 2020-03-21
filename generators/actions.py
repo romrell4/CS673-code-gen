@@ -10,7 +10,7 @@ import time
 import shutil
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
-    return ColorSchemeFromImageAction(stats, website)
+    return BlueEverythingAction(stats, website)
     # return StrategicColorSchemeAction(stats, website)
     action_types = [
         RandomColorAction,
@@ -155,7 +155,6 @@ class RandomFontAction(Action):
         self.rule_value = webFonts.get_random_value(self.rule_name)
         self.rule_links = webFonts.get_rule_links(self.rule_value)
 
-
 class MutateColorSchemeAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
         super().__init__(stats, website)
@@ -198,8 +197,6 @@ class MutateColorSchemeAction(Action):
         # Possible Ideas: 
         # * Always have foreground be Black and White & Background changes
 
-
-
 class ColorSchemeFromImageAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
         super().__init__(stats, website)
@@ -228,7 +225,6 @@ class ColorSchemeFromImageAction(Action):
         # TODO: Add the concept of foreground & background contrast
         # Possible Ideas: 
         # * Always have foreground be Black and White & Background changes
-
 
 class BrandArchetypeAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
@@ -279,7 +275,6 @@ class BrandArchetypeAction(Action):
         for scope, selector, rule, font in website.css.fonts():
             self.mutations.append(((scope, selector, rule, newfont), link))
 
-
 class StrategicColorSchemeAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
         super().__init__(stats, website)
@@ -317,6 +312,13 @@ class StrategicColorSchemeAction(Action):
             newcolor = colors[color]
             self.mutations.append(((scope, selector, rule, newcolor), []))
 
+class BlueEverythingAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+
+        self.mutations = []
+        for scope, selector, rule, _ in website.css.background_colors():
+            self.mutations.append(((scope, selector, rule, "blue"), []))
 
 def get_mutated_number(old_number):
     old_number = float(old_number.group())
