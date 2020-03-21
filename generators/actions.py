@@ -10,7 +10,6 @@ import time
 import shutil
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
-    return BlueEverythingAction(stats, website)
     # return StrategicColorSchemeAction(stats, website)
     action_types = [
         RandomColorAction,
