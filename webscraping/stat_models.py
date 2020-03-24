@@ -5,11 +5,12 @@ from typing import List, Iterable, Dict, Tuple
 import tinycss2
 from bs4 import BeautifulSoup
 from tinycss2.ast import ParseError
-
+import urllib
 from webscraping.dao import Dao, ValueCount
 from webscraping.web_scraper import scraper
 from classifier.classification import evaluate_image as cnn_eval, ScreenshotClassifier
-
+from webscraping.edu_websites import eduWebsites
+import urllib.request
 
 class HTML:
     """
@@ -22,7 +23,8 @@ class HTML:
         classes ([str]): all unique classes used on the web page
     """
 
-    def __init__(self, soup: BeautifulSoup = None, url: str = None):
+    def __init__(self, soup: BeautifulSoup = None, url: str = None, school_name=None):
+        self.school_name = school_name
         if url is not None:
             self.soup = scraper.get_soup(url)
         else:
@@ -49,6 +51,20 @@ class HTML:
             return True  # Assume selectors that can't be parsed by BeautifulSoup are valid
         return False
 
+    def download_imgs(self):
+        for tag in self.soup.find_all('img'):
+            if tag.name == 'img':
+                src = tag.get('src')
+                download = src[src.find("=")+1:] if "=" in src else src
+                download = urllib.parse.unquote(download)
+                # print(src)
+                # print(download)
+                if "http" not in src:
+                    download = eduWebsites.get_url(self.school_name) + src
+                image_name = download[download.rfind('/')+1:] if download.rfind('/') > 0 else download
+                # print(image_name)
+                urllib.request.urlretrieve(download, 'images/html_images/' + image_name)
+
     def get_tags(self):
         return self.tags
 
@@ -70,7 +86,8 @@ class CSS:
     Attributes:
         selectors ([str: [str: str]): dictionary of selector (e.g. "thead" or "p#some-id") to the key-value pairs of rules (e.g. "font-size": "18pt")
     """
-    def __init__(self, html_soup: BeautifulSoup = None, url: str = None):
+    def __init__(self, html_soup: BeautifulSoup = None, url: str = None, school_name=None):
+        self.school_name = school_name
         if url is not None:
             html_soup = scraper.get_soup(url)
         self.selectors = {}
@@ -118,6 +135,9 @@ class CSS:
         for scope in self.scope.values():
             if selector in scope.keys():
                 del scope[selector]
+
+    def download_imgs(self):
+        pass
 
     def evaluate(self):
         cur_score = 1
@@ -233,8 +253,8 @@ class WebPage:
         if url is not None:
             self.school_name = url  # TODO: Refactor assumption that url is name of school
             soup = scraper.get_soup(url, cleaned=cleaned)
-            self.html = HTML(soup) 
-            self.css = CSS(soup)
+            self.html = HTML(soup, school_name=self.school_name)
+            self.css = CSS(soup, school_name=self.school_name)
         elif html is not None:
             self.html = html
             self.css = None
@@ -263,6 +283,10 @@ class WebPage:
             webpage_soup.insert(0, webpage_soup.new_tag('head'))
             webpage_soup.head.insert(0, style_tag)
         return webpage_soup.encode()
+
+    def download_imgs(self):
+        self.css.download_imgs()
+        self.html.download_imgs()
 
     def save(self, save_loc):
         with open(save_loc, 'wb') as wfile:

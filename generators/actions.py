@@ -3,23 +3,26 @@ import typing
 from webscraping.stat_models import *
 from generators.web_info import *
 from generators.mcts_generator import WebSiteState
+from generators.palette_generator import generate_pallete_from_imgs, generate_pallete_from_random_img
 import random
 import requests
 import time
-
+import shutil
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
-    # return StrategicColorSchemeAction(stats, website)
+    return ColorSchemeFromImageAction(stats, website)
     action_types = [
         RandomColorAction,
         RandomFontAction,
         WebSiteSpecificSelectorModifier,
         StrategicColorSchemeAction,
+        ColorSchemeFromAllImagesAction,
+        ColorSchemeFromImageAction,
         MutateColorSchemeAction,
         MutatePageLayout,
         MutateElementLayout
     ]
-    action = random.choices(action_types, [.05, .05, .2, .3, .2, 0.1, 0.1])[0]
+    action = random.choices(action_types, [.05, .05, .2, .1, .2, 0.1, 0.1, 0.1, 0.1])[0]
     return action(stats, website)
 
 
@@ -154,7 +157,6 @@ class RandomFontAction(Action):
         self.rule_value = webFonts.get_random_value(self.rule_name)
         self.rule_links = webFonts.get_rule_links(self.rule_value)
 
-
 class MutateColorSchemeAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
         super().__init__(stats, website)
@@ -180,15 +182,74 @@ class MutateColorSchemeAction(Action):
                 time.sleep(3)
                 continue
         # Assign each color to a new color that is interesting
-        i = 0
+        i = random.randint(0,4)
         for color, newColor in colors.items():
             # print(f'Colors: {color}')
             n = i % 5
             colors[color] = new_colors[n]
             i += 1
 
-        # Make them into variables or some way to mutate all of them at once
-        # TODO: Maybe make a second version of this that chooses color based on Images (or alters images)
+        # TODO: Make them into variables or some way to mutate all of them at once (unify css colors)
+        self.mutations = []
+        for scope, selector, rule, color in website.css.background_colors():
+            newcolor = colors[color]
+            self.mutations.append(((scope, selector, rule, newcolor), []))
+
+        # TODO: Add the concept of foreground & background contrast
+        # Possible Ideas: 
+        # * Always have foreground be Black and White & Background changes
+
+class ColorSchemeFromAllImagesAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        colors = {}
+        for scope, selector, rule, color in website.css.background_colors():
+            colors[color] = None
+        
+        num_colors = len(colors.items())
+        new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in generate_pallete_from_imgs()]
+       
+        # print(f"New Colors: {new_colors}")
+        # Assign each color to a new color that is interesting
+        i = random.randint(0,4)
+        for color, newColor in colors.items():
+            # print(f'Colors: {color}')
+            n = i % 5
+            colors[color] = new_colors[n]
+            i += 1
+
+        # TODO: Make them into variables or some way to mutate all of them at once (unify css colors)
+        self.mutations = []
+        for scope, selector, rule, color in website.css.background_colors():
+            newcolor = colors[color]
+            self.mutations.append(((scope, selector, rule, newcolor), []))
+
+        # TODO: Add the concept of foreground & background contrast
+        # Possible Ideas: 
+        # * Always have foreground be Black and White & Background changes
+
+
+class ColorSchemeFromImageAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        colors = {}
+        for scope, selector, rule, color in website.css.background_colors():
+            colors[color] = None
+        
+        num_colors = len(colors.items())
+        new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in generate_pallete_from_random_img()]
+        print(f"num_colors: {len(new_colors)}")
+        # Assign each color to a new color that is interesting
+        i = random.randint(0,4)
+        for color, newColor in colors.items():
+            # print(f'Colors: {color}')
+            n = i % 5
+            colors[color] = new_colors[n]
+            i += 1
+
+        # TODO: Make them into variables or some way to mutate all of them at once (unify css colors)
         self.mutations = []
         for scope, selector, rule, color in website.css.background_colors():
             newcolor = colors[color]
@@ -225,7 +286,7 @@ class BrandArchetypeAction(Action):
                 time.sleep(3)
                 continue
         # Assign each color to a new color that is interesting
-        i = 0
+        i = random.randint(0,4)
         for color, newColor in colors.items():
             # print(f'Colors: {color}')
             n = i % 5
@@ -247,7 +308,6 @@ class BrandArchetypeAction(Action):
         newfont, link = archetypes.get_font_and_link(website.school_name)
         for scope, selector, rule, font in website.css.fonts():
             self.mutations.append(((scope, selector, rule, newfont), link))
-
 
 class StrategicColorSchemeAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
@@ -291,6 +351,13 @@ class StrategicColorSchemeAction(Action):
             newcolor = colors[color]
             self.mutations.append(((scope, selector, rule, newcolor), []))
 
+class BlueEverythingAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+
+        self.mutations = []
+        for scope, selector, rule, _ in website.css.background_colors():
+            self.mutations.append(((scope, selector, rule, "blue"), []))
 
 def get_mutated_number(old_number):
     old_number = float(old_number.group())

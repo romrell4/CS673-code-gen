@@ -91,7 +91,12 @@ class ScreenshotClassifier(nn.Module):
 
 try:
     model = ScreenshotClassifier()
-    model.load_state_dict(torch.load('../classifier/screenshot_classifier_sd.pt'))
+    if torch.cuda.is_available():
+        model.load_state_dict(torch.load('../classifier/screenshot_classifier_sd.pt'))
+    else:
+        model.load_state_dict(torch.load('../classifier/screenshot_classifier_sd.pt',map_location=torch.device('cpu')))
     model.eval()
-except:
+except Exception as e:
+    print(e)
     print('Could not load screenshot classification model. Did you download screenshot_classifier_sd.pt from Box?')
+    raise Exception()
