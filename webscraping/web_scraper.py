@@ -57,7 +57,7 @@ class WebScraper:
         self.height = 1500
 
     def set_window_size(self):
-        self.driver.set_window_size(self.width, self.height)
+        self.driver.set_window_size(1050, 721)
 
     def restart_selenium(self, full_restart=False):
         # print("restarting selenium")
