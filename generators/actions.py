@@ -10,16 +10,17 @@ import time
 import shutil
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
-    # return StrategicColorSchemeAction(stats, website)
+    # return ColorSchemeFromImageAction(stats, website)
     action_types = [
         RandomColorAction,
         RandomFontAction,
         WebSiteSpecificSelectorModifier,
         StrategicColorSchemeAction,
+        ColorSchemeFromImageAction,
         MutateColorSchemeAction,
         MutateLayout
     ]
-    action = random.choices(action_types, [.05, .05, .2, .4, .2, 0.1])[0]
+    action = random.choices(action_types, [.05, .05, .2, .4, .3, .2, 0.1])[0]
     return action(stats, website)
 
 
@@ -179,7 +180,7 @@ class MutateColorSchemeAction(Action):
                 time.sleep(3)
                 continue
         # Assign each color to a new color that is interesting
-        i = 0
+        i = random.randint(0,4)
         for color, newColor in colors.items():
             # print(f'Colors: {color}')
             n = i % 5
@@ -205,10 +206,11 @@ class ColorSchemeFromImageAction(Action):
             colors[color] = None
         
         num_colors = len(colors.items())
-        new_colors = generate_pallete_from_imgs()
+        new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in generate_pallete_from_imgs()]
+       
         print(f"New Colors: {new_colors}")
         # Assign each color to a new color that is interesting
-        i = 0
+        i = random.randint(0,4)
         for color, newColor in colors.items():
             # print(f'Colors: {color}')
             n = i % 5
@@ -251,7 +253,7 @@ class BrandArchetypeAction(Action):
                 time.sleep(3)
                 continue
         # Assign each color to a new color that is interesting
-        i = 0
+        i = random.randint(0,4)
         for color, newColor in colors.items():
             # print(f'Colors: {color}')
             n = i % 5
