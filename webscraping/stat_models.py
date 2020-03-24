@@ -5,7 +5,7 @@ from typing import List, Iterable, Dict, Tuple
 import tinycss2
 from bs4 import BeautifulSoup
 from tinycss2.ast import ParseError
-
+import urllib
 from webscraping.dao import Dao, ValueCount
 from webscraping.web_scraper import scraper
 from classifier.classification import evaluate_image as cnn_eval, ScreenshotClassifier
@@ -55,12 +55,15 @@ class HTML:
         for tag in self.soup.find_all('img'):
             if tag.name == 'img':
                 src = tag.get('src')
-                download = src
+                download = src[src.find("=")+1:] if "=" in src else src
+                download = urllib.parse.unquote(download)
+                # print(src)
+                # print(download)
                 if "http" not in src:
                     download = eduWebsites.get_url(self.school_name) + src
-                image_name = download[download.rfind('/'):] if download.rfind('/') > 0 else download
-                print(image_name)
-                urllib.request.urlretrieve(download, 'images/html_images' + image_name)
+                image_name = download[download.rfind('/')+1:] if download.rfind('/') > 0 else download
+                # print(image_name)
+                urllib.request.urlretrieve(download, 'images/html_images/' + image_name)
 
     def get_tags(self):
         return self.tags

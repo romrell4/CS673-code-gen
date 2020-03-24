@@ -4,6 +4,7 @@ from PIL import Image, ImageDraw, ImageFont
 from numpy import array
 from scipy.cluster.vq import kmeans
 import numpy
+import random
 from generators.web_info import WebColors
 
 INPUT_DIR = 'images'
@@ -48,6 +49,10 @@ def generate_palette(array, centroids):
     for centroid in numpy.array(result[0]).tolist():
         centroid = (int(centroid[0]), int(centroid[1]), int(centroid[2]))
         palette.append(tuple(centroid))
+    counter = 0
+    while len(palette) < 5:
+        palette.append(palette[counter])
+        counter += 1
     return palette
 
 def generate_pallete_from_imgs():
@@ -60,5 +65,18 @@ def generate_pallete_from_imgs():
         print("No images found")
         return [WebColors.get_random_value() for _ in range(5)]
     array = images_to_array(input_images)
+    pallete = generate_palette(array, MAX_COLORS)
+    return pallete
+
+def generate_pallete_from_random_img():
+    '''Given a path to a directory, process all the images in that directory.'''
+    input_dirs = dirs_to_process()
+    input_images = []
+    for dir in input_dirs:
+        input_images.extend(images_to_process(dir))
+    if len(input_images) == 0:
+        print("No images found")
+        return [WebColors.get_random_value() for _ in range(5)]
+    array = images_to_array([random.choice(input_images)])
     pallete = generate_palette(array, MAX_COLORS)
     return pallete

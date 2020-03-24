@@ -3,24 +3,25 @@ import typing
 from webscraping.stat_models import *
 from generators.web_info import *
 from generators.mcts_generator import WebSiteState
-from generators.palette_generator import generate_pallete_from_imgs
+from generators.palette_generator import generate_pallete_from_imgs, generate_pallete_from_random_img
 import random
 import requests
 import time
 import shutil
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
-    # return ColorSchemeFromImageAction(stats, website)
+    return ColorSchemeFromImageAction(stats, website)
     action_types = [
         RandomColorAction,
         RandomFontAction,
         WebSiteSpecificSelectorModifier,
         StrategicColorSchemeAction,
+        ColorSchemeFromAllImagesAction,
         ColorSchemeFromImageAction,
         MutateColorSchemeAction,
         MutateLayout
     ]
-    action = random.choices(action_types, [.05, .05, .2, .4, .3, .2, 0.1])[0]
+    action = random.choices(action_types, [.05, .05, .2, .4, .3, .3, .2, 0.1])[0]
     return action(stats, website)
 
 
@@ -197,7 +198,7 @@ class MutateColorSchemeAction(Action):
         # Possible Ideas: 
         # * Always have foreground be Black and White & Background changes
 
-class ColorSchemeFromImageAction(Action):
+class ColorSchemeFromAllImagesAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
         super().__init__(stats, website)
         # Get all of the colors in the page
@@ -208,7 +209,7 @@ class ColorSchemeFromImageAction(Action):
         num_colors = len(colors.items())
         new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in generate_pallete_from_imgs()]
        
-        print(f"New Colors: {new_colors}")
+        # print(f"New Colors: {new_colors}")
         # Assign each color to a new color that is interesting
         i = random.randint(0,4)
         for color, newColor in colors.items():
@@ -226,6 +227,37 @@ class ColorSchemeFromImageAction(Action):
         # TODO: Add the concept of foreground & background contrast
         # Possible Ideas: 
         # * Always have foreground be Black and White & Background changes
+
+
+class ColorSchemeFromImageAction(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        colors = {}
+        for scope, selector, rule, color in website.css.background_colors():
+            colors[color] = None
+        
+        num_colors = len(colors.items())
+        new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in generate_pallete_from_random_img()]
+        print(f"num_colors: {len(new_colors)}")
+        # Assign each color to a new color that is interesting
+        i = random.randint(0,4)
+        for color, newColor in colors.items():
+            # print(f'Colors: {color}')
+            n = i % 5
+            colors[color] = new_colors[n]
+            i += 1
+
+        # TODO: Make them into variables or some way to mutate all of them at once (unify css colors)
+        self.mutations = []
+        for scope, selector, rule, color in website.css.background_colors():
+            newcolor = colors[color]
+            self.mutations.append(((scope, selector, rule, newcolor), []))
+
+        # TODO: Add the concept of foreground & background contrast
+        # Possible Ideas: 
+        # * Always have foreground be Black and White & Background changes
+
 
 class BrandArchetypeAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
