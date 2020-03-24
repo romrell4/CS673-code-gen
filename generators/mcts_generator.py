@@ -69,6 +69,6 @@ def main(school):
 
 if __name__ == '__main__':
     scraper.set_desktop_view()
-    school = "mit"
+    school = "byu"
     main(school)
     

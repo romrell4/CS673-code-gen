@@ -38,7 +38,7 @@ def images_to_array(full_image_paths):
           for x in range(0 , im.size[0]):
               color = im.getpixel((x, y))
               temp.append([color[0], color[1], color[2]])
-      temp = array(temp)
+    temp = array(temp)
     return temp
     
 def generate_palette(array, centroids):
