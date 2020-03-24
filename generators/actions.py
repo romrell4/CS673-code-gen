@@ -16,9 +16,10 @@ def getRandomAction(stats: GlobalStats, website: WebPage):
         WebSiteSpecificSelectorModifier,
         StrategicColorSchemeAction,
         MutateColorSchemeAction,
-        MutateLayout
+        MutatePageLayout,
+        MutateElementLayout
     ]
-    action = random.choices(action_types, [.05, .05, .2, .4, .2, 0.1])[0]
+    action = random.choices(action_types, [.05, .05, .2, .3, .2, 0.1, 0.1])[0]
     return action(stats, website)
 
 
@@ -263,19 +264,24 @@ class StrategicColorSchemeAction(Action):
         new_colors = None
         # print(inputs)
         while new_colors is None:
-            r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
-            if r.status_code != 200:
-                time.sleep(3)  # Don't spam the API
-                print("No Color response")
+            try:
+                r = requests.post('http://colormind.io/api/', json={"input": inputs, "model": "ui"})
+                if r.status_code != 200:
+                    time.sleep(3)  # Don't spam the API
+                    print("No Color response")
+                    continue
+                else:
+                    primary = r.json()['result'][0]
+                    accent = r.json()['result'][1]
+                    new_colors = [f"rgb({primary[0]},{primary[1]},{primary[2]})",
+                                  f"rgb({accent[0]},{accent[1]},{accent[2]})",
+                                  f"rgb({primary[0] // 2},{primary[1] // 2},{primary[2] // 2})",
+                                  f"rgb({(primary[0] + 255) // 2},{(primary[1] + 255) // 2},{(primary[2] + 255) // 2})",
+                                  "rgb(0,0,0)", "rgb(255,255,255"]
+            except:
+                time.sleep(3)
                 continue
-            else:
-                primary = r.json()['result'][0]
-                accent = r.json()['result'][1]
-                new_colors = [f"rgb({primary[0]},{primary[1]},{primary[2]})",
-                              f"rgb({accent[0]},{accent[1]},{accent[2]})",
-                              f"rgb({primary[0] // 2},{primary[1] // 2},{primary[2] // 2})",
-                              f"rgb({(primary[0] + 255) // 2},{(primary[1] + 255) // 2},{(primary[2] + 255) // 2})",
-                              "rgb(0,0,0)", "rgb(255,255,255"]
+
         # Assign each color to a new color that is interesting
         for color, newColor in colors.items():
             colors[color] = random.choice(new_colors)
@@ -297,7 +303,7 @@ def get_mutated_number(old_number):
     return str(old_number * random.uniform(0.85, 1.15))
 
 
-class MutateLayout(Action):
+class MutatePageLayout(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
         super().__init__(stats, website)
         # Get all of the colors in the page
@@ -305,3 +311,13 @@ class MutateLayout(Action):
         for scope, selector, rule, size in website.css.get_layout_sizes():
             new_size = re.sub('-?\\d+', get_mutated_number, size)
             self.mutations.append(((scope, selector, rule, new_size), []))
+
+
+class MutateElementLayout(Action):
+    def __init__(self, stats: GlobalStats, website: WebPage):
+        super().__init__(stats, website)
+        # Get all of the colors in the page
+        self.mutations = []
+        scope, selector, rule, size = random.choice(list(website.css.get_layout_sizes()))
+        new_size = re.sub('-?\\d+', get_mutated_number, size)
+        self.mutations.append(((scope, selector, rule, new_size), []))
