@@ -12,35 +12,51 @@ class WebSiteState:
         self.website = WebPage(url=url, cleaned=cleaned)
         self.stats = stats
         self.depth = 1
+        self.possibleActions = None
+        self.evaluation = None
 
     def getPossibleActions(self):
-        possibleActions = [getRandomAction(self.stats, self.website) for _ in range(2)]
-        return possibleActions
+        if self.possibleActions is None:
+            self.possibleActions = [getRandomAction(self.stats, self.website) for _ in range(20)]
+        return self.possibleActions
 
     def takeAction(self, action, depthOverride=None):
         newState = deepcopy(self)
         action.modify(newState)
         if depthOverride is not None:
             newState.depth = depthOverride
+            newState.possibleActions = None
+            newState.evaluation = None
             # print("Override on depth")
         else:
             newState.depth += 1
+            newState.possibleActions = None
+            newState.evaluation = None
         return newState
 
     def isTerminal(self):
+        # print("Reached terminal state")
         return self.depth == 10
         # return self.website.evaluate() < WebSiteState.min_acceptable_evaluation
 
     def getReward(self):  # Return Number between 0-1 or False
-        return self.website.evaluate()
+        if self.evaluation is None:
+            self.evaluation = self.website.evaluate()
+        # else:
+        #     print("Reward called multiple times")
+        return self.evaluation
 
     def __str__(self):
         return f"Depth: {self.depth} Website: {self.website}"
 
+def customPolicy(state):
+    action = random.choice(state.getPossibleActions())
+    state = state.takeAction(action)
+    return state.getReward()
 
 def main(school):
     depth = 0
-    montecarlosearch = mcts(timeLimit=.5)
+    montecarlosearch = mcts(iterationLimit=5, rolloutPolicy=customPolicy)
     directory = f"results/{school}"
     images_dir = f"images/html_images"
     os.makedirs(directory, exist_ok=True)
@@ -55,14 +71,17 @@ def main(school):
     initialState = WebSiteState(url=school, stats=stats)
     initialState.website.download_imgs()
     initialState.website.gen_photo(f"{directory}/initial_screenshot.png")
-    while depth < 2:
+    while depth < 15:
+        print(f"Depth: {depth}")
         action = montecarlosearch.search(initialState=initialState)
+        # print(f"Depth: {depth} done")
         action.save(f"{directory}/actions.txt")
         initialState = initialState.takeAction(action, depthOverride=0)
         initialState.getReward()
         if depth % 1 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
+        montecarlosearch = mcts(iterationLimit=5, rolloutPolicy=customPolicy)
     initialState.website.gen_photo(f"{directory}/final_screenshot.png")
     print("Finished")
 

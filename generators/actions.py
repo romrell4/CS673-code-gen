@@ -10,7 +10,7 @@ import time
 import shutil
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
-    return ColorSchemeFromImageAction(stats, website)
+    # return ColorSchemeFromImageAction(stats, website)
     action_types = [
         RandomColorAction,
         RandomFontAction,
@@ -66,18 +66,9 @@ class Action:
     def __repr__(self):
         return str(self)
 
-    def __eq__(self, other):
-        return self.selector == other.selector and self.rule_name == other.rule_name and \
-               self.rule_value == other.rule_value
-
     def save(self, filename):
         with open(filename, 'a+') as f:
             f.write(str(self))
-
-    def __hash__(self):
-        if self.selector is None:
-            return hash((self.rule_name, self.rule_value))
-        return hash((self.selector, self.rule_name, self.rule_value))
 
 
 class PureStatisticalAction(Action):
@@ -240,7 +231,7 @@ class ColorSchemeFromImageAction(Action):
         
         num_colors = len(colors.items())
         new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in generate_pallete_from_random_img()]
-        print(f"num_colors: {len(new_colors)}")
+        # print(f"num_colors: {len(new_colors)}")
         # Assign each color to a new color that is interesting
         i = random.randint(0,4)
         for color, newColor in colors.items():
