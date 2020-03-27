@@ -17,12 +17,13 @@ def getRandomAction(stats: GlobalStats, website: WebPage):
         WebSiteSpecificSelectorModifier,
         StrategicColorSchemeAction,
         ColorSchemeFromAllImagesAction,
+        BrandArchetypeAction,
         ColorSchemeFromImageAction,
         MutateColorSchemeAction,
         MutatePageLayout,
         MutateElementLayout
     ]
-    action = random.choices(action_types, [.05, .05, .2, .1, .2, 0.1, 0.1, 0.1, 0.1])[0]
+    action = random.choices(action_types, [.05, .1, .2, .1, .2, .2, 0.1, 0.1, 0.1, 0.1])[0]
     return action(stats, website)
 
 
