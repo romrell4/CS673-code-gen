@@ -2,11 +2,11 @@ import random
 import os
 import json
 import csv
-from typing import Dict
-
+from typing import Dict, List
 
 class WebColors:
     rules = ['background-color', 'color']
+    alpha_probability = .9
     def __init__(self):
         pass
 
@@ -19,7 +19,6 @@ class WebColors:
         r = random.randint(0, 25)*10
         g = random.randint(0, 25)*10
         b = random.randint(0, 25)*10
-        a = abs(random.random())
         return [r,g,b]
 
     @staticmethod
@@ -27,10 +26,20 @@ class WebColors:
         r = random.randint(0, 25)*10
         g = random.randint(0, 25)*10
         b = random.randint(0, 25)*10
-        a = abs(random.random())
         return f"rgb({r},{g},{b})"
 
+    @staticmethod
+    def color_with_alpha(color:List[int]) -> str:
+        if random.random() < alpha_probability:
+            return f"rgba({color[0]}, {color[1]}, {color[2]}, 1)"
+        return f"rgba({color[0]}, {color[1]}, {color[2]}, {random.random()/5})"
 
+    @staticmethod
+    def as_string(color:List[int], withAlpha:bool=False) -> str:
+        if withAlpha:
+            return color_with_alpha(color)       
+        return f"rgba({color[0]}, {color[1]}, {color[2]}, 1)"
+        
 
 class WebFonts:
     rules = ["font-family", 'font-size', 'font-style', 'font-weight', 'font-variant']

@@ -71,7 +71,7 @@ def main(school):
     initialState = WebSiteState(url=school, stats=stats)
     initialState.website.download_imgs()
     initialState.website.gen_photo(f"{directory}/initial_screenshot.png")
-    while depth < 15:
+    while depth < 300:
         print(f"Depth: {depth}")
         action = montecarlosearch.search(initialState=initialState)
         # print(f"Depth: {depth} done")

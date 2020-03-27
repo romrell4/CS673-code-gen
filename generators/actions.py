@@ -1,5 +1,6 @@
 import re
-import typing
+import typing 
+from typing import List
 from webscraping.stat_models import *
 from generators.web_info import *
 from generators.mcts_generator import WebSiteState
@@ -11,20 +12,22 @@ import shutil
 
 def getRandomAction(stats: GlobalStats, website: WebPage):
     # return ColorSchemeFromImageAction(stats, website)
-    action_types = [
-        RandomColorAction,
-        RandomFontAction,
-        WebSiteSpecificSelectorModifier,
-        StrategicColorSchemeAction,
-        ColorSchemeFromAllImagesAction,
-        BrandArchetypeAction,
-        ColorSchemeFromImageAction,
-        MutateColorSchemeAction,
-        MutatePageLayout,
-        MutateElementLayout
-    ]
-    action = random.choices(action_types, [.05, .1, .2, .1, .2, .2, 0.1, 0.1, 0.1, 0.1])[0]
-    return action(stats, website)
+    action_types = {
+        RandomColorAction: True,
+        RandomFontAction: False,
+        WebSiteSpecificSelectorModifier: False,
+        StrategicColorSchemeAction: False,
+        ColorSchemeFromAllImagesAction: True,
+        BrandArchetypeAction: True,
+        ColorSchemeFromImageAction: True,
+        MutateColorSchemeAction: True,
+        MutatePageLayout: False,
+        MutateElementLayout: False
+    }
+    action = random.choices(list(action_types.items()), [.05, .1, .2, .1, .2, .2, 0.1, 0.1, 0.1, 0.1])[0]
+    if action[1]:
+        return action[0](stats, website, withAlpha=True)
+    return action[0](stats, website)
 
 
 class Action:
@@ -120,7 +123,7 @@ class WebSiteSpecificSelectorModifier(Action):
 
 
 class RandomColorAction(Action):
-    def __init__(self, stats: GlobalStats, website: WebPage):
+    def __init__(self, stats: GlobalStats, website: WebPage, withAlpha: bool=True):
         super().__init__(stats, website)
         selector = random.choice(list(website.css.selectors.keys()))
         while not website.contains_selector(selector):
@@ -131,9 +134,9 @@ class RandomColorAction(Action):
                 break
         self.selector = selector
         self.rule_name = WebColors.get_random_rule()
-        self.rule_value = WebColors.get_random_value()
-  
-                  
+        self.rule_value = WebColors.as_string(WebColors.get_random_value_array(), withAlpha=withAlpha)
+
+
 class RandomFontAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
         super().__init__(stats, website)
@@ -150,7 +153,7 @@ class RandomFontAction(Action):
         self.rule_links = webFonts.get_rule_links(self.rule_value)
 
 class MutateColorSchemeAction(Action):
-    def __init__(self, stats: GlobalStats, website: WebPage):
+    def __init__(self, stats: GlobalStats, website: WebPage, withAlpha:bool=False):
         super().__init__(stats, website)
         # Get all of the colors in the page
         colors = {}
@@ -169,7 +172,7 @@ class MutateColorSchemeAction(Action):
                     print("No Color response")
                     continue
                 else:
-                    new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
+                    new_colors = [WebColors.as_string(color, withAlpha=withAlpha) for color in r.json()['result']]
             except:
                 time.sleep(3)
                 continue
@@ -192,7 +195,7 @@ class MutateColorSchemeAction(Action):
         # * Always have foreground be Black and White & Background changes
 
 class ColorSchemeFromAllImagesAction(Action):
-    def __init__(self, stats: GlobalStats, website: WebPage):
+    def __init__(self, stats: GlobalStats, website: WebPage, withAlpha:bool=False):
         super().__init__(stats, website)
         # Get all of the colors in the page
         colors = {}
@@ -200,7 +203,7 @@ class ColorSchemeFromAllImagesAction(Action):
             colors[color] = None
         
         num_colors = len(colors.items())
-        new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in generate_pallete_from_imgs()]
+        new_colors = [WebColors.as_string(color, withAlpha=withAlpha) for color in generate_pallete_from_imgs()]
        
         # print(f"New Colors: {new_colors}")
         # Assign each color to a new color that is interesting
@@ -223,7 +226,7 @@ class ColorSchemeFromAllImagesAction(Action):
 
 
 class ColorSchemeFromImageAction(Action):
-    def __init__(self, stats: GlobalStats, website: WebPage):
+    def __init__(self, stats: GlobalStats, website: WebPage, withAlpha:bool=False):
         super().__init__(stats, website)
         # Get all of the colors in the page
         colors = {}
@@ -231,7 +234,7 @@ class ColorSchemeFromImageAction(Action):
             colors[color] = None
         
         num_colors = len(colors.items())
-        new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in generate_pallete_from_random_img()]
+        new_colors = [WebColors.as_string(color, withAlpha=withAlpha) for color in generate_pallete_from_random_img()]
         # print(f"num_colors: {len(new_colors)}")
         # Assign each color to a new color that is interesting
         i = random.randint(0,4)
@@ -253,7 +256,7 @@ class ColorSchemeFromImageAction(Action):
 
 
 class BrandArchetypeAction(Action):
-    def __init__(self, stats: GlobalStats, website: WebPage):
+    def __init__(self, stats: GlobalStats, website: WebPage, withAlpha:bool=False):
         super().__init__(stats, website)
         # Get all of the colors in the page
         colors = {}
@@ -273,7 +276,7 @@ class BrandArchetypeAction(Action):
                     continue
                 else:
                     print(r.text)
-                    new_colors = [f"rgb({color[0]},{color[1]},{color[2]})" for color in r.json()['result']]
+                    new_colors = [WebColors.as_string(color, withAlpha=withAlpha) for color in r.json()['result']]
             except:
                 time.sleep(3)
                 continue
@@ -300,6 +303,7 @@ class BrandArchetypeAction(Action):
         newfont, link = archetypes.get_font_and_link(website.school_name)
         for scope, selector, rule, font in website.css.fonts():
             self.mutations.append(((scope, selector, rule, newfont), link))
+
 
 class StrategicColorSchemeAction(Action):
     def __init__(self, stats: GlobalStats, website: WebPage):
@@ -329,7 +333,7 @@ class StrategicColorSchemeAction(Action):
                                   f"rgb({accent[0]},{accent[1]},{accent[2]})",
                                   f"rgb({primary[0] // 2},{primary[1] // 2},{primary[2] // 2})",
                                   f"rgb({(primary[0] + 255) // 2},{(primary[1] + 255) // 2},{(primary[2] + 255) // 2})",
-                                  "rgb(0,0,0)", "rgb(255,255,255"]
+                                  "rgb(0,0,0)", "rgb(255,255,255)"]
             except:
                 time.sleep(3)
                 continue
