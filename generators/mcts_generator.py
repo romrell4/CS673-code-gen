@@ -6,6 +6,11 @@ import shutil
 import os
 from generators.actions import *
 
+branching_factor = 20
+single_run_max_depth = 10
+single_run_num_rollouts = 5 # 20
+total_depth = 3 #200
+
 class WebSiteState:
     min_acceptable_evaluation = .5
     def __init__(self, url, stats, cleaned=False):
@@ -16,8 +21,8 @@ class WebSiteState:
         self.evaluation = None
 
     def getPossibleActions(self):
-        if self.possibleActions is None:
-            self.possibleActions = [getRandomAction(self.stats, self.website) for _ in range(20)]
+        if self.possibleActions is None: 
+            self.possibleActions = [getRandomAction(self.stats, self.website) for _ in range(branching_factor)]
         return self.possibleActions
 
     def takeAction(self, action, depthOverride=None):
@@ -36,7 +41,7 @@ class WebSiteState:
 
     def isTerminal(self):
         # print("Reached terminal state")
-        return self.depth == 10
+        return self.depth == single_run_max_depth
         # return self.website.evaluate() < WebSiteState.min_acceptable_evaluation
 
     def getReward(self):  # Return Number between 0-1 or False
@@ -56,7 +61,7 @@ def customPolicy(state):
 
 def main(school):
     depth = 0
-    montecarlosearch = mcts(iterationLimit=5, rolloutPolicy=customPolicy)
+    montecarlosearch = mcts(iterationLimit=single_run_num_rollouts, rolloutPolicy=customPolicy)
     directory = f"results/{school}"
     images_dir = f"images/html_images"
     os.makedirs(directory, exist_ok=True)
@@ -71,7 +76,7 @@ def main(school):
     initialState = WebSiteState(url=school, stats=stats)
     initialState.website.download_imgs()
     initialState.website.gen_photo(f"{directory}/initial_screenshot.png")
-    while depth < 300:
+    while depth < total_depth:
         print(f"Depth: {depth}")
         action = montecarlosearch.search(initialState=initialState)
         # print(f"Depth: {depth} done")
@@ -81,7 +86,7 @@ def main(school):
         if depth % 1 == 0:
             initialState.website.gen_photo(f"{directory}/screenshot_{depth}.png")
         depth += 1
-        montecarlosearch = mcts(iterationLimit=5, rolloutPolicy=customPolicy)
+        montecarlosearch = mcts(iterationLimit=single_run_num_rollouts, rolloutPolicy=customPolicy)
     initialState.website.gen_photo(f"{directory}/final_screenshot.png")
     print("Finished")
 

@@ -30,14 +30,14 @@ class WebColors:
 
     @staticmethod
     def color_with_alpha(color:List[int]) -> str:
-        if random.random() < alpha_probability:
+        if random.random() < WebColors.alpha_probability:
             return f"rgba({color[0]}, {color[1]}, {color[2]}, 1)"
         return f"rgba({color[0]}, {color[1]}, {color[2]}, {random.random()/5})"
 
     @staticmethod
     def as_string(color:List[int], withAlpha:bool=False) -> str:
         if withAlpha:
-            return color_with_alpha(color)       
+            return WebColors.color_with_alpha(color)       
         return f"rgba({color[0]}, {color[1]}, {color[2]}, 1)"
         
 
