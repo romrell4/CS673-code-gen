@@ -6,7 +6,7 @@ from typing import Dict, List
 
 class WebColors:
     rules = ['background-color', 'color']
-    alpha_probability = .9
+    alpha_probability = .5
     def __init__(self):
         pass
 
