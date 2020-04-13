@@ -6,10 +6,10 @@ import shutil
 import os
 from generators.actions import *
 
-branching_factor = 20
-single_run_max_depth = 10
-single_run_num_rollouts = 5 # 20
-total_depth = 3 #200
+branching_factor = 30
+single_run_max_depth = 20
+single_run_num_rollouts = 10  # 20
+total_depth = 15 #200
 
 class WebSiteState:
     min_acceptable_evaluation = .5
@@ -93,6 +93,6 @@ def main(school):
 
 if __name__ == '__main__':
     scraper.set_desktop_view()
-    school = "byu"
+    school = "mit"
     main(school)
     

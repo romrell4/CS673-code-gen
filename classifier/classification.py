@@ -7,9 +7,10 @@ from shutil import copyfile
 
 #### INTERFACE ####
 def evaluate_image(image_location):
-    copyfile(image_location, '../classifier/data/data/screenshot.png')
-    scores = batch_classify('../classifier/data/')['screenshot.png']
+    copyfile(image_location, 'classifier/data/data/screenshot.png')
+    scores = batch_classify('classifier/data/')['screenshot.png']
     print('classifying image as', (scores[0] + scores[1]) / 2)
+    copyfile('classifier/data/data/screenshot.png', f'classifier/past_screenshots/{str((scores[0] + scores[1]) / 2).replace(".", "_")[:5]}.png')
     return (scores[0] + scores[1]) / 2
 
 
@@ -92,9 +93,9 @@ class ScreenshotClassifier(nn.Module):
 try:
     model = ScreenshotClassifier()
     if torch.cuda.is_available():
-        model.load_state_dict(torch.load('../classifier/screenshot_classifier_sd.pt'))
+        model.load_state_dict(torch.load('classifier/screenshot_classifier_sd.pt'))
     else:
-        model.load_state_dict(torch.load('../classifier/screenshot_classifier_sd.pt',map_location=torch.device('cpu')))
+        model.load_state_dict(torch.load('classifier/screenshot_classifier_sd.pt',map_location=torch.device('cpu')))
     model.eval()
 except Exception as e:
     print(e)
