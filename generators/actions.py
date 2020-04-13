@@ -24,7 +24,7 @@ def getRandomAction(stats: GlobalStats, website: WebPage):
         MutatePageLayout: False,
         MutateElementLayout: False
     }
-    action = random.choices(list(action_types.items()), [.1, .3, .1, .1, .1, .1, 0.1, 0.1, 0.2, 0.3])[0]
+    action = random.choices(list(action_types.items()), [.1, .2, .1, .2, .2, .2, 0.2, 0.2, 0.05, 0.1])[0]
     if action[1]:
         return action[0](stats, website, withAlpha=True)
     return action[0](stats, website)
